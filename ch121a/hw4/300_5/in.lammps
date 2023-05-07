@@ -1,0 +1,118 @@
+#Input file for reaxFF H2O impact simulation 2019
+
+#Name of input file
+variable	sname index pth2o 
+
+#Record trajectory every dumpstep frames
+variable	dumpstep equal 100
+
+#Number of equilibration and minimization steps
+variable	eqsteps equal 500  
+variable	minsteps equal 2000
+
+#Log filename
+log		${sname}.log
+
+#Set velocity (in km/s)
+variable v equal 5 
+
+#Controls angle of impact
+#a = angle from horizontal/10
+variable        a equal 9 
+
+#Loop through the simulation several times with different random seeds
+variable        b equal 1 
+label           loopb
+variable        seed equal 240323*$b
+
+#Set up impact simulation
+print		"<<<<<<<<< Vel=$v, Angle=$a, Test=$b >>>>>>>>>>>"
+units	        real	
+newton	     	on
+atom_style full
+
+#Periodic boundary conditions
+boundary        p p p	
+
+#Read the data file
+read_data       data.${sname}
+
+#Obtain the REAX pair coefficients from the ffield file
+pair_style      reax/c NULL safezone 5.0 mincap 1200 
+pair_coeff  	* * ffield.reax Pt O H
+
+#Apply qeq charge equilibration
+fix 		qeq all qeq/reax 1 0.0 10.0 1.0e-6 reax/c
+
+#Details of how lammps computes neighboring atoms for pairwise interactions
+neighbor        2.5  bin
+neigh_modify    delay 10 every 2 check yes one 15000 page 150000
+
+#group impacting H2O by atom ids
+group impactor id 1537:1539
+
+#Print thermodynamic data every 10 steps
+thermo          10
+
+#Randomize initial position and set far to equilibrate
+displace_atoms 	impactor move 20.0 20.0 0.0 units box
+
+#Compute the center of mass of the impactor 
+compute         cmi impactor com
+variable        xd equal c_cmi[1]
+variable        yd equal c_cmi[2]
+variable        zd equal c_cmi[3]
+variable        ranangle equal random(0,90,${seed})
+thermo_style    custom step etotal pe ke temp press vol c_cmi[1] c_cmi[2] c_cmi[3]
+
+#Rotate the impactor before beginning simulation
+print ">>>>>> Rotated impactor by ${ranangle} <<<<<<<"
+run 0
+displace_atoms  impactor rotate ${xd} ${yd} ${zd} 0.0 0.0 1.0 ${ranangle}
+displace_atoms  impactor rotate ${xd} ${yd} ${zd} 0.0 1.0 0.0 ${ranangle}
+displace_atoms  impactor rotate ${xd} ${yd} ${zd} 1.0 0.0 0.0 ${ranangle}
+
+#Simulation timestep
+timestep  	0.1
+
+#Print data to lammptrj file
+dump            1 all custom ${dumpstep}  ${sname}.$v.lammpstrj id type x y z vx vy vz
+dump_modify     1 sort id
+
+#First, minimize structure
+min_style       cg
+minimize        0.0 1e-6 ${minsteps} 5000
+
+#Then, run equilibration
+velocity 	all create 300.0 4928459 rot yes dist gaussian #generates initial velocities at 300 K  via a gaussian distribution
+fix 		equil all nvt temp 300.0 300.0 50.0 #nvt dynamics on all atoms at starting and ending temps of 300 K w 50 fs damping
+run 		${eqsteps}
+unfix 		equil
+
+#Bring the impactor close to the surface
+displace_atoms  impactor move 0.0 0.0 -15.0 units box
+
+#Give the impactor a velocity toward the surface
+variable 	impv equal $v*-0.01
+variable 	ang equal PI*$a*10/180.0
+variable 	vy equal ${impv}*cos(${ang})
+variable 	vz equal ${impv}*sin(${ang})
+velocity 	impactor set NULL ${vy} ${vz} sum yes units box
+
+#Guess the number of steps that will be needed
+variable impsteps equal ceil(-20/${vz}*10)
+
+#Run the impact simulation
+fix  		dyn all nve 
+fix 		frags all reax/c/species 10 10 100 species.$b.$a.out element Pt H O cutoff 2 2 .88 cutoff 3 3 .88 cutoff 2 3 .88
+fix  		bonds all reax/c/bonds 100 bonds.reaxc.$b.$a.${sname}
+run 		${impsteps}
+
+#Exit the simulation
+unfix		qeq
+unfix		dyn
+unfix		frags
+unfix		bonds
+clear
+
+

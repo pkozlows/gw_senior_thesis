@@ -1,0 +1,12 @@
+Name: 'h2_scan'
+JobId: 'hpc-21-14-0-64417519'
+Commandline: '/central/groups/wag/programs/Schrodinger_2022_3/jaguar run -TMPDIR /central/scratch/musgrave -WAIT -PARALLEL 1 h2_scan.in'
+BackendCmdline: 'run jexec.py -WAIT -PARALLEL 1 -jobname h2_scan h2_scan.in'
+Outfiles:
+- "h2_scan.grd"
+- "h2_scan.out"
+- "h2_scan.steps.in"
+- "h2_scan.01.in"
+- "h2_scan.01.mae"
+- "h2_scan.log"
+- "h2_scan.recover"

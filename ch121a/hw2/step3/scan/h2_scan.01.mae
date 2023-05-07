@@ -1,0 +1,1425 @@
+{ 
+ s_m_m2io_version
+ s_m_workflow_menu
+ :::
+ 2.0.0 
+  "Jaguar Geometry Optimization Plot" 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  1
+  1.4
+  -1.65852235443364
+  -1.65852235443364
+  -0.245054781589945
+  0.114561573229462
+  -0.38702303186423
+  -0.10101186369925
+  0.75244411477317
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 -0.015350 0.985169 0.000000 21 1 H1 
+  2 41 -0.006885 0.207264 0.000000 21 1 H2 
+  3 48 0.022235 -1.192433 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  2
+  1.35
+  -1.65813913552604
+  -1.65813913552604
+  -0.241397078750987
+  0.115992595014526
+  -0.389112638672178
+  -0.104675047579373
+  0.752899192042813
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.014996 0.972223 0.000000 21 1 H1 
+  2 41 0.006612 0.188741 0.000000 21 1 H2 
+  3 48 -0.021608 -1.160964 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  3
+  1.3
+  -1.657772636896
+  -1.657772636896
+  -0.237536897234526
+  0.117386767267187
+  -0.391436639432525
+  -0.107939629017718
+  0.753402639089731
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.014796 0.959992 0.000000 21 1 H1 
+  2 41 0.006101 0.169864 0.000000 21 1 H2 
+  3 48 -0.020897 -1.129856 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  4
+  1.25
+  -1.65743524409723
+  -1.65743524409723
+  -0.233530498250877
+  0.118717578062313
+  -0.393950757483472
+  -0.110797740843655
+  0.753949787306188
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.014782 0.948768 0.000000 21 1 H1 
+  2 41 0.005307 0.150487 0.000000 21 1 H2 
+  3 48 -0.020089 -1.099255 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  5
+  1.2
+  -1.65714029618189
+  -1.65714029618189
+  -0.229449239950695
+  0.120027187635793
+  -0.396624066253499
+  -0.113226905241675
+  0.754527315957951
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.014977 0.938802 0.000000 21 1 H1 
+  2 41 0.004202 0.130485 0.000000 21 1 H2 
+  3 48 -0.019178 -1.069287 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  6
+  1.15
+  -1.65690006456234
+  -1.65690006456234
+  -0.225437664606366
+  0.121061589408632
+  -0.399188661909883
+  -0.115362711019401
+  0.755145487800972
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.015505 0.931282 0.000000 21 1 H1 
+  2 41 0.002600 0.109266 0.000000 21 1 H2 
+  3 48 -0.018105 -1.040548 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  7
+  1.1
+  -1.65669363724967
+  -1.65669363724967
+  -0.221615796885889
+  0.121896768308159
+  -0.401862166791604
+  -0.116937367867951
+  0.755727001360802
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.016002 0.892118 0.000000 21 1 H1 
+  2 41 -0.000513 0.053885 -0.000000 21 1 H2 
+  3 48 -0.017289 -1.045987 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  8
+  1.05
+  -1.65654839752425
+  -1.65654839752425
+  -0.218209356963644
+  0.122617588242104
+  -0.40430625259904
+  -0.118142796557499
+  0.756259760969627
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.016388 0.922867 0.000000 21 1 H1 
+  2 41 0.000091 0.063501 0.000000 21 1 H2 
+  3 48 -0.016479 -0.986368 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  9
+  1
+  -1.6564531159134
+  -1.6564531159134
+  -0.215536449175254
+  0.12307447678664
+  -0.406306224646215
+  -0.118945494200683
+  0.756682435358596
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.015265 0.924718 0.000000 21 1 H1 
+  2 41 0.001867 0.037550 0.000000 21 1 H2 
+  3 48 -0.017133 -0.962269 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  10
+  0.95
+  -1.6564047025096
+  -1.6564047025096
+  -0.21422706572054
+  0.122341911534941
+  -0.407338694934351
+  -0.119460446206063
+  0.75692713948229
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.015215 0.933679 0.000000 21 1 H1 
+  2 41 0.001634 0.008071 0.000000 21 1 H2 
+  3 48 -0.016849 -0.941749 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  11
+  0.9
+  -1.65643384151163
+  -1.65643384151163
+  -0.215274354126451
+  0.12240753191712
+  -0.406104579574678
+  -0.119457932586734
+  0.756839537531626
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.016530 0.957746 0.000000 21 1 H1 
+  2 41 -0.000993 -0.028932 0.000000 21 1 H2 
+  3 48 -0.015538 -0.928814 0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  12
+  0.85
+  -1.65665659881565
+  -1.65665659881565
+  -0.223224863583516
+  0.11796600936227
+  -0.398624440103607
+  -0.11845105713949
+  0.755971298710565
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.017275 0.991272 -0.000000 21 1 H1 
+  2 41 -0.002731 -0.120682 0.000000 21 1 H2 
+  3 48 -0.016160 -0.970576 -0.000000 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ b_j_Scan_Point_OK
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ i_j_Geometry_convergence_category
+ i_j_ScanPt_Num
+ r_j_r
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ init.01 
+  init.01 
+  1
+  2
+  "Relaxed Scan" 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.01.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.out 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.log 
+  /central/home/pkozlows/ch121a/hw2/step3/scan/h2_scan.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  0
+  13
+  0.8
+  -1.66121605109487
+  -1.66121605109487
+  -0.273106614655065
+  0.0686328208593707
+  -0.367170460298431
+  0.0149025723225539
+  0.750022703157726
+  /central/home/pkozlows/ch121a/hw2/step3/scan 
+  2
+ m_depend[22] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 b_j_Scan_Point_OK 
+  2 20 i_m_Spin_multiplicity 
+  3 20 s_j_Task 
+  4 20 s_j_Jaguar_input_file 
+  5 20 s_j_Jaguar_restart_input_file 
+  6 20 s_j_Jaguar_restart_mae_file 
+  7 20 s_j_Jaguar_output_file 
+  8 20 s_j_Jaguar_log_file 
+  9 20 s_j_Jaguar_mae_file 
+  10 20 s_j_QM_Method 
+  11 20 s_j_QM_Basis 
+  12 20 i_j_Number_of_canonical_orbitals 
+  13 20 i_j_Geometry_convergence_category 
+  14 20 i_j_ScanPt_Num 
+  15 20 r_j_r 
+  16 20 r_j_Gas_Phase_Energy 
+  17 20 r_j_Final_Energy 
+  18 20 r_j_alpha_HOMO 
+  19 20 r_j_alpha_LUMO 
+  20 20 r_j_beta_HOMO 
+  21 20 r_j_beta_LUMO 
+  22 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 41 0.024075 1.867526 -0.000005 21 1 H1 
+  2 41 0.007191 -0.634293 0.000012 21 1 H2 
+  3 48 -0.034462 -1.433208 -0.000007 21 1 H3 
+  :::
+ } 
+ m_bond[1] { 
+  # First column is bond index #
+  i_m_from
+  i_m_to
+  i_m_order
+  :::
+  1 1 2 1
+  :::
+ } 
+} 
+

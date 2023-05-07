@@ -1,0 +1,5 @@
+Launching JAGUAR under jobcontrol.
+Command: jaguar run -WAIT -PARALLEL 8 ether.in
+Release: 2020-3
+Exec: /groups/wag/programs/Schrodinger_2020_3/jaguar-v10.9/bin/Linux-x86_64
+JobId: hpc-89-11-0-643f5a13

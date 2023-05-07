@@ -1,0 +1,138 @@
+{ 
+ s_m_m2io_version
+ s_m_workflow_menu
+ :::
+ 2.0.0 
+  "Jaguar Geometry Optimization Plot" 
+} 
+
+f_m_ct { 
+ s_m_title
+ s_m_entry_name
+ i_m_Spin_multiplicity
+ s_j_Task
+ s_j_Jaguar_input_file
+ s_j_Jaguar_restart_input_file
+ s_j_Jaguar_restart_mae_file
+ s_j_Jaguar_output_file
+ s_j_Jaguar_log_file
+ s_j_Jaguar_mae_file
+ s_j_QM_Method
+ s_j_QM_Basis
+ i_j_Number_of_canonical_orbitals
+ r_j_Gas_Phase_Energy
+ r_j_Final_Energy
+ r_j_alpha_HOMO
+ r_j_alpha_LUMO
+ r_j_beta_HOMO
+ r_j_beta_LUMO
+ r_j_Lowest_Frequency_(cm-1)
+ r_j_Highest_Frequency_(cm-1)
+ r_j_2nd_Lowest_Frequency_(cm-1)
+ i_j_Num_Negative_Frequencies
+ r_j_Zero_Point_Energy_(kcal/mol)
+ r_j_Entropy_(cal/mol/K)_298.15K_1.00E+00atm
+ r_j_Enthalpy_(kcal/mol)_298.15K_1.00E+00atm
+ r_j_Free_Energy_(kcal/mol)_298.15K_1.00E+00atm
+ r_j_Internal_Energy_(kcal/mol)_298.15K_1.00E+00atm
+ r_j_Heat_Capacity_(cal/mol/K)_298.15K_1.00E+00atm
+ r_j_ln(Q)_298.15K_1.00E+00atm
+ r_j_Total_Internal_Energy_(au)_298.15K_1.00E+00atm
+ r_j_Total_Enthalpy_(au)_298.15K_1.00E+00atm
+ r_j_Total_Free_Energy_(au)_298.15K_1.00E+00atm
+ r_j_S2_Value
+ s_m_Source_Path
+ i_m_ct_format
+ :::
+ Scratch 
+  Scratch 
+  2
+  "Transition State Search" 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.01.in 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.02.in 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.02.mae 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.01.out 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.01.log 
+  /central/home/pkozlows/ch121a/hw2/step3/opt/opt.01.mae 
+  UDFT(pbe-d3) 
+  6-31g** 
+  15
+  -1.65640341651946
+  -1.65640341651946
+  -0.214245172794856
+  0.122218737467706
+  -0.407244134892134
+  -0.119538844443353
+  -508.148510132559
+  2043.70131399806
+  975.109584886318
+  1
+  5.70959702418093
+  38.9863689023944
+  2.12489782044084
+  -9.49888806780806
+  1.53241223161357
+  5.78865275700804
+  16.0322685427835
+  -1.64486254008329
+  -1.64391835419104
+  -1.66244203621332
+  0.756947052913419
+  /central/home/pkozlows/ch121a/hw2/step3/opt 
+  2
+ m_depend[32] { 
+  # First column is dependency index #
+  i_m_depend_dependency
+  s_m_depend_property
+  :::
+  1 20 i_m_Spin_multiplicity 
+  2 20 s_j_Task 
+  3 20 s_j_Jaguar_input_file 
+  4 20 s_j_Jaguar_restart_input_file 
+  5 20 s_j_Jaguar_restart_mae_file 
+  6 20 s_j_Jaguar_output_file 
+  7 20 s_j_Jaguar_log_file 
+  8 20 s_j_Jaguar_mae_file 
+  9 20 s_j_QM_Method 
+  10 20 s_j_QM_Basis 
+  11 20 i_j_Number_of_canonical_orbitals 
+  12 20 r_j_Gas_Phase_Energy 
+  13 20 r_j_Final_Energy 
+  14 20 r_j_alpha_HOMO 
+  15 20 r_j_alpha_LUMO 
+  16 20 r_j_beta_HOMO 
+  17 20 r_j_beta_LUMO 
+  18 20 r_j_Lowest_Frequency_(cm-1) 
+  19 20 r_j_Highest_Frequency_(cm-1) 
+  20 20 r_j_2nd_Lowest_Frequency_(cm-1) 
+  21 20 i_j_Num_Negative_Frequencies 
+  22 20 r_j_Zero_Point_Energy_(kcal/mol) 
+  23 20 r_j_Entropy_(cal/mol/K)_298.15K_1.00E+00atm 
+  24 20 r_j_Enthalpy_(kcal/mol)_298.15K_1.00E+00atm 
+  25 20 r_j_Free_Energy_(kcal/mol)_298.15K_1.00E+00atm 
+  26 20 r_j_Internal_Energy_(kcal/mol)_298.15K_1.00E+00atm 
+  27 20 r_j_Heat_Capacity_(cal/mol/K)_298.15K_1.00E+00atm 
+  28 20 r_j_ln(Q)_298.15K_1.00E+00atm 
+  29 20 r_j_Total_Internal_Energy_(au)_298.15K_1.00E+00atm 
+  30 20 r_j_Total_Enthalpy_(au)_298.15K_1.00E+00atm 
+  31 20 r_j_Total_Free_Energy_(au)_298.15K_1.00E+00atm 
+  32 20 r_j_S2_Value 
+  :::
+ } 
+ m_atom[3] { 
+  # First column is atom index #
+  i_m_mmod_type
+  r_m_x_coord
+  r_m_y_coord
+  r_m_z_coord
+  i_m_color
+  i_m_atomic_number
+  s_m_atom_name
+  :::
+  1 48 0.075504 0.932719 0.000000 21 1 H1 
+  2 48 0.001092 0.004585 0.000000 21 1 H2 
+  3 48 -0.076596 -0.937304 0.000000 21 1 H3 
+  :::
+ } 
+} 
+

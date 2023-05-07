@@ -1,0 +1,13 @@
+Name: 'a_try2'
+JobId: 'hpc-90-30-0-64404360'
+Commandline: '/central/groups/wag/programs/Schrodinger_2022_3/jaguar run -TMPDIR /central/scratch/musgrave -WAIT -PARALLEL 1 a_try2.in'
+BackendCmdline: 'run jexec.py -WAIT -PARALLEL 1 -jobname a_try2 a_try2.in'
+Outfiles:
+- "a_try2.log"
+- "a_try2.recover"
+- "a_try2_vib.spm"
+- "a_try2.out"
+- "a_try2.vib"
+- "a_try2.01.mae"
+- "a_try2.01.smap"
+- "a_try2.01.in"

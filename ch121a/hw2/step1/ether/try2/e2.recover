@@ -1,0 +1,13 @@
+Name: 'e2'
+JobId: 'hpc-24-11-0-64404952'
+Commandline: '/central/groups/wag/programs/Schrodinger_2022_3/jaguar run -TMPDIR /central/scratch/musgrave -WAIT -PARALLEL 1 e2.in'
+BackendCmdline: 'run jexec.py -WAIT -PARALLEL 1 -jobname e2 e2.in'
+Outfiles:
+- "e2_vib.spm"
+- "e2.01.in"
+- "e2.vib"
+- "e2.log"
+- "e2.recover"
+- "e2.01.mae"
+- "e2.01.smap"
+- "e2.out"

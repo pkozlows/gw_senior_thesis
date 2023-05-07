@@ -1,0 +1,13 @@
+Name: 'opt.01'
+JobId: 'hpc-21-14-0-6441c938'
+Commandline: '/central/groups/wag/programs/Schrodinger_2022_3/jaguar run -TMPDIR /central/scratch/musgrave -WAIT -PARALLEL 1 opt.01.in'
+BackendCmdline: 'run jexec.py -WAIT -PARALLEL 1 -jobname opt.01 opt.01.in'
+Outfiles:
+- "opt.01.log"
+- "opt.01_vib.spm"
+- "opt.02.mae"
+- "opt.02.in"
+- "opt.01.out"
+- "opt.02.smap"
+- "opt.01.vib"
+- "opt.01.recover"

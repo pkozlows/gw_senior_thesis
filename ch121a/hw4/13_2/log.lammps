@@ -1,0 +1,16 @@
+LAMMPS (16 Mar 2018)
+#Input file for reaxFF H2O impact simulation 2019
+
+#Name of input file
+variable	sname index pth2o
+
+#Record trajectory every dumpstep frames
+variable	dumpstep equal 100
+
+#Number of equilibration and minimization steps
+variable	eqsteps equal 500
+variable	minsteps equal 2000
+
+#Log filename
+log		${sname}.log
+log		pth2o.log

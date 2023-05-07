@@ -1,0 +1,52 @@
+
+\documentclass[12pt]{article}
+\title{Ch 121a HW 4}
+\author{Patryk Kozlowski}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Problem 1}
+\subsubsection{Question}
+ What relationships are made by reax to properly allow bonds to form and break? (HINT: read the abstract of the 2001 paper)
+\subsubsection{Answer}
+ReaxFF uses a general relationship between bond distance and bond order on one hand and between bond order and bond energy on the other hand that leads to proper dissociation, e.g. formation/breaking, of bonds to separated atoms. Other valence terms present in the force field (angle and torsion) are defined in terms of the same bond orders so that all these terms go to zero smoothly as bonds break.
+\section{Problem 2}
+\subsubsection{Question}
+It is common in md to use point charges – in 2023, this is unacceptable! The charge equilibration (QEq) method was an innovative implementation in which the charge was distributed over the size of the atom. What additional feature could improve charge distribution even further? (HINT: read the abstract from the paper linked here)
+\subsubsection{Answer}
+I'm not seeing an additional feature?
+\section{Problem 3}
+\subsubsection{Question}
+At 100 K, at what velocity does the water fragment after impact?
+\subsubsection{Answer}
+At 100 K, the water fragments into two protons and one oxygen atom at a velocity between 0.7 and 0.9 km/s.
+\section{Problem 4}
+\subsection{Part a}
+\subsubsection{Question}
+Calculate the classical kinetic energy of the water molecule at each simulated velocity in kJ/mol.
+\subsubsection{Answer}
+At 4 km/s, the kinetic energy is 144.08 kJ/mol.
+At 5 km/s, the kinetic energy is 225.12500000000003 kJ/mol.
+At 7 km/s, the kinetic energy is 441.24500000000006 kJ/mol.
+At 9 km/s, the kinetic energy is 729.4050000000001 kJ/mol.
+At 11 km/s, the kinetic energy is 1089.605 kJ/mol.
+At 13 km/s, the kinetic energy is 1521.8450000000003 kJ/mol.
+\subsection{Part b}
+\subsubsection{Question}
+Given that water’s bond energy is ~493 kJ/mol, at what velocity would you expect the water to fragment in an ideal situation?
+\subsubsection{Answer}
+Between 7 and 9 km/s.
+\subsection{Part c}
+\subsubsection{Question}
+Is this consistent with your simulations? If not, what non-ideality would cause this (there are several reasons for this so give it your best shot)?
+\subsubsection{Answer}
+Example: Hydrogen-Oxygen Bond in Water
+
+BDE of water’s hydrogen-oxygen bond is given by:
+
+H2O + BDE → OH- + H+
+
+The above equation explains that when a water molecule is supplied with a certain amount of energy, it splits into two free radicals: H and OH.
+
+Using this definition, this was consistent with my simulations. The kinetic energy needed to separate the water molecule into a proton and hydroxide ion occured between 7 and 9 km/s. The water molecule, also, did not fragment at 5 km/s at 300 K. I imagine that there should be some non-ideality, though, due to the fact that the water molecules are not in a vacuum, as there is some air friction involved, and so the fragmentation velocity would be closer to 9 km/s in actuality.
+\end{document}

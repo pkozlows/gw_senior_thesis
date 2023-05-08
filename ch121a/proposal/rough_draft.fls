@@ -1,8 +1,8 @@
-PWD /Users/patrykkozlowski/Documents/ch121a/proposal
+PWD /Users/patrykkozlowski/caltech/ch121a/proposal
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/patrykkozlowski/Documents/ch121a/proposal/rough_draft.tex
+INPUT /Users/patrykkozlowski/caltech/ch121a/proposal/rough_draft.tex
 OUTPUT rough_draft.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
@@ -109,6 +109,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./perovskite.png
 INPUT ./perovskite.png
@@ -116,9 +117,8 @@ INPUT perovskite.png
 INPUT ./perovskite.png
 OUTPUT rough_draft.pdf
 INPUT ./perovskite.png
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./rough_draft.bbl
 INPUT rough_draft.bbl
 INPUT ./rough_draft.bbl

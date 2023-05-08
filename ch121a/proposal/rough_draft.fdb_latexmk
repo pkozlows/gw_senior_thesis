@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex rough_draft"] 1683423034 "rough_draft.aux" "rough_draft.bbl" "rough_draft" 1683423205
+["bibtex rough_draft"] 1683507258 "rough_draft.aux" "rough_draft.bbl" "rough_draft" 1683507415
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "citations.bib" 1683403838 1068 5fcb69ba06a9c22fad65128b3b93f80b ""
-  "rough_draft.aux" 1683423205 1775 ee614155e2dc853d58a2eff5cd39349c "pdflatex"
+  "citations.bib" 1683505403 1731 0b3e3b8f14af2d87146d2e5a74be01f9 ""
+  "rough_draft.aux" 1683507415 1771 5fe40ecfb80964a6d20dc235e06d5fdc "pdflatex"
   (generated)
   "rough_draft.bbl"
   "rough_draft.blg"
-["pdflatex"] 1683423205 "/Users/patrykkozlowski/Documents/ch121a/proposal/rough_draft.tex" "rough_draft.pdf" "rough_draft" 1683423205
-  "/Users/patrykkozlowski/Documents/ch121a/proposal/rough_draft.tex" 1683423205 3041 0ce43af8a6aacabbc657feda168c13ce ""
+["pdflatex"] 1683507415 "/Users/patrykkozlowski/caltech/ch121a/proposal/rough_draft.tex" "rough_draft.pdf" "rough_draft" 1683507415
+  "/Users/patrykkozlowski/caltech/ch121a/proposal/rough_draft.tex" 1683507415 2305 9dd1e0cb0f495830659afbefd17f3e09 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -33,9 +33,9 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1678991133 2826448 4270e2367f7fc979c93faf84881f8723 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "perovskite.png" 1683403856 22969 41d0caa40be4080f4a9fd54f64e8d69b ""
-  "rough_draft.aux" 1683423205 1775 ee614155e2dc853d58a2eff5cd39349c "pdflatex"
-  "rough_draft.bbl" 1683423034 605 4d93cc0c3e178b72c707cbb52b460f00 "bibtex rough_draft"
-  "rough_draft.tex" 1683423205 3041 0ce43af8a6aacabbc657feda168c13ce ""
+  "rough_draft.aux" 1683507415 1771 5fe40ecfb80964a6d20dc235e06d5fdc "pdflatex"
+  "rough_draft.bbl" 1683507258 605 4d93cc0c3e178b72c707cbb52b460f00 "bibtex rough_draft"
+  "rough_draft.tex" 1683507415 2305 9dd1e0cb0f495830659afbefd17f3e09 ""
   (generated)
   "rough_draft.aux"
   "rough_draft.log"

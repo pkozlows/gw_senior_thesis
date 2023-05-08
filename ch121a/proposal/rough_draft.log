@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  6 MAY 2023 18:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  7 MAY 2023 17:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/patrykkozlowski/Documents/ch121a/proposal/rough_draft.tex
-(/Users/patrykkozlowski/Documents/ch121a/proposal/rough_draft.tex
+**/Users/patrykkozlowski/caltech/ch121a/proposal/rough_draft.tex
+(/Users/patrykkozlowski/caltech/ch121a/proposal/rough_draft.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -90,14 +90,14 @@ Package pdftex.def Info: perovskite.png  used on input line 12.
  <./perovskite.png>] (./rough_draft.bbl [2]) [3] (./rough_draft.aux) ) 
 Here is how much of TeX's memory you used:
  1273 strings out of 478268
- 21071 string characters out of 5846347
- 315203 words of memory out of 5000000
+ 21065 string characters out of 5846347
+ 314203 words of memory out of 5000000
  19520 multiletter control sequences out of 15000+600000
  471422 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,577b,224s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,7n,62p,531b,224s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on rough_draft.pdf (3 pages, 76107 bytes).
+Output written on rough_draft.pdf (3 pages, 74464 bytes).
 PDF statistics:
  30 PDF objects out of 1000 (max. 8388607)
  17 compressed objects within 1 object stream

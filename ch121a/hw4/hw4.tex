@@ -9,12 +9,14 @@
 \subsubsection{Question}
  What relationships are made by reax to properly allow bonds to form and break? (HINT: read the abstract of the 2001 paper)
 \subsubsection{Answer}
-ReaxFF uses a general relationship between bond distance and bond order on one hand and between bond order and bond energy on the other hand that leads to proper dissociation, e.g. formation/breaking, of bonds to separated atoms. Other valence terms present in the force field (angle and torsion) are defined in terms of the same bond orders so that all these terms go to zero smoothly as bonds break.
+This forcefield uses two relationships to accomplish the proper dissociation of bonds. The first relationship is between bond distance and bond order. The second relationship is between bond order and bond energy.
+\cite{van2001reaxff}
 \section{Problem 2}
 \subsubsection{Question}
 It is common in md to use point charges – in 2023, this is unacceptable! The charge equilibration (QEq) method was an innovative implementation in which the charge was distributed over the size of the atom. What additional feature could improve charge distribution even further? (HINT: read the abstract from the paper linked here)
 \subsubsection{Answer}
-i wasn't able to get the answer by reading the abstract. maybe this was discuss and the lecture, but I didn't attend, so idk lol
+ this paper suggest that taking into account experimental polarizeabilities for individual atoms, in a scheme known as PQEq,Would improve charge distribution even further.
+\cite{naserifar2017polarizable}
 \section{Problem 3}
 \subsubsection{Question}
 At 100 K, at what velocity does the water fragment after impact?
@@ -46,7 +48,10 @@ BDE of water’s hydrogen-oxygen bond is given by:
 
 H2O + BDE → OH- + H+
 
-The above equation explains that when a water molecule is supplied with a certain amount of energy, it splits into two free radicals: H and OH.
+The above equation explains that when a water molecule is supplied with a certain amount of energy, it splits into two free radicals: H and OH.\cite{Turito_2023}
 
 Using this definition, this was consistent with my simulations. The kinetic energy needed to separate the water molecule into a proton and hydroxide ion occured between 7 and 9 km/s. The water molecule, also, did not fragment at 5 km/s at 300 K. I imagine that there should be some non-ideality, though, due to the fact that the water molecules are not in a vacuum, as there is some air friction involved, and so the fragmentation velocity would be closer to 9 km/s in actuality.
+
+\bibliographystyle{unsrt}
+\bibliography{hw4}
 \end{document}

@@ -571,6 +571,11 @@ OUTPUT cv.pdf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecxc1440.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm
@@ -580,11 +585,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/eccc0900.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecsl1000.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
 INPUT /usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb

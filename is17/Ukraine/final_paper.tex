@@ -1,0 +1,87 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=mla,backend=biber]{biblatex}
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+\usepackage{lipsum}  
+
+%Doublespacing
+\usepackage{setspace}
+\doublespacing
+
+%Rotating tables (e.g. sideways when too long)
+\usepackage{rotating}
+
+%Fancy-header package to modify header/page numbering (Put your surname in the surname field)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{} 
+\chead{} 
+\rhead{Kozlowski \thepage}
+\lfoot{} 
+\cfoot{} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+%To make sure we actually have header 0.5in away from top edge
+%12pt is one-sixth of an inch. Subtract this from 0.5in to get headsep value
+\setlength\headsep{0.333in}
+
+%You put your name title and professor name in here 
+\renewcommand{\maketitle}{\makemlaheader}
+
+%You put your name title and professor name in here 
+\renewcommand{\maketitle}{\makemlaheader}
+\newcommand{\C}{\autocite}
+
+\newcommand{\makemlaheader}{
+Patryk Kozlowski \\
+Eve Darian-Smith\\
+IS 17\\
+\begin{center}\textnormal{Final Paper}\end{center}
+
+% for some reason, this blank line is necessary
+}
+
+\addbibresource{citations.bib} % you would use your own bib file here
+\begin{document}
+\begin{flushleft}
+
+%%%%First page name, class, etc
+%%%%Changes paragraph indentation to 0.5in
+\setlength{\parindent}{0.5in}
+
+\maketitle
+There is scientific consensus regarding the fact of anthropogenic climate change due to fossil fuel consumption. A transition towards decarbonization was occurring before Russia's invasion of Ukraine in 2022, but there has been a reversal of policies that would accomplish this since. The paper will examine the ramifications of the Ukraine conflict from the lens of neighboring Poland. The focus will be on the fossil fuel coal, which has long been used by Poland. First, the transition away from coal will be detailed prior to the invasion of Ukraine, including the establishment of a Silesian Transformation Fund by the European Union. The Law and Justice Party has been elected in Poland during this invasion, which shows the distinct features of an autocratic regime as proposed by Darian-Smith. \autocite{darian-smith_global_2022} It will be shown how this government in Poland rejects cooperative multilateralism, supports anti-environmentalism, and promotes ultranationalism. Then, it will be explored why the Polish government finds it so easy to justify supporting coal, namely because of a powerful coal lobby, making it easy to fail to meet climate goals, citing the importance of energy security as a response to the invasion of Ukraine. Finally, it will be shown how the Polish people have instead used the invasion as a reason to start investing in renewable energy.
+
+The Just Transition Program of the European Union funded the Silesian Transformation Fund, which added a social contract for coal miners transitioning away from work. Among other things, it pays for retirement pension benefits and the retraining of coal workers. Former coal miners find reemployment in a variety of industries, ranging from heavy labor, like construction, to private security. \autocite{sniegocki_just_2022} Prior to the invasion, a transition away from coal was tangible. This stands in contrast to the transition away from coal mining that is happening in America. President Joe Biden wanted to pass a bill he called "Build Back Better," which included significant climate provisions, but would likely decimate the existing coal industry in West Virginia. The lack of such a robust transition plan in place had West Virginia Senator Joe Manchin questioning the bill, for this precise reason. \autocite{scheiber_achilles_2021}
+
+The Law and Justice Party in Poland that was recently put into power has exhibited distinct features of an authoritarian government: a rejection of cooperative multilateralism, anti-environmentalism, and ultranationalism.
+
+The first point is evident by the Polish government clashing with the governing European Union over its proposed judiciary overhaul of 2019, among others. \autocite{noauthor_poland_2023} This consisted of packing the Supreme Court of Poland with justices of the ruling party. Such feuding with the European Union is also a hallmark of the next two features.
+
+With regards to anti-environmentalism, there is the current issue over coal mining. Polish citizens who are being affected by climate change are suing the Polish government for not doing enough to reach its climate goals \autocite{noauthor_why_nodate}. Back in 2018, the Polish government was also feuding with the European Union over its logging of the Bialowieza Forest, which, as one of the world's few primeval forests, is a UNESCO World Heritage site. Ultimately, these activities were deemed illegal in a European court \autocite{schiermeier_eus_2018}.
+
+With regards to ultranationalism, the ruling Law and Justice Party was feuding with the European Union a few years ago over the Syrian refugee crisis, after it refused to take Syrian refugees in, while neighboring Germany did. \autocite{noauthor_why_2017} The Polish government is currently doing the best that it can to help Ukrainian refugees, but there still is a selective bias against refugees from the Middle East \autocite{ciobanu_selective_2022}. Favoritism is being given to refugees who look like the homogeneous Polish population.
+
+Now that we have established that the ruling party in Poland meets autocratic standards, we will examine its reaction to the Russian invasion of Ukraine as it relates to coal mining. In the name of energy security, Poland has reversed its previous plans to stop using coal for producing electricity after the previously established target date of 2049 \autocite{noauthor_poland_2022}. Previously, the natural gas supplied by Russia was seen as a cleaner source of fossil fuel with which to accomplish decarbonization, but it is no longer an option.
+
+Coal mining has a rich tradition in Poland. Coal miners command a level of respect just below that of university professors, medical professionals, and policemen \autocite{zielonka_how_2021}. Coal mining often is intergenerational. The coal miners' unions have a history of participating actively in the Solidarity movement of the 1980s, for which the Polish activist Lech Walesa was awarded the Nobel Peace Prize in 1983. They are treated better than their peers in the working class, getting "an annual bonus of two months' pay regardless of performance, company-sponsored holidays, retirement before 50, and no weekend shifts" \autocite{noauthor_polish_2015}. This is the first reason why the coal mining lobby is so powerful in Poland.
+
+Then, it should also be considered what the region in Poland is like where the coal mining is happening, known as Silesia. Although, in general, Poland is ethnically homogeneous as a population, this region can be understood as the heartland of Poland. What is meant by this is that there are few cosmopolitan cities in this area, and a single, labor-intensive industry dominates. From the perspective of an autocratic government with nationalistic tendencies, it is important to maintain the status quo in this region.
+
+The Russian invasion has given the Polish government a justification to continue coal mining in the name of patriotism, which closely parallels the coal mining being done in eastern Ukraine to support the war effort \autocite{rott_eastern_2022}. In the case of Ukraine, coal mining may actually be a patriotic activity since it is contributing to the wartime energy security of the nation. But in the case of Poland, where renewable energy is a realistic option, the continued support of coal mining is just emblematic of the autocracy of the Polish government, which is not responsive to the demands of its people, as will be explored in the next paragraph.
+
+The invasion has caused the Polish people to realize that most of the coal production in the country was never for domestic use, and that this supply was actually being importing from Russia. This issue became especially prevalent prior to the winter of 2023, when the Polish people were looking for a source of fuel to heat their homes for the winter, but the price of coal was skyrocketing. What they found is that the majority of the coal produced in Poland was being used to generate electricity instead. There is also considerable air pollution in Poland, largely resulting from the burning of coal, with the country consistently ranking as having one of the worst air qualities in the world. This has especially become evident in the trying winter months. \autocite{tilles_polish_2022} The Polish people don't want to support Russia through purchasing their coal, so they are investing in renewable sources of energy, be it by installing solar panels or buying heat pumps. \autocite{noauthor_heat_2022}
+
+The Polish government has the three distinct features of an autocracy and is using the invasion of Ukraine as a justification for continuing coal mining, while its population is taking an alternative route, investing in renewables.
+
+\newpage
+
+\printbibliography
+
+
+\end{flushleft}
+\end{document}

@@ -1,5 +1,0 @@
-Launching JAGUAR under jobcontrol.
-Command: /central/groups/wag/programs/Schrodinger_2022_3/jaguar run -TMPDIR /central/scratch/musgrave -WAIT -PARALLEL 1 init.in
-Release: 2022-3
-Exec: /central/groups/wag/programs/Schrodinger_2022_3/jaguar-v11.7/bin/Linux-x86_64
-JobId: hpc-80-33-0-64408a60

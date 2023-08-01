@@ -1,0 +1,536 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ciobanu_selective_2022}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e2fd204020cc812e6c633b318ad43802}{%
+           family={Ciobanu},
+           familyi={C\bibinitperiod},
+           given={Claudia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \strng{namehash}{e2fd204020cc812e6c633b318ad43802}
+      \strng{fullhash}{e2fd204020cc812e6c633b318ad43802}
+      \strng{bibnamehash}{e2fd204020cc812e6c633b318ad43802}
+      \strng{authorbibnamehash}{e2fd204020cc812e6c633b318ad43802}
+      \strng{authornamehash}{e2fd204020cc812e6c633b318ad43802}
+      \strng{authorfullhash}{e2fd204020cc812e6c633b318ad43802}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Poland’s extraordinary mobilisation to help Ukrainian refugees raises some uncomfortable questions about the country’s toughness shown towards asylum seekers and migrants from the Middle East and Africa.}
+      \field{journaltitle}{Balkan Insight}
+      \field{month}{3}
+      \field{shorttitle}{Selective {Sympathy}}
+      \field{title}{Selective {Sympathy}: {Poland}’s {Contrasting} {Treatment} of {Those} {Seeking} {Refuge}}
+      \field{urlday}{6}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/B3WFE3EJ/selective-sympathy-polands-contrasting-treatment-of-those-seeking-refuge.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb balkaninsight.com/2022/03/03/selective-sympathy-polands-contrasting-treatment-of-those-seeking-refuge/
+      \endverb
+      \verb{url}
+      \verb balkaninsight.com/2022/03/03/selective-sympathy-polands-contrasting-treatment-of-those-seeking-refuge/
+      \endverb
+    \endentry
+    \entry{darian-smith_global_2022}{incollection}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=16c75a1285e54ec0c95123e0de19db91}{%
+           family={Darian-Smith},
+           familyi={D\bibinithyphendelim S\bibinitperiod},
+           given={Eve},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Stanford UP}%
+      }
+      \strng{namehash}{16c75a1285e54ec0c95123e0de19db91}
+      \strng{fullhash}{16c75a1285e54ec0c95123e0de19db91}
+      \strng{bibnamehash}{16c75a1285e54ec0c95123e0de19db91}
+      \strng{authorbibnamehash}{16c75a1285e54ec0c95123e0de19db91}
+      \strng{authornamehash}{16c75a1285e54ec0c95123e0de19db91}
+      \strng{authorfullhash}{16c75a1285e54ec0c95123e0de19db91}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{How extreme-right antidemocratic governments around the world are prioritizing profits over citizens, stoking catastrophic wildfires and accelerating global climate change.}
+      \field{booktitle}{Global {Burning}}
+      \field{month}{4}
+      \field{shorttitle}{Global {Burning}}
+      \field{title}{Global {Burning}: {Rising} {Antidemocracy} and the {Climate} {Crisis}}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1515/9781503631465
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/R2ZGZXCE/Darian-Smith - 2022 - Global Burning Rising Antidemocracy and the Clima.pdf:application/pdf
+      \endverb
+      \keyw{anti-environmentalism,antidemocracy,authoritarianism,climate change,climate science denial,environmental racism,extractive capitalism,neoliberalism,wildfires}
+    \endentry
+    \entry{noauthor_heat_2022}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Poland loves coal. But Russia's invasion of Ukraine is pushing Polish citizens to embrace green measures because the shift will free them from Russian fossil fuels.}
+      \field{journaltitle}{Washington Post}
+      \field{month}{9}
+      \field{note}{Section: Climate Solutions}
+      \field{title}{Heat pumps take off in coal-loving {Poland} amid {Ukraine} war}
+      \field{urlday}{20}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/6QNZ83J6/poland-ukraine-heat-pumps-climate.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.washingtonpost.com/climate-solutions/2022/09/06/poland-ukraine-heat-pumps-climate/
+      \endverb
+      \verb{url}
+      \verb www.washingtonpost.com/climate-solutions/2022/09/06/poland-ukraine-heat-pumps-climate/
+      \endverb
+    \endentry
+    \entry{noauthor_poland_2023}{article}{}
+      \list{language}{1}{%
+        {en-GB}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The judicial overhaul by the Polish government violates the rule of law, says the highest EU court.}
+      \field{chapter}{Europe}
+      \field{journaltitle}{BBC News}
+      \field{month}{6}
+      \field{title}{Poland judicial reforms violate {EU} law, top court says}
+      \field{urlday}{8}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/DTMI37FM/world-europe-65809525.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.bbc.com/news/world-europe-65809525
+      \endverb
+      \verb{url}
+      \verb www.bbc.com/news/world-europe-65809525
+      \endverb
+    \endentry
+    \entry{noauthor_poland_2022}{article}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Poland signaled that it wants to use coal to produce electricity after 2049 to bolster its energy security, underscoring the challenge the European Union faces in its goal of achieving climate neutrality by mid-century.}
+      \field{journaltitle}{Bloomberg.com}
+      \field{month}{4}
+      \field{title}{Poland {Wants} {Coal} {Use} {Beyond} {EU} {Net}-{Zero} {Date} in {Security} {Push}}
+      \field{urlday}{4}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/MU3BIS5V/poland-wants-coal-use-beyond-eu-net-zero-date-in-security-push.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.bloomberg.com/news/articles/2022-04-04/poland-wants-coal-use-beyond-eu-net-zero-date-in-security-push
+      \endverb
+      \verb{url}
+      \verb www.bloomberg.com/news/articles/2022-04-04/poland-wants-coal-use-beyond-eu-net-zero-date-in-security-push
+      \endverb
+      \keyw{Cities,Climate Neutrality,Energy Security,green,Jacek Robert Sasin,Poland,Power Plants,Russia,Ukraine}
+    \endentry
+    \entry{noauthor_polish_2015}{article}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{abstract}{For decades, Polish coal miners have enjoyed benefits that are the envy of their working class countrymen: An annual bonus of two months’ pay regardless of performance, company-sponsored holidays, retirement before 50, and no weekend shifts. Today, that legacy of the communist era threatens the mostly state-owned mining sector and is digging a hole in the national budget.}
+      \field{journaltitle}{Bloomberg.com}
+      \field{month}{3}
+      \field{title}{Polish {Coal} {Miners} {Ride} {Solidarity} {Legacy} to {Oblivion}}
+      \field{urlday}{4}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/FZ4A4W5N/polish-coal-miners-ride-solidarity-legacy-to-oblivion.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.bloomberg.com/news/articles/2015-03-06/polish-coal-miners-ride-solidarity-legacy-to-oblivion
+      \endverb
+      \verb{url}
+      \verb www.bloomberg.com/news/articles/2015-03-06/polish-coal-miners-ride-solidarity-legacy-to-oblivion
+      \endverb
+      \keyw{Poland,business,Cash Flow,Europe,Executives,Government,Jobs,London,Mining Industry,Utilities}
+    \endentry
+    \entry{rott_eastern_2022}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=69c592a7048446946c982fa66dc7ec60}{%
+           family={Rott},
+           familyi={R\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ca3d17ad2cfe347f57cb41d7eb34fa04}{%
+           family={Palamarenko},
+           familyi={P\bibinitperiod},
+           given={Hanna},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=431127c4d2643dbd321c2985f7549544}{%
+           family={Harbage},
+           familyi={H\bibinitperiod},
+           given={Claire},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{31e7f10a6d5437286a4cdc73c1b7a9af}
+      \strng{fullhash}{fbf4e5511742b0953c1b2a5d156ff5b5}
+      \strng{bibnamehash}{31e7f10a6d5437286a4cdc73c1b7a9af}
+      \strng{authorbibnamehash}{31e7f10a6d5437286a4cdc73c1b7a9af}
+      \strng{authornamehash}{31e7f10a6d5437286a4cdc73c1b7a9af}
+      \strng{authorfullhash}{fbf4e5511742b0953c1b2a5d156ff5b5}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ukraine's coal industry was in decline. Now miners find themselves in the middle of a war with Russia — and global demand for coal is rising.}
+      \field{chapter}{Ukraine invasion — explained}
+      \field{journaltitle}{NPR}
+      \field{month}{7}
+      \field{title}{In eastern {Ukraine}'s coal fields, {Russia}'s invasion sparks hopes of a comeback}
+      \field{urlday}{4}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/YRC4JLE3/eastern-ukraine-coal-mining-russia-invasion.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.npr.org/2022/07/06/1109381306/eastern-ukraine-coal-mining-russia-invasion
+      \endverb
+      \verb{url}
+      \verb www.npr.org/2022/07/06/1109381306/eastern-ukraine-coal-mining-russia-invasion
+      \endverb
+    \endentry
+    \entry{scheiber_achilles_2021}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=300b61e309d430bb11488bf2a567d523}{%
+           family={Scheiber},
+           familyi={S\bibinitperiod},
+           given={Noam},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \strng{namehash}{300b61e309d430bb11488bf2a567d523}
+      \strng{fullhash}{300b61e309d430bb11488bf2a567d523}
+      \strng{bibnamehash}{300b61e309d430bb11488bf2a567d523}
+      \strng{authorbibnamehash}{300b61e309d430bb11488bf2a567d523}
+      \strng{authornamehash}{300b61e309d430bb11488bf2a567d523}
+      \strng{authorfullhash}{300b61e309d430bb11488bf2a567d523}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Unions representing other workers affected by climate legislation have struck deals, but opposition from coal miners has persisted, complicating the path to enactment.}
+      \field{chapter}{Business}
+      \field{issn}{0362-4331}
+      \field{journaltitle}{The New York Times}
+      \field{month}{12}
+      \field{shorttitle}{The {Achilles}’ {Heel} of {Biden}’s {Climate} {Plan}?}
+      \field{title}{The {Achilles}’ {Heel} of {Biden}’s {Climate} {Plan}? {Coal} {Miners}.}
+      \field{urlday}{9}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/VVKUV8Y9/coal-miners-unions-climate.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.nytimes.com/2021/12/08/business/economy/coal-miners-unions-climate.html
+      \endverb
+      \verb{url}
+      \verb www.nytimes.com/2021/12/08/business/economy/coal-miners-unions-climate.html
+      \endverb
+      \keyw{Alternative and Renewable Energy,American Families Plan (2021),Biden,Joseph R Jr,Coal,Global Warming,Manchin,Joe III,Mines and Mining,Organized Labor,United States Economy,United States Politics and Government}
+    \endentry
+    \entry{schiermeier_eus_2018}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a5dcfe05b5e44c2af2d33bf0c30f0529}{%
+           family={Schiermeier},
+           familyi={S\bibinitperiod},
+           given={Quirin},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \strng{fullhash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \strng{bibnamehash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \strng{authorbibnamehash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \strng{authornamehash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \strng{authorfullhash}{a5dcfe05b5e44c2af2d33bf0c30f0529}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Polish government had limited felling in Białowieża Forest, after widespread protest, and said it would comply with the court’s ruling.}
+      \field{journaltitle}{Nature}
+      \field{month}{4}
+      \field{note}{Bandiera\_abtest: a Cg\_type: News Publisher: Nature Publishing Group Subject\_term: Law, Government, Biodiversity}
+      \field{title}{{EU}’s top court says logging in {Poland}’s ancient forest was illegal}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1038/d41586-018-04730-z
+      \endverb
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/92DQZVTE/d41586-018-04730-z.html:text/html
+      \endverb
+      \keyw{Government,Biodiversity,Law}
+    \endentry
+    \entry{sniegocki_just_2022}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f94f44618f0fee7112649e3ff94c35e9}{%
+           family={Śniegocki},
+           familyi={Ś\bibinitperiod},
+           given={Aleksander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Resources for the Future}%
+      }
+      \strng{namehash}{f94f44618f0fee7112649e3ff94c35e9}
+      \strng{fullhash}{f94f44618f0fee7112649e3ff94c35e9}
+      \strng{bibnamehash}{f94f44618f0fee7112649e3ff94c35e9}
+      \strng{authorbibnamehash}{f94f44618f0fee7112649e3ff94c35e9}
+      \strng{authornamehash}{f94f44618f0fee7112649e3ff94c35e9}
+      \strng{authorfullhash}{f94f44618f0fee7112649e3ff94c35e9}
+      \field{sortinit}{Ś}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{number}{22-06}
+      \field{title}{Just {Transition} in {Poland}: {A} {Review} of {Public} {Policies} to {Assist} {Polish} {Coal} {Communities} in {Transition}}
+      \field{type}{techreport}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb media.rff.org/documents/Report_22-06_June_1_2022.pdf
+      \endverb
+      \verb{url}
+      \verb media.rff.org/documents/Report_22-06_June_1_2022.pdf
+      \endverb
+    \endentry
+    \entry{tilles_polish_2022}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=82f23b5994e40710df271d46fc8af057}{%
+           family={Tilles},
+           familyi={T\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \strng{namehash}{82f23b5994e40710df271d46fc8af057}
+      \strng{fullhash}{82f23b5994e40710df271d46fc8af057}
+      \strng{bibnamehash}{82f23b5994e40710df271d46fc8af057}
+      \strng{authorbibnamehash}{82f23b5994e40710df271d46fc8af057}
+      \strng{authornamehash}{82f23b5994e40710df271d46fc8af057}
+      \strng{authorfullhash}{82f23b5994e40710df271d46fc8af057}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Poland - where coal generates 70\% of electricity and heats one third of homes - is regularly found to have some of Europe's worst air pollution.}
+      \field{journaltitle}{Notes From Poland}
+      \field{month}{11}
+      \field{note}{Section: Energy \& Climate}
+      \field{title}{Polish city tops global air pollution ranking as winter smog sets in}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/R7TSEXQP/polish-city-tops-global-air-pollution-ranking-as-winter-smog-sets-in.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb notesfrompoland.com/2022/11/21/polish-city-tops-global-air-pollution-ranking-as-winter-smog-sets-in/
+      \endverb
+      \verb{url}
+      \verb notesfrompoland.com/2022/11/21/polish-city-tops-global-air-pollution-ranking-as-winter-smog-sets-in/
+      \endverb
+    \endentry
+    \entry{noauthor_why_nodate}{misc}{}
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Five Polish citizens are taking their government to court over its ‘regressive’ climate stance and failure to act to reduce greenhouse gas emissions}
+      \field{title}{Why five {Polish} citizens are taking their government to court over climate change}
+      \field{urlday}{8}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/PTHQK8JH/why-five-polish-citizens-are-taking-their-government-to-court-over-climate-change.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.clientearth.org/latest/latest-updates/news/why-five-polish-citizens-are-taking-their-government-to-court-over-climate-change/
+      \endverb
+      \verb{url}
+      \verb www.clientearth.org/latest/latest-updates/news/why-five-polish-citizens-are-taking-their-government-to-court-over-climate-change/
+      \endverb
+    \endentry
+    \entry{noauthor_why_2017}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{abstract}{An ethnically homogenous nation battles EU efforts to distribute asylum seekers.}
+      \field{journaltitle}{POLITICO}
+      \field{month}{5}
+      \field{title}{Why {Poland} doesn’t want refugees}
+      \field{urlday}{6}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/C3YTMGWW/politics-nationalism-and-religion-explain-why-poland-doesnt-want-refugees.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.politico.eu/article/politics-nationalism-and-religion-explain-why-poland-doesnt-want-refugees/
+      \endverb
+      \verb{url}
+      \verb www.politico.eu/article/politics-nationalism-and-religion-explain-why-poland-doesnt-want-refugees/
+      \endverb
+    \endentry
+    \entry{zielonka_how_2021}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=f6fc9d04e86756fa4556320fad269995}{%
+           family={Zielonka},
+           familyi={Z\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fbf14bc1522698787e3efc4fc039cabc}{%
+           family={Białaszek},
+           familyi={B\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=06e55032e3f7c12a92e7730927d88cff}{%
+           family={Dzik},
+           familyi={D\bibinitperiod},
+           given={Bartłomiej},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7371995247ee850571140e3b7065c6c5}{%
+           family={Wybrańczyk},
+           familyi={W\bibinitperiod},
+           given={Katarzyna},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d1490d088c8fa33b56b4c456fa67d16}
+      \strng{fullhash}{1d58a4a52fe89b946ad2b967d64a5300}
+      \strng{bibnamehash}{5d1490d088c8fa33b56b4c456fa67d16}
+      \strng{authorbibnamehash}{5d1490d088c8fa33b56b4c456fa67d16}
+      \strng{authornamehash}{5d1490d088c8fa33b56b4c456fa67d16}
+      \strng{authorfullhash}{1d58a4a52fe89b946ad2b967d64a5300}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The problems that are inherent in the green shift of the energy sectors are particularly visible in countries where the hard coal mining industry plays an important role in the economy and society. For any transition to be successful, public support is crucial. This empirical study shows that – as a consequence of the affect heuristic – those who perceive hard coal mining as beneficial tend to minimize both its detrimental environmental impacts and its personal safety hazards. Ignoring the affect heuristic may have retarded transformations and led to a failure of many information campaigns.}
+      \field{issn}{1664-1078}
+      \field{journaltitle}{Frontiers in Psychology}
+      \field{month}{6}
+      \field{shorttitle}{How {Miners} and {Other} {Professional} {Groups} {Perceive} the {Benefits} and {Risks} of {Hard} {Coal} {Mining}}
+      \field{title}{How {Miners} and {Other} {Professional} {Groups} {Perceive} the {Benefits} and {Risks} of {Hard} {Coal} {Mining}: {A} {Study} on the {Role} of the {Affect} {Heuristic}}
+      \field{volume}{12}
+      \field{year}{2021}
+      \field{pages}{656960}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fpsyg.2021.656960
+      \endverb
+      \verb{file}
+      \verb PubMed Central Full Text PDF:/Users/patrykkozlowski/Zotero/storage/NKBWPG6P/Zielonka et al. - 2021 - How Miners and Other Professional Groups Perceive .pdf:application/pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

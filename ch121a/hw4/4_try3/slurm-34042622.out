@@ -1,4 +1,0 @@
-/var/spool/slurmd/job34042622/slurm_script: line 14: setenv: command not found
-/var/spool/slurmd/job34042622/slurm_script: line 15: setenv: command not found
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** JOB 34042622 ON hpc-90-29 CANCELLED AT 2023-05-04T13:18:03 ***

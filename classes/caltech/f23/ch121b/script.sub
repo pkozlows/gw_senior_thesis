@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Submit this script with: sbatch submissionscript.sub
+
+#SBATCH --time=12:00:00   # walltime
+#SBATCH --ntasks=6   # number of processor cores (i.e. tasks)
+#SBATCH --nodes=1   # number of nodes
+#SBATCH --mem-per-cpu=4G   # memory per CPU core
+#SBATCH -J "gan_dft"   # job name
+#SBATCH --mail-user=pkozlows@caltech.edu   # email address
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH -A wag
+#SBATCH --qos=normal
+#SBATCH --partition=normal
+
+# load modules needed to run Python, activate appropriate Python venv, and run script
+module add pyscf-2.3.0

@@ -1,0 +1,195 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\date{\today}
+\title{PH127a Problem Set 1}
+\author{Patryk Kozlowski}
+\begin{document}
+\maketitle
+\section{Problem 1: Minimal experimental data to recover all thermodynamics}
+\subsection{A}
+To begin, let's express \(dU\) and \(dS\) in terms of \(dT\) and \(dV\). Given the relationship:
+\begin{equation}
+T dS = dU + p dV
+\end{equation}
+
+We can write \(dU\) as:
+\begin{equation}
+dU = T dS - p dV
+\end{equation}
+
+Now, let's represent \(dU\) in terms of \(dT\) and \(dV\) as follows:
+\begin{equation}
+dU = \left( \frac{\partial U}{\partial T} \right)_V dT + \left( \frac{\partial U}{\partial V} \right)_T dV
+\end{equation}
+
+Equating the two expressions for \(dU\), we get:
+\begin{equation}
+T dS - p dV = \left( \frac{\partial U}{\partial T} \right)_V dT + \left( \frac{\partial U}{\partial V} \right)_T dV
+\end{equation}
+
+Rearranging and expressing \(dS\) in terms of \(dT\) and \(dV\), we find:
+\begin{equation}
+dS = \left( \frac{\partial U}{\partial T} \right)_V \frac{1}{T} dT + \left( \frac{\partial U}{\partial V} \right)_T \frac{1}{T} dV + p \frac{1}{T} dV
+\end{equation}
+\begin{equation}
+dS = \left( \frac{\partial U}{\partial T} \right)_V \frac{1}{T} dT + \left( \left( \frac{\partial U}{\partial V} \right)_T + p \right) \frac{1}{T} dV
+\end{equation}
+
+Now, we can write the partial derivatives of \(S\) with respect to \(T\) and \(V\) when the opposite perimeter is fixed:
+\begin{equation}
+\left( \frac{\partial S}{\partial T} \right)_V = \left( \frac{\partial U}{\partial T} \right)_V \frac{1}{T}
+\end{equation}
+\begin{equation}
+\left( \frac{\partial S}{\partial V} \right)_T = \left( \left( \frac{\partial U}{\partial V} \right)_T + p \right) \frac{1}{T}
+\end{equation}
+Now we consider the mixed derivatives. Since the order of the ventilation does not matter, they are equal:
+\begin{equation}
+\left( \frac{\partial}{\partial V} \left( \frac{\partial S}{\partial T} \right) \right) = \left( \frac{\partial}{\partial T} \left( \frac{\partial S}{\partial V} \right) \right)
+\end{equation}
+First, we consider the left and side:
+\begin{equation}
+\left( \frac{\partial}{\partial V} \left( \frac{\partial S}{\partial T} \right) \right) = \frac{1}{T} \left( \frac{\partial}{\partial V} \left( \left( \frac{\partial U}{\partial T} \right) \right) \right)
+\end{equation}
+Next, we consider the right hand side:
+\begin{equation}
+\left( \frac{\partial}{\partial T} \left( \frac{\partial S}{\partial V} \right)_T \right)_V = \left( \frac{\partial}{\partial T} \left( \frac{1}{T} \left( \left( \frac{\partial U}{\partial V} \right)_T + p \right) \right) \right)_V
+\end{equation}
+Differentiating with respect to $T$, we get:
+\begin{equation}
+    \left( \frac{\partial^2 S}{\partial V \partial T} \right) = \frac{1}{T} \left( \frac{\partial^2 U}{\partial V \partial T} \right) - \frac{1}{T^2} \left( \left( \frac{\partial U}{\partial V} \right)_T  + p \right) + \frac{1}{T} \left( \frac{\partial p}{\partial T} \right)_V
+\end{equation}
+Using the fact that the mixed derivatives are equal to each other:
+\begin{equation}
+    \frac{1}{T} \left( \frac{\partial^2 U}{\ V \partial T}\right) = \frac{1}{T} \left( \frac{\partial^2 U}{\partial V \partial T} \right) - \frac{1}{T^2} \left( \left( \frac{\partial U}{\partial V} \right)_T  + p \right) + \frac{1}{T} \left( \frac{\partial p}{\partial T} \right)_V
+\end{equation}
+We simplify and by multiplying through by $T^2$ to get the identity that we want, which is:
+\begin{equation}
+    \left( \frac{\partial U}{\partial V} \right)_T = T \left( \frac{\partial p}{\partial T} \right)_V - p
+\end{equation}
+So:
+\begin{equation}
+    dU = C_{V} + \left( T \left( \frac{\partial p}{\partial T} \right)_V - p \right) dV
+\end{equation}
+Integrating, we get that:
+\begin{equation}
+    U(T_{2}, V_{2}) - U(T_{1}, V_{1}) = \int_{V_{1}}^{V_{2}} \left( C_{V} + \left( T \left( \frac{\partial p}{\partial T} \right)_V - p \right) dV \right)
+\end{equation}
+Similarly, for the entropy:
+\begin{equation}
+   T dS = C_{V} + \left( T \left( \frac{\partial p}{\partial T} \right)_V - p \right) dV + p dV 
+\end{equation}
+Isolating the derivative of entropy and simplifying, we get:
+\begin{equation}
+    dS = \frac{C_{V}}{T} + \left( \left( \frac{\partial p}{\partial T} \right)_V \right) dV
+\end{equation}
+Now, integrating:
+\begin{equation}
+    S(T_{2}, V_{2}) - S(T_{1}, V_{1}) = \int_{V_{1}}^{V_{2}} \left( \frac{C_{V}}{T} + \left( \left( \frac{\partial p}{\partial T} \right)_V \right) dV \right)
+\end{equation}
+\subsection{B}
+We want to take the temperature derivative of
+\begin{equation}
+    \left( \frac{\partial U}{\partial V} \right)_T = T \left( \frac{\partial p}{\partial T} \right)_V - p
+\end{equation}
+We can write this as:
+\begin{equation}
+    \frac{\partial }{\partial T} \left( \frac{\partial U}{\partial V} \right)_T = \frac{\partial }{\partial T} \left( T \left( \frac{\partial p}{\partial T} \right)_V - p \right)= \left( \frac{\partial p}{\partial T} \right)_V + T \left( \frac{\partial^2 p}{\partial T^2} \right)_V - \left( \frac{\partial p}{\partial T} \right)_V 
+\end{equation}
+So, we get:
+\begin{equation}
+    \left(\frac{\partial C_{V}}{\partial V} \right)_T = \frac{\partial }{\partial T} \left( \frac{\partial U}{\partial V} \right)_T = T \left( \frac{\partial^2 p}{\partial T^2} \right)_V
+\end{equation}
+Similarly, we can express this as in integral:
+\begin{equation}
+    C_{V}(V, T) - C_{V}(V_{0},T) = \int_{V_{0}}^{V} \left( T \left( \frac{\partial^2 p}{\partial T^2} \right)_V \right) dV
+\end{equation}
+\subsection{C}
+We will begin by calculating the specific heat according to:
+\begin{equation}
+    C_{V}(V, T) = C_{V}(V_{0},T) + \int_{V_{0}}^{V} \left( T \left( \frac{\partial^2 p}{\partial T^2} \right)_V \right) dV
+\end{equation}
+We are using the equation of state for the van der Waals gas and reference specific heat for the ideal gas:
+\begin{equation}
+    C_{V}(V, T) = \frac{3}{2} N k_{B} + \int_{V_{0}}^{V} \left( T \left( \frac{\partial^2 p}{\partial T^2} \right)_V \right) dV
+\end{equation}
+Solving for the pressure in the vander wall equation of state:
+\begin{equation}
+    p = \frac{N k_{B} T}{V - N b} - \frac{a N^2}{V^2}
+\end{equation}
+We want to find the second derivative of the pressure with respect to temperature at a fixed volume. First, we start by taking one reverie:
+\begin{equation}
+    \left( \frac{\partial p}{\partial T} \right)_V = \frac{N k_{B}}{V - N b}    
+\end{equation}
+Next, we take the derivative again:
+\begin{equation}
+    \left( \frac{\partial^2 p}{\partial T^2} \right)_V = -\frac{N k_{B}}{(V - N b)^2}
+\end{equation}
+Now the second derivative of pressure with respect to temperature is:
+\begin{equation}
+    \left( \frac{\partial^2 p}{\partial T^2} \right)_V = \frac{N k_{B}}{V - N b} \left( \frac{a}{k_{B} T} \right)^2
+\end{equation}
+\section{Problem 2: Thermodynamics of a model classical paramagnet}
+First we want to compute the partition function of our system. Defining $\beta = \frac{1}{k_{B} T}$, we can write the partition function as:
+\begin{equation}
+    Z = \int e^{-\beta E} d \Omega
+\end{equation}
+where we have to find the deferential solid angle $d \Omega = sin \theta d \theta d \phi$.
+Given that we have the following expression for the energy:
+\begin{equation}
+    E = E[\{\vec{m}_i\}] = -\sum_{i=1}^{N} \vec{m}_i \cdot \vec{B}
+\end{equation}
+Gevent that  $\mathbf{m} = \mu(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)$ and $\mathbf{B} = (0, 0, B)$
+We can write the energy as:
+\begin{equation}
+    E = -\mu B \sum_{i=1}^{N} \cos \theta_{i}
+\end{equation}
+So in spherical coordinates the partition some integral becomes:
+\begin{equation}
+    Z = \int_{0}^{2 \pi} \int_{0}^{\pi} e^{\beta \mu B \sum_{i=1}^{N} \cos \theta_{i}} \sin \theta_{i} d \theta_{i} d \phi_{i} = 2 \pi \int_{0}^{\pi} e^{\beta \mu B \sum_{i=1}^{N} \cos \theta_{i}} \sin \theta_{i} d \theta_{i}
+\end{equation}
+We can bring the summation down from the exponent and convert it into a product:
+\begin{equation}
+    Z = 2 \pi \int_{0}^{\pi} \prod_{i=1}^{N} e^{\beta \mu B \cos \theta_{i}} \sin \theta_{i} d \theta_{i} = 2 \pi \prod_{i=1}^{N} \int_{0}^{\pi} e^{\beta \mu B \cos \theta_{i}} \sin \theta_{i} d \theta_{i} = 2 \pi \left( \int_{0}^{\pi} e^{\beta \mu B \cos \theta} \sin \theta d \theta \right)^{N}
+\end{equation}
+Recognizing this integral as a vessel function with $x = \beta \mu B$:
+\begin{equation}
+    I (x) = \int_{0}^{\pi} e^{x \cos \theta} \sin \theta d \theta 
+\end{equation}
+
+
+% \subsection{A}
+% We start with the two relations:
+% \begin{equation}
+%     d U = \left(\frac{\partial U}{\partial T}\right)_V d T + \left(\frac{\partial U}{\partial V}\right)_T d V
+% \end{equation}
+% and
+% \begin{equation}
+%     d S = \left(\frac{\partial S}{\partial T}\right)_V d T + \left(\frac{\partial S}{\partial V}\right)_T d V
+% \end{equation}
+% Substituting into the main thermo dynamics equation and solving with the derivative with respect to temperature at fixed volume:
+% \begin{equation}
+%     \left(\frac{\partial S}{\partial T}\right)_V = \frac{1}{T} \left(\frac{\partial U}{\partial T}\right)_V + \frac{p}{T} \left(\frac{\partial V}{\partial T}\right)_V
+% \end{equation}
+
+% When the volume is fixed, we get:
+% \begin{equation}
+%     \left(\frac{\partial S}{\partial T}\right)_V = \frac{1}{T} \left(\frac{\partial U}{\partial T}\right)_V
+% \end{equation}
+% When the temperature is fixed, we get:
+% \begin{equation}
+%     \left(\frac{\partial S}{\partial V}\right)_T = \frac{p}{T}  
+% \end{equation}
+% Now we take the mixed derivatives. We start with the second derivative of entropy with respect to temperature first and then volume:
+% \begin{equation}
+%     \frac{\partial}{\partial V} \left(\frac{\partial S}{\partial T}\right) = \frac{\partial}{\partial V} \left(\frac{1}{T} \left(\frac{\partial U}{\partial T}\right)_V\right) = \frac{1}{T} \left(\frac{\partial}{\partial V} \left(\frac{\partial U}{\partial T}\right)_V\right) + \frac{1}{T} \left(\frac{\partial U}{\partial T}\right)_V \left(\frac{\partial}{\partial V} \frac{1}{T}\right)
+% \end{equation}
+% The first term is 0 because the derivative of the internal energy with respect to temperature at fixed volume is a function of temperature only. The second term is:
+% \begin{equation}
+%     \frac{1}{T} \left(\frac{\partial U}{\partial T}\right)_V \left(\frac{\partial}{\partial V} \frac{1}{T}\right) = -\frac{1}{T^2} \left(\frac{\partial U}{\partial T}\right)_V \left(\frac{\partial T}{\partial V}\right)
+% \end{equation}
+% Now we take the other mixed derivative:
+% \begin{equation}
+%     \frac{\partial}{\partial T} \left(\frac{\partial S}{\partial V}\right) = \frac{\partial}{\partial T} \left(\frac{p}{T}\right) = -\frac{p}{T^2} + \frac{1}{T} \left(\frac{\partial p}{\partial T}\right)_V
+% \end{equation}
+\end{document}

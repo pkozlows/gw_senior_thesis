@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Physics 127A – Homework Set 1}
+\date{Due: 4pm, Wednesday, October 4}
+\begin{document}
+\maketitle
+
+\section*{Thermodynamics/statmech review problems}
+
+Note: The problems in this set are review problems to help remind some basic thermodynamics and statistical mechanics. One can find this material presented in various ways in many textbooks, but I suggest to first try these problems on your own before consulting any texts.
+
+\textbf{Problem 1: Minimal experimental data to recover all thermodynamics (10 points)}
+
+In this problem, you will manipulate the main equation of thermodynamics encapsulating the first and second laws,
+\begin{equation}
+    TdS = dU + pdV , \label{eq:main_eq}
+\end{equation}
+
+to obtain some thermodynamic identities and the minimal experimental data needed to recover all thermodynamics for a chunk of matter (can be gas or liquid or solid) described by parameters: particle number $N$, temperature $T$, volume $V$, and pressure $p$.
+
+\begin{enumerate}
+    \item[a)] Write $dU$ in terms of $dT$ and $dV$ and then write $dS$ in terms of $dT$ and $dV$. From this, obtain expressions for $\left(\frac{\partial S}{\partial T}\right)_V$ and $\left(\frac{\partial S}{\partial V}\right)_T$ in terms of $\left(\frac{\partial U}{\partial T}\right)_V$, $\left(\frac{\partial U}{\partial V}\right)_T$, and the equation of state $p = p(T, V)$. By considering the mixed derivatives $\frac{\partial^2 S}{\partial T \partial V}$ and $\frac{\partial^2 S}{\partial V \partial T}$, prove the following identity:
+    \begin{equation}
+        \left(\frac{\partial U}{\partial V}\right)_T = T\left(\frac{\partial p}{\partial T}\right)_V - p. \label{eq:identity}
+    \end{equation}
+    
+    We can thus write $dU$ and $dS$ in terms of the specific heat at constant volume $C_V \equiv \left(\frac{\partial U}{\partial T}\right)_V$ and equation of state and integrate these equations to obtain $U(T_2, V_2) - U(T_1, V_1)$ and $S(T_2, V_2) - S(T_1, V_1)$. The integration can be done over any path from $(T_1, V_1)$ to $(T_2, V_2)$, e.g., by first keeping volume constant at $V_1$ and varying temperature from $T_1$ to $T_2$ and then by keeping temperature constant at $T_2$ and varying volume from $V_1$ to $V_2$. Write the corresponding integral expressions.
+    
+    We conclude that all thermodynamics can be determined from measurements of the specific heat $C_V(T, V)$ and the equation of state $p(T, V)$.
+    
+    \item[b)] In fact, we do not need to know the whole $C_V(V, T)$. Indeed, by differentiating Eq. (\ref{eq:identity}), derive the following relation between the volume derivative of the specific heat and the equation of state:
+    \begin{equation}
+        \left(\frac{\partial C_V}{\partial V}\right)_T = T\left(\frac{\partial^2 p}{\partial T^2}\right)_V. \label{eq:relation}
+    \end{equation}
+    
+    and then express $C_V(V, T) - C_V(V_0, T)$ as an integral from some reference volume $V_0$ to $V$. Thus, all thermodynamics is determined by specifying the equation of state $p(T, V)$ and the specific heat $C_V(V_0, T)$ at some reference volume $V_0$.
+    
+    \item[c)] Using a) and b), calculate the specific heat and then the internal energy and entropy of the so-called van der Waals gas with equation of state
+    \begin{equation}
+        p = \frac{Nk_BT}{V - Nb} - \frac{aN^2}{V^2}. \label{eq:vdw_eq}
+    \end{equation}
+    
+    by assuming that at large $V$ (i.e., at very low density) its specific heat approaches the ideal gas specific heat $C_{V,\text{ideal gas}} = \frac{3}{2}Nk_B$. For the internal energy and entropy, calculate first $U(T_2, V_2) - U(T_1, V_1)$ and $S(T_2, V_2) - S(T_1, V_1)$; expressions for $U(T, V)$ and $S(T, V)$ can then be obtained by
+    taking the reference $V_1 \rightarrow \infty$ where $U(T_1, V_1) \rightarrow U_{\text{ideal gas}}(T_1, V_1)$, $S(T_1, V_1) \rightarrow S_{\text{ideal gas}}(T_1, V_1)$, and one can use the ideal gas expressions for the internal energy and entropy (Sackur-Tetrode formula) reviewed in lecture 1.
+
+    \item[d)] Use part c) to calculate the Helmholtz free energy of the van der Waals gas $F(T, V)$. Verify that $p = -\left(\frac{\partial F}{\partial V}\right)_T$.
+
+    \textbf{Remark:} In the van der Waals example, we assume throughout that the system is at a temperature above the so-called critical point, so we can use the van der Waals equation of state. Below the critical point, the equation of state needs to be modified to properly describe liquid-gas coexistence, which we will study in class.
+\end{enumerate}
+
+\section*{Problem 2: Thermodynamics of a model classical paramagnet (10 points)}
+
+Consider a system consisting of $N$ magnetic moments where each magnetic moment $i = 1, \ldots, N$ is described by a three-component vector $\mathbf{m}_i$ of fixed length $|\mathbf{m}_i| = \mu$. The energy in the magnetic field $\mathbf{B}$ is given by
+\begin{equation}
+    E = E[\{\mathbf{m}_i\}] = -\sum_{i=1}^{N} \mathbf{m}_i \cdot \mathbf{B} . \label{eq:magnetic_energy}
+\end{equation}
+
+The partition sum is defined by integrating over all possible orientations of $\mathbf{m}$ (i.e., all possible locations of $\mathbf{m}/\mu$ on the unit sphere). Calculate the free energy, average magnetization, and susceptibility of the system in the limit of a small field $B$.
+
+\textbf{Suggestion:} It is convenient to use spherical coordinates with the $z$-axis oriented along the field, i.e., $\mathbf{m} = \mu(\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)$ and $\mathbf{B} = (0, 0, B)$. Note also that the statistical mechanics problem is defined here by the configuration integral over $\mathbf{m}$ only; i.e., there is no "kinetic energy" in this problem (more microscopically, including such kinetic energy and integrating over the corresponding momenta would give only a factor that is independent of $B$ and hence is not important for discussing magnetic properties).
+
+\end{document}

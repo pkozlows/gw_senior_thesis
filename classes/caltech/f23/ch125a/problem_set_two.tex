@@ -1,0 +1,330 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+
+
+\begin{document}
+
+\section{Problem 1: Adding special relativity to the Schr\"{o}dinger equation}
+\subsection{}
+
+% Adding special relativity to the Schr\"{o}dinger equation can be achieved from quantizing a classical electromagnetic wave equation.
+
+% \begin{enumerate}
+%     \item Start with
+%     \[
+%     \frac{\partial^2 E}{\partial x^2} - \frac{1}{c^2} \frac{\partial^2 E}{\partial t^2} = 0,
+%     \]
+%     the plane wave solution
+%     \[
+%     E(x, t) = E_0 \exp(i(kx - \omega t)),
+%     \]
+%     and the relations
+%     \[
+%     \mathcal{E} = \hbar\omega \quad \text{and} \quad p = \hbar k.
+%     \]
+%     Prove that
+%     \[
+%     \mathcal{E}^2 = p^2c^2
+%     \]
+%     for a photon.
+We start with the official deferential equation:
+\begin{equation}
+    \frac{\partial^2 E}{\partial x^2} - \frac{1}{c^2} \frac{\partial^2 E}{\partial t^2} = 0
+\end{equation}
+We then plug in the plane wave solution:
+\begin{equation}
+    E(x, t) = E_0 \exp(i(kx - \omega t))
+\end{equation}
+We then take the second partial derivative with respect to $x$:
+\begin{equation}
+    \frac{\partial^2 E}{\partial x^2} = -k^2 E(x, t)
+\end{equation}
+
+We then take the second partial derivative with respect to $t$:
+\begin{equation}
+    \frac{\partial^2 E}{\partial t^2} = -\omega^2 E(x, t)
+\end{equation}
+
+We then plug in the second partial derivatives into the original differential equation:
+\begin{equation}
+    -k^2 E(x, t) - \frac{1}{c^2} (-\omega^2 E(x, t)) = 0
+\end{equation}
+Dividing through by the electric field:
+\begin{equation}
+    -k^2 - \frac{1}{c^2} (-\omega^2) = 0
+\end{equation}
+We then multiply through by $c^2$ and bring the $k^2$ term to the right hand side:
+\begin{equation}
+    \omega^2 = c^2 k^2
+\end{equation}
+Now, the relations are defined as:
+\begin{equation}
+    \mathcal{E} = \hbar\omega \quad \text{and} \quad p = \hbar k
+\end{equation}
+We then plug in the relations:
+\begin{equation}
+    \mathcal{E}^2 = \hbar^2 \omega^2 \rightarrow \omega^2 = \frac{\mathcal{E}^2}{\hbar^2}
+\end{equation}
+Next, we also have:
+\begin{equation}
+    p^2 = \hbar^2 k^2 \rightarrow k^2 = \frac{p^2}{\hbar^2}
+\end{equation}
+We then plug in the relations into the original equation:
+\begin{equation}
+    \omega^2 = c^2 k^2 \rightarrow \frac{\mathcal{E}^2}{\hbar^2} = c^2 \frac{p^2}{\hbar^2}
+\end{equation}
+We then multiply through by $\hbar^2$:
+\begin{equation}
+    \mathcal{E}^2 = c^2 p^2
+\end{equation}
+\subsection{}
+We start by using again the relations:
+\begin{equation}
+    \mathcal{E} = \hbar\omega \quad \text{and} \quad p = \hbar k
+\end{equation}
+We then plug in the relations into the original equation:
+\begin{equation}
+    \mathcal{E}^2 = p^2c^2 + m^2c^4 \rightarrow \hbar^2 \omega^2 = \hbar^2 k^2 c^2 + m^2c^4
+\end{equation}
+We then divide through by $\hbar^2$:
+\begin{equation}
+    \omega^2 = k^2 c^2 + \frac{m^2c^4}{\hbar^2}
+\end{equation}
+Multiplying through by negative $\Psi$:
+\begin{equation}
+    -\omega^2 \Psi = -k^2 c^2 \Psi - \frac{m^2c^4}{\hbar^2} \Psi
+\end{equation}
+Against the plan with solution is defined as:
+\begin{equation}
+    \Psi(x, t) = \Psi_0 \exp(i(kx - \omega t))
+\end{equation}
+So, the Laplacian for the plan wave solution is:
+\begin{equation}
+    \nabla^2 \Psi = -k^2 \Psi(x, t)
+\end{equation}
+Similarly the second derivative with respect to time of the plane wave solution is:
+\begin{equation}
+    \frac{\partial^2 \Psi}{\partial t^2} = -\omega^2 \Psi(x, t)
+\end{equation}
+Recognizing the right hand sites in our original deferential equation, we plug in to get:
+\begin{equation}
+    \frac{\partial^2 \Psi}{\partial t^2} = c^{2}\nabla^2 \Psi - \frac{m^2c^4}{\hbar^2} \Psi
+\end{equation}
+dividing through by the sweet of light squared:
+\begin{equation}
+    \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} = \nabla^2 \Psi - \frac{m^2c^2}{\hbar^2} \Psi
+\end{equation}
+\section{Problem 2}
+
+This problem is a good practice on Dirac notation. The math here is nothing but simple addition / multiplication, but when tied into Dirac notation, it adds a level of hidden sub-text that is confusing.
+
+The Hermitian operator \( H \) acts in a two-dimensional space with orthonormal basis vectors \( |1\rangle \) and \( |2\rangle \). The matrix elements are
+\[
+\begin{pmatrix}
+\langle 1|H|1\rangle & \langle 1|H|2\rangle \\
+\langle 2|H|1\rangle & \langle 2|H|2\rangle \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 4 \\
+4 & -3 \\
+\end{pmatrix}
+\tag{1}
+\]
+The eigenvalues are \( 5 \) and \( -5 \). The column vectors representation of the eigenvalues \( |A\rangle \) and \( |B\rangle \) is
+\[
+\begin{pmatrix}
+\langle 1|A\rangle \\
+\langle 2|A\rangle \\
+\end{pmatrix}
+= \frac{1}{\sqrt{5}}
+\begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix}
+\]
+and
+\[
+\begin{pmatrix}
+\langle 1|B\rangle \\
+\langle 2|B\rangle \\
+\end{pmatrix}
+= \frac{1}{\sqrt{5}}
+\begin{pmatrix}
+-1 \\
+2 \\
+\end{pmatrix}
+\tag{2}
+\]
+\( H \) can be diagonalized by a unitary operator \( U \) (with \( U^\dagger U = I \)), i.e. \( U^\dagger HU = D \) where
+\[
+\begin{pmatrix}
+\langle 1|U|1\rangle & \langle 1|U|2\rangle \\
+\langle 2|U|1\rangle & \langle 2|U|2\rangle \\
+\end{pmatrix}
+= \frac{1}{\sqrt{5}}
+\begin{pmatrix}
+2 & -1 \\
+1 & 2 \\
+\end{pmatrix}
+\tag{3}
+\]
+and
+\[
+\begin{pmatrix}
+\langle 1|D|1\rangle & \langle 1|D|2\rangle \\
+\langle 2|D|1\rangle & \langle 2|D|2\rangle \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+5 & 0 \\
+0 & -5 \\
+\end{pmatrix}
+\tag{4}
+\]
+\subsection{Show that the column vectors in (2) are the eigenvectors of (1).}
+We start by plugging in the column vectors one at a time into the matrix in (1):
+\begin{equation}
+    \begin{pmatrix}
+        3 & 4 \\
+        4 & -3 \\
+    \end{pmatrix}
+\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        2 \\
+        1 \\
+    \end{pmatrix}
+    =
+\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        10 \\
+        5 \\
+    \end{pmatrix}
+=
+5 \left(\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        2 \\
+        1 \\
+    \end{pmatrix}
+\right)
+\end{equation}
+Next, we plug in the second column vector:
+\begin{equation}
+    \begin{pmatrix}
+        3 & 4 \\
+        4 & -3 \\
+    \end{pmatrix}
+\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        -1 \\
+        2 \\
+    \end{pmatrix}
+    =
+\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        5 \\
+        -10 \\
+    \end{pmatrix}
+=
+-5 \left(\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        -1 \\
+        2 \\
+    \end{pmatrix}
+\right)
+\end{equation}
+So, they are eigen vectors with eigen values of 5 and negative 5, respectively.
+\subsection{Show that \( U^\dagger HU = D \). If we think of our kets as unit vectors, what would this operation physically represent? As in, what if \( H \) was initially \( x \)-hat, and \( U \) made it \( y \)-hat.}
+We start by carrying out the matrix multiplication:
+\begin{equation}
+\frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        2 & 1 \\
+        -1 & 2 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        3 & 4 \\
+        4 & -3 \\
+    \end{pmatrix}
+    \frac{1}{\sqrt{5}}
+    \begin{pmatrix}
+        2 & -1 \\
+        1 & 2 \\
+    \end{pmatrix}
+\end{equation}
+Consolidating the constants and carrying out the right-hand side matrix multiplication first, we simplify to:
+\begin{equation}
+    \frac{1}{5}
+    \begin{pmatrix}
+        2 & 1 \\
+        -1 & 2 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        10 & 5 \\
+        5 & -10 \\
+    \end{pmatrix}
+=
+    \frac{1}{5}
+    \begin{pmatrix}
+        25 & 0 \\
+        0 & -25 \\
+    \end{pmatrix}
+=
+    \begin{pmatrix}
+        5 & 0 \\
+        0 & -5 \\
+    \end{pmatrix}
+\end{equation}
+So, we have shown that \( U^\dagger HU = D \). If we think of our kets as unit vectors, this operation would represent a rotation of basis. The choice of \(x\)-hat and \(y\)-hat is typically used for column vectors, but the same idea applies. If \( H \) was initially \( x \)-hat, and \( U \) made it \( y \)-hat, then the matrix \( U \) would be a rotation matrix.
+\subsection{}
+3. Since \( H = UDU^{\dagger} \), it also follows that \( H^2 = UD^2U^{\dagger} \) and in general that \( H^n = UD^nU^{\dagger} \). The exponential of \( H \) is therefore given by
+\begin{align*}
+e^H &= \sum_{n=0}^{\infty} \frac{1}{n!} H^n \\
+&= U \left[ \sum_{n=0}^{\infty} \frac{1}{n!} D^n \right] U^{\dagger} \\
+&= U e^D U^{\dagger} \\
+&= U 
+\begin{pmatrix}
+e^5 & 0 \\
+0 & e^{-5}
+\end{pmatrix}
+U^{\dagger}
+\end{align*}
+Perform the matrix multiplication on the above right to obtain the values of the four matrix elements of \( e^H \) in the \( \ket{1} \), \( \ket{2} \) basis, i.e.,
+\[
+\begin{pmatrix}
+\bra{1}e^H\ket{1} & \bra{1}e^H\ket{2} \\
+\bra{2}e^H\ket{1} & \bra{2}e^H\ket{2}
+\end{pmatrix}
+\]
+So, we start with:
+\begin{equation}
+    \begin{pmatrix}
+\bra{1}e^H\ket{1} & \bra{1}e^H\ket{2} \\
+\bra{2}e^H\ket{1} & \bra{2}e^H\ket{2}
+\end{pmatrix}
+=
+    \begin{pmatrix}
+\bra{1}Ue^DU^{\dagger}\ket{1} & \bra{1}Ue^DU^{\dagger}\ket{2} \\
+\bra{2}Ue^DU^{\dagger}\ket{1} & \bra{2}Ue^DU^{\dagger}\ket{2}
+\end{pmatrix}
+\end{equation}
+4. There is another way to compute \( e^H \). The identity operator in this two-dimensional space can be written in terms of the eigenstates as \( I = \ket{A}\bra{A} + \ket{B}\bra{B} \). Therefore,
+\begin{align*}
+e^H &= e^H I \\
+&= e^H\ket{A}\bra{A} + e^H\ket{B}\bra{B} \\
+&= e^5\ket{A}\bra{A} + e^{-5}\ket{B}\bra{B}
+\end{align*}
+Now compute the four matrix elements of \( e^H \) in the \( \ket{1} \), \( \ket{2} \) basis to show it is the same as above. 
+
+\textit{Hint:} What you are doing here is forming a matrix operator from the basis made of 1 and 2 by injecting the identity operator for \( A \) and \( B \). So this is a transformation between two representations of a wavefunction, which you can get by taking the inner product of the outer product to get the matrix elements.
+
+
+
+% The relations are defined as:
+% \begin{equation}
+%     \mathcal{E} = \hbar\omega \quad \text{and} \quad p = \hbar k
+% \end{equation}
+
+\end{document}
+

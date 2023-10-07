@@ -1,0 +1,397 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{altinkaya_cultural_nodate}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f5a09f6dc7bae963a0d5000fbb455ad}{%
+           family={Altinkaya},
+           familyi={A\bibinitperiod},
+           given={Ayla},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {CHALMERS UNIVERSITY OF TECHNOLOGY}%
+      }
+      \strng{namehash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \strng{fullhash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \strng{bibnamehash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \strng{authorbibnamehash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \strng{authornamehash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \strng{authorfullhash}{5f5a09f6dc7bae963a0d5000fbb455ad}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cultural {Differences} in {International} {Projects}}
+      \field{type}{Dissertation}
+      \verb{urlraw}
+      \verb publications.lib.chalmers.se/records/fulltext/25690.pdf
+      \endverb
+      \verb{url}
+      \verb publications.lib.chalmers.se/records/fulltext/25690.pdf
+      \endverb
+    \endentry
+    \entry{noauthor_arab_nodate}{misc}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{title}{Arab refugees see double standards in {Europe}'s embrace of {Ukrainians} {|} {Reuters}}
+      \field{urlday}{2}
+      \field{urlmonth}{9}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Arab refugees see double standards in Europe's embrace of Ukrainians | Reuters:/Users/patrykkozlowski/Zotero/storage/FSY4GEWQ/arab-refugees-see-double-standards-europes-embrace-ukrainians-2022-03-02.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.reuters.com/world/arab-refugees-see-double-standards-europes-embrace-ukrainians-2022-03-02/
+      \endverb
+      \verb{url}
+      \verb www.reuters.com/world/arab-refugees-see-double-standards-europes-embrace-ukrainians-2022-03-02/
+      \endverb
+    \endentry
+    \entry{boxerman_whats_2023}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f07c5bc367876823fec7bd0951c85dc8}{%
+           family={Boxerman},
+           familyi={B\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ea98a3250bdd49f1562c37029c7510cb}{%
+           family={Kwai},
+           familyi={K\bibinitperiod},
+           given={Isabella},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \strng{namehash}{f0e84435928439dc64f8cb873e6e6e71}
+      \strng{fullhash}{f0e84435928439dc64f8cb873e6e6e71}
+      \strng{bibnamehash}{f0e84435928439dc64f8cb873e6e6e71}
+      \strng{authorbibnamehash}{f0e84435928439dc64f8cb873e6e6e71}
+      \strng{authornamehash}{f0e84435928439dc64f8cb873e6e6e71}
+      \strng{authorfullhash}{f0e84435928439dc64f8cb873e6e6e71}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The country has found itself caught between outrage over anti-Muslim actions and its commitment to free speech. Denmark has also wrestled with the same tensions.}
+      \field{chapter}{World}
+      \field{issn}{0362-4331}
+      \field{journaltitle}{The New York Times}
+      \field{month}{8}
+      \field{title}{What’s {Happening} {With} the {Quran} {Burnings} in {Sweden}}
+      \field{urlday}{2}
+      \field{urlmonth}{9}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/L89UW3LR/sweden-denmark-quran-burnings.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.nytimes.com/article/sweden-denmark-quran-burnings.html
+      \endverb
+      \verb{url}
+      \verb www.nytimes.com/article/sweden-denmark-quran-burnings.html
+      \endverb
+      \keyw{Blasphemy,Demonstrations,Protests and Riots,Denmark,Freedom of Speech and Expression,Hate Crimes,Iraq,North Atlantic Treaty Organization,Sweden,Turkey}
+    \endentry
+    \entry{noauthor_burning_nodate}{misc}{}
+      \list{language}{1}{%
+        {en-US}%
+      }
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Too often, claims of free speech have been wielded to justify blatant Islamophobic rhetoric and actions that aim to harm Muslims around the globe. The characterization of Quran burnings as being protected by free speech is incorrect given the intentions behind these actions.}
+      \field{journaltitle}{Bridge Initiative}
+      \field{title}{Burning the {Quran} is not free speech}
+      \field{urlday}{22}
+      \field{urlmonth}{8}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/TZIYLNVA/burning-the-quran-is-not-free-speech.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb bridge.georgetown.edu/research/burning-the-quran-is-not-free-speech/
+      \endverb
+      \verb{url}
+      \verb bridge.georgetown.edu/research/burning-the-quran-is-not-free-speech/
+      \endverb
+    \endentry
+    \entry{christie_peace_2001}{book}{}
+      \name{editor}{3}{}{%
+        {{un=0,uniquepart=base,hash=0302ded5cb50df0988a2fc289608836c}{%
+           family={Christie},
+           familyi={C\bibinitperiod},
+           given={Daniel\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=101977bec2a24cd9c4e902d6ea33f065}{%
+           family={Wagner},
+           familyi={W\bibinitperiod},
+           given={Richard\bibnamedelima V.},
+           giveni={R\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=90dd1c9b984711342a1a515fa875df12}{%
+           family={Winter},
+           familyi={W\bibinitperiod},
+           given={Deborah\bibnamedelimb Du\bibnamedelima Nann},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Upper Saddle River, NJ, US}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall/Pearson Education}%
+      }
+      \strng{namehash}{aee163e90d321494e9544f3436e2b15a}
+      \strng{fullhash}{72f471adebc26573dbbbffe7e319c612}
+      \strng{bibnamehash}{aee163e90d321494e9544f3436e2b15a}
+      \strng{editorbibnamehash}{aee163e90d321494e9544f3436e2b15a}
+      \strng{editornamehash}{aee163e90d321494e9544f3436e2b15a}
+      \strng{editorfullhash}{72f471adebc26573dbbbffe7e319c612}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \true{singletitle}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This volume brings together international perspectives on key concepts, themes, theories, and practices that are defining peace psychology at the beginning of the twenty-first century. The authors share with their international colleagues a broad vision of peace psychology, covering a wide range of topics such as ethnic conflict, family violence, hate crimes, militarism, conflict management, social justice, nonviolent approaches to peace, and peace education. In addition to providing a useful resource that integrates current research and practice for scholars and practitioners, the authors wanted the book to be accessible enough to introduce a new generation of students, both graduate and upper-division undergraduate, to the field. The book topics are organized according to four main currents in peace psychology: (1) violence, (2) social inequalities, (3) peacemaking, and (4) the pursuit of social justice. (PsycInfo Database Record (c) 2022 APA, all rights reserved)}
+      \field{note}{Pages: xxii, 426}
+      \field{series}{Peace, conflict, and violence: {Peace} psychology for the 21st century}
+      \field{shorttitle}{Peace, conflict, and violence}
+      \field{title}{Peace, conflict, and violence: {Peace} psychology for the 21st century}
+      \field{year}{2001}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/EUZRLAKU/2002-17740-000.html:text/html
+      \endverb
+      \keyw{Justice,Peace,Psychological Theories,Social Equality,Violence}
+    \endentry
+    \entry{noauthor_colin_2020}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Colin Kaepernick was a second-round draft pick in 2011. The next year he led the San Francisco 49ers to the Super Bowl.}
+      \field{journaltitle}{AP News}
+      \field{month}{6}
+      \field{shorttitle}{Colin {Kaepernick}}
+      \field{title}{Colin {Kaepernick}: {Timeline} of a gesture and its echoes}
+      \field{urlday}{2}
+      \field{urlmonth}{9}
+      \field{urlyear}{2023}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/9UWVYVZG/f9bbe38b748072531b07713736409181.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb apnews.com/article/f9bbe38b748072531b07713736409181
+      \endverb
+      \verb{url}
+      \verb apnews.com/article/f9bbe38b748072531b07713736409181
+      \endverb
+    \endentry
+    \entry{hoffmann_how_nodate}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9e8feb6a7cca65f6cf19442d7acae32a}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Stanford UP}%
+      }
+      \strng{namehash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \strng{fullhash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \strng{bibnamehash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \strng{authorbibnamehash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \strng{authornamehash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \strng{authorfullhash}{9e8feb6a7cca65f6cf19442d7acae32a}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How {Culture} {Shapes} the {Climate} {Change} {Debate}}
+    \endentry
+    \entry{noauthor_outcry_nodate}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Muslim nations have expressed outrage since Salwan Momika desecrated the holy book in Stockholm last month.}
+      \field{shorttitle}{Outcry over {Quran} burning in {Sweden}}
+      \field{title}{Outcry over {Quran} burning in {Sweden}: {A} timeline}
+      \field{urlday}{2}
+      \field{urlmonth}{9}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/97HQLGNQ/outcry-over-quran-burning-in-sweden-a-timeline.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb www.aljazeera.com/news/2023/7/20/outcry-over-quran-burning-in-sweden-a-timeline
+      \endverb
+      \verb{url}
+      \verb www.aljazeera.com/news/2023/7/20/outcry-over-quran-burning-in-sweden-a-timeline
+      \endverb
+    \endentry
+    \entry{noauthor_what_nodate}{article}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{What is {Culture}?}
+    \endentry
+    \entry{yabi_climate_nodate}{misc}{}
+      \name{author}{14}{}{%
+        {{un=0,uniquepart=base,hash=5be5155852bafeec2d53fb8c5d09c396}{%
+           family={Yabi},
+           familyi={Y\bibinitperiod},
+           given={Justin\bibnamedelima Dargin},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e0c74c3083604def085fbb79ea529eeb}{%
+           family={Mehdi},
+           familyi={M\bibinitperiod},
+           given={Zainab},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e07d027e02ca2aacf8b8fa211044b41}{%
+           family={Muasher},
+           familyi={M\bibinitperiod},
+           given={Marwan},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=454ab4a9de0770bee204ffeb824a88df}{%
+           family={Yahya},
+           familyi={Y\bibinitperiod},
+           given={Maha},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6b009aa488e53becca464e927cd0c586}{%
+           family={Kayssi},
+           familyi={K\bibinitperiod},
+           given={Issam},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cc76da7faa72933c0195548afdb90324}{%
+           family={Hassan},
+           familyi={H\bibinitperiod},
+           given={Zaha},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c7f0960255ca0f8a9e02bc514250384}{%
+           family={Andrews},
+           familyi={A\bibinitperiod},
+           given={Madison},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ffb6e0987371fdbff8671e71296ebcbc}{%
+           family={Madain},
+           familyi={M\bibinitperiod},
+           given={Mathew},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d2064e207fb65c340427b2bcaa6027bb}{%
+           family={Al-Mailam},
+           familyi={A\bibinithyphendelim M\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a060aa6ee3fb28996618900d6f84db0e}{%
+           family={Hamzawy},
+           familyi={H\bibinitperiod},
+           given={Amr},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d1080f593e90f96c635299662ed5aab}{%
+           family={Yerkes},
+           familyi={Y\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=31f6e6662dcb21943065d21fc8ed7ced}{%
+           family={Clasen},
+           familyi={C\bibinitperiod},
+           given={Haley},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=df02ff5f8ec66e21c657caeaa6a599fa}{%
+           family={Gilles},
+           familyi={G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=14ca8d816f2c6f99e1b8bfe386ff027b}{%
+           family={Wehrey},
+           familyi={W\bibinitperiod},
+           given={Frederic},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{fcb226769430744bb28a0f7fac4d4360}
+      \strng{fullhash}{42252072c22c1bddd7a588c3ac9cd9c9}
+      \strng{bibnamehash}{fcb226769430744bb28a0f7fac4d4360}
+      \strng{authorbibnamehash}{fcb226769430744bb28a0f7fac4d4360}
+      \strng{authornamehash}{fcb226769430744bb28a0f7fac4d4360}
+      \strng{authorfullhash}{42252072c22c1bddd7a588c3ac9cd9c9}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \true{singletitle}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Climate change in the Middle East will amplify preexisting vulnerabilities stemming from conflict, displacement, marginalization, and corruption, while also creating new risks. Governments in the region will need to adopt more inclusive reforms as part of their climate adaptation strategies.}
+      \field{journaltitle}{Carnegie Endowment for International Peace}
+      \field{title}{Climate {Change} and {Vulnerability} in the {Middle} {East}}
+      \field{urlday}{28}
+      \field{urlmonth}{8}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/2QL7PBT5/climate-change-and-vulnerability-in-middle-east-pub-90089.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb carnegieendowment.org/2023/07/06/climate-change-and-vulnerability-in-middle-east-pub-90089
+      \endverb
+      \verb{url}
+      \verb carnegieendowment.org/2023/07/06/climate-change-and-vulnerability-in-middle-east-pub-90089
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

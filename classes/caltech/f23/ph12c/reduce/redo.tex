@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\begin{document}
+\section {sharply peaked functions}
+first, we will be showing that$\Gamma (1)=1$
+\begin{equation}
+    \Gamma (1)=\int_{0}^{\infty } \frac{dx}{x}x^{1}e^{-x}=\int_{0}^{\infty } e^{-x}dx=-e^{-x}\Big|_{0}^{\infty }=1
+\end{equation}
+next using integration by ports, we will satisfy the identity:
+\begin{equation}
+    \Gamma (n+1)=n\Gamma (n)
+\end{equation}
+\begin{equation}
+    \Gamma (n+1)=\int_{0}^{\infty } \frac{dx}{x}x^{n+1}e^{-x}=\int_{0}^{\infty } e^{-x}x^{n}dx
+\end{equation}
+, now we use integration by parts:
+    \begin{equation}
+        u= x^{n} \xrightarrow{} du= nx^{n-1} \end{equation}
+    \begin{equation}
+    dv= e^{-x}dx \xrightarrow{} v= -e^{-x}
+    \end{equation}
+\begin{equation}
+    \Gamma (n+1)=
+\end{equation}
+
+\end{document}

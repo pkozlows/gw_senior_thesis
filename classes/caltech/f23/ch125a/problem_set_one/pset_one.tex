@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\begin{document}
+\section{Problem 1}
+\subsection{Part a}
+The scaler that denotes the length is $\mathbf{r}$ and time is represented by $t$.
+\subsection{Part b}
+We started with the first equation, which is:
+\begin{equation}
+\frac{\partial \Phi(\mathbf{r}, t)}{\partial t} = \nabla \cdot [\mathbf{D}(\Phi, \mathbf{r}) \nabla \Phi(\mathbf{r}, t)]
+\end{equation}
+On the left-hand side, the scaler field being denoted by $\Phi$ is having its partial derivative with respect to time taken.\\
+On the right-hand side, first the gradient of the scaler field $\Phi$ is taken, giving a vector, then the divergence of the product of the vector field $\mathbf{D}$ and the gradient of $\Phi$ is taken, resulting in a scaler field.\\
+The second equation is:
+\begin{equation}
+    \frac{\partial^2 u(\mathbf{r}, t)}{\partial t^2} = v^2 \nabla^2 u(\mathbf{r}, t)
+\end{equation}
+On the left-hand side, the scaler field $u$ is having its second partial derivative with respect to time taken.\\
+On the right-hand side, the Laplacian of the scaler field $u$ is taken, resulting in a scaler field. Furthermore, this is multiplied by the scaler $v^2$.
+\subsection{Part c}
+For someone who doesn't understand the intricacies of the mathematics, I would explain that both sides of the equation represent the same type of field. For instance, in the first equation, the left side has the partial derivative of a scalar field with respect to time, which results in a scalar field. Likewise, the right-hand side outputs a scalar field as well, as I explained earlier. In the second equation, the left side has the second partial derivative with respect to time of a scalar field, which results in a scalar field. Likewise, on the right-hand side, the Laplacian of a scalar field is taken, which results in a scalar field, matching the result on the other side.
+\section{Problem 2}
+\subsection{Part a}
+for $\mathbf{F}$ the divergence is zero.\\
+for $\mathbf{G}$ the divergence is negative.\\
+for $\mathbf{H}$ the divergence is 0.\\
+for $\mathbf{I}$ the divergence is positive .\\
+
+\subsection{Part b}
+Using the right hand rule:\\
+for $\mathbf{F}$ the $\hat{k}$ component is 0.\\
+for $\mathbf{G}$ the $\hat{k}$ component is 0.\\
+for $\mathbf{H}$ the $\hat{k}$ component is negative.\\
+for $\mathbf{I}$ the $\hat{k}$ component is 0.\\
+\subsection{Part c}
+\subsubsection{$\mathbf{F}$}
+We started with:
+\begin{equation}
+    \mathbf{F}=2\hat{y}
+\end{equation}
+We calculate the divergence by:
+\begin{equation}
+    \nabla \cdot \mathbf{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\end{equation}
+Since $F_x$ and $F_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{F} = \frac{\partial F_y}{\partial y}
+\end{equation}
+Since $F_y$ is a constant, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{F} = 0
+\end{equation}
+We calculate the curl by:
+\begin{equation}
+    \nabla \times \mathbf{F} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    F_x & F_y & F_z
+    \end{vmatrix}
+\end{equation}
+Since $F_x$ and $F_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{F} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & F_y & 0
+    \end{vmatrix}
+\end{equation}
+Since $F_y$ is a constant, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{F} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & 2 & 0
+    \end{vmatrix}
+\end{equation}
+This determinant evaluates to:
+\begin{equation}
+    \nabla \times \mathbf{F} = \hat{x}\times\left(\frac{\partial 2}{\partial z}-\frac{\partial 0}{\partial y}\right) - \hat{y}\times\left(\frac{\partial 0}{\partial z}-\frac{\partial 0}{\partial x}\right) + \hat{z}\times\left(\frac{\partial 0}{\partial y}-\frac{\partial 2}{\partial x}\right)=0
+\end{equation}
+\subsubsection{$\mathbf{G}$}
+We started with:
+\begin{equation}
+    \mathbf{G}=e^{-2y^{2}}\hat{y}
+\end{equation}
+We calculate the divergence by:
+\begin{equation}
+    \nabla \cdot \mathbf{G} = \frac{\partial G_x}{\partial x} + \frac{\partial G_y}{\partial y} + \frac{\partial G_z}{\partial z}
+\end{equation}
+Since $G_x$ and $G_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{G} = \frac{\partial G_y}{\partial y}
+\end{equation}
+Since $G_y$ is a function of $y$, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{G} = \frac{\partial}{\partial y}e^{-2y^{2}}
+\end{equation}
+Using the chain rule, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{G} = -4y e^{-2y^{2}}
+\end{equation}
+Since the point has a positive value of y, the divergence has to be negative.
+We calculate the curl by:
+\begin{equation}
+    \nabla \times \mathbf{G} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    G_x & G_y & G_z
+    \end{vmatrix}
+\end{equation}
+Since $G_x$ and $G_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{G} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & G_y & 0
+    \end{vmatrix}
+\end{equation}
+Since $G_y$ is a function of $y$, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{G} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & e^{-2y^{2}} & 0
+    \end{vmatrix}
+\end{equation}
+This determinant evaluates to:
+\begin{equation}
+    \nabla \times \mathbf{G} = \hat{x}\times\left(\frac{\partial e^{-2y^{2}}}{\partial z}-\frac{\partial 0}{\partial y}\right) - \hat{y}\times\left(\frac{\partial 0}{\partial z}-\frac{\partial 0}{\partial x}\right) + \hat{z}\times\left(\frac{\partial 0}{\partial y}-\frac{\partial e^{-2y^{2}}}{\partial x}\right)=0
+\end{equation}
+\subsubsection{$\mathbf{H}$}
+We started with:
+\begin{equation}
+    \mathbf{H}=2e^{-x^{2}}\hat{y}
+\end{equation}
+We calculate the divergence by:
+\begin{equation}
+    \nabla \cdot \mathbf{H} = \frac{\partial H_x}{\partial x} + \frac{\partial H_y}{\partial y} + \frac{\partial H_z}{\partial z}
+\end{equation}
+Since $H_x$ and $H_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{H} = \frac{\partial H_y}{\partial y}
+\end{equation}
+Since $H_y$ is a function of $x$, we are left with:
+\begin{equation}
+    \nabla \cdot \mathbf{H} = \frac{\partial}{\partial y}2e^{-x^{2}}=0
+\end{equation}
+Now, we calculate the curl:
+\begin{equation}
+    \nabla \times \mathbf{H} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    H_x & H_y & H_z
+    \end{vmatrix}
+\end{equation}
+Since $H_x$ and $H_z$ are 0, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{H} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & H_y & 0
+    \end{vmatrix}
+\end{equation}
+Since $H_y$ is a function of $x$, we are left with:
+\begin{equation}
+    \nabla \times \mathbf{H} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    0 & 2e^{-x^{2}} & 0
+    \end{vmatrix}
+\end{equation}
+This determinant evaluates to:
+\begin{equation}
+    \nabla \times \mathbf{H} = \hat{x}\times\left(\frac{\partial 2e^{-x^{2}}}{\partial z}-\frac{\partial 0}{\partial y}\right) - \hat{y}\times\left(\frac{\partial 0}{\partial z}-\frac{\partial 0}{\partial x}\right) + \hat{z}\times\left(\frac{\partial 0}{\partial y}-\frac{\partial 2e^{-x^{2}}}{\partial x}\right)=-4xe^{-x^{2}}\hat{z}
+\end{equation}
+Since we are working with a positive value of at the point, the curl is negative.
+\subsubsection{$\mathbf{I}$}
+We started with:
+\begin{equation}
+    \mathbf{I}=2\hat{r}   
+\end{equation}
+In spherical cortinas, the divergence is given by:
+\begin{equation}
+    \nabla \cdot \mathbf{I} = \frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}I_r) + \frac{1}{r\sin\theta}\frac{\partial}{\partial \theta}(\sin\theta I_{\theta}) + \frac{1}{r\sin\theta}\frac{\partial I_{\phi}}{\partial \phi}
+\end{equation}
+So, we have:
+\begin{equation}
+    \nabla \cdot \mathbf{I} = \frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}I_r)=\frac{1}{r^{2}}\frac{\partial}{\partial r}(r^{2}2)=\frac{1}{r^{2}}\frac{\partial}{\partial r}(2r^{2})=\frac{1}{r^{2}}4r=4\frac{1}{r}
+\end{equation}
+Since the final value for the divergence depends on r, the divergence is positive.\\
+The equation for the curl in spherical coordinates is given by:
+% I don't want a matrix, I just want the Equation
+\begin{equation}
+    \nabla \times \mathbf{I} = \frac{\hat{r}}{r sin\theta}\left[\frac{\partial}{\partial \theta}(I_{\phi}sin\theta)-\frac{\partial I_{\theta}}{\partial \phi}\right]+\frac{\hat{\theta}}{r}\left[\frac{1}{sin\theta}\frac{\partial I_r}{\partial \phi}-\frac{\partial}{\partial r}(rI_{\phi})\right]+\frac{\hat{\phi}}{r}\left[\frac{\partial}{\partial r}(rI_{\theta})-\frac{\partial I_r}{\partial \theta}\right]
+\end{equation}
+Plugging in our value for $\mathbf{I}$, we have:
+\begin{equation}
+    \nabla \times \mathbf{I} = \frac{\hat{r}}{r sin\theta}\left[\frac{\partial}{\partial \theta}(0sin\theta)-\frac{\partial 0}{\partial \phi}\right]+\frac{\hat{\theta}}{r}\left[\frac{1}{sin\theta}\frac{\partial 2}{\partial \phi}-\frac{\partial}{\partial r}(r0)\right]+\frac{\hat{\phi}}{r}\left[\frac{\partial}{\partial r}(r0)-\frac{\partial 2}{\partial \theta}\right]=0
+\end{equation}
+
+\section{Problem 3}
+\subsection{Part a}
+\subsubsection{Equation 1}
+Gases law for electrical fields is defined as:
+\begin{equation}
+    \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}\delta(\mathbf{r}-\mathbf{r}')
+\end{equation}
+For the first component of the explanation, we will focus on the $\rho$, which is the charge density. The delta function ensures that we can only have point charges. Overall this equation tells us that a positive charge density, which indicates a positive charge is a source for an electric field, and in the same way, a negative charge is a sink for the electric field.
+\subsubsection{Equation 2}
+Gauss's law for magnetic fields is defined as:
+\begin{equation}
+    \nabla \cdot \mathbf{B} = 0
+\end{equation}
+This equation tells us that there are no magnetic monopoles, and that the magnetic field lines are always closed. In other words, no object can be either a source or a sink for a magnetic field in the same way that a point charge can be a source or a sink for an electric field.
+\subsubsection{Equation 3}
+Faraday's law is defined as:
+\begin{equation}
+    \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+\end{equation}
+This equation tells us that a changing magnetic field of $-\frac{\partial \mathbf{B}}{\partial t}$ will induce an electric field. However, we are talking about the curl of the electric field, so the direction of the magnetic field must be perpendicular.
+\subsubsection{Equation 4}
+Ampere's law is defined as:
+\begin{equation}
+    \nabla \times \mathbf{B} = \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{equation}
+This equation tells us that the time derivative of an electrical field will induce a magnetic field. However, we are talking about the curl of magnetic field, so the direction of the electric field must be perpendicular.
+\subsection{Part b}
+Faraday's and Ampere's laws tell us that the curl of the electric or magnetic field is perpendicular to the time derivative of the magnetic and electric field, respectively. Since a time derivative will not change the direction in which a field points, the curl runs in the same direction, meaning that the original field whose curl is being taken is perpendicular to the field whose time derivative is taken.
+\subsection{Part c}
+A changing voltage means a changing electric field, which, as shown in this equation, runs in the same direction as the force exerted on the particle. So when the magnetic field is zero, the force on the particle will be in the direction of the electric field, and so the particle will travel in a straight line in the direction of this electric field. When the magnetic field is turned on, the second component on the right-hand side of this equation will cause a force perpendicular to the electric field  to be exerted on the particle. Combined with the electric field, which causes the charged particle to move in a straight line, this magnetic field will cause the particle to curve.
+\end{document}

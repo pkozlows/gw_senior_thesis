@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/test_too/pyscf_script.py", line 12, in <module>
+    mf.scf()
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1697, in scf
+    kernel(self, self.conv_tol, self.conv_tol_grad,
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 123, in kernel
+    dm = mf.get_init_guess(mol, mf.init_guess)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1635, in get_init_guess
+    dm = self.init_guess_by_minao(mol)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1570, in init_guess_by_minao
+    return init_guess_by_minao(mol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 455, in init_guess_by_minao
+    dm = addons.project_dm_nr2nr(pmol, numpy.diag(occ), mol)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/addons.py", line 401, in project_dm_nr2nr
+    p21 = lib.cho_solve(s22, s21, strict_sym_pos=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/lib/linalg_helper.py", line 1499, in cho_solve
+    return scipy.linalg.solve(a, b, sym_pos=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: solve() got an unexpected keyword argument 'sym_pos'

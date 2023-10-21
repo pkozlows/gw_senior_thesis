@@ -1,0 +1,152 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{crowley_resolution_2016}{article}{}
+      \name{author}{3}{}{%
+        {{hash=e9f7b3aaa0ba0c328ca9dabcd644a6d5}{%
+           family={Crowley},
+           familyi={C\bibinitperiod},
+           given={Jason\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=0ea62a27a4aa229aec8f8a38d2959199}{%
+           family={Tahir-Kheli},
+           familyi={T\bibinithyphendelim K\bibinitperiod},
+           given={Jamil},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c3d2529f61ad3fb662fb89cd81a98136}{%
+           family={Goddard},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelimb A.\bibnamedelimi III},
+           giveni={W\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \strng{fullhash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \strng{bibnamehash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \strng{authorbibnamehash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \strng{authornamehash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \strng{authorfullhash}{f1cd6f1d53935fb0b734db62f9391ed5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{An important property with any new material is the band gap. Standard density functional theory methods grossly underestimate band gaps. This is known as the band gap problem. Here, we show that the hybrid B3PW91 density functional returns band gaps with a mean absolute deviation (MAD) from experiment of 0.22 eV over 64 insulators with gaps spanning a factor of 500 from 0.014 to 7 eV. The MAD is 0.28 eV over 70 compounds with gaps up to 14.2 eV, with a mean error of −0.03 eV. To benchmark the quality of the hybrid method, we compared the hybrid method to the rigorous GW many-body perturbation theory method. Surprisingly, the MAD for B3PW91 is about 1.5 times smaller than the MAD for GW. Furthermore, B3PW91 is 3–4 orders of magnitude faster computationally. Hence, B3PW91 is a practical tool for predicting band gaps of materials before they are synthesized and represents a solution to the band gap prediction problem.}
+      \field{journaltitle}{The Journal of Physical Chemistry Letters}
+      \field{month}{4}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{7}
+      \field{title}{Resolution of the {Band} {Gap} {Prediction} {Problem} for {Materials} {Design}}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{7}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \field{pages}{1198\bibrangedash 1203}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1021/acs.jpclett.5b02870
+      \endverb
+      \verb{file}
+      \verb ACS Full Text Snapshot:/Users/patrykkozlowski/Zotero/storage/92LUJ6NS/acs.jpclett.html:text/html;Full Text:/Users/patrykkozlowski/Zotero/storage/XR54G665/Crowley et al. - 2016 - Resolution of the Band Gap Prediction Problem for .pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/acs.jpclett.5b02870
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/acs.jpclett.5b02870
+      \endverb
+    \endentry
+    \entry{lei_gaussian-based_2022}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d98d15ddac095745a67711afb9a11807}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Jincheng},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fae721c754734cf29a8b41ff18af98ef}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Tianyu},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f15692b5326235566cf60531e72e72e8}
+      \strng{fullhash}{f15692b5326235566cf60531e72e72e8}
+      \strng{bibnamehash}{f15692b5326235566cf60531e72e72e8}
+      \strng{authorbibnamehash}{f15692b5326235566cf60531e72e72e8}
+      \strng{authornamehash}{f15692b5326235566cf60531e72e72e8}
+      \strng{authorfullhash}{f15692b5326235566cf60531e72e72e8}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a quasiparticle self-consistent GW (QSGW) implementation for periodic systems based on crystalline Gaussian basis sets. Our QSGW approach is based on a full-frequency analytic continuation GW scheme with Brillouin zone sampling and employs the Gaussian density fitting technique. We benchmark our QSGW implementation on a set of weakly correlated semiconductors and insulators as well as strongly correlated transition metal oxides, including MnO, FeO, CoO, and NiO. The band gap, band structure, and density of states are evaluated using finite size corrected QSGW. We find that although QSGW systematically overestimates the bandgaps of the tested semiconductors and transition metal oxides, it completely removes the dependence on the choice of density functionals and provides a more consistent prediction of spectral properties than G0W0 across a wide range of solids. This work paves the way for utilizing QSGW in ab initio quantum embedding for solids.}
+      \field{issn}{0021-9606}
+      \field{journaltitle}{The Journal of Chemical Physics}
+      \field{month}{12}
+      \field{number}{21}
+      \field{title}{Gaussian-based quasiparticle self-consistent {GW} for periodic systems}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{volume}{157}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{214114}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1063/5.0125756
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/8ZVE289Q/Lei and Zhu - 2022 - Gaussian-based quasiparticle self-consistent GW fo.pdf:application/pdf;Snapshot:/Users/patrykkozlowski/Zotero/storage/8PJSZ2GP/Gaussian-based-quasiparticle-self-consistent-GW.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/5.0125756
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/5.0125756
+      \endverb
+    \endentry
+    \entry{noauthor_mp-804_nodate}{misc}{}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{GaN is Wurtzite structured and crystallizes in the hexagonal P6₃mc space group. Ga³⁺ is bonded to four equivalent N³⁻ atoms to form corner-sharing GaN₄ tetrahedra. There are three shorter (1.95 Å) and one longer (1.96 Å) Ga–N bond length. N³⁻ is bonded to four equivalent Ga³⁺ atoms to form corner-sharing NGa₄ tetrahedra.}
+      \field{journaltitle}{Materials Project}
+      \field{shorttitle}{mp-804}
+      \field{title}{mp-804: {GaN} ({Hexagonal}, {P6}\_3mc, 186)}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/3ZZ35PXH/mp-804.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://next-gen.materialsproject.org/materials/mp-804
+      \endverb
+      \verb{url}
+      \verb https://next-gen.materialsproject.org/materials/mp-804
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

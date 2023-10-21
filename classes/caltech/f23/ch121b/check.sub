@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -A wag
+#SBATCH --qos=normal
+#SBATCh --partition=any
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=1
+#SBATCH -c 32
+#SBATCH -t 10:00:00
+#SBATCH --mem=180gb
+
+module add pyscf-1.6
+export OMP_NUM_THREADS=32
+
+srun python test.py > out.dat

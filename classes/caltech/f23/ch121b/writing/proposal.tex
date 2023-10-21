@@ -1,0 +1,17 @@
+\documentclass[12pt]{article}
+\usepackage{biblatex}
+
+\title{Proposal for the 121B Project}
+\author{Patryk Kozlowski}
+\date{\today}
+\addbibresource{citations.bib}
+\begin{document}
+\maketitle
+\section{Introduction}
+Recently, there has been a study of many materials using DFT@B3PW91, one-shot G0W0, and a post-G0W0 method. \autocite{crowley_resolution_2016} I will use a similar three methods to compute band structures of gallium nitride. The DFT@B3PW91 has already been done by Dr. Kwon at Caltech, so I will just corroborate the results to get things up and running with the new PySCF computational framework that I am using.
+\section{Methods}
+I will be using the wurtzite structure of gallium nitride from the Materials Project. \autocite{noauthor_mp-804_nodate} The DFT@B3PW91 and one-shot G0W0 have been in PySCF for quite a while now, but only more recently have there been developments in self-consistent, or post-G0W0, flavors. \autocite{lei_gaussian-based_2022} I am interested in comparing with the two other methods in terms of accuracy and computational expense.
+\section{What I plan next}
+I don't imagine that studying this material with these methods will take me the entire quarter. I am interested in photovoltaics and my understanding is that GW, which I plan to study closely this year, lends itself to computing photoemission spectra. Once I get acquainted with computing band structures using PySCF for gallium nitride, I hope to do this for photovoltaic materials, which I will discuss with Professor Goddard throughout the quarter.
+\printbibliography
+\end{document}

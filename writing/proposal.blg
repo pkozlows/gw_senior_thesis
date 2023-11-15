@@ -1,0 +1,15 @@
+[1] Config.pm:307> INFO - This is Biber 2.17
+[1] Config.pm:310> INFO - Logfile is 'proposal.blg'
+[243] biber-darwin:340> INFO - === Wed Nov  8, 2023, 13:17:41
+[263] Biber.pm:418> INFO - Reading 'proposal.bcf'
+[579] Biber.pm:972> INFO - Found 3 citekeys in bib section 0
+[627] Biber.pm:4383> INFO - Processing section 0
+[649] Biber.pm:4574> INFO - Looking for bibtex file 'refs.bib' for section 0
+[651] bibtex.pm:1713> INFO - LaTeX decoding ...
+[659] bibtex.pm:1518> INFO - Found BibTeX data source 'refs.bib'
+[722] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[722] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[722] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[723] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[734] bbl.pm:654> INFO - Writing 'proposal.bbl' with encoding 'UTF-8'
+[737] bbl.pm:757> INFO - Output to proposal.bbl

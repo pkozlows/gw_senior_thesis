@@ -1,0 +1,173 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{schimka_accurate_2010}{article}{}
+      \name{author}{7}{}{%
+        {{hash=495a20eb83985450669e7b6afc0c50ad}{%
+           family={Schimka},
+           familyi={S\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=7d44223a2414c9db813bfce56451b3a0}{%
+           family={Harl},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=75c1270f19889a32d82695014a8e8ebb}{%
+           family={Stroppa},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d68a803dcae48a9ad6a437ecfbcf529c}{%
+           family={Grüneis},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5bf283f883694e18d5fd1b56fdb074fd}{%
+           family={Marsman},
+           familyi={M\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=52571211c81ebe880eeea841076bee2b}{%
+           family={Mittendorfer},
+           familyi={M\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=40daea6217342757546b996c2086b7b4}{%
+           family={Kresse},
+           familyi={K\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{3edf8108879cdc3275b5143319019cda}
+      \strng{fullhash}{17139930a41e28f10b470363c2cea88a}
+      \strng{bibnamehash}{17139930a41e28f10b470363c2cea88a}
+      \strng{authorbibnamehash}{17139930a41e28f10b470363c2cea88a}
+      \strng{authornamehash}{3edf8108879cdc3275b5143319019cda}
+      \strng{authorfullhash}{17139930a41e28f10b470363c2cea88a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Although density functional theory is widely used in surface science, it has a tendency to predict surfaces to be more stable than they actually are experimentally. Using a many-electron approach such as the random-phase approximation enables accurate surface and adsorption energies for carbon monoxide and benzene on metal surfaces to be determined.}
+      \field{issn}{1476-4660}
+      \field{journaltitle}{Nature Materials}
+      \field{month}{9}
+      \field{note}{Number: 9 Publisher: Nature Publishing Group}
+      \field{number}{9}
+      \field{title}{Accurate surface and adsorption energies from many-body perturbation theory}
+      \field{urlday}{8}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{volume}{9}
+      \field{year}{2010}
+      \field{urldateera}{ce}
+      \field{pages}{741\bibrangedash 744}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1038/nmat2806
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/KQY2HJXR/Schimka et al. - 2010 - Accurate surface and adsorption energies from many.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nature.com/articles/nmat2806
+      \endverb
+      \verb{url}
+      \verb https://www.nature.com/articles/nmat2806
+      \endverb
+      \keyw{Computational methods,interfaces and thin films,Surfaces}
+    \endentry
+    \entry{frontiers}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7b29f74b004eb1b4f787c02b4f6dbdd7}{%
+           family={Golze},
+           familyi={G\bibinitperiod},
+           given={Dorothea},
+           giveni={D\bibinitperiod}}}%
+        {{hash=19591a161e45a84afbeb1a97a0b3a6ca}{%
+           family={Dvorak},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3b83a879f9a12f61da41a1ac03302d58}{%
+           family={Rinke},
+           familyi={R\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{b3f340f67aa4f42a893ccbdafb720a42}
+      \strng{fullhash}{e6dc5d8831ad835139caabbdea26538d}
+      \strng{bibnamehash}{e6dc5d8831ad835139caabbdea26538d}
+      \strng{authorbibnamehash}{e6dc5d8831ad835139caabbdea26538d}
+      \strng{authornamehash}{b3f340f67aa4f42a893ccbdafb720a42}
+      \strng{authorfullhash}{e6dc5d8831ad835139caabbdea26538d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The GW approximation in electronic structure theory has become a widespread tool for predicting electronic excitations in chemical compounds and materials. In the realm of theoretical spectroscopy, the GW method provides access to charged excitations as measured in direct or inverse photoemission spectroscopy. The number of GW calculations in the past two decades has exploded with increased computing power and modern codes. The success of GW can be attributed to many factors: favorable scaling with respect to system size, a formal interpretation for charged excitation energies, the importance of dynamical screening in real systems, and its practical combination with other theories. In this review, we provide an overview of these formal and practical considerations. We expand, in detail, on the choices presented to the scientist performing GW calculations for the first time. We also give an introduction to the many-body theory behind GW, a review of modern applications like molecules and surfaces, and a perspective on methods which go beyond conventional GW calculations. This review addresses chemists, physicists and material scientists with an interest in theoretical spectroscopy. It is intended for newcomers to GW calculations but can also serve as an alternative perspective for experts and an up-to-date source of computational techniques.}
+      \field{issn}{2296-2646}
+      \field{journaltitle}{Frontiers in Chemistry}
+      \field{shorttitle}{The {GW} {Compendium}}
+      \field{title}{The {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
+      \field{urlday}{8}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{volume}{7}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/G3PM4WWW/Golze et al. - 2019 - The GW Compendium A Practical Guide to Theoretica.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377
+      \endverb
+    \endentry
+    \entry{noauthor_pyscf_nodate}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{{PySCF}: the {Python}‐based simulations of chemistry framework - {Sun} - 2018 - {WIREs} {Computational} {Molecular} {Science} - {Wiley} {Online} {Library}}
+      \field{urlday}{8}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb PySCF\: the Python‐based simulations of chemistry framework - Sun - 2018 - WIREs Computational Molecular Science - Wiley Online Library:/Users/patrykkozlowski/Zotero/storage/BAN7FKSY/wcms.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://wires.onlinelibrary.wiley.com/doi/10.1002/wcms.1340
+      \endverb
+      \verb{url}
+      \verb https://wires.onlinelibrary.wiley.com/doi/10.1002/wcms.1340
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

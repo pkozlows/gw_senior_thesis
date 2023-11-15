@@ -1,0 +1,18 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage[backend=biber, style=chem-acs]{biblatex}
+\author{Patryk Kozlowski}
+\title{Proposal}
+\date{\today}
+\addbibresource{refs.bib}
+\begin{document}
+\maketitle
+\section{Motivation}
+Density functional theory is the computational workhorse in the theoretical investigations of chemistry and materials science. However, it is plagued by a notorious self-interaction error, which leads it to overestimate surface stability in surface science, among others. \autocite{schimka_accurate_2010} The GW approximation, in the framework of many-body perturbation theory, has shown to be able to correct this. The word "correct" is an appropriate term here, because GW does not attempt to bypass DFT. Rather, it uses an initial DFT calculation as its mean field object, and simply perturbs it. Furthermore, it has a natural connection to theoretical spectroscopy, and enables one to simulate both direct and inverse photoemission spectra. \autocite{frontiers} 
+\section{Method}
+I will be using the PySCF package for this project. \autocite{noauthor_pyscf_nodate} At multiple steps in my implementation, there will be opportunities to compare what I have with the existing code in PySCF, which is known to be correct. I will be using an initial DFT calculation on the water molecule as my mean field object.
+\section{Goals}
+Through this project, I hope to learn about what it takes to implement Green's function methods, like GW, in quantum chemistry. In my graduate studies, I want to work on GW for periodic systems, so learning about how the method works for a simpler molecular system will be indispensable.
+\printbibliography
+\end{document}

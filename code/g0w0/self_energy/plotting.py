@@ -12,7 +12,7 @@ for idx, freq in enumerate(frequencies):
     all_correlation_energies[:, idx] = correlation_energies
 # the energies and frequencies are currently in hartrees; change them to eV
 frequencies *= 27.2114
-all_correlation_energies *= 27.2114 
+all_correlation_energies *= 
 # Plotting
 plt.figure(figsize=(12, 8))
 # let us only plot the HOMO and LUMO

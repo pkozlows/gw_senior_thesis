@@ -31,22 +31,22 @@ So, the factor is 2. We can now write the tensor as:
 \begin{equation}
     A_{iajb}=\delta _{ij} \delta _{ab} \left(\varepsilon _{a}-\varepsilon _{i}\right) + 2(ia|jb)
 \end{equation}
-From what you said on Tuesday, I assume that this factor probably should be a 4.\\
-We can then reshape this tensor into a matrix:
+\emph{From what you said on Tuesday, I assume that this factor probably should be a 4.\\}We can then reshape this tensor into a matrix:
 \begin{equation}
     A_{iajb} \rightarrow A_{\mu ,\nu }
 \end{equation}
 Where $\mu$ is a combination of $i$ and $a$ and $\nu$ is a combination of $j$ and $b$.
 For the sake of a clearer understanding, we will write out a summation of the eigenvalue problems:
 \begin{equation}
-    \sum_{jb} \textbf{A}_{ia,jb} \textbf{R}_{jb,n} = \textbf{R}_{ia,n} E_n
+    \sum_{jb} \textbf{A}_{ia,jb} \textbf{R}_{jb,n} = \textbf{R}_{ia,n} \textbf{E}
 \end{equation}
 
 
 At this point, one can recognize that the combination of $ia$ represents a series of excitations $\mu $. There are nocc x nvirt of these. Likewise, we will represent the combination of $jb$ by the index $\nu $. $\textbf{E}$ is a diagonal matrix of the eigenvalues $E_{n}$. We can then write:
 \begin{equation}
-    \textbf{A}_{\mu ,\nu } \textbf{R}_{\nu, n} = \textbf{R}_{\mu ,n} \textbf{E}
+    \sum_{\nu} \textbf{A}_{\mu ,\nu } \textbf{R}_{\nu, n} = \textbf{R}_{\mu ,n} \textbf{E}
 \end{equation}
+\emph{What is the tda. does it end here or continue into the W?\\}
 For a given excitation, we already have the $\Omega $/E, but we need to find the $V$.
 First, we consider a tensor of dimension 4:
 \begin{equation}
@@ -67,10 +67,11 @@ Where $\mu$ is a combination of $i$ and $a$. We can then use the eigenvectors to
 \section{Self Consistent Equation}
 Now that we have the real part of the correlation self-energy for a given orbital, we can incorporate it into a self-consistent procedure to obtain quasiparticle energies. The self-consistent equation is given by:
 \begin{equation}
-    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT}] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
+    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT/HF }] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
 \end{equation}
-\subsection{Fock Matrix with the DFT Electron Density}
-Thankfully, we can just get this with mf.get\_fock().\\
+\subsection{Fock Matrix with the HF Electron Density}
+My understanding is that this is going to be easier to start with.
+\subsection{Solving the iterative equation}
 We can iteratively solve this equation. First, we have:
 \begin{equation}
    \omega \equiv  \varepsilon_{p}^{QP} = \varepsilon_{p}^{DFT}

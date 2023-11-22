@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\author{Patryk Kozlowski}
+\title{G0W0}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Implementation}
+I want to discuss two equations today:
+\begin{equation}
+    \Sigma_{pp}^{\text{correlation}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{j}^{\text{occupied}} \frac{V_{pj}^{\mu }V_{pj}^{\mu }}{\omega -(\varepsilon _{j}-\Omega  _{\mu })}+ \sum_{b}^{\text{virtual}} \frac{V_{pb}^{\mu }V_{bp}^{\mu }}{\omega -(\varepsilon _{b}+\Omega  _{\mu })}\right)
+\end{equation}
+and the iterative procedure:
+\begin{equation}
+    \delta_{pq}F_{pq}^{\text{HF}}[\gamma^{\text{HF}}] + \Sigma_{p}^{\text{corr}}(\varepsilon_{p}^{\text{QP}}) = \varepsilon_{p}^{\text{QP}}
+\end{equation}
+My current understanding is that for now we have initially
+\begin{equation}
+    \varepsilon_{p}^{\text{QP}} = \varepsilon_{p}^{\text{HF}}
+\end{equation}
+which is just the molecular orbital energies from my initial HF calculation. Also, something like
+\begin{equation}
+    \delta_{pq}F_{pq}^{\text{HF}}[\gamma^{\text{HF}}]
+\end{equation}
+is just a diagonal matrix with the molecular orbital energies from my HF calculation. I know that we are making a whole lot of approximations, so what do you recommend that I play with next?
+\section{Spin Integration}
+We previously discussed that for the electron repulsion integrals in terms of spin orbitals
+\begin{equation}
+    (ia|jb) \rightarrow (i_{\alpha }a_{\alpha }|j_{\beta }b_{\beta }) , (i_{\beta }a_{\beta }|j_{\alpha }b_{\alpha }); (i_{\alpha }a_{\alpha }|j_{\alpha }b_{\alpha }) , (i_{\beta }a_{\beta }|j_{\beta }b_{\beta })
+\end{equation}
+We label them as 1, 2, 3, and 4 respectively. 
+So we have a singlet and triplet CSF respectively
+\begin{equation}
+    \ket{\Psi _{S}} = \frac{1}{\sqrt{2}} \left(\ket{1}+\ket{2}\right)
+\end{equation}
+and
+\begin{equation}
+    \ket{\Psi _{T}} = \frac{1}{\sqrt{2}} \left(\ket{3}-\ket{4}\right)
+\end{equation}
+In these CSFs, the total spin is conserved.
+How can I start to think about getting different factors from here e.g. 2 for
+\begin{equation}
+    A_{iajb}=\delta _{ij} \delta _{ab} \left(\varepsilon _{a}-\varepsilon _{i}\right) + (\underline{i} \underline{a} | \underline{j} \underline{b} )
+\end{equation}
+to
+\begin{equation}
+    A_{iajb}=\delta _{ij} \delta _{ab} \left(\varepsilon _{a}-\varepsilon _{i}\right) + 2(ia|jb)
+\end{equation}
+and $\sqrt{2}$ for 
+\begin{equation}
+    W_{p,q,i,a} = \sum_{\underline{p,q,i,a}} (\underline{p} \underline{q} | \underline{i} \underline{a} )
+\end{equation}
+to
+\begin{equation}
+    W_{p,q,i,a} = \sqrt{2} \sum_{p,q,i,a} (pq|ia)
+\end{equation}
+I assume an understanding of this concept will also be helpful for making $F_{pq}[\gamma^{DFT}]$. Right now I am just using $F_{pq}[\gamma^{HF}]$, which is just a simple diagonal approximation.
+\section{Fock Matrix}
+My current understanding of the Fock operator in the diagonal approximation is
+\begin{equation}
+    f_{pp}(\textbf{r})\ket{\phi _{p}} = H_{\text{core}}(\textbf{r})\ket{\phi _{p}} + 2*J - K
+\end{equation}
+I assume that all of the pieces here I can just get from $\gamma _{DFT}$.
+I recall you said earlier that I should also take spin into account i.e. just calling $mf.get_fock()$ wont work. Could you try to cover this again?
+\section{Filipp Furche}
+I have come to the idea that doing research with him this summer is going to be a good idea. I will get a exposure to a different quantum chemistry code and will meet new people. I took a brief look at what he does and I saw that he does a thought of applications, but I also saw that he does something with RPA theory. So far I have not been able to get far enough in the project to get exposure to the RPa, but it seems like something that I would want to dive deeper into diving the summer. Do you have any thoughts about what I would want to ask him to do?
+\end{document}

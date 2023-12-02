@@ -1,0 +1,22 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\author{Patryk Kozlowski}
+\title{G0W0}
+\date{\today}
+\begin{document}
+\maketitle
+\section{The Fock Operator}
+We are first interested in catting an expression for the funk operator in the AO basis. This can be easily later switched to the MO basis with something like $F_{pq} = \sum_{\mu} \sum_{\nu} C_{\mu p}^{*}F_{\mu\nu}C_{\nu q}$ where $C$ is the matrix of MO coefficients. The Fock operator is defined in the AO basis using the density matrix 
+\begin{equation}
+F_{\mu\nu} = h_{\mu\nu} + \sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\nu|\lambda\sigma) - \frac{1}{2}\sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\lambda|\nu\sigma)
+\end{equation}
+where $h_{\mu\nu}$ is the one-electron Hamiltonian (in the AO basis, this is just mf.get\_hcore), $P_{\lambda\sigma}$ is the density matrix, and $(\mu\nu|\lambda\sigma)$ is the two-electron repulsion integral. The density matrix is defined as
+\begin{equation}
+P_{\mu\nu} = 2\sum_{i=1}^{N/2}C_{\mu i}C_{\nu i}^{*}
+\end{equation}
+where $C$ is the matrix of MO coefficients. I want to convince myself that the above identity is indeed true and I can do this using mf.mo\_coeffs for $C$ and mf.get\_rdm1() for $P$. What I am currently doing is not working though.
+I am confused about where to obtain the two-electron repulsion integral. something like molecule.intor('int1e\_ovlp').shape gives me (24, 24), where I am working with 24 orbs. I want something like (24,24,24,24). In other words I want  a 4D tensor with indices $\mu\nu\lambda\sigma$.
+\end{document}

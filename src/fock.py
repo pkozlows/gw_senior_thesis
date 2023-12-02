@@ -26,5 +26,5 @@ molecule = pyscf.M(
 )
 # check whether the fog matrix is diaconal and find its dimensions
 fock = fock_matrix_hf(molecule)
-print(np.allclose(fock, fock.T))
+assert(np.allclose(fock, fock.T))
 print(fock.shape)

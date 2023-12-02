@@ -38,5 +38,5 @@ def calculate_mean_field(molecule, method):
     eri = eri.reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
             
     return mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri
-
+# calculate_mean_field(setup_molecule(), 'hf')
 

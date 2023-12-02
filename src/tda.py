@@ -5,11 +5,11 @@ import numpy as np
 from mf import setup_molecule, calculate_mean_field
 
 
-def real_corr_se(frequency):
+def real_corr_se(freq):
     '''Calculates the real part of the correlation self energy for a given molecule and frequency. Returns a matrix of correlation energies for each orbital at the given frequency. Only the diagonal of this matrix is considered.'''
     
     molecule = setup_molecule()
-    mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri = calculate_mean_field(molecule, 'hf')
+    mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri = calculate_mean_field(molecule, 'dft')
 
     def dtda_excitations():
         '''Calculates the excitation energies and the R matrix for the molecule in the tda.'''
@@ -29,18 +29,18 @@ def real_corr_se(frequency):
         # converted from hartress to electron volts
         return np.linalg.eigh(reshaped_a) 
 
-    from pyscf.tdscf.rks import dTDA
-    # now we want to calculate the excitation energies and the R matrix
+    # from pyscf.tdscf.rks import dTDA
+    # # now we want to calculate the excitation energies and the R matrix
     omega, R = dtda_excitations()
-    # perform a dtDA calculation to compare with what I have
-    comparison = dTDA(mf)
-    # comparison.xc = 'hf'
-    comparison.kernel()
-    # # assert that every energy in comparison is the same as omega
-    assert np.allclose(comparison.e, omega)
+    # # perform a dtDA calculation to compare with what I have
+    # comparison = dTDA(mf)
+    # # comparison.xc = 'hf'
+    # comparison.kernel()
+    # # # assert that every energy in comparison is the same as omega
+    # assert np.allclose(comparison.e, omega)
     
     # now that us compute the V matrix
-    W_pqia = np.sqrt(2)*eri[:, :, n_occupied:, :n_occupied]
+    W_pqia = np.sqrt(2)*eri[:, :, :n_occupied, n_occupied:]
     # now that us reshape it into a form we want
     W_Ipq = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
     V_npq = np.einsum('pqi,in->pqn', W_Ipq, R)
@@ -51,23 +51,11 @@ def real_corr_se(frequency):
     for p in range(n_orbitals):
         for u in range(excitations):
             for j in range(n_occupied):
-                correlation_energies[p, p] += V_npq[p, j, u]*V_npq[p, j, u]/(orbital_energies[j] - omega[u] - frequency)
+                correlation_energies[p, p] += V_npq[p, j, u]*V_npq[p, j, u]/(freq - orbital_energies[j] + omega[u])
             for b in range(n_virtual):
-                correlation_energies[p, p] += V_npq[p, b, u]*V_npq[p, b, u]/(orbital_energies[b] - omega[u] - frequency)
+                virtual_index = b + n_occupied
+                correlation_energies[p, p] += V_npq[p, virtual_index, u]*V_npq[p, virtual_index , u]/(freq - orbital_energies[virtual_index] - omega[u])
 
-    # returned the diagonal converting from her hartrees to electron volts
+    # returned the diagonal
     return np.diag(correlation_energies)    
     
-# # Define a range of frequencies
-# frequencies = np.linspace(0, 0.01, 5)
-
-# molecule = setup_molecule()
-# # Compute correlation energies for each frequency
-# all_correlation_energies = np.zeros((molecule.nao, len(frequencies)))
-
-# for idx, freq in enumerate(frequencies):
-#     correlation_energies = real_corr_se(freq)
-#     all_correlation_energies[:, idx] = correlation_energies
-# # the frequencies are currently in harte's have start change then to electron volts
-
-# print(all_correlation_energies)

@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\author{Patryk Kozlowski}
+\title{G0W0}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Derivation of Factors}
+Initially, we have the expression
+\begin{equation}
+    A_{iajb}=\delta _{ij} \delta _{ab} \left(\varepsilon _{a}-\varepsilon _{i}\right) + (\underline{i} \underline{a} | \underline{j} \underline{b} )
+\end{equation}
+all is in terms of spin orbitals. We want to derive the conversion into spatial orbitals. 
+\begin{equation}
+    (\underline{i} \underline{a} | \underline{j} \underline{b} ) = \sum_{\sigma _{1} \sigma _{2} \sigma _{3} \sigma _{4}} \int dr_{1} \int dr_{2} \phi _{i,\sigma _1}(r_{1}) \phi _{a,\sigma 2}^*(r_{1}) \frac{1}{r_{12}} \phi _{j,\sigma 3}(r_{2}) \phi _{b,\sigma 4}^*(r_{2})
+\end{equation}
+The spin at a given index has to be the same, So
+\begin{equation}
+    = \sum_{\sigma _{1} \sigma _{2}} \int dr_{1} \int dr_{2} \phi _{i,\sigma _1}(r_{1}) \phi _{a,\sigma _1}^*(r_{1}) \frac{1}{r_{12}} \phi _{j,\sigma _2}(r_{2}) \phi _{b,\sigma _2}^*(r_{2})
+\end{equation}
+Because we are working in a direct approximation, we only care about the Coloumb ones of
+\begin{equation}
+    (ia|jb) \rightarrow (i_{\alpha }a_{\alpha }|j_{\beta }b_{\beta }) , (i_{\beta }a_{\beta }|j_{\alpha }b_{\alpha }); (i_{\alpha }a_{\alpha }|j_{\alpha }b_{\alpha }) , (i_{\beta }a_{\beta }|j_{\beta }b_{\beta })
+\end{equation}
+which 2 does this correspond to and is my logic correct?
+Next, we have:
+\begin{equation}
+    W_{p,q,i,a} = \sum_{\underline{p,q,i,a}} (\underline{p} \underline{q} | \underline{i} \underline{a} )
+\end{equation}
+which is the same as
+\begin{equation}
+    W_{p,q,i,a} = \sum_{p,q,i,a} \sum_{\sigma _{1} \sigma _{2} \sigma _{3} \sigma _{4}} \int dr_{1} \int dr_{2} \phi _{p \sigma _{1}}(r_{1}) \phi _{q \sigma _{2}}^*(r_{1}) \frac{1}{r_{12}} \phi _{i \sigma _{3}}(r_{2}) \phi _{a \sigma _{4}}^*(r_{2})
+\end{equation}
+I am not sure where to go from here.
+\end{document}

@@ -43,29 +43,29 @@ lumo_index = n_occupied
 conversion_factor = 27.2114
 print(g0w0(homo_index, my_fock, real_corr_se) * conversion_factor)
 
-#Original PySCF GW (with frequency)
+# #Original PySCF GW (with frequency)
 
-mf = rks.RKS(molecule)
-mf.xc = 'hf'
-mf.verbose = 0
-mf.kernel()
-# IP and EA
-nocc = molecule.nelectron//2
-nmo = mf.mo_energy.size
-nvir = nmo - nocc
+# mf = rks.RKS(molecule)
+# mf.xc = 'hf'
+# mf.verbose = 0
+# mf.kernel()
+# # IP and EA
+# nocc = molecule.nelectron//2
+# nmo = mf.mo_energy.size
+# nvir = nmo - nocc
 
-orbs = [nocc-2, nocc-1, nocc, nocc+1]
+# orbs = [nocc-2, nocc-1, nocc, nocc+1]
 
-td = tddft.dTDA(mf)
-td.nstates = nocc*nvir
-e, xy = td.kernel()
-# Make a fake Y vector of zeros
-td_xy = list()
-for e,xy in zip(td.e,td.xy):
-    x,y = xy
-    td_xy.append((x,0*x))
-td.xy = td_xy
+# td = tddft.dTDA(mf)
+# td.nstates = nocc*nvir
+# e, xy = td.kernel()
+# # Make a fake Y vector of zeros
+# td_xy = list()
+# for e,xy in zip(td.e,td.xy):
+#     x,y = xy
+#     td_xy.append((x,0*x))
+# td.xy = td_xy
 
-mygw = gw.GW(mf, freq_int='exact', tdmf=td)
-mygw.kernel(orbs=orbs)
-print(mygw.mo_energy*conversion_factor)
+# mygw = gw.GW(mf, freq_int='exact', tdmf=td)
+# mygw.kernel(orbs=orbs)
+# print(mygw.mo_energy*conversion_factor)

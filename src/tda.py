@@ -43,18 +43,31 @@ def real_corr_se(freq):
     W_pqia = np.sqrt(2)*eri[:, :, :n_occupied, n_occupied:]
     # now that us reshape it into a form we want
     W_Ipq = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
-    V_npq = np.einsum('pqi,in->pqn', W_Ipq, R)
+    V_pqn = np.einsum('pqi,in->pqn', W_Ipq, R)
     excitations = n_occupied*n_virtual
     # initialize the correlation energies
     correlation_energies = np.zeros((n_orbitals, n_orbitals))
-    # we start out by just getting the diagonal elements
-    for p in range(n_orbitals):
-        for u in range(excitations):
-            for j in range(n_occupied):
-                correlation_energies[p, p] += V_npq[p, j, u]*V_npq[p, j, u]/(freq - orbital_energies[j] + omega[u])
-            for b in range(n_virtual):
-                virtual_index = b + n_occupied
-                correlation_energies[p, p] += V_npq[p, virtual_index, u]*V_npq[p, virtual_index , u]/(freq - orbital_energies[virtual_index] - omega[u])
+
+    # make the V in the first sum
+    exc_occ_vector = np.zeros((n_orbitals, n_occupied, excitations))
+    exc_occ_vector += np.square(V_pqn[:, :n_occupied, :])
+    occupied_denominator = np.zeros((n_occupied, excitations))
+    # make the denominator
+    occupied_denominator += (freq - orbital_energies[:n_occupied, None] + omega[None, :])
+    # contract them
+    first_some = np.einsum('pqu,qu->p', exc_occ_vector, 1/occupied_denominator)
+
+    # make the V in the second sum
+    exc_vir_vector = np.zeros((n_orbitals, n_virtual, excitations))
+    exc_vir_vector += np.square(V_pqn[:, n_occupied:, :])
+    virtual_denominator = np.zeros((n_virtual, excitations))
+    # make the denominator
+    virtual_denominator += (freq - orbital_energies[n_occupied:, None] - omega[None, :])
+    # contract them
+    second_some = np.einsum('pqu,qu->p', exc_vir_vector, 1/virtual_denominator)
+
+    # add the fondle results
+    correlation_energies += first_some[:, None] + second_some[:, None]
 
     # returned the diagonal
     return np.diag(correlation_energies)    

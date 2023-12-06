@@ -8,15 +8,9 @@ def fock_matrix_hf(molecule):
     molecule = setup_molecule()
     mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri = calculate_mean_field(molecule, 'hf')
     
-    # first we want to find the charge density matrix
     # initialize the fock matrix
     fock = np.zeros((n_orbitals, n_orbitals))
-    # loop over all orbitals twice
-    for p in range(n_orbitals):
-        for q in range(n_orbitals):
-            # check if we are dealing with a day cando element
-            if p == q:
-                fock[p,q] += orbital_energies[p]
+    fock += np.diag(orbital_energies)
     return fock
   
 molecule = pyscf.M(

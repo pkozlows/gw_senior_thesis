@@ -48,6 +48,8 @@ def real_corr_se(freq):
     # initialize the correlation energies
     correlation_energies = np.zeros((n_orbitals, n_orbitals))
 
+    # from 11-30
+
     # make the V in the first sum
     exc_occ_vector = np.zeros((n_orbitals, n_occupied, excitations))
     exc_occ_vector += np.square(V_pqn[:, :n_occupied, :])

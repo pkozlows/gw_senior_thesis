@@ -18,20 +18,33 @@ def real_corr_se(freq):
         # loop over all of the relevant indices
         # Using einsum for the electron repulsion integrals part
         A = 2 * np.einsum('iajb->iajb', eri[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
-        
-        occupied_energies = orbital_energies[:n_occupied]
-        virtual_energies = orbital_energies[-n_virtual:]
-
-
-        for i in range(n_occupied):
-            for a in range(n_virtual):
-                for j in range(n_occupied):
-                    for b in range(n_virtual):
-                        # then we add the differences between orbital energies if they pass the delta function condition
-                        if a == b and i == j:
-                            A[i, a, j, b] += orbital_energies[a+n_occupied] - orbital_energies[i]
         reshaped_a = A.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
-        # converted from hartress to electron volts
+        reshaped_b = np.zeros((n_occupied*n_virtual, n_occupied*n_virtual))
+        
+        # initialize the E_ai matrix
+        E_ai = np.zeros((n_virtual, n_occupied))
+        virtual_energies = orbital_energies[n_occupied:]
+        occupied_energies = orbital_energies[:n_occupied]
+        # the line below is the problematic one I think
+        E_ai = virtual_energies - occupied_energies[:, None]
+        # E_ai = E_ai.T
+        reshaped_E_ai = E_ai.reshape(n_occupied*n_virtual)
+        # print(np.diag(reshaped_E_ai))
+        # initialize the matrix B
+        reshaped_b += np.diag(reshaped_E_ai)
+
+        # # initialize the B matrix
+        # B = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
+        # for i in range(n_occupied):
+        #     for a in range(n_virtual):
+        #         for j in range(n_occupied):
+        #             for b in range(n_virtual):
+        #                 # then we add the differences between orbital energies if they pass the delta function condition
+        #                 if a == b and i == j:
+        #                     B[i, a, j, b] += orbital_energies[a+n_occupied] - orbital_energies[i]
+        # reshaped_b = B.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
+        # print(np.diag(reshaped_b))
+        reshaped_a += reshaped_b
         return np.linalg.eigh(reshaped_a) 
 
     # from pyscf.tdscf.rks import dTDA

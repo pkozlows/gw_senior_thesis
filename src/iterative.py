@@ -7,8 +7,7 @@ from pyscf import tddft
 import pyscf
 from pyscf.dft import rks
 from pyscf import scf
-# implement the iterative procedure to do g0w0
-
+    # implement the iterative procedure to do g0w0
 def g0w0(orbital_number, fock_matrix, real_corr_se):
     # Initial guess
     fock_element = fock_matrix[orbital_number, orbital_number]

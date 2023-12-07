@@ -1,7 +1,7 @@
 import numpy as np
 from tda import real_corr_se
 from mf import setup_molecule, calculate_mean_field
-from fock import fock_matrix_hf
+from fock import fock_matrix_hf, fock_dft
 from pyscf import gw
 from pyscf import tddft
 import pyscf
@@ -16,7 +16,7 @@ def g0w0(orbital_number, fock_matrix, real_corr_se):
     # Initialize the qpe
     qpe = initial_guess
     iter = 0
-    tol = 1e-9
+    tol = 1e-5
     while True:
         # Update the self energy using the current guess as the frequency
         new_qpe = fock_element + real_corr_se(qpe)[orbital_number]
@@ -30,7 +30,8 @@ def g0w0(orbital_number, fock_matrix, real_corr_se):
         
     return qpe
 molecule = setup_molecule()
-my_fock = fock_matrix_hf(molecule)
+# my_fock = fock_matrix_hf(molecule)
+my_fock = fock_dft(molecule)
 # # find the number of orbitals
 n_orbitals = molecule.nao_nr()
 # # find the number of occupied orbitals

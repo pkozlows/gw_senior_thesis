@@ -9,7 +9,7 @@ def real_corr_se(freq):
     '''Calculates the real part of the correlation self energy for a given molecule and frequency. Returns a matrix of correlation energies for each orbital at the given frequency. Only the diagonal of this matrix is considered.'''
     
     molecule = setup_molecule()
-    mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri = calculate_mean_field(molecule, 'hf')
+    mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'dft')
 
     def dtda_excitations():
         '''Calculates the excitation energies and the R matrix for the molecule in the tda.'''
@@ -17,7 +17,7 @@ def real_corr_se(freq):
         A = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
         # loop over all of the relevant indices
         # Using einsum for the electron repulsion integrals part
-        A = 2 * np.einsum('iajb->iajb', eri[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
+        A = 2 * np.einsum('iajb->iajb', mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals))[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
         reshaped_a = A.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
         
         # initialize the E_ai matrix

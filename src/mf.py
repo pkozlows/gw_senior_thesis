@@ -31,11 +31,6 @@ def calculate_mean_field(molecule, method):
         mf.kernel()
     # get the orbital energies
     orbital_energies = mf.mo_energy
-    # get the relevant electron repulsion integrals
-    orbs = mf.mo_coeff
-    eri = molecule.ao2mo(orbs, compact=False)
-    # we want to reshape them from the packed chemists notation
-    eri = eri.reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
             
-    return mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri
+    return mf, n_orbitals, n_occupied, n_virtual, orbital_energies
 

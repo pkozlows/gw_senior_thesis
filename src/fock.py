@@ -17,8 +17,8 @@ def fock_dft(molecule):
 
     mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'dft')
 
-    # initialize the fock matrix in the atomic orbital basis
-    fock = np.zeros((n_orbitals, n_orbitals))
+    # initialize the ao_fock matrix in the atomic orbital basis
+    ao_fock = np.zeros((n_orbitals, n_orbitals))
     h_core = mf.get_hcore()
     # in nationalize the codon matrix
     coulumb_matrix = np.zeros((n_orbitals, n_orbitals))
@@ -27,15 +27,13 @@ def fock_dft(molecule):
     exchange_matrix = np.zeros((n_orbitals, n_orbitals))
     exchange_matrix += np.einsum('rs,prqs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
     # add the terms
-    fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
-    return fock
+    ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
+    # convert the fock matrix to the molecular orbital basis
+    mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
+    return mo_fock
 
 molecule = pyscf.M(
     atom = 'O  0 0 0; H  0 0.758602 0.504284; H  0 0.758602 -0.504284',
     basis = 'ccpvdz',
     symmetry = True,
 )
-# # check whether the fog matrix is diaconal and find its dimensions
-# fock = fock_matrix_hf(molecule)
-# assert(np.allclose(fock, fock.T))
-# print(fock.shape)

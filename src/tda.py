@@ -10,6 +10,7 @@ def real_corr_se(freq):
     
     molecule = setup_molecule()
     mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'dft')
+    eri_mo = molecule.ao2mo(mf.mo_coeff, compact=False).reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
 
     def dtda_excitations():
         '''Calculates the excitation energies and the R matrix for the molecule in the tda.'''
@@ -17,7 +18,7 @@ def real_corr_se(freq):
         A = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
         # loop over all of the relevant indices
         # Using einsum for the electron repulsion integrals part
-        A = 2 * np.einsum('iajb->iajb', mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals))[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
+        A = 2 * np.einsum('iajb->iajb', eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
         reshaped_a = A.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
         
         # initialize the E_ai matrix
@@ -40,7 +41,7 @@ def real_corr_se(freq):
     # assert np.allclose(comparison.e, omega)
     
     # now that us compute the V matrix
-    W_pqia = np.sqrt(2)*eri[:, :, :n_occupied, n_occupied:]
+    W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
     # now that us reshape it into a form we want
     W_Ipq = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
     V_pqn = np.einsum('pqi,in->pqn', W_Ipq, R)

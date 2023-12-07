@@ -21,7 +21,7 @@ def calculate_mean_field(molecule, method):
     # run the mean field calculation
     if method == 'dft':
         mf = rks.RKS(molecule)
-        mf.xc = 'hf'
+        mf.xc = 'pbe'
         mf.verbose = 0
         mf.kernel()
     elif method == 'hf':
@@ -38,5 +38,4 @@ def calculate_mean_field(molecule, method):
     eri = eri.reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
             
     return mf, n_orbitals, n_occupied, n_virtual, orbital_energies, eri
-# calculate_mean_field(setup_molecule(), 'hf')
 

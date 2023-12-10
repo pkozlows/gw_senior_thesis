@@ -1,0 +1,28 @@
+\begin{theindex}
+B
+  \item bibliography, 1
+    \subitem by chapter, 4
+
+  \indexspace
+C
+  \item chapter
+    \subitem numbered, 1
+    \subitem unnumbered, 1
+
+  \indexspace
+F
+  \item figures, 2
+
+  \indexspace
+L
+  \item \LaTeX, 1
+
+  \indexspace
+N
+  \item nomenclature, 1
+
+  \indexspace
+T
+  \item tables, 2
+
+\end{theindex}

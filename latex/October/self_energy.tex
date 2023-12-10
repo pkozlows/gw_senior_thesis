@@ -16,7 +16,7 @@ $p,q,r,s,...$ are used for general orbitals. $i,j,k,l,...$ are used for occupied
 \section{Self Energy}
 First, we are interested in implementing the diagonal of the real part of the correlation part of the self-energy. This is given by:
 \begin{equation}
-    \Sigma_{pp}^{\text{correlation}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{j}^{\text{occupied}} \frac{V_{pj}^{\mu }V_{pj}^{\mu }}{\omega -(\varepsilon _{j}-\Omega  _{\mu })}+ \sum_{b}^{\text{virtual}} \frac{V_{pb}^{\mu }V_{bp}^{\mu }}{\omega -(\varepsilon _{b}+\Omega  _{\mu })}\right)
+    \Sigma_{pp}^{\text{correlation}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{i}^{\text{occupied}} \frac{V_{pi}^{\mu }V_{ip}^{\mu }}{\omega -(\varepsilon _{i}-\Omega  _{\mu })}+ \sum_{a}^{\text{virtual}} \frac{V_{pa}^{\mu }V_{ap}^{\mu }}{\omega -(\varepsilon _{a}+\Omega  _{\mu })}\right)
 \end{equation}
 Most of the entities are known, so we first turn our attention to the $V$ and $\Omega_{\mu }$. The derivation of these quantities will be made in the Tamm-Dancoff approximation of the RPA. First, we consider the tensor $A$:
 \begin{equation}

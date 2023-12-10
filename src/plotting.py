@@ -34,6 +34,9 @@ for idx, freq in enumerate(frequencies):
 frequencies_ev = frequencies * conversion_factor
 all_correlation_energies_ev = all_correlation_energies * conversion_factor
 
+# Set global font size
+plt.rcParams.update({'font.size': 14})  # You can adjust the size as needed
+
 # Plotting
 plt.figure(figsize=(12, 8))
 
@@ -50,7 +53,7 @@ plt.ylabel(r'$\operatorname{Re}(\Sigma_{pp}^{c})$ [eV]')
 # Add the line y = x + b, converting b to eV as well
 fock_element_ev = my_fock[homo_index, homo_index] * conversion_factor
 print('Fock element', fock_element_ev)
-plt.plot(frequencies_ev, frequencies_ev - fock_element_ev, label=r'$\omega - \varepsilon_0^{HF}$')
+plt.plot(frequencies_ev, frequencies_ev - fock_element_ev, label=r'$\omega - \varepsilon_p^{HF}$')
 # # find the x value add which the lines intersect
 # # Difference between the HOMO curve and the omega - epsilon_0^HF line
 # difference = all_correlation_energies_ev[homo_index] - (frequencies_ev - fock_element_ev)
@@ -71,7 +74,7 @@ plt.annotate(rf'$\omega$={iterative_solution:.2f} eV',
                  arrowprops=dict(arrowstyle='->', color='black'))
 plt.xlim(frequencies_ev[0], frequencies_ev[-1])
 plt.ylim(min(all_correlation_energies_ev[homo_index]) - 5, max(all_correlation_energies_ev[homo_index]) + 5)
-plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.legend(loc='upper right', bbox_to_anchor=(1, 1))
 plt.subplots_adjust(right=0.75)
 plt.grid(True)
 plt.savefig('correlation_energies.png', bbox_inches='tight')  # bbox_inches='tight' to ensure the legend is included in the save

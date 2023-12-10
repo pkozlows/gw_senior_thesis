@@ -34,11 +34,11 @@ e, xy = td.kernel()
 # td.xy = td_xy
 
 mygw = gw.GW(mf, freq_int='exact', tdmf=td)
-mygw.kernel(orbs=orbs)
-print(mygw.mo_energy*conversion_factor)
+# mygw.kernel(orbs=orbs)
+# print(mygw.mo_energy*conversion_factor)
 
     # implement the iterative procedure to do g0w0
-def g0w0(orbital_number, fock_mo, real_corr_se):
+def g0w0(orbital_number, fock_mo, real_corr_se, mf):
     '''Calculates the G0W0 correction for a given orbital number, fock matrix in the atomic orbital basis, and real part of the correlation self energy.'''
     # convert the fock matrix to the molecular orbital basis
 
@@ -52,7 +52,7 @@ def g0w0(orbital_number, fock_mo, real_corr_se):
     tol = 1e-7
     while True:
         # Update the self energy using the current guess as the frequency
-        new_qpe = fock_element + real_corr_se(qpe)[orbital_number]
+        new_qpe = fock_element + real_corr_se(qpe, mf)[orbital_number]
 
         # Check if the convergence criterion is met
         if np.abs(new_qpe - qpe) <= tol:
@@ -62,6 +62,11 @@ def g0w0(orbital_number, fock_mo, real_corr_se):
         iter += 1
         
     return qpe
+mf = rks.RKS(molecule)
+mf.xc = 'hf'
+mf.verbose = 0
+mf.kernel()
+
 my_fock = fock_matrix_hf(molecule)
 # my_fock = fock_dft(molecule)
 # find the number of orbitals
@@ -72,4 +77,4 @@ n_occupied = molecule.nelectron//2
 n_virtual = n_orbitals - n_occupied
 homo_index = n_occupied-1
 lumo_index = n_occupied
-print(g0w0(homo_index, my_fock, real_corr_se) * conversion_factor)
+print(g0w0(homo_index, my_fock, real_corr_se, mf) * conversion_factor)

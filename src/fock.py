@@ -1,21 +1,30 @@
 import numpy as np
 import pyscf
 from mf import setup_molecule, calculate_mean_field
-def fock_matrix_hf(molecule):
+from functools import reduce
+def fock_matrix_hf(mf):
     '''Calculates the fock matrix for a given set of molecular orbitals and occupations.'''
 
     
-    mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'hf')
+    n_orbitals = mf.mol.nao_nr()
+    n_occupied = mf.mol.nelectron//2
+    n_virtual = n_orbitals - n_occupied
+    # get the orbital energies
+    orbital_energies = mf.mo_energy
     
     # initialize the fock matrix
     fock = np.zeros((n_orbitals, n_orbitals))
     fock += np.diag(orbital_energies)
     return fock
   
-def fock_dft(molecule):
+def fock_dft(mf):
     '''Calculates the HF fock matrix using the DFT electron density in AO basis for a given set of molecular orbitals and occupations.'''
 
-    mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'dft')
+    n_orbitals = mf.mol.nao_nr()
+    n_occupied = mf.mol.nelectron//2
+    n_virtual = n_orbitals - n_occupied
+    # get the orbital energies
+    orbital_energies = mf.mo_energy
 
     # initialize the ao_fock matrix in the atomic orbital basis
     ao_fock = np.zeros((n_orbitals, n_orbitals))
@@ -30,10 +39,17 @@ def fock_dft(molecule):
     ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
     # convert the fock matrix to the molecular orbital basis
     mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
+    # check to what extent the fock matrix is diagonal
+    print(np.diag(mo_fock) - orbital_energies)
     return mo_fock
 
-molecule = pyscf.M(
-    atom = 'O  0 0 0; H  0 0.758602 0.504284; H  0 0.758602 -0.504284',
-    basis = 'ccpvdz',
-    symmetry = True,
-)
+def pyscf_fock_dft(mf):
+    '''Calculates the HF fock matrix using the DFT electron density in AO basis for a given set of molecular orbitals and occupations.'''
+
+    dm = mf.make_rdm1(mf.mo_coeff, mf.mo_occ)
+    vhf = mf.get_veff(mf.mol, dm)
+    ao_fock = mf.get_fock(vhf=vhf, dm=dm)
+    # convert the fock matrix to the molecular orbital basis
+    mo_fock = reduce(np.dot, (mf.mo_coeff.conj().T, ao_fock, mf.mo_coeff))
+    # mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
+    return mo_fock

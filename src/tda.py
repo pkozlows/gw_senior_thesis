@@ -1,11 +1,10 @@
 import pyscf
 from pyscf.dft import rks
 from pyscf.tdscf.rks import dTDA, dRPA
+from pyscf import tddft
 import numpy as np
 from mf import setup_molecule, calculate_mean_field
-
-molecule = setup_molecule()
-mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(molecule, 'hf')
+import numpy as np
 
 def my_dtda(mf):
     '''Calculates the excitation energies and the R matrix for the molecule in the direct tda.'''
@@ -32,7 +31,15 @@ def my_dtda(mf):
     E_ai = virtual_energies - occupied_energies[:, None]
     reshaped_E_ai = E_ai.reshape(n_occupied*n_virtual)
     reshaped_a += np.diag(reshaped_E_ai)
-    return np.linalg.eigh(reshaped_a)
+
+    omega, R = np.linalg.eigh(reshaped_a)
+
+    # now that us compute the V matrix
+    W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
+    # now that us reshape it into a form we want
+    W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
+    V_pqu = np.einsum('pqi,in->pqn', W_pqu, R)
+    return omega, V_pqu
 
 def my_drpa(mf):
     '''Calculates the excitation energies and the R matrix for the molecule in the direct rpa.'''
@@ -71,6 +78,7 @@ def my_drpa(mf):
     return np.linalg.eigh(combined_matrix)
 
 
+
 def real_corr_se(freq, mf):
     '''Calculates the real part of the correlation self energy for a given molecule and frequency. Returns a matrix of correlation energies for each orbital at the given frequency. Only the diagonal of this matrix is considered.'''
 
@@ -80,42 +88,11 @@ def real_corr_se(freq, mf):
     n_virtual = n_orbitals - n_occupied
     # get the orbital energies
     orbital_energies = mf.mo_energy
-    # get the MO integrals
-    eri_mo = mf.mol.ao2mo(mf.mo_coeff, compact=False).reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
 
-    # from pyscf.tdscf.rks import dTDA
     # # now we want to calculate the excitation energies and the R matrix
-    omega, R = my_dtda(mf)
-    # # perform a dtDA calculation to compare with what I have
-    # comparison = dTDA(mf)
-    # # comparison.xc = 'hf'
-    # comparison.kernel()
-    # # # assert that every energy in comparison is the same as omega
-    # assert np.allclose(comparison.e, omega)
+    omega, V_pqu = my_dtda(mf)
+    # omega, R = my_drpa(mf)
 
-    sigma, vwc = my_drpa(mf)
-    reversed_sigma = sigma[n_occupied*n_virtual:][::-1]
-    result = (np.abs(sigma[:n_occupied*n_virtual]) - reversed_sigma)[::-1]
-
-    
-    # mf = rks.RKS(molecule)
-    # mf.xc = 'hf'
-    # mf.verbose = 0
-    # mf.kernel()
-
-    # comp2 = dRPA(mf)
-    # comp2.nstates = n_occupied*n_virtual
-    # comp2.xc = 'hf'
-    # comp2.kernel()
-    # print(np.allclose(comp2.e[::-1], reversed_sigma))
-    # # print(comp2.e[::-1] - reversed_sigma)
-
-    
-    # now that us compute the V matrix
-    W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
-    # now that us reshape it into a form we want
-    W_Ipq = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
-    V_pqn = np.einsum('pqi,in->pqn', W_Ipq, R)
     excitations = n_occupied*n_virtual
     # initialize the correlation energies
     correlation_energies = np.zeros((n_orbitals, n_orbitals))
@@ -124,7 +101,7 @@ def real_corr_se(freq, mf):
 
     # make the V in the first sum
     exc_occ_vector = np.zeros((n_orbitals, n_occupied, excitations))
-    exc_occ_vector += np.square(V_pqn[:, :n_occupied, :])
+    exc_occ_vector += np.square(V_pqu[:, :n_occupied, :])
     occupied_denominator = np.zeros((n_occupied, excitations))
     # make the denominator
     occupied_denominator += (freq - orbital_energies[:n_occupied, None] + omega[None, :])
@@ -133,7 +110,7 @@ def real_corr_se(freq, mf):
 
     # make the V in the second sum
     exc_vir_vector = np.zeros((n_orbitals, n_virtual, excitations))
-    exc_vir_vector += np.square(V_pqn[:, n_occupied:, :])
+    exc_vir_vector += np.square(V_pqu[:, n_occupied:, :])
     virtual_denominator = np.zeros((n_virtual, excitations))
     # make the denominator
     virtual_denominator += (freq - orbital_energies[n_occupied:, None] - omega[None, :])

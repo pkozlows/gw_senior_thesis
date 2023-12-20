@@ -1,0 +1,10 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\author{Patryk Kozlowski}
+\title{Figuring out TDDFT shapes}
+\date{\today}
+\begin{document}
+\maketitle
+TDA is giving me a list of length nocc*nvirt; it is clear that each of these corresponds to an excitation energy. However, each element of the list has two entries; the first of which is an ndarray with shape (nocc,nvirt) and the second of which is just 0. When I move to the RPA, it is similar, but instead of just 0, the second entry is also an ndarray with shape (nocc,nvirt).
+\end{document}

@@ -1,7 +1,7 @@
 import numpy as np
 from tda import real_corr_se
 from mf import setup_molecule, calculate_mean_field
-from fock import fock_matrix_hf, fock_dft
+from fock import fock_matrix_hf, fock_dft, pyscf_fock_dft
 from pyscf import gw
 from pyscf import tddft
 import pyscf
@@ -23,19 +23,20 @@ nvir = nmo - nocc
 
 orbs = [nocc-1, nocc]
 
-td = tddft.dRPA(mf)
+td = tddft.dTDA(mf)
+# td = tddft.dRPA(mf)
 td.nstates = nocc*nvir
 e, xy = td.kernel()
 # Make a fake Y vector of zeros
-# td_xy = list()
-# for xy in td.xy:
-#     x,y = xy
-#     td_xy.append((x,y))
-# td.xy = td_xy
+td_xy = list()
+for xy in td.xy:
+    x,y = xy
+    td_xy.append((x,0*x))
+td.xy = td_xy
 
 mygw = gw.GW(mf, freq_int='exact', tdmf=td)
-# mygw.kernel(orbs=orbs)
-# print(mygw.mo_energy*conversion_factor)
+mygw.kernel(orbs=orbs)
+print(mygw.mo_energy*conversion_factor)
 
     # implement the iterative procedure to do g0w0
 def g0w0(orbital_number, fock_mo, real_corr_se, mf):
@@ -49,7 +50,7 @@ def g0w0(orbital_number, fock_mo, real_corr_se, mf):
     # Initialize the qpe
     qpe = initial_guess
     iter = 0
-    tol = 1e-7
+    tol = 1e-9
     while True:
         # Update the self energy using the current guess as the frequency
         new_qpe = fock_element + real_corr_se(qpe, mf)[orbital_number]
@@ -67,14 +68,17 @@ mf.xc = 'hf'
 mf.verbose = 0
 mf.kernel()
 
-my_fock = fock_matrix_hf(molecule)
-# my_fock = fock_dft(molecule)
+my_fock = fock_matrix_hf(mf)
+# my_fock = fock_dft(mf)
+# pyscf_fock = pyscf_fock_dft(mf)
 # find the number of orbitals
 n_orbitals = molecule.nao_nr()
 # # find the number of occupied orbitals
 n_occupied = molecule.nelectron//2
 # # find the number of virtual orbitals
+# # find the number of virtual orbitals
 n_virtual = n_orbitals - n_occupied
 homo_index = n_occupied-1
 lumo_index = n_occupied
 print(g0w0(homo_index, my_fock, real_corr_se, mf) * conversion_factor)
+# print(g0w0(homo_index, pyscf_fock, real_corr_se, mf) * conversion_factor)

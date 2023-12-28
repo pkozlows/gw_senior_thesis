@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 from iterative import g0w0
 from tda import real_corr_se
 from mf import setup_molecule, calculate_mean_field
-from fock import fock_matrix_hf
+from fock import simple_fock
 
 molecule = setup_molecule()
-my_fock = fock_matrix_hf(molecule)
+my_fock = simple_fock(molecule)
 # find the number of orbitals
 n_orbitals = molecule.nao_nr()
 # find the number of occupied orbitals

@@ -6,5 +6,8 @@
 \date{\today}
 \begin{document}
 \maketitle
-TDA is giving me a list of length nocc*nvirt; it is clear that each of these corresponds to an excitation energy. However, each element of the list has two entries; the first of which is an ndarray with shape (nocc,nvirt) and the second of which is just 0. When I move to the RPA, it is similar, but instead of just 0, the second entry is also an ndarray with shape (nocc,nvirt).
+\section{PySCF}
+TDA excitation vectors are a list of length nocc*nvirt; it is clear that each of these corresponds to an excitation energy. However, each element of the list has two entries; the first of which is an ndarray with shape (nocc,nvirt) and the second of which is just 0. When I move to the RPA, it is similar, but instead of just 0, the second entry is also an ndarray with shape (nocc,nvirt). 
+\section{Mine}
+I just have my TDA excitation vectors as an ndarray with shape (nocc*nvirt, nocc*nvirt). This is a simplification that needs to change.
 \end{document}

@@ -13,11 +13,6 @@ def setup_molecule():
 def calculate_mean_field(molecule, method):
     '''Calculates the mean field for a given molecule and method.'''
 
-    # I want to get basic information like the number of orbitals, occupied orbitals, and virtual orbitals
-    n_orbitals = molecule.nao_nr()
-    n_occupied = molecule.nelectron//2
-    n_virtual = n_orbitals - n_occupied
-
     # run the mean field calculation
     if method == 'dft':
         mf = rks.RKS(molecule)
@@ -25,14 +20,12 @@ def calculate_mean_field(molecule, method):
         mf.verbose = 0
         mf.kernel()
     elif method == 'hf':
-        mf = pyscf.scf.RHF(molecule)
+        mf = rks.RKS(molecule)
         mf.xc = 'hf'
         mf.verbose = 0
         mf.kernel()
-    # get the orbital energies
-    orbital_energies = mf.mo_energy
             
-    return mf, n_orbitals, n_occupied, n_virtual, orbital_energies
+    return mf
 
 
 

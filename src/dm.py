@@ -17,6 +17,27 @@ def lin_gw_dm(td, mf):
     omega, V_pqn = td
 
     dm = np.zeros((n_orbitals, n_orbitals))
+    # Calculate the denominator for the GW self-energy term
+    # Assuming omega_s is an array of frequencies corresponding to each 's'
+    denominator = orbital_energies[:, None] - orbital_energies[None, :] - omega[:, None, None]
+
+    occupied_and_their_cheese = orbital_energies[:, None]
+
+    # Calculate the numerator using V_pqn, which seems to be your transition matrix
+    # You need to make sure that the indices correspond to the i, a, and s indices in the equation
+    numerator = np.einsum('ias,jas->ij', V_pqn[:n_occupied, n_occupied:, :], V_pqn[:n_occupied, n_occupied:, :])
+
+    # Now you need to divide the numerator by the denominator
+    # This involves broadcasting the denominator to match the shape of the numerator
+    gw_correction = numerator / denominator
+
+    # Create the delta matrix
+    delta_matrix = np.eye(n_orbitals)
+
+    # Combine the delta matrix with the GW correction
+    # Subtract the GW correction from the delta matrix
+    D_GW_ij = delta_matrix[:n_occupied, :n_occupied] - gw_correction
+
 
     # start a loop over the occupied and virtual orbitals
 

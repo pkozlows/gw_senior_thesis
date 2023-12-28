@@ -6,8 +6,15 @@ import numpy as np
 from mf import setup_molecule, calculate_mean_field
 import numpy as np
 
-def my_dtda(mf):
-    '''Calculates the excitation energies and the R matrix for the molecule in the direct tda.'''
+def my_dtda(mf):  
+    '''Calculates the excitation energies and the R matrix for the molecule in the direct tda.
+
+    Args:
+        mf (object): An object representing the molecule.
+
+    Returns:
+        tuple: A tuple containing the excitation energies (omega) and the V matrix (V_pqu).
+    '''
 
     n_orbitals = mf.mol.nao_nr()
     n_occupied = mf.mol.nelectron//2
@@ -42,7 +49,14 @@ def my_dtda(mf):
     return omega, V_pqu
 
 def my_drpa(mf):
-    '''Calculates the excitation energies and the R matrix for the molecule in the direct rpa.'''
+    '''Calculates the excitation energies and the R matrix for the molecule in the direct rpa.
+
+    Args:
+        mf (object): An object representing the molecule.
+
+    Returns:
+        tuple: A tuple containing the excitation energies and the R matrix.
+    '''
 
     n_orbitals = mf.mol.nao_nr()
     n_occupied = mf.mol.nelectron//2
@@ -74,13 +88,71 @@ def my_drpa(mf):
 
     # Stack the matrices to create the combined matrix
     combined_matrix = np.vstack((np.hstack((reshaped_a, reshaped_b)), np.hstack((-reshaped_b, -reshaped_a))))
-
-    return np.linalg.eigh(combined_matrix)
-
+    omega, R = np.linalg.eigh(combined_matrix)
 
 
-def real_corr_se(freq, mf):
-    '''Calculates the real part of the correlation self energy for a given molecule and frequency. Returns a matrix of correlation energies for each orbital at the given frequency. Only the diagonal of this matrix is considered.'''
+
+    # def compare_omega(omega):
+    #     # Sort the omega array
+    #     omega_sorted = np.sort(omega)
+
+    #     # Split into positive and negative parts
+    #     positives = omega_sorted[omega_sorted > 0]
+    #     negatives = omega_sorted[omega_sorted < 0]
+
+    #     # Find closest matches and calculate differences
+    #     matches = []
+    #     for pos in positives:
+    #         closest_neg = min(negatives, key=lambda x: abs(x + pos))
+    #         difference = abs(pos + closest_neg)
+    #         matches.append((pos, closest_neg, difference))
+
+    #     # Display the results
+    #     print(f"{'Positive':>10} {'Negative':>10} {'Difference':>10}")
+    #     for pos, neg, diff in matches:
+    #         print(f"{pos:>10.5f} {neg:>10.5f} {diff:>10.5f}")
+
+    #     # Summary statistics
+    #     differences = [abs(p[0] + p[1]) for p in matches]
+    #     print("\nSummary Statistics:")
+    #     print(f"Average Difference: {np.mean(differences):.5f}")
+    #     print(f"Maximum Difference: {np.max(differences):.5f}")
+    #     return
+
+    # compare_omega(omega)
+    def keep_unique_positive(omega):
+        # Keep only positive values
+        positive_omega = omega[omega > 0]
+
+        # Optionally, sort and ensure uniqueness
+        unique_positive_omega = np.unique(np.sort(positive_omega))
+
+        return unique_positive_omega
+
+
+
+                
+
+
+
+    return keep_unique_positive(omega), R
+
+
+
+def real_corr_se(freq, tddft, mf):
+    '''
+    Calculates the real part of the correlation self energy for a given molecule and frequency.
+    Returns a matrix of correlation energies for each orbital at the given frequency.
+    Only the diagonal of this matrix is considered.
+
+    Parameters:
+    - freq: float, the frequency at which to calculate the correlation self energy
+    - tddft: function, a function that calculates the excitation energies and the R matrix
+    - mf: object, the molecule object containing basic information like the number of orbitals, occupied orbitals, and virtual orbitals
+
+    Returns:
+    - correlation_energies: numpy array, a matrix of correlation energies for each orbital at the given frequency (only the diagonal is considered)
+    '''
 
     # I want to get basic information like the number of orbitals, occupied orbitals, and virtual orbitals
     n_orbitals = mf.mol.nao_nr()
@@ -88,9 +160,10 @@ def real_corr_se(freq, mf):
     n_virtual = n_orbitals - n_occupied
     # get the orbital energies
     orbital_energies = mf.mo_energy
+    
 
     # # now we want to calculate the excitation energies and the R matrix
-    omega, V_pqu = my_dtda(mf)
+    omega, V_pqu = tddft(mf)
     # omega, R = my_drpa(mf)
 
     excitations = n_occupied*n_virtual
@@ -99,7 +172,7 @@ def real_corr_se(freq, mf):
 
     # from 11-30
 
-    # make the V in the first sum
+      # make the V in the first sum
     exc_occ_vector = np.zeros((n_orbitals, n_occupied, excitations))
     exc_occ_vector += np.square(V_pqu[:, :n_occupied, :])
     occupied_denominator = np.zeros((n_occupied, excitations))
@@ -121,4 +194,4 @@ def real_corr_se(freq, mf):
     correlation_energies += first_some[:, None] + second_some[:, None]
 
     # returned the diagonal
-    return np.diag(correlation_energies)    
+    return np.diag(correlation_energies)

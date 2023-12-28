@@ -2,7 +2,7 @@ import numpy as np
 import pyscf
 from mf import setup_molecule, calculate_mean_field
 from functools import reduce
-def fock_matrix_hf(mf):
+def simple_fock(mf):
     '''Calculates the fock matrix for a given set of molecular orbitals and occupations.'''
 
     
@@ -18,7 +18,14 @@ def fock_matrix_hf(mf):
     return fock
   
 def fock_dft(mf):
-    '''Calculates the HF fock matrix using the DFT electron density in AO basis for a given set of molecular orbitals and occupations.'''
+    '''Calculates the HF fock matrix using the DFT electron density in AO basis for a given set of molecular orbitals and occupations.
+
+    Parameters:
+    mf (object): The object representing the mean-field calculation.
+
+    Returns:
+    mo_fock (ndarray): The Fock matrix in the molecular orbital basis.
+    '''
 
     n_orbitals = mf.mol.nao_nr()
     n_occupied = mf.mol.nelectron//2
@@ -39,8 +46,8 @@ def fock_dft(mf):
     ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
     # convert the fock matrix to the molecular orbital basis
     mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
-    # check to what extent the fock matrix is diagonal
-    print(np.diag(mo_fock) - orbital_energies)
+
+    
     return mo_fock
 
 def pyscf_fock_dft(mf):

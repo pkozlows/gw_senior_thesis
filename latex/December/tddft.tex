@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{simplewick}
+\usepackage{simpler-wick}
+\author{Patryk Kozlowski}
+\title{TDDFT Routines}
+\date{\today}
+\begin{document}
+\maketitle
+\section{RPA matrix equations}
+We have $\textbf{A}_{ia,jb}$ and $\textbf{B}_{ia,jb}$ defined as:
+\begin{equation}
+    \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\varepsilon _{a}- \varepsilon _{i}) + (\underline{ia}||\underline{jb})
+\end{equation}
+\begin{equation}
+    \textbf{B}_{ia,jb} = (\underline{ia}||\underline{bj})
+\end{equation}
+\subsection{Direct approximation}
+In the divert approximation, which we are working with because it is simpler to start with, this becomes:
+\begin{equation}
+    \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\varepsilon _{a}- \varepsilon _{i}) + (\underline{ia}|\underline{jb})
+\end{equation}
+\begin{equation}
+    \textbf{B}_{ia,jb} = (\underline{ia}|\underline{bj})
+\end{equation}
+After the spin integration, we get:
+\begin{equation}
+    \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\varepsilon _{a}- \varepsilon _{i}) + 2(ia|jb)
+\end{equation}
+\begin{equation}
+    \textbf{B}_{ia,jb} = 2(ia|bj)
+\end{equation}
+We build the eigenvalue equation:
+\begin{equation}
+\begin{bmatrix}
+A & B \\
+-B & -A
+\end{bmatrix}
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+= \omega
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+\end{equation}
+\subsection{Tamm-Dancoff approximation}
+In the Tamm-Dancoff approximation, we neglect $\textbf{B}$, which means that we have:
+\begin{equation}
+    \textbf{A}\textbf{X} = \omega \textbf{X}
+\end{equation}
+The eigenvalues $\omega $ are the excitation energies, but we need to do some work to find the excitation vectors $V_{pq}^{\mu }$. However, we will use the eigenvectors from this matrix equation to build the excitation vectors.
+\subsection{Building the excitation doctors}
+First, we consider within the direct approximation:
+\begin{equation}
+    \textbf{W}_{p,q,ia} = \sum_{\underline{p,q,i,a}} (\underline{pq}|\underline{ia}) 
+\end{equation}
+\subsubsection{Spin integration}
+$\ket{\Phi  _i^a}$ has the CSF
+\begin{equation}
+    \ket{\Phi  _{singlet}} = \frac{1}{\sqrt{2}}(\ket{\Phi _{i\alpha }^{a\alpha  }} + \ket{\Phi _{i\beta }^{a\beta  }})
+\end{equation}
+We want to consider something like:
+\begin{equation}
+\bra{\Phi _0}
+    \frac{1}{4}\sum_{pqrs} V_{pq\underline{rs}}a^{\dag}_{p}a^{\dag}_{q}a_{s}a_{r}\frac{1}{\sqrt{2}}(a^{\dag \alpha }_{a}a^{\alpha }_{i} + a^{\dag \beta }_{a}a^{\beta }_{i})\ket{\Phi _0}
+\end{equation}
+Consolidating constants out front and distributing the CSF terms:
+\begin{equation}
+    \frac{1}{4\sqrt{2}}V_{pq\underline{rs}}\bra{\Phi _0}a^{\dag}_{p}a^{\dag}_{q}a_{s}a_{r}a^{\dag \alpha }_{a}a^{\alpha }_{i}\ket{\Phi _0} + \frac{1}{4\sqrt{2}}V_{pq\underline{rs}}\bra{\Phi _0}a^{\dag}_{p}a^{\dag}_{q}a_{s}a_{r}a^{\dag \beta }_{a}a^{\beta }_{i}\ket{\Phi _0}
+\end{equation}
+Let's consider the first term:
+\begin{equation}
+    \frac{1}{4\sqrt{2}}\sum_{pqrs} V_{pq\underline{rs}}\bra{\Phi _0}a^{\dag}_{p}a^{\dag}_{q}a_{s}a_{r}a^{\dag \alpha }_{a}a^{\alpha }_{i}\ket{\Phi _0}
+\end{equation}
+
+
+\end{document}

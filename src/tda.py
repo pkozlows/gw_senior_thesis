@@ -90,8 +90,10 @@ def my_drpa(mf):
     combined_matrix = np.vstack((np.hstack((reshaped_a, reshaped_b)), np.hstack((-reshaped_b, -reshaped_a))))
     omega, R = np.linalg.eigh(combined_matrix)
 
-
-
+    # I only care about the positive eigenvalues and the corresponding eigenvectors
+    omega = omega[omega > 0]
+    R = R[:, omega.shape[0]:]
+    return omega, R
     # def compare_omega(omega):
     #     # Sort the omega array
     #     omega_sorted = np.sort(omega)

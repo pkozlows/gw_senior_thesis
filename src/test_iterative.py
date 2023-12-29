@@ -22,45 +22,56 @@ class G0W0TestBase(unittest.TestCase):
         self.orbital_number = self.n_occupied - 1 # do it for the HOMO
         self.h2ev = 27.2114
 
-    def run_g0w0_test(self, mf, fock, tddft):
-        fock_mo = fock(self.mf)  # Use the provided Fock matrix function
+    def run_g0w0_test(self, mf, fock, td):
         if mf == 'hf':
             mf = calculate_mean_field(self.molecule, 'hf')
         if mf == 'dft':
             mf = calculate_mean_field(self.molecule, 'dft')
-        if tddft == 'dtda':
+        if td == 'dtda':
             my_tddft = my_dtda
-            pyscf_tddft = tddft.dTDA(self.mf_hf)
-        if tddft == 'drpa':
+            pyscf_tddft = tddft.dTDA(mf)
+        if td == 'drpa':
             my_tddft = my_drpa
-            pyscf_tddft = tddft.dRPA(self.mf_hf)
+            pyscf_tddft = tddft.dRPA(mf)
+        
+        fock_mo = fock(mf)  # Use the provided Fock matrix function
+        my_result = g0w0(self.orbital_number, fock_mo, real_corr_se, mf, my_tddft)*self.h2ev
 
-    def test_g0w0(self):
-        # Test your g0w0 function
-        fock_mo = simple_fock(self.mf_hf)  # HF Fock matrix in MO basis
-        my_tddft = my_dtda  # TDDFT object
-
-        # Call your g0w0 function
-        result = g0w0(self.orbital_number, fock_mo, real_corr_se, self.mf_hf, my_tddft)*self.h2ev
-
-        # Call the corresponding implementation in PySCF
-        td = tddft.dTDA(self.mf_hf)
-        # td = tddft.dRPA(mf_hf)
-        td.nstates = self.n_occupied*self.n_virtual
-        e, xy = td.kernel()
+        pyscf_tddft.nstates = self.n_occupied*self.n_virtual
+        e, xy = pyscf_tddft.kernel()
         # Make a fake Y vector of zeros
         td_xy = list()
-        for xy in td.xy:
+        for xy in pyscf_tddft.xy:
             x,y = xy
             td_xy.append((x,0*x))
-        td.xy = td_xy
-        pyscf_gw = gw.GW(self.mf_hf, freq_int='exact', tdmf=td)
+        pyscf_tddft.xy = td_xy
+        pyscf_gw = gw.GW(mf, freq_int='exact', tdmf=pyscf_tddft)
         pyscf_gw.kernel(orbs=[self.orbital_number])
         expected_result = pyscf_gw.mo_energy*self.h2ev
 
+        self.assertAlmostEqual(my_result, expected_result[self.orbital_number], delta=1e-8)
 
-        # Compare the results
-        self.assertAlmostEqual(result, expected_result[self.orbital_number], delta=1e-8)
 
+class TestG0W0WithSimpleFockAndDTDA(G0W0TestBase):
+    def test_g0w0(self):
+        self.run_g0w0_test('hf', simple_fock, 'dtda')
+
+class TestG0W0WithdftAndDTDA(G0W0TestBase):
+    def test_g0w0(self):
+        self.run_g0w0_test('dft', fock_dft, 'dtda')
+
+# class TestG0W0WithpyscfDftFockAndDTDA(G0W0TestBase):
+#     def test_g0w0(self):
+#         self.run_g0w0_test('hf', pyscf_fock_dft, 'dtda')
+
+# class TestG0W0WithmyDftFockAndDTDA(G0W0TestBase):
+#     def test_g0w0(self):
+#         self.run_g0w0_test('hf', fock_dft, 'dtda')
+
+# class TestG0W0WithSimpleFockAndDRPA(G0W0TestBase):
+#     def test_g0w0(self):
+#         self.run_g0w0_test('hf', simple_fock, 'drpa')
+
+ 
 if __name__ == '__main__':
-    unittest.main()
+     unittest.main()

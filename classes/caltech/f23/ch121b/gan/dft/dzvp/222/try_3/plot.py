@@ -37,14 +37,17 @@ plt.ylabel('Fermi energy [eV]')
 print('band_kpts.shape', band_kpts.shape)
         
 # # Find the index of the k-point closest to sp_points[3]
-# distances = np.linalg.norm(band_kpts - sp_points[3], axis=1)
-# k_idx = np.argmin(distances)
+# initialize the distances array
+distances = np.zeros(len(band_kpts))
+print(len(band_kpts))
+for index, point in enumerate(band_kpts):
+    distance = np.linalg.norm(band_kpts[point, :])
+    distances[point] = distance
 # print(k_idx)
 # Get the energy of band 18 at the Γ point
-k_idx = np.argmin(np.linalg.norm(band_kpts - np.array([sp_points[3], 0, 0]), axis=1))
+k_idx = np.argmin(distances)
+print(k_idx)
 energy_band18_at_Gamma = e_kn_2[k_idx, 18] * au2ev
-print(band_kpts[k_idx])
-print(e_kn_2[k_idx, 18])
 # Plot a vertical line from Fermi level to band 18 at Γ point
 plt.plot([sp_points[3], sp_points[3]], [0, energy_band18_at_Gamma], color='yellow', linestyle='--')
 
@@ -60,7 +63,7 @@ plt.annotate(f'Energy: {energy_difference:.2f} eV',
              verticalalignment='center')
 print(f"Energy of the red band at Γ point: {energy_band18_at_Gamma:.2f} eV")
 
-plt.savefig('dzvp_111_10-19.png')
+plt.savefig('dzvp_222_11-3.png')
 
 
 # # Find the energy of the conduction band (red band) at the special point

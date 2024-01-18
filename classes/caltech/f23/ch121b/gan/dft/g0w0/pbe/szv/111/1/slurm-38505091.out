@@ -1,0 +1,10 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:771: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/1/g0s1.py:12: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+Discarded 6 diffused primitive functions, 0 contracted functions
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/1/g0s1.py", line 43, in <module>
+    mygw = krgw_ac.KRGWAC(kmf).density_fit()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KRGWAC' object has no attribute 'density_fit'

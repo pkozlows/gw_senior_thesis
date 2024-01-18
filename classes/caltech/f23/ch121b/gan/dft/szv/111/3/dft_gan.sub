@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Submit this script with: sbatch submissionscript.sub
+
+#SBATCH --time=36:00:00   # walltime
+#SBATCH --ntasks=32        # number of processor cores (i.e., tasks)
+#SBATCH --nodes=1         # number of nodes
+#SBATCH --mem-per-cpu=6G  # memory per CPU core
+#SBATCH -J "szv_1"      # job name
+#SBATCH --mail-user=pkozlows@caltech.edu   # email address
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH -A wag
+#SBATCH --export=ALL
+
+## /SBATCH -p general # partition (queue)
+## /SBATCH -o slurm.%N.%j.out # STDOUT
+## /SBATCH -e slurm.%N.%j.err # STDERR
+
+# Load necessary modules (you might need to adjust these depending on your system's setup)
+module load openssl/3.0.3
+
+# Activate the PySCF environment
+source /groups/wag/pkozlows/miniconda3/bin/activate pyscf
+
+# Execute your PySCF script (replace with the path to your PySCF script)
+python3 szv_1.py
+
+# Deactivate the environment (optional for a batch job, but good practice)
+conda deactivate

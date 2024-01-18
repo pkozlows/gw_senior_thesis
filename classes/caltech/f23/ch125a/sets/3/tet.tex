@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+\begin{document}
+Let us consider the particle and the box in three dimensions:
+So, the hambletonian is given by:
+\begin{equation}
+    \hat{H} = \frac{\hat{p}_x^2 + \hat{p}_y^2 + \hat{p}_z^2}{2m}
+\end{equation}
+and the solutions are given by:
+\begin{equation}
+    \psi_{n_x,n_y,n_z}(x,y,z) = \sqrt{\frac{8}{L_x L_y L_z}} \sin\left(\frac{n_x \pi x}{L_x}\right) \sin\left(\frac{n_y \pi y}{L_y}\right) \sin\left(\frac{n_z \pi z}{L_z}\right)
+\end{equation}
+with the energy:
+\begin{equation}
+    E_{n_x,n_y,n_z} = \frac{\hbar^2 \pi^2}{2m} \left(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2}\right)
+\end{equation}
+Now, we want to find the expectation value of the position squared:
+\begin{equation}
+    \expval{\hat{x}^2} = \int_{0}^{L_x} \int_{0}^{L_y} \int_{0}^{L_z} \psi_{n_x,n_y,n_z}^*(x,y,z) \hat{x}^2 \psi_{n_x,n_y,n_z}(x,y,z) \dd{x} \dd{y} \dd{z}
+\end{equation}
+We can use the fact that the wavefunction is zero outside the box, so we can integrate from $-\infty$ to $\infty$:
+\begin{equation}
+    \expval{\hat{x}^2} = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \psi_{n_x,n_y,n_z}^*(x,y,z) \hat{x}^2 \psi_{n_x,n_y,n_z}(x,y,z) \dd{x} \dd{y} \dd{z}
+\end{equation}
+Then we change to spherical coordinates:
+\begin{equation}
+    \expval{\hat{x}^2} = \int_{0}^{\infty} \int_{0}^{\pi} \int_{0}^{2\pi} \psi_{n_x,n_y,n_z}^*(r,\theta,\phi) \hat{x}^2 \psi_{n_x,n_y,n_z}(r,\theta,\phi) r^2 \sin\theta \dd{r} \dd{\theta} \dd{\phi}
+\end{equation}
+\end{document}

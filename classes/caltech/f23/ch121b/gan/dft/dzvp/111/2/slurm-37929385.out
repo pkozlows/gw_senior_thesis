@@ -1,0 +1,191 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:772: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, the same to the B3LYP functional in Gaussian and ORCA (issue 1480). To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+Discarded 8 diffused primitive functions, 0 contracted functions
+#INFO: **** input file is /central/home/pkozlows/ch121b/gan/dft/dzvp/111/2/dzvp_1.py ****
+# import statements
+import pyscf.pbc.tools.pyscf_ase as pyscf_ase
+import pyscf.pbc.gto as pbcgto
+import pyscf.pbc.dft as pbcdft
+
+
+from ase.build import bulk
+from ase.dft.kpoints import sc_special_points as special_points, get_bandpath
+
+import numpy as np
+
+# ase
+c = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+
+# pyscf specs
+cell = pbcgto.Cell()
+cell.atom = pyscf_ase.ase_atoms_to_pyscf(c)
+cell.a = c.cell
+cell.exp_to_discard = 0.1
+
+cell.basis = 'gth-dzvp'
+cell.pseudo = 'gth-pade'
+cell.verbose = 5
+cell.build()
+
+# define the special points here
+points = special_points['hexagonal']
+G = points['G']
+K = points['K']
+M = points['M']
+A = points['A']
+L = points['L']
+H = points['H']
+
+# Choose an appropriate path for the band structure calculation
+band_kpts, kpath, sp_points = get_bandpath([G, M, K, G, A, L, H, A], c.cell, npoints=50)
+band_kpts = cell.get_abs_kpts(band_kpts)
+
+# dft calculation
+kmf = pbcdft.KRKS(cell, cell.make_kpts([1,1,1]))
+kmf.xc = 'b3pw91'
+kmf.kernel()
+
+# get the data from the calculation
+e_kn_2 = kmf.get_bands(band_kpts)[0]
+vbmax = -99
+for en in e_kn_2:
+    vb_k = en[cell.nelectron//2-1]
+    if vb_k > vbmax:
+        vbmax = vb_k
+e_kn_2 = [en - vbmax for en in e_kn_2]
+
+# Saving data to .npy files
+np.save('band_kpts.npy', band_kpts)
+np.save('kpath.npy', kpath)
+np.save('sp_points.npy', sp_points)
+np.save('e_kn_2.npy', e_kn_2)
+np.save('nbands.npy', cell.nao_nr())
+
+
+
+
+
+
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='hpc-20-16.cm.cluster', release='3.10.0-1160.53.1.el7.x86_64', version='#1 SMP Fri Jan 14 13:59:45 UTC 2022', machine='x86_64')  Threads 15
+Python 3.11.5 (main, Sep 11 2023, 13:54:46) [GCC 11.2.0]
+numpy 1.26.0  scipy 1.11.3
+Date: Sun Oct 29 22:09:52 2023
+PySCF version 2.3.0
+PySCF path  /groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf
+
+[ENV] PYSCF_CONFIG_FILE /home/pkozlows
+[CONFIG] conf_file /home/pkozlows/.pyscf_conf.py
+[INPUT] verbose = 5
+[INPUT] max_memory = 444730 
+[INPUT] num. atoms = 4
+[INPUT] num. electrons = 36
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 Ga     0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 N     -0.000000000000   1.841747358715   0.643929030186 AA   -0.000000000000   3.480398098612   1.216849510709 Bohr   0.0
+[INPUT]  3 Ga    -0.000000000000   1.841747358715   2.595000000000 AA   -0.000000000000   3.480398098612   4.903839293246 Bohr   0.0
+[INPUT]  4 N      0.000000000000   0.000000000000   3.238929030186 AA    0.000000000000   0.000000000000   6.120688803955 Bohr   0.0
+[INPUT] ---------------- BASIS SET ---------------- 
+[INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] Ga
+[INPUT] 0    0    [5    /2   ]  7.06665397037     0.00403882881 -0.031816598052
+                                3.42836918        -0.04992601521 0.005769897361
+                                1.43006411438     0.270487560795 0.375790997895
+                                0.571610928613    0.114461485481 0.388650732034
+                                0.232196966975    -0.765662388169 -1.77913961825
+[INPUT] 1    0    [5    /2   ]  7.06665397037     0.000167446202 0.029367472355
+                                3.42836918        0.003362568505 -0.090542574365
+                                1.43006411438     0.130532105798 -0.084206693559
+                                0.571610928613    -0.096032824634 0.052258004145
+                                0.232196966975    -0.807329497232 1.28873241299
+[INPUT] 2    0    [5    /2   ]  7.06665397037     -0.311164169605 -0.152377671375
+                                3.42836918        -0.386388805667 -0.200456714008
+                                1.43006411438     -0.341437057173 -0.304563164958
+                                0.571610928613    -0.20460821239 0.349719373167
+                                0.232196966975    -0.056129936831 0.455579311293
+[INPUT] 3    0    [5    /1   ]  7.06665397037     0.008402101637
+                                3.42836918        -0.016601774058
+                                1.43006411438     0.049257564549
+                                0.571610928613    0.451920686398
+                                0.232196966975    0.322063208269
+[INPUT] N
+[INPUT] 0    0    [4    /2   ]  6.1526903413      0.1506300537    0
+                                1.823633228       -0.0360100734    0
+                                0.567662887       -0.6942023212    0
+                                0.1628222852      -0.3878929987    1
+[INPUT] 1    0    [4    /2   ]  6.1526903413      -0.0950603476    0
+                                1.823633228       -0.2918864295    0
+                                0.567662887       -0.473905005    0
+                                0.1628222852      -0.389341867    1
+[INPUT] 2    0    [1    /1   ]  0.817                1
+
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+nuclear repulsion = -116.579481642892
+number of shells = 14
+number of NR pGTOs = 202
+number of NR cGTOs = 76
+basis = gth-dzvp
+ecp = {}
+CPU time:         0.50
+lattice vectors  a1 [6.028226337, 0.000000000, 0.000000000]
+                 a2 [-3.014113169, 5.220597148, 0.000000000]
+                 a3 [0.000000000, 0.000000000, 9.807678586]
+dimension = 3
+low_dim_ft_type = None
+Cell volume = 308.657
+exp_to_discard = 0.1
+rcut = 18.981582976533534 (nimgs = [4 4 2])
+lattice sum = 465 cells
+precision = 1e-08
+pseudo = gth-pade
+ke_cutoff = 887.7119060369721
+    = [ 83  83 133] mesh (916237 PWs)
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/ase/dft/kpoints.py:357: UserWarning: Please do not use (kpts, x, X) = bandpath(...).  Use path = bandpath(...) and then kpts = path.kpts and (x, X, labels) = path.get_linear_kpoint_axis().
+  warnings.warn('Please do not use (kpts, x, X) = bandpath(...).  '
+
+
+******** <class 'pyscf.pbc.dft.krks.KRKS'> ********
+method = KRKS-KohnShamDFT
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpvzrenud_
+max_memory 444730 MB (current use 98 MB)
+
+
+******** PBC SCF flags ********
+N kpts = 1
+kpts = [[0. 0. 0.]]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    madelung (= occupied orbital energy shift) = 0.3725829728992387
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -6.70649351219
+DF object = <pyscf.pbc.df.fft.FFTDF object at 0x7f5fbe463090>
+XC functionals = b3pw91
+small_rho_cutoff = 1e-07
+Uniform grid, mesh = [ 83  83 133]
+<class 'pyscf.pbc.dft.krks.KRKS'> does not have attributes  nlc nlcgrids
+Set gradient conv threshold to 0.000316228
+Big error detected in the electron number of initial guess density matrix (Ne/cell = 36.0958)!
+  This can cause huge error in Fock matrix and lead to instability in SCF for low-dimensional systems.
+  DM is normalized wrt the number of electrons 36.0
+    CPU time for setting up grids      5.99 sec, wall time      0.52 sec
+nelec by numeric integration = 35.99999999814209
+    CPU time for vxc     73.10 sec, wall time      4.89 sec
+slurmstepd: error: poll(): Bad address
+/var/spool/slurmd/job37929385/slurm_script: line 27: 39893 Killed                  python3 dzvp_1.py

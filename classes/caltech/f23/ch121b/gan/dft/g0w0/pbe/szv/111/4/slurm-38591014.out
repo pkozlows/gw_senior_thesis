@@ -1,0 +1,384 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:771: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/4/sz1g.py:7: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+#INFO: **** input file is /central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/4/sz1g.py ****
+import os
+import numpy as np
+import pyscf.pbc.tools.pyscf_ase as pyscf_ase
+from ase.lattice import bulk
+from pyscf.pbc import gto, scf, dft, gw
+
+ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+
+cell = gto.Cell()
+cell.atom = pyscf_ase.ase_atoms_to_pyscf(ase_cell)
+cell.a = np.array(ase_cell.cell)
+# cell.exp_to_discard = 0.1
+
+cell.basis = 'gth-szv'
+cell.pseudo = 'gth-pade'
+cell.verbose = 5
+cell.build()
+
+kpts = cell.make_kpts([1,1,1])
+kmf = dft.KRKS(cell).density_fit()
+kmf.kpts = kpts
+kmf.xc = 'pbe'
+kmf.kernel()
+
+# Default is AC frequency integration
+mygw = gw.KRGW(kmf)
+mygw.kernel()
+
+# # Extracting HOMO and LUMO energies
+nocc = cell.nelectron // 2  # Number of occupied orbitals
+
+au2ev = 27.211
+
+dft_homo = max(kmf.mo_energy[0][:nocc])
+dft_lumo = min(kmf.mo_energy[0][nocc:])
+dft_gap = dft_homo - dft_lumo
+print("DFT HOMO energy:", dft_lumo*au2ev)
+print("DFT LUMO energy:", dft_homo*au2ev)
+print("DFT Band gap at Gamma point [eV]:", dft_gap*au2ev)
+
+gw_homo = max(mygw.mo_energy[0][:nocc])
+gw_lumo = min(mygw.mo_energy[0][nocc:])
+gw_gap = gw_homo - gw_lumo
+print("GW HOMO energy:", gw_lumo*au2ev)
+print("GW LUMO energy:", gw_homo*au2ev)
+print("GW Band gap at Gamma point [eV]:", gw_gap*au2ev)
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='hpc-22-19.cm.cluster', release='3.10.0-1160.53.1.el7.x86_64', version='#1 SMP Fri Jan 14 13:59:45 UTC 2022', machine='x86_64')  Threads 8
+Python 3.11.5 (main, Sep 11 2023, 13:54:46) [GCC 11.2.0]
+numpy 1.26.0  scipy 1.11.3
+Date: Mon Nov 27 12:11:25 2023
+PySCF version 2.4.0
+PySCF path  /groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf
+
+[ENV] PYSCF_CONFIG_FILE /home/pkozlows
+[CONFIG] conf_file /home/pkozlows/.pyscf_conf.py
+[INPUT] verbose = 5
+[INPUT] max_memory = 155274 
+[INPUT] num. atoms = 4
+[INPUT] num. electrons = 36
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 Ga     0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 N     -0.000000000000   1.841747358715   0.643929030186 AA   -0.000000000000   3.480398098612   1.216849510709 Bohr   0.0
+[INPUT]  3 Ga    -0.000000000000   1.841747358715   2.595000000000 AA   -0.000000000000   3.480398098612   4.903839293246 Bohr   0.0
+[INPUT]  4 N      0.000000000000   0.000000000000   3.238929030186 AA    0.000000000000   0.000000000000   6.120688803955 Bohr   0.0
+[INPUT] ---------------- BASIS SET ---------------- 
+[INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] N
+[INPUT] 0    0    [4    /1   ]  6.1526903413      0.1506300537
+                                1.823633228       -0.0360100734
+                                0.567662887       -0.6942023212
+                                0.1628222852      -0.3878929987
+[INPUT] 1    0    [4    /1   ]  6.1526903413      -0.0950603476
+                                1.823633228       -0.2918864295
+                                0.567662887       -0.473905005
+                                0.1628222852      -0.389341867
+[INPUT] Ga
+[INPUT] 0    0    [6    /1   ]  7.06665397037     0.00403882881
+                                3.42836918        -0.04992601521
+                                1.43006411438     0.270487560795
+                                0.571610928613    0.114461485481
+                                0.232196966975    -0.765662388169
+                                0.076561670688    -0.4118900947
+[INPUT] 1    0    [6    /1   ]  7.06665397037     0.000167446202
+                                3.42836918        0.003362568505
+                                1.43006411438     0.130532105798
+                                0.571610928613    -0.096032824634
+                                0.232196966975    -0.807329497232
+                                0.076561670688    -0.419386452377
+[INPUT] 2    0    [6    /1   ]  7.06665397037     -0.311164169605
+                                3.42836918        -0.386388805667
+                                1.43006411438     -0.341437057173
+                                0.571610928613    -0.20460821239
+                                0.232196966975    -0.056129936831
+                                0.076561670688    -0.001205250841
+
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+nuclear repulsion = -116.579481642892
+number of shells = 10
+number of NR pGTOs = 140
+number of NR cGTOs = 26
+basis = gth-szv
+ecp = {}
+CPU time:         1.15
+WARNING!
+  Very diffused basis functions are found in the basis set. They may lead to severe
+  linear dependence and numerical instability.  You can set  cell.exp_to_discard=0.1
+  to remove the diffused Gaussians whose exponents are less than 0.1.
+
+lattice vectors  a1 [6.028226337, 0.000000000, 0.000000000]
+                 a2 [-3.014113169, 5.220597148, 0.000000000]
+                 a3 [0.000000000, 0.000000000, 9.807678586]
+dimension = 3
+low_dim_ft_type = None
+Cell volume = 308.657
+rcut = 26.153731805464165 (nimgs = [6 6 3])
+lattice sum = 989 cells
+precision = 1e-08
+pseudo = gth-pade
+ke_cutoff = 887.7048040098673
+    = [ 83  83 133] mesh (916237 PWs)
+
+
+******** <class 'pyscf.pbc.dft.krks.KRKS'> ********
+method = KRKS
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpe6l9idko
+max_memory 155274 MB (current use 95 MB)
+
+
+******** PBC SCF flags ********
+N kpts = 1
+kpts = [[0. 0. 0.]]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    madelung (= occupied orbital energy shift) = 0.3725829728992387
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -6.70649351219
+DF object = <pyscf.pbc.df.df.GDF object at 0x7fedd58c4550>
+XC functionals = pbe
+small_rho_cutoff = 1e-07
+radial grids: 
+    Treutler-Ahlrichs [JCP 102, 346 (1995); DOI:10.1063/1.469408] (M4) radial grids
+    
+becke partition: Becke, JCP 88, 2547 (1988); DOI:10.1063/1.454033
+pruning grids: <function nwchem_prune at 0x7fedd5e005e0>
+grids dens level: 3
+symmetrized grids: False
+atomic radii adjust function: <function treutler_atomic_radii_adjust at 0x7fedd5e00ae0>
+Set gradient conv threshold to 0.000316228
+Big error detected in the electron number of initial guess density matrix (Ne/cell = 38.3075)!
+  This can cause huge error in Fock matrix and lead to instability in SCF for low-dimensional systems.
+  DM is normalized wrt the number of electrons 36.0
+kmesh for bvk-cell = [1 1 1]
+
+
+******** <class 'pyscf.pbc.df.rsdf_builder._RSNucBuilder'> ********
+mesh = [11 11 17] (2057 PWs)
+ke_cutoff = 13.133402831955515
+omega = 0.45762725753216155
+exclude_d_aux = False
+exclude_dd_block = True
+j2c_eig_always = False
+has_long_range = True
+Set _RSNucBuilder.direct_scf_tol to 1.65119e-13
+rs_cell.nbas 16 nao 44
+No. smooth_bas in rs_cell 6
+sup-mol nbas = 4306 cGTO = 11842 pGTO = 34666
+sup-mol-ft nbas = 6529 cGTO = 17751 pGTO = 54389
+    CPU time for int3c kernel initialization      0.83 sec, wall time      0.10 sec
+Set ft_ao cutoff to 7.19025e-11
+kmesh for bvk-cell = [1 1 1]
+sup-mol nbas = 2907 cGTO = 7957 pGTO = 44278
+    CPU time for int3c kernel initialization      0.27 sec, wall time      0.03 sec
+    CPU time for int3c kernel initialization      0.26 sec, wall time      0.03 sec
+    CPU time for get_pp     20.71 sec, wall time      2.61 sec
+atom Ga rad-grids = 90, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  50  50  50  50  50  50  86  86  86  86  86  86  86
+  86  86  86  86  86  86  86  86  86 350 350 350 350 350 350 350 350 350
+ 350 350 434 434 434 434 434 434 434 434 434 434 434 434 434 434 434 434
+ 434 434 434 434 434 350 350 350 350 350 350 350 350 350 350 350 350 350]
+atom N rad-grids = 75, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  86  86  86  86  86  86  86  86  86 266 266 266 266
+ 266 266 266 302 302 302 302 302 302 302 302 302 302 302 302 302 302 302
+ 302 302 302 302 266 266 266 266 266 266 266 266 266 266 266 266 266 266
+ 266 266 266]
+tot grids = 69179
+cell vol = 308.656876  sum(weights) = 308.656992
+Drop grids 20265
+    CPU time for setting up grids     32.42 sec, wall time      4.19 sec
+nelec by numeric integration = 36.00022379085425
+    CPU time for vxc     40.88 sec, wall time      5.25 sec
+
+
+******** <class 'pyscf.pbc.df.df.GDF'> ********
+auxbasis = None
+exp_to_discard = None
+_cderi_to_save = /tmp/tmpo5vheimw
+len(kpts) = 1
+Even tempered Gaussians are generated as DF auxbasis for  N Ga
+  ETB auxbasis for N  [[0, [10.4206262528, 1]], [0, [5.2103131264, 1]], [0, [2.6051565632, 1]], [0, [1.3025782816, 1]], [0, [0.6512891408, 1]], [0, [0.3256445704, 1]], [1, [10.4206262528, 1]], [1, [5.2103131264, 1]], [1, [2.6051565632, 1]], [1, [1.3025782816, 1]], [1, [0.6512891408, 1]], [1, [0.3256445704, 1]], [2, [10.4206262528, 1]], [2, [5.2103131264, 1]], [2, [2.6051565632, 1]], [2, [1.3025782816, 1]], [2, [0.6512891408, 1]], [2, [0.3256445704, 1]]]
+  ETB auxbasis for Ga  [[0, [9.799893848064, 1]], [0, [4.899946924032, 1]], [0, [2.449973462016, 1]], [0, [1.224986731008, 1]], [0, [0.612493365504, 1]], [0, [0.306246682752, 1]], [0, [0.153123341376, 1]], [1, [9.799893848064, 1]], [1, [4.899946924032, 1]], [1, [2.449973462016, 1]], [1, [1.224986731008, 1]], [1, [0.612493365504, 1]], [1, [0.306246682752, 1]], [1, [0.153123341376, 1]], [2, [9.799893848064, 1]], [2, [4.899946924032, 1]], [2, [2.449973462016, 1]], [2, [1.224986731008, 1]], [2, [0.612493365504, 1]], [2, [0.306246682752, 1]], [2, [0.153123341376, 1]], [3, [9.799893848064, 1]], [3, [4.899946924032, 1]], [3, [2.449973462016, 1]], [3, [1.224986731008, 1]], [3, [0.612493365504, 1]], [3, [0.306246682752, 1]], [3, [0.153123341376, 1]], [4, [9.799893848064, 1]], [4, [4.899946924032, 1]], [4, [2.449973462016, 1]], [4, [1.224986731008, 1]], [4, [0.612493365504, 1]], [4, [0.306246682752, 1]], [4, [0.153123341376, 1]]]
+num shells = 106, num cGTOs = 458
+Drop 0 primitive fitting functions
+make aux basis, num shells = 106, num cGTOs = 458
+auxcell.rcut 16.148240817478726
+kmesh for bvk-cell = [1 1 1]
+
+
+******** <class 'pyscf.pbc.df.rsdf_builder._RSGDFBuilder'> ********
+mesh = [15 15 21] (4725 PWs)
+ke_cutoff = 20.520941924930494
+omega = 0.5374833144847494
+exclude_d_aux = True
+exclude_dd_block = True
+j2c_eig_always = False
+has_long_range = True
+Set _RSGDFBuilder.direct_scf_tol to 1.65119e-13
+rs_cell.nbas 20 nao 52
+No. smooth_bas in rs_cell 10
+rs_cell.nbas 106 nao 458
+No. smooth_bas in rs_cell 10
+sup-mol nbas = 5860 cGTO = 15510 pGTO = 37654
+sup-mol-ft nbas = 7457 cGTO = 19543 pGTO = 51819
+    CPU time for int3c kernel initialization      1.55 sec, wall time      0.19 sec
+    CPU time for pass1: real space int3c2e     82.62 sec, wall time     10.95 sec
+Set ft_ao cutoff to 7.19025e-11
+Set 2c2e integrals precision 1e-12, mesh [13 13 21]
+    CPU time for int2c2e      1.92 sec, wall time      0.24 sec
+    CPU time for pass2: AFT int3c2e     34.86 sec, wall time      4.73 sec
+    CPU time for get_j      0.79 sec, wall time      0.10 sec
+    CPU time for vj and vk    118.72 sec, wall time     15.83 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -82.33329029912592  Ecoul = 53.31988760655573  Exc = -24.409005586817663
+init E= -170.00188992228
+cond(S) = [10.88621338]
+    CPU time for initialize scf    181.45 sec, wall time     23.90 sec
+HOMO = 0.212352873808  LUMO = 0.384219570222
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.41174795 -0.40124831 -0.400011   -0.39999893 -0.39860233 -0.39859605
+ -0.39448073 -0.39445796 -0.39312619 -0.39309762 -0.3137662  -0.24531466
+  0.03940703  0.18519168  0.18519714  0.21000457  0.21000474  0.21235287] [0.38421957 0.50255369 0.67417766 0.74446829 0.74447055 0.75926086
+ 0.7926074  0.79262884]
+nelec by numeric integration = 36.00017652444983
+    CPU time for vxc      7.99 sec, wall time      1.01 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.79014332183698  Ecoul = 62.96874223882408  Exc = -26.778795058252857
+cycle= 1 E= -168.179677784158  delta_E= 1.82  |g|= 1.16  |ddm|= 4.28
+    CPU time for cycle= 1      8.38 sec, wall time      1.06 sec
+HOMO = 0.687288842806  LUMO = 0.736578029045
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.25111384 -0.25099009 -0.25098482 -0.25056123 -0.25055838 -0.24901175
+ -0.24706426 -0.24703237 -0.24414257 -0.24411005 -0.06327587  0.09350549
+  0.18094889  0.56072247  0.56073122  0.67180398  0.68728849  0.68728884] [0.73657803 0.7519863  0.83307033 0.83308226 0.86123371 1.00948894
+ 1.0095035  1.16620534]
+nelec by numeric integration = 36.0000817221011
+    CPU time for vxc      7.96 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -86.2484275290684  Ecoul = 61.96697825107486  Exc = -25.01944371746933
+cycle= 2 E= -165.880374638355  delta_E=  2.3  |g|= 2.69  |ddm|= 7.74
+    CPU time for cycle= 2      8.37 sec, wall time      1.05 sec
+HOMO = 0.49835020451  LUMO = 0.550143586987
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.16072907 -0.14468033 -0.14359083 -0.14358066 -0.1419747  -0.14197064
+ -0.14190058 -0.13745496 -0.13743113 -0.13413382 -0.13410357 -0.01641367
+  0.14557892  0.43039562  0.43040427  0.4881837   0.49834772  0.4983502 ] [0.55014359 0.62988899 0.78974757 0.78975751 0.81390679 0.89226413
+ 0.89228604 0.91365093]
+nelec by numeric integration = 36.00018424382683
+    CPU time for vxc      7.95 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.46429067540514  Ecoul = 61.29377024631376  Exc = -26.029010230611977
+cycle= 3 E= -168.779012302595  delta_E= -2.9  |g|= 0.00867  |ddm|= 6.16
+    CPU time for cycle= 3      8.34 sec, wall time      1.05 sec
+HOMO = 0.487371497378  LUMO = 0.537007373229
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.17619957 -0.16208952 -0.16208309 -0.16098422 -0.16090934 -0.16090384
+ -0.15484989 -0.15482145 -0.15121879 -0.15118693 -0.15115352 -0.02629864
+  0.13497993  0.41998865  0.41999659  0.47571838  0.48737098  0.4873715 ] [0.53700737 0.61828968 0.77676822 0.77676979 0.80391528 0.87845829
+ 0.87847383 0.8978201 ]
+nelec by numeric integration = 36.00018472931779
+    CPU time for vxc      7.95 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.47413132527959  Ecoul = 61.30683824637592  Exc = -26.03229078459135
+cycle= 4 E= -168.779065506387  delta_E= -5.32e-05  |g|= 0.00148  |ddm|= 0.0361
+    CPU time for cycle= 4      8.34 sec, wall time      1.05 sec
+HOMO = 0.487308915237  LUMO = 0.53700808283
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.1759138  -0.16159276 -0.16158627 -0.16066978 -0.16038811 -0.16038443
+ -0.15447259 -0.15444454 -0.15115888 -0.15085909 -0.1508273  -0.02635232
+  0.13510095  0.41994709  0.41995562  0.47576807  0.48730777  0.48730892] [0.53700808 0.61828667 0.77689282 0.77689414 0.80389916 0.87853701
+ 0.8785523  0.89780738]
+nelec by numeric integration = 36.000184562198775
+    CPU time for vxc      7.94 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.4741050748334  Ecoul = 61.30718822186188  Exc = -26.03266674369028
+cycle= 5 E= -168.779065239554  delta_E= 2.67e-07  |g|= 0.00116  |ddm|= 0.0183
+    CPU time for cycle= 5      8.33 sec, wall time      1.04 sec
+HOMO = 0.48729779221  LUMO = 0.537016078477
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.17590129 -0.16158181 -0.16157534 -0.16065307 -0.16037867 -0.16037496
+ -0.15445258 -0.15442456 -0.15115728 -0.15083804 -0.1508063  -0.02635532
+  0.13512768  0.41994279  0.41995129  0.47576229  0.48729662  0.48729779] [0.53701608 0.61823276 0.77688757 0.77688883 0.803912   0.8785263
+ 0.8785416  0.89785528]
+nelec by numeric integration = 36.00018465224082
+    CPU time for vxc      7.94 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.47380769860297  Ecoul = 61.30685601444638  Exc = -26.032633695277305
+cycle= 6 E= -168.779067022326  delta_E= -1.78e-06  |g|= 0.000171  |ddm|= 0.0121
+    CPU time for cycle= 6      8.37 sec, wall time      1.05 sec
+HOMO = 0.487291960831  LUMO = 0.537009536251
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.17590331 -0.16157847 -0.16157201 -0.16065443 -0.16037461 -0.16037091
+ -0.15445276 -0.15442475 -0.15116176 -0.15083882 -0.1508071  -0.0263572
+  0.13511634  0.41993776  0.41994623  0.47575158  0.48729078  0.48729196] [0.53700954 0.61824106 0.77688931 0.77689054 0.80390989 0.8785265
+ 0.8785418  0.89783796]
+nelec by numeric integration = 36.000184646915216
+    CPU time for vxc      7.95 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.47386318026129  Ecoul = 61.30694956589021  Exc = -26.032671797618676
+cycle= 7 E= -168.779067054882  delta_E= -3.26e-08  |g|= 5.29e-05  |ddm|= 0.00138
+    CPU time for cycle= 7      8.37 sec, wall time      1.05 sec
+HOMO = 0.487287826757  LUMO = 0.537006913917
+     k-point                  mo_energy
+   0 ( 0.000  0.000  0.000)   [-0.17590278 -0.16157731 -0.16157085 -0.16065333 -0.16037341 -0.16036971
+ -0.15445155 -0.15442353 -0.15116365 -0.15083761 -0.15080586 -0.02635949
+  0.1351156   0.41993466  0.41994316  0.47574768  0.48728666  0.48728783] [0.53700691 0.61823955 0.77688956 0.77689082 0.80390973 0.87852544
+ 0.87854074 0.89783387]
+nelec by numeric integration = 36.00018464721684
+    CPU time for vxc      7.94 sec, wall time      1.00 sec
+    CPU time for get_j      0.32 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.32 sec, wall time      0.04 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.47387142286766  Ecoul = 61.306973270884185  Exc = -26.03268725262915
+Extra cycle  E= -168.779067047504  delta_E= 7.38e-09  |g|= 0.000171  |ddm|= 0.000378
+    CPU time for scf_cycle    248.31 sec, wall time     32.28 sec
+    CPU time for SCF    248.31 sec, wall time     32.31 sec
+converged SCF energy = -168.779067047504
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/4/sz1g.py", line 26, in <module>
+    mygw = gw.KRGW(kmf)
+           ^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/gw/gw_slow.py", line 332, in __init__
+    self.imds = self.base_imds(td, eri=eri)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/gw/kgw_slow.py", line 38, in __init__
+    gw_slow.AbstractIMDS.__init__(self, td, eri=eri)
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/gw/gw_slow.py", line 40, in __init__
+    self.eri = td.eri
+               ^^^^^^
+AttributeError: 'KRKS' object has no attribute 'eri'. Did you mean: '_eri'?

@@ -1,0 +1,349 @@
+\documentclass{article}[16pt]
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\title{PSET 1}
+\author{Patryk Kozlowski}
+\date{\today}
+\begin{document}
+\maketitle
+
+
+\section{Quantum Mechanics of a Particle in the Earth's Gravitational Field}
+We consider the quantum mechanics of a particle in the earth's gravitational field:
+\begin{align*}
+    V(r) &= -\frac{GMm}{r} \\
+    &= -\frac{GMm}{R + z} \\
+    &\approx -\frac{GMm}{R} + mgz
+\end{align*}
+where
+\begin{itemize}
+    \item $M =$ mass of earth
+    \item $r =$ distance from center of earth
+    \item $G =$ Newton's gravitational constant
+    \item $R =$ radius of earth
+    \item $z =$ height of particle above surface of earth
+    \item $g = \frac{GM}{R^2}$
+\end{itemize}
+We may drop the constant term in our discussion, and consider only the $mgz$ piece, with $z \ll R$. We further assume that no angular momentum is involved, and treat 
+as a one-dimensional problem. Finally, assume that the particle is unable to penetrate the earth's surface.
+
+\subsubsection{Question}
+Make a WKB calculation for the energy spectrum of the particle.
+\subsubsection{Answer}
+First, we want to figure out our classical turning points. Since the particle can't penetrate the earth's surface, we have:
+\begin{equation}
+    V(z) =
+\begin{cases}
+    mgz, & z \geq 0 \\
+    \infty, & z < 0
+\end{cases}
+\end{equation}
+So, we have that the classical turning points are $z_1 = 0$ and and where the potential becomes larger than the kinetic energy of the particle, which occurs at $z_2 = \frac{E}{mg}$.
+Also, we must note that $mgz \ll z$, so the approximation that our potential is slowly varying with the position is accurate, and thus it makes sense to apply the WKB approximation.
+Then, we can define the momentum as:
+\begin{equation}
+    p = \sqrt{2m(E - mgz)}
+\end{equation}
+So, the $f(E)$ is given by:
+\begin{equation}
+    f(E) = \int_{0}^{\frac{E}{mg}} \sqrt{2m(E - mgz)} dz
+\end{equation}
+Now, we make the substitution $u = E-mgz$, so $du = -mgdz$, and $dz = -\frac{du}{mg}$, and we get:
+\begin{equation}
+    f(E) = -\frac{1}{mg} \int_{E}^{0} \sqrt{2mu} du = \frac{1}{mg} \int_{0}^{E} \sqrt{2mu} du = \frac{2\sqrt{2}}{3g\sqrt{m}} (u^{\frac{3}{2}})_{0}^{E} = \frac{2\sqrt{2}}{3g\sqrt{m}} E^{\frac{3}{2}}
+\end{equation}
+Now, we can use the WKB approximation to find the energy levels. As explained in office ours, for the infinite spare will, we derived in lecture that this would be a factor of $(n+1)\pi$, since both of the classical turning points are also the boundary conditions. In the lecture, we also did a case where the both classical turning points were not the boundary conditions, and then the factor was of $(n+\frac{1}{2})\pi$. In this case, we have one classical turning point as a boundary condition, and the other classical turning point as a classical turning point, so we expect the factor to be of $(n+\frac{3}{4})\pi$. So, we can write:
+\begin{equation}
+    \frac{2\sqrt{2}}{3g\sqrt{m}} E^{\frac{3}{2}} = (n + \frac{3}{4})\pi\hbar
+\end{equation}
+Solving for $E_n$, we get:
+\begin{equation}
+    E_n = \sqrt[3]{\frac{9g^2\pi^2 \hbar^2m}{8} (n + \frac{3}{4})^2}
+\end{equation}
+
+
+\subsection{Estimation of the Particle’s Ground State Energy}
+\subsubsection{Question}
+If the particle is an atom of atomic weight $A \sim 100$, use the result of the WKB calculation to estimate the particle’s ground state energy (in eV). Is sunlight likely to move the particle into excited states?
+
+\subsubsection{Answer}
+We know that one atomic weight is equal to $1.66 \times 10^{-27}$ kg, so we can estimate the mass of the particle as $1.66 \times 10^{-25}$ kg. Also, we know that $g = \frac{GM}{R^2}$, and we can look up the values of $G$, $M$, and $R$ to get $g = 9.8$ m/s$^2$. So, we can plug these values into our equation for the ground state energy to with $n=0$ to get:
+\begin{align*}
+    E_0 &= \sqrt[3]{\frac{9g^2\pi^2 \hbar^2m}{8} (\frac{3}{4})^2} \\
+    &= \sqrt[3]{\frac{9(9.8)^2\pi^2 (1.05 \times 10^{-34})^2(1.66 \times 10^{-25})}{8} (\frac{3}{4})^2} \\
+    &\approx 6.44 \times 10^{-12} \text{ eV}
+\end{align*}
+Sunlight is on the order of $10^0$ eV, so it is unlikely to move the particle into excited states i.e. sunlight photons' energies are too large.
+
+
+\section{Variational Calculation for the Ground State Energy}
+\subsubsection{Question}
+Continuing with the gravitational problem in problem 1, now make a variational calculation for the ground state energy (i.e., an upper bound thereon). Pick a “sensible” trial wave function, at least in the sense that it satisfies the right boundary conditions. Compare your result with the ground state level from the WKB approximation.
+
+\subsubsection{Answer}
+We will choose the trial wave function:
+\begin{equation}
+    \psi(z) = Aze^{-\gamma  z}
+\end{equation}
+We note that in the limits as $z \to 0$ and $z \to \infty$, this wave function goes to zero, so it satisfies the right boundary conditions. Now, we normalize the wave function to find $A$:
+\begin{align*}
+    1 &= \int_{0}^{\infty} \abs{\psi(z)}^2 dz \\
+    &= \int_{0}^{\infty} A^2 z^2 e^{-2\gamma z} dz \\
+    &= A^2 \int_{0}^{\infty} z^2 e^{-2\gamma z} dz \\
+\end{align*}
+Now, we make the substitution $u = 2\gamma z$, so $z = \frac{u}{2\gamma }$, and $dz = \frac{du}{2\gamma}$, and we get:
+\begin{align*}
+    1 &= A^2 \int_{0}^{\infty} \left(\frac{u}{2\gamma}\right)^2 e^{-u} \frac{du}{2\gamma} \\
+    &= \frac{A^2}{8\gamma^3} \int_{0}^{\infty} u^2 e^{-u} du \\
+    &= \frac{A^2}{8\gamma^3} \Gamma(3) \\
+    &= \frac{A^2}{8\gamma^3} 2! \\
+    &= \frac{A^2}{4\gamma^3} \\
+    \implies A &= \boxed{2\gamma^{\frac{3}{2}}}
+\end{align*}
+Now, we can calculate the expectation value of the energy:
+\begin{equation}
+    \expval{H}{\psi} = \int_{0}^{\infty} \psi^*(z) \left(-\frac{\hbar^2}{2m} \dv[2]{z} + mgz\right) \psi(z) dz
+\end{equation}
+First, we will work on the kinetic energy term:
+\begin{align*}
+    KE &= -\frac{A^2\hbar^2}{2m} \int_{0}^{\infty} ze^{-\gamma z} \dv[2]{z} \left(ze^{-\gamma z}\right) dz \\
+\end{align*}
+So, we know that:
+\begin{equation}
+    \frac{d^2}{dz^2} \left(ze^{-\gamma z}\right) = \frac{d}{dz} \left(e^{-\gamma z} - \gamma ze^{-\gamma z}\right) = -2\gamma e^{-\gamma z} + \gamma^2 ze^{-\gamma z}
+\end{equation}
+and then:
+\begin{equation}
+    ze^{-\gamma z} \left(-2\gamma e^{-\gamma z} + \gamma^2 ze^{-\gamma z}\right) = -2\gamma z e^{-2\gamma z} + \gamma^2 z^2 e^{-2\gamma z}
+\end{equation}
+Plugging this result in:
+\begin{align*}
+    KE &= -\frac{A^2\hbar^2}{2m} \int_{0}^{\infty} \left(-2\gamma z e^{-2\gamma z} + \gamma^2 z^2 e^{-2\gamma z}\right) dz \\
+\end{align*}
+We wish to solve the integral and we can split it two pieces:
+\begin{equation}
+    I_{11} = \int_{0}^{\infty} -2\gamma z e^{-2\gamma z} dz
+\end{equation}
+Making the substitutions $u = 2\gamma z$, so $z = \frac{u}{2\gamma}$, and $dz = \frac{du}{2\gamma}$, we get:
+\begin{align*}
+    I_{11} &= \int_{0}^{\infty} -2\gamma \frac{u}{2\gamma} e^{-u} \frac{du}{2\gamma} \\
+    &= -\frac{1}{2\gamma} \int_{0}^{\infty} u e^{-u} du \\
+    &= -\frac{1}{2\gamma} \Gamma(2) \\
+    &= -\frac{1}{2\gamma} 1! \\
+    &= -\frac{1}{2\gamma}
+\end{align*}
+Next, we have:
+\begin{equation}
+    I_{12} = \int_{0}^{\infty} \gamma^2 z^2 e^{-2\gamma z} dz
+\end{equation}
+Making the substitutions $u = 2\gamma z$, so $z = \frac{u}{2\gamma}$, and $dz = \frac{du}{2\gamma}$, we get:
+\begin{align*}
+    I_{12} &= \int_{0}^{\infty} \gamma^2 \left(\frac{u}{2\gamma}\right)^2 e^{-u} \frac{du}{2\gamma} \\
+    &= \frac{1}{8\gamma} \int_{0}^{\infty} u^2 e^{-u} du \\
+    &= \frac{1}{8\gamma} \Gamma(3) \\
+    &= \frac{1}{8\gamma} 2! \\
+    &= \frac{1}{4\gamma}
+\end{align*}
+So:
+\begin{equation}
+    KE = -\frac{A^2\hbar^2}{2m} \left(-\frac{1}{2\gamma} + \frac{1}{4\gamma}\right) =\boxed{\frac{3A^2\hbar^2}{8m\gamma}}
+\end{equation}
+Now, we can work on the potential energy term:
+\begin{align*}
+    PE &= A^2mg \int_{0}^{\infty} z^3 e^{-2\gamma z} dz \\
+\end{align*}
+Substituting $u = 2\gamma z$, so $z = \frac{u}{2\gamma}$, and $dz = \frac{du}{2\gamma}$, we get:
+\begin{align*}
+    PE &= A^2mg \int_{0}^{\infty} \left(\frac{u}{2\gamma}\right)^3 e^{-u} \frac{du}{2\gamma} \\
+    &= \frac{A^2mg}{16\gamma^4} \int_{0}^{\infty} u^3 e^{-u} du \\
+    &= \frac{A^2mg}{16\gamma^4} \Gamma(4) \\
+    &= \frac{A^2mg}{16\gamma^4} 3! \\
+    &=\boxed{\frac{3A^2mg}{8\gamma^4}}
+\end{align*}
+Now, we can calculate the expectation value of the energy:
+\begin{align*}
+    \expval{H}{\psi} &= KE + PE \\
+    &= \frac{3A^2\hbar^2}{8m\gamma} + \frac{3A^2mg}{8\gamma^4} \\
+\end{align*}
+Substituting in For $A$:
+\begin{align*}
+    \expval{H}{\psi} &= \frac{3(2\gamma^{\frac{3}{2}})^2\hbar^2}{8m\gamma} + \frac{3(2\gamma^{\frac{3}{2}})^2mg}{8\gamma^4} \\
+    &= \frac{12\gamma ^{3}\hbar^{2}}{8m\gamma} + \frac{12\gamma ^{3}mg}{8\gamma^4} \\
+    &= \frac{3\gamma ^{2}\hbar^{2}}{2m} + \frac{3mg}{2\gamma} \\
+\end{align*}
+Now, we can minimize this expression with respect to $\gamma$:
+\begin{align*}
+    \dv{\gamma} \left(\frac{3\gamma ^{2}\hbar^{2}}{2m} + \frac{3mg}{2\gamma}\right) &= 0 \\
+    \frac{6\gamma \hbar^{2}}{2m} - \frac{3mg}{2\gamma^2} &= 0 \\
+\end{align*}
+Multiplying everything by $\gamma^2$ and $2m$:
+\begin{align*}
+    6\gamma^3 \hbar^2 - 3m^2g &= 0 \\
+    \gamma^3 &= \frac{m^2g}{2\hbar^2} \\
+    \gamma &= \left(\frac{m^2g}{2\hbar^2}\right)^{\frac{1}{3}} \\
+\end{align*}
+Substituting in to find the minimum energy:
+\begin{align*}
+    \expval{H}{\psi} &= \frac{3\left(\frac{m^2g}{2\hbar^2}\right)^{\frac{2}{3}}\hbar^{2}}{2m} + \frac{3mg}{2\left(\frac{m^2g}{2\hbar^2}\right)^{\frac{1}{3}}} \\
+    &= \frac{3m^{\frac{1}{3}}g^{\frac{2}{3}}\hbar^{\frac{2}{3}}}{2^\frac{8}{3}} + \frac{3\hbar^{\frac{2}{3}}m^{\frac{1}{3}}g^{\frac{2}{3}}}{2^\frac{2}{3}} \\
+\end{align*}
+By plugging in the same valgus for $g$ and $m$ as we did in the WKB approximation, we get:
+\begin{align*}
+    \expval{H}{\psi} &= \frac{3(1.66 \times 10^{-25})^{\frac{1}{3}}(9.8)^{\frac{2}{3}}(1.05 \times 10^{-34})^{\frac{2}{3}}}{2^\frac{8}{3}} + \frac{3(1.05 \times 10^{-34})^{\frac{2}{3}}(1.66 \times 10^{-25})^{\frac{1}{3}}(9.8)^{\frac{2}{3}}}{2^\frac{2}{3}} \\
+    &\approx 8.26 \times 10^{-12} \text{ eV}
+\end{align*}
+This is a bit higher than the WKB approximation, but it is still on the same order of magnitude.
+
+\section{Inequality on the Ground State Energy}
+\subsubsection{Question}
+We can find other inequalities in the same spirit as our inequality on the ground state energy. For example, if we can find a lower bound on $E_1 - \expval{H}{\psi}$, where $E_1$ is the first excited energy, and $\psi$ is a trial wave function, the theorem below might be used to obtain a lower bound on $E_0$. Prove the theorem:
+\begin{quote}
+    Theorem: If we have a normalized function $\ket{\psi}$ such that
+    \[ E_0 \leq \expval{H}{\psi} \leq E_1, \]
+    then
+    \[ E_0 \geq \expval{H}{\psi} - \frac{\bra{H\psi  }\ket{H\psi  } - \expval{H}{\psi}^2}{E_1 - \expval{H}{\psi}}. \]
+\end{quote}
+
+\subsubsection{Answer}
+We started by wringing some terms in the second equation:
+\begin{equation}
+    \frac{\bra{H\psi  }\ket{H\psi  } - \expval{H}{\psi}^2}{E_1 - \expval{H}{\psi}} \geq \expval{H}{\psi} - E_0
+\end{equation}
+Then, we multiplied both sides by $E_1 - \expval{H}{\psi}$:
+\begin{equation}
+    \bra{H\psi  }\ket{H\psi  } - \expval{H}{\psi}^2 \geq (E_1 - \expval{H}{\psi})(\expval{H}{\psi} - E_0)
+\end{equation}
+Now we can shift by a constant, so that $E_0 = 0$:
+\begin{equation}
+    \bra{H\psi  }\ket{H\psi  } - \expval{H}{\psi}^2 \geq (E_1 - \expval{H}{\psi})\expval{H}{\psi}
+\end{equation}
+Now, we can expand the right hand side:
+\begin{align*}
+    \bra{H\psi  }\ket{H\psi  } - \expval{H}{\psi}^2 &\geq E_1\expval{H}{\psi} - \expval{H}{\psi}^2 \\
+\end{align*}
+Now, we can add $\expval{H}{\psi}^2$ from both sides:
+\begin{align*}
+    \bra{H\psi  }\ket{H\psi  } &\geq E_1\expval{H}{\psi} \\
+\end{align*}
+We want to prove that:
+\begin{equation}
+    \bra{H\psi  }\ket{H\psi  } - E_1\expval{H}{\psi} \geq 0
+\end{equation}
+At this point, we can expand in terms of the eigenstates of $H$:
+\begin{equation}
+    \psi = \sum_{n} c_n \ket{n}
+\end{equation}
+and
+\begin{equation}
+    H\ket{n} = E_n \ket{n}
+\end{equation}
+So, we can write:
+\begin{equation}
+    E_1\expval{H}{\psi} = E_1 \sum_{n} c_n \bra{\psi } H \ket{n} = E_1 \sum_{n} c_n E_n \bra{\psi } \ket{n} = E_1 \sum_{m}\sum_{n}c_m^* c_n E_n \delta_{mn} = E_1 \sum_{n} \abs{c_n}^2 E_n  
+\end{equation}
+On the other term, we have:
+\begin{equation}
+    \bra{H\psi  }\ket{H\psi  } = \sum_{m}\sum_{n}c_m^* c_n \bra{m} H^\dag H \ket{n} = \sum_{m}\sum_{n}c_m^* c_n E_m E_n \delta_{mn} = \sum_{n} \abs{c_n}^2 E_n^2
+\end{equation}
+We already made the shift, so that $E_0 = 0$, so we can write that $\forall n$:
+\begin{equation}
+    \sum_{n} \abs{c_n}^2 E_n^2 \geq E_1 \sum_{n} \abs{c_n}^2 E_n
+\end{equation}
+Therefore we have that in equality in equation 17 is true, so we have proven the theorem.
+\section{Variational Approach to Ground State Energy Levels of Atoms}
+\subsubsection{Question}
+Let us pursue our variational approach to the estimation of ground state energy levels of atoms for the “general” case. We consider an atom with nuclear charge $Z$, and $N$ electrons. The Hamiltonian of interest is:
+\begin{align*}
+    H(Z, N) &= H_{\text{kin}} - ZV_c + V_e \\
+    H_{\text{kin}} &= \sum_{n=1}^{N} \frac{p_n^2}{2m} \\
+    V_c &= \alpha \sum_{n=1}^{N} \frac{1}{\abs{x_n}} \\
+    V_e &= \alpha \sum_{\substack{N \geq j > k \geq 1}} \frac{1}{\abs{x_k - x_j}}
+\end{align*}
+where
+\begin{itemize}
+    \item $m =$ electron mass
+    \item $\alpha =$ fine structure constant.
+\end{itemize}
+Denote the ground state energy of $H(Z, N)$ by $-B(Z, N)$, with $B(Z, 0) = 0$. Generalize the variational calculation we performed for the ground state of helium to the general Hamiltonian $H(Z, N)$. Thus, select your “trial function” to be a product of $N$ identical “hydrogen atom ground state” functions. Determine the resulting lower bound $\hat{B}(Z, N)$ on $B(Z, N)$ (i.e., an upper limit on the ground state energies).
+
+\subsubsection{Answer}
+The hydration ground state wave function is given by:
+\begin{equation}
+    \psi_{\text{hydrogen}} = \sqrt{\frac{Z^{3}}{\pi a_0^3}}e^{-\frac{r}{a_0}}
+\end{equation}
+The trial wave function will be a product of these:
+\begin{equation}
+    \Psi  (\textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_N) = \prod_{n=1}^{N} \sqrt{\frac{Z^{3}}{\pi a_0^3}}e^{-\frac{Z r_n}{a_0}}
+\end{equation}
+First we want to compute the kinetic energy for this system:
+\begin{align*}
+    \bra{\Psi }\sum_{n=1}^{N} \frac{p_n^2}{2m} \ket{\Psi } &= \sum_{n=1}^{N} \bra{\Psi }\frac{p_n^2}{2m} \ket{\Psi } \\ 
+\end{align*}
+We can, therefore, just consider one of these terms:
+\begin{equation}
+    \bra{\Psi }\frac{p_N^2}{2m} \ket{\Psi } = \int_{(\infty)} d^3 \textbf{x}_1 \int_{(\infty)} d^3 \textbf{x}_2 \dots \int_{(\infty)} d^3 \textbf{x}_N \Psi^* \frac{p_N^2}{2m} \Psi 
+\end{equation}
+ Inserting our expression for $\Psi $:
+\begin{align*}
+    \bra{\Psi }\frac{p_N^2}{2m} \ket{\Psi } &= \int_{(\infty)} d^3 \textbf{x}_1 \int_{(\infty)} d^3 \textbf{x}_2 \dots \int_{(\infty)} d^3 \textbf{x}_N \prod_{n=1}^{N} \sqrt{\frac{Z^{3}}{\pi a_0^3}}e^{-\frac{Zr_n}{a_0}} \frac{p_N^2}{2m} \prod_{n=1}^{N} \sqrt{\frac{Z^{3}}{\pi a_0^3}}e^{-\frac{Zr_n}{a_0}} \\
+    &= \int_{(\infty)} d^3 \textbf{x}_1 \int_{(\infty)} d^3 \textbf{x}_2 \dots \prod_{n=1}^{N-1} \frac{Z^{3}}{\pi a_0^3}e^{-\frac{2Zr_n}{a_0}} \int_{(\infty)} d^3 \textbf{x}_N \frac{Z^{3}}{\pi a_0^3}e^{-\frac{Zr_n}{a_0}} \frac{p_N^2}{2m} e^{-\frac{Zr_n}{a_0}} \\
+\end{align*}
+This is equal to:
+\begin{equation}
+    \bra{\Psi }\frac{p_N^2}{2m} \ket{\Psi } = Z^2 \times \text{kinetic energy of hydrogen atom crowned state} = Z^2 \times \frac{1}{2} m \alpha^2
+\end{equation}
+So,$N$ of these terms gives us:
+\begin{equation}
+    \expval{H_{\text{kin}}}{\Psi } = \frac{N}{2} m \alpha^2 Z^2
+\end{equation}
+Next, we consider the nuclear potential defined by $V_c$. As we showed in the lecture for the hydration crowned state function:
+\begin{equation}
+    \expval{\frac{\alpha }{\abs{\textbf{x}_1}}}{\Psi } = Zm\alpha^2
+\end{equation}
+The $Z$ here is a parameter that we want to vary, different from the $Z$ in our Hamiltonian, so we will call the latter $Z'$. So, we have:
+\begin{equation}
+    -Z' \expval{\frac{\alpha }{\abs{\textbf{x}_1}}}{\Psi } = -Z'Zm\alpha^2
+\end{equation}
+and $N$ of these terms gives us:
+\begin{equation}
+    \expval{-Z'V_c}{\Psi } = -Z'Zm\alpha^2 N
+\end{equation}
+So, we currently have:
+\begin{equation}
+    \expval{H_{\text{kin}}-Z'V_c}{\Psi } = \frac{1}{2}m\alpha 2\left(NZ^2 - 2Z'ZN\right)
+\end{equation}
+Now, we consider the electron-electron repulsion term for the case of the hilum atom where there was only two electrons. We can write this as:
+\begin{equation}
+    \bra{\Psi }\frac{\alpha }{r_{12}}\ket{\Psi }= \alpha \left(\frac{Z^{3}}{\pi a_0^3}\right)^2 \int_{(\infty)} d^3 \textbf{x}_1 \int_{(\infty)} d^3 \textbf{x}_2 e^{-\frac{2Zr_1}{a_0}} e^{-\frac{2Zr_2}{a_0}} \frac{1}{\abs{\textbf{x}_1 - \textbf{x}_2}}
+\end{equation}
+As shown in the lecture, this can be evaluated to:
+\begin{equation}
+    \bra{\Psi }\frac{\alpha }{r_{12}}\ket{\Psi }= 
+\frac{1}{2}m\alpha ^{2}\frac{5}{4}Z
+\end{equation}
+This is only for one of the terms, and our summation is:
+\begin{equation}
+\sum_{N\geq j \geq k \geq 1} 1 = \sum_{j=1}^{N}\sum_{k=1}^{j-1}1 = \sum_{j=1}^{N}(j-1) = \left(\sum_{j=1}^{N} \right)-N = \frac{N(N+1)}{2} - N = \frac{N(N-1)}{2}  
+\end{equation}
+So, we get:
+\begin{equation}
+    \expval{V_e}{\Psi } = \frac{1}{2}m\alpha ^{2}\frac{5}{4}Z \frac{N(N-1)}{2}
+\end{equation}
+So, we have:
+\begin{align}
+    \expval{H_{\text{kin}}-Z'V_c+V_e}{\Psi } \\ &= \frac{1}{2}m\alpha 2\left(NZ^2 - 2Z'ZN + \frac{5}{8}ZN(N-1)\right) \\ &= \frac{N}{2}m\alpha 2 \left(Z^2 - 2Z'Z+ \frac{5(N-1)}{8}\right)
+\end{align}
+We now minimize with respect to the variational parameter $Z$:
+\begin{equation}
+    0 = \frac{d\expval{H}}{dZ}\rightarrow 2Z - 2Z' + \frac{5(N-1)}{8} = 0 \implies Z = Z' - \frac{5(N-1)}{16}
+\end{equation}
+So for the $B(Z,N)$ since it is defined as $-H(Z,N)$, we have:
+\begin{equation}
+    \hat{B}(Z,N) = -\frac{N}{2}m\alpha 2 \left(\left(Z' - \frac{5(N-1)}{16}\right)^2 + \left(Z' - \frac{5(N-1)}{16}\right)\left(\frac{5(N-1)}{8}-2Z'\right)\right)
+\end{equation}
+We can simplify this to:
+\begin{equation}
+    =\boxed{+\frac{N}{2}m\alpha ^{2}\left(Z' - \frac{5(N-1)}{16}\right)^{2}}
+\end{equation}
+\end{document}

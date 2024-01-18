@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{mhchem}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\author{Patryk Kozlowski}
+\title{Problem Set 5}
+\date{\today}
+\begin{document}
+\maketitle
+\section{}
+\subsection{Question}
+\begin{equation}
+    H=-\frac{\hbar^{2}}{2m} \nabla^{2}+\frac{1}{2} kr^{2}
+\end{equation}
+\subsection{Answer}
+Simple harmonic oscillator
+\section{}
+\subsection{Question}
+\begin{equation}
+    H=-\frac{\hbar^{2}}{2m} \nabla^{2}_{(r)}-\frac{e^{2}}{r} +\frac{L^{2}}{2mr^{2}}
+\end{equation}
+spherical potential
+\section{}
+\subsection{Question}
+\begin{equation}
+    H=-\frac{\hbar^{2}}{2m} \nabla^{2} +\frac{1}{2} k_1r^{2} + \frac{1}{6}k_{2} r^{3}+B_{1} J(J+1)+B_{2} J^{2}(J+1)^{2}
+\end{equation}
+\subsection{Answer}
+I have not seen this Hamiltonian before. However, I conjecture that it contains a complexity indicative of a realistic system. The first two terms are just of a simple harmonic oscillator. The third term has an element of anharmonicity. J is the total angular momentum, so the last two terms are related to rotational degrees of freedom.
+\section{}
+\subsection{Question}
+The Hubbard model describes two competing forces on electrons. First, a kinetic term for tunneling to neighboring atoms, and second, a repulsive potential term pushing them away from neighboring electrons. We can write the Hamiltonian as follows:
+\begin{equation}
+    H=-t \sum a^{\dag}_{i}a_{j} +U \sum n_{i\uparrow}n_{i\downarrow}
+\end{equation}
+where $a^{\dag}$ and $a$ are creation and annihilation operators, and $n_{i\uparrow}$ and $n_{i\downarrow}$ are the number operators for spin-up and spin-down electrons. Explain how these two terms of the Hamiltonian lead to the described behavior for $t>0$ and $U>0$.
+\subsection{Answer}
+For $t>0$, the negative sign in front of the first term indicates that the energy is lowered, encouraging tunneling to neighboring sites. On the other hand, for $U>0$, the second term increases the energy when the number of electrons at a certain site is greater, representing Coulomb repulsion.
+\section{}
+\subsection{Question}
+The t-J model is based on the Hubbard model, but contains an additional term to describe antiferromagnetism:
+\begin{equation}
+    H=-t \sum a^{\dag}_{i}a_{j} +U \sum n_{i\uparrow}n_{i\downarrow} +J \sum (S_{i}\cdot S_{j}-\frac{1}{4}n_{i}n_{j})
+\end{equation}
+where $J$ is the antiferromagnetic exchange coupling and $S$ describes spin. Explain how the Hubbard model accounts for antiferromagnetism.
+\subsection{Answer}
+The final term just accounts for a correction, so the term that we will focus on is the third one. The third term is the dot product of the spins at two neighboring sites. If the spins are antiparallel, then this is negative and the energy is lowered and vice versa. This is the definition of antiferromagnetism, where antiparallel spins are energetically favorable.
+\section{}
+As another model Hamiltonian based on the Hubbard model, the Hubbard-Holstein Hamiltonian describes electron-phonon coupling. The Holstein Hamiltonian for systems with no Coulomb repulsion is given by:
+\begin{equation}
+    H=-t\sum a^{\dag}_{i}a_{j} +\hbar\omega \sum b^{\dag}_{i}b_{i} + \sum (b^{\dag}_{i}+b_{i})a^{\dag}_{i}a_{i}
+\end{equation}
+where $b^{\dag}$ and $b$ are creation and annihilation operators for phonons.
+\subsection{}
+\subsubsection{Question}
+What assumption are we making about the phonon potential?
+\subsubsection{Answer}
+The phonon potential is given by the second summation. We are assuming that it depends linearly on an input frequency given by $\omega$, operating locally on a site $i$.
+\subsection{}
+\subsubsection{Question}
+How does the Holstein Hamiltonian describe electron-phonon coupling?
+\subsubsection{Answer}
+The third term describes the coupling. The $a^{\dag}_{i}a_{i}$ term is the number operator for electrons at site $i$. The $b^{\dag}_{i}+b_{i}$ term is the creation and annihilation operators for phonons at site $i$. The coupling term is the product of these two operators, so it describes the interaction between electrons and phonons at the same site $i$.
+\end{document}

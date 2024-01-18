@@ -1,0 +1,25 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:771: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/1/g0s1.py:12: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+Discarded 6 diffused primitive functions, 0 contracted functions
+
+******** <class 'pyscf.pbc.gw.krgw_ac.KRGWAC'> ********
+method = KRGWAC
+GW nocc = 18, nvir = 8, nkpts = 1
+frozen orbitals 0
+use perturbative linearized QP eqn = False
+analytic continuation method = pade
+GW finite size corrections = True
+nelec by numeric integration = 35.99999999865276
+    CPU time for vxc     56.49 sec, wall time      7.25 sec
+    CPU time for vj and vk     77.81 sec, wall time      9.87 sec
+    CPU time for vj and vk     73.81 sec, wall time      9.25 sec
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/1/g0s1.py", line 45, in <module>
+    mygw.kernel()
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/gw/krgw_ac.py", line 639, in kernel
+    kernel(self, mo_energy, mo_coeff, orbs=orbs,
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/gw/krgw_ac.py", line 86, in kernel
+    raise RuntimeError('Found incompatible integral scheme %s.'
+RuntimeError: Found incompatible integral scheme <class 'pyscf.pbc.df.fft.FFTDF'>.KGWAC can be only used with GDF integrals

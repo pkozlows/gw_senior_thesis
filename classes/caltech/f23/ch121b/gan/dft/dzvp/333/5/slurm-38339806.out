@@ -1,0 +1,67 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:772: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, the same to the B3LYP functional in Gaussian and ORCA (issue 1480). To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/dzvp/333/5/d3rp.py:14: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+Discarded 8 diffused primitive functions, 0 contracted functions
+
+
+******** <class 'pyscf.pbc.dft.krks.KRKS'> ********
+method = KRKS-KohnShamDFT
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /central/home/pkozlows/ch121b/gan/dft/dzvp/333/5/check_file_2.chk
+max_memory 440821 MB (current use 192 MB)
+
+
+******** PBC SCF flags ********
+N kpts = 27
+kpts = [[0.         0.         0.        ]
+ [0.         0.         0.21354647]
+ [0.         0.         0.42709293]
+ [0.         0.40117922 0.        ]
+ [0.         0.40117922 0.21354647]
+ [0.         0.40117922 0.42709293]
+ [0.         0.80235844 0.        ]
+ [0.         0.80235844 0.21354647]
+ [0.         0.80235844 0.42709293]
+ [0.3474314  0.20058961 0.        ]
+ [0.3474314  0.20058961 0.21354647]
+ [0.3474314  0.20058961 0.42709293]
+ [0.3474314  0.60176883 0.        ]
+ [0.3474314  0.60176883 0.21354647]
+ [0.3474314  0.60176883 0.42709293]
+ [0.3474314  1.00294806 0.        ]
+ [0.3474314  1.00294806 0.21354647]
+ [0.3474314  1.00294806 0.42709293]
+ [0.6948628  0.40117922 0.        ]
+ [0.6948628  0.40117922 0.21354647]
+ [0.6948628  0.40117922 0.42709293]
+ [0.6948628  0.80235844 0.        ]
+ [0.6948628  0.80235844 0.21354647]
+ [0.6948628  0.80235844 0.42709293]
+ [0.6948628  1.20353767 0.        ]
+ [0.6948628  1.20353767 0.21354647]
+ [0.6948628  1.20353767 0.42709293]]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 2.23368679724563e-09, -0.129121640870431, 0.0670244764868704
+    madelung (= occupied orbital energy shift) = 0.12419432429974722
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -2.2354978374
+DF object = <pyscf.pbc.df.fft.FFTDF object at 0x7f0fd7a93190>
+XC functionals = b3pw91
+small_rho_cutoff = 1e-07
+Uniform grid, mesh = [ 83  83 133]
+<class 'pyscf.pbc.dft.krks.KRKS'> does not have attributes  nlc nlcgrids
+Set gradient conv threshold to 0.000316228
+    CPU time for setting up grids      9.13 sec, wall time      0.52 sec
+nelec by numeric integration = 35.999999999971074
+    CPU time for vxc   1422.30 sec, wall time     57.36 sec
+slurmstepd: error: *** JOB 38339806 ON hpc-19-24 CANCELLED AT 2023-11-14T19:54:23 ***

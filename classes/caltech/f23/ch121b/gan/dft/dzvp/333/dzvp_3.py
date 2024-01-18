@@ -3,18 +3,14 @@ import pyscf.pbc.tools.pyscf_ase as pyscf_ase
 import pyscf.pbc.gto as pbcgto
 import pyscf.pbc.dft as pbcdft
 
-import matplotlib.pyplot as plt
 
 from ase.build import bulk
 from ase.dft.kpoints import sc_special_points as special_points, get_bandpath
-from ase.visualize import view
 
 import numpy as np
 
 # ase
 c = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
-# print(c.get_volume())
-# view(c)
 
 # pyscf specs
 cell = pbcgto.Cell()

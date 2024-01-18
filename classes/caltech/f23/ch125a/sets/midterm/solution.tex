@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\author{Patryk Kozlowski}
+\title{Midterm}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Short answers}
+\subsection{}
+The Hamiltonian can also be derived from the Lagrangian formulation of quantum mechanics. A key concept that goes with this is the canonical transformation.
+\subsection{}
+Because any perturbation to a potential minimum can be described by an simple harmonic oscillator.
+\subsection{}
+The diagonal components of a matrix operator correspond to its eigenvalues in the given basis, when the matrix is diagonalized. More generally, they correspond to the expectation values of the operator in the given basis. The off-diagonal components correspond to mixing between states.
+\subsection{}
+We assume that we are talking about Schrödinger's time-independent equation.
+\begin{equation}
+    \hat{H}\ket{\psi} = -\frac{\hbar^2}{2m}\nabla^2\ket{\psi} + V\ket{\psi} = E\ket{\psi}
+\end{equation}
+In the expression in the middle, the first term gives the kinetic energy and the second term gives the potential energy. The term on the rightmost side just says that this is an eigenvalue equation.
+\section{Potential energy surface}
+\subsection{}
+It would relax to $(\theta =110, \phi = -90)$ with a probability of 50\% and $(\theta = 110, \phi = 90)$ with a probability of 50\%.
+\subsection{}
+The coordinates of the saddle point are given by $(\theta = 110, \phi = 0)$.
+\section{Outer products}
+That operator $R$ is given by
+\begin{equation}
+    R =2\ket{T}\bra{T}+5\ket{U}\bra{U}-5\ket{V}\bra{V}
+\end{equation}
+The states themselves can be expressed as linear combinations of the other orthonormal states $\ket{1}$ $\ket{2}, \ket{3}$ as follows
+\begin{equation}
+    \ket{T}= \ket{1}
+\end{equation}
+\begin{equation}
+    \ket{U}= \ket{2}\frac{1}{\sqrt{2}}+\ket{3}\frac{e^{-i \phi}}{\sqrt{2}}
+\end{equation}
+\begin{equation}
+    \ket{V}= \ket{2}\frac{e^{i \phi}}{\sqrt{2}}-\ket{3}\frac{1}{\sqrt{2}}
+\end{equation}
+We want to express $R$ as a sum of outer products in the form
+\begin{equation}
+    R = \sum_{i,j} c_{ij}\ket{i}\bra{j}
+\end{equation}
+Expanding $R$ out, we have That
+\begin{equation}
+    R = 2\ket{1}\bra{1}+5(\ket{2}\frac{1}{\sqrt{2}}+\ket{3}\frac{e^{-i \phi}}{\sqrt{2}})(\bra{2}\frac{1}{\sqrt{2}}+\bra{3}\frac{e^{i \phi}}{\sqrt{2}})-5(\ket{2}\frac{e^{i \phi}}{\sqrt{2}}-\ket{3}\frac{1}{\sqrt{2}})(\bra{2}\frac{e^{-i \phi}}{\sqrt{2}}-\bra{3}\frac{1}{\sqrt{2}})
+\end{equation}
+Multiplying out, we get
+\begin{equation}
+= 2\ket{1}\bra{1} + \frac{5}{2}\ket{2}\bra{2} + \frac{5e^{i\phi}}{2}\ket{2}\bra{3} + \frac{5e^{-i\phi}}{2}\ket{3}\bra{2} + \frac{5}{2}\ket{3}\bra{3}-\frac{5}{2}\ket{2}\bra{2} + \frac{5e^{i\phi}}{2}\ket{2}\bra{3} + \frac{5e^{-i\phi}}{2}\ket{3}\bra{2} - \frac{5}{2}\ket{3}\bra{3}
+\end{equation}
+After cancellations, we get
+\begin{equation}
+    R = 2\ket{1}\bra{1} + 5e^{i\phi}\ket{2}\bra{3} + 5e^{-i\phi}\ket{3}\bra{2}
+\end{equation}
+\section{Raising and lowering operators}
+\subsection{}
+\subsubsection{Question}
+\textbf{A.} What number does $|X\rangle$ need to be in order for the following to not be zero? What is the expectation value with this $|X\rangle$?\\
+$\bra{X}a(a^{\dagger})^3a\ket{n}$
+\subsubsection{Answer}
+$\ket{X}$ need to be $\ket{n+1}$. We have the basic relations
+\begin{equation}
+    a\ket{n} = \sqrt{n}\ket{n-1}
+\end{equation}
+and
+\begin{equation}
+    a^{\dagger}\ket{n} = \sqrt{n+1}\ket{n+1}
+\end{equation}
+Going sequentially
+\begin{equation}
+    \bra{X}a(a^{\dagger})^3a\ket{n} = \bra{X}a(a^{\dagger})^3\sqrt{n}\ket{n-1} = \bra{X}a(a^{\dagger})^2n\ket{n}= n\bra{X}a(a^{\dagger})^1\sqrt{n+1}\ket{n+1} 
+\end{equation}
+\begin{equation}
+    = n\sqrt{n+1}\bra{X}\sqrt{n+2}a \ket{n+2} = n\sqrt{(n+1)(n+2)}\bra{X}\sqrt{n+2}\ket{n+1}
+\end{equation}
+\begin{equation}
+    = n(n+2)\sqrt{(n+1)}\bra{X}\ket{n+1}
+\end{equation}
+So the expectation value is
+\begin{equation}
+    =\boxed{n(n+2)\sqrt{(n+1)}}
+\end{equation}
+\subsection{}
+\subsubsection{Question}
+\textbf{B.} Prove, using commutator relations, that $\langle 1|1 \rangle$ is orthonormal for the states of the SHO. 
+Hint, use $a^{\dagger}|0\rangle$ and the commutator for $[a, a^{\dagger}]$.
+\subsubsection{Answer}
+$\langle 1|1 \rangle$ can be expressed as
+\begin{equation}
+    \langle 1|1 \rangle = \bra{0}aa^{\dagger}\ket{0}
+\end{equation}
+Now, we have the commutator:
+\begin{equation}
+    [a, a^{\dagger}] = aa^{\dagger} - a^{\dagger}a \rightarrow aa^{\dagger} = a^{\dagger}a + [a, a^{\dagger}]
+\end{equation}
+Now, the first term will vanish because $a$ will annihilate the vacuum state. So we are left with
+\begin{equation}
+    aa^{\dagger} = [a, a^{\dagger}] = 1
+\end{equation}
+So we have
+\begin{equation}
+    \langle 1|1 \rangle = \bra{0}aa^{\dagger}\ket{0} = \bra{0}[a, a^{\dagger}]\ket{0} = \bra{0}1\ket{0} = \boxed{1}
+\end{equation}
+\section{Fermi’s Golden Rule in a 3-level System}
+
+
+
+In this problem, we apply Fermi’s golden rule to a 3-level system. The energies of our states are:
+
+\begin{align}
+\mathcal{H}|0\rangle &= (400 \, \text{cm}^{-1})|0\rangle \\
+\mathcal{H}|1\rangle &= (1600 \, \text{cm}^{-1})|1\rangle \\
+\mathcal{H}|2\rangle &= (3400 \, \text{cm}^{-1})|2\rangle 
+\end{align}
+
+We’ll assume that our particle starts in the ground state \(|0\rangle\) and any wavefunction in this system can be described as a linear combination of these states.
+
+\subsection{}
+\subsubsection{Question}
+
+Recall that Fermi’s golden rule allows us to calculate any transition rate (in s\(^{-1}\)) as:
+
+\[
+\Gamma_{i \rightarrow f} = \frac{2\pi}{\hbar} \sum_{f} |\bra{f}V_{fi}\ket{i}|^{2}\delta(E_f - E_i - \hbar\omega)
+\]
+
+What does each part of Fermi’s golden rule mean conceptually?
+\subsubsection{Answer}
+We exclude talking about the constant terms in front. The sum is over all final states. The matrix element is the transition matrix element between the initial and final states. The delta function picks it out so that the energy of the final state must be different from the energy of the initial state by that energy of the photon, or $\hbar\omega$.
+\subsection{}
+\subsubsection{Question}
+
+What photon energies (in cm\(^{-1}\)) can excite optical transitions in this system?
+\subsubsection{Answer}
+Since the ground state has to be the initial state, the only possible transitions are to the first and second excited states. So the possible photon energies are
+    \begin{equation}
+        \hbar\omega = 1600 \, \text{cm}^{-1} - 400 \, \text{cm}^{-1} = 1200 \, \text{cm}^{-1}
+    \end{equation}
+    and
+    \begin{equation}
+        \hbar\omega = 3400 \, \text{cm}^{-1} - 400 \, \text{cm}^{-1} = 3000 \, \text{cm}^{-1}
+    \end{equation}
+There can also be later transitions from the first to the second excited state, which emit a photon energy of
+\begin{equation}
+    \hbar\omega = 3400 \, \text{cm}^{-1} - 1600 \, \text{cm}^{-1} = 1800 \, \text{cm}^{-1}
+\end{equation}
+So, in total, we can have three possible photon energies: 1200, 1800, and 3000 cm\(^{-1}\).
+\subsection{}
+\subsubsection{Question}
+For this system, we assume that only optical transitions occur. The nonzero optical transition matrix elements are:
+
+\begin{align}
+\langle 1|V_{if}|0 \rangle &= \langle 0|V_{if}|1 \rangle = 5 \times 10^{-12} \, \sqrt{J} \\
+\langle 2|V_{if}|0 \rangle &= \langle 0|V_{if}|2 \rangle = 3 \times 10^{-12} \, \sqrt{J} \\
+\langle 2|V_{if}|1 \rangle &= \langle 1|V_{if}|2 \rangle = 6 \times 10^{-12} \, \sqrt{J}
+\end{align}
+
+Define your basis vectors \(|0\rangle\), \(|1\rangle\), and \(|2\rangle\) and write the full 3x3 transition matrix \(V_{if}\) in matrix notation.
+\subsubsection{Answer}
+Define the basis vectors as
+\begin{equation}
+    |0\rangle = \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    |1\rangle = \begin{bmatrix}
+    0 \\
+    1 \\
+    0
+    \end{bmatrix}
+\end{equation}
+\begin{equation}
+    |2\rangle = \begin{bmatrix}
+    0 \\
+    0 \\
+    1
+    \end{bmatrix}
+\end{equation}
+So we have
+\begin{equation}
+    V_{if} = \begin{bmatrix}
+    0 & 5 \times 10^{-12} \, \sqrt{J} & 3 \times 10^{-12} \, \sqrt{J} \\
+    5 \times 10^{-12} \, \sqrt{J} & 0 & 6 \times 10^{-12} \, \sqrt{J} \\
+    3 \times 10^{-12} \, \sqrt{J} & 6 \times 10^{-12} \, \sqrt{J} & 0
+    \end{bmatrix}
+\end{equation}
+
+\subsection{}
+\subsubsection{Question}
+
+For our purposes, we will assume that \(\delta(0) = 1\) for photons that are on-resonance with an optical transition. The absorption rate thus simplifies to:
+
+\[
+\Gamma_{i \rightarrow f} = \frac{2\pi}{\hbar} \sum_{f} |\bra{f}V_{fi}\ket{i}|^{2}
+\]
+
+Calculate the absorption rate for photons with energy \(\hbar\omega = 3000 \, \text{cm}^{-1}\). (Recall that \(\hbar = 1.05 \times 10^{-34} \, \text{J} \cdot \text{s}\)).
+\subsubsection{Answer}
+since the $3000 \text{cm}^{-1}$ transition correspond to the transition from the ground to the second excited state, we have:
+\begin{equation}
+    \Gamma_{i \rightarrow f} = \frac{2\pi}{\hbar} \left(|\bra{2}V_{fi}\ket{0}|^{2}\right) = \frac{2\pi}{\hbar} \left(3 \times 10^{-12} \, \sqrt{J}\right)^2 = \boxed{54.24 \times 10^{-10} \, \text{s}^{-1}}
+\end{equation} 
+
+
+
+\subsection{Bonus}
+I did not think question 3 on this midterm was completely necessary. I wish that I was able to learn more about the lagrangian formulation of quantum mechanics/canonical transform; I tried reading sinker about it, but it was a little bit too confusing; the Friday office ours that I go to are too crowded with homework questions to go over something like this; also, I don't know how much knowing this information is necessary for the experimental physical chemist/spectroscopist.
+
+
+\end{document}

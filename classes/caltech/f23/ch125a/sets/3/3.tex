@@ -18,12 +18,12 @@ This was done when we attempted to complete the square in our Hamiltonian, which
 
 We define \(X\) and \(P\), keeping track of the constants now, as follows:
 \begin{equation}
-    X = \sqrt{\frac{\hbar}{2m\omega}}(a + a^{\dagger})
+    X = \sqrt{\frac{\hbar}{2m\omega}}(a^{\dagger} + a)
 \end{equation}
 \begin{equation}
     P = i\sqrt{\frac{m\omega\hbar}{2}}(a - a^{\dagger})
 \end{equation}
-\subsection{Calculation of \(\ev{X^2}\) and \(\ev{P^2}\)}
+\subsection{Calculation of \(\ev{X^2} \) and \(\ev{P^2}\)}
 
 We define the expectation value of an operator as:
 \begin{equation}
@@ -62,7 +62,7 @@ Now we consider the second term of equation 7:
 \end{equation}
 Now we can substitute these results back into equation 7:
 \begin{equation}
-    = \frac{\hbar}{2m\omega}(n + n + 1)\boxed{= \frac{\hbar}{2m\omega}(2n + 1)}
+   \ev{X^2} = \frac{\hbar}{2m\omega}(n + n + 1)\boxed{= \frac{\hbar}{2m\omega}(2n + 1)}
 \end{equation}
 Now we move on to the calculation of \(\ev{P^2}\):
 \begin{equation}
@@ -123,7 +123,7 @@ Due to the orthonormality of the states, both terms will vanish to give:
 \end{equation}
 So we have that:
 \begin{equation}
-    \Delta X = \sqrt{(\frac{\hbar}{2m\omega})^{\frac{1}{2}}(2n + 1)} =\boxed{\left(\frac{\hbar}{2m\omega}\right)^{\frac{1}{4}}\sqrt{2n + 1}}
+    \Delta X = \sqrt{(\frac{\hbar}{2m\omega})(2n + 1)} =\boxed{\left(\frac{\hbar}{2m\omega}\right)^{\frac{1}{2}}\sqrt{2n + 1}}
 \end{equation}
 Next, we consider \(\Delta P\):
 \begin{equation}
@@ -131,7 +131,11 @@ Next, we consider \(\Delta P\):
 \end{equation}
 We will have a similar argument why the second term vanishes, so we can just plug in our answer for the first term to get:
 \begin{equation}
-    \Delta P = \sqrt{(\frac{m\omega\hbar}{2})^{\frac{1}{2}}(2n + 1)} =\boxed{\left(\frac{m\omega\hbar}{2}\right)^{\frac{1}{4}}\sqrt{2n + 1}}
+    \Delta P = \sqrt{(\frac{m\omega\hbar}{2})^{\frac{1}{1}}(2n + 1)} =\boxed{\left(\frac{m\omega\hbar}{2}\right)^{\frac{1}{2}}\sqrt{2n + 1}}
+\end{equation}
+So, we get the desired result of
+\begin{equation}
+    \boxed{\Delta X \Delta P = \frac{1}{2}(2n + 1)\hbar}
 \end{equation}
 \\
 \subsubsection{Question}
@@ -139,7 +143,7 @@ Intuitively, what does this let us say about any wavefunction that satisfies the
 
 \textit{Hint:} Does the wavefunction become more or less spread in \(X\), \ldots
 \subsubsection{Answer}
-As we go up the rungs of the ladder of the SHO, due to the $\sqrt{2n +1}$ dependents of the uncertainty in position, the wave function will become more spread out in $X$.
+In the ground state of the oscillator with $n=0$, the uncertainty is at a minimum of $\frac{\hbar}{2}$. As $n$ increases, This total uncertainty will increase. So, as we move up in the rungs of the oscillator (which is a model system for any perturbation to a potential minimum), the minimum uncertainty increases i.e. the with function becomes more spread out in $X$ and $P$.
 \section{Quantizing the Simple Harmonic Oscillator}
 
 \textit{Objective:} To explore if quantizing the simple harmonic oscillator actually changes the kinetics, and if commutators of operators can really predict the time dependence of physical variables.
@@ -200,7 +204,7 @@ Now we can substitute in the result from part 1:
 \end{equation}
 So, we have:
 \begin{equation}
-    \boxed{[ -\omega ^{2} + \omega^2 ] \langle \Psi(t)|X|\Psi(t)\rangle = 0}
+    \boxed{[  \frac{d^{2}}{dt^2} + \omega^2 ] \langle \Psi(t)|X|\Psi(t)\rangle = [ -\omega ^{2}+\omega ^{2} ] \langle \Psi(t)|X|\Psi(t)\rangle = 0}
 \end{equation}
 \subsection{Time Derivation and Operator Commutation}
 \subsubsection{Question}
@@ -227,7 +231,7 @@ Then take another time derivative to show that
 \[
 \left[ \frac{d^2}{dt^2} + 4\omega^2 \right]\langle \Psi(t)|X^2|\Psi(t)\rangle = \frac{4}{m} \langle \Psi(t)|H|\Psi(t)\rangle.
 \]
-\subsection{Solution}
+\subsubsection{Solution}
 Will start by taking another time derivative of our previous result:
 \begin{equation}
     \frac{d}{dt} \left(\frac{d}{dt} \langle \Psi(t)|X^2|\Psi(t)\rangle\right) = \frac{1}{m} \left(\frac{d}{dt}\langle \Psi(t)|PX|\Psi(t)\rangle+ \frac{d}{dt}\langle \Psi(t)|XP|\Psi(t)\rangle\right)
@@ -342,11 +346,7 @@ Now we are in a place to define $b$ and $b^{\dagger}$:
 \begin{equation}
     b^{\dagger} = \sqrt{\frac{m\omega}{2\hbar}}x^2 - \frac{i}{\sqrt{2m\omega\hbar}}p
 \end{equation}
-\subsection{What is \( [b^\dagger, b] \)? (Hint: calculate the commutator of \( x^2 \) with \( \hat{p} \))}
-We begin by considering that
-\begin{equation}
-    [b^\dagger, b] = b^\dagger b - bb^\dagger
-\end{equation}
+\subsection{What is \( b^\dagger b \)? (Hint: calculate the commutator of \( x^2 \) with \( \hat{p} \))}
 We will first look at the first term:
 \begin{equation}
     b^\dagger b = \left(\sqrt{\frac{m\omega}{2\hbar}}x^2 - \frac{i}{\sqrt{2m\omega\hbar}}p\right)\left(\sqrt{\frac{m\omega}{2\hbar}}x^2 + \frac{i}{\sqrt{2m\omega\hbar}}p\right)
@@ -361,27 +361,7 @@ We can use the relation
 \end{equation}
 So, we can substitute this in to get:
 \begin{equation}
-    b^\dagger b = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 + \frac{i}{2\hbar}\left(2i\hbar x\right) = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - x
-\end{equation}
-Now, we consider the second term:
-\begin{equation}
-    bb^\dagger = \left(\sqrt{\frac{m\omega}{2\hbar}}x^2 + \frac{i}{\sqrt{2m\omega\hbar}}p\right)\left(\sqrt{\frac{m\omega}{2\hbar}}x^2 - \frac{i}{\sqrt{2m\omega\hbar}}p\right)
-\end{equation}
-multiplying out, we get
-\begin{equation}
-    bb^\dagger = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - \frac{i}{2\hbar}\left(x^{2}p- px^{2}\right) = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - \frac{i}{2\hbar}\left([x^{2},p]\right)
-\end{equation}
-We can use the relation
-\begin{equation}
-    [x^{2},p] = x[x,p] + [x,p]x = x\left(i\hbar\right) + \left(i\hbar\right)x = 2i\hbar x
-\end{equation}
-So, we can substitute this in to get:
-\begin{equation}
-    bb^\dagger = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - \frac{i}{2\hbar}\left(2i\hbar x\right) = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 + x
-\end{equation}
-Now, we can substitute these results back into equation 59:
-\begin{equation}
-    [b^\dagger, b] = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - x - \left(\frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 + x\right) = \boxed{-2x}
+    b^\dagger b = \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 + \frac{i}{2\hbar}\left(2i\hbar x\right) \boxed{= \frac{m\omega}{2\hbar}x^4 + \frac{1}{2m\omega\hbar}p^2 - x}
 \end{equation}
 \subsection{Rewrite the Hamiltonian of the quartic oscillator in terms of the product \( b^\dagger b \) that you calculated in the previous step. How is energy in a quartic oscillator different from an SHO?}
 \begin{equation}

@@ -1,0 +1,236 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Homework Assignment}
+
+\section{Problem 1}
+Various six-digit numbers can be formed by permuting the digits 666655. All arrangements are equally likely. Given that a number is even, what is the probability that two fives are together?
+\subsection{Answer}
+We want to split this problem up by first considering the last digit, which has to be a 6; this happens with a probability of $\frac{2}{3}$ And then we have 2 5s and 3 6s left in the urn. We now treat the 2 5s as a unit, and find how we can permute the 6s around them. For this, there are $\frac{5!}{3!2!} = 10$ ways to permute the 6s around the 5s. We are working with 4 total unis, with $\frac{4!}{3!} = 4$ total possibilities, as we have 3 places to permute the 6s. So the probability of getting an even number with 2 5s together is $\frac{2}{3} \times \frac{4}{10} = \frac{4}{15}$. However, we are given that this number is already even, so the probability is just $\frac{4}{10} = \frac{2}{5}$.
+
+\section{Problem 2}
+An urn contains seven red marbles, four white marbles, and five blue marbles. If three marbles are drawn in succession (each being replaced before the next is drawn), what is the probability that the first marble is red, the second is white, and the third is blue?
+\subsection{Answer}
+The probability for the first draw is just $\frac{7}{16}$. For the second draw, we have to replace the first marble, so we have $\frac{4}{16}$. For the third draw, we have $\frac{5}{16}$. So the total probability is $\frac{7}{16} \times \frac{4}{16} \times \frac{5}{16} = \frac{140}{4096} = \frac{70}{2048} = \frac{35}{1024}$.
+
+\section{Problem 3}
+The probability of an archer hitting his target is one in four.
+
+\subsection{Part (a)}
+If he shoots five times, what is the probability of hitting the target at least three times?
+\subsubsection{Answer}
+We might consider solving this problem with the help of the binomial coefficent, which is defined as:
+\begin{equation}
+    P(X =k, n, p) = \binom{n}{k} p^k (1-p)^{n-k}
+\end{equation}
+Where $n$ is the number of trials, $k$ is the number of successes, and $p$ is the probability of success. In this case, we have $n = 5$, $k = 3$, and $p = \frac{1}{4}$. So we have:
+\begin{equation}
+    P(X = 3, 5, \frac{1}{4}) = \binom{5}{3} \left(\frac{1}{4}\right)^3 \left(\frac{3}{4}\right)^2 = \frac{90}{1024} = 0.087890625
+\end{equation}
+Then we also need to consider the other two possibilities of hitting the target 4 times and 5 times. So we have:
+\begin{equation}
+    P(X = 4, 5, \frac{1}{4}) = \binom{5}{4} \left(\frac{1}{4}\right)^4 \left(\frac{3}{4}\right)^1 = \frac{15}{1024} = 0.0146484375
+\end{equation}
+and
+\begin{equation}
+    P(X = 5, 5, \frac{1}{4}) = \binom{5}{5} \left(\frac{1}{4}\right)^5 \left(\frac{3}{4}\right)^0 = \frac{1}{1024} = 0.0009765625
+\end{equation}
+So the total probability is $0.087890625 + 0.0146484375 + 0.0009765625 = \boxed{0.103515625}$.
+
+
+\subsection{Part (b)}
+How many times must he shoot so that the probability of hitting the target at least once is more than 80\%?
+\subsubsection{Answer}
+His probability of not hitting the target at all in any given trial is $\frac{3}{4}$. So the probability of not hitting the target at all in $n$ trials is $\left(\frac{3}{4}\right)^n$. So the probability of hitting the target at least once is $1 - \left(\frac{3}{4}\right)^n$. We want this to be greater than 80\%, so we have:
+\begin{equation}
+    1 - \left(\frac{3}{4}\right)^n > 0.8
+\end{equation}
+\begin{equation}
+    \left(\frac{3}{4}\right)^n < 0.2
+\end{equation}
+\begin{equation}
+    n \log\left(\frac{3}{4}\right) < \log(0.2)
+\end{equation}
+\begin{equation}
+    n > \frac{\log(0.2)}{\log\left(\frac{3}{4}\right)}
+\end{equation}
+\begin{equation}
+    n > 5.592
+\end{equation}
+So he must shoot at least 6 times to have a probability of hitting the target at least once greater than 80\%.
+
+\section{Problem 4}
+Consider the Poisson distribution \( P(n) = \frac{\lambda^n e^{-\lambda}}{n!} \) where \( n = 0, 1, 2, \ldots \).
+
+\subsection{Part (a)}
+Calculate the mean \( \langle n \rangle \) and the variance \( \langle (\Delta n)^2 \rangle = \langle (n - \langle n \rangle)^2 \rangle \).
+\subsubsection{Answer}
+We might consider the expectation value of \( n \) in this discrete setting to be:
+\begin{equation}
+    \langle n \rangle = \sum_{n=0}^{\infty} n P(n)
+\end{equation}
+So we have:
+\begin{equation}
+    \langle n \rangle = \sum_{n=0}^{\infty} n \frac{\lambda^n e^{-\lambda}}{n!}
+\end{equation}
+\begin{equation}
+    \langle n \rangle = \sum_{n=1}^{\infty} \frac{\lambda^n e^{-\lambda}}{(n-1)!}
+\end{equation}
+This resembles the Taylor series expansion of \( e^x \), so we can rewrite this setting $m=n-1$:
+\begin{equation}
+    \langle n \rangle = \sum_{m=0}^{\infty} \frac{\lambda^{m+1} e^{-\lambda}}{m!}
+\end{equation}
+\begin{equation}
+    \langle n \rangle = \lambda e^{-\lambda} \sum_{m=0}^{\infty} \frac{\lambda^m}{m!}
+\end{equation}
+The sum is just \( e^{\lambda} \), so we have:
+\begin{equation}
+    \boxed{\langle n \rangle = \lambda e^{-\lambda} e^{\lambda} = \lambda}
+\end{equation}
+Now we can consider the variance:
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \langle (n - \langle n \rangle)^2 \rangle
+\end{equation}
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \langle n^2 - 2 n \langle n \rangle + \langle n \rangle^2 \rangle
+\end{equation}
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \langle n^2 \rangle - 2 \langle n \rangle^2 + \langle n \rangle^2
+\end{equation}
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \langle n^2 \rangle - \langle n \rangle^2
+\end{equation}
+Since we have already calculated \( \langle n \rangle \), we can now calculate \( \langle n^2 \rangle \):
+\begin{equation}
+    \langle n^2 \rangle = \sum_{n=0}^{\infty} n^2 \frac{\lambda^n e^{-\lambda}}{n!}
+\end{equation}
+Since $n^2 = n(n-1) + n$, we can split this up into two sums:
+\begin{equation}
+    \langle n^2 \rangle = \sum_{n=0}^{\infty} n(n-1) \frac{\lambda^n e^{-\lambda}}{n!} + \sum_{n=0}^{\infty} n \frac{\lambda^n e^{-\lambda}}{n!}
+\end{equation}
+The second one is just what we evaluated or dear and it simplifies to \( \lambda \). We can rewrite the first one as:
+\begin{equation}
+    \sum_{n=2}^{\infty} \frac{\lambda^n e^{-\lambda}}{(n-2)!} = \sum_{m=0}^{\infty} \frac{\lambda^{m+2} e^{-\lambda}}{m!} = \lambda^2 e^{-\lambda} \sum_{m=0}^{\infty} \frac{\lambda^m}{m!} = \lambda^2 e^{-\lambda} e^{\lambda} = \lambda^2
+\end{equation}
+So we have:
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = (\lambda^2 + \lambda) - \lambda^2 = \boxed{\lambda}
+\end{equation}
+
+
+\subsection{Part (b)}
+The moment generating function \( g(k) \) for a distribution \( P(n) \) can be defined as
+\[
+g(k) = \sum_{n=0}^{\infty} e^{kn} P(n).
+\]
+Find the moment generating function for the Poisson distribution. Calculate the mean and the variance from the generating function.
+\subsubsection{Answer}
+We can rewrite the moment generating function as:
+\begin{equation}
+    g(k) = \sum_{n=0}^{\infty} e^{kn} \frac{\lambda^n e^{-\lambda}}{n!}
+\end{equation}
+\begin{equation}
+    g(k) = e^{-\lambda} \sum_{n=0}^{\infty} \frac{(\lambda e^k)^n}{n!}
+\end{equation}
+This looks like the Taylor series expansion of \( e^x \), with \( x = \lambda e^k \). So we have:
+\begin{equation}
+    g(k) = e^{-\lambda} e^{\lambda e^k}
+\end{equation}
+\begin{equation}
+\boxed{g(k) = e^{\lambda (e^k - 1)}}
+\end{equation}
+Now we can calculate the mean. The mean of the MGF is just the first derivative of the MGF evaluated at \( k = 0 \). So we have:
+\begin{equation}
+    \langle n \rangle = \left. \dv{g(k)}{k} \right|_{k=0}
+\end{equation}
+\begin{equation}
+    \langle n \rangle = \left. \lambda e^{\lambda (e^k - 1)} e^k \right|_{k=0}
+\end{equation}
+\begin{equation}
+    \langle n \rangle = \lambda e^{\lambda (e^0 - 1)} e^0
+\end{equation}
+\begin{equation}
+    \boxed{\langle n \rangle = \lambda}
+\end{equation}
+Now we can calculate the variance. The variance of the MGF is just the second derivative of the MGF evaluated at \( k = 0 \). So we have:
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \left. \dv[2]{g(k)}{k} \right|_{k=0} - \langle n \rangle^2
+\end{equation}
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \left. \dv{k} \left( \lambda e^{\lambda (e^k - 1)} e^k \right) \right|_{k=0} - \langle n \rangle^2
+\end{equation}
+For the first function, We may consider a $f(u) = \lambda e^u$ with $u(k) = \lambda (e^k - 1)$. So we have:
+\begin{equation}
+    \dv{f}{k} = \dv{f}{u} \dv{u}{k}
+\end{equation}
+\begin{equation}
+    \dv{f}{k} = \lambda e^{\lambda (e^k - 1)} \lambda e^k = \lambda^2 e^{\lambda (e^k - 1)} e^k
+\end{equation}
+Now, applying the product rule, we have:
+\begin{equation}
+    \dv{k} \left( \lambda e^{\lambda (e^k - 1)} e^k \right) = \lambda^2 e^{\lambda (e^k - 1)} e^k + \lambda e^{\lambda (e^k - 1)} e^k
+\end{equation}
+Evaluating this at \( k = 0 \), we have:
+\begin{equation}
+    \lambda^2 e^{\lambda (e^0 - 1)} e^0 + \lambda e^{\lambda (e^0 - 1)} e^0 = \lambda^2 + \lambda
+\end{equation}
+So we have:
+\begin{equation}
+    \langle (\Delta n)^2 \rangle = \lambda^2 + \lambda - \lambda^2 = \boxed{\lambda}
+\end{equation}
+
+
+\section{Problem 5}
+Consider a box of volume \( V_T \) which contains \( N_T \) non-interacting molecules. Assume that the \( N_T \) molecules have an equally likely chance of being anywhere in the box. Now take a sub-volume \( V \) of the box.
+
+\subsection{Part (a)}
+What is the probability that a given molecule is found to be within \( V \)? What is the average (mean) number \( \langle N \rangle \) of molecules located within \( V \)?
+\subsubsection{Answer}
+The probability that a given molecule is found to be within \( V \) is \( V \) multiplied by density of molecules in $V_T$:
+\begin{equation}
+\boxed{P(V) = \frac{V}{V_T}}
+\end{equation}
+The average number of molecules located within \( V \) is just the total number of molecules multiplied by the probability that a given molecule is found to be within \( V \):
+\begin{equation}
+    \langle N \rangle = N_T P(V) = \boxed{\frac{N_T V}{V_T}}
+\end{equation}
+
+\subsection{Part (b)}
+What is the standard deviation (square root of the variance)? Express your answer in terms of \( \langle N \rangle \), \( V \), and \( V_T \).
+\subsubsection{Answer}
+The formula of this is going to be:
+\begin{equation}
+    \sqrt{\langle (\Delta N)^2 \rangle} = \sqrt{\langle N^2 \rangle - \langle N \rangle^2}
+\end{equation}
+We have already calculated \( \langle N \rangle \), so we just need to calculate \( \langle N^2 \rangle \):
+\begin{equation}
+    \langle N^2 \rangle = \sum_{0}^{N_T} N^2 P(N) = \sum_{0}^{N_T} N^2 \frac{N_T!}{N!(N_T - N)!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{V}{V_T}\right)^{N_T - N}
+\end{equation} 
+We can rewrite this as:
+\begin{equation}
+    \langle N^2 \rangle = \sum_{0}^{N_T} N \frac{N_T!}{(N-1)!(N_T - N)!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{V}{V_T}\right)^{N_T - N}
+\end{equation}
+Writing out the first few terms, we have:
+\begin{equation}
+    \langle N^2 \rangle = 0 + \frac{N_T!}{(1-1)!(N_T - 1)!} \left(\frac{V}{V_T}\right)^1 \left(1 - \frac{V}{V_T}\right)^{N_T - 1} + 2 \frac{N_T!}{(2-1)!(N_T - 2)!} \left(\frac{V}{V_T}\right)^2 \left(1 - \frac{V}{V_T}\right)^{N_T - 2} + \ldots
+\end{equation}
+\begin{equation}
+    = N_T \left(\frac{V}{V_T}\right) \left(1 - \frac{V}{V_T}\right)^{N_T - 1} + 2N_T(N_T-1) \left(\frac{V}{V_T}\right)^2 \left(1 - \frac{V}{V_T}\right)^{N_T - 2} + \ldots
+\end{equation}
+
+\subsection{Part (c)}
+What does the answer to part (b) become as the volume, \( V_T \), becomes very large with respect to the fixed sub-volume, \( V \)? What does the probability distribution \( P(N; N_T, V/V_T) \) for the number of molecules, \( N \), in \( V \) become in this limit? (Keep in mind that the box is at constant density.)
+
+\textbf{Hint:}
+\[
+\lim_{N_T \to \infty} \frac{N_T!}{(N_T - N)!} = \frac{N_T^N}{N!}
+\]
+
+(Note: this question is not thermodynamic in nature, it merely illustrates properties of statistical distributions)
+
+\end{document}

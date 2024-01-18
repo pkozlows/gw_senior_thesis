@@ -1,0 +1,143 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:771: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/g0w0/pbe/szv/111/1/g0s1.py:12: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+Discarded 6 diffused primitive functions, 0 contracted functions
+
+
+******** <class 'pyscf.pbc.df.df.GDF'> ********
+auxbasis = None
+exp_to_discard = 0.1
+_cderi_to_save = /tmp/tmpx7pxk293
+len(kpts) = 1
+Even tempered Gaussians are generated as DF auxbasis for  Ga N
+  ETB auxbasis for Ga  [[0, [7.4303029432, 1]], [0, [3.7151514716, 1]], [0, [1.8575757358, 1]], [0, [0.9287878679, 1]], [0, [0.46439393395, 1]], [1, [7.4303029432, 1]], [1, [3.7151514716, 1]], [1, [1.8575757358, 1]], [1, [0.9287878679, 1]], [1, [0.46439393395, 1]], [2, [7.4303029432, 1]], [2, [3.7151514716, 1]], [2, [1.8575757358, 1]], [2, [0.9287878679, 1]], [2, [0.46439393395, 1]], [3, [7.4303029432, 1]], [3, [3.7151514716, 1]], [3, [1.8575757358, 1]], [3, [0.9287878679, 1]], [3, [0.46439393395, 1]], [4, [7.4303029432, 1]], [4, [3.7151514716, 1]], [4, [1.8575757358, 1]], [4, [0.9287878679, 1]], [4, [0.46439393395, 1]]]
+  ETB auxbasis for N  [[0, [10.4206262528, 1]], [0, [5.2103131264, 1]], [0, [2.6051565632, 1]], [0, [1.3025782816, 1]], [0, [0.6512891408, 1]], [0, [0.3256445704, 1]], [1, [10.4206262528, 1]], [1, [5.2103131264, 1]], [1, [2.6051565632, 1]], [1, [1.3025782816, 1]], [1, [0.6512891408, 1]], [1, [0.3256445704, 1]], [2, [10.4206262528, 1]], [2, [5.2103131264, 1]], [2, [2.6051565632, 1]], [2, [1.3025782816, 1]], [2, [0.6512891408, 1]], [2, [0.3256445704, 1]]]
+num shells = 86, num cGTOs = 358
+Drop 0 primitive fitting functions
+make aux basis, num shells = 86, num cGTOs = 358
+auxcell.rcut 12.042448909537999
+kmesh for bvk-cell = [1 1 1]
+
+
+******** <class 'pyscf.pbc.df.rsdf_builder._RSGDFBuilder'> ********
+mesh = [15 15 21] (4725 PWs)
+ke_cutoff = 20.520941924930494
+omega = 0.5374833144847494
+exclude_d_aux = True
+exclude_dd_block = True
+j2c_eig_always = False
+has_long_range = True
+Set _RSGDFBuilder.direct_scf_tol to 1.02292e-12
+rs_cell.nbas 14 nao 34
+No. smooth_bas in rs_cell 4
+rs_cell.nbas 86 nao 358
+No. smooth_bas in rs_cell 0
+sup-mol nbas = 3179 cGTO = 7767 pGTO = 27519
+sup-mol-ft nbas = 3225 cGTO = 7841 pGTO = 27623
+    CPU time for int3c kernel initialization      0.43 sec, wall time      0.06 sec
+    CPU time for pass1: real space int3c2e     23.92 sec, wall time      3.15 sec
+Set ft_ao cutoff to 2.18387e-10
+Set 2c2e integrals precision 1e-12, mesh [13 13 21]
+    CPU time for int2c2e      1.47 sec, wall time      0.19 sec
+    CPU time for pass2: AFT int3c2e     15.53 sec, wall time      1.99 sec
+
+******** <class 'pyscf.pbc.gw.krgw_ac.KRGWAC'> ********
+method = KRGWAC
+GW nocc = 18, nvir = 8, nkpts = 1
+frozen orbitals 0
+use perturbative linearized QP eqn = False
+analytic continuation method = pade
+GW finite size corrections = True
+atom Ga rad-grids = 90, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  50  50  50  50  50  50  86  86  86  86  86  86  86
+  86  86  86  86  86  86  86  86  86 350 350 350 350 350 350 350 350 350
+ 350 350 434 434 434 434 434 434 434 434 434 434 434 434 434 434 434 434
+ 434 434 434 434 434 350 350 350 350 350 350 350 350 350 350 350 350 350]
+atom N rad-grids = 75, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  86  86  86  86  86  86  86  86  86 266 266 266 266
+ 266 266 266 302 302 302 302 302 302 302 302 302 302 302 302 302 302 302
+ 302 302 302 302 266 266 266 266 266 266 266 266 266 266 266 266 266 266
+ 266 266 266]
+tot grids = 69179
+cell vol = 308.656876  sum(weights) = 308.656992
+Drop grids 20679
+    CPU time for setting up grids     23.13 sec, wall time      3.83 sec
+nelec by numeric integration = 36.00014685223406
+    CPU time for vxc     27.03 sec, wall time      4.40 sec
+    CPU time for get_j      0.28 sec, wall time      0.04 sec
+    CPU time for vj and vk      0.28 sec, wall time      0.04 sec
+    CPU time for get_j      0.19 sec, wall time      0.02 sec
+    CPU time for vj and vk      0.20 sec, wall time      0.02 sec
+Rebuild CDERI for exchange integrals
+
+
+******** <class 'pyscf.pbc.df.df.GDF'> ********
+auxbasis = {'Ga': [[0, [7.4303029432, 1]], [0, [3.7151514716, 1]], [0, [1.8575757358, 1]], [0, [0.9287878679, 1]], [0, [0.46439393395, 1]], [1, [7.4303029432, 1]], [1, [3.7151514716, 1]], [1, [1.8575757358, 1]], [1, [0.9287878679, 1]], [1, [0.46439393395, 1]], [2, [7.4303029432, 1]], [2, [3.7151514716, 1]], [2, [1.8575757358, 1]], [2, [0.9287878679, 1]], [2, [0.46439393395, 1]], [3, [7.4303029432, 1]], [3, [3.7151514716, 1]], [3, [1.8575757358, 1]], [3, [0.9287878679, 1]], [3, [0.46439393395, 1]], [4, [7.4303029432, 1]], [4, [3.7151514716, 1]], [4, [1.8575757358, 1]], [4, [0.9287878679, 1]], [4, [0.46439393395, 1]]], 'N': [[0, [10.4206262528, 1]], [0, [5.2103131264, 1]], [0, [2.6051565632, 1]], [0, [1.3025782816, 1]], [0, [0.6512891408, 1]], [0, [0.3256445704, 1]], [1, [10.4206262528, 1]], [1, [5.2103131264, 1]], [1, [2.6051565632, 1]], [1, [1.3025782816, 1]], [1, [0.6512891408, 1]], [1, [0.3256445704, 1]], [2, [10.4206262528, 1]], [2, [5.2103131264, 1]], [2, [2.6051565632, 1]], [2, [1.3025782816, 1]], [2, [0.6512891408, 1]], [2, [0.3256445704, 1]]]}
+exp_to_discard = 0.1
+_cderi = /tmp/tmpx7pxk293  where DF integrals are loaded (readonly).
+len(kpts) = 1
+Even tempered Gaussians are generated as DF auxbasis for  Ga N
+  ETB auxbasis for Ga  [[0, [7.4303029432, 1]], [0, [3.7151514716, 1]], [0, [1.8575757358, 1]], [0, [0.9287878679, 1]], [0, [0.46439393395, 1]], [1, [7.4303029432, 1]], [1, [3.7151514716, 1]], [1, [1.8575757358, 1]], [1, [0.9287878679, 1]], [1, [0.46439393395, 1]], [2, [7.4303029432, 1]], [2, [3.7151514716, 1]], [2, [1.8575757358, 1]], [2, [0.9287878679, 1]], [2, [0.46439393395, 1]], [3, [7.4303029432, 1]], [3, [3.7151514716, 1]], [3, [1.8575757358, 1]], [3, [0.9287878679, 1]], [3, [0.46439393395, 1]], [4, [7.4303029432, 1]], [4, [3.7151514716, 1]], [4, [1.8575757358, 1]], [4, [0.9287878679, 1]], [4, [0.46439393395, 1]]]
+  ETB auxbasis for N  [[0, [10.4206262528, 1]], [0, [5.2103131264, 1]], [0, [2.6051565632, 1]], [0, [1.3025782816, 1]], [0, [0.6512891408, 1]], [0, [0.3256445704, 1]], [1, [10.4206262528, 1]], [1, [5.2103131264, 1]], [1, [2.6051565632, 1]], [1, [1.3025782816, 1]], [1, [0.6512891408, 1]], [1, [0.3256445704, 1]], [2, [10.4206262528, 1]], [2, [5.2103131264, 1]], [2, [2.6051565632, 1]], [2, [1.3025782816, 1]], [2, [0.6512891408, 1]], [2, [0.3256445704, 1]]]
+num shells = 86, num cGTOs = 358
+Drop 0 primitive fitting functions
+make aux basis, num shells = 86, num cGTOs = 358
+auxcell.rcut 12.042448909537999
+
+WARN: File /tmp/tmpx7pxk293 (specified by ._cderi) is overwritten by GDF initialization.
+
+kmesh for bvk-cell = [1 1 1]
+
+
+******** <class 'pyscf.pbc.df.rsdf_builder._RSGDFBuilder'> ********
+mesh = [15 15 21] (4725 PWs)
+ke_cutoff = 20.520941924930494
+omega = 0.5374833144847494
+exclude_d_aux = True
+exclude_dd_block = True
+j2c_eig_always = False
+has_long_range = True
+Set _RSGDFBuilder.direct_scf_tol to 1.02292e-12
+rs_cell.nbas 14 nao 34
+No. smooth_bas in rs_cell 4
+rs_cell.nbas 86 nao 358
+No. smooth_bas in rs_cell 0
+sup-mol nbas = 3179 cGTO = 7767 pGTO = 27519
+sup-mol-ft nbas = 3225 cGTO = 7841 pGTO = 27623
+    CPU time for int3c kernel initialization      0.45 sec, wall time      0.07 sec
+    CPU time for pass1: real space int3c2e     25.01 sec, wall time      3.66 sec
+Set ft_ao cutoff to 2.18387e-10
+Set 2c2e integrals precision 1e-12, mesh [13 13 21]
+    CPU time for int2c2e      1.20 sec, wall time      0.17 sec
+    CPU time for pass2: AFT int3c2e     14.84 sec, wall time      2.24 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for get_k_kpts      0.99 sec, wall time      0.14 sec
+    CPU time for get_j      0.18 sec, wall time      0.02 sec
+    CPU time for vj and vk      1.17 sec, wall time      0.16 sec
+    CPU time for get_j      0.18 sec, wall time      0.02 sec
+    CPU time for vj and vk      0.18 sec, wall time      0.02 sec
+atom Ga rad-grids = 120, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  50  86  86  86  86  86  86  86  86  86  86  86  86
+  86  86  86  86  86  86 590 590 590 590 590 590 590 590 590 590 590 590
+ 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770
+ 770 770 770 770 770 770 590 590 590 590 590 590 590 590 590 590 590 590
+ 590 590 590 590 590 590 590 590 590 590 590 590]
+atom N rad-grids = 105, ang-grids = [ 50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50
+  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  50  86
+  86  86  86  86  86  86  86  86  86  86 590 590 590 590 590 590 590 590
+ 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770 770
+ 770 770 770 770 770 590 590 590 590 590 590 590 590 590 590 590 590 590
+ 590 590 590 590 590 590 590 590 590 590 590 590 590 590 590]
+Read Lpq (kL: 1 / 1, ki: 0, kj: 0)
+  GW mo_energy @ k0 =
+[-0.15375553 -0.1192302  -0.11923428 -0.11723878 -0.11724088 -0.12574707
+ -0.10727162 -0.10725431 -0.2246901  -0.10232755 -0.10232771 -0.10125886
+  0.14913917  0.43469735  0.43469821  0.52641201  0.51352648  0.51352641
+  0.76995891  0.78128407  0.84115818  0.84115838  0.86415681  0.9554964
+  0.95551897  1.14103927]
+
+WARN: GW QP energies may not be sorted from min to max
+
+    CPU time for GW    362.50 sec, wall time     57.69 sec

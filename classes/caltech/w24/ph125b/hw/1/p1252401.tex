@@ -1,0 +1,408 @@
+\solvetrue
+
+\begin{center}
+Physics 125b\\
+Problem set number 1 \ifsolve -- Solution to Problem set number 1\fi\\
+Due midnight Wednesday (that is, the end of Wednesday), January 10, 2024
+\end{center}
+\medskip
+
+
+\ifsolve{}\else{
+
+
+\noindent {\bf READING:} Chapter 16 in Shankar on the variational method and the WKB approximation.
+
+\medskip
+}\fi
+
+\noindent {\bf PROBLEMS:}
+
+\begin{enumerate} 
+ \setcounter{enumi}{0}
+
+
+\item
+\label{prob:WKBgravity}
+%[QM] approx\_gravity.tex
+We consider the quantum mechanics of a particle in the earth's
+gravitational field:
+\begin{eqnarray}
+V(r)&=& -G{Mm\over r}\\
+&=& -G{Mm\over R+z}\\
+&\approx& -G{Mm\over R}+mgz\\
+ \hbox{\rm where}&&\nonumber\\
+M&=&{\hbox{\rm mass of earth}}\\
+m&=&{\hbox{\rm mass of particle}}\\
+r&=&{\hbox{\rm distance from center of earth}}\\
+G&=&{\hbox{\rm Newton's gravitational constant}}\\
+R&=&{\hbox{\rm radius of earth}}\\
+z&=&{\hbox{\rm height of particle above surface of earth}}\\
+g&=&GM/R^{2}.
+\end{eqnarray}
+We may drop the constant term in our discussion, and consider only the $mgz$
+piece, with $z\ll R$.  We further assume  
+that no angular momentum is involved, and treat this
+as a one dimensional problem.  Finally, assume that the particle is unable to
+penetrate the earth's surface.
+\begin{enumerate}
+\item Make a ${\rm WKB}$ calculation for the energy spectrum 
+of the particle.
+
+\ifsolve \noindent {\bf Solution:} The potential is
+\begin{equation}
+ V(z) = mgz.
+\end{equation}
+We need the turning points $z_1$ and $z_2$:
+\begin{equation}
+ V(z_1) = V(z_2) = E
+\end{equation}
+In this case, since we hit the ground at $z=0$, and can go no further, $z_1=0$. The other turning point is at
+\begin{equation}
+ z_2 = {E\over mg}.
+\end{equation}
+
+Now we compute the function:
+\begin{eqnarray}
+ f(E_n) &=& \int_{z_1(E_n)}^{z_2(E_n)} \sqrt{2m\left[E_n-V(z)\right]} dz \\
+  &=& \int_0^{E_n/mg} \sqrt{2m(E_n-mgz)} dz \\
+  &=& \left(n+{1\over 2}\right)\pi.
+\end{eqnarray}
+We can actually do better than this, noting that the potential goes to $\infty$ at $z=0$. Then the boundary condition is that the wave function is zero at $z=0$, and hence the phase at the turning point is zero instead of $\pi/4$. Thus, instead of $\left(n+{1\over 2}\right)\pi$, a better estimate is $\left(n+{3\over 4}\right)\pi$.
+That is,
+\begin{eqnarray}
+ \left(n+{3\over 4}\right)\pi &=& \sqrt{2mE_n}{E_n\over mg}\int_0^1 \sqrt{y}dy \\
+  &=& {2\over 3g}\sqrt{{2\over m}} E_n^{3/2}.
+\end{eqnarray}
+Solving for $E_n$, we obtain the estimated bound state energy spectrum:
+\begin{equation}
+ E_n = \left({9\pi^2\over 8}mg^2\right)^{{1\over 3}} \left(n+{3\over 4}\right)^{{2\over 3}}.
+\end{equation}
+ 
+\fi
+
+\item If the particle is an atom of atomic weight $A\sim 100$, use the
+result of part (a) to estimate the particle's ground state energy 
+(in eV). 
+Is sunlight likely to move the particle into excited states?
+
+\ifsolve \noindent {\bf Solution:} 
+If $A=100$, then $m\sim 100\times 10^9$ eV. Also,
+\begin{eqnarray}
+ g &\sim& 10 \hbox{m/s}^2 \\
+  &\sim& 10 \hbox{m/s}^2 \times {1\over (3\times10^8 \hbox{m/s})^2} \times 200 \hbox{MeV-fm} \times 10^{-15} \hbox{m/fm} \nonumber \\
+  &\sim& 2\times 10^{-23}\ \hbox{eV}.
+\end{eqnarray}
+
+The ground state energy is ($n=0$):
+\begin{eqnarray}
+ E_0 &=& \left({9\pi^2\over 8}mg^2\right)^{{1\over 3}} \left({3\over 4}\right)^{{2\over 3}} \\
+  &\sim& 10^{-11}\ \hbox{eV}.
+\end{eqnarray}
+Note that the spacing of low-lying levels is also of this order. 
+Since photons in sunlight have energies of order eV, they will readily excite such atoms into highly excited states in the gravitational potential.
+ 
+\fi
+
+\end{enumerate}
+
+\item Continuing with the gravitational problem in problem~\ref{prob:WKBgravity}, now make a variational calculation for the ground state energy
+(\ie, an upper bound thereon).  Pick a ``sensible'' trial wave function, at
+least in the sense that it satisfies the right boundary conditions.  Compare
+your result with the ground state level from the ${\rm WKB}$ approximation.
+
+\ifsolve \noindent {\bf Solution:} The wave function must vanish at $z=0$ and at $z=\infty$. A simple trial function that satisfies these boundary conditions is:
+\begin{equation}
+ \psi(z) = {z\over\sqrt{2R^3}} e^{-z/2R},
+\end{equation}
+where the variational parameter is $R$. 
+
+We must evaluate the expectation value of the Hamiltonian for our trial wave function. The kinetic energy part is:
+\begin{eqnarray}
+ \vev{T} &=& \int_0^\infty {z\over \sqrt{2R^3}}e^{-z/2R}\left(-{1\over 2m}{d^2\over dz^2}\right) {z\over \sqrt{2R^3}}e^{-z/2R} dz \\
+  &=& {1\over 4mR^3} \int_0^\infty {1\over R}\left(z-{z^2\over 4R}\right) e^{-z/R} dz \\
+  &=& {1\over 8mR^2}.
+\end{eqnarray}
+The potential energy part is:
+\begin{eqnarray}
+ \vev{V} &=& \int_0^\infty {z\over \sqrt{2R^3}}e^{-z/2R} mgz {z\over \sqrt{2R^3}}e^{-z/2R} dz \\
+   &=& 3mgR.
+\end{eqnarray}
+
+Thus, we wish to minimize the quantity $3mgR+{1\over 8mR^2}$ as a function of $R$. The minimum occurs at 
+\begin{equation}
+ R=\left({1\over 12m^2g}\right)^{1\over 3}.
+\end{equation}
+Thus, the variational bound on the ground state energy is
+\begin{equation}
+ E_0 \le \left[\left({3\over 2}\right)^5 mg^2\right]^{1/3}.
+\end{equation}
+We note that this bound is somewhat larger than, but close to, the WKB estimate:
+\begin{equation}
+ \left[\left({3\over 2}\right)^5mg^2\right]^{1/3}\Big/\left({9\times9\pi^2\over 8\times 16}mg^2\right)^{1/3} = \left({12\over \pi^2}\right)^{1/3}\approx 1.07.
+\end{equation}
+
+\fi
+
+
+
+\item We can find other inequalities in the same spirit as our inequality on the ground state energy. For example, if we can find a lower bound on $E_1 - \bra{\psi}H\ket{\psi}$, where $E_1$ is first excited energy, and $\psi$ is a trial wave function, the theorem below might be used to obtain a lower bound on $E_0$. Prove the theorem:
+
+\thm{If we have a normalized function $\ket{\psi}$ such that
+\begin{equation}
+ E_0\le \vev{\psi|H|\psi} \le E_1,
+\end{equation}
+then
+\begin{equation}
+ E_0 \ge \bra{\psi}H\ket{\psi} - {\vev{H\psi|H\psi} - \bra{\psi}H\ket{\psi}^2 \over E_1 - \bra{\psi}H\ket{\psi}}.
+\end{equation}
+}
+\ifsolve
+\noindent {\bf Solution:} The theorem is equivalent to the statement
+\begin{equation}
+ \vev{\psi|H^2\psi} - \bra{\psi}H\ket{\psi}^2 \ge (\bra{\psi}H\ket{\psi} - E_0)(E_1 - \bra{\psi}H\ket{\psi}).
+\end{equation}
+Notice that if we add a constant $A$ to $H$, obtaining $H^\prime = H+A$ (hence also $E_n\to E_n^\prime= E_n+A$), both sides of this inequality are unaltered. The left hand side is a measure of the width of the energy distribution and is not altered by shifting the energy scale. Likewise, the right hand side only depends on energy differences. Thus, as long as the spectrum of $H$ is bounded below, the problem is equivalent to a problem where the spectrum is non-negative. In particular, we may simplify by taking $E_0=0$. 
+
+Hence, consider:
+\begin{eqnarray}
+ \vev{\psi|H^2\psi} - \bra{\psi}H\ket{\psi}^2 - \bra{\psi}H\ket{\psi}(E_1 - \bra{\psi}H\ket{\psi}) && \nonumber \\
+  &&\hskip-2in = \vev{\psi|H^2\psi} - E_1\bra{\psi}H\ket{\psi} \\
+  &&\hskip-2in = \sum_{n=0} |c_n|^2E_n^2 - E_1\sum_{n=0} |c_n|^2E_n \\
+  &&\hskip-2in = \sum_{n=0} |c_n|^2 E_n(E_n-E_1) \\
+  &&\hskip-2in = \sum_{n=1} |c_n|^2 E_n(E_n-E_1),\quad\hbox{since }E_0=0, \\
+  &&\hskip-2in \ge 0,\quad\hbox{since each term in the sum is non-negative.} \nonumber
+\end{eqnarray}
+\fi
+
+
+\item \label{prob:groundstateE} Let us pursue our variational approach to the estimation of ground
+state energy levels of atoms for the ``general'' case.  
+We consider an atom with
+nuclear charge $Z$, and $N$ electrons.  The Hamiltonian of interest is:
+\begin{eqnarray}
+H(Z,N)&=&H_{\rm kin}-ZV_{c}+V_{e}\\
+H_{\rm kin}&=&\sum\limits^{N}_{n=1}{{\bf p}^{2}_{n}\over 2m},\\
+\hbox{where}&&\\
+V_{c}&=&\alpha{\sum\limits^{N}_{n=1}}{1\over\vert{\bf x}_{n}\vert}\\
+V_{e}&=&\alpha{\sum\limits_{N\geq j>k\geq 1}}\!{1\over\vert{\bf x}_{k}-
+{\bf x}_{j}\vert}\\
+m&=&\hbox{electron  mass}\\
+\alpha &=&\hbox{fine structure constant.}
+\end{eqnarray}
+Denote the ground state energy of $H(Z,N)$  by $-B(Z,N)$, with
+$B(Z,0)=0$.
+\noindent 
+%I have attached a table of the observed
+%ionization potentials for the atoms, \ie, the table entries are of the
+%form: 
+%$$B(Z,N)-B(Z,N-1).$$
+%http://www.chemistrycoach.com/ionization\_potentials\_f.htm
+%http://www.cithep.caltech.edu/~fcp/ph125/ionpot.pdf
+%http://www.physics.ohio-state.edu/~lvw/handyinfo/ips.html
+
+Generalize the variational calculation we performed for the ground
+state of helium to the general Hamiltonian $H(Z,N)$.  Thus, select your ``trial
+function'' to be a product of $N$ identical ``hydrogen atom ground state''
+functions.  Determine the resulting lower bound $\hat B(Z,N)$ on $B(Z,N)$
+(\ie, an upper limit on the ground state energies).
+
+\ifsolve \noindent {\bf Solution:}
+Let $Ze$ be the fixed nuclear charge in the Hamiltonian, and let $z$ be the effective $Z$ variational parameter. The trial wave function we are told to use is thus:
+\begin{equation}
+ \psi_{ZN}({\bf x}_1,\ldots,{\bf x}_N) = \prod_{n=1}^N\sqrt{{z^3 \over \pi a_0^3}} e^{-{z\over a_0}(r_n)},\quad a_0={1\over m\alpha}.
+\end{equation}
+The expectation value of the total kinetic energy for this trial function is:
+\begin{equation}
+ H_{\rm kin} = N\bra{\psi}{p_1^2\over 2m}\ket{\psi} = Nz^2{1\over 2}m\alpha^2.
+\end{equation}
+The expectation value of the potential energy of the electrons in the nuclear electric field is: 
+\begin{equation}
+ -ZV_c = -NZzm\alpha^2.
+\end{equation}
+The expectation value of the potential energy of the electrons in the fields of the other electrons is:
+\begin{equation}
+ V_e = {N(N-1)\over 2}z{1\over 2}{5\over 4}m\alpha^2.
+\end{equation} 
+Putting these terms together, we have
+\begin{equation}
+\vev{H(Z,N)}_z = {1\over 2}m\alpha^2 Nz\left[z-2Z+{5\over 8}(N-1)\right]
+\end{equation}
+
+We minimize with respect to $z$:
+\begin{equation}
+ 0 = {d\over dz}\left[z^2-2Zz +{5\over 8}(N-1)z\right] = 2z-2Z +{5\over 8}(N-1).
+\end{equation}
+Thus, the minimum occurs at
+\begin{equation}
+ z = Z-{5\over 16}(N-1)
+\end{equation}
+The variational bound on the (negative of the) ground state energies is then:
+\begin{equation}
+ \hat B(Z,N) = -\vev{H(Z,N)}_{\rm min} = {1\over 2}m\alpha^2 N\left[Z-{5\over 16}(N-1)\right]^2.
+ \label{eqn:BZNbound}
+\end{equation} 
+
+\fi
+
+\ignore{ Do this in the second problem set
+\item Now let's confront our estimates in problem~\ref{prob:groundstateE} with experiment.
+
+\begin{enumerate}
+\item Make a simple table comparing your variational bounds with the
+observed ground state energies for lithium, beryllium, and nitrogen.
+Note that a simple web search for ``ionization potentials'' will get you a multitude of
+tables of observed values, or you can look at a reference such as the CRC Press's {\sl Handbook of 
+Chemistry and Physics}. The table entries are typically of the
+form: 
+$$B(Z,N)-B(Z,N-1).$$
+
+\ifsolve \noindent {\bf Solution:}
+A Google search on ``ionization potentials'' results in many suitable hits, including:\hfil\break
+http://www.chemistrycoach.com/ionization\_potentials\_f.htm\hfil\break
+The ionization potentials for lithium, beryllium, and nitrogen are reproduced in Table~\ref{tab:IP}.
+
+\medskip
+\begin{table}[h]
+\begin{center}
+\caption{Ionization Potentials for Lithium, Beryllium, and Nitrogen 
+ (from http://www.chemistrycoach.com/ionization\_potentials\_f.htm)
+}
+\label{tab:IP}
+\begin{tabular}{|l||l|l|l|}  %4 columns
+\hline
+ & Lithium & Beryllium & Nitrogen \\
+ \cline{2-4}
+\hline
+1st I.P. &  5.4 &  9.3 &  14.5 \\
+2nd I.P. &  75.6  & 18.2  & 29.6 \\
+3rd I.P. &  122  & 154 &  47.5 \\
+4th I.P. &       & 218 &  77.5 \\
+5th I.P. &  &          &  97.9 \\
+6th I.P. &  &   & 552 \\
+7th I.P. &  &   & 667 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\medskip
+
+The predicted bounds on the energies, according to Eqn.~\ref{eqn:BZNbound},
+ are compared with the observed values in Table~\ref{tab:Ecomparison}.
+
+\medskip
+\begin{table}[h]
+\begin{center}
+\caption{Comparison of Variational Prediction with Measured Energies}
+\label{tab:Ecomparison}
+\begin{tabular}{|l||l|l||l|l||l|l|}  %7 columns
+\hline
+ &\multicolumn{2}{c||}{Lithium}&\multicolumn{2}{c||}{Beryllium}&\multicolumn{2}{c|}{Nitrogen} \\
+ \cline{2-7}
+N &\multicolumn{1}{c|}{Pred.}&\multicolumn{1}{c||}{Meas.}&\multicolumn{1}{c|}{Pred.}&\multicolumn{1}{c||}{Meas.}&\multicolumn{1}{c|}{Pred.}&\multicolumn{1}{c|}{Meas.} \\
+\hline
+1 & 122.5 & 122   & 217.7 & 218   & 666.7  & 667 \\
+2 & 196.5 & 198   & 370.0 & 372   & 1217.0 & 1219 \\
+3 & 230.2 & 203   & 464.9 & 390   & 1658.8 & 1317 \\
+4 &       &       & 510.4 & 400   & 2000.2 & 1394 \\
+5 &       &       &       &       & 2249.2 & 1442 \\
+6 &       &       &       &       & 2413.6 & 1472 \\
+7 &       &       &       &       & 2501.5 & 1486  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\medskip
+
+
+
+\fi
+
+\item Do your results make sense?  If not, can you figure out what is
+wrong, and whether the calculation we did for He is to be trusted?
+
+
+\ifsolve \noindent {\bf Solution:} 
+Note that for $N=1$, the calculation is ``exact'', up to the approximations made and effects neglected. The differences between predicted and observed values for $N=1$ are an indication of the uncertainty due to the neglect in these matters, and possibly experimental uncertainties.
+
+We see that for $N>2$, the computed bounds are always violated by the data. The trial wave function for $N>2$ is not properly antisymmetric under interchange of the electrons, hence is not in the Hilbert space. The calculation for He is still all right, since the electron has a spin degree of freedom -- A symmetric spatial wave function for two electrons is permitted, as the spin wave function can be antisymmetric.
+
+The computation for $N=2$ should be all right, and we see that the bound is always on the side it is supposed to be. Indeed, we do rather well, always getting within a percent of the actual energy.
+
+\fi
+
+\end{enumerate}
+end ignore}
+
+\end{enumerate} 
+
+\ignore{
+ \item Let us try an example of the discussion we have had in class concerning the use of the uncertainty relation on ``localized'' wave functions. Consider the three dimensional generalization. Hence, let $P(a)$ be the proability to find a particle of mass $m$ in a sphere of radius $a$ centered at the origin. 
+  \begin{enumerate} 
+   \item Recall that in the one dimensional case, if the probability of finding the particle in the interval $(-a,a)$ was $\alpha$, then a simple lower bound on the kinetic energy was obtained as:
+\begin{equation}
+ T\ge {1\over 8m}{\alpha^2\over a^2}.
+\label{eqn:Tlimit}
+\end{equation}
+Make a simple, but rigorous, generalization of this result to the three dimensional case. Don't worry about finding the ``best'' bound; even a ``conservative'' bound may be good enough to answer some questions of interest.
+
+\ifsolve{\noindent {\bf Solution:} The limit on $T$ in Eqn.~\ref{eqn:Tlimit} corresponds to a limit on the momentum of
+\begin{equation}
+ \vev{p^2}\ge {1\over 4}{\alpha^2\over a^2}.
+\label{eqn:plimit}
+\end{equation}
+In three dimensions the kinetic energy is 
+\begin{equation}
+ T = {1\over 2m}\vev{p_x^2+p_y^2+p_z^2}.
+\end{equation}
+If the probability to find the particle within radius $a$ is $P(a)$, then in each dimension we certainly have that the probability to be in the interval $(-a,a)$ is at least $P(a)$. Thus, we can apply Eqn.~\ref{eqn:plimit} in each dimension, and hence, in sum:
+\begin{equation}
+ T \ge {3\over 8m}{P(a)^2\over a^2}.
+\end{equation}
+}\fi
+
+   \item We know that an atomic size is of order $10^{-10}$ m. Suppose that we have an electron which is known to be in a sphere of radius $10^{-10}$ m with 50\% probability. What lower bound can you put on its kinetic energy? Is the result consistent with expectation; \eg, with what you know about the kinetic energy of the electron in hydrogen?
+
+\ifsolve{\noindent {\bf Solution:}
+\begin{eqnarray}
+T &\ge& {3\over 8}\left({1\over 2}\right)^2 {(200\,\hbox{MeV-fm})^2\over 0.5\,\hbox{MeV} 10^{-20}\,\hbox{m}^2} \nonumber \\
+ &\ge& 0.8\ \hbox{eV}.
+\end{eqnarray} 
+In the ground state, the expectation value of the kinetic energy of the electron in hydrogen is 13.6 eV, consistent with our bound, although our bound is not especially good. 
+}\fi
+
+
+   \item In ancient times, before the neutron was discovered, it was supposed that the nucleus contained both electrons and protons. A comfortable nuclear size is $5\times 10^{-15}$ m. Find a lower bound on the kinetic energy of an electron if the probability to be within this radius is 90\%. If there is a problem with the validity of your bound, see if you can fix it. Does this model encounter any difficulties?
+
+\ifsolve{\noindent {\bf Solution:}
+\begin{eqnarray}
+T &\ge& {3\over 8}\left(0.9\right)^2 {(200\,\hbox{MeV-fm})^2\over 0.5\,\hbox{MeV} 25\times 10^{-30}\,\hbox{m}^2} \nonumber \\
+ &\gsim& 1\ \hbox{GeV}.
+\end{eqnarray} 
+The electron is relativistic, inconsistent with our assumption in computing the kinetic energy with a non-relativistic equation. Our derivation that $\vev{p^2}\ge 1/4a^2$ in the one-dimensional case should still be valid. The relativistic kinetic energy is $T=E-m\approx \vev{|{\bf p}|}$, where the approximation is in the limit $E\gg m$. Let's presume we can estimate $T$ with $\sqrt{\vev{p^2}}$. Then
+\begin{eqnarray}
+T &\ge& {\sqrt{3}\over 2a} \nonumber \\
+ &\ge& {200\,\hbox{MeV-fm}\over 5\,\hbox{fm}} = 40\,\hbox{MeV}.
+\end{eqnarray}
+Let's compare this with an estimated order of magnitude for the electrostatic potential energy of an electron and a proton separated by 5 fm:
+\begin{equation}
+|V|={e^2\over a} \approx {200\,\hbox{MeV-fm}\over 100\times 5\,\hbox{fm}} = 0.4\,\hbox{MeV}
+\end{equation}
+This is much smaller than our limit on the kinetic energy, presenting a theoretical problem with binding and with expectations from the virial theorem. 
+
+}\fi
+
+
+   \item Now find a lower bound for the kinetic energy of a proton in the nucleus, if it has a probability of 90\% to be within a region of radius $5\times 10^{-15}$ m. 
+
+\ifsolve{\noindent {\bf Solution:}
+\begin{eqnarray}
+T &\ge& {3\over 8}\left(0.9\right)^2 {(200\,\hbox{MeV-fm})^2\over 900\,\hbox{MeV} 25\times 10^{-30}\,\hbox{m}^2} \nonumber \\
+ &\ge& 0.5\ \hbox{MeV}.
+\end{eqnarray} 
+
+
+}\fi
+
+ \end{enumerate} 
+ }%end ignore

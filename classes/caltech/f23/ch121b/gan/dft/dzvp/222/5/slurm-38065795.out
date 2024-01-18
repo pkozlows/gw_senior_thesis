@@ -1,0 +1,49 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:772: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, the same to the B3LYP functional in Gaussian and ORCA (issue 1480). To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+/central/home/pkozlows/ch121b/gan/dft/dzvp/222/5/dzvp_2.py:13: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+Discarded 8 diffused primitive functions, 0 contracted functions
+
+
+******** <class 'pyscf.pbc.dft.krks.KRKS'> ********
+method = KRKS-KohnShamDFT
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /central/home/pkozlows/ch121b/gan/dft/dzvp/222/5/check_file.chk
+max_memory 419401 MB (current use 93 MB)
+
+
+******** PBC SCF flags ********
+N kpts = 8
+kpts = [[0.         0.         0.        ]
+ [0.         0.         0.3203197 ]
+ [0.         0.60176883 0.        ]
+ [0.         0.60176883 0.3203197 ]
+ [0.5211471  0.30088442 0.        ]
+ [0.5211471  0.30088442 0.3203197 ]
+ [0.5211471  0.90265325 0.        ]
+ [0.5211471  0.90265325 0.3203197 ]]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 8.76453321006536e-07, -0.162059015555054, 0.068912395876923
+    madelung (= occupied orbital energy shift) = 0.18629148644961965
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -3.35324675609
+DF object = <pyscf.pbc.df.fft.FFTDF object at 0x7fccbe2dc490>
+XC functionals = b3pw91
+small_rho_cutoff = 1e-07
+Uniform grid, mesh = [ 83  83 133]
+<class 'pyscf.pbc.dft.krks.KRKS'> does not have attributes  nlcgrids nlc
+Set gradient conv threshold to 0.000316228
+    CPU time for setting up grids      4.68 sec, wall time      1.21 sec
+nelec by numeric integration = 35.99975004050094
+    CPU time for vxc    333.74 sec, wall time     89.02 sec
+slurmstepd: error: poll(): Bad address
+/var/spool/slurmd/job38065795/slurm_script: line 27: 45413 Killed                  python3 dzvp_2.py

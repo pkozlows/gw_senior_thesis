@@ -1,0 +1,187 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:772: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, the same to the B3LYP functional in Gaussian and ORCA (issue 1480). To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+WARNING!
+  Very diffused basis functions are found in the basis set. They may lead to severe
+  linear dependence and numerical instability.  You can set  cell.exp_to_discard=0.1
+  to remove the diffused Gaussians whose exponents are less than 0.1.
+
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/ase/dft/kpoints.py:357: UserWarning: Please do not use (kpts, x, X) = bandpath(...).  Use path = bandpath(...) and then kpts = path.kpts and (x, X, labels) = path.get_linear_kpoint_axis().
+  warnings.warn('Please do not use (kpts, x, X) = bandpath(...).  '
+
+
+******** <class 'pyscf.pbc.dft.rks.RKS'> ********
+method = RKS-KohnShamDFT
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = False
+chkfile to save SCF result = /tmp/tmpik8oanbe
+max_memory 4000 MB (current use 117 MB)
+******** PBC SCF flags ********
+kpt = [0. 0. 0.]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    madelung (= occupied orbital energy shift) = 0.3725829728992387
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -6.70649351219
+DF object = <pyscf.pbc.df.fft.FFTDF object at 0x7f4dc97d8150>
+XC functionals = b3pw91
+small_rho_cutoff = 1e-07
+Uniform grid, mesh = [ 83  83 133]
+<class 'pyscf.pbc.dft.rks.RKS'> does not have attributes  nlcgrids nlc
+Set gradient conv threshold to 0.000316228
+Initial guess from minao.
+Big error detected in the electron number of initial guess density matrix (Ne/cell = 38.3075)!
+  This can cause huge error in Fock matrix and lead to instability in SCF for low-dimensional systems.
+  DM is normalized wrt the number of electrons 36
+    CPU time for setting up grids      3.75 sec, wall time      0.73 sec
+nelec by numeric integration = 35.99999999666182
+    CPU time for vxc     99.32 sec, wall time     16.63 sec
+Building PBC AO integrals incore
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk    163.19 sec, wall time     31.16 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -82.3332903037477  Ecoul = 53.32277736726863  Exc = -24.275250442739072
+init E= -169.86524502211
+cond(S) = 10.886213380596761
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/gto/cell.py:243: UserWarning: Function cell.dumps drops attribute a because it is not JSON-serializable
+  warnings.warn(msg)
+    CPU time for initialize scf    360.74 sec, wall time     65.01 sec
+  HOMO = 0.217132693368188  LUMO = 0.356709280000904
+  mo_energy =
+[-0.5271928  -0.47871221 -0.44508631 -0.44445276 -0.44445276 -0.44293585
+ -0.44293585 -0.43618804 -0.43618804 -0.43381879 -0.43381879 -0.34166875
+ -0.04031396  0.18689217  0.18689217  0.2141721   0.21713269  0.21713269
+  0.35670928  0.50549319  0.70539935  0.77360192  0.77360192  0.7817452
+  0.82698066  0.82698066]
+nelec by numeric integration = 35.9999999979681
+    CPU time for vxc    100.15 sec, wall time     16.75 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.76508169494123  Ecoul = 62.643058794642364  Exc = -26.06503749571226
+cycle= 1 E= -167.766542038903  delta_E=  2.1  |g|= 0.95  |ddm|=  4.3
+    CPU time for cycle= 1    100.29 sec, wall time     16.78 sec
+  HOMO = 0.619352846269689  LUMO = 0.711062507619548
+  mo_energy =
+[-0.29243542 -0.29233204 -0.29233204 -0.29167762 -0.29167762 -0.28841957
+ -0.2854227  -0.2854227  -0.2819741  -0.2819741  -0.14801995  0.00941924
+  0.12148105  0.49716115  0.49716115  0.61708335  0.61935285  0.61935285
+  0.71106251  0.74761192  0.825479    0.825479    0.86062492  0.99661819
+  0.99661819  1.1491354 ]
+nelec by numeric integration = 35.99999999817235
+    CPU time for vxc    100.13 sec, wall time     16.75 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.06562466888947  Ecoul = 60.969533117991524  Exc = -24.840803888967105
+cycle= 2 E= -167.516377082757  delta_E= 0.25  |g|= 1.33  |ddm|= 4.67
+    CPU time for cycle= 2    100.26 sec, wall time     16.77 sec
+  HOMO = 0.449387088502126  LUMO = 0.574961301334504
+  mo_energy =
+[-0.2282042  -0.22432906 -0.20920853 -0.20920853 -0.20758901 -0.20758901
+ -0.20683193 -0.19989631 -0.19989631 -0.19584448 -0.19584448 -0.08608872
+  0.08570407  0.3704124   0.3704124   0.44120956  0.44120956  0.44938709
+  0.5749613   0.66119078  0.81415557  0.81415557  0.83920551  0.92136635
+  0.92136635  0.95066149]
+nelec by numeric integration = 35.99999999803113
+    CPU time for vxc    100.05 sec, wall time     16.74 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.47602817774737  Ecoul = 61.31773146595883  Exc = -25.438982326088396
+cycle= 3 E= -168.176760680769  delta_E= -0.66  |g|= 0.00862  |ddm|= 2.74
+    CPU time for cycle= 3    100.18 sec, wall time     16.76 sec
+  HOMO = 0.439826234154043  LUMO = 0.570136923998786
+  mo_energy =
+[-0.23645761 -0.23131486 -0.21888371 -0.21888371 -0.21734302 -0.21734302
+ -0.21552382 -0.20927925 -0.20927925 -0.20510771 -0.20510771 -0.09357779
+  0.07904679  0.36006368  0.36006368  0.43071394  0.43071394  0.43982623
+  0.57013692  0.65718688  0.81115094  0.81115094  0.83650162  0.91780913
+  0.91780913  0.94271218]
+nelec by numeric integration = 35.99999999803054
+    CPU time for vxc    100.30 sec, wall time     16.80 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.46383366712897  Ecoul = 61.305073614961415  Exc = -25.43858027163471
+cycle= 4 E= -168.176821966694  delta_E= -6.13e-05  |g|= 0.00172  |ddm|= 0.0417
+    CPU time for cycle= 4    100.43 sec, wall time     16.82 sec
+  HOMO = 0.440167778188978  LUMO = 0.570321807164519
+  mo_energy =
+[-0.23672262 -0.23114447 -0.21930425 -0.21930425 -0.21777406 -0.21777406
+ -0.21588406 -0.20969191 -0.20969191 -0.20551859 -0.20551859 -0.09347266
+  0.07921232  0.36036833  0.36036833  0.43104877  0.43104877  0.44016778
+  0.57032181  0.65714589  0.81107411  0.81107411  0.83646966  0.91778464
+  0.91778464  0.94310544]
+nelec by numeric integration = 35.99999999803064
+    CPU time for vxc    100.23 sec, wall time     16.79 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.46294834544362  Ecoul = 61.303658845435365  Exc = -25.438052393582268
+cycle= 5 E= -168.176823536482  delta_E= -1.57e-06  |g|= 0.000398  |ddm|= 0.00615
+    CPU time for cycle= 5    100.35 sec, wall time     16.81 sec
+  HOMO = 0.440259462773318  LUMO = 0.570366430538976
+  mo_energy =
+[-0.23677237 -0.23109113 -0.21937822 -0.21937822 -0.21784739 -0.21784739
+ -0.21597244 -0.20977809 -0.20977809 -0.20560643 -0.20560643 -0.09343931
+  0.07923048  0.3604508   0.3604508   0.43114829  0.43114829  0.44025946
+  0.57036643  0.65718555  0.81106821  0.81106821  0.83645311  0.91779899
+  0.91779899  0.94316589]
+nelec by numeric integration = 35.99999999803066
+    CPU time for vxc    100.32 sec, wall time     16.82 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.46286516769698  Ecoul = 61.30343014290515  Exc = -25.437906945172152
+cycle= 6 E= -168.176823612856  delta_E= -7.64e-08  |g|= 8.33e-05  |ddm|= 0.00116
+    CPU time for cycle= 6    100.44 sec, wall time     16.84 sec
+  HOMO = 0.440281673168237  LUMO = 0.570382190515156
+  mo_energy =
+[-0.23677154 -0.23107954 -0.21938128 -0.21938128 -0.21785069 -0.21785069
+ -0.2159749  -0.2097807  -0.2097807  -0.205609   -0.205609   -0.09342594
+  0.07923756  0.36047     0.36047     0.43117155  0.43117155  0.44028167
+  0.57038219  0.65719129  0.81106757  0.81106757  0.83645443  0.91780366
+  0.91780366  0.94318991]
+nelec by numeric integration = 35.99999999803066
+    CPU time for vxc    100.36 sec, wall time     16.81 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk      0.08 sec, wall time      0.01 sec
+Ewald components = 6.77773183084737, -128.779455527716, 5.42224205397643
+E1 = -87.46283956969042  Ecoul = 61.30335344012105  Exc = -25.437855837874345
+Extra cycle  E= -168.176823610336  delta_E= 2.52e-09  |g|= 0.000134  |ddm|= 0.000352
+    CPU time for scf_cycle   1063.18 sec, wall time    182.63 sec
+    CPU time for SCF   1063.18 sec, wall time    182.63 sec
+converged SCF energy = -168.176823610336
+nelec by numeric integration = 35.999999998030646
+    CPU time for vxc    251.97 sec, wall time     42.16 sec
+Ewald components = 0.00051775335925431, -0.251419253935776, 0.0646100141269025
+    CPU time for vj and vk   8705.25 sec, wall time   1670.59 sec
+
+WARN: 1.74 error found in overlap integrals. cell.precision  or  cell.rcut  can be adjusted to improve accuracy.
+
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/szv/000/szv_0.py", line 46, in <module>
+    e_kn = mf.get_bands(band_kpts)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/scf/hf.py", line 188, in get_bands
+    e, c = mf.eig(fock[k], s1e[k])
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1545, in eig
+    return self._eigh(h, s)
+           ^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1537, in _eigh
+    return eig(h, s)
+           ^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1183, in eig
+    e, c = scipy.linalg.eigh(h, s)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/scipy/linalg/_decomp.py", line 593, in eigh
+    raise LinAlgError('The leading minor of order {} of B is not '
+numpy.linalg.LinAlgError: The leading minor of order 14 of B is not positive definite. The factorization of B could not be completed and no eigenvalues or eigenvectors were computed.

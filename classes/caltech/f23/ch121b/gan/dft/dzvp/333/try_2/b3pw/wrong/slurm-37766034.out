@@ -1,0 +1,87 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:772: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, the same to the B3LYP functional in Gaussian and ORCA (issue 1480). To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+WARNING!
+  Very diffused basis functions are found in the basis set. They may lead to severe
+  linear dependence and numerical instability.  You can set  cell.exp_to_discard=0.1
+  to remove the diffused Gaussians whose exponents are less than 0.1.
+
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/ase/dft/kpoints.py:357: UserWarning: Please do not use (kpts, x, X) = bandpath(...).  Use path = bandpath(...) and then kpts = path.kpts and (x, X, labels) = path.get_linear_kpoint_axis().
+  warnings.warn('Please do not use (kpts, x, X) = bandpath(...).  '
+
+
+******** <class 'pyscf.pbc.dft.krks.KRKS'> ********
+method = KRKS-KohnShamDFT
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-07
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpm1k41efi
+max_memory 4000 MB (current use 92 MB)
+
+
+******** PBC SCF flags ********
+N kpts = 27
+kpts = [[0.         0.         0.        ]
+ [0.         0.         0.21354647]
+ [0.         0.         0.42709293]
+ [0.         0.40117922 0.        ]
+ [0.         0.40117922 0.21354647]
+ [0.         0.40117922 0.42709293]
+ [0.         0.80235844 0.        ]
+ [0.         0.80235844 0.21354647]
+ [0.         0.80235844 0.42709293]
+ [0.3474314  0.20058961 0.        ]
+ [0.3474314  0.20058961 0.21354647]
+ [0.3474314  0.20058961 0.42709293]
+ [0.3474314  0.60176883 0.        ]
+ [0.3474314  0.60176883 0.21354647]
+ [0.3474314  0.60176883 0.42709293]
+ [0.3474314  1.00294806 0.        ]
+ [0.3474314  1.00294806 0.21354647]
+ [0.3474314  1.00294806 0.42709293]
+ [0.6948628  0.40117922 0.        ]
+ [0.6948628  0.40117922 0.21354647]
+ [0.6948628  0.40117922 0.42709293]
+ [0.6948628  0.80235844 0.        ]
+ [0.6948628  0.80235844 0.21354647]
+ [0.6948628  0.80235844 0.42709293]
+ [0.6948628  1.20353767 0.        ]
+ [0.6948628  1.20353767 0.21354647]
+ [0.6948628  1.20353767 0.42709293]]
+Exchange divergence treatment (exxdiv) = ewald
+Ewald components = 2.23368679724563e-09, -0.129121640870431, 0.0670244764868704
+    madelung (= occupied orbital energy shift) = 0.12419432429974722
+    Total energy shift due to Ewald probe charge = -1/2 * Nelec*madelung = -2.2354978374
+DF object = <pyscf.pbc.df.fft.FFTDF object at 0x7f7a6d724350>
+XC functionals = aksrfuj
+small_rho_cutoff = 1e-07
+Uniform grid, mesh = [ 83  83 133]
+<class 'pyscf.pbc.dft.krks.KRKS'> does not have attributes  nlc nlcgrids
+Set gradient conv threshold to 0.000316228
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/dzvp/333/try_2/b3pw/wrong/dzvp_3.py", line 41, in <module>
+    kmf.kernel()
+  File "<string>", line 2, in kernel
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 1685, in scf
+    kernel(self, self.conv_tol, self.conv_tol_grad,
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/scf/hf.py", line 128, in kernel
+    vhf = mf.get_veff(mol, dm)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/pbc/dft/krks.py", line 64, in get_veff
+    if ks.nlc or ni.libxc.is_nlc(ks.xc):
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py", line 935, in is_nlc
+    fn_facs = parse_xc(xc_code)[1]
+              ^^^^^^^^^^^^^^^^^
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py", line 1229, in parse_xc
+    parse_token(token, 'compound XC', search_xc_alias=True)
+  File "/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py", line 1182, in parse_token
+    raise KeyError(f"LibXCFunctional: name '{key}' not found.")
+KeyError: "LibXCFunctional: name 'AKSRFUJ' not found."

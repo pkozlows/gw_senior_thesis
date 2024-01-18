@@ -1,0 +1,373 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{physics}
+
+\begin{document}
+
+\title{Ch126\\Winter Quarter -- 2024\\Problem Set 2}
+\date{Due: 18 January, 2024}
+\maketitle
+
+\section{Problem 1}
+(20 points) Adjoint operators are defined in terms of their expectation values. Two operators \( \hat{G} \) and \( \hat{G}^\dagger \) are adjoint if their expectation values are complex conjugates of each other, i.e.:
+\begin{equation}
+    \langle \Phi  | \hat{G}^\dagger \Phi  \rangle = \langle \Phi  | \hat{G} \Phi  \rangle^*
+\end{equation}
+and
+\begin{equation}
+    (\hat{G}^\dagger)^\dagger = \hat{G}
+\end{equation}
+(the dagger indicates the adjoint; the asterisk indicates the complex conjugate of a number).
+
+For adjoint operators \( \hat{G} \) and \( \hat{G}^\dagger \) you have proven the turnover rule:
+\begin{equation}
+    \langle \phi_1 | \hat{G}^\dagger | \phi_2 \rangle = \langle \hat{G} \phi_1 | \phi_2 \rangle
+\end{equation}
+The turnover rule is extremely useful for finding the adjoint of a given operator.
+
+The linear momentum operator in one dimension is:
+\begin{equation}
+    \hat{p} = \frac{\hbar}{i} \frac{\partial}{\partial x}
+\end{equation}
+
+Use the following integral \( I \), the method of integration by parts, and the turnover rule to find the adjoint of the linear momentum operator, \( \hat{p}^\dagger \).
+\begin{equation}
+    I = \langle \hat{p}\phi_1 | \phi_2 \rangle = \int_{-\infty}^{+\infty} \left( \frac{\hbar}{i} \frac{\partial \phi_1}{\partial x} \right)^* \phi_2 \, dx
+\end{equation}
+
+Assume that the wavefunctions \( \phi_1 \) and \( \phi_2 \) and their complex conjugates vanish at \( \pm\infty \).
+
+\subsection{Answer}
+We can use integration by parts to solve this integral, with $u = \phi _2$ and $dv = \left( \frac{\hbar}{i} \frac{\partial \phi_1}{\partial x} \right)^*dx$, so $du = \frac{\partial \phi_2}{\partial x}dx$ and $v = -\frac{\hbar}{i} \phi_1^*$, and we get:
+\begin{align}
+I &= \langle \hat{p}\phi_1 | \phi_2 \rangle = \int_{-\infty}^{+\infty} \left( \frac{\hbar}{i} \frac{\partial \phi_1}{\partial x} \right)^* \phi_2 \, dx \\
+&= \left[ -\frac{\hbar}{i} \phi_1^* \phi_2 \right]_{-\infty}^{+\infty} + \int_{-\infty}^{+\infty} \frac{\hbar}{i} \phi_1^* \frac{\partial \phi_2}{\partial x} \, dx
+\end{align}
+We know that the wavefunctions $\phi _1$ and $\phi _2$ vanish at $\pm \infty$, so the first term in the equation above is zero, and we get:
+\begin{align}
+I &= - \int_{-\infty}^{+\infty} \frac{\hbar}{i} \phi_1^* \frac{\partial \phi_2}{\partial x} \, dx
+\end{align}
+Rearranging this equation:
+\begin{align}
+I &= \int_{-\infty}^{+\infty} \frac{\hbar}{i} \frac{\partial \phi_2}{\partial x} \phi_1^* \, dx
+\end{align}
+Putting this into bra-ket notation:
+\begin{align}
+I &= \langle \phi_1 | \hat{p} | \phi_2 \rangle
+\end{align}
+So, we have found that:
+\begin{align}
+\langle \hat{p}\phi_1 | \phi_2 \rangle = \langle \phi_1 | \hat{p} | \phi_2 \rangle = \langle \phi_1 | \hat{p}^\dagger | \phi_2 \rangle
+\end{align}
+
+\section{Problem 2}
+(20 points) Consider the set of angular momentum functions \( \lvert j, m \rangle \) that are eigenfunctions of the operators \( \hat{j}^2 \) and \( \hat{j}_z \). Matrix elements of an arbitrary operator \( \hat{O} \) in this basis set in this basis set have the form:
+\[
+O_{mm'} = \langle j, m \lvert \hat{O} \lvert j, m' \rangle
+\]
+The operator \( \hat{O} \) in this basis set can be represented by a \( (2j+1) \times (2j+1) \) matrix with rows labeled by \( m \) and columns labeled by \( m' \).
+
+\subsection{Part (a)}
+For the case \( j=1 \), write down explicitly the \( 3 \times 3 \) matrices representing the operators \( \hat{j}^2 \), \( \hat{j}_z \), \( \hat{j}_+ \), \( \hat{j}_- \), \( \hat{j}_x \), and \( \hat{j}_y \).
+
+\subsubsection{Answer}
+For the case $j = 1$, we have $m = -1, 0, 1$. We note that the convention is to transfers the matrix from left to right with $m = 1, 0, -1$. First, we know when operating  $\hat{j}^2$ on $\ket{j, m}$, we get:
+\begin{align}
+\hat{j}^2 \ket{j, m} &= j(j+1) \hbar ^2 \ket{j, m}
+\end{align}
+So, the matrix representation is independent of $m$, and we get:
+\begin{align}
+\hat{j}^2 &= 2\hbar ^2 \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{align}
+Now, we know when operating  $\hat{j}_z$ on $\ket{j, m}$, we get:
+\begin{align}
+\hat{j}_z \ket{j, m} &= m \hbar \ket{j, m}
+\end{align}
+So, the matrix representation is:
+\begin{align}
+\hat{j}_z &= \hbar \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & -1
+\end{pmatrix}
+\end{align}
+Now, we know when operating  $\hat{j}_+$ on $\ket{j, m}$, we get:
+\begin{align}
+\hat{j}_+ \ket{j, m} &= \hbar \sqrt{j(j+1) - m(m+1)} \ket{j, m+1}
+\end{align}
+So, that factor is of the form $\hbar\sqrt{2 - m(m+1)}$, and we only care about the $m = -1, 0$ terms  on the column for the ket, so we get:
+\begin{align}
+\hat{j}_+ &= \hbar \begin{pmatrix}
+0 & \sqrt{2} & 0 \\
+0 & 0 & \sqrt{2} \\
+0 & 0 & 0
+\end{pmatrix}
+\end{align}
+Now, we know when operating  $\hat{j}_-$ on $\ket{j, m}$, we get:
+\begin{align}
+\hat{j}_- \ket{j, m} &= \hbar \sqrt{j(j+1) - m(m-1)} \ket{j, m-1}
+\end{align}
+So, that factor is of the form $\hbar\sqrt{2 - m(m-1)}$, and we only care about the $m = 0, 1$ terms  on the column for the ket, so we get:
+\begin{align}
+\hat{j}_- &= \hbar \begin{pmatrix}
+0 & 0 & 0 \\
+\sqrt{2} & 0 & 0 \\
+0 & \sqrt{2} & 0
+\end{pmatrix}
+\end{align}
+Now, we know $\hat{j}_x$ is defined as:
+\begin{align}
+\hat{j}_x &= \frac{1}{2} \left( \hat{j}_+ + \hat{j}_- \right)
+\end{align}
+So, we can add the matrices from above, and we get:
+\begin{align}
+\hat{j}_x &= \frac{\hbar}{2} \begin{pmatrix}
+0 & \sqrt{2} & 0 \\
+\sqrt{2} & 0 & \sqrt{2} \\
+0 & \sqrt{2} & 0
+\end{pmatrix}
+\end{align}
+Now, we know $\hat{j}_y$ is defined as:
+\begin{align}
+\hat{j}_y &= \frac{1}{2i} \left( \hat{j}_+ - \hat{j}_- \right)
+\end{align}
+So, we can subtract the matrices from above, and we get:
+\begin{align}
+\hat{j}_y &= \frac{\hbar}{2i} \begin{pmatrix}
+0 & \sqrt{2} & 0 \\
+- \sqrt{2} & 0 & \sqrt{2} \\
+0 & - \sqrt{2} & 0
+\end{pmatrix}
+\end{align}
+
+\subsection{Part (b)}
+Use the matrices from (a) to prove the following commutators:
+\[
+[\hat{j}_x, \hat{j}_y] = i\hbar \hat{j}_z, \quad [\hat{j}_y, \hat{j}_z] = i\hbar \hat{j}_x, \quad [\hat{j}_z, \hat{j}_x] = i\hbar \hat{j}_y
+\]
+\subsubsection{Answer}
+We will start with the first commutator:
+\begin{align}
+[\hat{j}_x, \hat{j}_y] &= \hat{j}_x \hat{j}_y - \hat{j}_y \hat{j}_x
+\end{align}
+We can substitute in the matrices from part (a), and we get:
+\begin{align}
+[\hat{j}_x, \hat{j}_y] &= \frac{\hbar ^2}{4i} 
+\begin{pmatrix}
+-2 & 0 & 2 \\
+0 & 0 & 0 \\
+-2 & 0 & 2 \\
+\end{pmatrix}
+- \frac{\hbar ^2}{4i}
+\begin{pmatrix}
+2 & 0 & 2 \\
+0 & 0 & 0 \\
+-2 & 0 & -2 \\
+\end{pmatrix} \\
+&= \frac{\hbar ^2}{4i}
+\begin{pmatrix}
+-4 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 4 \\
+\end{pmatrix}
+= i \hbar^2
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & -1 \\
+\end{pmatrix} \\
+&= i \hbar \hat{j}_z
+\end{align}
+That attached SymPy script gives:
+\begin{align}
+[\hat{j}_y, \hat{j}_z] &= \frac{i\sqrt{2}\hbar^2}{2} 
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+= i \hbar \hat{j}_x \\
+\end{align}
+and finally:
+\begin{align}
+[\hat{j}_z, \hat{j}_x] &= \frac{\sqrt{2}\hbar^2}{2}
+\begin{pmatrix}
+0 & 1 & 0 \\
+-1 & 0 & 1 \\
+0 & -1 & 0 \\
+\end{pmatrix}
+= i \hbar \hat{j}_y
+\end{align}
+
+\section{Problem 3}
+(20 points) Two-state energy transfer. Assume that two identical, well-separated molecules, A and B, have excited states described by the wavefunctions \(\Psi_A(q, t) = \psi_A(q)e^{-iE_At/\hbar}\) and \(\Psi_B(q, t) = \psi_B(q)e^{-iE_Bt/\hbar}\), respectively. Assume that \(\psi_A(q)\) and \(\psi_B(q)\) are orthonormal eigenfunctions of the Hamiltonian \(\hat{H}^0\) where:
+\begin{align*}
+\hat{H}^0 \lvert \psi_A(q) \rangle &= E_A \lvert \psi_A(q) \rangle, \\
+\hat{H}^0 \lvert \psi_B(q) \rangle &= E_B \lvert \psi_B(q) \rangle.
+\end{align*}
+Since the molecules are identical, \(E_A = E_B = E_0\). If A and B are brought into close proximity, there will be an interaction between them described by the time-independent perturbation operator \(\hat{H}'\) with the following matrix elements:
+\begin{align*}
+\langle \psi_A(q) \lvert \hat{H}' \lvert \psi_A(q) \rangle &= \langle \psi_B(q) \lvert \hat{H}' \lvert \psi_B(q) \rangle = 0, \\
+\langle \psi_A(q) \lvert \hat{H}' \lvert \psi_B(q) \rangle &= \langle \psi_B(q) \lvert \hat{H}' \lvert \psi_A(q) \rangle = \gamma.
+\end{align*}
+A general state of this two-molecule system can be described by the superposition wavefunction \( \lvert t \rangle \):
+\[
+\lvert t \rangle = C_A \lvert \psi_A(q) \rangle e^{-iE_0t/\hbar} + C_B \lvert \psi_B(q) \rangle e^{-iE_0t/\hbar},
+\]
+where the coefficients \(C_A\) and \(C_B\) are functions of time. Since the zero of energy is arbitrary, it is convenient to define \(E_0 = 0\).
+
+\subsection{Part (a)}
+Use the definition of \( \lvert t \rangle \) in the time-dependent Schrödinger equation with the Hamiltonian \( \hat{H} = \hat{H}^0 + \hat{H}' \) to generate an equation relating the time derivatives of \( C_A \) and \( C_B \) (denoted as \( \dot{C}_A \) and \( \dot{C}_B \)) to \( C_A \) and \( C_B \).
+
+\subsubsection{Answer}
+The time-dependent Schrödinger equation is given by:
+\begin{equation}
+    i\hbar \frac{\partial}{\partial t} \lvert t \rangle = \hat{H} \lvert t \rangle
+\end{equation}
+First, we will only focus on the left and side, and substituting in for \( \lvert t \rangle \) and taking out the exponential term, which is a common factor, we get:
+\begin{align}
+i\hbar \frac{\partial}{\partial t} \lvert t \rangle &= i\hbar \left( \dot{C}_A \lvert \psi_A(q) \rangle + C_A \lvert \psi_A(q) \rangle \left( -\frac{iE_0}{\hbar} \right) + \dot{C}_B \lvert \psi_B(q) \rangle + C_B \lvert \psi_B(q) \rangle \left( -\frac{iE_0}{\hbar} \right) \right) e^{-iE_0t/\hbar}
+\end{align}
+Now, we will focus on the right hand side of the equation, and substituting in for \( \lvert t \rangle \) gives:
+\begin{align}
+\hat{H} \lvert t \rangle &= \left( \hat{H}^0 + \hat{H}' \right) \left( C_A \lvert \psi_A(q) \rangle e^{-iE_0t/\hbar} + C_B \lvert \psi_B(q) \rangle e^{-iE_0t/\hbar} \right) \\
+&= \left( \hat{H}^0 + \hat{H}' \right) \left( C_A \lvert \psi_A(q) \rangle + C_B \lvert \psi_B(q) \rangle \right) e^{-iE_0t/\hbar}
+\end{align}
+We can cancel the exponential term from both sides, and we get:
+\begin{align}
+i\hbar \frac{\partial}{\partial t} \lvert t \rangle &= \left( \hat{H}^0 + \hat{H}' \right) \left( C_A \lvert \psi_A(q) \rangle + C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+Now, we distribute the Hamiltonian to the terms inside the parenthesis:
+\begin{align}
+i\hbar \frac{\partial}{\partial t} \lvert t \rangle &= \left( \hat{H}^0 + \hat{H}' \right) \left( C_A \lvert \psi_A(q) \rangle + C_B \lvert \psi_B(q) \rangle \right) \\
+&= \left( \hat{H}^0 C_A \lvert \psi_A(q) \rangle + \hat{H}^0 C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+The first two terms are just they eigenvalue equations for \( \hat{H}^0 \), so we can simplify the equation to:
+\begin{align}
+i\hbar \frac{\partial}{\partial t} \lvert t \rangle &= \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+Now, we equate the left and right hand sides of the equation, and we get:
+\begin{align}
+\left( i\hbar\dot{C}_A \lvert \psi_A(q) \rangle + E_0 C_A \lvert \psi_A(q) \rangle + i\hbar\dot{C}_B \lvert \psi_B(q) \rangle + E_0 C_B \lvert \psi_B(q) \rangle \right) \\ = \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+\subsection{Part (b)}
+Left multiply the result from (a) by \( \langle \psi_A(q) \lvert \) to get a differential equation for \( \dot{C}_A \).
+\subsubsection{Answer}
+Multiplying by $\bra{\psi _A(q)}$ gives:
+\begin{align}
+\bra{\psi _A(q)} \left( i\hbar\dot{C}_A \lvert \psi_A(q) \rangle + E_0 C_A \lvert \psi_A(q) \rangle + i\hbar\dot{C}_B \lvert \psi_B(q) \rangle + E_0 C_B \lvert \psi_B(q) \rangle \right) \\ = \bra{\psi _A(q)} \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+We can simplify the left side of the equation by using the orthonormality of the eigenfunctions of \( \hat{H}^0 \), and we get:
+\begin{align}
+\bra{\psi _A(q)} \left( i\hbar\dot{C}_A \lvert \psi_A(q) \rangle + E_0 C_A \lvert \psi_A(q) \rangle + i\hbar\dot{C}_B \lvert \psi_B(q) \rangle + E_0 C_B \lvert \psi_B(q) \rangle \right) \\ = i \hbar \dot{C}_A + E_0 C_A
+\end{align}
+The right hand side gives:
+\begin{align}
+\bra{\psi _A(q)} \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right) \\ = E_A C_A + \gamma C_B
+\end{align}
+Now, we can equate the left and right hand sides of the equation, and we get:
+\begin{align}
+i \hbar \dot{C}_A + E_0 C_A = E_A C_A + \gamma C_B
+\end{align}
+
+\subsection{Part (c)}
+Left multiply the result from (a) by \( \langle \psi_B(q) \lvert \) to get a differential equation for \( \dot{C}_B \).
+\subsubsection{Answer}
+We implement the same procedure as before:
+\begin{align}
+\bra{\psi _B(q)} \left( i\hbar\dot{C}_A \lvert \psi_A(q) \rangle + E_0 C_A \lvert \psi_A(q) \rangle + i\hbar\dot{C}_B \lvert \psi_B(q) \rangle + E_0 C_B \lvert \psi_B(q) \rangle \right) \\ = \bra{\psi _B(q)} \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right)
+\end{align}
+We can simplify the left side of the equation by using the orthonormality of the eigenfunctions of \( \hat{H}^0 \), and we get:
+\begin{align}
+\bra{\psi _B(q)} \left( i\hbar\dot{C}_A \lvert \psi_A(q) \rangle + E_0 C_A \lvert \psi_A(q) \rangle + i\hbar\dot{C}_B \lvert \psi_B(q) \rangle + E_0 C_B \lvert \psi_B(q) \rangle \right) \\ = i \hbar \dot{C}_B + E_0 C_B
+\end{align}
+The right hand side gives:
+\begin{align}
+\bra{\psi _B(q)} \left( E_A C_A \lvert \psi_A(q) \rangle + E_B C_B \lvert \psi_B(q) \rangle + \hat{H}' C_A \lvert \psi_A(q) \rangle + \hat{H}' C_B \lvert \psi_B(q) \rangle \right) \\ = E_B C_B + \gamma C_A
+\end{align}
+Now, we can equate the left and right hand sides of the equation, and we get:
+\begin{align}
+i \hbar \dot{C}_B + E_0 C_B = E_B C_B + \gamma C_A
+\end{align}
+
+\subsection{Part (d)}
+Exercises (b) and (c) will give two coupled first order differential equations. They can be solved by taking the time-derivative of the (b) result, then substituting the (c) result to get a second-order linear differential equation with constant coefficients. Derive the second-order linear differential equation for \( C_A \).
+\subsubsection{Answer}
+We take the time derivative of the result from part (b):
+\begin{align}
+i \hbar \ddot{C}_A + E_0 \dot{C}_A = E_A \dot{C}_A + \gamma \dot{C}_B
+\end{align}
+We isolate the $\dot{C}_B$ term from the result from part (c):
+\begin{align}
+\dot{C}_B = \frac{1}{i \hbar} \left( E_0 C_B - E_B C_B + \gamma C_A \right)
+\end{align}
+We substitute this into the equation above, and we get:
+\begin{align}
+i \hbar \ddot{C}_A + E_0 \dot{C}_A = E_A \dot{C}_A + \gamma \left( \frac{1}{i \hbar} \left( E_0 C_B - E_B C_B + \gamma C_A \right) \right)
+\end{align}
+We are able to assume that $E_A = E_B = E_0$, so we can simplify the equation to:
+\begin{align}
+i \hbar \ddot{C}_A = \gamma ^2 \left( \frac{1}{i \hbar} C_A \right)
+\end{align}
+We can simplify the equation further by dividing both sides by $i \hbar$:
+\begin{align}
+\boxed{\ddot{C}_A = -\left(\frac{\gamma}{\hbar}\right)^2 C_A}
+\end{align}
+We want to do the same thing, but for $C_B$, so we take the time derivative of the result from part (c):
+\begin{align}
+i \hbar \ddot{C}_B + E_0 \dot{C}_B = E_B \dot{C}_B + \gamma \dot{C}_A
+\end{align}
+We isolate the $\dot{C}_A$ term from the result from part (b):
+\begin{align}
+\dot{C}_A = \frac{1}{i \hbar} \left( E_0 C_A - E_A C_A + \gamma C_B \right)
+\end{align}
+We substitute this into the equation above, and we get:
+\begin{align}
+i \hbar \ddot{C}_B + E_0 \dot{C}_B = E_B \dot{C}_B + \gamma \left( \frac{1}{i \hbar} \left( E_0 C_A - E_A C_A + \gamma C_B \right) \right)
+\end{align}
+We are able to assume that $E_A = E_B = E_0$, so we can simplify the equation to:
+\begin{align}
+i \hbar \ddot{C}_B = \gamma ^2 \left( \frac{1}{i \hbar} C_B \right)
+\end{align}
+We can simplify the equation further by dividing both sides by $i \hbar$:
+\begin{align}
+\boxed{\ddot{C}_B = -\left(\frac{\gamma}{\hbar}\right)^2 C_B}
+\end{align}
+
+\subsection{Part (e)}
+The most general solution to second-order differential equations of the type: \(\ddot{u} = -a^2u\) is \( u = Q \sin(at) + R \cos(at) \). Find general solutions for the time-dependent coefficients \(C_A\) and \(C_B\).
+\subsubsection{Answer}
+We have $u = C_A$ and $a = \frac{\gamma}{\hbar}$, so we can substitute these into the equation above, and we get:
+\begin{align}
+C_A = Q \sin \left( \frac{\gamma}{\hbar} t \right) + R \cos \left( \frac{\gamma}{\hbar} t \right)
+\end{align}
+We have $u = C_B$ and $a = \frac{\gamma}{\hbar}$, so we can substitute these into the equation above, and we get:
+\begin{align}
+C_B = S \sin \left( \frac{\gamma}{\hbar} t \right) + T \cos \left( \frac{\gamma}{\hbar} t \right)
+\end{align}
+
+\subsection{Part (f)}
+Use the normalization condition for \( \lvert t \rangle \) and the initial condition that molecule A was excited at \( t = 0 \) (i.e., \( C_A^*(0)C_A(0) = 1 \)) and molecule B is not excited at \( t = 0 \) (i.e., \( C_B^*(0)C_B(0) = 0 \)) to obtain expressions for \(C_A\) and \(C_B\).
+\subsubsection{Answer}
+
+As the system evolves in time, the coefficients \( C_A(t) \) and \( C_B(t) \) will change, but they must always satisfy the normalization condition. Therefore, at any time \( t \):
+\begin{equation}
+\lvert C_A(t) \rvert^2 + \lvert C_B(t) \rvert^2 = 1
+\end{equation}
+
+Using the differential equations derived in parts (d) and (e), and the initial conditions, we can solve for \( C_A(t) \) and \( C_B(t) \). For example, if \( C_A(0) = 1 \) and \( \dot{C}_A(0) = 0 \) (since molecule B is not initially excited and there is no initial motion between states), the solution for \( C_A(t) \) will be of the form with \( R = 1 \) and \( Q = 0 \):
+\begin{equation}
+\boxed{C_A(t) = \cos\left(\frac{\gamma}{\hbar}t\right)}
+\end{equation}
+\begin{equation}
+\boxed{C_B(t) = \sin\left(\frac{\gamma}{\hbar}t\right)}
+\end{equation}
+
+
+\end{document}

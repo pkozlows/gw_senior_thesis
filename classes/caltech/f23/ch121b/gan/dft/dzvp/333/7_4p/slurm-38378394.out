@@ -1,0 +1,14 @@
+/groups/wag/pkozlows/miniconda3/envs/pyscf/lib/python3.11/site-packages/pyscf/dft/libxc.py:771: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting "B3LYP_WITH_VWN5 = True" in pyscf_conf.py
+  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '
+<class 'pyscf.pbc.gto.cell.Cell'> does not have attributes  pbc
+Discarded 8 diffused primitive functions, 0 contracted functions
+/central/home/pkozlows/ch121b/gan/dft/dzvp/333/7_4p/pd3.py:29: UserWarning: Use ase.build.bulk() instead
+  ase_cell = bulk('GaN', 'wurtzite', a=3.19, c=5.19)
+nelec by numeric integration = 35.99999999996822
+    CPU time for vxc    638.85 sec, wall time     42.80 sec
+    CPU time for vj and vk   1128.77 sec, wall time     75.48 sec
+Traceback (most recent call last):
+  File "/central/home/pkozlows/ch121b/gan/dft/dzvp/333/7_4p/pd3.py", line 69, in <module>
+    plt.plot(kpath, e_kn_2[:, 18] * au2ev, color='red')
+                    ~~~~~~^^^^^^^
+TypeError: list indices must be integers or slices, not tuple

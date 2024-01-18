@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\begin{document}
+\section{}
+We consider the quantum mechanics of a particle in the earth's gravitational field:
+\begin{align}
+    V(r) &= -\frac{GMm}{r} \tag{1} \\
+    &= -\frac{GMm}{R + z} \tag{2} \\
+    &\approx -\frac{GMm}{R} + mgz \tag{3}
+\end{align}
+where
+\begin{itemize}
+    \item $M =$ mass of earth
+    \item $m =$ mass of particle
+    \item $r =$ distance from center of earth
+    \item $G =$ Newton's gravitational constant
+    \item $R =$ radius of earth
+    \item $z =$ height of particle above surface of earth
+    \item $g = \frac{GM}{R^2}$
+\end{itemize}
+We may drop the constant term in our discussion, and consider only the $mgz$ piece, with $z \ll R$. We further assume that no angular momentum is involved, and treat this as a one-dimensional problem. Finally, assume that the particle is unable to penetrate the earth's surface.
+
+\subsection{Question}
+(a) Make a WKB calculation for the energy spectrum of the particle.
+\subsection{Answer}
+First, we want to figure out our classical turning points. Since the particle can't penetrate the earth's surface, we have:
+\begin{equation}
+    V(z) =
+\begin{cases}
+    mgz, & z \geq 0 \\
+    \infty, & z < 0
+\end{cases}
+\end{equation}
+Then, we also have
+\begin{equation}
+    p = \sqrt{2m(E - mgz)}
+\end{equation}
+So, the $f(E)$ is given by:
+\begin{equation}
+    f(E) = \int_{z_1}^{z_2} \sqrt{2m(E - mgz)} dz\\
+= \int_{0}^{\infty} \sqrt{2m(E - mgz)} dz
+\end{equation}
+
+\end{document}

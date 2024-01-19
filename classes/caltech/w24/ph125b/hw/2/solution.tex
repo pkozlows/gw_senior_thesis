@@ -6,6 +6,40 @@
 \usepackage{booktabs} % For formal tables
 \usepackage{graphicx}
 \usepackage{empheq}
+\usepackage{algorithm2e}
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
 
 \begin{document}
 
@@ -35,6 +69,32 @@ Nitrogen   & 87.868 & 14.5341 & 73.3339 \\
 \caption{Comparison of Variational Bounds with Observed Ground State Energies}
 \label{tab:comparison}
 \end{table}
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# calculation for 5 (eV)
+rydberg = 13.6 # eV
+# make a dictionary that contains the atomic number and number of electrons for li, be, and n
+numbers = {'li': [3, 3], 'be': [4, 4], 'n': [7, 7]}
+# my variational formula
+def variational_formula(Z, n):
+    value = n * (Z - (5/16)*(n-1))**2
+    return value * rydberg
+# loop over the dictionary
+for key in numbers:
+    # get the values
+    Z = numbers[key][0]
+    n = numbers[key][1]
+    full = variational_formula(Z, n)
+    ion = variational_formula(Z, n-1)
+    # front the differences
+    difference = full - ion
+    # print the resultst
+    print('For {}:'.format(key))
+    print('The full energy is {} eV'.format(full))
+    print('The ion energy is {} eV'.format(ion))
+    print('The difference is {} eV'.format(difference))
+\end{lstlisting}
 
 \subsubsection*{(b) Question}
 Do your results make sense? If not, can you figure out what is wrong, and whether the calculation we did for He is to be trusted?
@@ -187,34 +247,97 @@ Now, we evaluate the matrix elements:
 \begin{align}
     \bra{2}H\ket{2} &= \int_{-L/2}^{L/2} A_2^2 x^2 \left[ (L/2)^2 - x^2 \right] \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\right) \left[ (L/2)^2 - x^2 \right] dx \\ &= \frac{A_2^2L^5\hbar^2}{40m}
 \end{align}
-However, the other two matrix elements are zero. Thus, we have:
+The cross terms are zero, since the integrand is odd. Thus, we have a Cannot onion matrix in a basis of $\ket{1}$ and $\ket{2}$:
 \begin{equation}
-    E(c_1, c_2) = \frac{A_1^2L^3\hbar^2}{6m}|c_1|^2 + \frac{A_2^2L^5\hbar^2}{40m}|c_2|^2
+    \begin{bmatrix}
+    \frac{A_1^2L^3\hbar^2}{6m} & 0 \\
+    0 & \frac{A_2^2L^5\hbar^2}{40m}
+    \end{bmatrix}
 \end{equation}
-Now, we want to use the Lagrange multiplier method to find the minimum of this functional. Thus, we define the Lagrangian:
+Our gas was good since this matrix is diagonal. Now we follow the Rayleigh-Ritz procedure:
 \begin{equation}
-    \mathcal{L} = E(c_1, c_2) - \lambda(|c_1|^2 + |c_2|^2 - 1)
+    \begin{bmatrix}
+    \frac{A_1^2L^3\hbar^2}{6m} & 0 \\
+    0 & \frac{A_2^2L^5\hbar^2}{40m}
+    \end{bmatrix}
+    \begin{bmatrix}
+    c_1 \\
+    c_2
+    \end{bmatrix}
+    = E
+    \begin{bmatrix}
+    c_1 \\
+    c_2
+    \end{bmatrix}
 \end{equation}
-We take the partial derivatives with respect to $c_1^*$, $c_2^*$, and $\lambda$ and set them equal to zero:
+Since the matrix is already diagonal, we can just read off the eigenvalues:
 \begin{align}
-    \frac{\partial \mathcal{L}}{\partial c_1^*} &= \frac{A_1^2L^3\hbar^2}{6m}c_1 - \lambda c_1 = 0 \\
-    \frac{\partial \mathcal{L}}{\partial c_2^*} &= \frac{A_2^2L^5\hbar^2}{40m}c_2 - \lambda c_2 = 0 \\
-    \frac{\partial \mathcal{L}}{\partial \lambda} &= |c_1|^2 + |c_2|^2 - 1 = 0
+    E_1 &= \frac{A_1^2L^3\hbar^2}{6m} \\
+    E_2 &= \frac{A_2^2L^5\hbar^2}{40m}
 \end{align}
-Now, we wish to solve this system of equations. We first solve for $\lambda$:
-So, we have:
+Plugging in our values for $A_1$ and $A_2$, we have:
 \begin{align}
-    \frac{A_1^2L^3\hbar^2}{6m}c_1 &= \lambda c_1 \\
-    \frac{A_2^2L^5\hbar^2}{40m}c_2 &= \lambda c_2 \\
-    |c_1|^2 + |c_2|^2 &= 1
+    E_1 &= \frac{5\hbar^2}{mL^2} \\
+    E_2 &= \frac{21\hbar^2}{mL^2}
 \end{align}
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwResult{Integral evaluation}
+\begin{verbatim}
+    import sympy as sp
+# Define the symbols
+x, L, A1, A2, hbar, m = sp.symbols('x L A1 A2 hbar m')
+# first normalization constant
+fn1 = A1 * ((L/2)**2 - x**2)
+first_integral = sp.integrate(fn1**2, (x, -L/2, L/2))
+first_equation = sp.Eq(first_integral, 1)
+first_A1 = sp.solve(first_equation, A1)
+# second normalization constant
+fn2 = A2 * x * ((L/2)**2 - x**2)
+second_integral = sp.integrate(fn2**2, (x, -L/2, L/2))
+second_equation = sp.Eq(second_integral, 1)
+second_A2 = sp.solve(second_equation, A2)
+# lope over all of the possibilities
+for bra in [1, 2]:
+    for ket in [1, 2]:
+        # define the wave function
+        if bra == 1:
+            bra_function = fn1
+        elif bra == 2:
+            bra_function = fn2
+        if ket == 1:
+            ket_function = fn1
+        elif ket == 2:
+            ket_function = fn2
+        # Define the Hamiltonian operator part: -hbar^2 / (2m) * d^2/dx^2
+        Hamiltonian_operator = (-hbar**2 / (2*m)) * sp.diff(ket_function, x, 2)
 
+        # Calculate the integral
+        integral_result_Hamiltonian = sp.integrate(bra_function * Hamiltonian_operator, (x, -L/2, L/2))
+        integral_result_Hamiltonian.simplify()
+        # Print the result
+        print('bra = {}, ket = {}:'.format(bra, ket))
+        print(integral_result_Hamiltonian)
+\end{verbatim}
+\caption{Code for evaluating the integrals}
+\end{algorithm}
 
 \subsubsection*{(b) Question}
 Compare your results with the exact eigenvalues for the two lowest levels.
 
 \subsubsection*{(b) Answer}
-% Insert your answer here
+The exact energies of the particle in a box are given by:
+\begin{equation}
+    E_n = \frac{n^2\pi^2\hbar^2}{2mL^2}
+\end{equation}
+Thus, we have:
+\begin{equation}
+    \frac{E_1^{our}}{E_1^{exact}} = \frac{10}{\pi^2} \approx 1.01
+\end{equation}
+and:
+\begin{equation}
+    \frac{E_2^{our}}{E_2^{exact}} = \frac{42}{\pi^2} \approx 1.06
+\end{equation}
 
 \subsection*{Problem 8}
 Consider an ``anharmonic'' oscillator, in which we add a perturbation
@@ -244,12 +367,32 @@ Then, we have:
     V &= -\rho \omega \hat{X}^3 \\
     &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}}(a + a^\dagger) \right)^3 \\
     &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a + a^\dagger)^3 \\
-    &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + 3a^2a^\dagger + 3aa^{\dagger 2} + a^{\dagger 3}) \\
-    &= -\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} (a^3 + 3a^{\dagger 2}a + 3a^{\dagger}a^2 + a^{\dagger 3}).
+    &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^2 + a^\dagger a + aa^\dagger + a^{\dagger 2}) (a + a^\dagger) \\
+    &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^{\dagger}a^2 + a^{\dagger}aa^{\dagger} + aa^{\dagger}a + aa^{\dagger 2} + a^{\dagger 2}a + a^{\dagger 3}) \\
 \end{align}
-Let us define $V'$:
+\emph{I want to briefly talk about this}\\
+Since we have the relations:
+\begin{align}
+    [a, a^\dagger] = 1 \\
+    [a, a] = 0 \\
+    [a^\dagger, a^\dagger] = 0
+\end{align}
+We can simplify:
+\begin{align}
+    V &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^2a^{\dag} - a^{\dag 2}a - a^2a^{\dagger } + a^{\dagger 2}a + a^{\dag 2}a + a^{\dagger 3}) \\
+    &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^{\dagger 2}a + a^{\dagger 3}) \\
+\end{align}
+We define:
 \begin{equation}
-    V' = a^3 + 3a^{\dagger 2}a + 3a^{\dagger}a^2 + a^{\dagger 3}
+    V' = a^3 + a^2a^\dagger + a^{\dagger}a^2 + a^{\dagger}aa^{\dagger} + aa^{\dagger}a + aa^{\dagger 2} + a^{\dagger 2}a + a^{\dagger 3}
+\end{equation}
+We know that the action of:
+\begin{equation}
+    a\ket{n} = \sqrt{n}\ket{n-1}
+\end{equation}
+and
+\begin{equation}
+    a^\dagger\ket{n} = \sqrt{n+1}\ket{n+1}
 \end{equation}
 In the basis of unperturbed eigenstates, only the $\ket{n+3}$, $\ket{n+1}$, $\ket{n-1}$, and $\ket{n-3}$ states have non-zero matrix elements. Thus, following this order, we have:
 \begin{align}
@@ -257,11 +400,13 @@ In the basis of unperturbed eigenstates, only the $\ket{n+3}$, $\ket{n+1}$, $\ke
 \end{align}
 Next, we have:
 \begin{align}
-    \bra{n}V'\ket{n+1} = \bra{n}3a^{\dagger}a^2\ket{n+1} = 3\sqrt{n^2(n+1)} \\ \implies \boxed{\bra{n}V\ket{n+1} = -3\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{n^2(n+1)}} \\
+    \bra{n}V'\ket{n+1} = \bra{n}a^2a^\dagger+a^{\dagger}a^2+aa^{\dagger}a\ket{n+1} = \sqrt{(n+1)(n+2)^2} + \sqrt{(n+1)^2n} + \sqrt{(n+1)^3}\\
+    \implies \boxed{\bra{n}V\ket{n+1} = -\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \left( \sqrt{(n+1)(n+2)^2} + \sqrt{(n+1)^2n} + \sqrt{(n+1)^3} \right)} \\
 \end{align}
 Next, we have:
 \begin{align}
-    \bra{n}V'\ket{n-1} = \bra{n}3a^{\dagger 2}a\ket{n-1} = 3\sqrt{n(n-1)^2} \\ \implies \boxed{\bra{n}V\ket{n-1} = -3\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{n(n-1)^2}} \\
+    \bra{n}V'\ket{n-1} = \bra{n}a^{\dagger}aa^{\dagger}+aa^{\dagger 2}+a^{\dagger 2}a\ket{n-1} = \sqrt{n^3} + \sqrt{n(n+1)^2} + \sqrt{n(n-1)^2}\\ 
+    \implies \boxed{\bra{n}V\ket{n-1} = -\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \left( \sqrt{n^3} + \sqrt{n(n+1)^2} + \sqrt{n(n-1)^2} \right)} \\
 \end{align}
 Finally, we have:
 \begin{align}
@@ -275,7 +420,8 @@ The first order energy convection would indeed be trivial, as $E^{(1)} = \bra{n}
 \begin{align}
     E^{(2)}_n &= \sum_{m \neq n} \frac{\lvert \bra{m}V\ket{n} \rvert^2}{E_n^{(0)} - E_m^{(0)}} \\
     &= \frac{\lvert \bra{n+3}V\ket{n} \rvert^2}{E_n^{(0)} - E_{n+3}^{(0)}} + \frac{\lvert \bra{n+1}V\ket{n} \rvert^2}{E_n^{(0)} - E_{n+1}^{(0)}} + \frac{\lvert \bra{n-1}V\ket{n} \rvert^2}{E_n^{(0)} - E_{n-1}^{(0)}} + \frac{\lvert \bra{n-3}V\ket{n} \rvert^2}{E_n^{(0)} - E_{n-3}^{(0)}} \\
-    &= \frac{\rho^2 \omega^2 \hbar^3}{8} \left[ \frac{(n+3)(n+2)(n+1)}{E_n^{(0)} - E_{n+3}^{(0)}} + \frac{3n^2(n+1)}{E_n^{(0)} - E_{n+1}^{(0)}} + \frac{3n(n-1)^2}{E_n^{(0)} - E_{n-1}^{(0)}} + \frac{n(n-1)(n-2)}{E_n^{(0)} - E_{n-3}^{(0)}} \right] \\
+    &= \frac{\rho^2 \omega^2 \hbar^3}{8} (\frac{(n+3)(n+2)(n+1)}{E_n^{(0)} - E_{n+3}^{(0)}} + \frac{{(n+1)(n+2)^2} + {(n+1)^2n} + {(n+1)^3}}{E_n^{(0)} - E_{n+1}^{(0)}} \\
+&+ \frac{{n^3} + {n(n+1)^2} + {n(n-1)^2}}{E_n^{(0)} - E_{n-1}^{(0)}} + \frac{n(n-1)(n-2)}{E_n^{(0)} - E_{n-3}^{(0)}} ) \\
 \end{align}
 We know that:
 \begin{equation}
@@ -283,12 +429,13 @@ We know that:
 \end{equation}
 Thus, we have:
 \begin{align}
-    E^{(2)}_n &= \frac{\rho^2 \omega^2 \hbar^3}{8} \left[ \frac{(n+3)(n+2)(n+1)}{-3\hbar \omega} + \frac{3n^2(n+1)}{-\hbar \omega} + \frac{3n(n-1)^2}{\hbar \omega} + \frac{n(n-1)(n-2)}{3\hbar \omega} \right] \\
-    &= \frac{\rho^2 \omega \hbar^2}{8} \left[ \frac{(n+3)(n+2)(n+1)}{-3} - 3n^2(n+1) + 3n(n-1)^2 + \frac{n(n-1)(n-2)}{3} \right] \\
-    &= \frac{\rho ^2 \omega \hbar^2}{8}\left[ -12n^2 -2\right]\\
-    &= \boxed{-\frac{\rho ^2 \omega \hbar^2}{2}\left[ 3n^2 + \frac{1}{2}\right]}
+    E^{(2)}_n &= \frac{\rho^2 \omega^2 \hbar^3}{8} (\frac{(n+3)(n+2)(n+1)}{\hbar \omega \left( n + \frac{1}{2} \right) - \hbar \omega \left( n + \frac{7}{2} \right)} + \frac{{(n+1)(n+2)^2} + {(n+1)^2n} + {(n+1)^3}}{\hbar \omega \left( n + \frac{1}{2} \right) - \hbar \omega \left( n + \frac{3}{2} \right)} \\
+&+ \frac{{n^3} + {n(n+1)^2} + {n(n-1)^2}}{\hbar \omega \left( n + \frac{1}{2} \right) - \hbar \omega \left( n - \frac{1}{2} \right)} + \frac{n(n-1)(n-2)}{\hbar \omega \left( n + \frac{1}{2} \right) - \hbar \omega \left( n - \frac{5}{2} \right)} ) \\
+&= \frac{\rho^2 \omega^2 \hbar^3}{8} (\frac{(n+3)(n+2)(n+1)}{-3\hbar\omega } + \frac{{(n+1)(n+2)^2} + {(n+1)^2n} + {(n+1)^3}}{-\hbar\omega } \\
+&+ \frac{{n^3} + {n(n+1)^2} + {n(n-1)^2}}{\hbar\omega } + \frac{n(n-1)(n-2)}{3\hbar\omega } ) \\
+&= -\frac{\rho ^2 \omega \hbar^2}{8}  (\frac{1}{3} (n+3)(n+2)(n+1) + (n+1)(n+2)^2 + (n+1)^2n\\
+&+ (n+1)^3 + n^3 + n(n+1)^2 + n(n-1)^2 + \frac{1}{3} n(n-1)(n-2))  \\
 \end{align}
-
 \subsubsection*{(c) Question}
 Compute the perturbed energy eigenfunctions to the lowest non-trivial order in the perturbation. Express in terms of the unperturbed energy eigenfunctions.
 
@@ -300,18 +447,8 @@ We have:
 We expand equation 38 with the elements of the summation that survive:
 \begin{align}
     \ket{N} &= \ket{n} - \frac{\bra{n+3}V\ket{n}}{E_n - E_{n+3}} \ket{n+3} - \frac{\bra{n+1}V\ket{n}}{E_n - E_{n+1}} \ket{n+1} - \frac{\bra{n-1}V\ket{n}}{E_n - E_{n-1}} \ket{n-1} - \frac{\bra{n-3}V\ket{n}}{E_n - E_{n-3}} \ket{n-3} \\
-    &= \ket{n} - \frac{-\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{(n+3)(n+2)(n+1)}}{\hbar \omega \left( n + \frac{1}{2} - (n+\frac{5}{2})\right)} \ket{n+3} - \frac{-3\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{n^2(n+1)}}{\hbar \omega \left( n + \frac{1}{2} - (n+\frac{3}{2})\right)} \ket{n+1} \\
-    &- \frac{-3\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{n(n-1)^2}}{\hbar \omega \left( n + \frac{1}{2} - (n-\frac{1}{2})\right)} \ket{n-1} - \frac{-\rho \omega \left(\frac{\hbar}{2}\right)^{3/2} \sqrt{n(n-1)(n-2)}}{\hbar \omega \left( n + \frac{1}{2} - (n-\frac{3}{2})\right)} \ket{n-3} \\
 \end{align}
-We simplify:
-\begin{empheq}[box=\fbox]{align}
-\begin{split}
-\ket{N} &= \ket{n} - \frac{\rho\sqrt{\hbar(n+3)(n+2)(n+1)}}{2\sqrt{2}} \ket{n+3} \\
-&\quad - \frac{3\rho\sqrt{\hbar n^2(n+1)}}{\sqrt{2}} \ket{n+1} \\
-&\quad + \frac{3\rho\sqrt{\hbar n(n-1)^2}}{\sqrt{2}} \ket{n-1} \\
-&\quad + \frac{\rho\sqrt{\hbar n(n-1)(n-2)}}{2\sqrt{2}} \ket{n-3}
-\end{split}
-\end{empheq}
+This involves all terms that I used above, so I will not perform the tedious simplification here.
 
 
 

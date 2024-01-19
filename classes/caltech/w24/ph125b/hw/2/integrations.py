@@ -32,30 +32,30 @@ for bra in [1, 2]:
         # Print the result
         print('bra = {}, ket = {}:'.format(bra, ket))
         print(integral_result_Hamiltonian)
-#  # calculation for 5 (eV)
-# rydberg = 13.6 # eV
-# # make a dictionary that contains the atomic number and number of electrons for li, be, and n
-# numbers = {'li': [3, 3], 'be': [4, 4], 'n': [7, 7]}
-# # my variational formula
-# def variational_formula(Z, n):
-#     value = n * (Z - (5/16)*(n-1))**2
-#     return value * rydberg
-# # loop over the dictionary
-# for key in numbers:
-#     # get the values
-#     Z = numbers[key][0]
-#     n = numbers[key][1]
-#     full = variational_formula(Z, n)
-#     ion = variational_formula(Z, n-1)
-#     # front the differences
-#     difference = full - ion
-#     # print the resultst
-#     print('For {}:'.format(key))
-#     print('The full energy is {} eV'.format(full))
-#     print('The ion energy is {} eV'.format(ion))
-#     print('The difference is {} eV'.format(difference))
+ # calculation for 5 (eV)
+rydberg = 13.6 # eV
+# make a dictionary that contains the atomic number and number of electrons for li, be, and n
+numbers = {'li': [3, 3], 'be': [4, 4], 'n': [7, 7]}
+# my variational formula
+def variational_formula(Z, n):
+    value = n * (Z - (5/16)*(n-1))**2
+    return value * rydberg
+# loop over the dictionary
+for key in numbers:
+    # get the values
+    Z = numbers[key][0]
+    n = numbers[key][1]
+    full = variational_formula(Z, n)
+    ion = variational_formula(Z, n-1)
+    # front the differences
+    difference = full - ion
+    # print the resultst
+    print('For {}:'.format(key))
+    print('The full energy is {} eV'.format(full))
+    print('The ion energy is {} eV'.format(ion))
+    print('The difference is {} eV'.format(difference))
 
-# # make a script to evalue the integral from 6a
-# x_0, x_e, m, beta, E = sp.symbols('x_0 x_e m beta z E')
-# gamma = 2*sp.integrate(sp.sqrt(2*m*((beta/z)-E)), (z, x_0, x_e))
-# print(gamma)
+# make a script to evalue the integral from 6a
+x_0, x_e, m, beta, E = sp.symbols('x_0 x_e m beta z E')
+gamma = 2*sp.integrate(sp.sqrt(2*m*((beta/z)-E)), (z, x_0, x_e))
+print(gamma)

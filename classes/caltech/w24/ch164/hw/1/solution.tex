@@ -203,24 +203,13 @@ The average number of molecules located within \( V \) is just the total number 
 \subsection{Part (b)}
 What is the standard deviation (square root of the variance)? Express your answer in terms of \( \langle N \rangle \), \( V \), and \( V_T \).
 \subsubsection{Answer}
-The formula of this is going to be:
+Sense we are dealing with a binomial distribution with $P(V) = \frac{V}{V_T}$, we have:
 \begin{equation}
-    \sqrt{\langle (\Delta N)^2 \rangle} = \sqrt{\langle N^2 \rangle - \langle N \rangle^2}
+    \langle (\Delta N)^2 \rangle = \langle N^2 \rangle - \langle N \rangle^2 = \langle N \rangle (1 - P(V)) = \langle N \rangle \left(1 - \frac{V}{V_T}\right)
 \end{equation}
-We have already calculated \( \langle N \rangle \), so we just need to calculate \( \langle N^2 \rangle \):
+So we have:
 \begin{equation}
-    \langle N^2 \rangle = \sum_{0}^{N_T} N^2 P(N) = \sum_{0}^{N_T} N^2 \frac{N_T!}{N!(N_T - N)!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{V}{V_T}\right)^{N_T - N}
-\end{equation} 
-We can rewrite this as:
-\begin{equation}
-    \langle N^2 \rangle = \sum_{0}^{N_T} N \frac{N_T!}{(N-1)!(N_T - N)!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{V}{V_T}\right)^{N_T - N}
-\end{equation}
-Writing out the first few terms, we have:
-\begin{equation}
-    \langle N^2 \rangle = 0 + \frac{N_T!}{(1-1)!(N_T - 1)!} \left(\frac{V}{V_T}\right)^1 \left(1 - \frac{V}{V_T}\right)^{N_T - 1} + 2 \frac{N_T!}{(2-1)!(N_T - 2)!} \left(\frac{V}{V_T}\right)^2 \left(1 - \frac{V}{V_T}\right)^{N_T - 2} + \ldots
-\end{equation}
-\begin{equation}
-    = N_T \left(\frac{V}{V_T}\right) \left(1 - \frac{V}{V_T}\right)^{N_T - 1} + 2N_T(N_T-1) \left(\frac{V}{V_T}\right)^2 \left(1 - \frac{V}{V_T}\right)^{N_T - 2} + \ldots
+    \boxed{\sqrt{\langle (\Delta N)^2 \rangle} = \sqrt{\langle N \rangle \left(1 - \frac{V}{V_T}\right)}}
 \end{equation}
 
 \subsection{Part (c)}
@@ -228,9 +217,30 @@ What does the answer to part (b) become as the volume, \( V_T \), becomes very l
 
 \textbf{Hint:}
 \[
-\lim_{N_T \to \infty} \frac{N_T!}{(N_T - N)!} = \frac{N_T^N}{N!}
+\lim_{N_T \to \infty} \frac{N_T!}{(N_T - N)!} = N_T^N
 \]
 
 (Note: this question is not thermodynamic in nature, it merely illustrates properties of statistical distributions)
+\subsubsection{Answer}
+As $V_T$ becomes very large with respect to $V$, we have:
+\begin{equation}
+    \lim_{V_T \to \infty} \frac{V}{V_T} = 0
+\end{equation}
+So we have:
+\begin{equation}
+    \lim_{V_T \to \infty} \sqrt{\langle (\Delta N)^2 \rangle} = \lim_{V_T \to \infty} \sqrt{\langle N \rangle \left(1 - \frac{V}{V_T}\right)} \approx \sqrt{\langle N \rangle}
+\end{equation}
+The probability distribution \( P(N; N_T, V/V_T) \) for the number of molecules, \( N \), in \( V \) is defined as:
+\begin{equation}
+    P(N; N_T, V/V_T) = \frac{N_T!}{N! (N_T - N)!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{V}{V_T}\right)^{N_T - N}
+\end{equation}
+In the limit of $N_T \to \infty$, we have:
+\begin{equation}
+    \lim_{N_T \to \infty} P(N; N_T, V/V_T) = \lim_{N_T \to \infty} \frac{N_T^N}{N!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{N_T}{N_T} \frac{V}{V_T}\right)^{N_T} \approx \frac{N_T^N}{N!} \left(\frac{V}{V_T}\right)^N \left(1 - \frac{\langle N \rangle}{N_T}\right)^{N_T}
+\end{equation}
+For $x=\langle N \rangle $, the last term is just $e^{-x}$, so we have:
+\begin{equation}
+    \lim_{N_T \to \infty} P(N; N_T, V/V_T) \approx \frac{1}{N!} \left(\frac{N_TV}{V_T}\right)^N e^{-\langle N \rangle} = \boxed{\frac{\langle N \rangle^N}{N!} e^{-\langle N \rangle}}
+\end{equation}
 
 \end{document}

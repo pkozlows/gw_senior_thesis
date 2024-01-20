@@ -100,7 +100,7 @@ for key in numbers:
 Do your results make sense? If not, can you figure out what is wrong, and whether the calculation we did for He is to be trusted?
 
 \subsubsection*{(b) Answer}
-My results don't make sense, they are way too large consistently. However, my calculation for He is to be trusted, as I obtained a variational bound for one spatial orbital. Since you can have He's two electrons of opposite spin in the same spatial orbital, this doesn't violate the Pauli exclusion principle. However, for the other elements with more electrons, you are fitting more than two electrons into the same spatial orbital, and this is not allowed by the Pauli exclusion principle.
+My results don't make sense, they are way too large consistently. However, my calculation for He is to be trusted, as I obtained a variational bound for one spatial orbital. Since you can have He's two electrons of opposite spin in the same spatial orbital, this doesn't violate the Pauli exclusion principle. However, for the other elements with more electrons, you are fitting more than two electrons into the same spatial orbital, and this is not allowed by the Pauli exclusion principle, so the variational bound is not valid.
 
 \subsection*{Problem 6}
 When we discussed the WKB method, we used the fact that if the potential was a constant, the phase of the wave function depended on \( x \) according to \( p(x) = \sqrt{2m(E-V)}\; \text{if}\; \phi(x = 0) = 0 \). Allowing the potential to slowly vary with \( x \), we computed the change in phase from \( x = x_0 \) to \( x \) as
@@ -134,7 +134,7 @@ In the classically forbidden region between \( x = x_0 \) and \( x = x_e \), the
 
 \subsubsection*{(a) Question}
 Find an expression for \( \Delta \) by evaluating this integral. It will be convenient to use the ratio \( \rho = x_0/x_e \). Try to simplify as much as you can. Note that you may find the discussion in the text on pages 444-445 helpful.
-
+\subsubsection{Answer}
 After emitting the \( \alpha \) particle, the daughter nucleus has a charge of \( Z_1 - 2 \). Thus, we have:
 \begin{equation}
     V(x) = \frac{(Z_1 - 2)Z_2e^2}{4\pi \epsilon_0 x}
@@ -151,7 +151,7 @@ So:
 \begin{equation}
     V(x) = \frac{\beta}{x}
 \end{equation}
-And we have:
+And we have at the classical turning point:
 \begin{equation}
     V(x_e) = E
 \end{equation}
@@ -164,30 +164,161 @@ So, we want to integrate:
 \begin{equation}
     \Delta/2 = \int_{x_0}^{x_e} \sqrt{2m\lvert \frac{\beta}{x'} - E \rvert}\,dx'
 \end{equation}
-My script gives:
+We want to consider the integral:
 \begin{equation}
-    \Delta = 2
+    I = \sqrt{2m\beta }\int_{x_0}^{x_e}\sqrt{\frac{1}{x'}-\frac{1}{x_e}}\,dx'
 \end{equation}
-\subsubsection*{(a) Answer}
-% Insert your answer here
+We can make the substitution:
+\begin{equation}
+    z=\frac{x}{x_e} \implies x = x_e z \implies dx = x_e dz
+\end{equation}
+So, we have:
+\begin{equation}
+    I = \sqrt{2m\beta x_e}\int_{x_0/x_e}^{1}\sqrt{\frac{1}{z}-1}\,dz
+\end{equation}
+Calling $x_0/x_e = \rho$, we have:
+\begin{equation}
+    I = \sqrt{2m\beta x_e}\int_{\rho}^{1}\sqrt{\frac{1}{z}-1}\,dz
+\end{equation}
+We can format the integral as:
+\begin{equation}
+    I_0 = \int_{\rho }^{1}\sqrt{\frac{1-z}{z}} dz
+\end{equation}
+We make the substitution $z = \cos^2(\theta)$, so that $dz = -2\cos(\theta)\sin(\theta)d\theta$. Thus, we have:
+\begin{equation}
+    I_0 = -2\int_{\theta _0}^{0}\frac{\sin(\theta )}{\cos(\theta )}\times \cos(\theta )\sin(\theta )d\theta = 2\int_{0}^{\theta _0}\sin^2(\theta )d\theta = \eval{\omega - \sin(\omega)\cos(\omega)}_0^{\theta _0} = \theta _0 - \sin(\theta _0)\cos(\theta _0)
+\end{equation}
+We know that:
+\begin{equation}
+    \theta _0 = \cos^{-1}(\sqrt{\rho } )
+\end{equation}
+so:
+\begin{equation}
+    \frac{\Delta  }{2} = \sqrt{2m\beta x_e}\left(\cos^{-1}(\sqrt{\rho })-\sqrt{\rho }\sqrt{1-\rho }\right)
+\end{equation}
+with the relationships for $\beta $ and $x_e$ defined above.
 
 \subsubsection*{(b) Question}
 Find an expression for \( x_e \) in terms of known quantities.
 
 \subsubsection*{(b) Answer}
-% Insert your answer here
+\begin{equation}
+    x_e = \frac{\beta}{E} = \frac{180e^2}{4\pi \epsilon_0 E}
+\end{equation}
+For the energy, we have:
+\begin{equation}
+    E = 4.267 MeV
+\end{equation}
+The attached script gives $x_e = 60.74 fm$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+def calculate_xe(E_MeV):
+    # Define the symbols
+    e = sp.symbols('e')  # elementary charge
+    epsilon_0 = sp.symbols('epsilon_0')  # vacuum permittivity
+    E = sp.symbols('E')  # energy in Joules
+
+    # Define the expression for x_e
+    x_e_expr = 180 * e**2 / (4 * sp.pi * epsilon_0 * E)
+
+    # Constants
+    e_value = 1.602e-19  # elementary charge in Coulombs
+    epsilon_0_value = 8.854e-12  # vacuum permittivity in C^2/N.m^2
+    E_Joules = E_MeV * 1.602e-13  # Convert energy from MeV to Joules
+
+    # Substitute constants and calculate x_e
+    x_e = x_e_expr.subs({e: e_value, epsilon_0: epsilon_0_value, E: E_Joules})
+
+    # Convert x_e to femtometers (1 fm = 1e-15 m)
+    return x_e / 1e-15
+
+def main():
+    # User input for the energy in MeV
+    E_MeV = float(input("Enter the energy in MeV: "))
+
+    # Calculate and display x_e
+    x_e_fm = calculate_xe(E_MeV)
+    print(f"The value of x_e is approximately {x_e_fm.evalf():.2f} fm")
+
+if __name__ == "__main__":
+    main()
+
+\end{lstlisting}
 
 \subsubsection*{(c) Question}
 To estimate the decay rate, we must multiply the tunneling probability by the rate at which the \( \alpha \) strikes the potential barrier at \( x_0 \). For this rate to strike the barrier by estimating the speed of the \( \alpha \) particle and the distance traveled between collisions.
 
 \subsubsection*{(c) Answer}
-% Insert your answer here
+Following Shankar:
+We have found the exponential function that damps the wave function. The ratio of the wave function at $x_0$ versus $x_e$ is:
+\begin{equation}
+    \abs{\frac{\psi (x_e)}{\psi (x_0)}}^2 \approx \abs{e^{-\Delta /2}}^2 = e^{-\Delta }
+\end{equation}
+Next we want to find the frequency at which the particle slams into the barrier:
+\begin{equation}
+    f = \frac{v}{2x_0}
+\end{equation}
+for the velocity, we have $v = \sqrt{2E/m}$ and twice the length of the box is $2x_0$, so:
+\begin{equation}
+    f = \frac{\sqrt{2E/m}}{2x_0}
+\end{equation}
+Combining these two results, the decay wait $R$ is:
+\begin{equation}
+    R = \frac{\sqrt{2E/m}}{2x_0}e^{-\Delta }
+\end{equation}
+
 
 \subsubsection*{(d) Question}
-Finally, put it all together and obtain a numerical prediction for the uranium decay rate. If the known hourly rate compares the speed of the \( \alpha \) particle to travel the barrier by obtaining the actual prediction and using the distance traveled between collisions.
+Finally, put it all together and obtain a numerical prediction for the uranium decay rate. Compare your result with the observed decay rate.
 
 \subsubsection*{(d) Answer}
-% Insert your answer here
+I am catting a decay wait of 7.17336680189066E+20 $s^{-1}$, which is a half life of something on the order of $10^{-21}s$, so I am not really sure what is going on here. The experimental value for the half life is on the order of $10^{17}s$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Define the symbols
+m, E, x_0, e, epsilon_0 = sp.symbols('m E x_0 e epsilon_0')
+
+# Constants
+E_value = 4.267  # Energy in MeV
+E_Joules = E_value * 1.602e-13  # Convert energy from MeV to Joules
+e_value = 1.602e-19  # elementary charge in Coulombs
+epsilon_0_value = 8.854e-12  # vacuum permittivity in C^2/Nm^2
+m_value = 4 * 1.66053904e-27  # Mass of alpha particle (4 times the mass of a proton)
+x_e_value = 60.74e-15  # x_e value in meters
+
+# Calculation of beta
+beta_expr = 180 * e**2 / (4 * sp.pi * epsilon_0)
+beta_value = beta_expr.subs({e: e_value, epsilon_0: epsilon_0_value})
+
+# Calculation for Delta
+rho = x_0 / x_e_value
+theta_0 = sp.acos(sp.sqrt(rho))
+delta_expr = sp.sqrt(2 * m * beta_expr * x_e_value) * (theta_0 - sp.sqrt(rho) * sp.sqrt(1 - rho))
+delta_value = delta_expr.subs({m: m_value, e: e_value, epsilon_0: epsilon_0_value, x_0: rho * x_e_value})
+
+# Calculation of Decay Rate R
+v_expr = sp.sqrt(2 * E / m)  # Velocity of alpha particle
+f_expr = v_expr / (2 * x_0)  # Frequency of striking the barrier
+R_expr = f_expr * sp.exp(-delta_value)  # Decay rate
+
+# Function to calculate decay rate and half-life
+def calculate_decay_rate_and_half_life(x_0_value):
+    decay_rate = R_expr.subs({x_0: x_0_value, m: m_value, E: E_Joules}).evalf()
+    half_life = sp.log(2) / decay_rate  # Half-life calculation
+    return decay_rate, half_life
+
+# Example usage
+x_0_example = 10e-15  # Example value for x_0 in meters
+hbar = 1.0545718e-34  # Reduced Planck constant
+decay_rate, half_life = calculate_decay_rate_and_half_life(x_0_example)
+print(f"The estimated decay rate is {decay_rate} s^-1")
+print(f"The estimated half-life is {half_life} s")
+
+\end{lstlisting}
 
 \subsection*{Problem 7}
 Let's do a very simple calculation using the Ritz method, in order to make sure we understand the idea. Suppose we are interested in the energy levels of a particle of mass \( m \) in the one dimensional potential:
@@ -247,7 +378,7 @@ Now, we evaluate the matrix elements:
 \begin{align}
     \bra{2}H\ket{2} &= \int_{-L/2}^{L/2} A_2^2 x^2 \left[ (L/2)^2 - x^2 \right] \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\right) \left[ (L/2)^2 - x^2 \right] dx \\ &= \frac{A_2^2L^5\hbar^2}{40m}
 \end{align}
-The cross terms are zero, since the integrand is odd. Thus, we have a Cannot onion matrix in a basis of $\ket{1}$ and $\ket{2}$:
+The cross terms are zero, since the integrand is odd. Thus, we have a Hamiltonian matrix in a basis of $\ket{1}$ and $\ket{2}$:
 \begin{equation}
     \begin{bmatrix}
     \frac{A_1^2L^3\hbar^2}{6m} & 0 \\
@@ -370,18 +501,18 @@ Then, we have:
     &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^2 + a^\dagger a + aa^\dagger + a^{\dagger 2}) (a + a^\dagger) \\
     &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^{\dagger}a^2 + a^{\dagger}aa^{\dagger} + aa^{\dagger}a + aa^{\dagger 2} + a^{\dagger 2}a + a^{\dagger 3}) \\
 \end{align}
-\emph{I want to briefly talk about this}\\
-Since we have the relations:
-\begin{align}
-    [a, a^\dagger] = 1 \\
-    [a, a] = 0 \\
-    [a^\dagger, a^\dagger] = 0
-\end{align}
-We can simplify:
-\begin{align}
-    V &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^2a^{\dag} - a^{\dag 2}a - a^2a^{\dagger } + a^{\dagger 2}a + a^{\dag 2}a + a^{\dagger 3}) \\
-    &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^{\dagger 2}a + a^{\dagger 3}) \\
-\end{align}
+% \emph{I want to briefly talk about this}\\
+% Since we have the relations:
+% \begin{align}
+%     [a, a^\dagger] = 1 \\
+%     [a, a] = 0 \\
+%     [a^\dagger, a^\dagger] = 0
+% \end{align}
+% We can simplify:
+% \begin{align}
+%     V &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^2a^{\dag} - a^{\dag 2}a - a^2a^{\dagger } + a^{\dagger 2}a + a^{\dag 2}a + a^{\dagger 3}) \\
+%     &= -\rho \omega \left( \sqrt{\frac{\hbar}{2}} \right)^3 (a^3 + a^2a^\dagger + a^{\dagger 2}a + a^{\dagger 3}) \\
+% \end{align}
 We define:
 \begin{equation}
     V' = a^3 + a^2a^\dagger + a^{\dagger}a^2 + a^{\dagger}aa^{\dagger} + aa^{\dagger}a + aa^{\dagger 2} + a^{\dagger 2}a + a^{\dagger 3}
@@ -448,7 +579,7 @@ We expand equation 38 with the elements of the summation that survive:
 \begin{align}
     \ket{N} &= \ket{n} - \frac{\bra{n+3}V\ket{n}}{E_n - E_{n+3}} \ket{n+3} - \frac{\bra{n+1}V\ket{n}}{E_n - E_{n+1}} \ket{n+1} - \frac{\bra{n-1}V\ket{n}}{E_n - E_{n-1}} \ket{n-1} - \frac{\bra{n-3}V\ket{n}}{E_n - E_{n-3}} \ket{n-3} \\
 \end{align}
-This involves all terms that I used above, so I will not perform the tedious simplification here.
+This involves all terms that I used above, so I will not perform the tedious simplification here. That is, I solved for all the matrix aliments of $V$ in the basis of $\ket{n}$, $\ket{n+1}$, $\ket{n-1}$, and $\ket{n-3}$, and plugged them into the above equation. The values of the $E_n$ are also known. 
 
 
 

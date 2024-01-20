@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  18 JAN 2024 21:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  19 JAN 2024 20:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -330,65 +330,70 @@ Package pdftex.def Info: figure.png  used on input line 124.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2] [3 <./figure.png>] [4]
-Overfull \hbox (3.13167pt too wide) detected at line 238
+[2] [3 <./figure.png>]
+Overfull \hbox (79.19008pt too wide) detected at line 190
+[]\OML/cmm/m/it/10 I[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 2 [][] [] \OMS/cmsy/m/n/10 ^^B [][][] [][][]\OML/cmm/m/it/10 d^^R \OT1/cmr/m/n/10 = 2 [][] [][](\OML/cmm/m/it/10 ^^R\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d^^R \OT1/cmr/m/n/10 = [][] = \OML/cmm/m/it/10 ^^R[] \OMS/cmsy/m/n/10 ^^@ [][][] [][][]
+ []
+
+[4] [5] [6] [7]
+Overfull \hbox (3.13167pt too wide) detected at line 369
 []\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c[]; c[]\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/10 H [] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 c[]c[] [] H [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 c[]c[] [] H [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 c[]c[] [] H [] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 c[]c[] [] H []
  []
 
-[5]
-Overfull \hbox (68.24667pt too wide) in paragraph at lines 321--321
+[8]
+Overfull \hbox (68.24667pt too wide) in paragraph at lines 452--452
 []        \OT1/cmtt/m/n/10 # Define the Hamiltonian operator part: -hbar^2 / (2m) * d^2/dx^2[] 
  []
 
 
-Overfull \hbox (99.7464pt too wide) in paragraph at lines 321--321
+Overfull \hbox (99.7464pt too wide) in paragraph at lines 452--452
 []        \OT1/cmtt/m/n/10 Hamiltonian_operator = (-hbar**2 / (2*m)) * sp.diff(ket_function, x, 2)[] 
  []
 
 
-Overfull \hbox (225.7453pt too wide) in paragraph at lines 321--321
+Overfull \hbox (225.7453pt too wide) in paragraph at lines 452--452
 []        \OT1/cmtt/m/n/10 integral_result_Hamiltonian = sp.integrate(bra_function * Hamiltonian_operator, (x, -L/2, L/2))[] 
  []
 
-[6] [7] [8] [9]
-Overfull \hbox (65.14656pt too wide) detected at line 405
+[9] [10] [11]
+Overfull \hbox (65.14656pt too wide) detected at line 536
 []
  []
 
 
-Overfull \hbox (16.64667pt too wide) detected at line 410
+Overfull \hbox (16.64667pt too wide) detected at line 541
+[]
+ []
+
+[12]
+Overfull \hbox (1.87451pt too wide) detected at line 556
 []
  []
 
 
-Overfull \hbox (1.87451pt too wide) detected at line 425
+Overfull \hbox (15.94987pt too wide) detected at line 569
 []
  []
 
-[10]
-Overfull \hbox (15.94987pt too wide) detected at line 438
+[13]
+Overfull \hbox (97.30984pt too wide) detected at line 581
 []
  []
 
-[11]
-Overfull \hbox (97.30984pt too wide) detected at line 450
-[]
- []
-
-[12] (./solution.aux) ) 
+[14] (./solution.aux) ) 
 Here is how much of TeX's memory you used:
- 7459 strings out of 478268
- 110446 string characters out of 5846347
- 771642 words of memory out of 5000000
- 25604 multiletter control sequences out of 15000+600000
+ 7506 strings out of 478268
+ 111005 string characters out of 5846347
+ 817642 words of memory out of 5000000
+ 25651 multiletter control sequences out of 15000+600000
  473457 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,13n,77p,584b,1313s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 68i,13n,77p,623b,1688s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on solution.pdf (12 pages, 296610 bytes).
+Output written on solution.pdf (14 pages, 311859 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 133 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

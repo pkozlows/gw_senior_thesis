@@ -168,13 +168,26 @@ $$
 $$
 \left\langle\frac{1}{r^{3}}\right\rangle .
 $$
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{11}
   \item Let us consider an example of the use of degenerate stationary state perturbation theory. Thus, let us take the hydrogen atom, with unperturbed Hamiltonian $H_{0}=$ $\frac{P^{2}}{2 m}-\frac{\alpha}{r}$, and consider the effect of putting this atom in a uniform external electric field: $\mathbf{E}=E \hat{\mathbf{e}}_{z}$. We are interested in calculating, to first order in perturbation theory, the shifts in the $n=2$ energy levels ( $n$ is the principal quantum number here). Note that the $n=2$ level is four-fold degenerate, corresponding to the eigenstates (in notation $n \ell_{m_{\ell}}$ ): $\left|2 S_{0}\right\rangle,\left|2 P_{1}\right\rangle,\left|2 P_{0}\right\rangle,\left|2 P_{-1}\right\rangle$, neglecting spins.
+\subsection{}
 (a) Write down the perturbing potential, $V$. [Note that we need only consider the electron's coordinates, relative to the nucleus - why?] Calculate the commutator $\left[V, L_{z}\right]$, and hence determine the matrix elements of $V$ between states with different eigenvalues of $L_{z}$.
 \end{enumerate}
-
+Given that the charge of the electron is $\sqrt{\alpha }$ and the electric filed only acts in the z direction, we have:
+\begin{equation}
+  V = -\sqrt{\alpha} E z
+\end{equation}
+Similar to the Born-Oppenheimer approximation, we may consider the nucleus as fixed , because it is much more massive, and the electron as moving around it. Then we may consider the electron's coordinates relative to the nucleus. $L_z$ is defined as:
+\begin{equation}
+  L_z = -i\hbar \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right)
+\end{equation}
+Then we have:
+\begin{equation}
+  \left[V, L_{z}\right] = 
+\end{equation}
+\subsection{}
 (b) You should have found a "selection rule" which simplifies the problem. What is the degeneracy that needs to be addressed in the problem now that you have made this calculation?
 
 (c) Using the invariance of the hydrogen atom Hamiltonian under parity, write down the remaining matrix elements of $V$ which need to be determined, and compute their values.

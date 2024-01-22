@@ -6,6 +6,8 @@
 \usepackage{amssymb}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
+\usepackage{physics}
+
 
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
@@ -151,11 +153,45 @@ We use the symbolic algebra to perform this derivative and get:
   S = - \frac{1.0 N^{2} a}{T V} + 1.5 N k + 1.0 k \log{\left(\frac{2^{1.5 N} \pi^{1.5 N} \left(\frac{T k m}{h^{2}}\right)^{1.5 N} \left(- N b + V\right)^{N} e^{\frac{N^{2} a}{T V k}}}{\Gamma\left(N + 1\right)} \right)}
 \end{equation}
 
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item (30 pts.) ( The probability distribution for a thermodynamic system can be alternatively obtained directly from Gibb's definition of entropy. Entropy is defined as $S=-k \sum_{\nu} P_{\nu} \ln P_{\nu}$ where $P_{\nu}$ is the probability of finding the system in state $\nu$. This is true regardless of the specification of the system. Thus for a $(\mathrm{N}, \mathrm{P}, \mathrm{T})$ system, $\nu$ specifies the system's energy state and volume, while for a $(\mu, \mathrm{V}$, T) system it specifies the energy state and the number of particles. The probability distribution is obtained by the minimization of the characteristic potential (for example Gibbs free energy, Helmholtz free energy, etc.) for a particular specification of the system. Obtain the probability distributions for the $(\mathrm{N}, \mathrm{P}, \mathrm{T})$ and $(\mu, \mathrm{V}, \mathrm{T})$ systems using this approach.
+\\
+We want to use the method of Lagrange multipliers. We have the simple constraint for both systems that the sum of the probabilities must be equal to 1:
+\begin{equation}
+  \sum_{\nu} P_{\nu} = 1
+\end{equation}
+We also have that the entropy for both systems is divined as:
+\begin{equation}
+  S = - k \sum_{\nu} P_{\nu} \ln P_{\nu}
+\end{equation}
+\subsection{}
+We will start with the $(N,P,T)$ system. For this system we have the additional constraints that the energy and volume need to be conserved:
+\begin{equation}
+  \sum_{\nu} P_{\nu} E_{\nu} = \expval{E}
+\end{equation}
+\begin{equation}
+  \sum_{\nu} P_{\nu} V_{\nu} = \expval{V}
+\end{equation}
 
+We define a Lagrangian as:
+\begin{equation}
+  \mathcal{L} = - k \sum_{\nu} P_{\nu} \ln P_{\nu} + \lambda \left( \sum_{\nu} P_{\nu} - 1 \right) + \beta \left( \sum_{\nu} P_{\nu} E_{\nu} - \expval{E} \right) + \gamma \left( \sum_{\nu} P_{\nu} V_{\nu} - \expval{V} \right)
+\end{equation}
+\subsection{}
+Now we will consider the $(\mu,V,T)$ system. For this system we have the additional constraints that the energy and number of particles need to be conserved:
+\begin{equation}
+  \sum_{\nu} P_{\nu} E_{\nu} = \expval{E}
+\end{equation}
+\begin{equation}  
+  \sum_{\nu} P_{\nu} N_{\nu} = \expval{N}
+\end{equation}
+We define a Lagrangian as:
+\begin{equation}
+  \mathcal{L} = - k \sum_{\nu} P_{\nu} \ln P_{\nu} + \lambda \left( \sum_{\nu} P_{\nu} - 1 \right) + \beta \left( \sum_{\nu} P_{\nu} E_{\nu} - \expval{E} \right) + \gamma \left( \sum_{\nu} P_{\nu} N_{\nu} - \expval{N} \right)
+\end{equation}
+\section{}
   \item The canonical partition function can be written in terms of energy levels as
 
 \end{enumerate}
@@ -173,6 +209,11 @@ t_{E}=t_{E^{*}} \exp \left[\frac{-\left(E-E^{*}\right)^{2}}{2 \sigma_{E}^{2}}\ri
 $$
 
 Find $\sigma_{E}^{2}$ by inspection. (Do not make use of the method illustrated in class.)
+\subsection{}
+$t_E$ is overwhemingly dominated by $t_{E^{*}}$ when $E$ is close to $E^{*}$. So we can approximate with a Gaussian peaked at $E^{*}$. We can write this as:
+\begin{equation}
+  t_{E} = t_{E^{*}} \exp \left[ \frac{- \left( E - E^{*} \right)^{2}}{2 \sigma_{E}^{2}} \right]
+\end{equation}
 
 b) (9 pts.) Now using the relation, $\sigma_{E}^{2}=k T^{2} C_{V}$ (obtained in class), and the result of part a), show that the error committed in replacing $\ln Q$ by $\ln t_{E^{*}}$ is only of order $\ln N$. (Hint: Consider the energy spacing as nearly continuous...)
 
@@ -190,6 +231,15 @@ where the vector $n=\left\{n_{i}\right\}$ specifies the state, $\nu$, and $n_{i}
 (a) (9 pts.) Determine the average internal energy of this system as a function of $\beta, H$, and $N$ by employing an ensemble characterized by these variables.
 
 (b) (8 pts.) Determine the average entropy of this system as a function of $\beta, H$, and $N$.
+\subsection{}
+The partition function will be given by:
+\begin{equation}
+  Q = \sum_{\nu} \exp \left[ - \beta E_{\nu} \right] = \sum_{\nu} \exp \left[ \beta \mu H \sum_{i=1}^{N} n_{i} \right]
+\end{equation}
+There are two possible values for each spin, so the partition function becomes:
+\begin{equation}
+  Q = \sum_{\nu} \exp \left[ \beta \mu H \sum_{i=1}^{N} n_{i} \right] = \sum_{\nu} \exp \left[ \beta \mu H - \beta \mu H \right] = \sum_{\nu} 1 = 2^{N}
+\end{equation}
 
 (c) (7 pts.) Determine the behavior of the energy and entropy for this system as $T \rightarrow 0$.
 

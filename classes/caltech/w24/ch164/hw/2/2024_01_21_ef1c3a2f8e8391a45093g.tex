@@ -1,0 +1,197 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
+\title{Ch/ChE 164 Winter 2024 
+ Homework Problem Set \#2 }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Due Date: Thursday January 25, 2024 @ 11:59pm
+\section{}
+\begin{enumerate}
+  \item The approximate partition function for a dense gas is of the form
+\end{enumerate}
+
+$$
+Q(N, V, T)=\frac{1}{N !}\left(\frac{2 \pi m k T}{h^{2}}\right)^{\frac{3}{2} N}(V-N b)^{N} \exp \left[\frac{a N^{2}}{V k T}\right]
+$$
+
+where $a$ and $b$ are constants that are given in terms of molecular parameters.
+
+(a) (10 pts.) Calculate the equation of state from this partition function. What equation of state is this?
+\subsection{}
+We know that the pressure can be obtained from:
+\begin{equation}
+  P = kT \left( \frac{\partial \ln Q}{\partial V} \right)_{N,T}
+\end{equation}
+So, when we perform this computation using symbolic adobe, we get:
+\begin{equation}
+  P = - \frac{N^{2} a}{V^{2}} - \frac{N T k}{N b - V}
+\end{equation}
+Rearranging this equation, we get:
+\begin{equation}
+  P = \frac{N k T}{V - N b} - \frac{N^{2} a}{V^{2}}
+\end{equation}
+which is the Van der Waals equation of state for gas at high pressure and low temperature.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, exp, ln, factorial, pi, simplify, latex
+
+# Define the symbols
+N, V, T, m, k, h, a, b = symbols('N V T m k h a b')
+
+# Partition function Q
+Q = (1 / factorial(N)) * ((2 * pi * m * k * T) / h**2)**(3/2 * N) * (V - N * b)**N * exp(a * N**2 / (V * k * T))
+
+# Natural logarithm of Q
+ln_Q = ln(Q)
+
+# Differentiate ln(Q) with respect to V
+dlnQ_dV = diff(ln_Q, V)
+
+# Pressure P
+P = k * T * dlnQ_dV
+
+# Simplify the expression for P
+P_simplified = simplify(P)
+
+# Convert the simplified expression to LaTeX
+P_latex = latex(P_simplified)
+
+print(P_latex)
+
+\end{lstlisting}
+
+(b) (18 pts.) Calculate the Helmholtz free energy and the heat capacities, $C_{v}$ and $C_{p}$.
+\subsection{}
+The Helmholtz free energy is given by:
+\begin{equation}
+  A = - k T \ln Q
+\end{equation}
+First we want to take the natural logarithm of the partition function:
+\begin{align}
+  \ln Q &= \ln \left( \frac{1}{N !}\left(\frac{2 \pi m k T}{h^{2}}\right)^{\frac{3}{2} N}(V-N b)^{N} \exp \left[\frac{a N^{2}}{V k T}\right] \right) \\
+&= \ln \left( \frac{1}{N !} \right) + \ln \left( \left(\frac{2 \pi m k T}{h^{2}}\right)^{\frac{3}{2} N} \right) + \ln \left( (V-N b)^{N} \right) + \ln \left( \exp \left[\frac{a N^{2}}{V k T}\right] \right) \\
+&= \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T}
+\end{align}
+Now we can substitute this expression into the equation for the Helmholtz free energy:
+\begin{align}
+  A &= - k T \ln Q \\
+&= - k T \left( \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right) \\
+\end{align}
+Next, we want to calculate the heat capacities. We know that:
+\begin{equation}
+  C_{v} = \left( \frac{\partial U}{\partial T} \right)_{V,N}
+\end{equation}
+and
+\begin{equation}
+  C_{p} = \left( \frac{\partial H}{\partial T} \right)_{P,N}
+\end{equation}
+where $U$ is the internal energy and $H$ is the enthalpy. 
+The internal energy is related to the Helmholtz free energy by:
+\begin{equation}
+  U = A + TS
+\end{equation}
+
+Now the entropy is given by:
+\begin{equation}
+  S = - \left( \frac{\partial A}{\partial T} \right)_{V,N}
+\end{equation}
+
+We can calculate the entropy by starting with the expression for \( A \):
+\begin{equation}
+  A = - k T \left( \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right)
+\end{equation}
+
+We use the symbolic algebra to perform this derivative and get:
+\begin{equation}
+  S = - \frac{1.0 N^{2} a}{T V} + 1.5 N k + 1.0 k \log{\left(\frac{2^{1.5 N} \pi^{1.5 N} \left(\frac{T k m}{h^{2}}\right)^{1.5 N} \left(- N b + V\right)^{N} e^{\frac{N^{2} a}{T V k}}}{\Gamma\left(N + 1\right)} \right)}
+\end{equation}
+
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item (30 pts.) ( The probability distribution for a thermodynamic system can be alternatively obtained directly from Gibb's definition of entropy. Entropy is defined as $S=-k \sum_{\nu} P_{\nu} \ln P_{\nu}$ where $P_{\nu}$ is the probability of finding the system in state $\nu$. This is true regardless of the specification of the system. Thus for a $(\mathrm{N}, \mathrm{P}, \mathrm{T})$ system, $\nu$ specifies the system's energy state and volume, while for a $(\mu, \mathrm{V}$, T) system it specifies the energy state and the number of particles. The probability distribution is obtained by the minimization of the characteristic potential (for example Gibbs free energy, Helmholtz free energy, etc.) for a particular specification of the system. Obtain the probability distributions for the $(\mathrm{N}, \mathrm{P}, \mathrm{T})$ and $(\mu, \mathrm{V}, \mathrm{T})$ systems using this approach.
+
+  \item The canonical partition function can be written in terms of energy levels as
+
+\end{enumerate}
+
+$$
+Q(N, V, T)=\sum_{E} t_{E}=\sum_{E} \Omega(E, V, N) e^{-\beta E}
+$$
+
+$E$ is the total energy of the system. Argue that in the thermodynamic limit, the dominant contribution to the partition function comes from the largest term, denoted by $t_{E}^{*}$, which corresponds to the most probable value of $E$, denoted $E^{*}$.
+
+a) (9 pts.) Show that about $E^{*}, t_{E}$ can be approximated by
+
+$$
+t_{E}=t_{E^{*}} \exp \left[\frac{-\left(E-E^{*}\right)^{2}}{2 \sigma_{E}^{2}}\right]
+$$
+
+Find $\sigma_{E}^{2}$ by inspection. (Do not make use of the method illustrated in class.)
+
+b) (9 pts.) Now using the relation, $\sigma_{E}^{2}=k T^{2} C_{V}$ (obtained in class), and the result of part a), show that the error committed in replacing $\ln Q$ by $\ln t_{E^{*}}$ is only of order $\ln N$. (Hint: Consider the energy spacing as nearly continuous...)
+
+\begin{enumerate}
+  \setcounter{enumi}{3}
+  \item (from Chandler 3.18) Consider a system of $N$ localized non-interacting spins in a magnetic field $H$. Each spin has a magnetic moment of size $\mu$, and each can point either parallel or antiparallel to the field. Thus the energy of a particular state is
+\end{enumerate}
+
+$$
+E_{\nu}=\sum_{i=1}^{N}-n_{i} \mu H, \quad n_{i}= \pm 1
+$$
+
+where the vector $n=\left\{n_{i}\right\}$ specifies the state, $\nu$, and $n_{i} \mu$ is the magnetic moment in the direction of the field.
+
+(a) (9 pts.) Determine the average internal energy of this system as a function of $\beta, H$, and $N$ by employing an ensemble characterized by these variables.
+
+(b) (8 pts.) Determine the average entropy of this system as a function of $\beta, H$, and $N$.
+
+(c) (7 pts.) Determine the behavior of the energy and entropy for this system as $T \rightarrow 0$.
+
+
+\end{document}

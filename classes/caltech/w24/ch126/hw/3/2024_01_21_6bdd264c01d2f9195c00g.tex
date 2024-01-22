@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+\usepackage{physics}
+\usepackage{graphicx}
+
+\begin{document}
+Ch126
+
+Winter Quarter - 2024
+
+Problem Set 2
+
+Due: 25 January, 2024
+\section{}
+\begin{enumerate}
+  \item (10 points) Consider the ${ }^{14} \mathrm{~N}$ nucleus with spin $I=1$. The gyromagnetic ratio for ${ }^{14} \mathrm{~N}$ is $\gamma_{\mathrm{N}}=1.9337798 \times 10^{7}$ radians s $^{-1} \mathrm{~T}^{-1}$.
+\end{enumerate}
+
+a. Determined the energies of all nuclear spin sublevels for a free ${ }^{14} \mathrm{~N}$ nucleus in a $10 \mathrm{~T}$ magnetic field.
+\subsection{}
+Since the spin is $I=1$, there will be three sublevels, $m_I = -1, 0, 1$. The energy of each sublevel is given by:
+\begin{equation}
+  E = -\gamma_N B_0 m_I
+\end{equation}
+So the energies are:
+\begin{equation}
+  E = -1.9337798 \times 10^{8} \mathrm{~rad} \cdot \mathrm{s}^{-1} \cdot 10 \mathrm{~T} \cdot m_I
+\end{equation}
+My script gives:
+\begin{align}
+  E_{-1} = 1.933 \times 10^{8} J\\
+  E_{0} = 0\\
+  E_{1} = -1.933 \times 10^{8} J
+\end{align}
+
+b. Determine the differences in populations (in ppm) among all sublevels at $295 \mathrm{~K}$ in the $10 \mathrm{~T}$ magnetic field.
+\subsection{}
+We want to use the equation:
+\begin{equation}
+  P_{j} = \frac{N_{j}}{N_{T}} = \frac{\Omega _{j}e^{-\beta E_{j}}}{\sum_{j=1}^{3} \Omega _{j}e^{-\beta E_{j}}}
+\end{equation}
+where each state has no degenerates in the presence of the magnetic field and $\beta = \frac{1}{kT}$. We can calculate the partition function as:
+\begin{equation}
+  Q = \sum_{j=1}^{3} \Omega _{j}e^{-\beta E_{j}} = e^{-\beta E_{-1}} + e^{-\beta E_1} + 1
+\end{equation}
+c. Determine the resonance frequencies for all allowed transitions among nuclear sublevels.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  % \item (15 points) Consider a two-proton spin system in which the shielding constants for the two protons $\left(\sigma_{1}, \sigma_{2}\right)$ differ by $1.2 \times 10^{-7}$, and in which the coupling constant between the two spins is $5 \mathrm{~Hz}$. Sketch the NMR spectra, including relative intensities, that you would expect for this spin system using spectrometers operating at the following frequencies: (a) $60 \mathrm{MHz}$; (b) $270 \mathrm{MHz}$; and (c) $500 \mathrm{MHz}$. (See the lecture notes for expressions describing the intensities of the resonances).
+
+  \item (5 points) On a certain NMR spectrometer a proton signal has a chemical shift of $5 \mathrm{ppm}$, corresponding to a frequency range of $3 \mathrm{kHz}$. What is the operating frequency of the spectrometer and what is the approximate magnetic field strength?
+
+  \item (5 points) Calculate the magnetic field strength required for ${ }^{19} \mathrm{~F}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{F}}=2.516233 \times\right.$ $10^{8}$ radians s $\left.^{-1} \mathrm{~T}^{-1}\right)$ and ${ }^{13} \mathrm{C}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{C}}=6.728286 \times 10^{7}\right.$ radians $\left.^{-1} \mathrm{~T}^{-1}\right)$ resonances in a $500 \mathrm{MHz}$ spectrometer.
+
+  \item (5 points) Consider a two-proton spin system in which the two protons are equivalent. If the two protons are equivalent, then they are indistinguishable, and quantum mechanics requires that the wavefunction for the system is either symmetric or antisymmetric with respect to exchange of identical particles. Write down all possible orthonormal wavefunctions for this two-proton system where:
+
+\end{enumerate}
+
+$$
+|\alpha(j)\rangle=\left|\psi_{j}(1 / 2,1 / 2)\right\rangle \quad \text { and } \quad|\beta(j)\rangle=\left|\psi_{j}(1 / 2,-1 / 2)\right\rangle
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{5}
+  \item (15 points) Assume the zero-order Hamiltonian for this spin system in a magnetic field directed along the $z$-axis of magnitude $B_{0}$ is:
+\end{enumerate}
+
+$$
+\widehat{H}^{0}=-\gamma_{H} B_{0}\left(1-\sigma_{A}\right)\left(\hat{I}_{z 1}+\hat{I}_{z 2}\right)
+$$
+
+where $\sigma_{A}$ is the chemical shift parameter for the two equivalent protons. The perturbation Hamiltonian is:
+
+$$
+\widehat{H}^{\prime}=\frac{h J_{A A}}{\hbar^{2}} \hat{I}_{1} \cdot \hat{I}_{2}
+$$
+
+where $J_{A A}$ is the spin-spin coupling constant between the two protons. Using the wavefunctions from problem 5 , determined the zero-order energies and first order corrections to the energies of all four states.
+
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item (5 points) Using the wavefunctions from the problem 5 , identify all of the allowed NMR transitions among them. How many lines do you expect to see in the proton NMR spectrum of this system?
+\end{enumerate}
+
+\end{document}

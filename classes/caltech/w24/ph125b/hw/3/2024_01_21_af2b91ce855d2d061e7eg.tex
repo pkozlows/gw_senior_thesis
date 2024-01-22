@@ -1,0 +1,200 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
+\urlstyle{same}
+\usepackage{physics}
+\usepackage{graphicx}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+\title{PROBLEMS: }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Physics 125b
+
+Problem set number 3
+
+Due midnight Wednesday, January 24, 2024
+
+READING: Section 17.3 in Shankar on degenerate perturbation theory. Also sections 18.1 and 18.2 on time-dependent perturbation theory.
+
+\begin{enumerate}
+  \setcounter{enumi}{8}
+  \item We have solved the Schrödinger equation for the Hydrogen atom with Hamiltonian:
+\end{enumerate}
+
+$$
+H_{0}=\frac{p^{2}}{2 m}-\frac{e^{2}}{r}
+$$
+
+The kinetic energy term is non-relativistic - the actual kinetic energy will have relativistic corrections.
+
+(a) Obtain an expression for the next order relativistic (kinetic energy) correction to the energy spectrum of hydrogen. It is convenient to avoid taking multiple derivatives by using the unperturbed Schrödinger equation to eliminate them. Thus, write your expression in terms of the unperturbed energies and expectation values of $\frac{e^{2}}{r}$ and $\left(\frac{e^{2}}{r}\right)^{2}$. Do not actually do the integration over $r$ here, but reduce the problem to such integrals (which you may just write as expectation values). Make sure you understand all of your steps.
+
+(b) Now apply your formula to obtain the first-order relativistic kinetic energy correction to the ground state energy of hydrogen. Express your answer as a multiple of the unperturbed ground state energy, and also calculate the size of the correction in $\mathrm{eV}$.
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{9}
+  \item The nucleus is not a point, though it is to a good approximation in computing the atomic energy levels of light atoms. We may use perturbation theory to estimate the effect of the nuclear size on the energy levels. We'll take a simple model for our nucleus as a sphere of radius $\rho$ containing a uniform charge distribution, with total charge $Z e$, where $e$ is the proton charge.
+\end{enumerate}
+
+(a) What is the potential energy of the electron, assuming a one-electron atom? Use this to write down an expression for a potential as a perturbation to our point-like nucleus Hamiltonian.
+\subsubsection{}
+The volume of the sphere is given by:
+\begin{equation}
+  V = \frac{4}{3} \pi \rho^3
+\end{equation}
+Since the charge density is constant true out the sphere and the total charge is $Ze$, we have:
+\begin{equation}
+  \sigma  = \frac{3Ze}{4\pi\rho^3}
+\end{equation}
+Inside the sphere when $r < \rho$, the enclosed charge is:
+\begin{equation}
+  Q = \frac{4}{3} \pi r^3 \sigma = \frac{3Ze}{4\pi\rho^3} \frac{4}{3} \pi r^3 = Ze \frac{r^3}{\rho^3}
+\end{equation}
+Then we might use Gauss's law to determine the electric field inside the sphere:
+\begin{equation}
+  \mathbf{E} = \frac{Q}{4\pi\epsilon_0 r^2} = \frac{Ze}{4\pi\epsilon_0\rho^3} r
+\end{equation}
+To find the potential energy and side of the nucleus, we ingrate the electric field::
+\begin{equation}
+  V = \int \mathbf{E} \cdot d\mathbf{r} = \int_{r}^{\rho } \frac{Ze}{4\pi\epsilon_0\rho^3} r dr = \frac{Ze}{4\pi\epsilon_0\rho^3} \frac{r^2}{2} \Big|_{r}^{\rho} = \frac{Ze}{4\pi\epsilon_0\rho^3} \frac{\rho^2}{2} - \frac{Ze}{4\pi\epsilon_0\rho^3} \frac{r^2}{2} = \frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}
+\end{equation}
+We know the solutions for the point-like nucleus Hamiltonian with $V = -\frac{Ze^2}{4\pi\epsilon_0 r}$, so we can write the perturbation as:
+\begin{equation}
+  V = -\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}
+\end{equation}
+
+
+
+(b) Assume the nucleus is small compared with the atom. The one-electron wave function is $\psi_{n l m}(r, \theta, \phi)=R_{n l}(r) Y_{l m}(\theta, \phi)$. What is the expectation value of your perturbation with respect to this state? Note that the assumption of a small nucleus suggests that you can just evaluate the radial wave function at $r=0$ (which you may leave in the form $R_{n \ell}(0)$ ), since the wave function varies little over the extent of the nucleus.
+\subsection{}
+The spherical component is not relevant for this perturbation, so we want to consider:
+\begin{equation}
+  \bra{R_{n l}(r)}H'\ket{R_{n l}(r)} = \bra{R_{n l}(r)}-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}\ket{R_{n l}(r)}
+\end{equation}
+
+(c) Thus, you have estimated the first order correction to the energy levels due to the finite nuclear size. What do you obtain for states with $l>0$ ? What do you obtain for $s$-wave states? Do you need to worry about degeneracy of energy levels? Why or why not?
+\subsection{}
+For just the $s$-wave states with $l = 0$, the radial function simplifies to:
+\begin{equation}
+  R_{n l}(r) = \sqrt{\frac{2}{n a_0^3}} \left( \frac{2r}{n a_0} \right)^{l} e^{-r / n a_{0}} L_{n-l-1}^{2l+1}\left(\frac{2 r}{n a_{0}}\right)
+\end{equation}
+
+We may use here that the one-electron wave function is (letting $a_{0} \rightarrow a_{0} / Z$ from our result for hydrogen):
+
+$$
+\psi_{n \ell m}(\mathbf{x})=Y_{\ell m}(\Omega) R_{n \ell}(r),
+$$
+
+with
+
+$$
+R_{n \ell}(r)=\left(\frac{2 Z}{n a_{0}}\right)^{3 / 2} \sqrt{\frac{(n-\ell-1) !}{2 n(n+\ell) !}}\left(\frac{2 Z r}{n a_{0}}\right)^{\ell} e^{-Z r / n a_{0}} L_{n-\ell-1}^{2 \ell+1}\left(\frac{2 Z r}{a_{0} n}\right),
+$$
+
+and the associated Laguerre polynomials given by
+
+$$
+L_{n-\ell-1}^{2 \ell+1}(z)=\sum_{k=0}^{n-\ell-1} \frac{(-1)^{k}}{k !}\left(\begin{array}{c}
+n+\ell \\
+n-\ell-1-k
+\end{array}\right) z^{k}
+$$
+
+Aside: The various conventions for Laguerre polynomials can be confusing. You may find the square root term appearing in the expression for $R_{n \ell}(r)$ given in some references as
+
+$$
+\sqrt{\frac{(n-\ell-1) !}{2 n[(n+\ell) !]^{3}}}
+$$
+
+This corresponds to a different normalization for the associated Laguerre polynomials [referred to as the "physicist convention" in Wikipedia (\href{https://en}{https://en}. \href{http://wikipedia.org/wiki/Laguerre_polynomials}{wikipedia.org/wiki/Laguerre\_polynomials})]. Sometimes these polynomials are defined with an overall minus sign compared with our definition. Also, the lower index $(n-\ell-1)$ we use here (as does Shankar) is the degree of the polynomial. Often the associated Laguerre polynomials are labeled instead with a lower index $n+\ell$ (equal to the sum of the upper and lower indices in our convention). This is just another convention for naming the same polynomial. Everybody seems to agree on the convention for the upper index, $2 \ell+1$.
+
+\begin{enumerate}
+  \setcounter{enumi}{10}
+  \item We discussed the spin-orbit correction to the hydrogen energy levels. In this example as well as others, we needed to evaluate certain expectation values with respect to the hydrogen wave functions. There are some handy "tricks" towards these evaluations. I refer you in particular to the discussion on pages $470-1$ of the text. Thus, considering the $\left|\psi_{n l m}\right\rangle$ hydrogen wave functions, evaluate:
+\end{enumerate}
+
+(a)
+
+$$
+\left\langle\frac{1}{r^{2}}\right\rangle \equiv\left\langle\psi_{n l m}\left|\frac{1}{r^{2}}\right| \psi_{n l m}\right\rangle
+$$
+
+(b)
+
+$$
+\left\langle\frac{1}{r^{3}}\right\rangle .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{11}
+  \item Let us consider an example of the use of degenerate stationary state perturbation theory. Thus, let us take the hydrogen atom, with unperturbed Hamiltonian $H_{0}=$ $\frac{P^{2}}{2 m}-\frac{\alpha}{r}$, and consider the effect of putting this atom in a uniform external electric field: $\mathbf{E}=E \hat{\mathbf{e}}_{z}$. We are interested in calculating, to first order in perturbation theory, the shifts in the $n=2$ energy levels ( $n$ is the principal quantum number here). Note that the $n=2$ level is four-fold degenerate, corresponding to the eigenstates (in notation $n \ell_{m_{\ell}}$ ): $\left|2 S_{0}\right\rangle,\left|2 P_{1}\right\rangle,\left|2 P_{0}\right\rangle,\left|2 P_{-1}\right\rangle$, neglecting spins.
+(a) Write down the perturbing potential, $V$. [Note that we need only consider the electron's coordinates, relative to the nucleus - why?] Calculate the commutator $\left[V, L_{z}\right]$, and hence determine the matrix elements of $V$ between states with different eigenvalues of $L_{z}$.
+\end{enumerate}
+
+(b) You should have found a "selection rule" which simplifies the problem. What is the degeneracy that needs to be addressed in the problem now that you have made this calculation?
+
+(c) Using the invariance of the hydrogen atom Hamiltonian under parity, write down the remaining matrix elements of $V$ which need to be determined, and compute their values.
+
+Hydrogenic wave functions you might need are:
+
+$$
+\begin{aligned}
+& \psi_{200}=\frac{1}{\sqrt{4 \pi}} \frac{1}{2 \sqrt{2}} \frac{1}{a_{0}^{3 / 2}}\left(2-r / a_{0}\right) e^{-r / 2 a_{0}} \\
+& \psi_{210}=\sqrt{\frac{3}{4 \pi}} \cos \theta \frac{1}{4 \sqrt{6}} \frac{1}{a_{0}^{3 / 2}} 2 \frac{r}{a_{0}} e^{-r / 2 a_{0}} .
+\end{aligned}
+$$
+
+You may also want to evaluate the handy integral:
+
+$$
+I_{k} \equiv \int_{0}^{\infty} x^{k} e^{-x} d x, \quad k \geq 0
+$$
+
+(d) Now complete your degenerate perturbation theory calculation to determine the splitting of the states in the applied electric field. Calculate numerical splittings (in eV) for an applied field of $100 \mathrm{kV} / \mathrm{cm}$. Also, estimate the "typical" electric field felt by the electron, due to the nucleus, in a hydrogen atom. Was the use of perturbation theory reasonable for this problem?
+
+
+\end{document}

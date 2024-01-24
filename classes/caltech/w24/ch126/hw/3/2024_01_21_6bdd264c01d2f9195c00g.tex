@@ -265,7 +265,17 @@ print("Magnetic field strength for 13C: {0:.2e} T".format(float(magnetic_field_s
 $$
 |\alpha(j)\rangle=\left|\psi_{j}(1 / 2,1 / 2)\right\rangle \quad \text { and } \quad|\beta(j)\rangle=\left|\psi_{j}(1 / 2,-1 / 2)\right\rangle
 $$
-
+We would have one singlet state:
+\begin{equation}
+  \ket{\psi_{singlet}} = \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right)
+\end{equation}
+And three triplet states:
+\begin{align}
+  \ket{\psi_{triplet}^{1}} = \ket{\alpha(1)\alpha(2)}\\
+  \ket{\psi_{triplet}^{0}} = \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} + \ket{\beta(1)\alpha(2)} \right)\\
+  \ket{\psi_{triplet}^{-1}} = \ket{\beta(1)\beta(2)}
+\end{align}
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{5}
   \item (15 points) Assume the zero-order Hamiltonian for this spin system in a magnetic field directed along the $z$-axis of magnitude $B_{0}$ is:
@@ -282,7 +292,56 @@ $$
 $$
 
 where $J_{A A}$ is the spin-spin coupling constant between the two protons. Using the wavefunctions from problem 5 , determined the zero-order energies and first order corrections to the energies of all four states.
-
+\subsection{}
+We start by calculating the zero-order energies. The action of the spin operators on the singlet state is:
+\begin{align}
+  \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\psi_{singlet}} = \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right)\\
+  = \frac{1}{\sqrt{2}} \left( \frac{1}{2} \ket{\alpha(1)\beta(2)} + \frac{1}{2}\ket{\beta(1)\alpha(2)} \right) + \frac{1}{\sqrt{2}} \left( -\frac{1}{2} \ket{\alpha(1)\beta(2)} - \frac{1}{2}\ket{\beta(1)\alpha(2)} \right)\\
+  = 0
+\end{align}
+So the zero-order energy is:
+\begin{equation}
+  E_{singlet}^{0} = -\gamma_{H} B_{0}\left(1-\sigma_{A}\right)\left(\hat{I}_{z 1}+\hat{I}_{z 2}\right) = 0
+\end{equation}
+We continue with the triplet states. The action of the spin operators on the triplet state with $m_I = 1$ is:
+\begin{align}
+  \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\psi_{triplet}^{1}} = \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\alpha(1)\alpha(2)}\\
+  = \frac{1}{2} \ket{\alpha(1)\alpha(2)} + \frac{1}{2} \ket{\alpha(1)\alpha(2)}\\
+  = \ket{\alpha(1)\alpha(2)}
+\end{align}
+So the zero-order energy is:
+\begin{equation}
+  E_{triplet}^{1,0} = -\gamma_{H} B_{0}\left(1-\sigma_{A}\right)\left(\hat{I}_{z 1}+\hat{I}_{z 2}\right) = -\gamma_{H} B_{0}\left(1-\sigma_{A}\right)
+\end{equation}
+The action of the spin operators on the triplet state with $m_I = 0$ is:
+\begin{align}
+  \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\psi_{triplet}^{0}} = \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} + \ket{\beta(1)\alpha(2)} \right)\\
+  = \frac{1}{\sqrt{2}} \left( \frac{1}{2} \ket{\alpha(1)\beta(2)} - \frac{1}{2}\ket{\beta(1)\alpha(2)} \right) + \frac{1}{\sqrt{2}} \left( - \frac{1}{2} \ket{\alpha(1)\beta(2)} + \frac{1}{2}\ket{\beta(1)\alpha(2)} \right)\\
+  = 0
+\end{align}
+So the zero-order energy is:
+\begin{equation}
+  E_{triplet}^{0,0} = -\gamma_{H} B_{0}\left(1-\sigma_{A}\right)\left(\hat{I}_{z 1}+\hat{I}_{z 2}\right) = 0
+\end{equation}
+The action of the spin operators on the triplet state with $m_I = -1$ is:
+\begin{align}
+  \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\psi_{triplet}^{-1}} = \left(\hat{I}_{z 1} + \hat{I}_{z 2}\right) \ket{\beta(1)\beta(2)}\\
+  = -\frac{1}{2} \ket{\beta(1)\beta(2)} - \frac{1}{2} \ket{\beta(1)\beta(2)}\\
+  = -\ket{\beta(1)\beta(2)}
+\end{align}
+So the zero-order energy is:
+\begin{equation}
+  E_{triplet}^{-1,0} = -\gamma_{H} B_{0}\left(1-\sigma_{A}\right)\left(\hat{I}_{z 1}+\hat{I}_{z 2}\right) = \gamma_{H} B_{0}\left(1-\sigma_{A}\right)
+\end{equation}
+Now we calculate the first order corrections to the energies. The spin-spin coupling operator in the perturbation Hamiltonian can be decomposed into the sum of the spin operators:
+\begin{equation}
+  \hat{I}_{1} \cdot \hat{I}_{2} = \hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}
+\end{equation}
+The action of the spin operators on the singlet state is:
+\begin{align}
+  \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \ket{\psi_{singlet}} = \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right)\\
+\end{align}
+\emph{What expressing the spin operators in terms of raising and lowering operators, be helpful for this computation?}
 \begin{enumerate}
   \setcounter{enumi}{6}
   \item (5 points) Using the wavefunctions from the problem 5 , identify all of the allowed NMR transitions among them. How many lines do you expect to see in the proton NMR spectrum of this system?

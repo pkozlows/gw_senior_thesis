@@ -64,12 +64,15 @@ So the energies are:
 \begin{equation}
   E = -1.9337798 \times 10^{8} \mathrm{~rad} \cdot \mathrm{s}^{-1} \cdot 10 \mathrm{~T} \cdot m_I
 \end{equation}
+Additionally, we have to multiply by $\hbar$ to get the energy in Joules.
 My script gives:
 \begin{align}
-  E_{-1} = 1.933 \times 10^{8} J\\
+  E_{-1} = 2.04 \times 10^{-26} J\\
   E_{0} = 0\\
-  E_{1} = -1.933 \times 10^{8} J
+  E_{1} = -2.04 \times 10^{-26} J
 \end{align}
+See the part c code for the script.
+
 
 b. Determine the differences in populations (in ppm) among all sublevels at $295 \mathrm{~K}$ in the $10 \mathrm{~T}$ magnetic field.
 \subsection{}
@@ -81,15 +84,179 @@ where each state has no degenerates in the presence of the magnetic field and $\
 \begin{equation}
   Q = \sum_{j=1}^{3} \Omega _{j}e^{-\beta E_{j}} = e^{-\beta E_{-1}} + e^{-\beta E_1} + 1
 \end{equation}
+So the populations are:
+\begin{align}
+  N_{-1} = e^{-\beta E_{-1}} \times 10^{-6} ppm = 
+\end{align}
+With the script I get:
+\begin{align}
+  N_{-1} = 0.999994993009271 ppm\\
+  N_{0} = 1.0 ppm\\
+  N_{1} = 1.00000500701580 ppm
+\end{align}
+So the differences in population are:
+\begin{align}
+  N_{-1} - N_{0} = -5.01 \times 10^{-6} ppm\\
+  N_{-1} - N_{1} = -1.00 \times 10^{-5} ppm\\
+  N_{0} - N_{1} = -5.01 \times 10^{-6} ppm \\
+\end{align}
+Changing the order of the above merely changes the sign of the difference.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Constants
+gamma_N = 1.9337798 * 10**7  # Gyromagnetic ratio in radians s^-1 T^-1
+B0 = 10  # Magnetic field strength in Tesla
+k_B = 1.380649e-23  # Boltzmann's constant in J/K
+T = 295  # Temperature in Kelvin
+
+# Magnetic quantum numbers and energies
+m_I_values = [-1, 0, 1]
+energies = [-gamma_N * B0 * m_I for m_I in m_I_values]  # frequency for each m_I
+# convert this to energies by multiplying by the reduced Planck's constant
+rpc = 1.0545718e-34  # reduced Planck's constant in J s
+energies = [rpc * f for f in energies]
+
+# Beta (\beta = 1/(k_B * T))
+beta = 1 / (k_B * T)
+
+# get the population for each m_I in ppm
+N_j = [sp.exp(-beta * E) * 10**(-6) for E in energies]  # Correctly use list comprehension
+
+# take all of the different differences between the populations
+for i in range(len(N_j)):
+    for j in range(i + 1, len(N_j)):
+        print("N_{0} - N_{1} = {2:.2e} ppm".format(i, j, (N_j[i] - N_j[j]).evalf()))
+
+    
+
+\end{lstlisting}
+\subsection{}
 c. Determine the resonance frequencies for all allowed transitions among nuclear sublevels.
+The three frequencies arise from the three energy levels. The frequencies are:
+\begin{align}
+  \nu_{m_I = -1\rightarrow m_I = 0} = \frac{E_{-1} - E_{0}}{h} = 30.8\text{MHz}\\
+  \nu_{m_I = 0\rightarrow m_I = 1} = \frac{E_{0} - E_{1}}{h} = 30.8\text{MHz}\\
+  \nu_{m_I = -1\rightarrow m_I = 1} = \frac{E_{-1} - E_{1}}{h} = 61.6\text{MHz}
+\end{align}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Constants
+gamma_N = 1.9337798 * 10**7  # Gyromagnetic ratio in radians s^-1 T^-1
+B0 = 10  # Magnetic field strength in Tesla
+
+# Magnetic quantum numbers
+m_I_values = [-1, 0, 1]
+
+# reduced Planck's constant value
+hbar = 6.62607004 * 10**-34 / (2 * sp.pi)
+
+# Calculating the energy for each m_I
+energies = [-gamma_N * B0 * m_I * hbar for m_I in m_I_values]
+
+for m_I, energy in zip(m_I_values, energies):
+    energy_float = float(energy.evalf())  # Convert the Sympy expression to a float
+    print("m_I = {0}, E = {1:.2e} J".format(m_I, energy_float))
+    for m, e in zip(m_I_values, energies):
+        # if the m_Is are different, calculate the transition energy
+        if m_I != m:
+            transition_energy = energy - e
+            # divide by plancks constant and not hbar because we want the frequency
+            transition_frequency = transition_energy / (6.62607004 * 10**-34)
+            transition_frequency_float = float(transition_frequency.evalf())
+            print("m_I = {0} -> m = {1}, f = {2:.2e} Hz".format(m_I, m, transition_frequency_float))
+
+
+\end{lstlisting}
 
 \begin{enumerate}
   \setcounter{enumi}{1}
-  % \item (15 points) Consider a two-proton spin system in which the shielding constants for the two protons $\left(\sigma_{1}, \sigma_{2}\right)$ differ by $1.2 \times 10^{-7}$, and in which the coupling constant between the two spins is $5 \mathrm{~Hz}$. Sketch the NMR spectra, including relative intensities, that you would expect for this spin system using spectrometers operating at the following frequencies: (a) $60 \mathrm{MHz}$; (b) $270 \mathrm{MHz}$; and (c) $500 \mathrm{MHz}$. (See the lecture notes for expressions describing the intensities of the resonances).
-
+  \item (15 points) Consider a two-proton spin system in which the shielding constants for the two protons $\left(\sigma_{1}, \sigma_{2}\right)$ differ by $1.2 \times 10^{-7}$, and in which the coupling constant between the two spins is $5 \mathrm{~Hz}$. Sketch the NMR spectra, including relative intensities, that you would expect for this spin system using spectrometers operating at the following frequencies: (a) $60 \mathrm{MHz}$; (b) $270 \mathrm{MHz}$; and (c) $500 \mathrm{MHz}$. (See the lecture notes for expressions describing the intensities of the resonances).
+\section{}
   \item (5 points) On a certain NMR spectrometer a proton signal has a chemical shift of $5 \mathrm{ppm}$, corresponding to a frequency range of $3 \mathrm{kHz}$. What is the operating frequency of the spectrometer and what is the approximate magnetic field strength?
+  The chemical shift is given by the equation:
+  \begin{equation}
+    \delta _{H} = \frac{\nu - \nu_{ref}}{\nu_{ref}} \times 10^6 ppm
+  \end{equation}
+  So we can solve for the frequency:
+  \begin{equation}
+    \nu{ref} = \frac{\nu - \nu_{ref}}{\delta _{H} \times 10^{-6}}
+  \end{equation}
+My script gives:
+\begin{align}
+  \nu_{ref} = 600 MHz\\
+\end{align}
+So the magnetic field strength is:
+\begin{align}
+  B_0 = \frac{2\pi \nu_{ref}}{\gamma_H}
+\end{align}
+My script gives:
+\begin{align}
+  B_0 = 14.1 T
+\end{align}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
 
+# Constants
+# Gyromagnetic ratio in radians s^-1 T^-1 for a proton
+gamma_H = 2.6752219 * 10**8
+
+# Given values
+delta_ppm = 5  # Chemical shift in ppm
+delta_hz = 3 * 10**3  # Frequency range corresponding to chemical shift in Hz
+
+# Calculation
+# Rearrange the chemical shift formula to solve for nu_0 (operating frequency)
+nu_0 = sp.Symbol('nu_0')
+nu = nu_0 + delta_hz
+operating_frequency_equation = sp.Eq(delta_ppm, ((nu - nu_0) / nu_0) * 10**6)
+operating_frequency_solution = sp.solve(operating_frequency_equation, nu_0)
+
+# Calculate the magnetic field strength using the corrected formula
+B = sp.Symbol('B')
+magnetic_field_equation = sp.Eq(2 * sp.pi * operating_frequency_solution[0], gamma_H * B)
+magnetic_field_strength = sp.solve(magnetic_field_equation, B)
+
+# print with units
+print("Operating frequency: {0:.2e} Hz".format(float(operating_frequency_solution[0].evalf())))
+print("Magnetic field strength: {0:.2e} T".format(float(magnetic_field_strength[0].evalf())))
+
+\end{lstlisting}
   \item (5 points) Calculate the magnetic field strength required for ${ }^{19} \mathrm{~F}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{F}}=2.516233 \times\right.$ $10^{8}$ radians s $\left.^{-1} \mathrm{~T}^{-1}\right)$ and ${ }^{13} \mathrm{C}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{C}}=6.728286 \times 10^{7}\right.$ radians $\left.^{-1} \mathrm{~T}^{-1}\right)$ resonances in a $500 \mathrm{MHz}$ spectrometer.
+  I get:
+\begin{align}
+  B_{0}^{F} = 12.5 T\\
+  B_{0}^{C} = 46.7 T
+\end{align}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Constants
+# Gyromagnetic ratios in radians s^-1 T^-1 for 19F and 13C
+gamma_F = 2.516233 * 10**8  # 19F
+gamma_C = 6.728286 * 10**7  # 13C
+nu_0 = 500 * 10**6  # 500 MHz in Hz
+
+# Calculation for 19F
+B_F = sp.Symbol('B_F')
+magnetic_field_equation_F = sp.Eq(2 * sp.pi * nu_0, gamma_F * B_F)
+magnetic_field_strength_F = sp.solve(magnetic_field_equation_F, B_F)
+
+# Calculation for 13C
+B_C = sp.Symbol('B_C')
+magnetic_field_equation_C = sp.Eq(2 * sp.pi * nu_0, gamma_C * B_C)
+magnetic_field_strength_C = sp.solve(magnetic_field_equation_C, B_C)
+
+# print with units
+print("Magnetic field strength for 19F: {0:.2e} T".format(float(magnetic_field_strength_F[0].evalf())))
+print("Magnetic field strength for 13C: {0:.2e} T".format(float(magnetic_field_strength_C[0].evalf())))
+
+\end{lstlisting}
 
   \item (5 points) Consider a two-proton spin system in which the two protons are equivalent. If the two protons are equivalent, then they are indistinguishable, and quantum mechanics requires that the wavefunction for the system is either symmetric or antisymmetric with respect to exchange of identical particles. Write down all possible orthonormal wavefunctions for this two-proton system where:
 

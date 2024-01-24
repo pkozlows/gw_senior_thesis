@@ -59,7 +59,7 @@ Problem set number 3
 Due midnight Wednesday, January 24, 2024
 
 READING: Section 17.3 in Shankar on degenerate perturbation theory. Also sections 18.1 and 18.2 on time-dependent perturbation theory.
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{8}
   \item We have solved the Schrödinger equation for the Hydrogen atom with Hamiltonian:
@@ -70,9 +70,42 @@ H_{0}=\frac{p^{2}}{2 m}-\frac{e^{2}}{r}
 $$
 
 The kinetic energy term is non-relativistic - the actual kinetic energy will have relativistic corrections.
-
+\subsection{}
 (a) Obtain an expression for the next order relativistic (kinetic energy) correction to the energy spectrum of hydrogen. It is convenient to avoid taking multiple derivatives by using the unperturbed Schrödinger equation to eliminate them. Thus, write your expression in terms of the unperturbed energies and expectation values of $\frac{e^{2}}{r}$ and $\left(\frac{e^{2}}{r}\right)^{2}$. Do not actually do the integration over $r$ here, but reduce the problem to such integrals (which you may just write as expectation values). Make sure you understand all of your steps.
-
+\subsubsection{}
+If we want to take into account relativistic effects, the kinetic energy is:
+\begin{equation}
+  T = \sqrt{p^2c^2 + m^2c^4} - mc^2 = \frac{p^2}{2m} - \frac{p^4}{8m^3c^2} + \cdots
+\end{equation}
+So we want to find the effect of the extra term, or perturbation:
+\begin{equation}
+  H' = -\frac{P^4}{8m^3c^2}
+\end{equation}
+Since the perturbation doesn't depend on any angular coordinates, we just care about the diagonal elements in the $\ket{nlm}$ basis (we show in problem 12 that the off-diagonal elements vanish). Then we have:
+\begin{equation}
+  E^{1}_T = \bra{nlm}H'\ket{nlm} = -\frac{\bra{nlm}P^4\ket{nlm}}{8m^3c^2}
+\end{equation}
+It hubs to notice that:
+\begin{equation}
+  P^4 = 4m^2\left(\frac{P^2}{2m} \right)^2 = 4m^2\left(H^0 + \frac{e^2}{r} \right)^2
+\end{equation}
+So we can get for the matrix element:
+\begin{equation}
+  E^{1}_T = -\frac{1}{2mc^{2}}  \left[ (E_{n}^{(0)})^{2}+e^4\left\langle\frac{1}{r^2}\right\rangle+2 E_{n}^{(0)}e^2\left\langle\frac{1}{r}\right\rangle\right]
+\end{equation}
+We know both:
+\begin{equation}
+  \left\langle\frac{1}{r}\right\rangle = -\frac{2E_{n}^{(0)}}{e^{2}}
+\end{equation}
+and:
+\begin{equation}
+  \left\langle\frac{1}{r^2}\right\rangle = \frac{4E_{0}^{2}n}{l + 1 / 2}
+\end{equation}
+So we get:
+\begin{equation}
+  E^{1}_T = -\frac{1}{2}m c^{2}\left(\frac{e^{2}}{4 \pi \epsilon_{0}}\right)^{4} \frac{1}{n^{3}\left(l+\frac{1}{2}\right)}
+\end{equation}
+\section{}
 (b) Now apply your formula to obtain the first-order relativistic kinetic energy correction to the ground state energy of hydrogen. Express your answer as a multiple of the unperturbed ground state energy, and also calculate the size of the correction in $\mathrm{eV}$.
 \section{}
 \begin{enumerate}
@@ -104,24 +137,53 @@ To find the potential energy and side of the nucleus, we ingrate the electric fi
 \end{equation}
 We know the solutions for the point-like nucleus Hamiltonian with $V = -\frac{Ze^2}{4\pi\epsilon_0 r}$, so we can write the perturbation as:
 \begin{equation}
-  V = -\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}
+  H' = -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3} - -\frac{Ze^2}{4\pi\epsilon_0 r}
 \end{equation}
 
 
 
 (b) Assume the nucleus is small compared with the atom. The one-electron wave function is $\psi_{n l m}(r, \theta, \phi)=R_{n l}(r) Y_{l m}(\theta, \phi)$. What is the expectation value of your perturbation with respect to this state? Note that the assumption of a small nucleus suggests that you can just evaluate the radial wave function at $r=0$ (which you may leave in the form $R_{n \ell}(0)$ ), since the wave function varies little over the extent of the nucleus.
 \subsection{}
-The spherical component is not relevant for this perturbation, so we want to consider:
+we want to consider:
 \begin{equation}
-  \bra{R_{n l}(r)}H'\ket{R_{n l}(r)} = \bra{R_{n l}(r)}-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}\ket{R_{n l}(r)}
+  \bra{\psi_{n l m}(r, \theta, \phi)}H'\ket{\psi_{n l m}(r, \theta, \phi)} = \bra{\psi_{n l m}(r, \theta, \phi)}-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}\ket{\psi_{n l m}(r, \theta, \phi)}
+\end{equation}
+This integral is:
+\begin{equation}
+  \int_{0}^{\infty} \int_{0}^{\pi} \int_{0}^{2 \pi} \psi_{n l m}^{*}(-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}) \psi_{n l m} r^{2} \sin \theta d r d \theta d \phi
+\end{equation}
+Now, the perturbation doesn't have any angular dependence, so we can integrate those out:
+\begin{equation}
+  = 4 \pi \int_{0}^{\infty} \psi_{n l m}^{*}(-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}) \psi_{n l m} r^{2} d r
 \end{equation}
 
 (c) Thus, you have estimated the first order correction to the energy levels due to the finite nuclear size. What do you obtain for states with $l>0$ ? What do you obtain for $s$-wave states? Do you need to worry about degeneracy of energy levels? Why or why not?
 \subsection{}
-For just the $s$-wave states with $l = 0$, the radial function simplifies to:
-\begin{equation}
-  R_{n l}(r) = \sqrt{\frac{2}{n a_0^3}} \left( \frac{2r}{n a_0} \right)^{l} e^{-r / n a_{0}} L_{n-l-1}^{2l+1}\left(\frac{2 r}{n a_{0}}\right)
-\end{equation}
+I have this script:
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, factorial, exp, Rational
+from sympy.functions.special.polynomials import assoc_laguerre
+from sympy.abc import n, l, r, Z
+
+# Define the symbols
+a0 = symbols('a_0')  # Bohr radius
+
+# Define the associated Laguerre polynomial function using sympy's built-in function
+def laguerre_poly(n, l, z):
+    return assoc_laguerre(n-l-1, 2*l+1, z)
+
+# Define the radial wave function for hydrogen
+def radial_wave_function(n, l, r):
+    pre_factor = (2*Z/n/a0)**Rational(3,2) * ((factorial(n-l-1) / (2*n*factorial(n+l)))**0.5)
+    radial_factor = (2*Z*r/n/a0)**l * exp(-Z*r/n/a0)
+    laguerre_factor = laguerre_poly(n, l, 2*Z*r/a0/n)
+    return pre_factor * radial_factor * laguerre_factor
+
+# Example usage
+radial_wave_function(n, l, r)
+
+\end{lstlisting}
 
 We may use here that the one-electron wave function is (letting $a_{0} \rightarrow a_{0} / Z$ from our result for hydrogen):
 
@@ -185,12 +247,83 @@ Similar to the Born-Oppenheimer approximation, we may consider the nucleus as fi
 \end{equation}
 Then we have:
 \begin{equation}
-  \left[V, L_{z}\right] = 
+  \left[V, L_{z}\right] = V(z)L_z(x,y) - L_z(x,y)V(z) = 0
+\end{equation}
+The commutator vanishes because $L_z$ commutes with $z$, as can be observed due to the fact that equation 10 has no dependence on $z$, and $V$ is a function of $z$ only. This means that $V$ and $L_z$ share a common set of eigenfunctions, and we may use the eigenfunctions of $L_z$ to determine the matrix elements of $V$ between states with different eigenvalues of $L_z$. \\
+$V$ in spherical coordinates is:
+\begin{equation}
+  V = -\sqrt{\alpha} E r \cos \theta
+\end{equation}
+The matrix elements of $V$ between states with different eigenvalues of $L_z$ are:
+\begin{equation}
+  \bra{2n_{m_l}}V\ket{2n_{m_l'}} = -\sqrt{\alpha} E \bra{2n_{m_l}}r \cos \theta\ket{2n_{m_l'}}
+\end{equation}
+We will create a matrix in this basis of states for the perturbation $V$:
+\begin{equation}
+  \begin{bmatrix}
+    \bra{2s_{0}}V\ket{2s_{0}} & \bra{2s_{0}}V\ket{2p_{1}} & \bra{2s_{0}}V\ket{2p_{0}} & \bra{2s_{0}}V\ket{2p_{-1}} \\
+    \bra{2p_{1}}V\ket{2s_{0}} & \bra{2p_{1}}V\ket{2p_{1}} & \bra{2p_{1}}V\ket{2p_{0}} & \bra{2p_{1}}V\ket{2p_{-1}} \\
+    \bra{2p_{0}}V\ket{2s_{0}} & \bra{2p_{0}}V\ket{2p_{1}} & \bra{2p_{0}}V\ket{2p_{0}} & \bra{2p_{0}}V\ket{2p_{-1}} \\
+    \bra{2p_{-1}}V\ket{2s_{0}} & \bra{2p_{-1}}V\ket{2p_{1}} & \bra{2p_{-1}}V\ket{2p_{0}} & \bra{2p_{-1}}V\ket{2p_{-1}}
+  \end{bmatrix}
+\end{equation}
+The perturbation has no dependence on the azimuthal angle $\phi$, so it cannot connect states with different $m_l$ values. In addition, the diagonal matrix elements vanish because the perturbation is an operator with odd parity, and the angular functions for the diagonal elements combine to form a function with even parity, and so the integral will be zero. Therefore, we can simplify to:
+\begin{equation}
+  \begin{bmatrix}
+    0 & 0 & \bra{2s_{0}}V\ket{2p_{0}} & 0 \\
+    0 & 0 & 0 & 0 \\
+    \bra{2p_{0}}V\ket{2s_{0}} & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
 \end{equation}
 \subsection{}
 (b) You should have found a "selection rule" which simplifies the problem. What is the degeneracy that needs to be addressed in the problem now that you have made this calculation?
+\subsubsection{}
+The selection rule that I found is 2 pronged: the $m_l$ values must be the same and the $l$ values must differ by one. With these selection rules in mind, the degeneracy that needs to be addressed is only the four states that have the same $m_l$ value, but different $l$ values. This is the $n = 2$ level, which is four-fold degenerate, but only two-fold degenerate when we consider the selection rules.
 
 (c) Using the invariance of the hydrogen atom Hamiltonian under parity, write down the remaining matrix elements of $V$ which need to be determined, and compute their values.
+\subsubsection{}
+The remaining matrix elements are:
+\begin{equation}
+  \begin{bmatrix}
+    0 & 0 & \bra{2s_{0}}V\ket{2p_{0}} & 0 \\
+    0 & 0 & 0 & 0 \\
+    \bra{2p_{0}}V\ket{2s_{0}} & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{equation}
+Using SymPy, I found that:
+\begin{equation}
+  \bra{2s_{0}}V\ket{2p_{0}} = \bra{2p_{0}}V\ket{2s_{0}} = 3Ea_0 \sqrt{\alpha }
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, cos, integrate, pi, sqrt, exp, oo, conjugate, sin
+from sympy.abc import r, theta, phi
+
+# Define constants
+a0, E, alpha = symbols('a0 E alpha', real=True, positive=True)
+
+# Define the wave functions
+psi_200 = 1/sqrt(4*pi) * 1/(2*sqrt(2)) * 1/a0**(3/2) * (2 - r/a0) * exp(-r/(2*a0))
+psi_210 = sqrt(3/(4*pi)) * cos(theta) * 1/(4*sqrt(6)) * 1/a0**(3/2) * 2 * (r/a0) * exp(-r/(2*a0))
+
+# Define the perturbing potential V in spherical coordinates
+V = -sqrt(alpha) * E * r * cos(theta)
+
+# Function to calculate the matrix element
+def matrix_element(psi1, psi2, V):
+    integrand = conjugate(psi1) * V * psi2 * r**2 * sin(theta)
+    return integrate(integrand, (r, 0, oo), (theta, 0, pi), (phi, 0, 2*pi))
+
+# Compute the matrix elements
+element_200_210 = matrix_element(psi_200, psi_210, V)
+element_210_200 = matrix_element(psi_210, psi_200, V)
+
+element_200_210, element_210_200
+
+
+\end{lstlisting}
 
 Hydrogenic wave functions you might need are:
 
@@ -208,6 +341,61 @@ I_{k} \equiv \int_{0}^{\infty} x^{k} e^{-x} d x, \quad k \geq 0
 $$
 
 (d) Now complete your degenerate perturbation theory calculation to determine the splitting of the states in the applied electric field. Calculate numerical splittings (in eV) for an applied field of $100 \mathrm{kV} / \mathrm{cm}$. Also, estimate the "typical" electric field felt by the electron, due to the nucleus, in a hydrogen atom. Was the use of perturbation theory reasonable for this problem?
+\subsubsection{}
+considering that $\alpha = \frac{e^2}{4\pi\epsilon_0}$ and $a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_e e^2}$, my script gives:
+\begin{equation}
+  \bra{2s_{0}}V\ket{2p_{0}} = \bra{2p_{0}}V\ket{2s_{0}} = 0.0151 eV
+\end{equation}
+my estimate of the typical electric field told by the electron, due to the nucleus, in the hydrogen atom is:
+\begin{equation}
+  E = \frac{Ze}{4\pi\epsilon_0 r^2} = \frac{e}{4\pi\epsilon_0 a_0} = 5.142 \times 10^{11} V/m = 8.23 \times 10^{-10} eV/cm
+\end{equation}
+Countermine that the electric field acts over the distance of a Bohr radius, we have:
+\begin{equation}
+  \Delta E = \frac{e}{4\pi\epsilon_0 a_0} a_0 = 8.23 \times 10^{-10} eV/cm \times 5.29 \times 10^{-9} cm = 4.35 \times 10^{-18} eV
+\end{equation}
+This is much smaller than the splitting of the states in the applied electric field, so the use of perturbation theory was not reasonable for this problem.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, pi, sqrt, exp, integrate, sin, conjugate, oo, cos, N
+
+# Define physical constants
+e = 1.602e-19  # Elementary charge in Coulombs
+epsilon_0 = 8.854e-12  # Permittivity of free space in F/m
+a0 = 5.29177210903e-11  # Bohr radius in meters
+
+# Define symbols for the problem
+r, theta, phi, E, alpha = symbols('r theta phi E alpha', positive=True, real=True)
+
+# Define the wave functions for 2p0 and 2s0 states
+# 2s0 state
+psi_200 = 1/sqrt(4*pi) * 1/(2*sqrt(2)) * 1/a0**(3/2) * (2 - r/a0) * exp(-r/(2*a0))
+# 2p0 state
+psi_210 = sqrt(3/(4*pi)) * cos(theta) * 1/(4*sqrt(6)) * 1/a0**(3/2) * 2 * (r/a0) * exp(-r/(2*a0))
+
+# Define the perturbing potential V in spherical coordinates
+alpha_value = e**2 / (4 * pi * epsilon_0)  # Value of alpha for hydrogen atom
+V = -sqrt(alpha_value) * E * r * cos(theta)
+
+# Function to calculate the matrix element
+def matrix_element(psi1, psi2, V):
+    integrand = conjugate(psi1) * V * psi2 * r**2 * sin(theta)
+    return integrate(integrand, (r, 0, oo), (theta, 0, pi), (phi, 0, 2*pi))
+
+# Define the electric field (100 kV/cm in SI units)
+E_field_SI = 100e3 / 100  # 100 kV/cm in V/m
+
+# Calculate the matrix elements for the given electric field
+element_200_210 = N(matrix_element(psi_200, psi_210, V.subs(E, E_field_SI)))
+element_210_200 = N(matrix_element(psi_210, psi_200, V.subs(E, E_field_SI)))
+
+# Convert energy shifts from Joules to eV
+J_to_eV = 1 / (1.602e-19)  # Conversion factor from Joules to eV
+energy_shift_200_210_eV = element_200_210 * J_to_eV
+energy_shift_210_200_eV = element_210_200 * J_to_eV
+
+element_200_210, element_210_200, energy_shift_200_210_eV, energy_shift_210_200_eV
 
 
+\end{lstlisting}
 \end{document}

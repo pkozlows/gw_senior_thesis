@@ -154,36 +154,30 @@ This integral is:
 \end{equation}
 Now, the perturbation doesn't have any angular dependence, so we can integrate those out:
 \begin{equation}
-  = 4 \pi \int_{0}^{\infty} \psi_{n l m}^{*}(-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}) \psi_{n l m} r^{2} d r
+  = 4 \pi \int_{0}^{\infty} R_{nl}(r)^{*}(-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}) R_{nl}(r) r^{2} d r
+\end{equation}
+We also notice that the perturbation is only non zero inside of the nucleus and also the radial wave functions don't change much in this interval:
+\begin{equation}
+  = 4 \pi R_{nl}(0)^2 \int_{0}^{\rho}(-\frac{Ze^2}{4\pi\epsilon_0 r} - -\frac{Ze(-r^2 + \rho^2)}{8\pi\epsilon_0\rho^3}) r^{2} d r
+\end{equation}
+For the integral, SymPy gives:
+\begin{equation}
+  = 4 \pi R_{nl}(0)^2 \left(-\frac{Ze^2\rho^2}{8\pi\epsilon_0} + \frac{Ze\rho^2}{60\pi\epsilon_0} \right)
 \end{equation}
 
 (c) Thus, you have estimated the first order correction to the energy levels due to the finite nuclear size. What do you obtain for states with $l>0$ ? What do you obtain for $s$-wave states? Do you need to worry about degeneracy of energy levels? Why or why not?
 \subsection{}
-I have this script:
-% Inline Python code in the document
-\begin{lstlisting}[language=Python]
-from sympy import symbols, factorial, exp, Rational
-from sympy.functions.special.polynomials import assoc_laguerre
-from sympy.abc import n, l, r, Z
+For $l > 0$, we have:
+\begin{equation}
+  R_{nl}(0) = 0
+\end{equation}
+because of the $\frac{2 Z r}{n a_{0}}$ term. This can also be justified from a chemical intuition knowing that the $l > 0$ states have a node at the origin. For $s$-wave states, we have:
+\begin{equation}
+  R_{nl}(0) = \left(\frac{2 Z}{n a_{0}}\right)^{3 / 2} \sqrt{\frac{(n-1) !}{2 nn !}} L_{n-1}^{1}\left(0\right)
+\end{equation}
+I don't have to worry about the gender icy of the energy levels, because the radial wave functions are different for different $n$ values, so the energy levels are not degenerate.
 
-# Define the symbols
-a0 = symbols('a_0')  # Bohr radius
-
-# Define the associated Laguerre polynomial function using sympy's built-in function
-def laguerre_poly(n, l, z):
-    return assoc_laguerre(n-l-1, 2*l+1, z)
-
-# Define the radial wave function for hydrogen
-def radial_wave_function(n, l, r):
-    pre_factor = (2*Z/n/a0)**Rational(3,2) * ((factorial(n-l-1) / (2*n*factorial(n+l)))**0.5)
-    radial_factor = (2*Z*r/n/a0)**l * exp(-Z*r/n/a0)
-    laguerre_factor = laguerre_poly(n, l, 2*Z*r/a0/n)
-    return pre_factor * radial_factor * laguerre_factor
-
-# Example usage
-radial_wave_function(n, l, r)
-
-\end{lstlisting}
+% \end{lstlisting}
 
 We may use here that the one-electron wave function is (letting $a_{0} \rightarrow a_{0} / Z$ from our result for hydrogen):
 

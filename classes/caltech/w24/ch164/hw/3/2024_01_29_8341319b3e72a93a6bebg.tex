@@ -43,7 +43,7 @@ Determine the critical point density and temperature for a fluid obeying the van
 (c) (9 pts.) Focus attention on the subvolume of size $L^{3}$ in the fluid. Suppose $L^{3}$ is 100 times the space filling volume of a molecule - that is, $L^{3} \approx 100 b$. For this region in the fluid, compute the relative size of the density fluctuations when $\rho=\rho_{c}$, and the temperature is $10 \%$ above the critical temperature. Repeat this calculation for temperatures $0.1 \%$ and $0.001 \%$ from the critical temperature.
 
 (d) (8 pts.) Light that we can observe with our eyes has wavelengths of order of $1000 \AA$. Fluctuations in density cause changes in the index of refraction, and those changes produce scattering of light. Therefore, if a region of fluid $1000 \AA$ across contains significant density fluctuations, we will visually observe these fluctuations. On the basis of the type of calculation performed in part (b), determine how close to the critical point a system must be before critical fluctuations become optically observable (that is, when the quantity $\left\langle(\delta \rho)^{2}\right\rangle^{1 / 2} / \rho$ is of order one). The phenomenon of long wavelength density fluctuations in a fluid approaching the critical point is known as opalescence. (Note: You will need to estimate the size of $b$, and to do this you should note that the typical diameter of a small molecule is around $5 \AA$ ).
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item (i) (15 points) Consider a perfect crystal originally comprised of $N$ molecules on an equal number of lattice sites. The creation of vacancies in the lattice (or equivalently adding "surface" sites) is a thermally activated process with Boltzmann factor, $e^{-w / k T}$ where $w$ is the energy required to bring each of the molecules to the surface.
@@ -60,9 +60,16 @@ Considering the thermodynamic limit and that $w$ is several $k T$, find the maxi
 $$
 \frac{n}{N+n}=e^{-w / k T}
 $$
-
+\subsection{}
+Each vacancy might be accompanied by an energy $\omega$ (the energy of a surface site) and the total energy of the microstate would, therefore, be $n\times \omega$.
+As usual the Boltzmann factor is $e^{-\beta E}$, where $\beta=1/kT$ and $E=n\omega$.
+Considering how canonical ensemble partition function is defined, we have:
+\begin{equation}
+  Q(N,T)=\sum_{n=0}^{\infty}\Omega (N,n)e^{-\beta E}
+\end{equation}
+where $\Omega (N,n)$ is the number of microstates with $N$ molecules and $n$ vacancies.
 (ii) (15 pts.) Evaluate the above full partition function and then obtain $\langle n\rangle$ by suitable differentiation of $\log Q$. (Hint: Think of $Q(N, V, T)$ as a power series $Q(N, V, T)=\sum_{n=0}^{\infty} a_{n} z^{n}$.) Are the results for $\langle n\rangle$ from the maximum term and the full partition function the same?
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item (30 pts.) Show that the entropy for the Bose-Einstein and Fermi-Dirac gas can be written in the form
@@ -73,6 +80,12 @@ S=-k \sum_{\alpha=1}^{\infty}\left[\left\langle n_{\alpha}\right\rangle \ln \lef
 $$
 
 where $\left\langle n_{\alpha}\right\rangle$ is the average occupation number for state $\alpha$.
+\subsection{}
+The Bose-Einstein and Fermi-Dirac distributions are given by:
+\begin{equation}
+  \left\langle n_{\alpha}\right\rangle=\frac{1}{e^{\beta\left(\epsilon_{\alpha}-\mu\right)}\mp 1}
+\end{equation}
+where the upper sign is for Bose-Einstein and the lower sign is for Fermi-Dirac.
 
 
 \end{document}

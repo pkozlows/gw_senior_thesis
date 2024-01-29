@@ -118,23 +118,29 @@ $$
 
 gives acceptable wave functions. "Acceptable" here includes that the probability to find a particle in the box must be constant. Are there other acceptable choices?
 \subsection{}
-The Hamiltonian of a free particle in one dimension is:
+We may restate the condition of no net floods into or out of the box as:
 \begin{equation}
-  H=\frac{p^{2}}{2 m}
+  0=\pdv{t}\int_{-L / 2}^{L / 2} \abs{\psi(x, t)}^{2} \dd{x}
 \end{equation}
-where $p$ is the momentum operator. The eigenstates of $H$ are plane waves:
+That is, the probability to find a particle in the box must not change with time.
+Now, if we have some acceptable wave function $\psi(x)$.
+And another acceptable function $\phi $:
 \begin{equation}
-  \psi_{p}(x)=\frac{1}{\sqrt{L}} e^{i p x}
+  \phi (x)=e^{\frac{i2\pi^2}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)
 \end{equation}
-We consider both:
+Any linear combination of $\psi(x)$ and $\phi(x)$ is also an acceptable wave function.
+So, we plug in the linear combination of $\psi(x)$ and $\phi(x)$ into the condition of no net floods into or out of the box:
 \begin{equation}
-  \psi_{p}(-L / 2)=\frac{1}{\sqrt{L}} e^{-i p L / 2} \rightarrow \psi'_{p}(-L / 2)=-\frac{i \sqrt{L}}{2} e^{-i p L / 2}
+  \begin{aligned}
+    0&=\pdv{t}\int_{-L / 2}^{L / 2} \abs{a\psi(x)+b\phi(x)}^{2} \dd{x}\\
+    &=\pdv{t}\int_{-L / 2}^{L / 2} \abs{a\psi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2} \abs{b\phi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2} a^*b\psi^*(x)\phi(x)+ab^*\psi(x)\phi^*(x) \dd{x}\\
+\end{aligned}
 \end{equation}
-and
+We know the first two terms are zero, as $\psi(x)$ and $\phi(x)$ are acceptable wave functions. So, we are left with:
 \begin{equation}
-  \psi_{p}(L / 2)=\frac{1}{\sqrt{L}} e^{i p L / 2} \rightarrow \psi'_{p}(L / 2)=\frac{i \sqrt{L}}{2} e^{i p L / 2}
+  0=\pdv{t}\left[\int_{-L / 2}^{L / 2} a^*b\psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} ab^*\psi(x)\phi^*(x) \dd{x}\right]
 \end{equation}
-
+For the first integral, choosing $u = a^*\psi^*(x) \rightarrow \dd{u} = a^*\psi^{\prime *}(x) \dd{x}$ and $\dd{v} = b\phi(x) \rightarrow v = b\int \phi(x) \dd{x} = -\frac{bL}{2\pi}\cos\left(\frac{2\pi x}{L}\right)$, we have:
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{15}

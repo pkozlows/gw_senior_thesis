@@ -10,7 +10,7 @@ from pyscf import scf
 
 
 # implement the iterative procedure to do g0w0
-def g0w0(orbital_number, fock_mo, real_corr_se, mf, tddft):
+def g0w0(orbital_number, fock_mo, real_corr_se, corr_mf, tddft):
     '''Calculates the G0W0 correction for a given orbital number, fock matrix in the atomic orbital basis, and real part of the correlation self energy.'''
     # convert the fock matrix to the molecular orbital basis
 
@@ -24,7 +24,7 @@ def g0w0(orbital_number, fock_mo, real_corr_se, mf, tddft):
     tol = 1e-9
     while True:
         # Update the self energy using the current guess as the frequency
-        new_qpe = fock_element + real_corr_se(qpe, tddft, mf)[orbital_number]
+        new_qpe = fock_element + real_corr_se(qpe, tddft, corr_mf)[orbital_number]
 
         # Check if the convergence criterion is met
         if np.abs(new_qpe - qpe) <= tol:

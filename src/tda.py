@@ -71,75 +71,58 @@ def my_drpa(mf):
     # initialize the B matrix
     B = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
     # add the common part to boots
-    A += 2 * np.einsum('iajb->iajb', eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
-    B += 2 * np.einsum('iajb->iajb', eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:])
+    A += 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:]
+    # Add the energy difference part to A
+    for i in range(n_occupied):
+        for a in range(n_virtual):
+            A[i, a, i, a] += (orbital_energies[n_occupied+a] - orbital_energies[i])
+    B += 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:]
+
     # re shape both
     reshaped_a = A.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
     reshaped_b = B.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
-
-    # add the unique part to A
-    # initialize the E_ai matrix
-    E_ai = np.zeros((n_virtual, n_occupied))
-    virtual_energies = orbital_energies[n_occupied:]
-    occupied_energies = orbital_energies[:n_occupied]
-    E_ai = virtual_energies - occupied_energies[:, None]
-    reshaped_E_ai = E_ai.reshape(n_occupied*n_virtual)
-    reshaped_a += np.diag(reshaped_E_ai)
 
     # Stack the matrices to create the combined matrix
     combined_matrix = np.vstack((np.hstack((reshaped_a, reshaped_b)), np.hstack((-reshaped_b, -reshaped_a))))
     omega, R = np.linalg.eigh(combined_matrix)
 
-    # I only care about the positive eigenvalues and the corresponding eigenvectors
-    omega = omega[omega > 0]
-    R = R[:, omega.shape[0]:]
-    return omega, R
-    # def compare_omega(omega):
-    #     # Sort the omega array
-    #     omega_sorted = np.sort(omega)
+    # Extract positive and negative eigenvalue indices
+    positive_indices = np.where(omega > 0)[0]
+    negative_indices = np.where(omega < 0)[0]
 
-    #     # Split into positive and negative parts
-    #     positives = omega_sorted[omega_sorted > 0]
-    #     negatives = omega_sorted[omega_sorted < 0]
+    # Make sure the lengths are equal
+    assert len(positive_indices) == len(negative_indices), "Number of positive and negative eigenvalues do not match."
 
-    #     # Find closest matches and calculate differences
-    #     matches = []
-    #     for pos in positives:
-    #         closest_neg = min(negatives, key=lambda x: abs(x + pos))
-    #         difference = abs(pos + closest_neg)
-    #         matches.append((pos, closest_neg, difference))
+    # Extract the actual eigenvalues using the indices
+    positive_eigenvalues = omega[positive_indices]
+    negative_eigenvalues = omega[negative_indices]
 
-    #     # Display the results
-    #     print(f"{'Positive':>10} {'Negative':>10} {'Difference':>10}")
-    #     for pos, neg, diff in matches:
-    #         print(f"{pos:>10.5f} {neg:>10.5f} {diff:>10.5f}")
+    # Check if the absolute values of the positive eigenvalues are identical to the absolute values of the negative ones
+    # Sort both arrays to ensure the comparison is order-independent
+    assert np.allclose(np.sort(np.abs(positive_eigenvalues)), np.sort(np.abs(negative_eigenvalues))), "Absolute values of positive and negative eigenvalues do not match."
 
-    #     # Summary statistics
-    #     differences = [abs(p[0] + p[1]) for p in matches]
-    #     print("\nSummary Statistics:")
-    #     print(f"Average Difference: {np.mean(differences):.5f}")
-    #     print(f"Maximum Difference: {np.max(differences):.5f}")
-    #     return
+    # Select positive and negative eigenvalues
+    omega_positive = omega[positive_indices]
+    omega_negative = omega[negative_indices]
 
-    # compare_omega(omega)
-    def keep_unique_positive(omega):
-        # Keep only positive values
-        positive_omega = omega[omega > 0]
+    # Select corresponding eigenvectors
+    R_positive = R[:, positive_indices]
 
-        # Optionally, sort and ensure uniqueness
-        unique_positive_omega = np.unique(np.sort(positive_omega))
+    # Extract the positive and negative parts
+    X_u = R_positive[:95, :]
+    Y_u = R_positive[95:, :]
 
-        return unique_positive_omega
+    # Add the positive and negative parts pairwise
+    combined_representation = X_u + Y_u
 
+    # now that us compute the V matrix
+    W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
+    # now that us reshape it into a form we want
+    W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
+    V_pqu = np.einsum('pqi,in->pqn', W_pqu, combined_representation)
 
-
-                
-
-
-
-    return keep_unique_positive(omega), R
-
-
+    return omega_positive, V_pqu
+       
 
 def real_corr_se(freq, tddft, mf):
     '''
@@ -156,7 +139,7 @@ def real_corr_se(freq, tddft, mf):
     - correlation_energies: numpy array, a matrix of correlation energies for each orbital at the given frequency (only the diagonal is considered)
     '''
 
-    # I want to get basic information like the number of orbitals, occupied orbitals, and virtual orbitals
+# I want to get basic information like the number of orbitals, occupied orbitals, and virtual orbitals
     n_orbitals = mf.mol.nao_nr()
     n_occupied = mf.mol.nelectron//2
     n_virtual = n_orbitals - n_occupied

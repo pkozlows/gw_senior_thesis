@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+\author{Patryk Kozlowski}
+\title{Fock Routine}
+\date{\today}
+\begin{document}
+\maketitle
+This is probably a simple question, but I am not understanding why my Fock construction doesn't seem to match that of PySCF. My test case for the $G_0W_0$ energy matches that of PySCF when I use the dTDA for my TDDFT and a Fock matrix @HF density, which I assume means the density matrix here. Are their instances where this means something different? One you say to evaluate something at the HF/DFT density, is that synonymous with saying to use the density matrix for that mean field object? What I am doing seems correct, but when I compare it to
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+mf_hf.get_fock(dm=mf_dft.make_rdm1())
+\end{lstlisting}
+ I get different results. I assume this is why I am getting different results for the $G_0W_0$ energy.
+I am using the following code to construct my Fock matrix:
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def fock_dft(mf):
+    '''Calculates the HF fock matrix using the DFT electron density in AO basis for a given set of molecular orbitals and occupations.
+
+    Parameters:
+    mf (object): The object representing the mean-field calculation.
+
+    Returns:
+    mo_fock (ndarray): The Fock matrix in the molecular orbital basis.
+    '''
+    # make the common variables
+    n_orbitals = mf.mol.nao_nr()
+
+    # initialize the ao_fock matrix in the atomic orbital basis
+    ao_fock = np.zeros((n_orbitals, n_orbitals))
+
+    # get the core hamiltonian
+    h_core = mf.get_hcore()
+
+    # get the coulumb term
+    coulumb_matrix = np.zeros((n_orbitals, n_orbitals))
+    coulumb_matrix += np.einsum('rs,pqrs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
+
+    # get the exchange term
+    exchange_matrix = np.zeros((n_orbitals, n_orbitals))
+    exchange_matrix += np.einsum('rs,prqs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
+
+    # add the terms
+    ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
+
+    # convert the fock matrix to the molecular orbital basis
+    mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
+
+    return mo_fock
+\end{lstlisting}
+Maybe this is a simple question, but when you say that the HF Fock matrix is diagonal in the energies in the canonical representation, what does this mean? I am familiar with what the term canonical means in second quantization, that is, the appropriate ordering of orbitals. I don't know how to think about this in first quantization?
+\end{document}

@@ -1,13 +1,20 @@
 import pyscf
 from pyscf.dft import rks
 
-def setup_molecule():
-    '''Sets up the water molecule.'''
-    molecule = pyscf.M(
-    atom = 'O  0 0 0; H  0 0.758602 0.504284; H  0 0.758602 -0.504284',
-    basis = 'ccpvdz',
-    symmetry = True,
-)
+def setup_molecule(name):
+    '''Sets up the molecule.'''
+    if name == 'water':
+        molecule = pyscf.M(
+        atom = 'O  0 0 0; H  0 0.758602 0.504284; H  0 0.758602 -0.504284',
+        basis = 'ccpvdz',
+        symmetry = True,
+    )
+    if name == 'h2':
+        molecule = pyscf.M(
+        atom = 'H  0 0 0; H  0 0 0.735',
+        basis = 'ccpvdz',
+        symmetry = True,
+    )
     return molecule
 
 def calculate_mean_field(molecule, method):

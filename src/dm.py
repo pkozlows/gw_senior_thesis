@@ -17,64 +17,58 @@ def lin_gw_dm(td, mf):
     omega, V_pqn = td
 
     dm = np.zeros((n_orbitals, n_orbitals))
-    # Calculate the denominator for the GW self-energy term
-    # Assuming omega_s is an array of frequencies corresponding to each 's'
-    denominator = orbital_energies[:, None] - orbital_energies[None, :] - omega[:, None, None]
 
-    occupied_and_their_cheese = orbital_energies[:, None]
-
-    # Calculate the numerator using V_pqn, which seems to be your transition matrix
-    # You need to make sure that the indices correspond to the i, a, and s indices in the equation
-    numerator = np.einsum('ias,jas->ij', V_pqn[:n_occupied, n_occupied:, :], V_pqn[:n_occupied, n_occupied:, :])
-
-    # Now you need to divide the numerator by the denominator
-    # This involves broadcasting the denominator to match the shape of the numerator
-    gw_correction = numerator / denominator
-
+    # started with the occupied block
     # Create the delta matrix
-    delta_matrix = np.eye(n_orbitals)
-
-    # Combine the delta matrix with the GW correction
-    # Subtract the GW correction from the delta matrix
-    D_GW_ij = delta_matrix[:n_occupied, :n_occupied] - gw_correction
-
-
-    # start a loop over the occupied and virtual orbitals
-
-    occ_num = np.einsum('ias,jas->ij', V_pqn[:n_occupied, n_occupied:, :], V_pqn[:n_occupied, n_occupied:, :])
-
-    virt_num = np.einsum('ias,ibs->ab', V_pqn[n_occupied:, :n_occupied, :], V_pqn[n_occupied:, :n_occupied, :])
-
-    for p in range(n_orbitals):
-        for q in range(n_orbitals):
-            # check if they are both occupied
-            if p < n_occupied and q < n_occupied:
-                # if so, add the delta function
-                dm[p, q] += 1
-                # do the sum
-                # start with the numerator
-                # now the denominator
-                numerator = occ_num[p, q]
-            if p >= n_occupied and q >= n_occupied:
-                dm[p, q] += 1
-            if p < n_occupied and q >= n_occupied or p >= n_occupied and q < n_occupied:
-                prefactor = 1/(orbital_energies[p] - orbital_energies[q])
-                
-            
-        
-
-    # let's start with the occupied block
-    # first add the delta function
     delta_matrix = np.eye(n_occupied)
-    dm[:n_occupied, :n_occupied] += delta_matrix
-    # prepare for einsum
-    # convert the numerator of the excitation vectors into a singular object
-    occ_num = np.einsum('ias,jas->ij', R[:n_occupied, n_occupied:, :], R[:n_occupied, n_occupied:, :])
-    occ_denom = ()
-    return
+    # create the part in the summation
+    occ_num = np.einsum('ias,jas->ijas', V_pqn[:n_occupied, n_occupied:, :], V_pqn[:n_occupied, n_occupied:, :])
+    occ_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
+    combined_occ_denom = np.einsum('ias,jas->ijas', occ_denom, occ_denom)
+    occ_block = (-1)*np.einsum('ijas,ijas->ij', occ_num, 1/(combined_occ_denom))
+    # add the delta matrix
+    occ_block += delta_matrix
 
-mol = setup_molecule()
-mf, n_orbitals, n_occupied, n_virtual, orbital_energies = calculate_mean_field(mol, 'hf')
+    # now the virtual block
+    virt_num = np.einsum('ais,bis->iabs', V_pqn[n_occupied:, :n_occupied, :], V_pqn[n_occupied:, :n_occupied, :])
+    virt_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
+    combined_virt_denom = np.einsum('ias,ibs->iabs', virt_denom, virt_denom)
+    virt_block = (-1)*np.einsum('iabs,iabs->ab', virt_num, 1/(combined_virt_denom))
 
+    # now the mixed block
+    first_num = np.einsum('ias,bas->iabs', V_pqn[:n_occupied, n_occupied:, :], V_pqn[n_occupied:, n_occupied:, :])
+    first_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
+    first_sum = np.einsum('iabs,ias->ib', first_num, 1/first_denom)
+
+    second_num = np.einsum('ijs,bjs->ijbs', V_pqn[:n_occupied, :n_occupied, :], V_pqn[n_occupied:, :n_occupied, :])
+    second_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
+    second_sum = np.einsum('ijbs,jbs->ib', second_num, 1/second_denom)
+
+    mixed_block = (1/(orbital_energies[:n_occupied, None] - orbital_energies[None, n_occupied:]))*(first_sum - second_sum)
+
+    # stack the blocks to form the density matrix
+    dm[:n_occupied, :n_occupied] += occ_block
+    dm[n_occupied:, n_occupied:] += virt_block
+    dm[:n_occupied, n_occupied:] += mixed_block
+    dm[n_occupied:, :n_occupied] += mixed_block.T
+
+    return dm
+
+mol = setup_molecule('h2')
+mf = calculate_mean_field(mol, 'hf')
 td = my_dtda(mf)
-lin_gw_dm(td, mf)
+dm = lin_gw_dm(td, mf)
+# diagonalize the density matrix
+e, v = np.linalg.eigh(dm)
+print(v.shape)
+# ;rint the natural orbital occupation numbers
+print(e)
+# front the sum of the natural or brutal occupation numbers
+print(np.sum(e))
+# make a rdm_1 using the pyscf implementation and diagonalize it for the smae mf
+rdm_1 = mf.make_rdm1()
+e, v = np.linalg.eigh(rdm_1)
+print(e)
+print(np.sum(e))
+# get the trace of this matrix
+print(np.trace(rdm_1))

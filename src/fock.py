@@ -12,7 +12,7 @@ def simple_fock(mf):
     # get the orbital energies
     orbital_energies = mf.mo_energy
     
-    # initialize the fock matrix
+    # get the fock matrix
     fock = np.zeros((n_orbitals, n_orbitals))
     fock += np.diag(orbital_energies)
     return fock
@@ -26,28 +26,29 @@ def fock_dft(mf):
     Returns:
     mo_fock (ndarray): The Fock matrix in the molecular orbital basis.
     '''
-
+    # make the common variables
     n_orbitals = mf.mol.nao_nr()
-    n_occupied = mf.mol.nelectron//2
-    n_virtual = n_orbitals - n_occupied
-    # get the orbital energies
-    orbital_energies = mf.mo_energy
 
     # initialize the ao_fock matrix in the atomic orbital basis
     ao_fock = np.zeros((n_orbitals, n_orbitals))
+
+    # get the core hamiltonian
     h_core = mf.get_hcore()
-    # in nationalize the codon matrix
+
+    # get the coulumb term
     coulumb_matrix = np.zeros((n_orbitals, n_orbitals))
     coulumb_matrix += np.einsum('rs,pqrs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
-    # initialize the exchange term
+
+    # get the exchange term
     exchange_matrix = np.zeros((n_orbitals, n_orbitals))
     exchange_matrix += np.einsum('rs,prqs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
+
     # add the terms
     ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
+
     # convert the fock matrix to the molecular orbital basis
     mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
 
-    
     return mo_fock
 
 def pyscf_fock_dft(mf):

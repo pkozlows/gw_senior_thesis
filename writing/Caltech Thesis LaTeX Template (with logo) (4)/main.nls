@@ -1,0 +1,10 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{Galaxy}]\begingroup A system of stars independent from all other systems\nomeqref {1.0}\nompageref{1}
+\nomgroup{O}
+  \item [{$a,b,c,d$}]\begingroup Virtual\nomeqref {1.0}\nompageref{2}
+  \item [{$i,j,k,l$}]\begingroup Occupied\nomeqref {1.0}\nompageref{2}
+  \item [{$p,q,r,s$}]\begingroup General\nomeqref {1.0}\nompageref{2}
+
+\end{thenomenclature}

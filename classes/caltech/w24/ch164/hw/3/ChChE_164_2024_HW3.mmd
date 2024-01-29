@@ -1,0 +1,24 @@
+**Ch/ChE 164 Winter 2024**
+
+**Homework Problem Set #3**
+
+Due Date: Thursday Feb 1, 2024 @ 11:59pm
+
+**1.** (from Chandler 3.22)
+
+(14 pts.) Consider a region within a fluid described by the van der Waals equation
+
+\[\beta p=\frac{\rho}{1-b\rho}-\beta a\rho^{2}, \tag{1}\]
+
+where \(\rho=\langle N\rangle/V\). The volume of the region is \(L^{3}\). Due to the spontaneous fluctuations in the system, the instantaneous value of the density in that region can differ from its average by an amount \(\delta\rho\). Determine, as a function of \(\beta\), \(\rho\), \(a\), \(b\), and \(L^{3}\), the typical relative size of these fluctuations; that is, evaluate \(\langle(\delta\rho)^{2}\rangle^{1/2}/\rho\). Demonstrate that when one considers observations of a macroscopic system (_i.e._, the size of the region becomes macroscopic, \(L^{3}\rightarrow\infty\)) the relative fluctuations become negligible.
+2. _(9 pts.)_ A fluid is at its "critical point" when \[\left(\frac{\partial\beta p}{\partial\rho}\right)_{\beta}=\left(\frac{ \partial^{2}\beta p}{\partial\rho^{2}}\right)_{\beta}=0.\] (2) Determine the critical point density and temperature for a fluid obeying the van der Waals equation. That is compute \(\beta_{c}\) and \(\rho_{c}\) as a function of \(a\) and \(b\).
+3. _(9 pts.)_ Focus attention on the subvolume of size \(L^{3}\) in the fluid. Suppose \(L^{3}\) is 100 times the space filling volume of a molecule--that is, \(L^{3}\approx 100b\). For this region in the fluid, compute the relative size of the density fluctuations when \(\rho=\rho_{c}\), and the temperature is 10% above the critical temperature. Repeat this calculation for temperatures 0.1% and 0.001% from the critical temperature.
+4. _(8 pts.)_ Light that we can observe with our eyes has wavelengths of order of 1000 A. Fluctuations in density cause changes in the index of refraction, and those changes produce scattering of light. Therefore, if a region of fluid 1000 A across contains significant density fluctuations, we will visually observe these fluctuations. On the basis of the type of calculation performed in part (b), determine how close to the critical point a system must be before critical fluctuations become optically observable (that is, when the quantity \(\langle(\delta\rho)^{2}\rangle^{1/2}/\rho\) is of order one). The phenomenon of long wavelength density fluctuations in a fluid approaching the critical point is known as opalescence. (Note: You will need to estimate the size of \(b\), and to do this you should note that the typical diameter of a small molecule is around 5 A).
+
+**2.**: (i) _(15 points)_ Consider a perfect crystal originally comprised of \(N\) molecules on an equal number of lattice sites. The creation of vacancies in the lattice (or equivalently adding "surface" sites) is a thermally activated process with Boltzmann factor, \(e^{-w/kT}\) where \(w\) is the energy required to bring each of the molecules to the surface.
+
+If \(n\) of these \(N\) molecules move to the surface and leave \(n\) vacant lattice sites, show that the partition function is well approximated by
+
+\[Q(N,T)=\sum_{n=0}^{\infty}\frac{(N+n)!}{n!N!}\,e^{-nw/kT},\]Considering the thermodynamic limit and that \(w\) is several \(kT\), find the maximal term in the above sum to show that \[\frac{n}{N+n}=e^{-w/kT}.\]
+2. _(15 pts.)_ Evaluate the above _full_ partition function and then obtain \(\langle n\rangle\) by suitable differentiation of \(\log Q\). (_Hint:_ Think of \(Q(N,V,T)\) as a power series \(Q(N,V,T)=\sum_{n=0}^{\infty}a_{n}z^{n}\).) Are the results for \(\langle n\rangle\) from the maximum term and the full partition function the same?
+3. _(30 pts.)_ Show that the entropy for the Bose-Einstein and Fermi-Dirac gas can be written in the form \[S=-k\sum_{\alpha=1}^{\infty}[\langle n_{\alpha}\rangle\ln\langle n_{\alpha} \rangle\mp(1\pm\langle n_{\alpha}\rangle)\ln\left(1\pm\langle n_{\alpha} \rangle\right)],\] where \(\langle n_{\alpha}\rangle\) is the average occupation number for state \(\alpha\).

@@ -58,7 +58,8 @@ Problem set number 3
 
 Due midnight Wednesday, January 24, 2024
 
-READING: Section 17.3 in Shankar on degenerate perturbation theory. Also sections 18.1 and 18.2 on time-dependent perturbation theory.
+READING: Section 17.3 in Shankar on degenerate perturbation theory. Also sections 18.1 and 18.2 on time-dependent perturbation theory.\\
+\emph{I have an extension for 2 days, so this is due on the 26th.}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{8}
@@ -70,9 +71,8 @@ H_{0}=\frac{p^{2}}{2 m}-\frac{e^{2}}{r}
 $$
 
 The kinetic energy term is non-relativistic - the actual kinetic energy will have relativistic corrections.
-\subsection{}
 (a) Obtain an expression for the next order relativistic (kinetic energy) correction to the energy spectrum of hydrogen. It is convenient to avoid taking multiple derivatives by using the unperturbed Schrödinger equation to eliminate them. Thus, write your expression in terms of the unperturbed energies and expectation values of $\frac{e^{2}}{r}$ and $\left(\frac{e^{2}}{r}\right)^{2}$. Do not actually do the integration over $r$ here, but reduce the problem to such integrals (which you may just write as expectation values). Make sure you understand all of your steps.
-\subsubsection{}
+\subsection{}
 If we want to take into account relativistic effects, the kinetic energy is:
 \begin{equation}
   T = \sqrt{p^2c^2 + m^2c^4} - mc^2 = \frac{p^2}{2m} - \frac{p^4}{8m^3c^2} + \cdots
@@ -91,11 +91,14 @@ It hubs to notice that:
 \end{equation}
 So we can get for the matrix element:
 \begin{equation}
-  E^{1}_T = -\frac{1}{2mc^{2}}  \left[ (E_{n}^{(0)})^{2}+e^4\left\langle\frac{1}{r^2}\right\rangle+2 E_{n}^{(0)}e^2\left\langle\frac{1}{r}\right\rangle\right]
+  E^{1}_T = -\frac{1}{2mc^{2}}  \left[ (E_0)^{2}+e^4\left\langle\frac{1}{r^2}\right\rangle+2 E_0e^2\left\langle\frac{1}{r}\right\rangle\right]
 \end{equation}
+
+(b) Now apply your formula to obtain the first-order relativistic kinetic energy correction to the ground state energy of hydrogen. Express your answer as a multiple of the unperturbed ground state energy, and also calculate the size of the correction in $\mathrm{eV}$.
+\subsection{}
 We know both:
 \begin{equation}
-  \left\langle\frac{1}{r}\right\rangle = -\frac{2E_{n}^{(0)}}{e^{2}}
+  \left\langle\frac{1}{r}\right\rangle = -\frac{2E_0}{e^{2}}
 \end{equation}
 and:
 \begin{equation}
@@ -103,10 +106,45 @@ and:
 \end{equation}
 So we get:
 \begin{equation}
-  E^{1}_T = -\frac{1}{2}m c^{2}\left(\frac{e^{2}}{4 \pi \epsilon_{0}}\right)^{4} \frac{1}{n^{3}\left(l+\frac{1}{2}\right)}
+  E^{1}_T = -\frac{1}{2mc^{2}}  \left[ (E_0)^{2}+e^4\frac{4E_{0}^{2}n}{l + 1 / 2}-4E_0e^2\frac{2E_0}{e^{2}}\right]
 \end{equation}
-\section{}
-(b) Now apply your formula to obtain the first-order relativistic kinetic energy correction to the ground state energy of hydrogen. Express your answer as a multiple of the unperturbed ground state energy, and also calculate the size of the correction in $\mathrm{eV}$.
+Factoring out the $E_0$ term, we get:
+\begin{equation}
+  E^{1}_T = - \frac{E_0^2}{2mc^2} \left[-3 + \frac{4n}{l + 1 / 2} \right]
+\end{equation}
+The value of $E_0$ for the ground state of hydrogen is:
+\begin{equation}
+  E_0 = -\frac{mc^2\alpha^2}{2n^2}
+\end{equation}
+where $\alpha$ is the fine structure constant:
+Substituting this in, we get for the ground state:
+\begin{equation}
+  E^{1}_T = \frac{mc^2\alpha^2}{8n^4} \left[3 - \frac{4n}{l + 1 / 2} \right]
+\end{equation}
+For the hydrogen ground state, we have $n=1$ and $l=0$, so:
+\begin{equation}
+  E_T^1 = -\frac{5mc^2\alpha^2}{8} 
+\end{equation}
+This give a first order correction to the energy of the ground state of hydrogen of:
+\begin{equation}
+  E^{1}_T = -0.0009067 eV
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Constants
+m_e = 9.109e-31  # Electron mass in kg
+c = 2.998e8      # Speed of light in m/s
+alpha = 1/137    # Fine structure constant
+eV = 1.602e-19   # Joules per electron volt
+
+# First-order relativistic correction (in Joules)
+E1_T_joules = - (5 * m_e * c**2 * alpha**4) / 8
+
+# Convert to electron volts
+E1_T_eV = E1_T_joules / eV
+E1_T_joules, E1_T_eV
+
+\end{lstlisting}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{9}
@@ -114,7 +152,7 @@ So we get:
 \end{enumerate}
 
 (a) What is the potential energy of the electron, assuming a one-electron atom? Use this to write down an expression for a potential as a perturbation to our point-like nucleus Hamiltonian.
-\subsubsection{}
+\subsection{}
 The volume of the sphere is given by:
 \begin{equation}
   V = \frac{4}{3} \pi \rho^3
@@ -164,7 +202,46 @@ For the integral, SymPy gives:
 \begin{equation}
   = 4 \pi R_{nl}(0)^2 \left(-\frac{Ze^2\rho^2}{8\pi\epsilon_0} + \frac{Ze\rho^2}{60\pi\epsilon_0} \right)
 \end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, pi, integrate
 
+# Defining the symbols
+r, rho, Z, e, epsilon_0, R_nl_0 = symbols('r rho Z e epsilon_0 R_nl_0')
+
+# Defining the integrand
+integrand = (-Z*e**2 / (4*pi*epsilon_0*r) - -Z*e*(-r**2 + rho**2) / (8*pi*epsilon_0*rho**3)) * r**2
+
+# Performing the integration
+integral_result = 4 * pi * R_nl_0**2 * integrate(integrand, (r, 0, rho))
+integral_result
+\end{lstlisting}
+Now, we knows that the radial wave function at $r=0$ is:
+\begin{equation}
+  R_{nl}(0) = \left(\frac{2 Z}{n a_{0}}\right)^{3 / 2} \sqrt{\frac{(n-1) !}{2 nn !}} L_{n-1}^{1}\left(0\right) = \left(\frac{2 Z}{n a_{0}}\right)^{3 / 2} \sqrt{\frac{1}{2n^2}}\binom{n}{n-1} = 2 \left(\frac{Z}{n a_{0}}\right)^{3 / 2}
+\end{equation}
+So we get for the matrix element:
+\begin{equation}
+  = 8 \pi  \left(\frac{Z}{n a_{0}}\right)^{3} \left(-\frac{Ze^2\rho^2}{8\pi\epsilon_0} + \frac{Ze\rho^2}{60\pi\epsilon_0} \right)
+\end{equation}
+We can simplify this to:
+\begin{equation}
+  = \frac{Z^{4} e \rho^{2} \cdot \left(2 - 15 e\right)}{15 a_{0}^{3} \epsilon_{0} n^{3}}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import pi, symbols, simplify, latex
+
+# Define symbols
+Z, n, a_0, e, rho, epsilon_0 = symbols('Z n a_0 e rho epsilon_0', real=True, positive=True)
+
+# The given expression to be simplified
+expression = 8 * pi * (Z / (n * a_0))**3 * (-Z * e**2 * rho**2 / (8 * pi * epsilon_0) + Z * e * rho**2 / (60 * pi * epsilon_0))
+
+# Simplify the expression
+simplified_expression = simplify(expression)
+print(latex(simplified_expression))
+\end{lstlisting}
 (c) Thus, you have estimated the first order correction to the energy levels due to the finite nuclear size. What do you obtain for states with $l>0$ ? What do you obtain for $s$-wave states? Do you need to worry about degeneracy of energy levels? Why or why not?
 \subsection{}
 For $l > 0$, we have:
@@ -207,7 +284,7 @@ $$
 $$
 
 This corresponds to a different normalization for the associated Laguerre polynomials [referred to as the "physicist convention" in Wikipedia (\href{https://en}{https://en}. \href{http://wikipedia.org/wiki/Laguerre_polynomials}{wikipedia.org/wiki/Laguerre\_polynomials})]. Sometimes these polynomials are defined with an overall minus sign compared with our definition. Also, the lower index $(n-\ell-1)$ we use here (as does Shankar) is the degree of the polynomial. Often the associated Laguerre polynomials are labeled instead with a lower index $n+\ell$ (equal to the sum of the upper and lower indices in our convention). This is just another convention for naming the same polynomial. Everybody seems to agree on the convention for the upper index, $2 \ell+1$.
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{10}
   \item We discussed the spin-orbit correction to the hydrogen energy levels. In this example as well as others, we needed to evaluate certain expectation values with respect to the hydrogen wave functions. There are some handy "tricks" towards these evaluations. I refer you in particular to the discussion on pages $470-1$ of the text. Thus, considering the $\left|\psi_{n l m}\right\rangle$ hydrogen wave functions, evaluate:
@@ -218,12 +295,96 @@ This corresponds to a different normalization for the associated Laguerre polyno
 $$
 \left\langle\frac{1}{r^{2}}\right\rangle \equiv\left\langle\psi_{n l m}\left|\frac{1}{r^{2}}\right| \psi_{n l m}\right\rangle
 $$
-
-(b)
-
+\subsection{}
+The radial equation for the hydrogen atom is:
+\begin{equation}
+  \frac{d^2u(r)}{dr^2} + \left[ \frac{2\mu}{\hbar^2}\left( E + \frac{Ze^2}{4\pi\epsilon_0r} \right) - \frac{l(l+1)}{r^2} \right] u(r) = 0
+\end{equation}
+Following the discussion on pg. 470 Shankar, we can remove the perturbation $\frac{\lambda}{r^2}$ from the Coulumbic term $\frac{Ze^2}{4\pi\epsilon_0r}$, which we will call $V(r)$, by making the substitution:
+\begin{equation}
+  V(r) = V_0(r) + \frac{\lambda}{r^2}
+\end{equation}
+so we get:
+\begin{equation}
+  \frac{d^2u(r)}{dr^2} + \left[ \frac{2\mu}{\hbar^2}\left( E + V_0(r) + \frac{\lambda}{r^2} \right) - \frac{l(l+1)}{r^2} \right] u(r) = 0
+\end{equation}
+Then we adjust the centrigul term from $l\rightarrow l'$:
+\begin{equation}
+  \frac{d^2u(r)}{dr^2} + \left[ \frac{2\mu}{\hbar^2}\left( E + V_0(r) \right) - \frac{l'(l'+1)}{r^2} \right] u(r) = 0
+\end{equation}
+Since we only modify the differential equation, the energy relation still holds:
+\begin{equation}
+  E(l')= - \frac{me^4}{2\hbar^2(k+l'+1)^2}
+\end{equation}
+We now equatee the different parts of eqn, 32 and 33:
+\begin{equation}
+  \frac{\hbar^2l(l+1)}{2\mu} + \lambda = \frac{\hbar^2l'(l'+1)}{2\mu}
+\end{equation}
+Multiplying through by $\frac{2\mu}{\hbar^2}$:
+\begin{equation}
+  l'(l'+1) + \frac{2\mu\lambda}{\hbar^2} = l(l+1)
+\end{equation}
+Evaluating this with $\lambda = 0$ implies either:
+\begin{equation}
+  l' = l \quad \text{or} \quad l' = -l - 1
+\end{equation}
+The latter would imply that $l' < 0$, which is not possible. Therefore, we have:
+\begin{equation}
+  l' = l
+\end{equation}
+Now, we recall in class, we derived that:
+\begin{equation}
+  \left\langle\frac{1}{r^{2}}\right\rangle = \left[\pdv{E}{\lambda}\right]_{\lambda=0} = \left[\pdv{E}{l'}\pdv{l'}{\lambda}\right]_{\lambda=0}
+\end{equation}
+Differentating the expression for $E(l')$ with respect to $l'$, we get:
+\begin{equation}
+  \pdv{E}{l'} = + \frac{me^4}{\hbar^2} \frac{1}{(k+l'+1)^3}
+\end{equation}
+Differentating equation 36 w.r.t. $\lambda$, we get:
+\begin{equation}
+  2\left(l' + \frac{1}{2}\right) dl' = \frac{2m}{\hbar^2} d\lambda
+\end{equation}
+So:
+\begin{equation}
+  \frac{dl'}{d\lambda} = \frac{m}{\hbar^2} \frac{1}{(l' + \frac{1}{2})^2}
+\end{equation}
+Now we combine both derivatives:
+\begin{equation}
+  \left[\pdv{E}{l'}\pdv{l'}{\lambda}\right]_{\lambda=0} = \frac{me^4}{\hbar^2} \frac{1}{(k+l'+1)^3} \frac{m}{\hbar^2} \frac{1}{(l' + \frac{1}{2})}
+\end{equation}
+Since the Bohr radius is given by:
+\begin{equation}
+  a_0 = \frac{4\pi\epsilon_0\hbar^2}{me^2}
+\end{equation}
+We can write:
+\begin{equation}
+  \left\langle\frac{1}{r^{2}}\right\rangle = \frac{16\pi^2\epsilon_0^2}{a_0^2(k+l'+1)^3} \frac{1}{(l' + \frac{1}{2})}
+\end{equation}
+And the we recognize that:
+\begin{equation}
+  \left\langle\frac{1}{r^{2}}\right\rangle = \frac{16\pi^2\epsilon_0^2}{a_0^2(n)^3} \frac{1}{(l + \frac{1}{2})}
+\end{equation}
+\subsection{}
 $$
 \left\langle\frac{1}{r^{3}}\right\rangle .
 $$
+The radial part of the Hamiltonian is:
+\begin{equation}
+  -\frac{\hbar^2}{2m}\left(\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d}{dr}\right)\right)
+\end{equation}
+If we define $\hat{P}_r = -i\hbar\left(\pdv{r}+\frac{1}{r}\right)$, then we can write the radial part of the Hamiltonian as:
+\begin{equation}
+ \frac{\hat{P}_r^2}{2m} = -\frac{\hbar^2}{2m}\left(\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d}{dr}\right)\right)
+\end{equation}
+Due to Ehrenfests theorem, this operator cannot change with time. Therefore, we can write:
+\begin{equation}
+  \dv{t}\langle\hat{P}_r\rangle = 0 = \langle \left[\hat{H}, \hat{P}_r\right]\rangle
+\end{equation}
+We can write the commutator as:
+\begin{equation}
+  \left[\hat{H}, \hat{P}_r\right] = \left[\frac{\hat{P}_r^2}{2m}, \hat{P}_r\right] = \frac{1}{2m}\left[\hat{P}_r^2, \hat{P}_r\right] = \frac{1}{2m}\left[\hat{P}_r, \hat{P}_r\right]\hat{P}_r = 0
+\end{equation}
+I wasn't able to get further than this.
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{11}
@@ -243,7 +404,7 @@ Then we have:
 \begin{equation}
   \left[V, L_{z}\right] = V(z)L_z(x,y) - L_z(x,y)V(z) = 0
 \end{equation}
-The commutator vanishes because $L_z$ commutes with $z$, as can be observed due to the fact that equation 10 has no dependence on $z$, and $V$ is a function of $z$ only. This means that $V$ and $L_z$ share a common set of eigenfunctions, and we may use the eigenfunctions of $L_z$ to determine the matrix elements of $V$ between states with different eigenvalues of $L_z$. \\
+The commutator vanishes because $L_z$ commutes with $z$, as can be observed due to the fact that $L_z$ has no dependence on $z$, and $V$ is a function of $z$ only. This means that $V$ and $L_z$ share a common set of eigenfunctions, and we may use the eigenfunctions of $L_z$ to determine the matrix elements of $V$ between states with different eigenvalues of $L_z$. \\
 $V$ in spherical coordinates is:
 \begin{equation}
   V = -\sqrt{\alpha} E r \cos \theta
@@ -318,6 +479,9 @@ element_200_210, element_210_200
 
 
 \end{lstlisting}
+Further simplifications probably would have been insightful, but I did not perform them.
+% Inline Python code in the document
+
 
 Hydrogenic wave functions you might need are:
 
@@ -340,15 +504,7 @@ considering that $\alpha = \frac{e^2}{4\pi\epsilon_0}$ and $a_0 = \frac{4\pi\eps
 \begin{equation}
   \bra{2s_{0}}V\ket{2p_{0}} = \bra{2p_{0}}V\ket{2s_{0}} = 0.0151 eV
 \end{equation}
-my estimate of the typical electric field told by the electron, due to the nucleus, in the hydrogen atom is:
-\begin{equation}
-  E = \frac{Ze}{4\pi\epsilon_0 r^2} = \frac{e}{4\pi\epsilon_0 a_0} = 5.142 \times 10^{11} V/m = 8.23 \times 10^{-10} eV/cm
-\end{equation}
-Countermine that the electric field acts over the distance of a Bohr radius, we have:
-\begin{equation}
-  \Delta E = \frac{e}{4\pi\epsilon_0 a_0} a_0 = 8.23 \times 10^{-10} eV/cm \times 5.29 \times 10^{-9} cm = 4.35 \times 10^{-18} eV
-\end{equation}
-This is much smaller than the splitting of the states in the applied electric field, so the use of perturbation theory was not reasonable for this problem.
+I was not able to get my calculation for the typical electric field felt by the electron due to the nucleus in a hydrogen atom to yield physical results, but I read on the web that this is on the order of $10^1$ eV over the length of the Bohr radius. So, the use of perturbation theory was reasonable for a $100$ kV/cm electric field.
 % Inline Python code in the document
 \begin{lstlisting}[language=Python]
 from sympy import symbols, pi, sqrt, exp, integrate, sin, conjugate, oo, cos, N

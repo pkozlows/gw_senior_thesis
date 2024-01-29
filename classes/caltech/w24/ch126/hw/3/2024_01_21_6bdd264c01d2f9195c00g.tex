@@ -6,6 +6,8 @@
 \usepackage{amssymb}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{float}
 
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
@@ -39,7 +41,6 @@
 % Activate the style
 \lstset{style=mystyle}
 \usepackage{physics}
-\usepackage{graphicx}
 
 \begin{document}
 Ch126
@@ -171,10 +172,30 @@ for m_I, energy in zip(m_I_values, energies):
 
 
 \end{lstlisting}
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
-  \item (15 points) Consider a two-proton spin system in which the shielding constants for the two protons $\left(\sigma_{1}, \sigma_{2}\right)$ differ by $1.2 \times 10^{-7}$, and in which the coupling constant between the two spins is $5 \mathrm{~Hz}$. Sketch the NMR spectra, including relative intensities, that you would expect for this spin system using spectrometers operating at the following frequencies: (a) $60 \mathrm{MHz}$; (b) $270 \mathrm{MHz}$; and (c) $500 \mathrm{MHz}$. (See the lecture notes for expressions describing the intensities of the resonances).
+  \item (15 points) Consider a two-proton spin system in which the shielding constants for the two protons $\left(\sigma_{1}, \sigma_{2}\right)$ differ by $1.2 \times 10^{-7}$, and in which the coupling constant between the two spins is $5 \mathrm{~Hz}$. Sketch the NMR spectra, including relative intensities, that you would expect for this spin system using spectrometers operating at the following frequencies: (a) $60 \mathrm{MHz}$; (b) $270 \mathrm{MHz}$; and (c) $500 \mathrm{MHz}$. (See the lecture notes for expressions describing the intensities of the resonances).\\ \\
+  I have a fine motor impairment, so I am not able to write by and, so I ask a class mate to send me pictures of the diagrams for this problem feel free to mark me of or to deemphasize the grating of this problem for me.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{2a.png}
+  \caption{2a}
+  \label{fig:2a}
+\end{figure}
+The equations to predict the relative intensities are given in 6-24 of the lecture notes. These equations predict 2 pairs of peaks with identical intensities. We get the magnetic field in Teslas by substituting the operating frequency into the Larmor equation. The $\Delta \nu$ is different for each spectrometer frequency and dictates the splitting between the center of the peaks. One would follow the same procedure for each spectrometer frequency.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{2b.png}
+  \caption{2b}
+  \label{fig:2b}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{2c.png}
+  \caption{2c}
+  \label{fig:2c}
+\end{figure}
 \section{}
   \item (5 points) On a certain NMR spectrometer a proton signal has a chemical shift of $5 \mathrm{ppm}$, corresponding to a frequency range of $3 \mathrm{kHz}$. What is the operating frequency of the spectrometer and what is the approximate magnetic field strength?
   The chemical shift is given by the equation:
@@ -226,6 +247,7 @@ print("Operating frequency: {0:.2e} Hz".format(float(operating_frequency_solutio
 print("Magnetic field strength: {0:.2e} T".format(float(magnetic_field_strength[0].evalf())))
 
 \end{lstlisting}
+\section{}
   \item (5 points) Calculate the magnetic field strength required for ${ }^{19} \mathrm{~F}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{F}}=2.516233 \times\right.$ $10^{8}$ radians s $\left.^{-1} \mathrm{~T}^{-1}\right)$ and ${ }^{13} \mathrm{C}\left(\mathrm{I}=1 / 2, \gamma_{\mathrm{C}}=6.728286 \times 10^{7}\right.$ radians $\left.^{-1} \mathrm{~T}^{-1}\right)$ resonances in a $500 \mathrm{MHz}$ spectrometer.
   I get:
 \begin{align}
@@ -257,7 +279,7 @@ print("Magnetic field strength for 19F: {0:.2e} T".format(float(magnetic_field_s
 print("Magnetic field strength for 13C: {0:.2e} T".format(float(magnetic_field_strength_C[0].evalf())))
 
 \end{lstlisting}
-
+\section{}
   \item (5 points) Consider a two-proton spin system in which the two protons are equivalent. If the two protons are equivalent, then they are indistinguishable, and quantum mechanics requires that the wavefunction for the system is either symmetric or antisymmetric with respect to exchange of identical particles. Write down all possible orthonormal wavefunctions for this two-proton system where:
 
 \end{enumerate}
@@ -341,10 +363,130 @@ The action of the spin operators on the singlet state is:
 \begin{align}
   \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \ket{\psi_{singlet}} = \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right)\\
 \end{align}
-\emph{What expressing the spin operators in terms of raising and lowering operators, be helpful for this computation?}
+Now, we want to express the spin operators in terms of raising and lowering operators. We can do this by using the following equations:
+\begin{align}
+  \hat{I}_{x} = \frac{1}{2} \left( \hat{I}_{+} + \hat{I}_{-} \right)\\
+  \hat{I}_{y} = \frac{1}{2i} \left( \hat{I}_{+} - \hat{I}_{-} \right)\\
+\end{align}
+Let us make a small table detailing the action of $\hat{I}_{+}$ and $\hat{I}_{-}$ on the states:
+\begin{center}
+  \begin{tabular}{ |c|c|c| } 
+    \hline
+    State & $\hat{I}_{+}$ & $\hat{I}_{-}$ \\
+    \hline
+    $\ket{\alpha}$ & 0 & $\ket{\beta}$ \\
+    $\ket{\beta}$ & $\ket{\alpha}$ & 0 \\
+    \hline
+  \end{tabular}
+\end{center}
+Now, let's make another table detailing the action of $\hat{I}_{x}$ and $\hat{I}_{y}$ on the states:
+\begin{center}
+  \begin{tabular}{ |c|c|c|c| } 
+    \hline
+    State & $\hat{I}_{x}$ & $\hat{I}_{y}$ & $\hat{I}_{z}$\\
+    \hline
+    $\ket{\alpha}$ & $\frac{1}{2} \ket{\beta}$ & $-\frac{1}{2i} \ket{\beta}$ & $\frac{1}{2}$\\
+    $\ket{\beta}$ & $\frac{1}{2} \ket{\alpha}$ & $\frac{1}{2i} \ket{\alpha}$ & $-\frac{1}{2}$\\
+    \hline
+  \end{tabular}
+\end{center}
+So the action of the spin operators on the singlet state is:
+\begin{align}
+  \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \ket{\psi_{singlet}} = \left(\hat{I}_{x 1} \hat{I}_{x 2} + \hat{I}_{y 1} \hat{I}_{y 2} + \hat{I}_{z 1} \hat{I}_{z 2}\right) \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right)\\
+\end{align}
+With the standard basis, we get the matrix representation of the spin operators:
+\begin{align}
+  \hat{I}_{x} = \frac{1}{2} \begin{pmatrix}
+    0 & 1\\
+    1 & 0
+  \end{pmatrix}\\
+  \hat{I}_{y} = \frac{1}{2i} \begin{pmatrix}
+    0 & -1\\
+    1 & 0
+  \end{pmatrix}\\
+  \hat{I}_{z} = \frac{1}{2} \begin{pmatrix}
+    1 & 0\\
+    0 & -1
+  \end{pmatrix}\\
+\end{align}
+The singlet state can be expressed in the standard basis as:
+\begin{equation}
+  \ket{\psi_{singlet}} = \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} - \ket{\beta(1)\alpha(2)} \right) = \left[\begin{matrix}0\\\frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2}\\0\end{matrix}\right]
+\end{equation}
+The triplet states can be expressed in the standard basis as:
+\begin{align}
+  \ket{\psi_{triplet}^{1}} = \ket{\alpha(1)\alpha(2)} = \left[\begin{matrix}1\\0\\0\\0\end{matrix}\right]\\
+  \ket{\psi_{triplet}^{0}} = \frac{1}{\sqrt{2}} \left( \ket{\alpha(1)\beta(2)} + \ket{\beta(1)\alpha(2)} \right) = \left[\begin{matrix}0\\\frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2}\\0\end{matrix}\right]\\
+  \ket{\psi_{triplet}^{-1}} = \ket{\beta(1)\beta(2)} = \left[\begin{matrix}0\\0\\0\\1\end{matrix}\right]
+\end{align}
+SymPy gives the sum of these tensor products acting on the singlet state as:
+\begin{equation}
+  \left[\begin{matrix}0\\- 0.375 \sqrt{2}\\0.375 \sqrt{2}\\0\end{matrix}\right]
+\end{equation}
+And then the action on each of the triplet states:
+\begin{equation}
+  I_1 \cdot I_2 \ket{\psi_{triplet}^{1}} = \left[\begin{matrix}0.25\\0\\0\\0\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  I_1 \cdot I_2 \ket{\psi_{triplet}^{0}} = \left[\begin{matrix}0\\0.125 \sqrt{2}\\0.125 \sqrt{2}\\0\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  I_1 \cdot I_2 \ket{\psi_{triplet}^{-1}} = \left[\begin{matrix}0\\0\\0\\0.25\end{matrix}\right]
+\end{equation}
+We must note that each of the spin tensor codex contributes a factor of $\hbar$, so the first order corrections to the energies are:
+\begin{align*}
+  E_{\text{singlet}}^{1,1} &= \frac{h J_{AA}}{1} \bra{\psi_{\text{singlet}}}\left(\hat{I}_{x1} \hat{I}_{x2} + \hat{I}_{y1} \hat{I}_{y2} + \hat{I}_{z1} \hat{I}_{z2}\right) \ket{\psi_{\text{singlet}}} = -0.75 \frac{h J_{AA}}{1}\\
+  E_{\text{triplet}}^{1,1} &= \frac{h J_{AA}}{1} \bra{\psi_{\text{triplet}}^{1}}\left(\hat{I}_{x1} \hat{I}_{x2} + \hat{I}_{y1} \hat{I}_{y2} + \hat{I}_{z1} \hat{I}_{z2}\right) \ket{\psi_{\text{triplet}}^{1}} = 0.25 \frac{h J_{AA}}{1}\\
+  E_{\text{triplet}}^{1,-1} &= \frac{h J_{AA}}{1} \left(\hat{I}_{x1} \hat{I}_{x2} + \hat{I}_{y1} \hat{I}_{y2} + \hat{I}_{z1} \hat{I}_{z2}\right) \ket{\psi_{\text{triplet}}^{-1}} = 0.25 \frac{h J_{AA}}{1}\\
+  E_{\text{triplet}}^{1,0} &= \frac{h J_{AA}}{1} \left(\hat{I}_{x1} \hat{I}_{x2} + \hat{I}_{y1} \hat{I}_{y2} + \hat{I}_{z1} \hat{I}_{z2}\right) \ket{\psi_{\text{triplet}}^{0}} = 0.25 \frac{h J_{AA}}{1}
+\end{align*}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import Matrix, sqrt, I, latex
+from sympy.physics.quantum import TensorProduct, Dagger
+
+# Define basis states
+alpha = Matrix([[1], [0]])
+beta = Matrix([[0], [1]])
+
+# Define singlet state
+psi_singlet = 1/sqrt(2) * (TensorProduct(alpha, beta) - TensorProduct(beta, alpha))
+psi_triplet_1 = TensorProduct(alpha, alpha)
+psi_triplet_0 = 1/sqrt(2) * (TensorProduct(alpha, beta) + TensorProduct(beta, alpha))
+psi_triplet_m1 = TensorProduct(beta, beta)
+
+
+# Define spin operators in matrix form
+Ix = 1/2 * Matrix([[0, 1], [1, 0]])
+Iy = 1/(2*I) * Matrix([[0, 1], [-1, 0]])
+Iz = 1/2 * Matrix([[1, 0], [0, -1]])
+
+# loop over all states and find the digonal matrix elements of the spin operators
+for psi in [psi_singlet, psi_triplet_1, psi_triplet_0, psi_triplet_m1]:
+    print("Psi =")
+    print(latex(psi))
+    for I in [Ix, Iy, Iz]:
+        print("I =")
+        print(latex(I))
+    # get the combined sum of the spin operators like \left(\hat{I}_{x1} \hat{I}_{x2} + \hat{I}_{y1} \hat{I}_{y2} + \hat{I}_{z1} \hat{I}_{z2}\right) 
+    # we want to use the TensorProduct function to get the diagonal matrix elements of the combined sum
+    big_I = TensorProduct(Ix, Ix) + TensorProduct(Iy, Iy) + TensorProduct(Iz, Iz)
+    # calculate the diagonal matrix elements of the combined sum with both the bra and ket being the same state
+    singlet_result = Dagger(psi) * big_I * psi
+    # print the result
+    print("singlet_result =")
+    print(latex(singlet_result))
+\end{lstlisting}
+
+
 \begin{enumerate}
   \setcounter{enumi}{6}
   \item (5 points) Using the wavefunctions from the problem 5 , identify all of the allowed NMR transitions among them. How many lines do you expect to see in the proton NMR spectrum of this system?
 \end{enumerate}
-
+Since the total swim has to be conserved only transitions among the triplet state are allowed. Additionally, transitions must have $\Delta m_I \pm 1$. So there are two allowed transitions:
+\begin{align}
+  \ket{\psi_{triplet}^{1}} \rightarrow \ket{\psi_{triplet}^{0}}\\
+  \ket{\psi_{triplet}^{0}} \rightarrow \ket{\psi_{triplet}^{-1}}
+\end{align}
+You would expect to see 2 lined, corresponding to these transitions.
 \end{document}

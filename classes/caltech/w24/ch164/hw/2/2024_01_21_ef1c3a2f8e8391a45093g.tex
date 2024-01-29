@@ -128,11 +128,8 @@ Next, we want to calculate the heat capacities. We know that:
 \begin{equation}
   C_{v} = \left( \frac{\partial U}{\partial T} \right)_{V,N}
 \end{equation}
-and
-\begin{equation}
-  C_{p} = \left( \frac{\partial H}{\partial T} \right)_{P,N}
-\end{equation}
-where $U$ is the internal energy and $H$ is the enthalpy. 
+
+
 The internal energy is related to the Helmholtz free energy by:
 \begin{equation}
   U = A + TS
@@ -147,12 +144,113 @@ We can calculate the entropy by starting with the expression for \( A \):
 \begin{equation}
   A = - k T \left( \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right)
 \end{equation}
-
-We use the symbolic algebra to perform this derivative and get:
+and taking the derivative with respect to \( T \) at constant \( V \) and \( N \):
+\begin{align}
+  \left( \frac{\partial A}{\partial T} \right)_{V,N} &= - k \left[ \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right] \\
+  &\quad - k T \left[ \frac{3}{2} N \frac{h^2}{2\pi mk T} \frac{2\pi mk}{h^2} - \frac{a N^{2}}{V k T^{2}} \right] \\
+  &= - k \left[ \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right] - \frac{3N}{2T} + \frac{a N^{2}}{V T} \\
+  &= - k \left[ \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( 2 \pi m k T \right) - \frac{3}{2} N \ln \left( h^{2} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right] - \frac{3N}{2k} + \frac{a N^{2}}{V T} \\
+  &= -k \ln \left( \frac{1}{N !} \right) - \frac{3}{2} N k \ln \left( 2 \pi m k T \right) + \frac{3}{2} N k \ln \left( h^{2} \right) - N k \ln \left( V-N b \right) - \frac{3N}{2k}
+\end{align}
+Combining the logarithms, we get:
 \begin{equation}
-  S = - \frac{1.0 N^{2} a}{T V} + 1.5 N k + 1.0 k \log{\left(\frac{2^{1.5 N} \pi^{1.5 N} \left(\frac{T k m}{h^{2}}\right)^{1.5 N} \left(- N b + V\right)^{N} e^{\frac{N^{2} a}{T V k}}}{\Gamma\left(N + 1\right)} \right)}
+  \left( \frac{\partial A}{\partial T} \right)_{V,N} = k \ln (N!) - \frac{3}{2} N k \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + Nk \ln \left( V-N b \right) - \frac{3N}{2k}
 \end{equation}
+So, the entropy is given by:
+\begin{equation}
+  S = - \left( \frac{\partial A}{\partial T} \right)_{V,N} = - k \ln (N!) + \frac{3}{2} N k \ln \left( \frac{2 \pi m k T}{h^{2}} \right) - Nk \ln \left( V-N b \right) + \frac{3N}{2k}
+\end{equation}
+Once you get S, cans use
+\begin{equation}
+  dS = \frac{dU}{T} + \frac{PdV}{T}
+\end{equation}
+At fixed volume, this becomes:
+\begin{equation}
+  dS = \frac{dU}{T}
+\end{equation}
+We want to find the derivative of the entropy with respect to temperature at constant volume:
+\begin{equation}
+  \left( \frac{\partial S}{\partial T} \right)_{V} = \frac{1}{T} \left( \frac{\partial U}{\partial T} \right)_{V}
+\end{equation}
+All but one term in the expression for the entropy is constant with respect to temperature, so we can write:
+\begin{equation}
+  \left( \frac{\partial S}{\partial T} \right)_{V} = \frac{3Nk}{2T}
+\end{equation}
+Multiplying by $T$ and then integrating, we get:
+\begin{equation}
+  U = \frac{3}{2}NkT
+\end{equation}
+And then we know the definition of heat capacity at constant volume is:
+\begin{equation}
+  C_{v} = \left( \frac{\partial U}{\partial T} \right)_{V,N}
+\end{equation}
+So, this is just:
+\begin{equation}
+  C_{v} = \frac{3}{2}Nk
+\end{equation}
+Then, to find the heat capacity at constant pressure, we can use the relation:
+\begin{equation}
+C_{p} = C_{V} - T \left( \frac{\left( \frac{\partial P}{\partial T} \right)_{N,T}^2}{\left( \frac{\partial P}{\partial V} \right)_{N,V}} \right)
+\end{equation}
+First we need to get an expression for pressure, which is the derivative of the Helmholtz free energy with respect to volume at constant temperature and number of particles:
+\begin{equation}
+  P = - \left( \frac{\partial A}{\partial V} \right)_{T,N}
+\end{equation}
+We can start with the expression for the Helmholtz free energy:
+\begin{equation}
+  A = - k T \left( \ln \left( \frac{1}{N !} \right) + \frac{3}{2} N \ln \left( \frac{2 \pi m k T}{h^{2}} \right) + N \ln \left( V-N b \right) + \frac{a N^{2}}{V k T} \right)
+\end{equation}
+only the last two terms depend on volume, so we can write:
+\begin{equation}
+  \left( \frac{\partial A}{\partial V} \right)_{T,N} = - k T \left( \frac{N}{V-N b} - \frac{a N^{2}}{V^{2} k T} \right)
+\end{equation}
+So, the pressure is given by:
+\begin{equation}
+  P = k T \left( \frac{N}{V-N b} - \frac{a N^{2}}{V^{2} k T} \right)
+\end{equation}
+Taking the derivative of this expression with respect to temperature at constant volume and number of particles, we get:
+\begin{equation}
+  \left( \frac{\partial P}{\partial T} \right)_{V,N} = \frac{N k}{V-N b}
+\end{equation}
+Now we need to take the derivative of pressure with respect to volume at constant temperature and number of particles:
+\begin{equation}
+  \left( \frac{\partial P}{\partial V} \right)_{T,N} = - \frac{N k T}{\left( V-N b \right)^{2}} + \frac{2 a N^{2}}{V^{3}}
+\end{equation}
+Now we can substitute these expressions into the equation for the heat capacity at constant pressure:
+\begin{equation}
+  C_{p} = C_{V} - T \left( \frac{\left( \frac{\partial P}{\partial T} \right)_{N,T}^2}{\left( \frac{\partial P}{\partial V} \right)_{N,V}} \right)
+\end{equation}
+\begin{equation}
+  C_{p} = \frac{3}{2}Nk - T \left( \frac{\left( \frac{N k}{V-N b} \right)^{2}}{- \frac{N k T}{\left( V-N b \right)^{2}} + \frac{2 a N^{2}}{V^{3}}} \right)
+\end{equation}
+We simplify with SymPy:
+\begin{equation}
+  C_{p} =\frac{N k \left(6 N a \left(N b - V\right)^{2} - 5 T V^{3} k\right)}{2 \cdot \left(2 N a \left(N b - V\right)^{2} - T V^{3} k\right)}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, simplify, Rational, latex
 
+# Redefine the symbols
+N, k, T, V, b, a = symbols('N k T V b a')
+
+# Define the numerator and denominator of the fraction
+numerator = (N * k / (V - N * b))**2
+denominator = -N * k * T / (V - N * b)**2 + 2 * a * N**2 / V**3
+
+# Simplify the fraction
+fraction_simplified = simplify(numerator / denominator)
+
+# Define the expression for Cp
+Cp = Rational(3,2) * N * k - T * fraction_simplified
+
+# Simplify the expression for Cp
+Cp_simplified = simplify(Cp)
+
+# Print the LaTeX syntax of the simplified expression
+print(latex(Cp_simplified))
+
+\end{lstlisting}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
@@ -167,30 +265,89 @@ We also have that the entropy for both systems is divined as:
   S = - k \sum_{\nu} P_{\nu} \ln P_{\nu}
 \end{equation}
 \subsection{}
-We will start with the $(N,P,T)$ system. For this system we have the additional constraints that the energy and volume need to be conserved:
+We want to minimize the Gibbs free energy, which is given by:
 \begin{equation}
-  \sum_{\nu} P_{\nu} E_{\nu} = \expval{E}
+  G = U - TS + PV
 \end{equation}
+We can write the Lagrangian as:
 \begin{equation}
-  \sum_{\nu} P_{\nu} V_{\nu} = \expval{V}
+  \mathcal{L} = G - \alpha \left( \sum_{\nu} P_{\nu} - 1 \right)
+\end{equation}
+We want to minimize the Lagrangian with respect to $P_{\nu}$ . So, we take the derivative of the Lagrangian with respect to $P_{\nu}$ and set it equal to zero:
+\begin{equation}
+  \pdv{\mathcal{L}}{P_{\nu}} = \pdv{G}{P_{\nu}} - \alpha = 0
+\end{equation}
+Plugging in the expression for $G$ and also for the $S$ withing $G$, we get:
+\begin{equation}
+  \pdv{P_{\nu}} \left( U + PV + kT \sum_{\nu} P_{\nu} \ln P_{\nu} \right) - \alpha = E_{\nu} + PV + kT \ln P_{\nu} + kT - \alpha = 0
+\end{equation}
+Solving for $P_{\nu}$, we get:
+\begin{equation}
+  P_{\nu} = \exp \left[ \frac{ \alpha - E_{\nu} - PV}{kT} - 1 \right]
+\end{equation}
+Now, we consider the constraint that the sum of the probabilities must be equal to 1:
+\begin{equation}
+  \sum_{\nu} P_{\nu} = 1
+\end{equation}
+We can substitute in the expression for $P_{\nu}$:
+\begin{equation}
+  \sum_{\nu} \exp \left[ \frac{ \alpha - E_{\nu} - PV}{kT} - 1 \right] = 1
+\end{equation}
+or:
+\begin{equation}
+  1 = \exp \left[\beta \alpha - 1 \right] \sum_{\nu} \exp \left[ - \beta E_{\nu} - \beta PV \right]
+\end{equation}
+So, we define our partition function as:
+\begin{equation}
+  Q = \sum_{\nu} \exp \left[ - \beta E_{\nu} - \beta PV \right] = \frac{1}{\exp \left[\beta \alpha - 1 \right]}
+\end{equation}
+So, the probability for this distribution is given by:
+\begin{equation}
+  P_{\nu} = \frac{\exp \left[ - \beta E_{\nu} - \beta PV \right]}{Q}
+\end{equation}
+Next, we want to find the probability distribution for the $(\mu, \mathrm{V}, \mathrm{T})$ system. We want to use the Grand potential, which is given by:
+\begin{equation}
+  \Omega = U - TS - \mu N
+\end{equation}
+We can write the Lagrangian as:
+\begin{equation}
+  \mathcal{L} = \Omega - \alpha \left( \sum_{\nu} P_{\nu} - 1 \right)
+\end{equation}
+We want to minimize the Lagrangian with respect to $P_{\nu}$ . So, we take the derivative of the Lagrangian with respect to $P_{\nu}$ and set it equal to zero:
+\begin{equation}
+  \pdv{\mathcal{L}}{P_{\nu}} = \pdv{\Omega}{P_{\nu}} - \alpha = 0
+\end{equation}
+Plugging in the expression for $\Omega$ and also for the $S$ within $\Omega$, we get:
+\begin{equation}
+  \pdv{P_{\nu}} \left( U - TS - \mu N + kT \sum_{\nu} P_{\nu} \ln P_{\nu} \right) - \alpha = E_{\nu} - \mu N + kT \ln P_{\nu} + kT - \alpha = 0
+\end{equation}
+Solving for $P_{\nu}$, we get:
+\begin{equation}
+  P_{\nu} = \exp \left[ \frac{ \alpha - E_{\nu} + \mu N}{kT} - 1 \right]
+\end{equation}
+Now, we consider the constraint that the sum of the probabilities must be equal to 1:
+\begin{equation}
+  \sum_{\nu} P_{\nu} = 1
+\end{equation}
+We can substitute in the expression for $P_{\nu}$:
+\begin{equation}
+  \sum_{\nu} \exp \left[ \frac{ \alpha - E_{\nu} + \mu N}{kT} - 1 \right] = 1
+\end{equation}
+or:
+\begin{equation}
+  1 = \exp \left[\beta \alpha - 1 \right] \sum_{\nu} \exp \left[ - \beta E_{\nu} + \beta \mu N \right]
+\end{equation}
+So, we define our partition function as:
+\begin{equation}
+  Q = \sum_{\nu} \exp \left[ - \beta E_{\nu} + \beta \mu N \right] = \frac{1}{\exp \left[\beta \alpha - 1 \right]}
+\end{equation}
+So, the probability for this distribution is given by:
+\begin{equation}
+  P_{\nu} = \frac{\exp \left[ - \beta E_{\nu} + \beta \mu N \right]}{Q}
 \end{equation}
 
-We define a Lagrangian as:
-\begin{equation}
-  \mathcal{L} = - k \sum_{\nu} P_{\nu} \ln P_{\nu} + \lambda \left( \sum_{\nu} P_{\nu} - 1 \right) + \beta \left( \sum_{\nu} P_{\nu} E_{\nu} - \expval{E} \right) + \gamma \left( \sum_{\nu} P_{\nu} V_{\nu} - \expval{V} \right)
-\end{equation}
-\subsection{}
-Now we will consider the $(\mu,V,T)$ system. For this system we have the additional constraints that the energy and number of particles need to be conserved:
-\begin{equation}
-  \sum_{\nu} P_{\nu} E_{\nu} = \expval{E}
-\end{equation}
-\begin{equation}  
-  \sum_{\nu} P_{\nu} N_{\nu} = \expval{N}
-\end{equation}
-We define a Lagrangian as:
-\begin{equation}
-  \mathcal{L} = - k \sum_{\nu} P_{\nu} \ln P_{\nu} + \lambda \left( \sum_{\nu} P_{\nu} - 1 \right) + \beta \left( \sum_{\nu} P_{\nu} E_{\nu} - \expval{E} \right) + \gamma \left( \sum_{\nu} P_{\nu} N_{\nu} - \expval{N} \right)
-\end{equation}
+
+
 \section{}
   \item The canonical partition function can be written in terms of energy levels as
 
@@ -210,13 +367,95 @@ $$
 
 Find $\sigma_{E}^{2}$ by inspection. (Do not make use of the method illustrated in class.)
 \subsection{}
-$t_E$ is overwhemingly dominated by $t_{E^{*}}$ when $E$ is close to $E^{*}$. So we can approximate with a Gaussian peaked at $E^{*}$. We can write this as:
+We want to maximize $t_{E}$ with respect to $E$. We can do this by taking the derivative of $t_{E}$ with respect to $E$ and setting it equal to zero:
 \begin{equation}
-  t_{E} = t_{E^{*}} \exp \left[ \frac{- \left( E - E^{*} \right)^{2}}{2 \sigma_{E}^{2}} \right]
+  \pdv{t_{E}}{E} = 0
 \end{equation}
-
-b) (9 pts.) Now using the relation, $\sigma_{E}^{2}=k T^{2} C_{V}$ (obtained in class), and the result of part a), show that the error committed in replacing $\ln Q$ by $\ln t_{E^{*}}$ is only of order $\ln N$. (Hint: Consider the energy spacing as nearly continuous...)
-
+Now, maximizing $t_{E}$ is equivalent to maximizing $\ln t_{E}$, so we can take the derivative of $\ln t_{E}$ with respect to $E$ and set it equal to zero:
+\begin{equation}
+  \pdv{\ln t_{E}}{E} = 0 
+\end{equation}
+Now, we know that $\ln t_{E}$ is given by:
+\begin{equation}
+  \ln t_{E} = \ln \left( \Omega(E, V, N) e^{-\beta E} \right) = \ln \left( \Omega(E, V, N) \right) - \beta E
+\end{equation}
+Now, we can Taylor expand the expression for $\ln t_{E}$ about $E^{*}$:
+\begin{equation}
+  \ln t_{E} = \ln \left( \Omega(E^{*}) \right) - \beta E^{*} + \left( E - E^{*} \right) \left[ \pdv{\ln \Omega(E)}{E} - \beta \right] + \frac{1}{2} \left( E - E^{*} \right)^{2} \left[ \pdv[2]{\ln \Omega(E)}{E} \right] + \cdots
+\end{equation}
+We neglect the higher order terms from now on.
+Now we know that the first derivative of $\ln t_{E}$ with respect to $E$ evaluated at $E^{*}$ and the first derivative of $\ln \Omega(E)$ with respect to $E$ evaluated at $E^{*}$ are both equal to zero, so we can write:
+\begin{equation}
+  \pdv{\ln t_{E}}{E} \eval_{E^{*}} = 0 = \pdv{\ln \Omega(E)}{E} \eval_{E^{*}} - \beta_{bath}
+\end{equation}
+Now, the expression for $\ln t_{E}$ with $E$ evaluated at $E^{*}$ is:
+\begin{equation}
+  \ln t(E^{*}) = \ln \left( \Omega(E^{*}) \right) - \beta_{bath} E^{*}
+\end{equation}
+So, with this substitution and the fact that the first derivative vanishes at $E^*$, we can write the expression for $\ln t_{E}$ as:
+\begin{equation}
+  \ln t_{E} = \ln t(E^{*}) + \frac{1}{2} \left( E - E^{*} \right)^{2} \left[ \pdv[2]{\ln \Omega(E)}{E} \right]
+\end{equation}
+Now, we can exponentiate both sides:
+\begin{equation}
+  t_{E} = t(E^{*}) \exp \left[ \frac{1}{2} \left( E - E^{*} \right)^{2} \left[ \pdv[2]{\ln \Omega(E)}{E} \right] \right]
+\end{equation}
+This looks like the expression we want and now we are left to evaluate the second derivative of $\ln \Omega(E)$ with respect to $E$. Now, we know that the entropy is given by:
+\begin{equation}
+  S = k \ln \Omega(E)
+\end{equation}
+So, the second derivative of $\ln \Omega(E)$ with respect to $E$ is given by:
+\begin{equation}
+  \pdv[2]{\ln \Omega(E)}{E} = \frac{1}{k} \pdv[2]{S}{E}
+\end{equation}
+But we know the first derivative of $S$ with respect to $E$ is just the inverse temperature:
+\begin{equation}
+  \pdv{S}{E} = \frac{1}{T}
+\end{equation}
+So, the second derivative of $S$ with respect to $E$ is just:
+\begin{equation}
+  \pdv[2]{S}{E} = - \frac{1}{T^{2}} \pdv{T}{E}
+\end{equation}
+Now, we know that the first derivative of $E$ with respect to $T$ is just the heat capacity at constant volume:
+\begin{equation}
+  \pdv{E}{T} = C_{V}
+\end{equation}
+So, the second derivative of $S$ with respect to $E$ is given by:
+\begin{equation}
+  \pdv[2]{S}{E} = - \frac{1}{T^{2}} \pdv{T}{E} = - \frac{1}{T^{2}} \frac{1}{C_{V}}
+\end{equation}
+Substituting this expression into the expression for $t_{E}$, we get:
+\begin{equation}
+  t_{E} = t(E^{*}) \exp \left[ \frac{1}{2} \left( E - E^{*} \right)^{2} \left[ - \frac{1}{kT^{2} C_{V}} \right] \right]
+\end{equation}
+So, by inspection, we can see that:
+\begin{equation}
+  \sigma_{E}^{2} = kT^{2} C_{V}
+\end{equation}
+\subsection{}
+b) (9 pts.) Now using the relation, $\sigma_{E}^{2}=k T^{2} C_{V}$ (obtained in class), and the result of part a), show that the error committed in replacing $\ln Q$ by $\ln t_{E^{*}}$ is only of order $\ln N$. (Hint: Consider the energy spacing as nearly continuous...)\\
+We know that the partition function is given by:
+\begin{equation}
+  Q = \sum_{E} t_{E} = t_{E^{*}} \sum_{E} \exp \left[ \frac{-\left(E-E^{*}\right)^{2}}{2 \sigma_{E}^{2}} \right]
+\end{equation}
+So, taking the logarithm of both sides and subtracting $\ln t_{E^{*}}$ from both sides, we get:
+\begin{equation}
+  \ln Q - \ln t_{E^{*}} = \ln \left( \sum_{E} \exp \left[ \frac{-\left(E-E^{*}\right)^{2}}{2 \sigma_{E}^{2}} \right] \right)
+\end{equation}
+Since the energy spacing is nearly continuous, we can replace the sum with an integral to a good approximation:
+\begin{equation}
+  \ln Q - \ln t_{E^{*}} = \ln \left( \int \exp \left[ \frac{-\left(E-E^{*}\right)^{2}}{2 \sigma_{E}^{2}} \right] dE \right)
+\end{equation}
+Now, the integral of a Gaussian is given by:
+\begin{equation}
+  \int_{-\infty}^{\infty} \exp \left[ - \frac{\left( x - \mu \right)^{2}}{2 \sigma^{2}} \right] dx = \sqrt{2 \pi \sigma^{2}}
+\end{equation}
+So, we can write:
+\begin{equation}
+  \ln Q - \ln t_{E^{*}} = \ln \left( \sqrt{2 \pi \sigma_{E}^{2}} \right) = \ln \left( \sqrt{2 \pi k T^{2} C_{V}} \right) = \frac{1}{2} \ln \left( 2 \pi k T^{2} C_{V} \right)
+\end{equation}
+$k,T$ are intensive, but $C_{V}$ is extensive, so our result scales like $\frac{1}{2} \ln C_{V}$. We know that $C_{V}$ scales like $N$, so our result scales like $\frac{1}{2} \ln N$, which is of order $\ln N$.
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{3}
   \item (from Chandler 3.18) Consider a system of $N$ localized non-interacting spins in a magnetic field $H$. Each spin has a magnetic moment of size $\mu$, and each can point either parallel or antiparallel to the field. Thus the energy of a particular state is
@@ -229,19 +468,60 @@ $$
 where the vector $n=\left\{n_{i}\right\}$ specifies the state, $\nu$, and $n_{i} \mu$ is the magnetic moment in the direction of the field.
 
 (a) (9 pts.) Determine the average internal energy of this system as a function of $\beta, H$, and $N$ by employing an ensemble characterized by these variables.
-
-(b) (8 pts.) Determine the average entropy of this system as a function of $\beta, H$, and $N$.
 \subsection{}
 The partition function will be given by:
 \begin{equation}
   Q = \sum_{\nu} \exp \left[ - \beta E_{\nu} \right] = \sum_{\nu} \exp \left[ \beta \mu H \sum_{i=1}^{N} n_{i} \right]
 \end{equation}
-There are two possible values for each spin, so the partition function becomes:
+We can take the sum out of the exponent, which becomes a product:
 \begin{equation}
-  Q = \sum_{\nu} \exp \left[ \beta \mu H \sum_{i=1}^{N} n_{i} \right] = \sum_{\nu} \exp \left[ \beta \mu H - \beta \mu H \right] = \sum_{\nu} 1 = 2^{N}
+  Q = \sum_{\nu} \prod_{i=1}^{N} \exp \left[ \beta \mu H n_{i} \right]
 \end{equation}
+The sum over $\nu$ is just a sum over all possible values of $n_{i}$, which are $\pm 1$. So, we can write a series of sums:
+\begin{equation}
+  Q = \sum_{n_{1} = \pm 1} \sum_{n_{2} = \pm 1} \cdots \sum_{n_{N} = \pm 1} \prod_{i=1}^{N} \exp \left[ \beta \mu H n_{i} \right]
+\end{equation}
+We can swap the product with a sum over $i$:
+\begin{equation}
+  Q = \prod_{i=1}^{N}\sum_{n_{i} = \pm 1} \exp \left[ \beta \mu H n_{i} \right] = \prod_{i = 1}^{N} \left( \exp \left[ \beta \mu H \right] + \exp \left[ - \beta \mu H \right] \right)
+\end{equation}
+We can get the internal energy by taking the derivative of the partition function with respect to $\beta$:
+\begin{equation}
+  U = - \pdv{\ln Q}{\beta} = - \pdv{\beta} \left( \sum_{i = 1}^{N} \ln \left( \exp \left[ \beta \mu H \right] + \exp \left[ - \beta \mu H \right] \right) \right) = - \sum_{i = 1}^{N}\left( \frac{\mu H \exp \left[ \beta \mu H \right] - \mu H \exp \left[ - \beta \mu H \right]}{\exp \left[ \beta \mu H \right] + \exp \left[ - \beta \mu H \right]} \right)
+\end{equation}
+We recognize the formula for the hyperbolic tangent:
+\begin{equation}
+  U = - N \mu H \tanh \left( \beta \mu H \right)
+\end{equation}
+\subsection{}
+(b) (8 pts.) Determine the average entropy of this system as a function of $\beta, H$, and $N$.\\
+The Helmholtz free energy is given by:
+\begin{equation}
+  A = U - TS = -kT \ln Q
+\end{equation}
+Isolating for $S$, on the RHS we get:
+\begin{equation}
+  S = \frac{U}{T} + k \ln Q
+\end{equation}
+We can substitute in the expression for $U$ and for $Q$:
+\begin{equation}
+  S = - k N \beta \mu H \tanh \left( \beta \mu H \right) + k \ln \left( \prod_{i = 1}^{N} \left( \exp \left[ \beta \mu H \right] + \exp \left[ - \beta \mu H \right] \right) \right)
+\end{equation}
+Bringing the product outside of the logarithm turns it into a sum and that just becomes $N$:
+\begin{equation}
+  S = - k N \beta \mu H \tanh \left( \beta \mu H \right) + k N \ln \left( \exp \left[ \beta \mu H \right] + \exp \left[ - \beta \mu H \right] \right)
+\end{equation}
+\subsection{}
 
-(c) (7 pts.) Determine the behavior of the energy and entropy for this system as $T \rightarrow 0$.
 
+(c) (7 pts.) Determine the behavior of the energy and entropy for this system as $T \rightarrow 0$.\\
+As $T \rightarrow 0$, $\beta \rightarrow \infty$, so $\tanh \left( \beta \mu H \right) \rightarrow 1$. So, the energy will be given by:
+\begin{equation}
+  U = - N \mu H
+\end{equation}
+While for this limit, the second term of the second term in the entropy will go to zero, so the entropy in the limit will be given by:
+\begin{equation}
+  S \rightarrow -kN \beta \mu H + kN \beta \mu H = 0
+\end{equation}
 
 \end{document}

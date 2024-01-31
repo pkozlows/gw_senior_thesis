@@ -71,10 +71,56 @@ Each vacancy might be accompanied by an energy $\omega$ (the energy of a surface
 As usual the Boltzmann factor is $e^{-\beta E}$, where $\beta=1/kT$ and $E=n\omega$.
 Considering how canonical ensemble partition function is defined, we have:
 \begin{equation}
-  Q(N,T)=\sum_{n=0}^{\infty}\Omega (N,n)e^{-\beta E}
+  Q(N,T)=\sum_{n=0}^{n_{max}}\Omega (N,n)e^{-\beta E}
 \end{equation}
-where $\Omega (N,n)$ is the number of microstates with $N$ molecules and $n$ vacancies.
-(ii) (15 pts.) Evaluate the above full partition function and then obtain $\langle n\rangle$ by suitable differentiation of $\log Q$. (Hint: Think of $Q(N, V, T)$ as a power series $Q(N, V, T)=\sum_{n=0}^{\infty} a_{n} z^{n}$.) Are the results for $\langle n\rangle$ from the maximum term and the full partition function the same?
+where $\Omega (N,n)$ is the number of microstates with $N$ molecules and $n$ vacancies and $n_{max}$ is the maximum number of vacancies that can be created.
+Considering that we have $N$ molecules and $n$ vacancies, there are $n$ ways to arrange the $N+n$ spaces, so:
+\begin{equation}
+  \Omega (N,n)= \binom{N+n}{n} = \frac{(N+n)!}{n!N!}
+\end{equation}
+Combining our results we have, for the partition function:
+\begin{equation}
+  Q(N,T)=\sum_{n=0}^{n_{max}}\frac{(N+n)!}{n!N!}e^{-\beta n\omega}
+\end{equation}
+Now, we wish to show that the sum can well be extended to infinity, by considering where the argument of the sum is maximized. We can do this by taking the derivative of the argument of the sum with respect to $n$, or alternatively, by taking the logarithm of the argument and then differentiating. We want to set this equal to zero, so we have:
+\begin{equation}
+  \frac{d}{dn}\ln\left(\frac{(N+n)!}{n!N!}e^{-\beta n\omega}\right)=0
+\end{equation}
+Applying Stirling's approximation to the logarithm of the factorials, we have:
+\begin{equation}
+  \ln(t_{n}) \approx (N+n)\ln (N+n)-n\ln n-N\ln N-\beta n\omega
+\end{equation}
+Now, we want to Taylor expand the logarithm of the argument of the sum around the maximum term, which we will call $n^{*}$. We have:
+\begin{equation}
+  \ln(t_{n}) \approx \ln(t_{n^{*}})+\frac{d\ln(t_{n})}{dn}\bigg|_{n=n^{*}}(n-n^{*})+\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2
+\end{equation}
+We know that the first derivative of the logarithm of the argument of the sum is zero at the maximum term, so the first term of the Taylor expansion is zero:
+\begin{equation}
+  \ln(t_{n}) \approx \ln (t_{n^{*}})+\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2
+\end{equation}
+We can now take the exponential of both sides of the equation, and we have:
+\begin{equation}
+  t_{n} \approx t_{n^{*}}\times \exp\left(\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2\right)
+\end{equation}
+\subsection{}
+(ii) (15 pts.) Evaluate the above full partition function and then obtain $\langle n\rangle$ by suitable differentiation of $\log Q$. (Hint: Think of $Q(N, V, T)$ as a power series $Q(N, V, T)=\sum_{n=0}^{\infty} a_{n} z^{n}$.) Are the results for $\langle n\rangle$ from the maximum term and the full partition function the same?\\
+We have the partition function:
+\begin{equation}
+  Q(N,T)=\sum_{n=0}^{\infty}\frac{(N+n)!}{n!N!}e^{-n\omega/kT}
+\end{equation}
+We can consider $z=e^{-\omega/kT}$ and $a_{n}=\frac{(N+n)!}{n!N!}$, so that we have:
+\begin{equation}
+  Q(N,T)=\sum_{n=0}^{\infty} a_{n} z^{n}
+\end{equation}
+We can recreate $a_{n}$ by considering:
+\begin{equation}
+  a_{n}=\frac{(N+n)!}{n!N!}=\frac{(N+n)(N+n-1)...(N+1)}{n!}
+\end{equation}
+We recognize the numerator as:
+\begin{equation}
+  \frac{\partial^n f}{\partial x^n}
+\end{equation}
+where $f=\frac{1}{(1+x^N)}$.
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{2}

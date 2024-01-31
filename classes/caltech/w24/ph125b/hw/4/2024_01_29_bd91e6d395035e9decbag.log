@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  29 JAN 2024 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  29 JAN 2024 21:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -255,27 +255,41 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 21
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-Overfull \hbox (72.67197pt too wide) detected at line 138
+Overfull \hbox (29.68062pt too wide) detected at line 138
 [][][]
  []
 
 [4]
+Overfull \hbox (10.28734pt too wide) detected at line 157
+[][][]
+ []
+
+
+Overfull \hbox (5.2698pt too wide) in paragraph at lines 157--159
+\T1/cmr/m/n/12 Integrating by parts, with $\OML/cmm/m/it/12 u \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ! [] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) []$ \T1/cmr/m/n/12 and $[] \OT1/cmr/m/n/12 = [] [] [] \OMS/cmsy/m/n/12 !
+ []
+
+
+Overfull \hbox (65.12364pt too wide) detected at line 164
+[][][]
+ []
+
 <./images//2024_01_29_bd91e6d395035e9decbag-3.jpg, id=29, 886.31125pt x 790.955pt>
 File: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg Graphic file (type jpg)
 <use ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg>
-Package pdftex.def Info: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg  used on input line 151.
+Package pdftex.def Info: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg  used on input line 172.
 (pdftex.def)             Requested size: 886.30908pt x 790.95308pt.
- [5] [6 <./images//2024_01_29_bd91e6d395035e9decbag-3.jpg>] [7] (./2024_01_29_bd91e6d395035e9decbag.aux) ) 
+[5] [6 <./images//2024_01_29_bd91e6d395035e9decbag-3.jpg>] [7] (./2024_01_29_bd91e6d395035e9decbag.aux) ) 
 Here is how much of TeX's memory you used:
  5862 strings out of 478268
  95400 string characters out of 5846347
- 399728 words of memory out of 5000000
+ 407728 words of memory out of 5000000
  23985 multiletter control sequences out of 15000+600000
  483881 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,9n,77p,925b,262s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 68i,12n,77p,925b,262s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on 2024_01_29_bd91e6d395035e9decbag.pdf (7 pages, 199410 bytes).
+Output written on 2024_01_29_bd91e6d395035e9decbag.pdf (7 pages, 200991 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

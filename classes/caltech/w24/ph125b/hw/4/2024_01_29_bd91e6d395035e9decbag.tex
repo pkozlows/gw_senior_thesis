@@ -126,21 +126,42 @@ That is, the probability to find a particle in the box must not change with time
 Now, if we have some acceptable wave function $\psi(x)$.
 And another acceptable function $\phi $:
 \begin{equation}
-  \phi (x)=e^{\frac{i2\pi^2}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)
+  \phi (x)=e^{\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)
 \end{equation}
 Any linear combination of $\psi(x)$ and $\phi(x)$ is also an acceptable wave function.
 So, we plug in the linear combination of $\psi(x)$ and $\phi(x)$ into the condition of no net floods into or out of the box:
 \begin{equation}
   \begin{aligned}
-    0&=\pdv{t}\int_{-L / 2}^{L / 2} \abs{a\psi(x)+b\phi(x)}^{2} \dd{x}\\
-    &=\pdv{t}\int_{-L / 2}^{L / 2} \abs{a\psi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2} \abs{b\phi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2} a^*b\psi^*(x)\phi(x)+ab^*\psi(x)\phi^*(x) \dd{x}\\
+    0&=\pdv{t}\int_{-L / 2}^{L / 2} \abs{\psi(x)+\phi(x)}^{2} \dd{x}\\
+    &=\pdv{t}\int_{-L / 2}^{L / 2} \abs{\psi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2} \abs{\phi(x)}^{2} \dd{x}+\pdv{t}\int_{-L / 2}^{L / 2}\psi^*(x)\phi(x)+\psi(x)\phi^*(x) \dd{x}\\
 \end{aligned}
 \end{equation}
 We know the first two terms are zero, as $\psi(x)$ and $\phi(x)$ are acceptable wave functions. So, we are left with:
 \begin{equation}
-  0=\pdv{t}\left[\int_{-L / 2}^{L / 2} a^*b\psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} ab^*\psi(x)\phi^*(x) \dd{x}\right]
+  0=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)\phi^*(x) \dd{x}\right]
 \end{equation}
-For the first integral, choosing $u = a^*\psi^*(x) \rightarrow \dd{u} = a^*\psi^{\prime *}(x) \dd{x}$ and $\dd{v} = b\phi(x) \rightarrow v = b\int \phi(x) \dd{x} = -\frac{bL}{2\pi}\cos\left(\frac{2\pi x}{L}\right)$, we have:
+Substituting in the expression for $\phi(x)$:
+\begin{equation}
+  \begin{aligned}
+    0&=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)\phi^*(x) \dd{x}\right]\\
+    &=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)e^{\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)e^{-\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
+    &=\pdv{t}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}+e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
+\end{aligned}
+\end{equation}
+Now, we apply the time derivative to the integrals:
+\begin{equation}
+  \begin{aligned}
+    0&=\pdv{t}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}+e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
+    &=\frac{i2\pi^2}{mL^2}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}-e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
+\end{aligned}
+\end{equation}
+Integrating by parts, with $u = \psi(x)\rightarrow \dd{u} = \psi'(x)\dd{x}$ and $\dd{v} = \sin\left(\frac{2\pi x}{L}\right)\dd{x}\rightarrow v = -\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)$:
+\begin{equation}
+  \begin{aligned}
+    0 = \frac{i2\pi^2}{mL^2}\left(e^{\frac{i2\pi^2t}{mL^2}}\left[\left.\psi(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\right|_{-L / 2}^{L / 2}-\int_{-L / 2}^{L / 2} \psi'(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\dd{x}\right]\right)\\
+    -e^{-\frac{i2\pi^2t}{mL^2}}\left(\left.\psi(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\right|_{-L / 2}^{L / 2}-\int_{-L / 2}^{L / 2} \psi'(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\dd{x}\right)\\
+  \end{aligned}
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{15}

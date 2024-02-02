@@ -40,15 +40,66 @@ Express your answer in terms of $V_{n}$, and a condition involving $p$ and $q$ o
 The matrix elements of $V$ are given by the integral:
 \begin{equation}
   \begin{aligned}
-    \langle q|V| p\rangle &=\int_{0}^{L} \mathrm{d} x \frac{1}{L} e^{-2 \pi i n_{q} x / L} V(x) \frac{1}{L} e^{2 \pi i n_{p} x / L} \\
-    &=\frac{1}{L^{2}} \int_{0}^{L} \mathrm{d} x \sum_{n=-\infty}^{\infty} e^{2 \pi i(n_{p}-n_{q}) x / L} V_{n} \\
-    &=\frac{1}{L^{2}} \sum_{n=-\infty}^{\infty} V_{n} \int_{0}^{L} \mathrm{d} x e^{2 \pi i(n_{p}-n_{q}) x / L} \\
-    &=\frac{1}{L^{2}} \sum_{n=-\infty}^{\infty} V_{n} \frac{L}{2 \pi i(n_{p}-n_{q})} e^{2 \pi i(n_{p}-n_{q}) x / L} \\
-    &=\frac{1}{2 \pi i(n_{p}-n_{q})} V_{n_{p}-n_{q}}
+    \langle q|V| p\rangle &=\int_{0}^{L} \mathrm{d} x \frac{1}{\sqrt{L}} e^{-2 \pi i n_{q} x / L} V(x) \frac{1}{\sqrt{L}} e^{2 \pi i n_{p} x / L} \\
 \end{aligned}
 \end{equation}
-(b) Suppose $\varepsilon_{n_{p}}$ and $\varepsilon_{n_{q}}$ are not close to each other $\forall n_{q}\left(\neq n_{p}\right)$, given some $n_{p}$. Calculate the perturbed wave function in ordinary first order perturbation theory corresponding to unperturbed wave function $\psi_{p}(x)$. Also, calculate the energy to $2^{\text {nd }}$ order. Express your answer in terms of $V_{n}$.
-
+We can plug in the Fourier series for $V(x)$ into the above equation:
+\begin{equation}
+  \begin{aligned}
+    \langle q|V| p\rangle &=\int_{0}^{L} \mathrm{d} x \frac{1}{\sqrt{L}} e^{-2 \pi i n_{q} x / L} \sum_{n=-\infty}^{\infty} e^{i n 2 \pi x / d} V_{n} \frac{1}{\sqrt{L}} e^{2 \pi i n_{p} x / L} \\
+\end{aligned}
+\end{equation}
+Bringing the sum and coefficients outside the integral:
+\begin{equation}
+  \begin{aligned}
+    \langle q|V| p\rangle &=\frac{1}{L}\sum_{n=-\infty}^{\infty} V_{n}\int_{0}^{L} \mathrm{d} x e^{-2 \pi i n_{q} x / L} e^{i n 2 \pi x / d} e^{2 \pi i n_{p} x / L} \\
+\end{aligned}
+\end{equation}
+We can use the expression we are given for $d$ to combine the exponentials:
+\begin{equation}
+  \begin{aligned}
+    &=\frac{1}{L}\sum_{n=-\infty}^{\infty} V_{n}\int_{0}^{L} \mathrm{d} x e^{-2 \pi i n_{q} x / L} e^{i n 2 \pi x / (L/N)} e^{2 \pi i n_{p} x / L} \\
+    &=\frac{1}{L}\sum_{n=-\infty}^{\infty} V_{n}\int_{0}^{L} \mathrm{d} x e^{\frac{2\pi i x}{L}\left( nN+n_{p}-n_{q}\right)}\\
+\end{aligned}
+\end{equation}
+This integral evaluates to $L$ when $nN + n_{p} - n_{q} = 0$, leading to the condition for non-zero contributions:
+\begin{equation}
+  nN + n_{p} - n_{q} = 0
+\end{equation}
+where $n$ is an integer.
+We can thus express the matrix element as:
+\begin{equation}
+  \langle q|V| p\rangle = \sum_{n=-\infty}^{\infty} V_{n} \delta_{n_{p}, n_{q} + nN}
+\end{equation}
+Most of the terms in the sum will be zero, as the Kronecker delta will only be non-zero when $n_{p}-n{q}$ is a multiple of $N$:
+\begin{equation}
+  \langle q|V| p\rangle = V_{\frac{n_{p}-n_{q}}{N}}
+\end{equation}
+\subsection{}
+(b) Suppose $\varepsilon_{n_{p}}$ and $\varepsilon_{n_{q}}$ are not close to each other $\forall n_{q}\left(\neq n_{p}\right)$, given some $n_{p}$. Calculate the perturbed wave function in ordinary first order perturbation theory corresponding to unperturbed wave function $\psi_{p}(x)$. Also, calculate the energy to $2^{\text {nd }}$ order. Express your answer in terms of $V_{n}$.\\
+We may consider the projection of the unperturbed wave function $\bra{q}$ onto the perturbed wave function $\ket{N^{(1)}}$:
+\begin{equation}
+  \bra{q}\ket{N^{(1)}}=\frac{1}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}\bra{q}V\ket{p}
+\end{equation}
+Using the expression for the matrix elements of $V$ we derived in part (a), we can write the above equation as:
+\begin{equation}
+  \bra{q}\ket{N^{(1)}}=\frac{1}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}V_{\frac{n_{p}-n_{q}}{N}}
+\end{equation}
+To first order, the perturbed wave function is:
+\begin{equation}
+  \ket{N^{(1)}}=\ket{p}+\sum_{n_{q}\neq n_{p}}\frac{1}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}V_{\frac{n_{p}-n_{q}}{N}}\ket{q}
+\end{equation}
+where we earlier stated that $n_{q}$ has to be an integer multiple away from $n_{p}$.
+The energy to second order consists of the unperturbed energy plus the first order correction plus the second order correction:
+\begin{equation}
+  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+\bra{n}V\ket{n}+\sum_{n_{q}\neq n_{p}}\frac{\abs{\bra{q}V\ket{p}}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}
+\end{equation}
+where $n$ is an unperturbed eigenstate. We can simplify to:
+\begin{equation}
+  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+V_{0}+\sum_{n_{q}\neq n_{p}}\frac{\abs{V_n}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}
+\end{equation}
+where we again have that $n_{q}$ has to be an integer multiple away from $n_{p}$.
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{13}
   \item It may happen that we encounter a situation where two eigenvalues of $H_{0}$, call them $\varepsilon_{n}$ and $\varepsilon_{m}$, are nearly, but not quite equal. In this case, we don't seem to be able to use degenerate perturbation theory, and ordinary perturbation theory is likely to converge slowly. Let us try to deal with such a situation: Suppose the two eigenstates $|n\rangle$ and $|m\rangle$ of $H_{0}$ have nearly the same energy (and all other eigenstates don't suffer this disease, for simplicity). Let $H=H_{0}+V$, and write
@@ -99,7 +150,29 @@ E_{n, m}^{(1)}=\varepsilon_{n, m}+\langle n, m|V| n, m\rangle
 $$
 
 if you find it convenient.)
+\subsection{}
+We want to diagonalize the matrix representation of $H_{1}$ in the subspace spanned by $|n\rangle$ and $|m\rangle$. We have:
+\begin{equation}
+  H_{1}=\mqty(\varepsilon_{n}+\langle n|V_1| n\rangle & \langle n|V_1| m\rangle\\
+  \langle m|V_1| n\rangle & \varepsilon_{m}+\langle m|V_1| m\rangle)
+\end{equation}
+since we have that $H_1 \equiv H_0 + V_1$.
+Diagonalizing this matrix in SymPy gives the eigensystem:
+\begin{equation}
+  \begin{aligned}
+    \lambda _{1} &= \frac{- V_{mm} + V_{nn} - \epsilon_{m} + \epsilon_{n} - \sqrt{V_{mm}^{2} - 2 V_{mm} V_{nn} + 2 V_{mm} \epsilon_{m} - 2 V_{mm} \epsilon_{n} + 4 V_{mn} V_{nm} + V_{nn}^{2} - 2 V_{nn} \epsilon_{m} + 2 V_{nn} \epsilon_{n} + \epsilon_{m}^{2} - 2 \epsilon_{m} \epsilon_{n} + \epsilon_{n}^{2}}}{2 V_{mn}}
+  \end{aligned}
+\end{equation}
+with the corresponding eigenvector:
+\begin{equation}
+  \begin{aligned}
+    \ket{\lambda _{1}} &= \frac{V_{mm}}{2} + \frac{V_{nn}}{2} + \frac{\epsilon_{m}}{2} + \frac{\epsilon_{n}}{2} - \frac{\sqrt{V_{mm}^{2} - 2 V_{mm} V_{nn} + 2 V_{mm} \epsilon_{m} - 2 V_{mm} \epsilon_{n} + 4 V_{mn} V_{nm} + V_{nn}^{2} - 2 V_{nn} \epsilon_{m} + 2 V_{nn} \epsilon_{n} + \epsilon_{m}^{2} - 2 \epsilon_{m} \epsilon_{n} + \epsilon_{n}^{2}}}{2}
+  \end{aligned}
+\end{equation}
 
+
+
+\subsection{}
 (b) Now consider the periodic potential of problem 13. What is the condition on $n_{p}$ (and hence on $p$ ) so that $|p\rangle$ will be nearly degenerate in energy with another eigenstate of $H_{0}$ ? You might find it convenient to define the "reciprocal lattice constant" $K \equiv 2 \pi / d$.
 
 (c) Assume that the condition in part (b) is satisfied, and use part (a) to solve this "almost degenerate" case for the eigenenergies. Try to make a sketch of the energy as a function of momentum ("dispersion relation"). Fig. 1 gives a start for momenta less than $\pi / d$.
@@ -140,29 +213,51 @@ We know the first two terms are zero, as $\psi(x)$ and $\phi(x)$ are acceptable 
 \begin{equation}
   0=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)\phi^*(x) \dd{x}\right]
 \end{equation}
-Substituting in the expression for $\phi(x)$:
+We can write the above equation as:
 \begin{equation}
-  \begin{aligned}
-    0&=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)\phi(x)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)\phi^*(x) \dd{x}\right]\\
-    &=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)e^{\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)\dd{x}+\int_{-L / 2}^{L / 2} \psi(x)e^{-\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
-    &=\pdv{t}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}+e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
-\end{aligned}
+  0=\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi^*(x)\phi(x)\dd{x}\right]+\pdv{t}\left[\int_{-L / 2}^{L / 2} \psi(x)\phi^*(x) \dd{x}\right]
 \end{equation}
-Now, we apply the time derivative to the integrals:
+Now, we can use the product rule to differentiate the above equation:
 \begin{equation}
-  \begin{aligned}
-    0&=\pdv{t}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}+e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
-    &=\frac{i2\pi^2}{mL^2}\left[e^{\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi^*(x)\sin\left(\frac{2\pi x}{L}\right)\dd{x}-e^{-\frac{i2\pi^2t}{mL^2}}\int_{-L / 2}^{L / 2} \psi(x)\sin\left(\frac{2\pi x}{L}\right) \dd{x}\right]\\
-\end{aligned}
+  0=\int_{-L / 2}^{L / 2} \pdv{t}\left[\psi^*(x)\phi(x)\right]\dd{x}+\int_{-L / 2}^{L / 2} \pdv{t}\left[\psi(x)\phi^*(x)\right] \dd{x}
 \end{equation}
-Integrating by parts, with $u = \psi(x)\rightarrow \dd{u} = \psi'(x)\dd{x}$ and $\dd{v} = \sin\left(\frac{2\pi x}{L}\right)\dd{x}\rightarrow v = -\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)$:
+We can write the above equation as:
+\begin{equation}
+  0=\int_{-L / 2}^{L / 2} \left[\pdv{t}\psi^*(x)\right]\phi(x)+\psi^*(x)\left[\pdv{t}\phi(x)\right]\dd{x}+\int_{-L / 2}^{L / 2} \left[\pdv{t}\psi(x)\right]\phi^*(x)+\psi(x)\left[\pdv{t}\phi^*(x)\right] \dd{x}
+\end{equation}
+Rewriting the above equation to emphasize that the wave functions are time dependent
+\begin{equation}
+  0=\int_{-L / 2}^{L / 2} \left[\pdv{t}\psi^*(x,t)\right]\phi(x,t)+\psi^*(x,t)\left[\pdv{t}\phi(x,t)\right]\dd{x}+\int_{-L / 2}^{L / 2} \left[\pdv{t}\psi(x,t)\right]\phi^*(x,t)+\psi(x,t)\left[\pdv{t}\phi^*(x,t)\right] \dd{x}
+\end{equation}
+Now, the time dependent Schrödinger equation is:
+\begin{equation}
+  i\hbar\pdv{t}\psi(x,t)=\hat{H}\psi(x,t)
+\end{equation}
+So, we can write the above equation as:
+Isolate the time derivative of the wave function
+\begin{equation}
+  \pdv{t}\psi(x,t)=\frac{1}{i\hbar}\hat{H}\psi(x,t)
+\end{equation}
+Now, for the complex conjugate of the wave function:
+\begin{equation}
+  \pdv{t}\psi^*(x,t)=-\frac{1}{i\hbar}\hat{H}\psi^*(x,t)
+\end{equation}
+We can plug in the time derivative of the wave function into the above equation:
+\begin{equation}
+  0=\int_{-L / 2}^{L / 2} \left[\frac{1}{i\hbar}\hat{H}\psi^*(x,t)\right]\phi(x,t)+\psi^*(x,t)\left[\frac{1}{i\hbar}\hat{H}\phi(x,t)\right]\dd{x}+\int_{-L / 2}^{L / 2} \left[\frac{1}{i\hbar}\hat{H}\psi(x,t)\right]\phi^*(x,t)+\psi(x,t)\left[\frac{1}{i\hbar}\hat{H}\phi^*(x,t)\right] \dd{x}
+\end{equation}
+The free-particle Hamiltonian is:
+\begin{equation}
+  \hat{H}=-\frac{\hbar^2}{2m}\pdv[2]{x}
+\end{equation}
+So, we can plug in the Hamiltonian into the above equation:
 \begin{equation}
   \begin{aligned}
-    0 = \frac{i2\pi^2}{mL^2}\left(e^{\frac{i2\pi^2t}{mL^2}}\left[\left.\psi(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\right|_{-L / 2}^{L / 2}-\int_{-L / 2}^{L / 2} \psi'(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\dd{x}\right]\right)\\
-    -e^{-\frac{i2\pi^2t}{mL^2}}\left(\left.\psi(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\right|_{-L / 2}^{L / 2}-\int_{-L / 2}^{L / 2} \psi'(x)\left(-\frac{L}{2\pi}\cos\left(\frac{2\pi x}{L}\right)\right)\dd{x}\right)\\
+    0&=\int_{-L / 2}^{L / 2} \left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\psi^*(x,t)\right]\phi(x,t)+\psi^*(x,t)\left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\phi(x,t)\right]\dd{x}\\
+    &+\int_{-L / 2}^{L / 2} \left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\psi(x,t)\right]\phi^*(x,t)+\psi(x,t)\left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\phi^*(x,t)\right] \dd{x}\\
   \end{aligned}
 \end{equation}
-\section{}
+
 \begin{enumerate}
   \setcounter{enumi}{15}
   \item Note: I have posted a note reviewing complex variables in the module for week 4 , in case it is helpful (to evaluate an integral).

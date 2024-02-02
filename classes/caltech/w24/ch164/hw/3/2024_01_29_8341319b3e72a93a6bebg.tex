@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -6,6 +6,39 @@
 \usepackage{amssymb}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
 
 \title{Ch/ChE 164 Winter 2024 
  Homework Problem Set \#3 }
@@ -32,11 +65,84 @@ $$
 
 where $\rho=\langle N\rangle / V$. The volume of the region is $L^{3}$. Due to the spontaneous fluctuations in the system, the instantaneous value of the density in that region can differ from its average by an amount $\delta \rho$. Determine, as a function of $\beta, \rho, a, b$, and $L^{3}$, the typical relative size of these fluctuations; that is, evaluate $\left\langle(\delta \rho)^{2}\right\rangle^{1 / 2} / \rho$. Demonstrate that when one considers observations of a macroscopic system (i.e., the size of the region becomes macroscopic, $L^{3} \rightarrow \infty$ ) the relative fluctuations become negligible.
 \subsection{}
-We have a fixed temperature $\beta = 1/kT$ and a fixed volume $V=L^3$. The relevant thermo dynamic potential for this problem is going to be the Helmholtz free energy. The differential of the Helmholtz free energy is given by:
+We know a few things about the system. We know that the average density is given by:
 \begin{equation}
-  dF=-SdT-pdV+\mu dN
+  \rho = \frac{\langle N\rangle}{V}
 \end{equation}
-Taking into account that the volume and the temperature are fixed, it becomes:
+We also know that the fluctuations in the density are given by:
+\begin{equation}
+  \left\langle(\delta \rho)^{2}\right\rangle = \left\langle \rho^2\right\rangle - \left\langle \rho\right\rangle^2
+\end{equation}
+and then the volume of the region is given by:
+\begin{equation}
+  V = L^3
+\end{equation}
+We want to find the relative fluctuations, which are given by:
+\begin{equation}
+  \frac{\sigma _{\rho}^2}{\rho^2} = \frac{\left\langle(\delta \rho)^{2}\right\rangle}{\rho^2}=\frac{\langle \frac{\langle N\rangle^2}{V^2}\rangle - \langle \frac{\langle N\rangle}{V}\rangle^2}{\langle \frac{\langle N\rangle}{V}\rangle^2}
+\end{equation}
+We can cancel out the $V^2$ in the numerator and the denominator, and then we have:
+\begin{equation}
+  \frac{\sigma _{\rho}^2}{\rho^2} = \frac{\langle N^2\rangle - \langle N\rangle^2}{\langle N\rangle^2} = \frac{\sigma _{N}^2}{\langle N\rangle^2}
+\end{equation}
+In class, we showed that the variance of the number of particles is:
+\begin{equation}
+  \sigma _{N}^2 = k_B TN\rho \kappa _T
+\end{equation}
+And then the isothermal compressibility is given by:
+\begin{equation}
+  \kappa _T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T
+\end{equation}
+
+SymPy gives the relative fluctuations as:
+\begin{equation}
+  \frac{T V k_{B} \left(- N^{2} b^{2} + 2 N V b - V^{2}\right)}{N \left(2 N^{3} a b^{2} - 4 N^{2} V a b + 2 N V^{2} a - T V^{3} k_{B}\right)}
+\end{equation}
+I have a $V^3$ in the numerator and denominator, so I am not sure what happens in the limit of $V\to \infty$.\\ \emph{Also, when you grade my work, I realize that the above expression is kind of unwieldy, so let me know what I could do to use the computer algebra. Probably printing out some intermediate results would help, but would it give me partial credit to give some kind of an algorithm as to how I am arriving at my results? I tried to comment my python script pretty well.}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, Eq, solve, diff, simplify, latex
+
+# Define symbols
+beta, p, a, b, N, V, k_B, T = symbols('beta p a b N V k_B T')
+
+# Average number density, rho = <N>/V
+rho = N/V
+
+# Define the van der Waals equation in the given form
+vdw_eq = Eq(beta*p, rho / (1 - b*rho) - beta*a*rho**2)
+
+# Substitute rho = N/V in the equation and beta = 1/(k_B*T)
+vdw_eq_sub = vdw_eq.subs(rho, N/V).subs(beta, 1/(k_B*T))
+
+# Solve the van der Waals equation for p after substitution
+p_solved = solve(vdw_eq_sub, p)[0]
+
+# Differentiate the solved pressure with respect to V
+dp_dV = diff(p_solved, V)
+
+# Simplify the derivative to make it more manageable
+dp_dV_simplified = simplify(dp_dV)
+
+# Take the inverse of this to get the derivative of volume with respect to pressure
+dV_dp = 1/dp_dV_simplified
+
+# Express the isothermal compressibility using what we have found \kappa _T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T
+kappa_T = -1/V * dV_dp
+
+# Find the variance in the particle number using \sigma _{N}^2 = k_B T N rho \kappa _T
+sigma_N2 = kappa_T * N * rho * k_B * T
+
+# Divide by N^2 to get the relative variance
+rel_var_N = sigma_N2 / N**2
+
+# Print the result in simplified form and in latex
+print(latex(simplify(rel_var_N)))
+\end{lstlisting}
+% I am supposed to be getting a versal like:
+% \begin{equation}
+%   \frac{\langle (\delta \rho)^2\rangle^{1/2}}{\rho} = \frac{1}{\sqrt{\rho V}}\frac{(1-b\rho)}{\sqrt{1-2\beta a \rho(1-b\rho)^2}}
+% \end{equation}
 
 (b) (9 pts.) A fluid is at its "critical point" when
 
@@ -45,8 +151,86 @@ $$
 $$
 
 Determine the critical point density and temperature for a fluid obeying the van der Waals equation. That is compute $\beta_{c}$ and $\rho_{c}$ as a function of $a$ and $b$.
+\subsection{}
+Since the above derivates occur at fixed $\beta$, we can factor out the $\beta$ from the derivatives. We have:
+\begin{equation}
+  \left(\frac{\partial \beta p}{\partial \rho}\right)_{\beta}=\beta \left(\frac{\partial p}{\partial \rho}\right)_{\beta}
+\end{equation}
+and then:
+\begin{equation}
+  \left(\frac{\partial^{2} \beta p}{\partial \rho^{2}}\right)_{\beta}=\beta^2 \left(\frac{\partial^2 p}{\partial \rho^2}\right)_{\beta}
+\end{equation}
+At the critical point, $\beta $ and $\rho$ are given respectively by:
+\begin{equation}
+  \left[ \left( \frac{27 b}{8 a}, \  \frac{1}{3 b}\right)\right]
+\end{equation}
+Please follow my script as it should be clearly commented
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, Eq, solve, diff, simplify, latex
 
+# Define symbols
+beta, p, a, b, k_B, T, rho = symbols('beta p a b k_B T rho')  # Include rho in the symbols
+
+# Define the van der Waals equation in the given form
+vdw_eq = Eq(beta*p, rho / (1 - b*rho) - beta*a*rho**2)
+
+# solve for the pressure
+p_solved = solve(vdw_eq, p)[0]
+
+# evaluate \left(\frac{\partial \beta p}{\partial \rho}\right)_{\beta}=\beta \left(\frac{\partial p}{\partial \rho}\right)_{\beta}
+dp_drho = diff(p_solved, rho)
+# multiply the result by beta
+dp_drho_beta = beta * dp_drho
+
+# evaluate \left(\frac{\partial^{2} \beta p}{\partial \rho^{2}}\right)_{\beta}=\beta^2 \left(\frac{\partial^2 p}{\partial \rho^2}\right)_{\beta}
+d2p_drho2 = diff(dp_drho, rho)
+# multiply the result by beta^2
+d2p_drho2_beta = beta**2 * d2p_drho2
+
+# said beta equal to 0 in both equation and solve for beta and rho
+beta_rho = solve([dp_drho_beta, d2p_drho2_beta], [beta, rho])
+# print out the results in latex
+print(latex(beta_rho))
+\end{lstlisting}
 (c) (9 pts.) Focus attention on the subvolume of size $L^{3}$ in the fluid. Suppose $L^{3}$ is 100 times the space filling volume of a molecule - that is, $L^{3} \approx 100 b$. For this region in the fluid, compute the relative size of the density fluctuations when $\rho=\rho_{c}$, and the temperature is $10 \%$ above the critical temperature. Repeat this calculation for temperatures $0.1 \%$ and $0.001 \%$ from the critical temperature.
+\subsection{}
+I was not able to get any numerical results for this part or the next, but this is what I tried
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, Eq, solve, diff, simplify, latex
+
+# Define symbols
+a, b, k_B, T, N, V, L = symbols('a b k_B T N V L')
+
+rho_c = 1/(3*b)
+T_c = 8*a/(27*b*k_B)  # Critical temperature
+
+# Define the volume of the region as L^3
+V = L**3  # Assuming L^3 is the volume
+
+# Temperature adjustments
+T_adjustments = [T_c * factor for factor in [1.1, 1.001, 1.00001]]
+
+# Assuming you have an expression for sigma_N^2 and kappa_T
+kappa_T = symbols('kappa_T')  # Placeholder
+sigma_N2 = k_B * T * N * rho_c * kappa_T  # Placeholder formula for sigma_N^2
+
+# Compute the relative variance sigma_rho^2 / rho^2
+# Assuming sigma_N2 / N^2 gives sigma_rho^2 / rho^2 directly
+rel_var_N = sigma_N2 / N**2
+
+# Loop over each adjusted temperature
+for T_adj in T_adjustments:
+    # Compute or substitute T_adj into your expressions as needed
+    # This step depends on how you've structured your expressions for fluctuations
+    print(f'Temperature: {T_adj}, Relative Variance: {rel_var_N.subs(T, T_adj)}')
+
+# Note: This script contains placeholders and conceptual steps. Actual computation
+# of sigma_N2, kappa_T, and their dependencies need to be defined based on
+# the van der Waals equation and fluctuation theory.
+
+\end{lstlisting}
 
 (d) (8 pts.) Light that we can observe with our eyes has wavelengths of order of $1000 \AA$. Fluctuations in density cause changes in the index of refraction, and those changes produce scattering of light. Therefore, if a region of fluid $1000 \AA$ across contains significant density fluctuations, we will visually observe these fluctuations. On the basis of the type of calculation performed in part (b), determine how close to the critical point a system must be before critical fluctuations become optically observable (that is, when the quantity $\left\langle(\delta \rho)^{2}\right\rangle^{1 / 2} / \rho$ is of order one). The phenomenon of long wavelength density fluctuations in a fluid approaching the critical point is known as opalescence. (Note: You will need to estimate the size of $b$, and to do this you should note that the typical diameter of a small molecule is around $5 \AA$ ).
 \section{}
@@ -76,9 +260,14 @@ Considering how canonical ensemble partition function is defined, we have:
 where $\Omega (N,n)$ is the number of microstates with $N$ molecules and $n$ vacancies and $n_{max}$ is the maximum number of vacancies that can be created.
 Considering that we have $N$ molecules and $n$ vacancies, there are $n$ ways to arrange the $N+n$ spaces, so:
 \begin{equation}
-  \Omega (N,n)= \binom{N+n}{n} = \frac{(N+n)!}{n!N!}
+  \Omega_1 (N,n)= \binom{N+n}{n} = \frac{(N+n)!}{n!N!}
 \end{equation}
-Combining our results we have, for the partition function:
+We might also consider $\Omega_2 (N,n)$ as the number of ways to place $N$ particles in $n$ vacancies, but in the limit of large $N$ with $\Omega_2 (N,n)=\frac{N!}{n!(N-n)!}$ and $\Omega_1 (N,n)=\frac{(N+n)!}{n!N!}$, we have:
+\begin{equation}
+  \lim_{N\to \infty}\frac{\Omega_2 (N,n)}{\Omega_1 (N,n)}=1
+\end{equation}
+so it doesn't make a difference.
+Continuing on, combining our results we have, for the partition function:
 \begin{equation}
   Q(N,T)=\sum_{n=0}^{n_{max}}\frac{(N+n)!}{n!N!}e^{-\beta n\omega}
 \end{equation}
@@ -88,11 +277,24 @@ Now, we wish to show that the sum can well be extended to infinity, by consideri
 \end{equation}
 Applying Stirling's approximation to the logarithm of the factorials, we have:
 \begin{equation}
-  \ln(t_{n}) \approx (N+n)\ln (N+n)-n\ln n-N\ln N-\beta n\omega
+  \ln(t_{n}) \approx (N+n)\ln (N+n)-(N+n)-n\ln n- N\ln N +N -\beta n\omega
 \end{equation}
+Taking the derivative of the logarithm of the argument of the sum with respect to $n$ and setting it equal to zero, we have:
+\begin{equation}
+  \frac{d\ln(t_{n})}{dn} \approx \ln (N+n)-\ln n -\beta \omega =0
+\end{equation}
+Exponentiating both sides of the equation, we have:
+\begin{equation}
+  \frac{N+n}{n}=e^{\beta \omega}
+\end{equation}
+or flippping the equation, we have:
+\begin{equation}
+  \frac{n}{N+n}=e^{-\beta \omega}
+\end{equation}
+Now, we want to show the equivalnence of $\sum_{n=0}^{n_{max}}$ and $\sum_{n=0}^{\infty}$, when the argument is $t_{n}=\Omega (N,n) e^{-\beta n\omega}$. 
 Now, we want to Taylor expand the logarithm of the argument of the sum around the maximum term, which we will call $n^{*}$. We have:
 \begin{equation}
-  \ln(t_{n}) \approx \ln(t_{n^{*}})+\frac{d\ln(t_{n})}{dn}\bigg|_{n=n^{*}}(n-n^{*})+\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2
+  \ln(t_{n}) \approx \ln(t_{n^{*}})-\frac{d\ln(t_{n})}{dn}\bigg|_{n=n^{*}}(n-n^{*})+\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2
 \end{equation}
 We know that the first derivative of the logarithm of the argument of the sum is zero at the maximum term, so the first term of the Taylor expansion is zero:
 \begin{equation}
@@ -102,6 +304,19 @@ We can now take the exponential of both sides of the equation, and we have:
 \begin{equation}
   t_{n} \approx t_{n^{*}}\times \exp\left(\frac{1}{2}\frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}(n-n^{*})^2\right)
 \end{equation}
+We want to evaluate the second derivative of the logarithm of the argument of the sum at the maximum term. The term from the Boltzmann factor vanishes in the second derivate with respect to $n$, so we have:
+\begin{equation}
+  \frac{d^2\ln(t_{n})}{dn^2}\bigg|_{n=n^{*}}=\frac{d^2\ln(\Omega (N,n))}{dn^2}\bigg|_{n=n^{*}}=\frac{1}{(N+n^{*})}-\frac{1}{n^{*}}=\frac{1}{\sigma _{n}^2}\rightarrow \sigma _{n}^2=\frac{N}{n^{*}(N+n^{*})}
+\end{equation}
+So, our expression for the maximal term becomes:
+\begin{equation}
+  t_{n} \approx t_{n^{*}}\times \exp\left(\frac{1}{2\sigma _{n}^2}(n-n^{*})^2\right)
+\end{equation}
+We want to consider the square of the variance divided by the square of the maximal n, $n^{*}$ in the limit of large $N$. We have:
+\begin{equation}
+  \frac{\sigma _{n}^2}{n^{*2}}=\frac{N}{n^{*}(N+n^{*})n^{*}}=\frac{1}{n^{*}(1+\frac{N}{n^{*}})}
+\end{equation}
+I got mixed up in the algebra here, but the point is to show that the distribution is sharply peaked about $n^{*}$, so that the sum can be extended from $n_{max}$ to infinity with little error.
 \subsection{}
 (ii) (15 pts.) Evaluate the above full partition function and then obtain $\langle n\rangle$ by suitable differentiation of $\log Q$. (Hint: Think of $Q(N, V, T)$ as a power series $Q(N, V, T)=\sum_{n=0}^{\infty} a_{n} z^{n}$.) Are the results for $\langle n\rangle$ from the maximum term and the full partition function the same?\\
 We have the partition function:
@@ -114,13 +329,22 @@ We can consider $z=e^{-\omega/kT}$ and $a_{n}=\frac{(N+n)!}{n!N!}$, so that we h
 \end{equation}
 We can recreate $a_{n}$ by considering:
 \begin{equation}
-  a_{n}=\frac{(N+n)!}{n!N!}=\frac{(N+n)(N+n-1)...(N+1)}{n!}
+  a_{n}=\frac{1}{n!}\frac{d^n f}{dz^n}\bigg|_{z=0}
 \end{equation}
-We recognize the numerator as:
+with $f(z)=\frac{1}{(1-z)^{(N+1)}}$. It was showed in OH how differentiation of this function is able to recreate $\frac{(N+n)!}{N!}$. We can then write the partition function as:
 \begin{equation}
-  \frac{\partial^n f}{\partial x^n}
+  Q(N,T)=\sum_{n=0}^{\infty}\frac{1}{n!}\frac{d^n f}{dz^n}\bigg|_{z=0}z^{n} = \frac{1}{(1-z)^{(N+1)}}
 \end{equation}
-where $f=\frac{1}{(1+x^N)}$.
+We can then write the average number of vacancies as:
+\begin{equation}
+  \langle n\rangle =-\frac{d \ln Q}{d \beta \omega} = -\frac{\partial}{\partial{\beta \omega}}\left( \ln \frac{1}{(1-z)^{(N+1)}}\right) = -\frac{\partial}{\partial{\beta \omega}}\left( -(N+1)\ln (1-z)\right)
+\end{equation}
+Inserting the definition of $z$ and taking the derivative, we have:
+\begin{equation}
+  \langle n\rangle = (N+1)\frac{e^{-\beta \omega}}{1-e^{-\beta \omega}}
+\end{equation}
+I am not sure how to go further here.
+
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{2}
@@ -138,6 +362,29 @@ The Bose-Einstein and Fermi-Dirac distributions are given by:
   \left\langle n_{\alpha}\right\rangle=\frac{1}{e^{\beta\left(\epsilon_{\alpha}-\mu\right)}\mp 1}
 \end{equation}
 where the upper sign is for Bose-Einstein and the lower sign is for Fermi-Dirac.
-
+The grand potential is given by:
+\begin{equation}
+  W = -PV = -kT\ln \Xi
+\end{equation}
+The differential of the grand potential is given by:
+\begin{equation}
+  dW = -SdT - pdV - N d\mu
+\end{equation}
+We can then write the entropy as:
+\begin{equation}
+  S = -\left(\frac{\partial W}{\partial T}\right)_{V,\mu} = k \ln \Xi + kT\left(\frac{\partial \ln \Xi}{\partial T}\right)_{V,\mu}
+\end{equation}
+Now, the grand partition function can be written as as a product over the single particle partition functions:
+\begin{equation}
+  \Xi = \prod_{\alpha} \zeta_{\alpha}^{\mp} = \prod_{\alpha} \left(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}\right)^{\mp}
+\end{equation}
+So that the logarithm of the grand partition function is:
+\begin{equation}
+  \ln \Xi = \mp \sum_{\alpha} \ln \left(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}\right)
+\end{equation}
+Now, we can consider the derivative of the logarithm of the grand partition function with respect to temperature. We have:
+\begin{equation}
+  \frac{\partial \ln \Xi}{\partial T} = -\frac{\partial \ln \Xi}{\partial \beta}\frac{\partial \beta}{\partial T} = \mp \sum_{\alpha} \frac{e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}{1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}\left(-\frac{\epsilon_{\alpha}-\mu}{kT^2}\right)
+\end{equation}
 
 \end{document}

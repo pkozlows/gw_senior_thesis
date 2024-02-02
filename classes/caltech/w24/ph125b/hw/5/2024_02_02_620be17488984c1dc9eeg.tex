@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{physics}
+
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+\title{PROBLEMS: }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Physics $125 \mathrm{~b}$
+
+Midterm (Problem set number 5)
+
+Due midnight Wednesday, February 7, 2024
+
+READING: Section 18.5 in Shankar on the interaction of atoms with electromagnetic radiation.
+
+This is the Ph 125a "midterm", aka problem set 5 .
+
+Collaboration prohibited: Please do this problem set without consulting with or working with other students. This is the only restriction compared with our usual problem sets. You may use Piazza and attend office hours.
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{16}
+  \item See if you can generalize the result for the first Born approximation:
+\end{enumerate}
+
+$$
+\frac{d \sigma}{d \Omega^{\prime}}=\frac{m^{2}}{(2 \pi)^{2}}\left|\hat{V}\left(\mathbf{p}^{\prime}-\mathbf{p}\right)\right|^{2}
+$$
+
+to the case where the scattered particle (mass $m_{f}$ ) may have a different mass than the incident particle (mass $m_{i}$ ).
+\subsection{}
+Read ~7.3 on approximate methods
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{17}
+  \item We consider the potential (called the "Yukawa potential"):
+\end{enumerate}
+
+$$
+V(\mathbf{x})=\frac{K e^{-\mu r}}{r}, \quad r=|\mathbf{x}|
+$$
+
+with real parameters $K$ and $\mu>0$. The parameter $K$ can be regarded as the "strength" of the potential ("interaction"), and $\frac{1}{\mu}$ is effectively the "range" of distance over which the potential is important. $\mu$ itself has units of mass - note that as $\mu \rightarrow 0$ we obtain the Coulomb potential: $\mu$ can be thought of as the mass of an "exchanged particle" which mediates the force. In electromagnetism, this is the photon, hence $\mu \rightarrow m_{\gamma}=0$
+
+(a) Find a condition on $K$ and $\mu$ which guarantees that there are at least $n$ bound states in this potential. You will likely fashion and use some kind of "comparison" theorem in arriving at your result. You should give at least a "heuristically convincing" argument, if you don't actually prove it.
+\subsection{}
+We may consider the perturbation given by the difference between the new potential and the old coulomb potential:
+\begin{equation}
+  V= \frac{K e^{-\mu r}}{r} - \frac{K}{r}
+\end{equation}
+
+(b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
+
+(c) Integrate your differential cross section over all solid angles to obtain the "total cross section". Again, consider the limit $\mu \rightarrow 0$. Assuming the Rutherford cross section holds, what is the total cross section for scattering on a Coulomb potential?
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{18}
+  \item Suppose we have a system consisting of two spin- $\frac{1}{2}$ 's $\left(\mathbf{S}_{1}\right.$ and $\left.\mathbf{S}_{2}\right)$, with an interaction Hamiltonian $a(t) \mathbf{S}_{1} \cdot \mathbf{S}_{2}$. Assume that $a( \pm \infty)=0$ and that $a(t)$ is significantly different from zero in an interval of order $\tau$ in width about $t=0$.
+(a) Suppose at very early times $(t \rightarrow-\infty)$, the system is in state
+\end{enumerate}
+
+$$
+|\psi(-\infty)\rangle=|+-\rangle
+$$
+
+where the state is labeled by the $z$ components of $\mathbf{S}_{1}$ and $\mathbf{S}_{2}$, respectively. Without making any approximations, what is the state of the system at $t=\infty$ ? What is the probability, $P(+-\rightarrow-+)$, that the state is observed to be $|-+\rangle$ at $t=\infty$ ? Show that this probability depends only on $\int_{-\infty}^{\infty} a(t) d t$.
+\subsection{}
+Don't just take the standard dod product between the spin operators, but rather express them in terms of J. it will be a 2 by 2 matrix. We also want to consider a propagator\\
+(b) Now calculate $P(+-\rightarrow-+)$ in first-order time-dependent perturbation theory. What is a condition for the validity of first-order time-dependent perturbation theory?
+\subsection{}
+\section{First comet}
+\begin{enumerate}
+  \setcounter{enumi}{19}
+  \item With reference to the previous problem, consider the "Zeeman effect", with the addition of a uniform, static magnetic field of strength $B_{0}$ in the direction of the $z$-axis. Thus, we have another term in the Hamiltonian:
+\end{enumerate}
+
+$$
+H_{0}=-B_{0}\left(g_{1} S_{1 z}+g_{2} S_{2 z}\right),
+$$
+
+where $g_{1}$ and $g_{2}$ are the gyromagnetic ratios of the two spins. We assume a gaussian form for $a(t)$ :
+
+$$
+a(t)=a(0) e^{-(t / \tau)^{2}}
+$$
+
+Repeat your first order perturbation theory calculation of the previous problem in the presence of the magnetic field and with this explicit form for $a(t)$, and determine $P(+-\rightarrow-+)$. Discuss the variation of this probability, for given $a(0)$ and $\tau$, as a function of $B_{0}$.
+
+
+\end{document}

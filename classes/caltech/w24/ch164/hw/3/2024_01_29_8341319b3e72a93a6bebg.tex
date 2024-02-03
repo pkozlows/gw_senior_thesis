@@ -51,7 +51,8 @@
 
 \begin{document}
 \maketitle
-Due Date: Thursday Feb 1, 2024 @ 11:59pm
+Due Date: Thursday Feb 1, 2024 @ 11:59pm\\
+\emph{Extension of 1 day was given}
 \section{}
 \begin{enumerate}
   \item (from Chandler 3.22)
@@ -96,7 +97,11 @@ And then the isothermal compressibility is given by:
 
 SymPy gives the relative fluctuations as:
 \begin{equation}
-  \frac{T V k_{B} \left(- N^{2} b^{2} + 2 N V b - V^{2}\right)}{N \left(2 N^{3} a b^{2} - 4 N^{2} V a b + 2 N V^{2} a - T V^{3} k_{B}\right)}
+  \sqrt{\frac{T V k_{B} \left(- N^{2} b^{2} + 2 N V b - V^{2}\right)}{N \left(2 N^{3} a b^{2} - 4 N^{2} V a b + 2 N V^{2} a - T V^{3} k_{B}\right)}}
+\end{equation}
+given that we know 
+\begin{equation}
+  \frac{\langle (\delta \rho)^2\rangle^{1/2}}{\rho} = \sqrt{\frac{\sigma _{N}^2}{\langle N\rangle^2}}
 \end{equation}
 I have a $V^3$ in the numerator and denominator, so I am not sure what happens in the limit of $V\to \infty$.\\ \emph{Also, when you grade my work, I realize that the above expression is kind of unwieldy, so let me know what I could do to use the computer algebra. Probably printing out some intermediate results would help, but would it give me partial credit to give some kind of an algorithm as to how I am arriving at my results? I tried to comment my python script pretty well.}
 % Inline Python code in the document
@@ -233,6 +238,11 @@ for T_adj in T_adjustments:
 \end{lstlisting}
 
 (d) (8 pts.) Light that we can observe with our eyes has wavelengths of order of $1000 \AA$. Fluctuations in density cause changes in the index of refraction, and those changes produce scattering of light. Therefore, if a region of fluid $1000 \AA$ across contains significant density fluctuations, we will visually observe these fluctuations. On the basis of the type of calculation performed in part (b), determine how close to the critical point a system must be before critical fluctuations become optically observable (that is, when the quantity $\left\langle(\delta \rho)^{2}\right\rangle^{1 / 2} / \rho$ is of order one). The phenomenon of long wavelength density fluctuations in a fluid approaching the critical point is known as opalescence. (Note: You will need to estimate the size of $b$, and to do this you should note that the typical diameter of a small molecule is around $5 \AA$ ).
+\subsection{}
+To estimate the size of $b$, we can use the fact that the typical diameter of a small molecule is around $5 \AA$. We can then use the formula for the volume of a sphere, $V = \frac{4}{3}\pi r^3$, to estimate the size of $b$. We have (in cubic angstroms):
+\begin{equation}
+  b = \frac{4}{3}\pi \left(\frac{5}{2}\right)^3
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
@@ -384,7 +394,37 @@ So that the logarithm of the grand partition function is:
 \end{equation}
 Now, we can consider the derivative of the logarithm of the grand partition function with respect to temperature. We have:
 \begin{equation}
-  \frac{\partial \ln \Xi}{\partial T} = -\frac{\partial \ln \Xi}{\partial \beta}\frac{\partial \beta}{\partial T} = \mp \sum_{\alpha} \frac{e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}{1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}\left(-\frac{\epsilon_{\alpha}-\mu}{kT^2}\right)
+  \frac{\partial \ln \Xi}{\partial T} = \frac{\partial \ln \Xi}{\partial \beta}\frac{\partial \beta}{\partial T} = \pm\frac{(\epsilon_{\alpha} - \mu) \cdot e^{-\beta(\epsilon_{\alpha} - \mu)}}{1 \mp e^{-\beta(\epsilon_{\alpha} - \mu)}} \times -\frac{1}{kT^2}
 \end{equation}
+
+So that the entropy is given by:
+\begin{equation}
+  S = \mp k \sum_{\alpha} \ln \left(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}\right) \pm kT\sum_{\alpha} \frac{(\epsilon_{\alpha} - \mu) \cdot e^{-\beta(\epsilon_{\alpha} - \mu)}}{1 \mp e^{-\beta(\epsilon_{\alpha} - \mu)}} \times -\frac{1}{kT^2}
+\end{equation}
+For the second term, we can cancel a factor of $T$ from the numerator and denominator, and then we have:
+\begin{equation}
+  S = \mp k \sum_{\alpha} \ln \left(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}\right) \mp k\sum_{\alpha} \frac{\beta (\epsilon_{\alpha} - \mu) \cdot e^{-\beta(\epsilon_{\alpha} - \mu)}}{1 \mp e^{-\beta(\epsilon_{\alpha} - \mu)}}
+\end{equation}
+We can then consider the average occupation number for state $\alpha$ as:
+\begin{equation}
+  \left\langle n_{\alpha}\right\rangle = \frac{1}{e^{\beta\left(\epsilon_{\alpha}-\mu\right)}\mp 1}
+\end{equation}
+or multiplying by $e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}$ on the numerator and denominator, we have:
+\begin{equation}
+  \left\langle n_{\alpha}\right\rangle = \frac{e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}{1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}
+\end{equation}
+Combining the terms, we have:
+\begin{equation}
+  S = \mp k \sum_{\alpha} \left( \ln \left(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}\right) + \beta (\epsilon_{\alpha} - \mu) \cdot e^{-\beta(\epsilon_{\alpha} - \mu)}\left\langle n_{\alpha}\right\rangle\right)
+\end{equation}
+We can go further:
+\begin{equation}
+  S = \mp k \sum_{\alpha} \left(- \ln \left(\frac{e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}}{e^{-\beta\left(\epsilon_{\alpha}-\mu\right)}(1\mp e^{-\beta\left(\epsilon_{\alpha}-\mu\right)})}\right) + \beta (\epsilon_{\alpha} - \mu) \cdot e^{-\beta(\epsilon_{\alpha} - \mu)}\left\langle n_{\alpha}\right\rangle\right)
+\end{equation}
+\begin{equation}
+  S = \mp k \sum_{\alpha} \left(- \ln \left(\left\langle n_{\alpha}\right\rangle\right) - \beta (\epsilon_{\alpha} - \mu) + \beta (\epsilon_{\alpha} - \mu) \cdot \left\langle n_{\alpha}\right\rangle\right)
+\end{equation}
+I am not sure where to go from here.
+
 
 \end{document}

@@ -1,0 +1,210 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+
+\title{Ch/ChE 164 Winter 2024 }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Midterm
+
+Due Date: Wednesday, February 7, 2024
+
+Midterm Policy
+
+\begin{itemize}
+  \item This is an open-book exam. You may look at your notes, your homework, the course notes, and the books listed on the course syllabus.
+  \item You may not refer to homework or exams from previous years. You may not consult the internet outside of the course canvas page.
+  \item You may take as long as you need before the due date to work on the exam.
+  \item You may not consult with one another.
+  \item Please write clearly and show all steps; points will be deducted if the midterm is unclear or illegible.
+  \item Midterm must be turned in by the end of day on the due date. Late midterm will be penalized $10 \%$ per day unless prior arrangements have been made with the instructor.
+\end{itemize}
+
+Some identities that may or may not be useful (not necessarily exhaustive)...
+
+$$
+\begin{gathered}
+(x+y)^{N}=\sum_{n=0}^{N}\left(\begin{array}{l}
+N \\
+n
+\end{array}\right) x^{n} y^{N-n} \\
+(1+x)^{N}=\sum_{n=0}^{N}\left(\begin{array}{l}
+N \\
+n
+\end{array}\right) x^{n}=\sum_{n=0}^{N}\left(\begin{array}{l}
+N \\
+n
+\end{array}\right) x^{n}(1)^{N-n} \\
+\frac{1}{1-x}=\sum_{n=0}^{\infty} x^{n} \text { for }|x|<1 \\
+\cosh (x)=\frac{e^{x}+e^{-x}}{2}=\frac{d}{d x} \sinh (x) \\
+\sinh (x)=\frac{e^{x}-e^{-x}}{2}=\frac{d}{d x} \cosh (x) \\
+\tanh (x)=\frac{\sinh (x)}{\cosh (x)}
+\end{gathered}
+$$
+\section{}
+\begin{enumerate}
+  \item Cross-linking polymer chain (30 pts) Consider polymer chains, each with $N$ monomers, all of which can reversibly associate with any other monomer. For simplicity, let us consider a single polymer chain at temperature $T$.
+\end{enumerate}
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2024_02_03_75704bce2caff28cbfb1g-2}
+\end{center}
+
+Figure 1: Visualisation of a polymer chain with $N$ monomers forming a single, reversible pair.
+
+(a) (3 pts) How many ways can you select monomers from the chain to form $N_{p}$ pairs?
+\subsection{}
+I will be working under the assumption that $N$ is even. if it would be odd, I think that I would need to modify these calculations. 
+(b) (5 pts) From these monomers you've selected in 1a, how many ways can you form $N_{p}$ pairs (it may be easier to first consider the case where you can form 2 pairs from 4 monomers)?
+
+Note: You may need to use $(N-1) ! !=(N-1) \times(N-3) \times \ldots$ This can be simplified using: $(N-1) ! !=N ! /\left[(N / 2) ! 2^{N / 2}\right]$.
+
+(c) $(6$ pts) The product from $\mathbf{1 a}$ and $\mathbf{1} \mathbf{b}$ will give you the microcanonical partition function for a system with $N_{p}$ pairs as:
+
+$$
+\Omega\left(N, N_{p}\right)=\frac{N !}{\left(N-2 N_{p}\right) ! N_{p} ! 2^{N_{p}}}
+$$
+
+If the energetic gain from forming a single pair is $-\epsilon$, write out the canonical partition function, $Q(N, T)$, for this system. You should end up with a sum over all possible values of $N_{p}$.
+
+(d) $(10$ pts) Find the most-probable term in this sum, and show that the corresponding value for the fraction of monomers associated $\left(p=2 N_{p} / N\right)$ is given by:
+
+$$
+p=1-\frac{\frac{\exp (-\beta \epsilon)}{N}-\sqrt{\left(2+\frac{\exp (-\beta \epsilon)}{N}\right)^{2}-4}}{2}
+$$
+
+(e) (6 pts) Let us now consider the limits of the fraction of monomers associated. Consider both the limit at high $(\beta \rightarrow 0)$ and low $(\beta \rightarrow \infty)$ temperatures. In terms of energetic interactions and conformational contributions, which effect dominates in either limit?
+
+\section*{2. A diluted magnetic fluid ( $30 \mathrm{pts}$ )}
+Consider a lattice with $N$ lattice sites and $n$ spins in an external magnetic field $H$ that is pointing up. The lattice need not have every site filled with a spin.
+
+\begin{itemize}
+  \item Spins can be either up or down, corresponding to $s_{i}=+1$ and $s_{i}=-1$. Spins aligned parallel to the field have an energy $-H$ whereas spins antiparallel have energy $H$.
+  \item Vacant sites have no spin and thus no interaction with a magnetic field.
+\end{itemize}
+
+You can think of this as a crude model for a paramagnetic fluid that has some non-magnetic impurities. The lattice is connected to a reservoir at temperature $T$ and chemical potential $\mu$ such that energy $E$ and number of spins $n$ are allowed to fluctuate. We can call this a constrained grand canonical ensemble because the particle number $(n)$ can fluctuate, but cannot exceed $N$ since the lattice has a fixed number of sites. In this case $N$ acts like $V$ because $V=N v_{\text {site }}$ where $v_{\text {site }}$ is just the volume of a single lattice site.
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2024_02_03_75704bce2caff28cbfb1g-3}
+\end{center}
+
+Figure 2: System schematic for the diluted paramagnetic fluid. The example here is showing the case for $N=9$ and $n=5$. Note that $n$ fluctuates by exchanging with the reservoir.
+
+(a) (2 pts) What are the definitions of microstate and macrostate for this system?
+
+(b) ( 8 pts) Derive the closed-form grand canonical partition function $\Xi(N, T, \mu, H)$.
+
+Start from either equality below
+
+$$
+\Xi(N, T, \mu, H)=\sum_{\nu} e^{-\beta E_{\nu}+\beta \mu n_{\nu}}=\sum_{n} Q(N, T, n, H) e^{\beta \mu n}
+$$
+
+and show that
+
+$$
+\Xi(N, T, \mu, H)=\left[1+2 e^{\beta \mu} \cosh (\beta H)\right]^{N}
+$$
+
+There are multiple ways to do this!
+(c) (6 pts) Solve for the average fraction of occupied sites in the system $\langle x\rangle=\langle n\rangle / N$ using an appropriate derivative. What happens as $H \rightarrow \infty$ ? Explain the physical intuition of the limiting behavior.
+
+(d) (3 pts) In the reservoir, we have $H=0$. If we also know that the fraction of sites occupied in the reservoir is $x_{R}$, then what is $e^{\beta \mu}$ ?
+
+(e) (4 pts) Calculate the average magnetisation $\langle M\rangle$.
+
+Note the differential form of the grand free energy including the magnetisation
+
+$$
+d W=-S d T-P v_{\text {site }} d N-n d \mu-M d H
+$$
+
+(f) (3 pts) Calculate the magnetic susceptibility, $\chi=(\partial\langle M\rangle / \partial H)_{T, N, \mu}$.
+
+(g) (4 pts) Relate the susceptibility $\chi$ to the fluctuations in magnetisation $\sigma_{M}^{2}$. How does $\sigma_{M} /\langle M\rangle$ scale with $N$ ? This should require little additional work!
+
+\section*{3. Simple Elastic Molecule under Fixed Tension (40 pts)}
+A crude way to treat a rubber band is by treating it as a chain of linked segments that can take configurations of different lengths. In general we could also assume that the different configurations have different energies.
+
+Assume that there are $N$ total distinguishable segments which each have access to two different conformations: type $\mathbf{A}$ and type $\mathbf{B}$. The types are distinguished by their length and their energy.
+
+\begin{itemize}
+  \item Type A has length $a$ and energy $\epsilon_{a}$.
+  \item Type B has length $b$ and energy $\epsilon_{b}$.
+\end{itemize}
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2024_02_03_75704bce2caff28cbfb1g-5}
+\end{center}
+
+Figure 3: Schematic for the elastic molecule. Note that in this case $L$ can fluctuate by changing segment conformations (not by changing $N$ ). The specific example shown is for $N=9$ and $L=4 a+5 b$.
+
+(a) $(8$ pts) The molecule is placed in a bath at temperature $T$ and extended with a fixed force $F$. Starting from the Euler equation for the relevant free energy at fixed $(N, F, T)$, use the variational method to derive the probability distribution $P_{\nu}(N, F, T)$ and show that the partition function $Z(N, F, T)$ in this ensemble is given by:
+
+$$
+Z(N, F, T)=\sum_{\nu} e^{\beta F L_{\nu}} e^{-\beta E_{\nu}}
+$$
+
+Note that the Euler equation and fundamental equation for the internal energy are, respectively:
+
+$$
+\begin{gathered}
+E=T S+F L+\mu N \\
+d E=T d S+F d L+\mu d N
+\end{gathered}
+$$
+
+(b) (6 pts) Using the answer to part (a), show that the partition function in the ( $N, F, T)$ ensemble is given by
+
+$$
+Z(N, F, T)=\left[e^{\beta F a} e^{-\beta \epsilon_{a}}+e^{\beta F b} e^{-\beta \epsilon_{b}}\right]^{N}
+$$
+
+We will now look at a specific case, that yields some very interesting results. Let's take the simplest example, where $\epsilon_{a}=\epsilon_{b}=0$ and $a=0$. Thus, each segment is either vertical (and has no length) or is horizontal (and has length $b$ ). In this case, the partition function simplifies to,
+
+$$
+Z(N, F, T)=\left[1+e^{\beta F b}\right]^{N}
+$$
+
+(c) (4 pts) Calculate the extension-force equation of state, $\langle L\rangle=L(N, F, T)$.
+
+$$
+\langle L\rangle=N b \frac{e^{\beta F b}}{1+e^{\beta F b}}
+$$
+
+(d) (4 pts) Find the equilibrium length $\left(L_{0}\right)$ of the molecule at zero tension (i.e. at $F=0$ ). Does this answer make sense? Why or why not?
+
+(e) (6 pts) Now we will derive Hooke's law and calculate the spring constant using statistical mechanics!
+
+i. Invert $L(N, F, T)$ to get the force-extension equation of state, $F(\langle L\rangle, N, T)$.
+
+ii. Taylor expand $F(\langle L\rangle, N, T)$ out to first order around the equilibrium chain length from 3d. Physically, when does this approximation apply?
+
+iii. Extract the spring constant $K_{s}$ by inspection.
+
+(f) (4 pts) Relate the fluctuations in length $\sigma_{L}^{2}$ at $F=0$ to the spring constant, $K_{s}$. Explain why this relationship physically makes sense.
+
+(g) (8 pts) For this more simplified model of the chain where each segment is either vertical or horizontal, we can analyze the behavior using a fixed energy and length ensemble (i.e. the microcanonical ensemble). The partition function is given by $\Omega(N, L, E)$.
+
+i. Calculate the microcanonical partition function at length $L=n b$, where $n$ is the number of horizontal segments.
+
+ii. Show that your answer to $\mathbf{3 d}$ maximizes the entropy.
+
+iii. Verify that you obtain the same force-extension equation of state $F(N, L, T)$ in this ensemble.
+
+
+\end{document}

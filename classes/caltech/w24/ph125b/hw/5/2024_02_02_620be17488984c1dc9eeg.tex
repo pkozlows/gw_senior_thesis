@@ -87,14 +87,24 @@ with real parameters $K$ and $\mu>0$. The parameter $K$ can be regarded as the "
 
 (a) Find a condition on $K$ and $\mu$ which guarantees that there are at least $n$ bound states in this potential. You will likely fashion and use some kind of "comparison" theorem in arriving at your result. You should give at least a "heuristically convincing" argument, if you don't actually prove it.
 \subsection{}
-We may consider the perturbation given by the difference between the new potential and the old coulomb potential:
+We know that there are $n$ bound states if we use the Coulomb potential. So we need $K>0$ at the very least. Also, what we need is:
 \begin{equation}
-  V= \frac{K e^{-\mu r}}{r} - \frac{K}{r}
+  \int_{D} \frac{K e^{-\mu r}}{r} d^{3} x \approx \int_{D} \frac{K}{r} d^{3} x
 \end{equation}
 
 (b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
-
+\subsection{}
+We want to consider the equation:
+\begin{equation}
+  \frac{\dd{ u}}{\dd{\theta }} +u = - \kappa 
+\end{equation}
+where in this case $u= \frac{Ke^{-\mu r }}{r}$. We will end up with a result of $\frac{\dd{\sigma }}{\dd{\Omega }}=?$\\
 (c) Integrate your differential cross section over all solid angles to obtain the "total cross section". Again, consider the limit $\mu \rightarrow 0$. Assuming the Rutherford cross section holds, what is the total cross section for scattering on a Coulomb potential?
+\subsection{}
+Here we probably want to consider:
+\begin{equation}
+  \sigma = \int_{\Omega }? \dd{\Omega } 
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{18}
@@ -108,10 +118,14 @@ $$
 
 where the state is labeled by the $z$ components of $\mathbf{S}_{1}$ and $\mathbf{S}_{2}$, respectively. Without making any approximations, what is the state of the system at $t=\infty$ ? What is the probability, $P(+-\rightarrow-+)$, that the state is observed to be $|-+\rangle$ at $t=\infty$ ? Show that this probability depends only on $\int_{-\infty}^{\infty} a(t) d t$.
 \subsection{}
+We know $\mathbf{S}_{1} \cdot \mathbf{S}_{2}$ can be decomposed into the 
 Don't just take the standard dod product between the spin operators, but rather express them in terms of J. it will be a 2 by 2 matrix. We also want to consider a propagator\\
 (b) Now calculate $P(+-\rightarrow-+)$ in first-order time-dependent perturbation theory. What is a condition for the validity of first-order time-dependent perturbation theory?
 \subsection{}
-\section{First comet}
+We want to compute:
+\begin{equation}
+  P(+-\rightarrow-+)=|\langle-+|U(\infty,-\infty)|+-\rangle|^{2}
+\end{equation}
 \begin{enumerate}
   \setcounter{enumi}{19}
   \item With reference to the previous problem, consider the "Zeeman effect", with the addition of a uniform, static magnetic field of strength $B_{0}$ in the direction of the $z$-axis. Thus, we have another term in the Hamiltonian:

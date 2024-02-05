@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  4 FEB 2024 20:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  5 FEB 2024 07:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -293,66 +293,66 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 53
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-Overfull \hbox (61.88705pt too wide) detected at line 197
+Overfull \hbox (61.88705pt too wide) detected at line 198
 \OML/cmm/m/it/12 ^^U[] \OT1/cmr/m/n/12 = [] \OMS/cmsy/m/n/12 ^^F []
  []
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 210.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 211.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [5] [6]
-<dr.png, id=39, 310.15875pt x 157.58875pt>
+<dr.png, id=40, 310.15875pt x 157.58875pt>
 File: dr.png Graphic file (type png)
 <use dr.png>
-Package pdftex.def Info: dr.png  used on input line 282.
+Package pdftex.def Info: dr.png  used on input line 283.
 (pdftex.def)             Requested size: 195.0pt x 99.07703pt.
- [7 <./dr.png>]
-Overfull \hbox (29.68062pt too wide) detected at line 318
+ [7] [8 <./dr.png>]
+Overfull \hbox (29.68062pt too wide) detected at line 319
 [][][]
  []
 
-[8]
-Overfull \hbox (67.90454pt too wide) detected at line 334
+
+Overfull \hbox (67.90454pt too wide) detected at line 335
 []\OT1/cmr/m/n/12 0 = [][] [] \OML/cmm/m/it/12 ^^^\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) [] [] + [][] [] \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ) [] []
  []
 
 
-Overfull \hbox (143.95923pt too wide) detected at line 338
-[]\OT1/cmr/m/n/12 0 = [][] [] \OML/cmm/m/it/12 ^^^\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] [] + [][] [] \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] []
- []
-
-
-Overfull \hbox (184.18213pt too wide) detected at line 355
+Overfull \hbox (143.95923pt too wide) detected at line 339
 []\OT1/cmr/m/n/12 0 = [][] [] \OML/cmm/m/it/12 ^^^\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] [] + [][] [] \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] []
  []
 
 [9]
-Overfull \hbox (27.84058pt too wide) detected at line 366
+Overfull \hbox (184.18213pt too wide) detected at line 356
+[]\OT1/cmr/m/n/12 0 = [][] [] \OML/cmm/m/it/12 ^^^\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] [] + [][] [] \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; t\OT1/cmr/m/n/12 ) [] []
+ []
+
+
+Overfull \hbox (27.84058pt too wide) detected at line 367
 [][][]
  []
 
 <./images//2024_01_29_bd91e6d395035e9decbag-3.jpg, id=53, 886.31125pt x 790.955pt>
 File: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg Graphic file (type jpg)
 <use ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg>
-Package pdftex.def Info: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg  used on input line 375.
+Package pdftex.def Info: ./images//2024_01_29_bd91e6d395035e9decbag-3.jpg  used on input line 376.
 (pdftex.def)             Requested size: 886.30908pt x 790.95308pt.
 [10] [11 <./images//2024_01_29_bd91e6d395035e9decbag-3.jpg>] [12] (./2024_01_29_bd91e6d395035e9decbag.aux) ) 
 Here is how much of TeX's memory you used:
- 8195 strings out of 478268
- 125923 string characters out of 5846347
- 741763 words of memory out of 5000000
- 26286 multiletter control sequences out of 15000+600000
- 486198 words of font info for 77 fonts, out of 8000000 for 9000
+ 8197 strings out of 478268
+ 125945 string characters out of 5846347
+ 716996 words of memory out of 5000000
+ 26287 multiletter control sequences out of 15000+600000
+ 486882 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,10n,77p,925b,1855s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 2024_01_29_bd91e6d395035e9decbag.pdf (12 pages, 302166 bytes).
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_01_29_bd91e6d395035e9decbag.pdf (12 pages, 325175 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 148 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

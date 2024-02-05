@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{physics}
+
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[version=4]{mhchem}
@@ -67,8 +69,18 @@ Figure 1: Visualisation of a polymer chain with $N$ monomers forming a single, r
 
 (a) (3 pts) How many ways can you select monomers from the chain to form $N_{p}$ pairs?
 \subsection{}
-I will be working under the assumption that $N$ is even. if it would be odd, I think that I would need to modify these calculations. 
+ For this part, there will be two variants: one where $N$ is even and one where $N$ is odd. When even, this is:
+\begin{equation}
+  \binom{N}{2N_p}
+\end{equation} 
+When odd, this is:
+\begin{equation}
+  \binom{N-1}{2N_p}
+\end{equation}
 (b) (5 pts) From these monomers you've selected in 1a, how many ways can you form $N_{p}$ pairs (it may be easier to first consider the case where you can form 2 pairs from 4 monomers)?
+\subsection{}
+We will start by considering the simple case of forming 2 pairs from 4 monomers:
+We can pair the first one with the second one, third one, or fourth one. Because we only have two monomers left unpaired, there are no extra combinatorics associated with this. Now let us consider the case of 6 monomers: Once we establish one pair, the problem reduces to our initial one of forming 2 pairs from 4 monomers. This is a recursive problem. So, for the first pair there are 5 options, then there are only 3 options for the 4 remaining monomers, as discussed previously, and only 1 option for the last pair. So there are $(2N_p -1)!!$ ways to form $N_p$ pairs from $N$ monomers.
 
 Note: You may need to use $(N-1) ! !=(N-1) \times(N-3) \times \ldots$ This can be simplified using: $(N-1) ! !=N ! /\left[(N / 2) ! 2^{N / 2}\right]$.
 
@@ -79,14 +91,70 @@ $$
 $$
 
 If the energetic gain from forming a single pair is $-\epsilon$, write out the canonical partition function, $Q(N, T)$, for this system. You should end up with a sum over all possible values of $N_{p}$.
-
+\subsection{}
+The canonical partition function would be given by:
+\begin{equation}
+  Q(N, T) = \sum_{N_p=0}^{N/2} \Omega(N, N_p) e^{-\beta \epsilon N_p}
+\end{equation}
+Inserting the expression for $\Omega(N, N_p)$, we get:
+\begin{equation}
+  Q(N, T) = \sum_{N_p=0}^{N/2} \frac{N !}{\left(N-2 N_{p}\right) ! N_{p} ! 2^{N_{p}}} e^{-\beta \epsilon N_p}
+\end{equation}
+\\
 (d) $(10$ pts) Find the most-probable term in this sum, and show that the corresponding value for the fraction of monomers associated $\left(p=2 N_{p} / N\right)$ is given by:
-
 $$
-p=1-\frac{\frac{\exp (-\beta \epsilon)}{N}-\sqrt{\left(2+\frac{\exp (-\beta \epsilon)}{N}\right)^{2}-4}}{2}
+p=1+\frac{\frac{\exp (-\beta \epsilon)}{N}-\sqrt{\left(2+\frac{\exp (-\beta \epsilon)}{N}\right)^{2}-4}}{2}
 $$
+\subsection{}
+An arbitrary term in the sum is given by:
+\begin{equation}
+  t_{N_p} = \frac{N !}{\left(N-2 N_{p}\right) ! N_{p} ! 2^{N_{p}}} e^{-\beta \epsilon N_p}
+\end{equation}
+We can find the most-probable term by taking the derivative of $t_{N_p}$ with respect to $N_p$ and setting it equal to zero. Or alternatively, we can choose to maximize the logarithm of $t_{N_p}$, which is equivalent, so the first derivative of the logarithm of $t_{N_p}$ with respect to $N_p$ is zero:
+\begin{equation}
+  \frac{d}{dN_p} \ln(t_{N_p}) = 0
+\end{equation}
+The logarithm of $t_{N_p}$ is given by:
+\begin{equation}
+  \ln(t_{N_p}) = \ln(N!) - \ln((N-2N_p)!) - \ln(N_p!) - N_p \ln(2) - \beta \epsilon N_p
+\end{equation}
+% We Taylor expand this around the most-probable value of $N_p$, which we will call $N_p^*$ (already simplifying since we know the first derivative is zero at this point). Also, we define $t_{N_p^*}$ as $t_{N_p}$ evaluated at $N_p^*$. We get:
+% \begin{equation}
+%   \ln(t_{N_p}) \approx \ln(t_{N_p^*}) + \frac{1}{2} \pdv[2]{\ln(t_{N_p})}{N_p} \bigg|_{N_p=N_p^*} (N_p - N_p^*)^2+ \ldots
+% \end{equation}
+% We
+Using Stirling's approximation, we can simplify the logarithm of $t_{N_p}$ to:
+\begin{equation}
+  \ln(t_{N_p}) \approx N \ln(N) - (N-2N_p) \ln(N-2N_p) - N_p \ln(N_p) - N_p \ln(2) - \beta \epsilon N_p
+\end{equation}
+We can now take the first derivative of this with respect to $N_p$ and set it equal to zero:
+\begin{equation}
+  0 = - \beta \epsilon - \log{\left(N_p \right)} + 2 \log{\left(N - 2 N_p \right)} - \log{\left(2 \right)} + 1
+\end{equation}
+Bring the non-logarithmic terms to the left-hand side:
+\begin{equation}
+  \beta \epsilon - 1 = - \log{\left(N_p \right)} + 2 \log{\left(N - 2 N_p \right)} - \log{\left(2 \right)}
+\end{equation}
+Exponentiate both sides:
+\begin{equation}
+  \exp{\left(\beta \epsilon - 1 \right)} = \frac{(N - 2 N_p)^2}{2N_p}
+\end{equation}
+Solving for $N_p$:
+\begin{equation}
+  N_p = \frac{2 e N - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) e^{\beta \epsilon}} + e^{\beta \epsilon}}{4 e}
+\end{equation}
 
 (e) (6 pts) Let us now consider the limits of the fraction of monomers associated. Consider both the limit at high $(\beta \rightarrow 0)$ and low $(\beta \rightarrow \infty)$ temperatures. In terms of energetic interactions and conformational contributions, which effect dominates in either limit?
+\subsection{}
+We want to consider the term:
+\begin{equation}
+  p=1+\frac{\frac{\exp (-\beta \epsilon)}{N}-\sqrt{\left(2+\frac{\exp (-\beta \epsilon)}{N}\right)^{2}-4}}{2}
+\end{equation}
+At high temperatures, $\beta \rightarrow 0$, the exponential term in the numerator becomes $\frac{1}{N}$. We expand the numerator with this:
+\begin{equation}
+  p=1+\frac{\frac{1}{N}-\sqrt{\left(2+\frac{1}{N}\right)^{2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4+4\frac{1}{N}+\frac{1}{N^2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4\frac{1}{N}+\frac{1}{N^2}}}{2}
+\end{equation}
+
 
 \section*{2. A diluted magnetic fluid ( $30 \mathrm{pts}$ )}
 Consider a lattice with $N$ lattice sites and $n$ spins in an external magnetic field $H$ that is pointing up. The lattice need not have every site filled with a spin.

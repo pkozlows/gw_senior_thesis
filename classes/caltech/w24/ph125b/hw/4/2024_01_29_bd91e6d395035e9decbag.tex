@@ -11,6 +11,38 @@
 \usepackage[export]{adjustbox}
 \graphicspath{ {./images/} }
 
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
 \title{PROBLEMS: }
 
 \author{}
@@ -62,18 +94,18 @@ We can use the expression we are given for $d$ to combine the exponentials:
     &=\frac{1}{L}\sum_{n=-\infty}^{\infty} V_{n}\int_{0}^{L} \mathrm{d} x e^{\frac{2\pi i x}{L}\left( nN+n_{p}-n_{q}\right)}\\
 \end{aligned}
 \end{equation}
-This integral evaluates to $L$ when $nN + n_{p} - n_{q} = 0$, leading to the condition for non-zero contributions:
+This integral is only non zero and evaluates to $L$ when $nN + n_{p} - n_{q} = 0$, leading to the condition for non-zero contributions:
 \begin{equation}
   nN + n_{p} - n_{q} = 0
 \end{equation}
 where $n$ is an integer.
 We can thus express the matrix element as:
 \begin{equation}
-  \langle q|V| p\rangle = \sum_{n=-\infty}^{\infty} V_{n} \delta_{n_{p}, n_{q} + nN}
+  \langle q|V| p\rangle = \sum_{n=-\infty}^{\infty} V_{n} \delta_{n_{q}, n_{p} + nN}
 \end{equation}
 Most of the terms in the sum will be zero, as the Kronecker delta will only be non-zero when $n_{p}-n{q}$ is a multiple of $N$:
 \begin{equation}
-  \langle q|V| p\rangle = V_{\frac{n_{p}-n_{q}}{N}}
+  \langle q|V| p\rangle = V_{\frac{n_{q}-n_{p}}{N}}
 \end{equation}
 \subsection{}
 (b) Suppose $\varepsilon_{n_{p}}$ and $\varepsilon_{n_{q}}$ are not close to each other $\forall n_{q}\left(\neq n_{p}\right)$, given some $n_{p}$. Calculate the perturbed wave function in ordinary first order perturbation theory corresponding to unperturbed wave function $\psi_{p}(x)$. Also, calculate the energy to $2^{\text {nd }}$ order. Express your answer in terms of $V_{n}$.\\
@@ -89,16 +121,16 @@ To first order, the perturbed wave function is:
 \begin{equation}
   \ket{N^{(1)}}=\ket{p}+\sum_{n_{q}\neq n_{p}}\frac{1}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}V_{\frac{n_{p}-n_{q}}{N}}\ket{q}
 \end{equation}
-where we earlier stated that $n_{q}$ has to be an integer multiple away from $n_{p}$.
+where we earlier stated the condition on $n_{q}$ and $n_{p}$.
 The energy to second order consists of the unperturbed energy plus the first order correction plus the second order correction:
 \begin{equation}
-  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+\bra{n}V\ket{n}+\sum_{n_{q}\neq n_{p}}\frac{\abs{\bra{q}V\ket{p}}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}
+  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+\bra{n_p}V\ket{n_p}+\sum_{n_{q}\neq n_{p}}\frac{\abs{\bra{q}V\ket{p}}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}
 \end{equation}
-where $n$ is an unperturbed eigenstate. We can simplify to:
+where $n$ is an unperturbed eigenstate. We can take advantage of the condition on $n_{q}$ and $n_{p}$ and define $V_0$ as the matrix element of $V$ between the unperturbed eigenstate and itself:  
 \begin{equation}
-  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+V_{0}+\sum_{n_{q}\neq n_{p}}\frac{\abs{V_n}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{n_{q}}}
+  \varepsilon _{n_{p}}\approx\varepsilon _{n_{p}}^{(0)}+V_{0}+\sum_{m'= -\infty}^{\infty}\frac{\abs{V_{m'}}^{2}}{\varepsilon _{n_{p}}-\varepsilon _{Nm'+n_{p}}}
 \end{equation}
-where we again have that $n_{q}$ has to be an integer multiple away from $n_{p}$.
+where we again have the same condition on $n_{q}$ and $n_{p}$.
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{13}
@@ -157,25 +189,99 @@ We want to diagonalize the matrix representation of $H_{1}$ in the subspace span
   \langle m|V_1| n\rangle & \varepsilon_{m}+\langle m|V_1| m\rangle)
 \end{equation}
 since we have that $H_1 \equiv H_0 + V_1$.
-Diagonalizing this matrix in SymPy gives the eigensystem:
-\begin{equation}
-  \begin{aligned}
-    \lambda _{1} &= \frac{- V_{mm} + V_{nn} - \epsilon_{m} + \epsilon_{n} - \sqrt{V_{mm}^{2} - 2 V_{mm} V_{nn} + 2 V_{mm} \epsilon_{m} - 2 V_{mm} \epsilon_{n} + 4 V_{mn} V_{nm} + V_{nn}^{2} - 2 V_{nn} \epsilon_{m} + 2 V_{nn} \epsilon_{n} + \epsilon_{m}^{2} - 2 \epsilon_{m} \epsilon_{n} + \epsilon_{n}^{2}}}{2 V_{mn}}
-  \end{aligned}
-\end{equation}
-with the corresponding eigenvector:
-\begin{equation}
-  \begin{aligned}
-    \ket{\lambda _{1}} &= \frac{V_{mm}}{2} + \frac{V_{nn}}{2} + \frac{\epsilon_{m}}{2} + \frac{\epsilon_{n}}{2} - \frac{\sqrt{V_{mm}^{2} - 2 V_{mm} V_{nn} + 2 V_{mm} \epsilon_{m} - 2 V_{mm} \epsilon_{n} + 4 V_{mn} V_{nm} + V_{nn}^{2} - 2 V_{nn} \epsilon_{m} + 2 V_{nn} \epsilon_{n} + \epsilon_{m}^{2} - 2 \epsilon_{m} \epsilon_{n} + \epsilon_{n}^{2}}}{2}
-  \end{aligned}
-\end{equation}
+Solving the characteristic equation for the matrix $H_1$ with Sympy:
+\subsection*{Eigenvalues}
 
+\[
+\lambda_{\pm} = \frac{\varepsilon_{n} + \varepsilon_{m} + \langle n|V| n\rangle + \langle m|V| m\rangle}{2} \pm \frac{\sqrt{(\varepsilon_{n} - \varepsilon_{m} + \langle n|V| n\rangle - \langle m|V| m\rangle)^2 + 4|\langle n|V| m\rangle|^2}}{2}
+\]
+or using the relation $E_{n}^{(1)}=\varepsilon_{n}+\langle n|V| n\rangle$ and $E_{m}^{(1)}=\varepsilon_{m}+\langle m|V| m\rangle$ both outside and inside the square root:
+\[
+\lambda_{\pm} = \frac{E_{n}^{(1)} + E_{m}^{(1}}{2} \pm \frac{\sqrt{(E_{n}^{(1)} - E_{m}^{(1)})^2 + 4|\langle n|V| m\rangle|^2}}{2}
+\]
+
+\subsection*{Eigenvectors}
+
+\[
+\mathbf{v}_{+} = \begin{pmatrix} 1 \\ \frac{\lambda_{+} - \varepsilon_{n} - \langle n|V| n\rangle}{\langle n|V| m\rangle} \end{pmatrix}, \quad \mathbf{v}_{-} = \begin{pmatrix} 1 \\ \frac{\lambda_{-} - \varepsilon_{n} - \langle n|V| n\rangle}{\langle n|V| m\rangle} \end{pmatrix}
+\]
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, Matrix, solve, sqrt, latex
+
+# Define symbols
+epsilon_n, epsilon_m = symbols('epsilon_n epsilon_m')
+V_nn, V_mm, V_nm, V_mn = symbols('V_nn V_mm V_nm V_mn')
+
+# Define the Hamiltonian matrix H_1
+H_1 = Matrix([
+    [epsilon_n + V_nn, V_nm],
+    [V_mn, epsilon_m + V_mm]
+])
+
+# Diagonalize the matrix to find eigenvalues and eigenvectors
+eigenvals = H_1.eigenvals()
+eigenvects = H_1.eigenvects()
+
+# Simplifying the eigenvalues and eigenvectors might be necessary
+for i in range(len(eigenvals)):
+    eigenvals[i] = eigenvals[i].simplify()
+for i in range(len(eigenvects)):
+    eigenvects[i][2][0] = eigenvects[i][2][0].simplify()
+# Print the eigenvalues and eigenvectors in LaTeX form
+print("Eigenvalues:")
+for eigenval in eigenvals:
+    print(latex(eigenval))
+print("\nEigenvectors:")
+for eigenvect in eigenvects:
+    print(latex(eigenvect[2][0]))
+
+
+\end{lstlisting}
 
 
 \subsection{}
 (b) Now consider the periodic potential of problem 13. What is the condition on $n_{p}$ (and hence on $p$ ) so that $|p\rangle$ will be nearly degenerate in energy with another eigenstate of $H_{0}$ ? You might find it convenient to define the "reciprocal lattice constant" $K \equiv 2 \pi / d$.
+\subsection{}
+Knowing that the eigenenergies are $\varepsilon_{n}=\frac{p^{2}}{2 m}=\left(\frac{2 \pi n}{L}\right)^{2} \frac{1}{2 m}$, we see that $\varepsilon_{n}=\varepsilon _{-n}$. Also, the expression that we found for $\varepsilon _n$ earlier was:
+\begin{equation}
+  \varepsilon _{n}=\varepsilon _{n}^{(0)}+V_{0}+\sum_{m'= -\infty}^{\infty}\frac{\abs{V_{m'}}^{2}}{\varepsilon _{n}-\varepsilon _{Nm'+n}}
+\end{equation}
+We see that this is the same as:
+\begin{equation}
+  \varepsilon _{n}=\varepsilon _{n}^{(0)}+V_{0}+\sum_{m'= \infty}^{- \infty}\frac{\abs{V_{-m'}}^{2}}{\varepsilon _{n}-\varepsilon _{-Nm'+n}}
+\end{equation}
+So furthermore, we see that $n_{-p}=-n_{p}$ while $V_{-m'}=V_{m'}^*$. So, we can write the expression for $\varepsilon _n$ as:
+\begin{equation}
+  \varepsilon _{n}=\varepsilon _{-n}^{(0)}+V_{0}+\sum_{m'= \infty}^{- \infty}\frac{\abs{V_{m'}}^{2}}{\varepsilon _{-n}-\varepsilon _{Nm'-n}} = \varepsilon _{-n}
+\end{equation}
+So, we see that the condition for $|p\rangle$ to be nearly degenerate in energy with another eigenstate of $H_{0}$ is that $n_q=n_{-p}=-n_{p}$, or equivalently $p=-q$.
 
 (c) Assume that the condition in part (b) is satisfied, and use part (a) to solve this "almost degenerate" case for the eigenenergies. Try to make a sketch of the energy as a function of momentum ("dispersion relation"). Fig. 1 gives a start for momenta less than $\pi / d$.
+\subsection{}
+We can use the expression for the eigenvalues we found in part (a) to solve for the eigenenergies. We have:
+\begin{equation}
+  \lambda_{\pm} = \frac{E_{n}^{(1)} + E_{m}^{(1}}{2} \pm \frac{\sqrt{(E_{n}^{(1)} - E_{m}^{(1)})^2 + 4|\langle n|V| m\rangle|^2}}{2}
+\end{equation}
+If we let $m=-n$, this simplifies to:
+\begin{equation}
+  \lambda_{\pm} = \frac{E_{n}^{(1)} + E_{-n}^{(1}}{2} \pm \frac{\sqrt{(E_{n}^{(1)} - E_{-n}^{(1)})^2 + 4|\langle n|V| -n\rangle|^2}}{2}
+\end{equation}
+Since we know that $E_{n}^{(1)}=E_{-n}^{(1)}$, we can simplify the above equation to:
+\begin{equation}
+  \lambda_{\pm} = E_{n}^{(1)} \pm \frac{\sqrt{4|\langle n|V| -n\rangle|^2}}{2}
+\end{equation}
+Furthermore, we define the matrix element $\langle n|V| -n\rangle$ as $V_{2n}$:
+\begin{equation}
+  \lambda_{\pm} = E_{n}^{(1)} \pm |V_{2n}|
+\end{equation}
+We can define $p(\Delta )= \frac{2\pi}{L}(1+\Delta )$. We can then plot the dispersion relation for $p(\Delta )$. I am not able to write by hand so I will use a sketch that the friend that I worked with made:
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{dr.png}
+  \caption{Dispersion relation}
+\end{figure}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{14}
@@ -201,6 +307,7 @@ And another acceptable function $\phi $:
 \begin{equation}
   \phi (x)=e^{\frac{i2\pi^2t}{mL^2}}\sin\left(\frac{2\pi x}{L}\right)
 \end{equation}
+$\phi$ here is such that it's value and derivative at $-L/2$ and $L/2$ are the same. Therefore, we have proven the existence of and acceptable wave function.
 Any linear combination of $\psi(x)$ and $\phi(x)$ is also an acceptable wave function.
 So, we plug in the linear combination of $\psi(x)$ and $\phi(x)$ into the condition of no net floods into or out of the box:
 \begin{equation}
@@ -257,7 +364,8 @@ So, we can plug in the Hamiltonian into the above equation:
     &+\int_{-L / 2}^{L / 2} \left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\psi(x,t)\right]\phi^*(x,t)+\psi(x,t)\left[\frac{1}{i\hbar}\left(-\frac{\hbar^2}{2m}\pdv[2]{x}\right)\phi^*(x,t)\right] \dd{x}\\
   \end{aligned}
 \end{equation}
-
+I was not able to get further.
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{15}
   \item Note: I have posted a note reviewing complex variables in the module for week 4 , in case it is helpful (to evaluate an integral).
@@ -301,4 +409,5 @@ We want to evaluate the desired transition probability using the formalism of ti
     P_{1} &= -\frac{i}{\hbar} \int_{-\infty}^{\infty} \mathrm{d} t\left\langle 1\left|V_{t}\right| 0\right\rangle e^{i \omega_{1, 0} t} \\
 \end{aligned}
 \end{equation}
+I was not able to get further on this one.
 \end{document}

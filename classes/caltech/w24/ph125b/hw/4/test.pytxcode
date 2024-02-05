@@ -1,0 +1,36 @@
+=>PYTHONTEX#py#default#default#0#code#####6#
+from sympy import symbols, integrate, latex
+x = symbols('x')
+expr = x**2 + x + 1
+integrated_expr = integrate(expr, x)
+
+# Show the process
+print(r'Solve the integral of \( ' + latex(expr) + r' \) with respect to \( x \).')
+
+# Show the output
+print(r'\[' + latex(integrated_expr) + r'\]')
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-test
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|

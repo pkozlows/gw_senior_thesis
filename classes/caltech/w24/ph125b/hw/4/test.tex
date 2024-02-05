@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{pythontex}
+
+\begin{document}
+
+\begin{pycode}
+from sympy import symbols, integrate, latex
+x = symbols('x')
+expr = x**2 + x + 1
+integrated_expr = integrate(expr, x)
+
+# Show the process
+print(r'Solve the integral of \( ' + latex(expr) + r' \) with respect to \( x \).')
+
+# Show the output
+print(r'\[' + latex(integrated_expr) + r'\]')
+\end{pycode}
+
+\end{document}

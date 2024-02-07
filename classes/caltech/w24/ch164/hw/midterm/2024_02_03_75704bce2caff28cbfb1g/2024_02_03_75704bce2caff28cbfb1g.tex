@@ -177,6 +177,12 @@ Solving for $N_p$:
   N_p = \frac{2 e N - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) e^{\beta \epsilon}} + e^{\beta \epsilon}}{4 e}
 \end{equation}
 
+We are really interested in the fraction of monomers associated, $p = \frac{2N_p}{N}$, so we can divide by $N$ and multiply by 2:
+\begin{equation}
+  p = 1 + \frac{2e^{\beta \epsilon} - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) e^{\beta \epsilon}}}{4N^2e}
+\end{equation}
+I am not fur where to go from here
+
 (e) (6 pts) Let us now consider the limits of the fraction of monomers associated. Consider both the limit at high $(\beta \rightarrow 0)$ and low $(\beta \rightarrow \infty)$ temperatures. In terms of energetic interactions and conformational contributions, which effect dominates in either limit?
 \subsection{}
 We want to consider the term:
@@ -187,9 +193,18 @@ At high temperatures, $\beta \rightarrow 0$, the exponential term in the numerat
 \begin{equation}
   p=1+\frac{\frac{1}{N}-\sqrt{\left(2+\frac{1}{N}\right)^{2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4+4\frac{1}{N}+\frac{1}{N^2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4\frac{1}{N}+\frac{1}{N^2}}}{2}
 \end{equation}
+In the thermodynamic limit, $N \rightarrow \infty$, the term $\frac{1}{N}$ becomes negligible, and we are left with:
+\begin{equation}
+  p=1+\frac{-\sqrt{0}}{2} = 1
+\end{equation}
+I would say that in this high temperature limit, the conformational entropy dominates and the fraction of monomers associated becomes close to 1.\\
+At low temperatures, $\beta \rightarrow \infty$, the exponential terms in the numerator become negligible, and we are left with:
+\begin{equation}
+  p=1+\frac{-\sqrt{\left(2\right)^{2}-4}}{2} = 1+\frac{-\sqrt{0}}{2} = 1
+\end{equation}
+In this low temperature limit, the energetic interactions dominate and the fraction of monomers associated becomes close to 1.\\
 
-
-\section*{2. A diluted magnetic fluid ( $30 \mathrm{pts}$ )}
+\section{A diluted magnetic fluid ( $30 \mathrm{pts}$ )}
 Consider a lattice with $N$ lattice sites and $n$ spins in an external magnetic field $H$ that is pointing up. The lattice need not have every site filled with a spin.
 
 \begin{itemize}
@@ -317,7 +332,7 @@ Dividing by $\beta$:
 \end{equation}
 (f) (3 pts) Calculate the magnetic susceptibility, $\chi=(\partial\langle M\rangle / \partial H)_{T, N, \mu}$.
 \subsection{}
-The magnetic susceptibility is given by the derivative of the average magnetisation with respect to $H$:
+The magnetic susceptibility is given by the derivative of the average magnetisation with respect to $H$ with $T$, $N$, and $\mu$ held constant:
 \begin{equation}
   \chi = \pdv{\langle M \rangle}{H} =  \frac{2 N \beta \left(2 e^{\beta \mu} + \cosh{\left(H \beta \right)}\right) e^{\beta \mu}}{\left(2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1\right)^{2}}
 \end{equation}
@@ -332,6 +347,20 @@ dM_dH = diff(M, H)
 print(latex(dM_dH.simplify()))
 \end{lstlisting}
 (g) (4 pts) Relate the susceptibility $\chi$ to the fluctuations in magnetisation $\sigma_{M}^{2}$. How does $\sigma_{M} /\langle M\rangle$ scale with $N$ ? This should require little additional work!
+\subsection{}
+Due to the fluctuation dissipation theorem, we can relate the extensive magnetization to its susceptibility:
+\begin{equation}
+  \sigma_{M}^{2} = \frac{\chi}{\beta } \rightarrow \sigma _M = \sqrt{\frac{\chi}{\beta}}
+\end{equation}
+So:
+\begin{equation}
+  \frac{\sigma_M}{\langle M \rangle} = \sqrt{\frac{\chi}{\beta}} \frac{1}{\langle M \rangle} = \sqrt{\frac{\chi}{\beta}} \frac{1}{\frac{2N e^{\beta \mu} \sinh{\left(H \beta \right)}}{2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1}} = \sqrt{\frac{\chi}{\beta}} \frac{2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1}{2N e^{\beta \mu} \sinh{\left(H \beta \right)}}
+\end{equation}
+\begin{equation}
+  \sqrt{\frac{\chi}{\beta }}
+\end{equation}
+is an extensive quantity, scaling like $\sqrt{N}$, so the ratio $\sigma_M/\langle M \rangle$ scales like $1/\sqrt{N}$.
+
 
 \section*{3. Simple Elastic Molecule under Fixed Tension (40 pts)}
 A crude way to treat a rubber band is by treating it as a chain of linked segments that can take configurations of different lengths. In general we could also assume that the different configurations have different energies.

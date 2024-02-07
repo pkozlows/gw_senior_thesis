@@ -138,6 +138,11 @@ mu_solution = solve(minimization_problem, mu)
 
 print(latex(mu_solution[0].simplify()))
 \end{lstlisting}
+Alternatively, we took the derivative of $V$ with respect to $r$:
+\begin{equation}
+  K\dv{r}\left(\frac{e^{-\mu r}}{r} - \frac{1}{r}\right) = K \left(- \frac{\mu e^{- \mu r}}{r} + \frac{1}{r^{2}} - \frac{e^{- \mu r}}{r^{2}}\right)
+\end{equation}
+Setting equal to 0 gives me no relation between $\mu$ and $K$ though. 
 
 (b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
 \subsection{}

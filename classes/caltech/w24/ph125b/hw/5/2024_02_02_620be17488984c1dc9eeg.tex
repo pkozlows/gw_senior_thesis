@@ -80,15 +80,19 @@ and the idea is that the masses that go into this flux and rate are different. F
 and then for the differential rate, there is an expression of the form:
 \begin{align}
   \dd{\Gamma }&= \int_{\mathbf{p'}\in \dd{\Omega '}}\frac{L^3}{(2\pi)^3}\dd^3{\mathbf{p'}} 2 \pi \frac{\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2}{L^6}\delta (E_{f}-E_{i})\\
-&= \frac{\dd{\Omega '}}{L^3}\frac{m_{f}p}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
+&= \frac{\dd{\Omega '}}{L^3}\frac{m_{f}p_f}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
 \end{align}
-And this term divided by the flux gives us the differential cross section in the first Born approximation, which for equal masses is expressed as:
+The flux is given by:
+\begin{equation}
+  \text{flux} = \frac{p_i}{m_i L^3}
+\end{equation}
+And this term divided by the flux gives us the differential cross section in the first Born approximation, which for equal masses (and momenta) is expressed as:
 \begin{equation}
   \frac{\dd{\sigma }}{\dd{\Omega '}}= \frac{m^2}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
 \end{equation}
 This time the two masses will be different from each other, so we can write the formula as:
 \begin{equation}
-  \frac{\dd{\sigma }}{\dd{\Omega '}}_{\text{diffms}}= \frac{m_{f}m_{i}}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
+  \frac{\dd{\sigma }}{\dd{\Omega '}}_{\text{diffms}}= \frac{m_{f}p_fm_{i}}{p_i(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
 \end{equation}
 \section{}
 \begin{enumerate}
@@ -108,6 +112,7 @@ We know that for any bound states at all, we need $K<0$ or else we would just be
 \begin{equation}
   H = H_0 + V
 \end{equation}
+
 It is always the case that $K<0$, and the quantity inside of the parentheses will always be negative, so let's maximize the inside of the parentheses. We can expand it in a Taylor series:
 \begin{equation}
   e^{-\mu r} = 1 - \mu r + \frac{(\mu r)^2}{2} + \ldots
@@ -160,14 +165,43 @@ $$
 
 where the state is labeled by the $z$ components of $\mathbf{S}_{1}$ and $\mathbf{S}_{2}$, respectively. Without making any approximations, what is the state of the system at $t=\infty$ ? What is the probability, $P(+-\rightarrow-+)$, that the state is observed to be $|-+\rangle$ at $t=\infty$ ? Show that this probability depends only on $\int_{-\infty}^{\infty} a(t) d t$.
 \subsection{}
-We know $\mathbf{S}_{1} \cdot \mathbf{S}_{2}$ can be decomposed into the 
-Don't just take the standard dod product between the spin operators, but rather express them in terms of J. it will be a 2 by 2 matrix. We also want to consider a propagator\\
+We know that:
+\begin{equation}
+  (\mathbf{S})^2 = (S_1 + S_2)^2 \rightarrow S^2 = S_1^2 + S_2^2 + 2\mathbf{S}_1 \cdot \mathbf{S}_2
+\end{equation}
+so we can write the Hamiltonian as:
+\begin{equation}
+  H = a(t) \mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{1}{2}a(t) \left(S^2 - S_1^2 - S_2^2\right) 
+\end{equation}
+We want to transform current basis into the basis of the total spin and its $z$-component. Our current basis is:
+\begin{equation}
+  \ket{+-} = \ket{S_1^z = +\frac{1}{2}, S_2^z = -\frac{1}{2}}
+\end{equation}
+and:
+\begin{equation}
+  \ket{-+} = \ket{S_1^z = -\frac{1}{2}, S_2^z = +\frac{1}{2}}
+\end{equation}
+The total $S_z$ of 0 must be conserved, so we have the singlet:
+\begin{equation}
+  \ket{S^2 = 0, S^z = 0} = \frac{1}{\sqrt{2}}\left(\ket{+-} - \ket{-+}\right)
+\end{equation}
+and one of the triplets:
+\begin{equation}
+  \ket{S^2 = 1, S^z = 0} = \frac{1}{\sqrt{2}}\left(\ket{+-} + \ket{-+}\right)
+\end{equation}
+We can express our initial state in terms of these states:
+\begin{equation}
+  \ket{+-} = \frac{1}{\sqrt{2}}\left(\ket{S^2 = 1, S^z = 0} + \ket{S^2 = 0, S^z = 0}\right)
+\end{equation}
+and
+\begin{equation}
+  \ket{-+} = \frac{1}{\sqrt{2}}\left(\ket{S^2 = 1, S^z = 0} - \ket{S^2 = 0, S^z = 0}\right)
+\end{equation}
+Since we know that the initial state was $\ket{+-}$, we can write the state at $t=\infty$ with the propagators now that we have expressed the initial states in terms of a transformed basis that is of eigenstates of our Hamiltonian. We can write the state at $t=\infty$ as:
+
+
 (b) Now calculate $P(+-\rightarrow-+)$ in first-order time-dependent perturbation theory. What is a condition for the validity of first-order time-dependent perturbation theory?
 \subsection{}
-We want to compute:
-\begin{equation}
-  P(+-\rightarrow-+)=|\langle-+|U(\infty,-\infty)|+-\rangle|^{2}
-\end{equation}
 \begin{enumerate}
   \setcounter{enumi}{19}
   \item With reference to the previous problem, consider the "Zeeman effect", with the addition of a uniform, static magnetic field of strength $B_{0}$ in the direction of the $z$-axis. Thus, we have another term in the Hamiltonian:

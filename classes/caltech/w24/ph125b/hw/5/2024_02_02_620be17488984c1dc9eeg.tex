@@ -72,7 +72,24 @@ $$
 
 to the case where the scattered particle (mass $m_{f}$ ) may have a different mass than the incident particle (mass $m_{i}$ ).
 \subsection{}
-Read ~7.3 on approximate methods
+Looking over the note in 7.3 on approximate methods, I found the derivation for the Born approximation. Basically, this scattering rate is given by an expression of the form:
+\begin{equation}
+  \dd{\sigma }= \frac{1}{\text{flux}}\dd{\Gamma }
+\end{equation}
+and the idea is that the masses that go into this flux and rate are different. For the flux, we care about the mass of the incident particle $m_{i}$,
+and then for the differential rate, there is an expression of the form:
+\begin{align}
+  \dd{\Gamma }&= \int_{\mathbf{p'}\in \dd{\Omega '}}\frac{L^3}{(2\pi)^3}\dd^3{\mathbf{p'}} 2 \pi \frac{\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2}{L^6}\delta (E_{f}-E_{i})\\
+&= \frac{\dd{\Omega '}}{L^3}\frac{m_{f}p}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
+\end{align}
+And this term divided by the flux gives us the differential cross section in the first Born approximation, which for equal masses is expressed as:
+\begin{equation}
+  \frac{\dd{\sigma }}{\dd{\Omega '}}= \frac{m^2}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
+\end{equation}
+This time the two masses will be different from each other, so we can write the formula as:
+\begin{equation}
+  \frac{\dd{\sigma }}{\dd{\Omega '}}_{\text{diffms}}= \frac{m_{f}m_{i}}{(2\pi)^2}\abs{\hat{V}(\mathbf{p'}-\mathbf{p})}^2
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{17}
@@ -87,10 +104,35 @@ with real parameters $K$ and $\mu>0$. The parameter $K$ can be regarded as the "
 
 (a) Find a condition on $K$ and $\mu$ which guarantees that there are at least $n$ bound states in this potential. You will likely fashion and use some kind of "comparison" theorem in arriving at your result. You should give at least a "heuristically convincing" argument, if you don't actually prove it.
 \subsection{}
-We know that there are $n$ bound states if we use the Coulomb potential. So we need $K>0$ at the very least. Also, what we need is:
+We know that for any bound states at all, we need $K<0$ or else we would just be talking about the free particle. Let us consider the Yukawa potential as a perturbation for our original Coulomb potential where we have $H_0 = \frac{p^2}{2m} + \frac{K}{r}$ and the perturbation $V= K\left(\frac{e^{- \mu r}}{r} - \frac{1}{r}\right)$:
 \begin{equation}
-  \int_{D} \frac{K e^{-\mu r}}{r} d^{3} x \approx \int_{D} \frac{K}{r} d^{3} x
+  H = H_0 + V
 \end{equation}
+It is always the case that $K<0$, and the quantity inside of the parentheses will always be negative, so let's maximize the inside of the parentheses. We can expand it in a Taylor series:
+\begin{equation}
+  e^{-\mu r} = 1 - \mu r + \frac{(\mu r)^2}{2} + \ldots
+\end{equation}
+So we can write the inside of the parentheses as:
+\begin{equation}
+  \frac{e^{-\mu r}}{r} - \frac{1}{r} = -\mu + \frac{\mu^2 r}{2} + \ldots
+\end{equation}
+We want to minimize this with respect to $\mu$:
+\begin{equation}
+  \dv{\mu}\left(-\mu + \frac{\mu^2 r}{2}\right) = 0
+\end{equation}
+We find that the minimizing value of $\mu$ is $\mu = \frac{1}{r}$. 
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+mu, r = symbols('mu r')
+
+# I want to solve this minimization problem by differentiating with respect to mu: \dv{\mu}\left(-\mu + \frac{\mu^2 r}{2}\right) = 0
+
+minimization_problem = Eq(diff(-mu + mu**2 * r / 2, mu), 0)
+mu_solution = solve(minimization_problem, mu)
+
+print(latex(mu_solution[0].simplify()))
+\end{lstlisting}
 
 (b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
 \subsection{}

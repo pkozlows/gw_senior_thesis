@@ -12,6 +12,39 @@
 \usepackage[export]{adjustbox}
 \graphicspath{ {./images/} }
 
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
 \title{Ch/ChE 164 Winter 2024 }
 
 \author{}
@@ -173,6 +206,8 @@ You can think of this as a crude model for a paramagnetic fluid that has some no
 Figure 2: System schematic for the diluted paramagnetic fluid. The example here is showing the case for $N=9$ and $n=5$. Note that $n$ fluctuates by exchanging with the reservoir.
 
 (a) (2 pts) What are the definitions of microstate and macrostate for this system?
+\subsection{}
+The microstate is a specific configuration of the lattice, where each site is either filled with a spin or is vacant. The macrostate is a collection of microstates that have the same energy and number of spins.
 
 (b) ( 8 pts) Derive the closed-form grand canonical partition function $\Xi(N, T, \mu, H)$.
 
@@ -189,10 +224,58 @@ $$
 $$
 
 There are multiple ways to do this!
+\subsection{}
+At each site there are 3 possibilities: the site could be vincent, giving an energy of 0, the spin could be aligned with the field, giving an energy of $-H$, or the spin could be antiparallel to the field, giving an energy of $H$. The partition function for a single site is then:
+\begin{equation}
+  Q_{\text{site}} = 1 + e^{\beta \mu} e^{-\beta H} + e^{\beta \mu} e^{\beta H}
+\end{equation}
+We can factor out the $e^{\beta \mu}$ from the last two terms and multiply them by$\frac{2}{2}$:
+\begin{equation}
+  Q_{\text{site}} = 1 + 2 e^{\beta \mu}\left( \frac{e^{-\beta H} + e^{\beta H}}{2} \right)
+\end{equation}
+We can recognize the term in the parentheses as the hyperbolic cosine:
+\begin{equation}
+  Q_{\text{site}} = 1 + 2 e^{\beta \mu} \cosh(\beta H)
+\end{equation}
+This is a partition function for a single site, so for all $N$ sites, we get:
+\begin{equation}
+  \Xi(N, T, \mu, H) = \left[1 + 2 e^{\beta \mu} \cosh(\beta H) \right]^N
+\end{equation}
 (c) (6 pts) Solve for the average fraction of occupied sites in the system $\langle x\rangle=\langle n\rangle / N$ using an appropriate derivative. What happens as $H \rightarrow \infty$ ? Explain the physical intuition of the limiting behavior.
-
+\subsection{}
+The relevant thermodynamic potential is the grand free energy, $W = -kT \ln(\Xi)$. in its deferential form, this is given by:
+\begin{equation}
+  dW = -S dT - P dV - N d\mu - M dH
+\end{equation}
+So, if we want to solve for the average value of $n$, we can take the negative derivative of $W$ with respect to $\mu$, or equivalently, the derivative of $\ln(\Xi)$ with respect to $\beta\mu$. We get:
+\begin{equation}
+  \pdv{\ln(\Xi)}{\mu} = \frac{N}{1+2e^{\beta\mu}\cosh(\beta H)} \times 2\beta e^{\beta\mu}\cosh(\beta H)
+\end{equation}
+Dividing by $N$ and $\beta$:
+\begin{equation}
+  \langle x \rangle = \left( \frac{2e^{\beta\mu}\cosh(\beta H)}{1+2e^{\beta\mu}\cosh(\beta H)} \right)
+\end{equation}
+The limit of $\cosh(x)$ as $x \rightarrow \infty$ is $\frac{e^x}{2}$, or $\infty$. So, as $H \rightarrow \infty$, the fraction of occupied sites approaches 1. This makes sense, as many sites will want to have spins that align with the field to minimize their energy.\\
 (d) (3 pts) In the reservoir, we have $H=0$. If we also know that the fraction of sites occupied in the reservoir is $x_{R}$, then what is $e^{\beta \mu}$ ?
-
+\subsection{}
+If in the reservoir, $H=0$, then $\cosh(\beta H) = 1$. So the fraction of occupied sites in the reservoir is given by:
+\begin{equation}
+  x_R = \frac{2\beta e^{\beta\mu}}{1+2e^{\beta\mu}}
+\end{equation}
+Solving for $e^{\beta\mu}$:
+\begin{equation}
+  e^{\beta\mu} = \frac{x_{R}}{2 \left(\beta - x_{R}\right)}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+# divine the symbols of the equation x_R = \frac{2\beta e^{\beta\mu}}{1+2e^{\beta\mu}}
+x_R, beta, mu = symbols('x_R beta mu')
+eq = Eq(x_R, 2*beta*exp(beta*mu)/(1+2*exp(beta*mu)))
+# solve for e^{\beta\mu}
+solution = solve(eq, exp(beta*mu))
+print(latex(solution[0].simplify()))
+\end{lstlisting}
 (e) (4 pts) Calculate the average magnetisation $\langle M\rangle$.
 
 Note the differential form of the grand free energy including the magnetisation
@@ -200,9 +283,54 @@ Note the differential form of the grand free energy including the magnetisation
 $$
 d W=-S d T-P v_{\text {site }} d N-n d \mu-M d H
 $$
+\subsection{}
+The average magnetisation is given by the derivative of the grand free energy with respect to $H$:
+\begin{equation}
+  \langle M \rangle = -\pdv{W}{H} = \frac{1}{\beta } \pdv{\ln(\Xi)}{H}
+\end{equation}
+This derivative is given by:
+\begin{equation}
+  \pdv{\ln(\Xi)}{H} = \frac{2 N \beta e^{\beta \mu} \sinh{\left(H \beta \right)}}{2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, cosh, exp, ln, latex, simplify
 
+# Define the symbols
+beta, mu, H, N = symbols('beta mu H N')
+
+# Define the grand canonical partition function
+Xi = (1 + 2*exp(beta*mu)*cosh(beta*H))**N
+
+# Compute the natural logarithm of the partition function
+ln_Xi = ln(Xi)
+
+# Perform the differentiation of ln(Xi) with respect to mu
+dlnXi_dH = diff(ln_Xi, H)
+
+print(latex(dlnXi_dH.simplify()))
+
+\end{lstlisting}
+Dividing by $\beta$:
+\begin{equation}
+  \langle M \rangle = \frac{2N e^{\beta \mu} \sinh{\left(H \beta \right)}}{2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1}
+\end{equation}
 (f) (3 pts) Calculate the magnetic susceptibility, $\chi=(\partial\langle M\rangle / \partial H)_{T, N, \mu}$.
-
+\subsection{}
+The magnetic susceptibility is given by the derivative of the average magnetisation with respect to $H$:
+\begin{equation}
+  \chi = \pdv{\langle M \rangle}{H} =  \frac{2 N \beta \left(2 e^{\beta \mu} + \cosh{\left(H \beta \right)}\right) e^{\beta \mu}}{\left(2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1\right)^{2}}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+# Define the symbols for \langle M \rangle = \frac{2N e^{\beta \mu} \sinh{\left(H \beta \right)}}{2 e^{\beta \mu} \cosh{\left(H \beta \right)} + 1}
+N, beta, mu, H = symbols('N beta mu H')
+M = 2*N*exp(beta*mu)*sinh(H*beta) / (2*exp(beta*mu)*cosh(H*beta) + 1)
+# take the deviate with respect to H
+dM_dH = diff(M, H)
+print(latex(dM_dH.simplify()))
+\end{lstlisting}
 (g) (4 pts) Relate the susceptibility $\chi$ to the fluctuations in magnetisation $\sigma_{M}^{2}$. How does $\sigma_{M} /\langle M\rangle$ scale with $N$ ? This should require little additional work!
 
 \section*{3. Simple Elastic Molecule under Fixed Tension (40 pts)}

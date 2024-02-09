@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -110,6 +110,7 @@ When odd, this is:
 \begin{equation}
   \binom{N-1}{2N_p}
 \end{equation}
+but in the thermodynamic limit, this can well be approximated by the even case.\\
 (b) (5 pts) From these monomers you've selected in 1a, how many ways can you form $N_{p}$ pairs (it may be easier to first consider the case where you can form 2 pairs from 4 monomers)?
 \subsection{}
 We will start by considering the simple case of forming 2 pairs from 4 monomers:
@@ -176,12 +177,31 @@ Solving for $N_p$:
 \begin{equation}
   N_p = \frac{2 e N - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) e^{\beta \epsilon}} + e^{\beta \epsilon}}{4 e}
 \end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, ln, latex, Eq, solve, exp, simplify
 
+# Define symbols
+N, Np, beta, epsilon = symbols('N Np beta epsilon')
+
+# Define the function
+ln_t_Np = N * ln(N) - (N - 2*Np) * ln(N - 2*Np) - Np * ln(Np) - Np * ln(2) - beta * epsilon * Np
+
+# Differentiate ln(t_Np) with respect to Np
+d_ln_t_Np_dNp = diff(ln_t_Np, Np)
+
+# print(latex(d_ln_t_Np_dNp.simplify()))
+
+# solve for N_P here: \exp{\left(\beta \epsilon - 1 \right)} = \frac{(N - 2 N_p)^2}{2N_p}
+final_equation = Eq(exp(beta * epsilon - 1), (N - 2*Np)**2 / (2*Np))
+Np_solution = solve(final_equation, Np)
+print(latex(Np_solution[0].simplify()))
+\end{lstlisting}
 We are really interested in the fraction of monomers associated, $p = \frac{2N_p}{N}$, so we can divide by $N$ and multiply by 2:
 \begin{equation}
-  p = 1 + \frac{2e^{\beta \epsilon} - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) e^{\beta \epsilon}}}{4N^2e}
+  p = 1 + \frac{2e^{\beta \epsilon} - \sqrt{\left(4 e N + e^{\beta \epsilon}\right) 2e^{\beta \epsilon}}}{4Ne}
 \end{equation}
-I am not fur where to go from here
+Not sure where to go from here.\\
 
 (e) (6 pts) Let us now consider the limits of the fraction of monomers associated. Consider both the limit at high $(\beta \rightarrow 0)$ and low $(\beta \rightarrow \infty)$ temperatures. In terms of energetic interactions and conformational contributions, which effect dominates in either limit?
 \subsection{}
@@ -189,15 +209,15 @@ We want to consider the term:
 \begin{equation}
   p=1+\frac{\frac{\exp (-\beta \epsilon)}{N}-\sqrt{\left(2+\frac{\exp (-\beta \epsilon)}{N}\right)^{2}-4}}{2}
 \end{equation}
-At high temperatures, $\beta \rightarrow 0$, the exponential term in the numerator becomes $\frac{1}{N}$. We expand the numerator with this:
+At high temperatures, $\beta \rightarrow 0$, we can Taylor expand the exponential term to second order:
 \begin{equation}
-  p=1+\frac{\frac{1}{N}-\sqrt{\left(2+\frac{1}{N}\right)^{2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4+4\frac{1}{N}+\frac{1}{N^2}-4}}{2} = 1+\frac{\frac{1}{N}-\sqrt{4\frac{1}{N}+\frac{1}{N^2}}}{2}
+  p=1+\frac{\frac{1-\beta \epsilon}{N}-\sqrt{\left(2+\frac{1-\beta \epsilon}{N}\right)^{2}-4}}{2}
 \end{equation}
-In the thermodynamic limit, $N \rightarrow \infty$, the term $\frac{1}{N}$ becomes negligible, and we are left with:
+The term in the square root is then:
 \begin{equation}
-  p=1+\frac{-\sqrt{0}}{2} = 1
+  \left(2+\frac{1-\beta \epsilon}{N}\right)^{2}-4 = 4 + \frac{4(1-\beta \epsilon)}{N} + \frac{(1-\beta \epsilon)^2}{N^2} - 4 = \frac{4(1-\beta \epsilon)}{N} + \frac{(1-\beta \epsilon)^2}{N^2}
 \end{equation}
-I would say that in this high temperature limit, the conformational entropy dominates and the fraction of monomers associated becomes close to 1.\\
+The former term only scales like $\sqrt{\frac{1}{N}}$, so negative term associated with the square root is much larger than the positive term outside. So, I would say that in this high temperature limit, the conformational entropy dominates and the fraction of monomers associated becomes close to 0.\\
 At low temperatures, $\beta \rightarrow \infty$, the exponential terms in the numerator become negligible, and we are left with:
 \begin{equation}
   p=1+\frac{-\sqrt{\left(2\right)^{2}-4}}{2} = 1+\frac{-\sqrt{0}}{2} = 1
@@ -348,7 +368,7 @@ print(latex(dM_dH.simplify()))
 \end{lstlisting}
 (g) (4 pts) Relate the susceptibility $\chi$ to the fluctuations in magnetisation $\sigma_{M}^{2}$. How does $\sigma_{M} /\langle M\rangle$ scale with $N$ ? This should require little additional work!
 \subsection{}
-Due to the fluctuation dissipation theorem, we can relate the extensive magnetization to its susceptibility:
+Due to the fluctuation dissipation theorem, we can relate the extensive magnetization fluctuations to the susceptibility:
 \begin{equation}
   \sigma_{M}^{2} = \frac{\chi}{\beta } \rightarrow \sigma _M = \sqrt{\frac{\chi}{\beta}}
 \end{equation}
@@ -362,7 +382,7 @@ So:
 is an extensive quantity, scaling like $\sqrt{N}$, so the ratio $\sigma_M/\langle M \rangle$ scales like $1/\sqrt{N}$.
 
 
-\section*{3. Simple Elastic Molecule under Fixed Tension (40 pts)}
+\section{Simple Elastic Molecule under Fixed Tension (40 pts)}
 A crude way to treat a rubber band is by treating it as a chain of linked segments that can take configurations of different lengths. In general we could also assume that the different configurations have different energies.
 
 Assume that there are $N$ total distinguishable segments which each have access to two different conformations: type $\mathbf{A}$ and type $\mathbf{B}$. The types are distinguished by their length and their energy.
@@ -392,13 +412,35 @@ E=T S+F L+\mu N \\
 d E=T d S+F d L+\mu d N
 \end{gathered}
 $$
+\subsection{}
+We are dealing with a system of a fixed number of segments, $N$, so particle exchange will not be of concern in our Boltzmann factor. The chain will seek to minimize the energy of a microstate, which adds a factor of $e^{-\beta E_{\nu}}$. However, it is also subject to a force, $F$, which when stretching the chain, will add a factor of $e^{\beta F L_{\nu}}$ since the chain has more free energy (e.g. how a rubber band has more potential energy when stretched). So, the total Boltzmann factor for a microstate is given by:
+\begin{equation}
+  e^{\beta F L_{\nu}} e^{-\beta E_{\nu}}
+\end{equation}
+The partition function is then given by the sum of the Boltzmann factors for all microstates:
+\begin{equation}
+  Z(N, F, T) = \sum_{\nu} e^{\beta F L_{\nu}} e^{-\beta E_{\nu}}
+\end{equation}
+and the probability for being in a certain state $P_{\nu}(N, F, T)$ is given by the Boltzmann factor for that state, divided by the partition function:
+\begin{equation}
+  P_{\nu}(N, F, T) = \frac{e^{\beta F L_{\nu}} e^{-\beta E_{\nu}}}{Z(N, F, T)}
+\end{equation}
 
 (b) (6 pts) Using the answer to part (a), show that the partition function in the ( $N, F, T)$ ensemble is given by
 
 $$
 Z(N, F, T)=\left[e^{\beta F a} e^{-\beta \epsilon_{a}}+e^{\beta F b} e^{-\beta \epsilon_{b}}\right]^{N}
 $$
-
+\subsection{}
+First we will consider the partition function for a single segment:
+\begin{equation}
+  Z_1 = e^{\beta F a} e^{-\beta \epsilon_{a}} + e^{\beta F b} e^{-\beta \epsilon_{b}}
+\end{equation}
+That is, the segment can either be of type A or type B and the partition function is the sum of the Boltzmann factors for each type. The partition function for $N$ segments is then given by:
+\begin{equation}
+  Z(N, F, T) = Z_1^N = \left[e^{\beta F a} e^{-\beta \epsilon_{a}} + e^{\beta F b} e^{-\beta \epsilon_{b}}\right]^N
+\end{equation}
+This can be done because the segments are distinguishable, so the partition function for $N$ segments is just the partition function for a single segment raised to the power of $N$.\\
 We will now look at a specific case, that yields some very interesting results. Let's take the simplest example, where $\epsilon_{a}=\epsilon_{b}=0$ and $a=0$. Thus, each segment is either vertical (and has no length) or is horizontal (and has length $b$ ). In this case, the partition function simplifies to,
 
 $$
@@ -410,26 +452,171 @@ $$
 $$
 \langle L\rangle=N b \frac{e^{\beta F b}}{1+e^{\beta F b}}
 $$
-
+\subsection{}
+To find the average extension $L$, we consider that it is given by:
+\begin{equation}
+  \langle L\rangle =N*b*P(B)
+\end{equation}
+This can be explained as follows: we are concerned with total number of segments, $N$. Since we know that $a=0$, only segments of type B will contribute to the extension. That's why we multiply by the length of segment B, $b$ and then the probability of a segment being of type B, $P(B)$. The probability of a segment being of type B is given by:
+\begin{equation}
+  P(B) = \frac{e^{\beta F b}}{1+e^{\beta F b}}
+\end{equation}
+The denominator is the partition function for a single segment, and the numerator is the Boltzmann factor for a segment being of type B. So, the average extension is given by:
+\begin{equation}
+  \langle L \rangle = N b \frac{e^{\beta F b}}{1+e^{\beta F b}}
+\end{equation}
 (d) (4 pts) Find the equilibrium length $\left(L_{0}\right)$ of the molecule at zero tension (i.e. at $F=0$ ). Does this answer make sense? Why or why not?
+\subsection{}
+At zero tension, $F=0$, the average extension is given by:
+\begin{equation}
+  \langle L \rangle = N b \frac{e^{\beta F b}}{1+e^{\beta F b}} = N b \frac{e^{0}}{1+e^{0}} = N b \frac{1}{2}
+\end{equation}
+This answer makes sense come because without the force to favor one conformation over the other, the molecule will have an equal probability of being in either conformation with it's length just given then by the average of the two lengths.\\
 
 (e) (6 pts) Now we will derive Hooke's law and calculate the spring constant using statistical mechanics!
+\subsection{}
 
 i. Invert $L(N, F, T)$ to get the force-extension equation of state, $F(\langle L\rangle, N, T)$.
+\subsubsection{}
+SymPy gives:
+\begin{equation}
+  F = \left[ \frac{\log{\left(\frac{L_{avg}}{- L_{avg} + N b} \right)}}{b \beta}\right]
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, solve, Eq, exp, ln, latex
+
+# Define symbols
+L_avg, N, b, beta, F = symbols('L_avg N b beta F')
+
+# Given equation for L_avg
+L_avg_eq = Eq(L_avg, N * b * exp(beta * F * b) / (1 + exp(beta * F * b)))
+
+# Solve the equation for exp(beta * F * b)
+exp_beta_Fb_solution = solve(L_avg_eq, exp(beta * F * b))[0]
+
+# Express the solution in terms of F
+F_solution = solve(Eq(exp_beta_Fb_solution, exp(beta * F * b)), F)
+
+print(latex(F_solution))
+
+\end{lstlisting}
 
 ii. Taylor expand $F(\langle L\rangle, N, T)$ out to first order around the equilibrium chain length from 3d. Physically, when does this approximation apply?
+\subsubsection{}
+The Taylor expansion of $F(\langle L\rangle, N, T)$ around the equilibrium chain length is given by:
+\begin{equation}
+  F(\langle L\rangle, N, T) \approx F(L_0, N, T) + \pdv{F}{L} \bigg|_{L=L_0} (\langle L\rangle - L_0) + \ldots
+\end{equation}
+We know that first term is zero, because the force is zero at the equilibrium length. We are interested in evaluating the derivative of $F$ with respect to $L$ at $L=L_0$. Rewriting our expression for $F$:
+\begin{equation}
+  F = \frac{1}{b\beta }\left( \ln (\langle L \rangle) - \ln (N b - \langle L \rangle) \right)
+\end{equation}
+Taking the derivative of $F$ with respect to $L$:
+\begin{equation}
+  \pdv{F}{L} = \frac{1}{b\beta }\left( \frac{1}{\langle L \rangle} + \frac{1}{N b - \langle L \rangle} \right)
+\end{equation}
+Evaluating this at $L=L_0$, we get:
+\begin{equation}
+  \pdv{F}{L} \bigg|_{L=L_0= N b \frac{1}{2}} = \frac{4}{N b^{2} \beta}
+\end{equation} 
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import diff, symbols, log, solve, Eq, latex, simplify
+
+# Define symbols
+L_avg, L_0, N, b, beta, F = symbols('L_avg L_0 N b beta F')
+
+# Given F(L_avg) equation from previous solution
+F_L = log(L_avg / (-L_avg + N * b)) / (b * beta)
+
+# Calculate the first derivative of F with respect to L_avg
+dF_dL = diff(F_L, L_avg)
+
+# evaluate this derivative at the inital length ofL_0 = N b \frac{1}{2}
+dF_dL_at_L0 = dF_dL.subs(L_avg, N * b / 2)
+
+
+print(latex(dF_dL_at_L0.simplify()))
+\end{lstlisting}
 
 iii. Extract the spring constant $K_{s}$ by inspection.
-
+\subsection{}
+The spring constant is given by the derivative of the force with respect to the extension at the equilibrium length. So, it is what we just calculated:
+\begin{equation}
+  K_{s} = \frac{4}{N b^{2} \beta}
+\end{equation}
 (f) (4 pts) Relate the fluctuations in length $\sigma_{L}^{2}$ at $F=0$ to the spring constant, $K_{s}$. Explain why this relationship physically makes sense.
+\subsection{}
+We can relate the fluctuations in length to the spring constant using the fluctuation dissipation theorem:
+\begin{equation}
+  \sigma_{L}^{2} = \frac{kT}{K_{s}}
+\end{equation}
+This relationship makes sense because the spring constant is a measure of how stiff the chain is, and the fluctuations in length are a measure of how much the chain can move around. So, the stiffer the chain, the less it will fluctuate.\\
 
 (g) (8 pts) For this more simplified model of the chain where each segment is either vertical or horizontal, we can analyze the behavior using a fixed energy and length ensemble (i.e. the microcanonical ensemble). The partition function is given by $\Omega(N, L, E)$.
+\subsection{}
 
 i. Calculate the microcanonical partition function at length $L=n b$, where $n$ is the number of horizontal segments.
+\subsubsection{}
+We want to calculate the number of ways to arrange $n$ horizontal segments (which will have a length b, but doesn't matter here) in a chain of $N$ segments. This is given by the binomial coefficient:
+\begin{equation}
+  \Omega(N, L, E) = \binom{N}{n} = \frac{N!}{n!(N-n)!}
+\end{equation}
+
 
 ii. Show that your answer to $\mathbf{3 d}$ maximizes the entropy.
+\subsubsection{}
+The entropy is given by:
+\begin{equation}
+  S = k \ln(\Omega)
+\end{equation}
+We want to evaluate $\ln(\Omega)$:
+\begin{equation}
+  \ln(\Omega) = \ln\left(\frac{N!}{n!(N-n)!}\right) = \ln(N!) - \ln(n!) - \ln((N-n)!)
+\end{equation}
+We can use Stirling's approximation to simplify this:
+\begin{equation}
+  \ln(\Omega) \approx N \ln(N) - n \ln(n) - (N-n) \ln(N-n)
+\end{equation}
+The entropy is then given by:
+\begin{equation}
+  S = k \ln(\Omega) \approx k \left( N \ln(N) - n \ln(n) - (N-n) \ln(N-n) \right)
+\end{equation}
+We can now differentiate this with respect to $n$ to find the most-probable value of $n$.
+\begin{equation}
+  \pdv{S}{n} = k \left(- \log{\left(n \right)} + \log{\left(N - n \right)}\right)
+\end{equation}
+Setting this equal to zero:
+\begin{equation}
+  0 = - \log{\left(n \right)} + \log{\left(N - n \right)}
+\end{equation}
+Bringing one of the terms to the other side:
+\begin{equation}
+  \log{\left(n \right)} = \log{\left(N - n \right)}
+\end{equation}
+Exponentiating both sides:
+\begin{equation}
+  n = N - n
+\end{equation}
+Solving for $n$:
+\begin{equation}
+  n = \frac{N}{2}
+\end{equation}
+or we have $n = \frac{L}{b}$. So, we plug in and solve for $L$:
+\begin{equation}
+  L = n b = \frac{N}{2} b
+\end{equation}
+which is the same as the equilibrium length we found in 3d. So, the answer to 3d maximizes the entropy.
 
 iii. Verify that you obtain the same force-extension equation of state $F(N, L, T)$ in this ensemble.
-
-
+\subsubsection{}
+As showed earlier, this ensemble has the equilibrium length with the total force $F$ being zero. The force-extension equation of state is given by:
+\begin{equation}
+  F = \pdv{E}{L} = \frac{1}{b\beta }\left( \ln (\langle L \rangle) - \ln (N b - \langle L \rangle) \right)
+\end{equation}
+But when we set the average length to the equilibrium length of $L_0 = \frac{N}{2} b$, we get:
+\begin{equation}
+  F = \frac{1}{b\beta }\left( \ln (\frac{N}{2} b) - \ln (Nb - \frac{N}{2} b) \right) = 0
+\end{equation}
 \end{document}

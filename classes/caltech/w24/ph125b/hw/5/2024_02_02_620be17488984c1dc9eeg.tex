@@ -121,42 +121,73 @@ So we can write the inside of the parentheses as:
 \begin{equation}
   \frac{e^{-\mu r}}{r} - \frac{1}{r} = -\mu + \frac{\mu^2 r}{2} + \ldots
 \end{equation}
-We want to minimize this with respect to $\mu$:
+So, we can say the perturbation approxiately goes like:
 \begin{equation}
-  \dv{\mu}\left(-\mu + \frac{\mu^2 r}{2}\right) = 0
+  V \approx -\mu K
 \end{equation}
-We find that the minimizing value of $\mu$ is $\mu = \frac{1}{r}$. 
-% Inline Python code in the document
-\begin{lstlisting}[language=Python]
-from sympy import *
-mu, r = symbols('mu r')
-
-# I want to solve this minimization problem by differentiating with respect to mu: \dv{\mu}\left(-\mu + \frac{\mu^2 r}{2}\right) = 0
-
-minimization_problem = Eq(diff(-mu + mu**2 * r / 2, mu), 0)
-mu_solution = solve(minimization_problem, mu)
-
-print(latex(mu_solution[0].simplify()))
-\end{lstlisting}
-Alternatively, we took the derivative of $V$ with respect to $r$:
+We know that the unperturbed energies in the Coulomb potential go like:
 \begin{equation}
-  K\dv{r}\left(\frac{e^{-\mu r}}{r} - \frac{1}{r}\right) = K \left(- \frac{\mu e^{- \mu r}}{r} + \frac{1}{r^{2}} - \frac{e^{- \mu r}}{r^{2}}\right)
+  E_n = \frac{a}{n^2}
 \end{equation}
-Setting equal to 0 gives me no relation between $\mu$ and $K$ though. 
-
 (b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
 \subsection{}
-We want to consider the equation:
+We follow from 19.3.8 in Shankar. When the Yukawa potential is given by:
 \begin{equation}
-  \frac{\dd{ u}}{\dd{\theta }} +u = - \kappa 
+  V(r) = \frac{K e^{-\mu r}}{r}
 \end{equation}
-where in this case $u= \frac{Ke^{-\mu r }}{r}$. We will end up with a result of $\frac{\dd{\sigma }}{\dd{\Omega }}=?$\\
+The scattering amplitude is given by:
+\begin{equation}
+  f(\theta) = -\frac{2\mu _{reduced}K}{\hbar^2q}\int_{0}^{\infty}\frac{e^{iqr'}-e^{-iqr'}}{2i}e^{-\mu r'}\dd{r'}
+\end{equation}
+where $\mu _{reduced}$ is the reduced mass of the system.
+This simplifies to:
+\begin{equation}
+  f(\theta) = -\frac{2\mu _{reduced}K}{\hbar^(\mu^2 + q^2)}
+\end{equation}
+The differential cross section in the Born approximation for the Yukawa potential is given by:
+\begin{equation}
+  \frac{\dd{\sigma }}{\dd{\Omega }} = \abs{f(\theta)}^2
+\end{equation}
+Now, we know that the square of the momentum $q$ transferred to the particle is given by:
+\begin{equation}
+  q^2 = 4k^2\sin^2\left(\frac{\theta}{2}\right)
+\end{equation}
+So we can write the differential cross section as:
+\begin{equation}
+  \frac{\dd{\sigma }}{\dd{\Omega }} = \frac{4\mu^2_{reduced}K^2}{\hbar^4(\mu^2 + q^2)^2} = \frac{4\mu^2_{reduced}K^2}{\hbar^4(\mu^2 + 4k^2\sin^2\left(\frac{\theta}{2}\right))^2}
+\end{equation}
+To compare with the classical Rutherford cross section, we need to consider the limit $\mu \rightarrow 0$ and let us set $K=Ze^2$. We can write the differential cross section as:
+\begin{equation}
+  \frac{\dd{\sigma }}{\dd{\Omega }} = \frac{4\mu^2_{reduced}(Ze^2)^2}{\hbar^4(4k^2\sin^2\left(\frac{\theta}{2}\right))^2} = \frac{(Ze^2)^2}{16E^2\sin^4\left(\frac{\theta}{2}\right)}
+\end{equation}
+where we have used the fact that the momentum $p$ is given by:
+\begin{equation}
+  p = \frac{\hbar k}{2}
+\end{equation}
+and the energy $E$ is given by:
+\begin{equation}
+  E = \frac{p^2}{2\mu_{reduced}}
+\end{equation}
+Although the result is the same as the Rutherford cross section, the calculation is not completely valid because the formulation developed is for a potential that vanishes faster than the inverse of the radius, which the Coulomb does not. For a comprehensive discussion, see Shankar pg. 532.\\
 (c) Integrate your differential cross section over all solid angles to obtain the "total cross section". Again, consider the limit $\mu \rightarrow 0$. Assuming the Rutherford cross section holds, what is the total cross section for scattering on a Coulomb potential?
 \subsection{}
-Here we probably want to consider:
+Here we are interested in the total cross section, which is given by:
 \begin{equation}
-  \sigma = \int_{\Omega }? \dd{\Omega } 
+  \sigma = \int \frac{\dd{\sigma}}{\dd{\Omega}}\dd{\Omega}
 \end{equation}
+Plugging in our expression for the differential cross section after we took the limit $\mu \rightarrow 0$, we have:
+\begin{equation}
+  \sigma = \int \frac{(Ze^2)^2}{16E^2\sin^4\left(\frac{\theta}{2}\right)}\dd{\Omega}
+\end{equation}
+We can write the differential solid angle as:
+\begin{equation}
+  \dd{\Omega} = 2\pi \sin\theta \dd{\theta}
+\end{equation}
+Pulling out all the terms that do not depend on $\theta$ and inserting this identity, we have:
+\begin{equation}
+  \sigma = \frac{\pi(Ze^2)^2}{8E^2}\int \frac{\sin\theta}{\sin^4\left(\frac{\theta}{2}\right)}\dd{\theta}
+\end{equation}
+This integral diverges at $\theta = 0, \pi$. So, we are not able to calculate the total cross section for the Coulomb potential.
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{18}
@@ -202,11 +233,108 @@ and
 \begin{equation}
   \ket{-+} = \frac{1}{\sqrt{2}}\left(\ket{S^2 = 1, S^z = 0} - \ket{S^2 = 0, S^z = 0}\right)
 \end{equation}
-Since we know that the initial state was $\ket{+-}$, we can write the state at $t=\infty$ with the propagators now that we have expressed the initial states in terms of a transformed basis that is of eigenstates of our Hamiltonian. We can write the state at $t=\infty$ as:
-
+We seek to figure out the eigenvalues of the Hamiltonian in the basis of the total spin and its $z$-component. We can write the Hamiltonian as:
+\begin{equation}
+  H = a(t) \mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{1}{2}a(t) \left(S^2 - S_1^2 - S_2^2\right)
+\end{equation}
+So, it operates on the states as:
+\begin{equation}
+  H\ket{S^2 = 0, S^z = 0} = \frac{1}{2}a(t)\left(0 - \frac{3}{4} - \frac{3}{4}\right)\ket{S^2 = 0, S^z = 0} = -\frac{3}{4}a(t)\ket{S^2 = 0, S^z = 0}
+\end{equation}
+and:
+\begin{equation}
+  H\ket{S^2 = 1, S^z = 0} = \frac{1}{2}a(t)\left(2 - \frac{3}{4} - \frac{3}{4}\right)\ket{S^2 = 1, S^z = 0} = \frac{1}{4}a(t)\ket{S^2 = 1, S^z = 0}
+\end{equation}
+So, the action on the initial state is:
+\begin{equation}
+  H\ket{+-} = \frac{1}{\sqrt{2}}\left(-\frac{3}{4}a(t) + \frac{1}{4}a(t)\right)\left(\ket{S^2 = 1, S^z = 0} + \ket{S^2 = 0, S^z = 0}\right) = -\frac{1}{2}a(t)\ket{+-}
+\end{equation}
+For the state $\ket{-+}$, we have:
+\begin{equation}
+  H\ket{-+} = \frac{1}{\sqrt{2}}\left(-\frac{3}{4}a(t) - \frac{1}{4}a(t)\right)\left(\ket{S^2 = 1, S^z = 0} - \ket{S^2 = 0, S^z = 0}\right) = -a(t)\ket{-+}
+\end{equation}
+With the time-dependent Schrödinger equation, we can write:
+\begin{equation}
+  i \pdv{t} \ket{\psi (t)} = H\ket{\psi (t)} = a(t) \mathbf{S}_1 \cdot \mathbf{S}_2 \ket{\psi (t)}
+\end{equation}
+We can express $\ket{\psi (t)}$ as a two-component vector in the basis of the total spin and its $z$-component:
+\begin{equation}
+  \ket{\psi (t)} = \begin{pmatrix} c_1(t) \\ c_2(t) \end{pmatrix}
+\end{equation}
+where $c_1(t)$ and $c_2(t)$ are the probability amplitudes for the states $\ket{S^2 = 0, S^z = 0}$ and $\ket{S^2 = 1, S^z = 0}$, respectively. Then, we have the time-dependent Schrödinger equation with only one component:
+\begin{equation}
+  i \partial_{t} c_1(t) = -\frac{3}{4}a(t)c_1(t)
+\end{equation}
+Dividing through by $c_1(t)$ and multiplying by $-i$ gives us:
+\begin{equation}
+  \frac{\partial_{t} c_1(t)}{c_1(t)} = +i\frac{3}{4} a(t)
+\end{equation}
+We recognize the left-hand side as the derivative of the natural logarithm of $c_1(t)$, so we can write:
+\begin{equation}
+  \ln(c_1(t)) = \frac{3i}{4}\int_{-\infty}^{t} a(t')\dd{t'}
+\end{equation}
+We can exponentiate both sides to solve for $c_1(t)$:
+\begin{equation}
+  c_1(t) = e^{\frac{3i}{4}\int_{-\infty}^{t} a(t')\dd{t'}}
+\end{equation}
+We can do the same for $c_2(t)$:
+\begin{equation}
+  c_2(t) = e^{-\frac{i}{4}\int_{-\infty}^{t} a(t')\dd{t'}}
+\end{equation}
+Now, we that we have the propagors for the eigenstates of the Hamiltonian, we can write the state at $t=\infty$ as:
+\begin{equation}
+  \ket{\psi (\infty)} = \frac{1}{\sqrt{2}}\begin{pmatrix} e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \\ e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \end{pmatrix}
+\end{equation}
+We can write the probability of the state $\ket{+-}$ transitioning to the state $\ket{-+}$ as the projection of the state at $t=\infty$ onto the state $\ket{-+}$:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\braket{-+}{\psi (\infty)}}^2
+\end{equation}
+In the basis of the total spin and its $z$-component, we can write the state $\ket{-+}$ as:
+\begin{equation}
+  \ket{-+} = \frac{1}{\sqrt{2}}\left( 
+  \begin{pmatrix} 1 \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+  \right) = \frac{1}{\sqrt{2}}\begin{pmatrix} -1 \\ 1 \end{pmatrix}
+\end{equation}
+So we can write the probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{\sqrt{2}}\begin{pmatrix} -1 & 1 \end{pmatrix}\cdot \frac{1}{\sqrt{2}}\begin{pmatrix} e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \\ e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \end{pmatrix}}^2
+\end{equation}
+which simplifies to:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{-\frac{1}{2}e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} + \frac{1}{2}e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}}}^2
+\end{equation}
 
 (b) Now calculate $P(+-\rightarrow-+)$ in first-order time-dependent perturbation theory. What is a condition for the validity of first-order time-dependent perturbation theory?
 \subsection{}
+For the total Hamiltonian, we can choose:
+\begin{equation}
+  H = H_0 + V_t = 0 + a(t) \mathbf{S}_1 \cdot \mathbf{S}_2
+\end{equation}
+Ordinarily, in first-order time-dependent perturbation theory, we would write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} e^{i\omega_{+-}t}\bra{f}V_t\ket{i}\dd{t}}^2
+\end{equation}
+But here the unperturbed Hamiltonian is 0,so the exponential factor is just 1, and the transition probability is just:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} \bra{f}V_t\ket{i}\dd{t}}^2
+\end{equation}
+The initial state is $\ket{i} = \ket{+-}$ and the final state is $\ket{f} = \ket{-+}$. We can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} \bra{-+}a(t) \mathbf{S}_1 \cdot \mathbf{S}_2\ket{+-}\dd{t}}^2
+\end{equation}
+We found the action of the Hamiltonian on the state $\ket{+-}$ in the previous part to be:
+\begin{equation}
+  H\ket{+-} = -\frac{1}{2}a(t)\ket{+-}
+\end{equation}
+So we can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} -\frac{1}{2}a(t)\bra{-+}\ket{+-}\dd{t}}^2
+\end{equation}
+Now, we want to compute the overlap of the states $\ket{-+}$ and $\ket{+-}$:
+\begin{equation}
+  \bra{-+}\ket{+-} = \frac{1}{2}\begin{pmatrix} -1 & 1 \end{pmatrix}\cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0
+\end{equation}
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{19}
   \item With reference to the previous problem, consider the "Zeeman effect", with the addition of a uniform, static magnetic field of strength $B_{0}$ in the direction of the $z$-axis. Thus, we have another term in the Hamiltonian:
@@ -223,6 +351,14 @@ a(t)=a(0) e^{-(t / \tau)^{2}}
 $$
 
 Repeat your first order perturbation theory calculation of the previous problem in the presence of the magnetic field and with this explicit form for $a(t)$, and determine $P(+-\rightarrow-+)$. Discuss the variation of this probability, for given $a(0)$ and $\tau$, as a function of $B_{0}$.
-
+\subsection{}
+Now, the unperturbed Hamiltonian gives non-zero energies for the states $\ket{+-}$ and $\ket{-+}$:
+\begin{equation}
+  H_0\ket{+-} = -B_0\left(g_1\frac{1}{2} + g_2\left(-\frac{1}{2}\right)\right)\ket{+-} = -\frac{1}{2}B_0(g_1 - g_2)\ket{+-}
+\end{equation}
+and:
+\begin{equation}
+  H_0\ket{-+} = -B_0\left(g_1\left(-\frac{1}{2}\right) + g_2\frac{1}{2}\right)\ket{-+} = -\frac{1}{2}B_0(g_2 - g_1)\ket{-+}
+\end{equation}
 
 \end{document}

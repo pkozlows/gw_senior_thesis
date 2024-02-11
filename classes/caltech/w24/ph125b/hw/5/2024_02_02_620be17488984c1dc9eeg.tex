@@ -113,15 +113,15 @@ We know that for any bound states at all, we need $K<0$ or else we would just be
   H = H_0 + V
 \end{equation}
 
-It is always the case that $K<0$, and the quantity inside of the parentheses will always be negative, so let's maximize the inside of the parentheses. We can expand it in a Taylor series:
+It is always the case that $K<0$, and the quantity inside of the parentheses will always be negative, so let's consider the inside of the parentheses. We can expand it in a Taylor series:
 \begin{equation}
-  e^{-\mu r} = 1 - \mu r + \frac{(\mu r)^2}{2} + \ldots
+  e^{-\mu r} = 1 - \mu r + \ldots
 \end{equation}
 So we can write the inside of the parentheses as:
 \begin{equation}
-  \frac{e^{-\mu r}}{r} - \frac{1}{r} = -\mu + \frac{\mu^2 r}{2} + \ldots
+  \frac{e^{-\mu r}}{r} - \frac{1}{r} = -\mu + \ldots
 \end{equation}
-So, we can say the perturbation approxiately goes like:
+So, we can say the maximum of the perturbation goes approximately like the positive quantity:
 \begin{equation}
   V \approx -\mu K
 \end{equation}
@@ -129,6 +129,11 @@ We know that the unperturbed energies in the Coulomb potential go like:
 \begin{equation}
   E_n = \frac{a}{n^2}
 \end{equation}
+So, if we want at least $n$ bound states, we need to the sum of the perturbation and the Couluomb energy to be less than 0, which can give us a condition on $K$ and $\mu$:
+\begin{equation}
+  -\mu K - \frac{a}{n^2} < 0
+\end{equation}
+where $a$ is a positive constant.\\
 (b) Using the Born approximation for the differential cross section that we developed in our discussion of time-dependent perturbation theory, calculate the differential cross section, $\frac{d \sigma}{d \Omega}$, for scattering on this potential. Consider the limit $\mu \rightarrow 0$ and compare with the classical Rutherford cross section (Is this calculation valid?).
 \subsection{}
 We follow from 19.3.8 in Shankar. When the Yukawa potential is given by:
@@ -175,9 +180,9 @@ Here we are interested in the total cross section, which is given by:
 \begin{equation}
   \sigma = \int \frac{\dd{\sigma}}{\dd{\Omega}}\dd{\Omega}
 \end{equation}
-Plugging in our expression for the differential cross section after we took the limit $\mu \rightarrow 0$, we have:
+Plugging in our expression for the differential cross section:
 \begin{equation}
-  \sigma = \int \frac{(Ze^2)^2}{16E^2\sin^4\left(\frac{\theta}{2}\right)}\dd{\Omega}
+  \sigma = \int \frac{4\mu^2_{reduced}K^2}{\hbar^4(\mu^2 + 4k^2\sin^2\left(\frac{\theta}{2}\right))^2}\dd{\Omega}
 \end{equation}
 We can write the differential solid angle as:
 \begin{equation}
@@ -185,9 +190,9 @@ We can write the differential solid angle as:
 \end{equation}
 Pulling out all the terms that do not depend on $\theta$ and inserting this identity, we have:
 \begin{equation}
-  \sigma = \frac{\pi(Ze^2)^2}{8E^2}\int \frac{\sin\theta}{\sin^4\left(\frac{\theta}{2}\right)}\dd{\theta}
+  \sigma = \frac{8\pi\mu^2_{reduced}K^2}{\hbar^4}\int_0^{\pi} \frac{1}{(\mu^2 + 4k^2\sin^2\left(\frac{\theta}{2}\right))^2}\sin\theta \dd{\theta}
 \end{equation}
-This integral diverges at $\theta = 0, \pi$. So, we are not able to calculate the total cross section for the Coulomb potential.
+At this point, I can remark, that as $\mu \rightarrow 0$, the integrand diverges at $\theta = 0$ and $\theta = \pi$. So, we can't compute thee total cross section for scattering on a Coulomb potential using this method. However, when the Yukawa potential does not merely reduce to the Coulomb potential in this way, the addition of the $\mu^2$ term in the denominator of the integrand will cause the integral to converge.\\
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{18}
@@ -247,11 +252,11 @@ and:
 \end{equation}
 So, the action on the initial state is:
 \begin{equation}
-  H\ket{+-} = \frac{1}{\sqrt{2}}\left(-\frac{3}{4}a(t) + \frac{1}{4}a(t)\right)\left(\ket{S^2 = 1, S^z = 0} + \ket{S^2 = 0, S^z = 0}\right) = -\frac{1}{2}a(t)\ket{+-}
+  H\ket{+-} = \frac{1}{\sqrt{2}}\left(\frac{1}{4}a(t)|S^2 = 1, S^z = 0\rangle - \frac{3}{4}a(t)|S^2 = 0, S^z = 0\rangle\right)
 \end{equation}
 For the state $\ket{-+}$, we have:
 \begin{equation}
-  H\ket{-+} = \frac{1}{\sqrt{2}}\left(-\frac{3}{4}a(t) - \frac{1}{4}a(t)\right)\left(\ket{S^2 = 1, S^z = 0} - \ket{S^2 = 0, S^z = 0}\right) = -a(t)\ket{-+}
+  H\ket{-+} = \frac{1}{\sqrt{2}}\left(\frac{1}{4}a(t)|S^2 = 1, S^z = 0\rangle + \frac{3}{4}a(t)|S^2 = 0, S^z = 0\rangle\right)
 \end{equation}
 With the time-dependent Schrödinger equation, we can write:
 \begin{equation}
@@ -285,14 +290,14 @@ Now, we that we have the propagors for the eigenstates of the Hamiltonian, we ca
 \begin{equation}
   \ket{\psi (\infty)} = \frac{1}{\sqrt{2}}\begin{pmatrix} e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \\ e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} \end{pmatrix}
 \end{equation}
-We can write the probability of the state $\ket{+-}$ transitioning to the state $\ket{-+}$ as the projection of the state at $t=\infty$ onto the state $\ket{-+}$:
+We can write the probability of the state $\ket{+-}$ transitioning to the state $\ket{-+}$ as the projection of the state $\ket{-+}$ onto the state $\ket{\psi (\infty)}$:
 \begin{equation}
   P(+-\rightarrow-+) = \abs{\braket{-+}{\psi (\infty)}}^2
 \end{equation}
 In the basis of the total spin and its $z$-component, we can write the state $\ket{-+}$ as:
 \begin{equation}
   \ket{-+} = \frac{1}{\sqrt{2}}\left( 
-  \begin{pmatrix} 1 \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+  \begin{pmatrix} 0 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
   \right) = \frac{1}{\sqrt{2}}\begin{pmatrix} -1 \\ 1 \end{pmatrix}
 \end{equation}
 So we can write the probability as:
@@ -301,7 +306,7 @@ So we can write the probability as:
 \end{equation}
 which simplifies to:
 \begin{equation}
-  P(+-\rightarrow-+) = \abs{-\frac{1}{2}e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} + \frac{1}{2}e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}}}^2
+  P(+-\rightarrow-+) = \abs{\frac{1}{2}\left(-e^{\frac{3i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}} + e^{-\frac{i}{4}\int_{-\infty}^{\infty} a(t')\dd{t'}}\right)}^2
 \end{equation}
 
 (b) Now calculate $P(+-\rightarrow-+)$ in first-order time-dependent perturbation theory. What is a condition for the validity of first-order time-dependent perturbation theory?
@@ -312,29 +317,44 @@ For the total Hamiltonian, we can choose:
 \end{equation}
 Ordinarily, in first-order time-dependent perturbation theory, we would write the transition probability as:
 \begin{equation}
-  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} e^{i\omega_{+-}t}\bra{f}V_t\ket{i}\dd{t}}^2
+  P(+-\rightarrow-+) = \abs{-i\int_{-\infty}^{\infty} e^{i\omega_{+-}t}\bra{f}V_t\ket{i}\dd{t}}^2
 \end{equation}
 But here the unperturbed Hamiltonian is 0,so the exponential factor is just 1, and the transition probability is just:
 \begin{equation}
-  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} \bra{f}V_t\ket{i}\dd{t}}^2
+  P(+-\rightarrow-+) = \abs{-i\int_{-\infty}^{\infty} \bra{f}V_t\ket{i}\dd{t}}^2
 \end{equation}
-The initial state is $\ket{i} = \ket{+-}$ and the final state is $\ket{f} = \ket{-+}$. We can write the transition probability as:
+The Hamiltonian acting on the initial state is $\ket{\Psi (\infty)}$ and the final state is $\ket{f} = \ket{-+}$.
+In general, $\ket{\Psi (t)}$ is given by:
 \begin{equation}
-  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} \bra{-+}a(t) \mathbf{S}_1 \cdot \mathbf{S}_2\ket{+-}\dd{t}}^2
+  \ket{\Psi (t)} = \ket{\Psi (0)} - i\int_{-\infty}^{\infty} V_t\ket{\Psi (t)}\dd{t}
 \end{equation}
-We found the action of the Hamiltonian on the state $\ket{+-}$ in the previous part to be:
+and the overlap of the final state with the state at $t=\infty$ is given by:
 \begin{equation}
-  H\ket{+-} = -\frac{1}{2}a(t)\ket{+-}
+  \braket{f}{\Psi (\infty)} = \braket{f}{\Psi (0)} - i\int_{-\infty}^{\infty} \braket{f}{V_t}{\Psi (t)}\dd{t}
+\end{equation}
+the first term on the right-hand side is 0, so this is just:
+\begin{equation}
+  \braket{f}{\Psi (\infty)} = -i\int_{-\infty}^{\infty} \bra{f}V_t\ket{\Psi (t)}\dd{t}
+\end{equation}
+ We can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{-i\int_{-\infty}^{\infty} \bra{-+}a(t) \mathbf{S}_1 \cdot \mathbf{S}_2\ket{+-}\dd{t}}^2
+\end{equation}
+We found the action of the perturbation on the state $\ket{+-}$ in the previous part 
+So we can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} \frac{1}{\sqrt{2}}\left(\frac{1}{4}a(t)\bra{-+}|S^2 = 1, S^z = 0\rangle - \frac{3}{4}a(t)\bra{-+}|S^2 = 0, S^z = 0\rangle\right)\dd{t}}^2
+\end{equation}
+Now, $\bra{-+}$ is given by:
+\begin{equation}
+  \bra{-+} = \frac{1}{\sqrt{2}}\left(\bra{S^2 = 1, S^z = 0} - \bra{S^2 = 0, S^z = 0}\right)
 \end{equation}
 So we can write the transition probability as:
 \begin{equation}
-  P(+-\rightarrow-+) = \abs{\frac{1}{i\hbar}\int_{-\infty}^{\infty} -\frac{1}{2}a(t)\bra{-+}\ket{+-}\dd{t}}^2
+  P(+-\rightarrow-+) = \abs{\frac{1}{2i\hbar}\int_{-\infty}^{\infty} \left(\frac{1}{4}a(t) + \frac{3}{4}a(t)\right)\dd{t}}^2 = \abs{\frac{1}{2i\hbar}\int_{-\infty}^{\infty} a(t)\dd{t}}^2
 \end{equation}
-Now, we want to compute the overlap of the states $\ket{-+}$ and $\ket{+-}$:
-\begin{equation}
-  \bra{-+}\ket{+-} = \frac{1}{2}\begin{pmatrix} -1 & 1 \end{pmatrix}\cdot \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 0
-\end{equation}
-\section{}
+The validity of my first order perturbation theory calculation depends on whether my perturbation was chosen to be small and, in this case, whether my transition probability $g(a)$ from my PT calculation was similar to the transition probability $f(a)$ from the exact solution, which wasn't completely the case for me.\\
+
 \begin{enumerate}
   \setcounter{enumi}{19}
   \item With reference to the previous problem, consider the "Zeeman effect", with the addition of a uniform, static magnetic field of strength $B_{0}$ in the direction of the $z$-axis. Thus, we have another term in the Hamiltonian:
@@ -360,5 +380,49 @@ and:
 \begin{equation}
   H_0\ket{-+} = -B_0\left(g_1\left(-\frac{1}{2}\right) + g_2\frac{1}{2}\right)\ket{-+} = -\frac{1}{2}B_0(g_2 - g_1)\ket{-+}
 \end{equation}
-
+So, now the expression for $e^{i\left(E_f-E_i\right)t}$ is not just 1, but:
+\begin{equation}
+  e^{i\left(E_f-E_i\right)t} = e^{\frac{-iB_0t}{2}\left((g_2 - g_1) - (g_1 - g_2)\right)} = e^{iB_0t(g_2 - g_1)}
+\end{equation}
+That is, the transition probability is now:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{-i\int_{-\infty}^{\infty} e^{i\omega_{+-}t}\bra{f}V_t\ket{i}\dd{t}}^2
+\end{equation}
+where the exponential factor is now:
+\begin{equation}
+  e^{i\omega_{+-}t} = e^{iB_0t(g_2 - g_1)}
+\end{equation}
+The perturbative piece will be the same as before, so we can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{-i\int_{-\infty}^{\infty} e^{iB_0t(g_2 - g_1)}\bra{-+}a(t) \mathbf{S}_1 \cdot \mathbf{S}_2\ket{+-}\dd{t}}^2 = \abs{\frac{1}{2i\hbar}\int_{-\infty}^{\infty} a(t)e^{iB_0t(g_2 - g_1)}\dd{t}}^2
+\end{equation}
+But we know that $a(t)$ is given by:
+\begin{equation}
+  a(t) = a(0)e^{-(t/\tau)^2}
+\end{equation}
+So we can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{a(0)}{2i\hbar}\int_{-\infty}^{\infty} e^{-(t/\tau)^2}e^{iB_0t(g_2 - g_1)}\dd{t}}^2
+\end{equation}
+Adding the exponents, we have:
+\begin{equation}
+  e^{-(t/\tau)^2}e^{iB_0t(g_2 - g_1)} = e^{-(t/\tau)^2 + iB_0t(g_2 - g_1)} = \exp\left(\left(-\frac{1}{\tau^2}\left(t- \frac{i\tau^2 B_0(g_2 - g_1)}{2}\right)\right)^2 - \frac{B_0^2 \tau^2 (g_2 - g_1)^2}{4}\right)
+\end{equation}
+Bringing the latter term out of the integral, we have:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{a(0)}{2i\hbar}e^{-\frac{B_0^2 \tau^2 (g_2 - g_1)^2}{4}}\int_{-\infty}^{\infty} \exp\left(\left(-\frac{1}{\tau^2}\left(t- \frac{i\tau^2 B_0(g_2 - g_1)}{2}\right)\right)^2\right)\dd{t}}^2
+\end{equation}
+We can recognize the integral as the Gaussian integral, with:
+\begin{equation}
+  \int_{-\infty}^{\infty} \exp\left(-a(t-b)^2\right)\dd{t} = \sqrt{\frac{\pi}{a}}
+\end{equation}
+where here we have $a = \frac{1}{\tau^2}$. So, the integral above evaluates to:
+\begin{equation}
+  \sqrt{\frac{\pi}{\frac{1}{\tau^2}}} = \sqrt{\pi}\tau
+\end{equation}
+So we can write the transition probability as:
+\begin{equation}
+  P(+-\rightarrow-+) = \abs{\frac{a(0)}{2i\hbar}e^{-\frac{B_0^2 \tau^2 (g_2 - g_1)^2}{4}}\sqrt{\pi}\tau}^2
+\end{equation}
+For a given $a(0)$ and $\tau$, the transition probability will decrease exponentially with $B_0$.\\
 \end{document}

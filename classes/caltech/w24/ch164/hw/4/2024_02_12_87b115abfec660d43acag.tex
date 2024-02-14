@@ -1,0 +1,228 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
+\title{Ch/ChE 164 Winter 2024 }
+
+
+\author{Homework Problem Set \#4}
+\date{}
+
+
+\begin{document}
+\maketitle
+Due Date: Thursday, February 15, 2024 @ 11:59pm PT
+
+For all problems, please consider reasonable simplifications of your final results.
+\section{}
+\begin{enumerate}
+  \item (15 pts.) (Adapted from Callen). Consider a mixture of two non-identical monatomic ideal gases.
+\end{enumerate}
+\subsection{}
+\begin{itemize}
+  \item Starting from the expression for the grand canonical partition function and taking the limit of small fugacity, show that the canonical partition function $Z$ is factorizable and
+\end{itemize}
+
+$$
+Z=Z_{1} Z_{2}=\frac{1}{N_{1} !} q_{1}^{N_{1}} \frac{1}{N_{2} !} q_{2}^{N_{2}}
+$$
+
+(You may wish to use the occupancy representation $\mid n_{1} m_{1}, n_{2} m_{2} \ldots$ ), where $n_{1}$ denotes occupancy of energy level 1 of gas 1 , and $m_{1}$ denotes occupancy of energy level 1 of gas 2 , etc.).\\
+First, I will say that an individual partition function for each molecule is given by:
+\begin{equation}
+  Z_i = \sum_{n_i} e^{-\beta \epsilon_i n_i}
+\end{equation}
+The occupations of the first and second gases are given by:
+\begin{equation}
+  n_1, n_2,...
+\end{equation}
+\begin{equation}
+  m_1, m_2,...
+\end{equation}
+The number of particles in the first and second gases are given by:
+\begin{equation}
+  N_1 = \sum_{i} n_i
+\end{equation}
+\begin{equation}
+  N_2 = \sum_{i} m_i
+\end{equation}
+Total energy of the first and second gases are given by:
+\begin{equation}
+  U_1 = \sum_{i} n_i \epsilon_i
+\end{equation}
+\begin{equation}
+  U_2 = \sum_{i} m_i \epsilon_i
+\end{equation}
+Their sum is
+\begin{equation}
+  U = U_1 + U_2 = \sum_{i} n_i \epsilon_i + \sum_{i} m_i \epsilon_i
+\end{equation}
+The grand canonical partition function is given by:
+\begin{equation}
+  \begin{aligned}
+    \Xi &= \sum_{\nu} e^{-\beta(U_{\nu}) +  \beta \mu N_{1} + \beta \mu N_{2}} \\
+\end{aligned}
+\end{equation}
+Adding the various sums to the exponent gives:
+\begin{equation}
+  \Xi = \sum_{\nu} e^{-\beta \sum_{i} n_i \epsilon_i - \beta \sum_{i} m_i \epsilon_i +  \beta \mu^{(1)} \sum_{i} n_i + \beta \mu^{(2)} \sum_{i} m_i}
+\end{equation}
+where $\mu^{(1)}$ and $\mu^{(2)}$ are the chemical potentials of the first and second gases, respectively. We can factor this in two separate sums each over the individual molecule:
+\begin{equation}
+  \Xi = \sum_{{n}} e^{-\beta \sum_{i} n_i \epsilon_i +  \beta \mu^{(1)} \sum_{i} n_i} \sum_{{m}}e^{-\beta \sum_{i} m_i \epsilon_i +  \beta \mu^{(2)} \sum_{i} m_i} 
+\end{equation}
+In 
+\subsection{}
+The sum over the states can be written as a product of sums over the states of the first and second gases:
+\begin{itemize}
+  \item Compute the entropy and show that (comparing to the entropy of the two separate gases) there is an entropy of mixing of the form
+\end{itemize}
+
+$$
+S_{\text {mixing }}=\left(-x_{1} \log x_{1}-x_{2} \log x_{2}\right) N k
+$$
+
+where $N$ is the total number of particles.
+Look at Callen pg. 393 ch 18
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item In class we derived the heat capacity of the Fermi gas at low temperature by an intuitive argument, which $C_{v} \sim N k O\left(T / T_{F}\right)$. Here we will derive the precise form and constants (adapted from Callen).
+\end{enumerate}
+
+Denote the Fermi-Dirac distribution at temperature $T$ as $f(\epsilon, T)$ and the (temperature dependent) chemical potential by $\mu$ (note this is not the Fermi energy $\epsilon_{F}$ except when $T=0$ ). We will first derive a general result for an integral of the form (Sommerfeld expansion)
+
+$$
+I \equiv \int_{0}^{\infty} \phi(\epsilon) f(\epsilon, T) d \epsilon=\int_{0}^{\mu} \phi(\epsilon) d \epsilon+\frac{\pi^{2}}{6}(k T)^{2} \phi^{\prime}(\mu)+\frac{7 \pi^{4}}{360}(k T)^{4} \phi^{\prime \prime \prime}(\mu)+\ldots
+$$
+
+a) (10 pts.) Integrate $I$ by parts, and let $\Phi \equiv \int_{0}^{\epsilon} \phi\left(\epsilon^{\prime}\right) d \epsilon^{\prime}$. Then expanding $\Phi(\epsilon)$ in a power series in $\epsilon-\mu$ to third order, deduce
+The fd distribution is given by:
+\begin{equation}
+  f(\epsilon, T) = \frac{1}{e^{\beta(\epsilon - \mu)} + 1}
+\end{equation}
+where $\beta = 1/kT$. The number of particles is a sum over all sxztates $\alpha$:
+\begin{equation}
+  N = \sum_{\alpha} f(\epsilon_{\alpha}, T)
+\end{equation}
+
+$$
+I=-\sum_{m=0}^{\infty} \frac{1}{m !} \frac{d^{m} \Phi(\mu)}{d \mu^{m}} I_{m}
+$$
+
+where $I_{m}=\int_{0}^{\infty}(\epsilon-\mu)^{m} \frac{d f}{d \epsilon} d \epsilon=-\beta^{-m} \int_{-\beta \mu}^{\infty} \frac{e^{x}}{\left(e^{x}+1\right)^{2}} x^{m} d x$
+
+b) (5 pts.) Show that only an exponentially small error is made by taking the lower limit of integration as $-\infty$, and that then all terms with $m$ odd vanish.
+
+c) (5 pts.) Evaluate the first two non-vanishing terms and show that this agrees with the expansion of $I$.
+
+d) (10 pts.) Using the result for $I$, express $N$ in the form of such an integral and obtain an expansion for $N(V, T, \mu)$ in terms of $k T / \mu$ (to second order). Verify that $T \rightarrow 0$ yields the relation between $N$ and $\epsilon_{F}$ derived in class.
+
+e) (10 pts.) Invert this relationship to obtain $\mu(T)$ as a function of $k T / \epsilon_{F}$ (to second order) for fixed $N$.
+
+f) (5 pts.) Similarly obtain an expansion for the internal energy $E$ as a function of $k T / \mu$ (to second order).
+
+g) (5 pts.) Substituting in $\mu(T)$ into the energy expansion, obtain an expansion of $E$ in $k T / \epsilon_{F}$ to second order, and thus $C_{v}$. Hence see why we skipped the detailed computation in class.
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item (20 pts.) Show that for the Bose-Einstein and Fermi-Dirac gas at low density and/or high temperature the equation of state is given by
+\end{enumerate}
+
+$$
+p=k T \rho\left(1 \mp \frac{\rho \Lambda^{3}}{2^{5 / 2}}+\ldots\right)
+$$
+
+where $\Lambda=h / \sqrt{2 \pi m k T}$ is the thermal de Broglie wavelength, and the upper (lower) sign is for the Bose-Einstein (Fermi-Dirac) gas.
+
+We start with the thermodynamic identity for the pressure $p$ in terms of the grand canonical partition function $\Xi$:
+\begin{equation}
+    pV\beta = \ln \Xi
+\end{equation}
+where $\beta = \frac{1}{kT}$, with $k$ being the Boltzmann constant and $T$ the temperature.
+
+The grand canonical partition function for Bose-Einstein (BE) and Fermi-Dirac (FD) gases are given by:
+\begin{align}
+    \ln \Xi_{\text{BE}} &= \sum_{\nu} \ln \left(1 - e^{-\beta(\epsilon_{\nu} - \mu)}\right) \\
+    \ln \Xi_{\text{FD}} &= \sum_{\nu} \ln \left(1 + e^{-\beta(\epsilon_{\nu} - \mu)}\right)
+\end{align}
+where $\epsilon_{\nu}$ is the energy of state $\nu$ and $\mu$ is the chemical potential.
+We will go through the derivation for the Fermi-Dirac gas and then show how similar steps repeat for the Bose-Einstein gas, noting that a comprehensive deviation was given in lecture 8.\\
+After performing a Taylor expansion to second order in the limit of small fugacity inside of the integral in spherical coordinates for this, we get:
+\begin{equation}
+\ln \Xi=\frac{V}{\Lambda^3}(2 s+1) f_{5 / 2}(\zeta)
+\end{equation}
+So, we have arrived at:
+\begin{equation}
+    p(T, \mu)\beta = \frac{2s+1}{\Lambda^3}f_{5/2}(\zeta)
+\end{equation}
+where:
+\begin{equation}
+f_{5 / 2}(\zeta)=\zeta-\frac{\zeta^2}{2^{5 / 2}}
+\end{equation}
+to the 2nd order.
+For simplicity, we assume that $s=0$.
+But now we want to get rid of the fugacity, and turn it into a density. For this, we can use the virial expansion derived in the notes:
+\begin{equation}
+\zeta=\Lambda^3 \rho+\frac{\left(\Lambda^3 \rho\right)^2}{2^{3 / 2}}
+\end{equation}
+
+\begin{equation}
+    p = kT\rho\left(1 + \frac{\rho\Lambda^{3}}{2^{5/2}} + \ldots\right)
+\end{equation}
+For the BE case, we will have:
+\begin{equation}
+  g_{5 / 2}(\zeta)=\zeta+\frac{\zeta^2}{2^{5 / 2}}
+\end{equation}
+so the sign is flipped and we get a final result of:
+\begin{equation}
+    p = kT\rho\left(1 - \frac{\rho\Lambda^{3}}{2^{5/2}} + \ldots\right)
+\end{equation}
+
+% We know that the particle number averages for the distributions are given by:
+% \begin{equation}
+%   \begin{aligned}
+%     \bar{n}_{\text{BE}} &= \frac{1}{e^{\beta(\epsilon - \mu)} - 1} \\
+%     \bar{n}_{\text{FD}} &= \frac{1}{e^{\beta(\epsilon - \mu)} + 1}
+%   \end{aligned}
+% \end{equation}
+
+\end{document}

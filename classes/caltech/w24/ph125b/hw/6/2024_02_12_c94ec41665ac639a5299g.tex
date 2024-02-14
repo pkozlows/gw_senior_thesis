@@ -1,0 +1,240 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
+\begin{document}
+READING: Section 19.1-19.3 in Shankar on scattering and the Born approximation. PROBLEMS:
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{20}
+  \item Demonstrate our claim in the long solenoid discussion that the solution to the Schrödinger equation when there is a flux $\Phi$ in the solenoid is:
+\end{enumerate}
+
+$$
+\psi(\mathbf{x}, t)=\psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})}+\psi_{R}(\mathbf{x}, t) e^{i q g_{R}(\mathbf{x})}
+$$
+
+where
+
+$$
+\begin{array}{ll}
+g_{L}(\mathbf{x}) \equiv \int_{\mathbf{x}_{0}}^{\mathbf{x}} d \mathbf{x}^{\prime} \cdot \mathbf{A}(\mathbf{x}) & \text { along a left path } \\
+g_{R}(\mathbf{x}) \equiv \int_{\mathbf{x}_{0}}^{\mathbf{x}} d \mathbf{x}^{\prime} \cdot \mathbf{A}(\mathbf{x}) & \text { along a right path }
+\end{array}
+$$
+
+and $\psi_{L, R}(\mathbf{x}, t)$ satisfy the Schrödinger equation when $\Phi=0$.
+\subsection{}
+In case, the Hamiltonian we wanted to solve was:
+\begin{equation}
+  H=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t)]^{2}+q \Phi(\mathbf{x}, t)+U(\mathbf{x}, t)
+\end{equation}
+So, we want to plug the given solution in, which is:
+\begin{equation}
+  \psi(\mathbf{x}, t)=\psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})}+\psi_{R}(\mathbf{x}, t) e^{i q g_{R}(\mathbf{x})}
+\end{equation}
+We want to show that the show enter equation sat sice this relation for the the and vote sites independently:
+We are kippen:
+\begin{equation}
+  \Psi  = \Phi_L + \Phi_R 
+\end{equation}
+Where:
+\begin{equation}
+  \Phi_L = \psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})}
+\end{equation}
+We not that this set size the time dependent short ensure equation:
+\begin{equation}
+  i \partial_{t} \Phi_L = H \Phi_L
+\end{equation}
+\begin{enumerate}
+  \setcounter{enumi}{21}
+  \item Prove the theorem (essentially exercise 18.4.4 in text):
+\end{enumerate}
+
+Theorem: Let the Hamiltonian for a charged particle interacting with an electromagnetic field be $H$ :
+
+$$
+H=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t)]^{2}+q \Phi(\mathbf{x}, t)+U(\mathbf{x}, t)
+$$
+
+Let $H^{\prime}$ be the Hamiltonian obtained from $H$ by a gauge transformation:
+
+$$
+\begin{aligned}
+\mathbf{A}(\mathbf{x}, t) & \rightarrow \mathbf{A}^{\prime}(\mathbf{x}, t)=\mathbf{A}(\mathbf{x}, t)+\nabla \chi(\mathbf{x}, t) \\
+\Phi(\mathbf{x}, t) & \rightarrow \Phi^{\prime}(\mathbf{x}, t)=\Phi(\mathbf{x}, t)-\partial_{t} \chi(\mathbf{x}, t)
+\end{aligned}
+$$
+If $i \partial_{t} \psi=H \psi$ and $i \partial_{t} \psi^{\prime}=H^{\prime} \psi^{\prime}$, then
+
+$$
+\psi^{\prime}(\mathbf{x}, t)=e^{i q \chi(\mathbf{x}, t)} \psi(\mathbf{x}, t)
+$$
+We will start by making the ansatz that $\Psi^{\prime} = e^{i q \chi(\mathbf{x}, t)} \Psi$.
+We will call the first time dependent short ensure equation, $A$, and the second, $B$.
+and if we have guessed $\Psi^{\prime}$ correctly, then $B$ is true. 
+We want to consider the relationship:
+\begin{equation}
+  e^{-i q \chi(\mathbf{x}, t)} B - A
+\end{equation}
+
+\subsection{}
+The hambletonian with the gauge transformation is given by the same, but with the prime notation:
+\begin{equation}
+  H^{\prime}=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}^{\prime}(\mathbf{x}, t)]^{2}+q \Phi^{\prime}(\mathbf{x}, t)+U(\mathbf{x}, t)
+\end{equation}
+Plugging in the relations for the crimes:
+\begin{equation}
+  H^{\prime}=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t) - q \nabla \chi(\mathbf{x}, t)]^{2}+q \Phi(\mathbf{x}, t) - q \partial_{t} \chi(\mathbf{x}, t) + U(\mathbf{x}, t)
+\end{equation}
+We assume that our solution is like $e^{i q \chi(\mathbf{x}, t)} \psi(\mathbf{x}, t)$, so we can plug this in to the Hamiltonian:
+
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{22}
+  \item Exercise 18.5.2 in the text, on the photoelectric effect.
+\subsection{}
+Actually, we have:
+\begin{equation}
+  \sigma =\frac{128 a_0^3 \pi e^2 p_f^3}{3 m \hbar^3 \omega c\left[1+p_f^2 a_0^2 / \hbar^2\right]^4}
+\end{equation}
+We aval with this to:
+\begin{equation}
+  \sigma = 1.31204968079106 \cdot 10^{-34}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, sqrt, pi, latex
+
+# Constants
+eV_to_J = 1.602e-19  # Conversion from eV to Joules
+Ry_to_eV = 13.6  # Conversion from Rydbergs to eV
+a_0 = 0.529e-10  # Bohr radius in meters
+m = 9.11e-31  # Electron mass in kg
+e = 1.6e-19  # Elementary charge in Coulombs
+c = 3e8  # Speed of light in m/s
+hbar = 1.054e-34  # Reduced Planck's constant in Js
+
+# Kinetic energy in Rydbergs
+KE_Ry = 10
+# Convert Ry to eV to J
+KE_J = KE_Ry * Ry_to_eV * eV_to_J
+
+# Calculate the momentum p_f using the relation E = p^2/2m (non-relativistic kinetic energy)
+# p_f = sqrt(2*m*E)
+p_f_value = sqrt(2 * m * KE_J)
+
+
+# Calculate the second expression
+omega = (KE_Ry * Ry_to_eV * eV_to_J) / hbar  # Angular frequency
+second_expression = (128 * a_0**3 * pi * e**2 * p_f_value**3) / (3 * m * hbar**3 * omega * c * (1 + p_f_value**2 * a_0**2 / hbar**2)**4)
+
+# Print the second result in LaTeX
+print(latex(second_expression.evalf()))
+\end{lstlisting}
+That of the atom is much smaller:
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# compute the atoms geometric cross section comma which is given by a_0^2\pi
+pi = 3.14159265358979323846
+atoms_cross_section = a_0**2 * pi
+print(latex(atoms_cross_section))
+\end{lstlisting}
+\begin{equation}
+  \sigma_{\text{atom}} = 8.79146429773221 \cdot 10^{-21}
+\end{equation}
+\subsection{}
+First, we want to check the condition of $\frac{p_fa_0}{\hbar}$ for a kinetic energy of $10 \text{Ry}$, where $a_0$ is the Bohr radius. We have:
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+# estimate the value of $\frac{p_fa_0}{\hbar}$ for a kinetic energy of $10 \text{Ry}$ in a hydrogen atom
+# were $p_f$ is the momentum of the electron and $a_0$ is the Bohr radius
+p_f, a_0, hbar = symbols('p_f a_0 hbar')
+p_f = sqrt(2*10*13.6)
+a_0 = 0.529e-10
+hbar = 1.054e-34
+print(latex(p_f*a_0/hbar))
+\end{lstlisting}
+giving the result:
+\begin{equation}
+  \frac{p_f a_0}{\hbar} = 8.27750617059485 \cdot 10^{24}
+\end{equation}
+which is much greater than 1. So, we can use the approximation for the differential cross section given in the text:
+\begin{equation}
+  \frac{d\sigma}{d\Omega} = \frac{32e^2\hbar^5\cos^2\theta}{mc\omega p_f^5a_0^5}
+\end{equation}
+We bring the solid angle over to the other side, bring the constance out in front and integrate:
+\begin{equation}
+  \sigma = \frac{64\pi e^2\hbar^5}{mc\omega p_f^5a_0^5} \int_0^{\pi} \cos^2\theta \sin\theta d\theta
+\end{equation}
+\section{}
+  \item The text discusses the photoelectric effect using the "dipole approximation". While an electron is ejected from the atom in the photoelectric effect, this approximation is useful for lower energy interactions as well. We thus investigate induction of an atomic dipole moment due to an external electromagnetic field. We'll set up some things in this problem, and continue the discussion in the next problem set. As we have discussed, the Hamiltonian for an atomic electron in an external electromagnetic field may be written, in the Coulomb gauge:
+
+\end{enumerate}
+$$
+H=H_{0}+H_{1},
+$$
+
+where
+
+$$
+H_{0}=\frac{P^{2}}{2 m}+V(R)
+$$
+
+and
+
+$$
+H_{1}=-\frac{q}{m} \mathbf{P} \cdot \mathbf{A}(\mathbf{x}, t)+\frac{q^{2}}{2 m} \mathbf{A}(\mathbf{x}, t)^{2}-\frac{q}{m} \mathbf{S} \cdot \mathbf{B}(\mathbf{x}, t)
+$$
+
+We have included here the possibility of an interaction of the spin magnetic moment with the magnetic field.
+
+We could discuss the relative strength of the different terms in a given situation, but here we'll assume that the $\mathbf{P} \cdot \mathbf{A}(\mathbf{x}, t)$ term dominates.
+
+(a) With this assumption, and also assuming that the wave is traveling in the $y$ direction and the polarization is in the $z$ direction, write $H_{1}$ in terms of the wavenumber $k$ mode of the plane wave expansion for the field.
+
+(b) The dipole approximation consists in assuming that the external field varies slowly over the relevant distance scale of the problem. Thus, the $e^{ \pm i \mathbf{k} \cdot \mathbf{x}}$ factors are expanded in Taylor series and only the first term kept. In this approximation, write $H_{D}=H_{1}$ in terms of the strength $E_{0}=|\mathbf{E}|$ of the electric field, where the $D$ subscript indicates the dipole approximation. To simplify the algebra, make a choice of phase of pure imaginary for the relevant expansion coefficient of the vector potential.
+
+
+\end{document}

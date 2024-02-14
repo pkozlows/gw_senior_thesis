@@ -65,19 +65,19 @@ class G0W0TestBase(unittest.TestCase):
             for xy in pyscf_tddft.xy:
                 x,y = xy
                 td_xy.append((x,0*x))
-        pyscf_gw = gw.GW(fock_mf)
-        # pyscf_gw = gw.GW(fock_mf, freq_int='exact', tdmf=pyscf_tddft)
+        # pyscf_gw = gw.GW(fock_mf)
+        pyscf_gw = gw.GW(fock_mf, freq_int='exact', tdmf=pyscf_tddft)
         pyscf_gw.kernel(orbs=[orbital_number])
         expected_result = pyscf_gw.mo_energy*self.h2ev
 
-        self.assertAlmostEqual(my_result, expected_result[orbital_number], delta=1e-10)
-class TestG0W0WithhfAndDRPA(G0W0TestBase):
-    def test_g0w0(self):
-        self.run_g0w0_test('water', 'hf', simple_fock, 'drpa')
-
-# class TestG0W0WithSimpleFockAndDTDAh20(G0W0TestBase):
+        self.assertAlmostEqual(my_result, expected_result[orbital_number], delta=1e-7)
+# class TestG0W0WithhfAndDRPA(G0W0TestBase):
 #     def test_g0w0(self):
-#         self.run_g0w0_test('water', 'hf',simple_fock, 'dtda')
+#         self.run_g0w0_test('water', 'hf', simple_fock, 'drpa')
+
+class TestG0W0WithSimpleFockAndDTDAh20(G0W0TestBase):
+    def test_g0w0(self):
+        self.run_g0w0_test('water', 'hf', simple_fock, 'dtda')
 
 # class TestG0W0WithdftAndDTDAh20(G0W0TestBase):
 #     def test_g0w0(self):

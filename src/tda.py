@@ -85,7 +85,7 @@ def my_drpa(mf):
 
     # Stack the matrices to create the combined matrix
     combined_matrix = np.vstack((np.hstack((A, B)), np.hstack((-B, -A))))
-    omega, R = np.linalg.eig(combined_matrix)
+    omega, R = np.linalg.eig(combined_matrix) # note this is for a non-hermitian matrix
 
     # Extract positive and negative eigenvalue indices
     positive_indices = np.where(omega > 0)[0]
@@ -117,29 +117,25 @@ def my_drpa(mf):
     # print out the normalization matrix manes its diagonal
     # now my vectors are orthogonal but not yet normalized
 
-    # # Check if diagonal elements are close to 1
-    # diagonal_close_to_one = np.allclose(np.diag(normalization), np.ones(normalization.shape[0]), atol=1e-5, rtol=1e-2)
 
-    # # Check if off-diagonal elements are close to 0 by creating a mask for off-diagonal elements
-    # off_diagonal_mask = np.ones(normalization.shape, dtype=bool)
-    # np.fill_diagonal(off_diagonal_mask, False)
-    # off_diagonal_close_to_zero = np.allclose(normalization[off_diagonal_mask], np.zeros(np.count_nonzero(off_diagonal_mask)), atol=1e-5, rtol=1e-2)
+    # # Add the positive and negative parts pairwise
+    # combined_representation = X_u + Y_u
+    # vec = []
+    # for icol, col in enumerate(combined_representation):
+    #     # norm = col.T@(X_u-Y_u)[:,icol]
+    #     # print(norm)
+    #     col /= np.sqrt(normalization[icol, icol])
+    #     vec.append(col)
+    # combined_representation = np.array(vec)
 
-    # # If both conditions are met, the matrix is close to an identity matrix
-    # if diagonal_close_to_one and off_diagonal_close_to_zero:
-    #     print("The matrix represents the identity matrix within the specified tolerance.")
-    # else:
-    #     print("The matrix does not represent the identity matrix within the specified tolerance.")
-
-    # Add the positive and negative parts pairwise
-    combined_representation = X_u + Y_u
-    vec = []
+    combined_representation = (X_u + Y_u).copy()
+    combined_representation_m = (X_u - Y_u).copy()
     for icol, col in enumerate(combined_representation):
-        # norm = col.T@(X_u-Y_u)[:,icol]
-        # print(norm)
-        col /= np.sqrt(normalization[icol, icol])
-        vec.append(col)
-    combined_representation = np.array(vec)
+        combined_representation[:,icol] /= np.sqrt(normalization[icol, icol])
+        combined_representation_m[:,icol] /= np.sqrt(normalization[icol, icol])
+
+    normalization = combined_representation.T @ combined_representation_m
+    print('Normalization \n', np.diag(normalization))
 
     # now that us compute the V matrix
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]

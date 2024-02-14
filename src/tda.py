@@ -40,6 +40,10 @@ def my_dtda(mf):
     reshaped_a += np.diag(reshaped_E_ai)
 
     omega, R = np.linalg.eigh(reshaped_a)
+    # front out the normalization
+    normalization = R.T @ R
+
+    # print(np.diag(normalization))
 
     # now that us compute the V matrix
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
@@ -66,25 +70,22 @@ def my_drpa(mf):
     # get the MO integrals
     eri_mo = mf.mol.ao2mo(mf.mo_coeff, compact=False).reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
     
-    # initialize the A matrix
-    A = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
-    # initialize the B matrix
-    B = np.zeros((n_occupied, n_virtual, n_occupied, n_virtual))
-    # add the common part to boots
-    A += 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:]
-    # Add the energy difference part to A
-    for i in range(n_occupied):
-        for a in range(n_virtual):
-            A[i, a, i, a] += (orbital_energies[n_occupied+a] - orbital_energies[i])
-    B += 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:]
+    # Direct assignment to A and B matrices
+    A = 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:].reshape(n_occupied*n_virtual, n_occupied*n_virtual)
+    B = A.copy()  # Assuming B is the same as A in your case
 
-    # re shape both
-    reshaped_a = A.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
-    reshaped_b = B.reshape(n_occupied*n_virtual, n_occupied*n_virtual)
+    # Efficiently create and reshape the E_ai matrix using broadcasting
+    virtual_energies = orbital_energies[n_occupied:]
+    occupied_energies = orbital_energies[:n_occupied]
+    E_ai = (virtual_energies - occupied_energies[:, None]).reshape(n_occupied*n_virtual)
+
+
+    A += np.diag(E_ai)
+    
 
     # Stack the matrices to create the combined matrix
-    combined_matrix = np.vstack((np.hstack((reshaped_a, reshaped_b)), np.hstack((-reshaped_b, -reshaped_a))))
-    omega, R = np.linalg.eigh(combined_matrix)
+    combined_matrix = np.vstack((np.hstack((A, B)), np.hstack((-B, -A))))
+    omega, R = np.linalg.eig(combined_matrix)
 
     # Extract positive and negative eigenvalue indices
     positive_indices = np.where(omega > 0)[0]
@@ -101,19 +102,44 @@ def my_drpa(mf):
     # Sort both arrays to ensure the comparison is order-independent
     assert np.allclose(np.sort(np.abs(positive_eigenvalues)), np.sort(np.abs(negative_eigenvalues))), "Absolute values of positive and negative eigenvalues do not match."
 
-    # Select positive and negative eigenvalues
-    omega_positive = omega[positive_indices]
-    omega_negative = omega[negative_indices]
-
     # Select corresponding eigenvectors
     R_positive = R[:, positive_indices]
 
     # Extract the positive and negative parts
-    X_u = R_positive[:95, :]
-    Y_u = R_positive[95:, :]
+    X_u = R_positive[:n_occupied*n_virtual, :]
+    Y_u = R_positive[n_occupied*n_virtual:, :]
+
+    # print(np.max(np.abs(normalization - np.diag(np.diag(normalization)))))
+    # front out the normalization
+    normalization = (X_u + Y_u).T @ (X_u-Y_u)
+    print(np.diag(normalization))
+
+    # print out the normalization matrix manes its diagonal
+    # now my vectors are orthogonal but not yet normalized
+
+    # # Check if diagonal elements are close to 1
+    # diagonal_close_to_one = np.allclose(np.diag(normalization), np.ones(normalization.shape[0]), atol=1e-5, rtol=1e-2)
+
+    # # Check if off-diagonal elements are close to 0 by creating a mask for off-diagonal elements
+    # off_diagonal_mask = np.ones(normalization.shape, dtype=bool)
+    # np.fill_diagonal(off_diagonal_mask, False)
+    # off_diagonal_close_to_zero = np.allclose(normalization[off_diagonal_mask], np.zeros(np.count_nonzero(off_diagonal_mask)), atol=1e-5, rtol=1e-2)
+
+    # # If both conditions are met, the matrix is close to an identity matrix
+    # if diagonal_close_to_one and off_diagonal_close_to_zero:
+    #     print("The matrix represents the identity matrix within the specified tolerance.")
+    # else:
+    #     print("The matrix does not represent the identity matrix within the specified tolerance.")
 
     # Add the positive and negative parts pairwise
     combined_representation = X_u + Y_u
+    vec = []
+    for icol, col in enumerate(combined_representation):
+        # norm = col.T@(X_u-Y_u)[:,icol]
+        # print(norm)
+        col /= np.sqrt(normalization[icol, icol])
+        vec.append(col)
+    combined_representation = np.array(vec)
 
     # now that us compute the V matrix
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
@@ -121,7 +147,7 @@ def my_drpa(mf):
     W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
     V_pqu = np.einsum('pqi,in->pqn', W_pqu, combined_representation)
 
-    return omega_positive, V_pqu
+    return positive_eigenvalues, V_pqu
        
 
 def real_corr_se(freq, tddft, mf):

@@ -1,3 +1,4 @@
+
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -11,6 +12,7 @@
 
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
+\usepackage{graphicx}
 
 % Define custom colors
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -140,7 +142,7 @@ Actually, we have:
 \end{equation}
 We aval with this to:
 \begin{equation}
-  \sigma = 1.31204968079106 \cdot 10^{-34}
+  \sigma = 1.31204968079106 \cdot 10^{-34} m^2
 \end{equation}
 % Inline Python code in the document
 \begin{lstlisting}[language=Python]
@@ -181,33 +183,14 @@ atoms_cross_section = a_0**2 * pi
 print(latex(atoms_cross_section))
 \end{lstlisting}
 \begin{equation}
-  \sigma_{\text{atom}} = 8.79146429773221 \cdot 10^{-21}
+  \sigma_{\text{atom}} = 8.79146429773221 \cdot 10^{-21} m^2
 \end{equation}
 \subsection{}
-First, we want to check the condition of $\frac{p_fa_0}{\hbar}$ for a kinetic energy of $10 \text{Ry}$, where $a_0$ is the Bohr radius. We have:
-% Inline Python code in the document
-\begin{lstlisting}[language=Python]
-from sympy import *
-# estimate the value of $\frac{p_fa_0}{\hbar}$ for a kinetic energy of $10 \text{Ry}$ in a hydrogen atom
-# were $p_f$ is the momentum of the electron and $a_0$ is the Bohr radius
-p_f, a_0, hbar = symbols('p_f a_0 hbar')
-p_f = sqrt(2*10*13.6)
-a_0 = 0.529e-10
-hbar = 1.054e-34
-print(latex(p_f*a_0/hbar))
-\end{lstlisting}
-giving the result:
+The 1s orbital is spherically symmetric and its bohr radius has an inverse dependence on the charge of the atom $Z$. Working under the assumption given in the problem that $\frac{p_fa_0}{\hbar} \gg 1$, the formula for the case section becomes:
 \begin{equation}
-  \frac{p_f a_0}{\hbar} = 8.27750617059485 \cdot 10^{24}
+  \sigma = \frac{128 a_0^3 \pi e^2 p_f^3}{3 m \hbar^3 \omega c(p_f^2 a_0^2 / \hbar^2)^4} \propto \frac{a_0^3}{a_0^8} = \frac{1}{a_0^5}
 \end{equation}
-which is much greater than 1. So, we can use the approximation for the differential cross section given in the text:
-\begin{equation}
-  \frac{d\sigma}{d\Omega} = \frac{32e^2\hbar^5\cos^2\theta}{mc\omega p_f^5a_0^5}
-\end{equation}
-We bring the solid angle over to the other side, bring the constance out in front and integrate:
-\begin{equation}
-  \sigma = \frac{64\pi e^2\hbar^5}{mc\omega p_f^5a_0^5} \int_0^{\pi} \cos^2\theta \sin\theta d\theta
-\end{equation}
+So we conclude that the proportionality goes like $Z^5$.
 \section{}
   \item The text discusses the photoelectric effect using the "dipole approximation". While an electron is ejected from the atom in the photoelectric effect, this approximation is useful for lower energy interactions as well. We thus investigate induction of an atomic dipole moment due to an external electromagnetic field. We'll set up some things in this problem, and continue the discussion in the next problem set. As we have discussed, the Hamiltonian for an atomic electron in an external electromagnetic field may be written, in the Coulomb gauge:
 
@@ -233,8 +216,57 @@ We have included here the possibility of an interaction of the spin magnetic mom
 We could discuss the relative strength of the different terms in a given situation, but here we'll assume that the $\mathbf{P} \cdot \mathbf{A}(\mathbf{x}, t)$ term dominates.
 
 (a) With this assumption, and also assuming that the wave is traveling in the $y$ direction and the polarization is in the $z$ direction, write $H_{1}$ in terms of the wavenumber $k$ mode of the plane wave expansion for the field.
+\subsection{}
+The formula for the vector potential is:
+\begin{equation}
+  \vec{A}(\vec{x}, t) = \sum_{\vec{k}, \vec{\varepsilon}} \left( A_{\vec{k}, \vec{\varepsilon}} \vec{\varepsilon} \frac{e^{i(\vec{k} \cdot \vec{x} - \omega t)}}{\sqrt{V}} + A_{\vec{k}, \vec{\varepsilon}}^{*} \vec{\varepsilon}^{*} \frac{e^{-i(\vec{k} \cdot \vec{x} - \omega t)}}{\sqrt{V}} \right)
+\end{equation}
+Since we know that the polarization is in the z direction $\vec{\varepsilon} = \hat{z}$. Also, since we know that the wave is in the y direction, $\vec{k}\cdot\vec{x}= k y$. In the exponentials, we can simplify since we know the latter relation and the summation drops the dependence on $\varepsilon$, so we can write:
+\begin{equation}
+  \vec{A}(\vec{x}, t) = \sum_{\vec{k}} \left( A_{\vec{k}} \hat{z} \frac{e^{i k (y-c t)}}{\sqrt{V}} + A_{\vec{k}}^{*} \hat{z} \frac{e^{-i k (y-c t)}}{\sqrt{V}} \right) 
+\end{equation}
+So, now we can provide the $H_1$ as:
+\begin{equation}
+  H_1 = -\frac{q}{m} \mathbf{P} \cdot \mathbf{A}(\mathbf{x}, t)
+\end{equation}
+We are only interested in the component of the momentum in the z direction because of the polarization, so this simplifies to:
+\begin{equation}
+  H_1 = -\frac{q}{m} P_z \left( A_{\vec{k}} \frac{e^{i k (y-c t)}}{\sqrt{V}} + A_{\vec{k}}^{*} \frac{e^{-i k (y-c t)}}{\sqrt{V}} \right)
+\end{equation}
 
-(b) The dipole approximation consists in assuming that the external field varies slowly over the relevant distance scale of the problem. Thus, the $e^{ \pm i \mathbf{k} \cdot \mathbf{x}}$ factors are expanded in Taylor series and only the first term kept. In this approximation, write $H_{D}=H_{1}$ in terms of the strength $E_{0}=|\mathbf{E}|$ of the electric field, where the $D$ subscript indicates the dipole approximation. To simplify the algebra, make a choice of phase of pure imaginary for the relevant expansion coefficient of the vector potential.
-
-
+\subsection{}
+(b) The dipole approximation consists in assuming that the external field varies slowly over the relevant distance scale of the problem. Thus, the $e^{ \pm i \mathbf{k} \cdot \mathbf{x}}$ factors are expanded in Taylor series and only the first term is kept. In this approximation, write $H_D=H_1$ in terms of the strength $E_0=|\mathbf{E}|$ of the electric field, where the $D$ subscript indicates the dipole approximation. To simplify the algebra, make a choice of phase of pure imaginary for the relevant expansion coefficient of the vector potential. \\
+The Taylor series expansion for an exponential function is given by:
+\begin{equation}
+  e^{i k y} = 1 + i k y - \frac{k^2 y^2}{2} + \frac{i k^3 y^3}{6} - \frac{k^4 y^4}{24} + \ldots
+\end{equation}
+Given that we are only interested in the first term which is just unity, our expression for the Hamiltonian becomes considering that we still want to keep the time dependent piece in its entirety:
+\begin{equation}
+  H_D = -\frac{q}{m} P_z \left( A_{\vec{k}} \frac{e^{-i\omega t}}{\sqrt{V}} + A_{\vec{k}}^{*} \frac{e^{i\omega t}}{\sqrt{V}} \right)
+\end{equation}
+We can express $\frac{A_{\vec{k}}}{\sqrt{V}} = i A_0$ and simplify:
+\begin{equation}
+  H_D = -\frac{q}{m} P_z \left( i A_0 e^{-i\omega t} - i A_0 e^{i\omega t} \right)
+\end{equation} 
+We recognize that the inside of the parenthesis can be written in terms of the sine function:
+\begin{equation}
+  H_D = -\frac{q}{m} P_z \left( 2 A_0 \sin(\omega t) \right)
+\end{equation}
+And then we know the relation between the electric field and the vector potential in the Coulomb gauge as:
+\begin{equation}
+  \mathbf{E} = -\frac{\partial \mathbf{A}}{\partial t}
+\end{equation}
+After the algebra given in the picture, which leads to:
+\begin{equation}
+  A_0 = - \frac{E_0}{2\omega}
+\end{equation}
+we have for our Hamiltonian:
+\begin{equation}
+  H_D = \frac{q }{m}P_z \frac{E_0}{\omega} \sin(\omega t)
+\end{equation}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{PXL_20240216_204341590.jpg}
+  \caption{Algebra for the dipole approximation}
+\end{figure}
 \end{document}

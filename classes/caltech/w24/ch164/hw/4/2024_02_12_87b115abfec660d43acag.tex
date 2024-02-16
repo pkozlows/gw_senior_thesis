@@ -6,7 +6,8 @@
 \usepackage{amssymb}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-
+\usepackage{physics}
+On Friday
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
 
@@ -86,14 +87,14 @@ The number of particles in the first and second gases are given by:
 \end{equation}
 Total energy of the first and second gases are given by:
 \begin{equation}
-  U_1 = \sum_{i} n_i \epsilon_i
+  U_1 = \sum_{i} n_i \epsilon_i^{(1)}
 \end{equation}
 \begin{equation}
-  U_2 = \sum_{i} m_i \epsilon_i
+  U_2 = \sum_{i} m_i \epsilon_i^{(2)}
 \end{equation}
 Their sum is
 \begin{equation}
-  U = U_1 + U_2 = \sum_{i} n_i \epsilon_i + \sum_{i} m_i \epsilon_i
+  U = U_1 + U_2 = \sum_{i} n_i \epsilon_i^{(1)} + \sum_{i} m_i \epsilon_i^{(2)}
 \end{equation}
 The grand canonical partition function is given by:
 \begin{equation}
@@ -103,15 +104,87 @@ The grand canonical partition function is given by:
 \end{equation}
 Adding the various sums to the exponent gives:
 \begin{equation}
-  \Xi = \sum_{\nu} e^{-\beta \sum_{i} n_i \epsilon_i - \beta \sum_{i} m_i \epsilon_i +  \beta \mu^{(1)} \sum_{i} n_i + \beta \mu^{(2)} \sum_{i} m_i}
+  \Xi = \sum_{{n}} e^{-\beta \sum_{i} n_i \epsilon_i^{(1)} +  \beta \mu N_{1}} \sum_{{m}}e^{-\beta \sum_{i} m_i \epsilon_i^{(2)} +  \beta \mu N_{2}}
 \end{equation}
 where $\mu^{(1)}$ and $\mu^{(2)}$ are the chemical potentials of the first and second gases, respectively. We can factor this in two separate sums each over the individual molecule:
 \begin{equation}
-  \Xi = \sum_{{n}} e^{-\beta \sum_{i} n_i \epsilon_i +  \beta \mu^{(1)} \sum_{i} n_i} \sum_{{m}}e^{-\beta \sum_{i} m_i \epsilon_i +  \beta \mu^{(2)} \sum_{i} m_i} 
+  \Xi = \sum_{{n}} e^{-\beta \sum_{i} n_i \epsilon_i^{(1)} +  \beta \mu^{(1)} N_{1}} \sum_{{m}}e^{-\beta \sum_{i} m_i \epsilon_i^{(2)} +  \beta \mu^{(2)} N_{2}}
 \end{equation}
-In 
+Now, let us only consider only the first sum:
+\begin{equation}
+  \Xi = \sum_{{n}} e^{-\beta \sum_{i} n_i \epsilon_i^{(1)} +  \beta \mu^{(1)} N_{1}} = \prod_{i} \sum_{n_i} e^{-\beta n_i (\epsilon_i^{(1)} - \mu^{(1)})}
+\end{equation}
+We factor the terms inside of the exponent:
+\begin{equation}
+  \sum_{n_i} e^{-\beta n_i (\epsilon_i^{(1)} - \mu^{(1)})}
+\end{equation}
+The term that looks like the fugacity is independent of the product over the states, so we can factor it out:
+\begin{equation}
+  \sum_{n_i} e^{-\beta n_i (\epsilon_i^{(1)} - \mu^{(1)})} = \prod_{i} \sum_{n_i} e^{-\beta n_i (\epsilon_i^{(1)} - \mu^{(1)})}
+\end{equation} 
+In summary, we have the total grand partition function as a product of the individual ones:
+\begin{equation}
+  \Xi = \prod_{i} \sum_{n_i} e^{-\beta n_i (\epsilon_i^{(1)} - \mu^{(1)})} \prod_{i} \sum_{m_i} e^{-\beta m_i (\epsilon_i^{(2)} - \mu^{(2)})} = \Xi_1 \Xi_2
+\end{equation}
+Now we can express the grant canonical partition function for fermions or bosons succinctly as:
+\begin{equation}
+  \Xi = \prod_{i} \left( 1 \mp e^{-\beta(\epsilon_i - \mu)} \right)^{\mp}
+\end{equation}
+where the upper sign is for fermions and the lower sign is for bosons. Taking the log of this:
+\begin{equation}
+  \ln \Xi = \mp \sum_{i} \ln \left( 1 \mp e^{-\beta(\epsilon_i - \mu)} \right)
+\end{equation}
+In the timid of low frugality, the term of $e^{\beta \mu}$ is small, so we can expand the log term using:
+\begin{equation}
+  \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots
+\end{equation}
+Keepi only the first term:
+\begin{equation}
+  \ln \Xi = \mp \sum_{i} \left( \mp e^{-\beta(\epsilon_i - \mu)} \right)
+\end{equation}
+Since the term that depends on $\mu$ is independent of the sum, we can factor it out:
+\begin{equation}
+  \ln \Xi = \mp \sum_{i} \left( \mp e^{-\beta(\epsilon_i - \mu)} \right) = e^{\beta \mu} \sum_{i} e^{-\beta \epsilon_i} 
+\end{equation}
+We recognize the summation as the single partial partition function $q$:
+\begin{equation}
+  \ln \Xi = e^{\beta \mu} q
+\end{equation}
+Now, we can exponent both sites to get:
+\begin{equation}
+  \Xi = e^{e^{\beta \mu} q}
+\end{equation}
+The power series expansion of the exponential function is given by:
+\begin{equation}
+  e^x = \sum_{N = 0}^{\infty} \frac{x^N}{N!} 
+\end{equation}
+So, we can write the partition function as:
+\begin{equation}
+  \Xi = \sum_{N = 0}^{\infty} \frac{e^{\beta \mu N} q^N}{N!}
+\end{equation}
+This is the partition function for only one of the molecules, so the one for both is given by:
+\begin{equation}
+  \Xi = \sum_{N_1 = 0}^{\infty} \sum_{N_2 = 0}^{\infty} \frac{e^{\beta \mu^{(1)} N_1} q_1^{N_1}}{N_1!} \frac{e^{\beta \mu^{(2)} N_2} q_2^{N_2}}{N_2!}
+\end{equation}
+We recognize the canonical partition function for each molecule:
+\begin{equation}
+  Z_1 = \left(\frac {1}{N_1!} q_1^{N_1}\right),
+Z_2 = \left(\frac {1}{N_2!} q_2^{N_2}\right)
+\end{equation}
+So the grant canonical partition function for the entire system can be written as:
+\begin{equation}
+  \Xi = \sum_{N}^{
+\infty } Z_1 Z_2 e^{\beta \mu^{(1)} N_1} e^{\beta \mu^{(2)} N_2} 
+\end{equation}
+or summing the chemical potentials:
+\begin{equation}
+  \Xi = \sum_{N}^{\infty} Z_1 Z_2 e^{\beta \mu N}
+\end{equation}
+So, we found the desired result of:
+\begin{equation}
+  Z = Z_1 Z_2 = \frac{1}{N_1!} q^{N_1} \frac{1}{N_2!} q^{N_2}
+\end{equation}
 \subsection{}
-The sum over the states can be written as a product of sums over the states of the first and second gases:
 \begin{itemize}
   \item Compute the entropy and show that (comparing to the entropy of the two separate gases) there is an entropy of mixing of the form
 \end{itemize}
@@ -121,7 +194,6 @@ S_{\text {mixing }}=\left(-x_{1} \log x_{1}-x_{2} \log x_{2}\right) N k
 $$
 
 where $N$ is the total number of particles.
-Look at Callen pg. 393 ch 18
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
@@ -135,27 +207,123 @@ I \equiv \int_{0}^{\infty} \phi(\epsilon) f(\epsilon, T) d \epsilon=\int_{0}^{\m
 $$
 
 a) (10 pts.) Integrate $I$ by parts, and let $\Phi \equiv \int_{0}^{\epsilon} \phi\left(\epsilon^{\prime}\right) d \epsilon^{\prime}$. Then expanding $\Phi(\epsilon)$ in a power series in $\epsilon-\mu$ to third order, deduce
-The fd distribution is given by:
-\begin{equation}
-  f(\epsilon, T) = \frac{1}{e^{\beta(\epsilon - \mu)} + 1}
-\end{equation}
-where $\beta = 1/kT$. The number of particles is a sum over all sxztates $\alpha$:
-\begin{equation}
-  N = \sum_{\alpha} f(\epsilon_{\alpha}, T)
-\end{equation}
-
 $$
 I=-\sum_{m=0}^{\infty} \frac{1}{m !} \frac{d^{m} \Phi(\mu)}{d \mu^{m}} I_{m}
 $$
 
 where $I_{m}=\int_{0}^{\infty}(\epsilon-\mu)^{m} \frac{d f}{d \epsilon} d \epsilon=-\beta^{-m} \int_{-\beta \mu}^{\infty} \frac{e^{x}}{\left(e^{x}+1\right)^{2}} x^{m} d x$
 
-b) (5 pts.) Show that only an exponentially small error is made by taking the lower limit of integration as $-\infty$, and that then all terms with $m$ odd vanish.
+\subsection{}
+The fd distribution is given by:
+\begin{equation}
+  f(\epsilon, T) = \frac{1}{e^{\beta(\epsilon - \mu)} + 1}
+\end{equation}
+where $\beta = 1/kT$.
+For the integration by parts we choose $u = f(\epsilon, T) \rightarrow du = \frac{df}{d\epsilon} d\epsilon$ and $dv = \phi(\epsilon) d\epsilon \rightarrow v = \Phi(\epsilon)$. The integral becomes:
+\begin{equation}
+  I = \left. \Phi(\epsilon) f(\epsilon, T) \right|_{0}^{\infty} - \int_{0}^{\infty} \Phi(\epsilon) \frac{df}{d\epsilon} d\epsilon
+\end{equation}
+The first term vanishes at the limits of integration, so we are left with:
+\begin{equation}
+  I = -\int_{0}^{\infty} \Phi(\epsilon) \frac{df}{d\epsilon} d\epsilon
+\end{equation}
+Now, we consider the form of the power series expansion of $\Phi(\epsilon)$ around $\mu$:
+\begin{equation}
+  \Phi(\epsilon) = \sum_{m=0}^{\infty} \frac{1}{m!}\frac{d^m\Phi(\mu)}{d\mu^m}(\epsilon - \mu)^m
+\end{equation}
+We can substitute this into the integral:
+\begin{equation}
+  I = -\int_{0}^{\infty} \sum_{m=0}^{\infty} \frac{1}{m!}\frac{d^m\Phi(\mu)}{d\mu^m}(\epsilon - \mu)^m \frac{df}{d\epsilon} d\epsilon
+\end{equation}
+We can take some of the summation terms outside of the integral:
+\begin{equation}
+  I = -\sum_{m=0}^{\infty} \frac{1}{m!}\frac{d^m\Phi(\mu)}{d\mu^m} \int_{0}^{\infty} (\epsilon - \mu)^m \frac{df}{d\epsilon} d\epsilon
+\end{equation}
+We can recognize the integral as the $I_m$ term:
+\begin{equation}
+  I = -\sum_{m=0}^{\infty} \frac{1}{m!}\frac{d^m\Phi(\mu)}{d\mu^m} I_m
+\end{equation}
 
+
+b) (5 pts.) Show that only an exponentially small error is made by taking the lower limit of integration as $-\infty$, and that then all terms with $m$ odd vanish.
+\subsection{}
+We have the integral:
+\begin{equation}
+  I_m = \int_{0}^{\infty} (\epsilon - \mu)^m \frac{df}{d\epsilon} d\epsilon
+\end{equation}
+The derivative of the fd distribution with respect to energy is given by:
+\begin{equation}
+  \frac{df}{d\epsilon} = -\beta e^{\beta \left(\epsilon - \mu\right)} \left(e^{\beta \left(\epsilon - \mu\right)} + 1\right)^{-2}
+\end{equation}
+We plug this into the integral:
+\begin{equation}
+  I_m = \int_{0}^{\infty} (\epsilon - \mu)^m \frac{-\beta e^{\beta \left(\epsilon - \mu\right)}}{\left(e^{\beta \left(\epsilon - \mu\right)} + 1\right)^2} d\epsilon
+\end{equation}
+We can make the substitution $x = \beta(\epsilon - \mu)$, so that $d\epsilon = \frac{1}{\beta} dx$. Also, the limits of integration become $-\beta\mu$ and $\infty$. The integral becomes:
+\begin{equation}
+  I_m = \int_{-\beta\mu}^{\infty} -x^m \frac{e^{x}}{\left(e^{x} + 1\right)^2} \beta ^{-m} dx
+\end{equation}
+We want to show that this interval can be well approximated by the integral from $-\infty$ to $\infty$. That is, we want to show that the integral between $-\beta \mu$ and $-\infty$ is exponentially small. We know that:
+\begin{equation}
+  \int_{-\infty}^{-\beta \mu} x^m e^x dx \geq \int_{-\infty}^{-\beta \mu} x^m \frac{e^x}{(e^x + 1)^2} dx
+\end{equation}
+because the smallest value for the denominator is 1.
+Considering the former integral, The exponential term supresses the integrand within its bounds, so this is very small and within this domain, this integral effectively finishes. So we can well approximate:
+\begin{equation}
+  I_m \approx - \beta ^{-m}\int_{-\infty}^{\infty} x^m \frac{e^{x}}{\left(e^{x} + 1\right)^2} dx
+\end{equation}
+Since the exponential fraction is an even function, whenever the polynomial term is odd, the integrand is odd and so the integral vanities.\\
 c) (5 pts.) Evaluate the first two non-vanishing terms and show that this agrees with the expansion of $I$.
+\subsection{}
+The first non vanishing term will be given by:
+\begin{equation}
+  I_0 = -\int_{-\infty}^{\infty} \frac{e^{x}}{\left(e^{x} + 1\right)^2} dx
+\end{equation}
+Now, since the whole term is:
+\begin{equation}
+  I = -\sum_{m=0}^{\infty} \frac{1}{m!}\frac{d^m\Phi(\mu)}{d\mu^m} I_m
+\end{equation}
+We can see that the first term is:
+\begin{equation}
+  I = +\Phi(\mu) I_0 = \Phi(\mu)\left[(e^{\beta \mu} + 1)\right]|_{-\infty}^{\infty} = \Phi(\mu)
+\end{equation}
+The second term is given by:
+\begin{equation}
+   - \frac{1}{2} \frac{d^2\Phi(\mu)}{d\varepsilon ^2} I_2
+\end{equation}  
+and then we have:
+\begin{equation}
+  I_{2} = -\beta^{-2} \int_{-\infty}^{\infty} x^2 \frac{e^{x}}{\left(e^{x} + 1\right)^2} dx
+\end{equation}
+Using SymPy, the above integral is $\pi^2/3$. So we have for this term: 
+\begin{equation}
+  - \frac{1}{2} \frac{d^2\Phi(\mu)}{d\varepsilon ^2} I_2 = \beta ^{2} \frac{1}{2} \frac{d^2\Phi(\mu)}{d\varepsilon ^2} \frac{\pi^2}{3} = (kT)^2 \frac{\pi^2}{6} \phi ^{\prime}(\mu)
+\end{equation}
+as given in the equation.
 
 d) (10 pts.) Using the result for $I$, express $N$ in the form of such an integral and obtain an expansion for $N(V, T, \mu)$ in terms of $k T / \mu$ (to second order). Verify that $T \rightarrow 0$ yields the relation between $N$ and $\epsilon_{F}$ derived in class.
+\subsection{}
+The number of particles is given by:
+\begin{equation}
+  N = \sum_{\alpha } \expval{n_{\alpha}}
+\end{equation}
+which we can express in terms of an integral of the distribution mortified by the density of states:
+\begin{equation}
+  N = \int_{0}^{\infty} g(\epsilon) f(\epsilon, T) d\epsilon
+\end{equation}
+Form Callen, we have for the density of states:
+\begin{equation}
+  g(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \varepsilon^{1 / 2}
+\end{equation}
+So the derivative of this with respect to $\epsilon$ is:
+\begin{equation}
+  g^{\prime}(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \frac{1}{2} \varepsilon^{-1 / 2}
+\end{equation}
+e) (10 pts.) Invert this relationship to obtain $\mu(T)$ as a function of $k T / \epsilon_{F}$ (to second order) for fixed $N$.
 
+f) (5 pts.) Similarly obtain an expansion for the internal energy $E$ as a function of $k T / \mu$ (to second order).
+
+g) (5 pts.) Substituting in $\mu(T)$ into the energy expansion, obtain an expansion of $E$ in $k T / \epsilon_{F}$ to second order, and thus $C_{v}$. Hence see why we skipped the detailed computation in class.
 e) (10 pts.) Invert this relationship to obtain $\mu(T)$ as a function of $k T / \epsilon_{F}$ (to second order) for fixed $N$.
 
 f) (5 pts.) Similarly obtain an expansion for the internal energy $E$ as a function of $k T / \mu$ (to second order).

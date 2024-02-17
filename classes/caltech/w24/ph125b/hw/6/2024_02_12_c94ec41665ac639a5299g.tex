@@ -67,16 +67,16 @@ $$
 
 and $\psi_{L, R}(\mathbf{x}, t)$ satisfy the Schrödinger equation when $\Phi=0$.
 \subsection{}
-In case, the Hamiltonian we wanted to solve was:
+In case the Hamiltonian we wanted to solve was:
 \begin{equation}
-  H=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t)]^{2}+q \Phi(\mathbf{x}, t)+U(\mathbf{x}, t)
+  H=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t)]^{2}
 \end{equation}
-So, we want to plug the given solution in, which is:
+Substituting the form for the momentum operator, this becomes:
 \begin{equation}
-  \psi(\mathbf{x}, t)=\psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})}+\psi_{R}(\mathbf{x}, t) e^{i q g_{R}(\mathbf{x})}
+  H=\frac{1}{2 m}[-i \nabla -q \mathbf{A}(\mathbf{x}, t)]^{2}
 \end{equation}
-We want to show that the show enter equation sat sice this relation for the the and vote sites independently:
-We are kippen:
+We want to show that the Schrödinger equation satisfies this relation for the left and right sides independently.
+We are given:
 \begin{equation}
   \Psi  = \Phi_L + \Phi_R 
 \end{equation}
@@ -84,15 +84,76 @@ Where:
 \begin{equation}
   \Phi_L = \psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})}
 \end{equation}
-We not that this set size the time dependent short ensure equation:
+We are really only interested in proving for the left side, and then the right side follows by symmetry, and then we can just use the superposition principle to get that the total wave function satisfies the Schrödinger equation.
+Operating the form for the Hamiltonian on $\Phi_L$:
 \begin{equation}
-  i \partial_{t} \Phi_L = H \Phi_L
+  H \Phi_L = \frac{1}{2 m}[-i \nabla -q \mathbf{A}(\mathbf{x}, t)]^{2} \Phi_L
 \end{equation}
+Let us consider the expansion of the inside of the parentheses:
+\begin{equation}
+  \left[-i \nabla -q \mathbf{A}(\mathbf{x}, t)\right]^{2} = \left[-i \nabla -q \mathbf{A}(\mathbf{x}, t)\right] \left[-i \nabla -q \mathbf{A}(\mathbf{x}, t)\right] = - \nabla^2 + i q \nabla \cdot \mathbf{A} + i q \mathbf{A} \cdot \nabla + q^2 \mathbf{A}^2
+\end{equation}
+Let us consider the effects of various of these terms on our wave function:
+\begin{equation}
+  \nabla \Phi_L = \nabla \psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})} + \psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})} \times i q \times \nabla g_{L}(\mathbf{x})
+\end{equation}
+Now let us consider the action of the nabla operator on $g_L$. Along the left path, this is just the vector potential for that path:
+\begin{equation}
+  \nabla g_L(\mathbf{x}) = \mathbf{A}_L(\mathbf{x})
+\end{equation}
+because
+\begin{equation}
+  g_L(\mathbf{x}) - g_L() = \int_{\mathbf{x}_0}^{\mathbf{x}} d \mathbf{x} \cdot \mathbf{A}_L(\mathbf{x})
+\end{equation}
+We can choose a gauge such that the vector potential has $\nabla \cdot \mathbf{A} = 0$. We do this by letting $\mathbf{A} \rightarrow \mathbf{A} + \nabla \chi$ where we have $\nabla^2 \chi = -\nabla \cdot \mathbf{A}$. With this, we can have:
+\begin{equation}
+  \nabla \cdot (\Phi_L \mathbf{A}) = \nabla \Phi_L \cdot \mathbf{A} + \Phi_L \nabla \cdot \mathbf{A} = \nabla \Phi_L \cdot \mathbf{A}
+\end{equation}
+We also can consider the relation of $\nabla^2$ operating on $\Phi _L$:
+\begin{equation}
+\begin{aligned}
+  \nabla^2 \Psi_L e^{i q g_L(\mathbf{x})} &= \nabla(\nabla \psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})} + iq\psi_{L}(\mathbf{x}, t) e^{i q g_{L}(\mathbf{x})} \nabla g_{L}(\mathbf{x}))\\
+\end{aligned}
+\end{equation}
+In an effort to simplify notation, we will have $\psi  \equiv \psi_L $ and $\alpha \equiv i q g_L(\mathbf{x})$.
+Just rewriting what we previously found:
+\begin{equation}
+  \nabla^2 \psi e^{\alpha} = \nabla(\nabla \psi e^{\alpha} + \psi \nabla e^{\alpha}) = \nabla^2 \psi e^{\alpha} + 2 \nabla\psi \nabla\alpha e^{\alpha} + \psi (\nabla^2 \alpha e^{\alpha} + \nabla \alpha \nabla \alpha e^{\alpha}) 
+\end{equation}
+Factoring out the exponential term that is present in every peace, we get:
+\begin{equation}
+  = e^{\alpha} \left( \nabla^2 \psi + 2 \nabla \psi \nabla \alpha + \psi \nabla^2 \alpha + \psi \nabla \alpha \nabla \alpha \right)
+\end{equation}
+The third term is given by:
+\begin{equation}
+  \nabla^2 \alpha = \nabla^2 (i q g_L(\mathbf{x})) = i q \nabla \cdot \nabla g_L(\mathbf{x}) = i q \nabla \cdot \mathbf{A}_L(\mathbf{x}) = 0
+\end{equation}
+So we are left with:
+\begin{equation}
+  \nabla^2 \psi e^{\alpha} = e^{\alpha} \left( \nabla^2 \psi + 2 \nabla \psi \nabla \alpha + \psi \nabla \alpha \nabla \alpha \right)
+\end{equation}
+We can now consider the action of the Hamiltonian on $\Phi_L$:
+\begin{equation}
+    H \Phi_L = \cdots
+\end{equation}
+I was working with a friend while he was doing this, but I am not quite following the algebra from his solution. I do know that he eventually was able to get to the result:
+\begin{equation}
+  H \Phi_L = -\frac{e^{\alpha}}{2m} \nabla^2 \psi = e^{\alpha} \left( H \psi \right)
+\end{equation}
+Now, we can use the assertion for the time-dependent Schrödinger equation:
+\begin{equation}
+  = e^{\alpha} i \partial_t \psi 
+\end{equation}
+We want to bring the complex exponential inside of the parenthesis, but we have to flip the sign:
+\begin{equation}
+  = -i \partial_t \psi e^{\alpha}
+\end{equation}
+So we have shown that this left-side solution satisfies the Schrödinger equation when in the Coulomb gauge. The same process can be done with the right-side solution. And then when we superimpose the two, the sum $\Phi_L + \Phi_R$ will also satisfy the Schrödinger equation.
 \begin{enumerate}
   \setcounter{enumi}{21}
   \item Prove the theorem (essentially exercise 18.4.4 in text):
 \end{enumerate}
-
+\section{}
 Theorem: Let the Hamiltonian for a charged particle interacting with an electromagnetic field be $H$ :
 
 $$

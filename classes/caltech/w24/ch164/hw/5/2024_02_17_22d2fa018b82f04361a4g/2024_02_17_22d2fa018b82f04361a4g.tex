@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{Ch/ChE 164 Winter 2024 
+ Homework Problem Set \#5 
+ Due Date: Thursday, February 22, 2024 @ 11:59pm PT 
+ Out of 100 Points }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+  \item (15 points) (4.15 from Chandler) Consider an isomerization process $A \rightleftharpoons B$, where $A$ and $B$ refer to the different isomer states of a molecule. Imagine that the process takes place in a dilute gas, and that $\Delta \epsilon$ is the energy difference between state $A$ and state $B$. According to the Boltzmann distribution law, the equilibrium ratio of $A$ and $B$ populations is given by
+\end{enumerate}
+
+
+\begin{equation*}
+\frac{\left\langle N_{A}\right\rangle}{\left\langle N_{B}\right\rangle}=\frac{g_{A}}{g_{B}} e^{-\beta \Delta \epsilon}, \tag{1}
+\end{equation*}
+
+
+where $g_{A}$ and $g_{B}$ are the degeneracies of states $A$ and $B$, respectively. Show how this same result follows from the condition of chemical equilibria, $\mu_{A}=\mu_{B}$.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item (20 points) (4.16 from Chandler) Consider the system described in problem 1. The canonical partition function is
+\end{enumerate}
+
+
+\begin{equation*}
+Q=\frac{q^{N}}{N !} \tag{2}
+\end{equation*}
+
+
+where $N$ is the total number of molecules, and $q$ is the Boltzmann weighted sum over all single molecule states, both those associated with isomers of type $A$ and those associated with isomers of type $B$.
+
+(a) Show that one may partition the sum and write
+
+
+\begin{equation*}
+Q=\sum_{P} \exp \left\{-\beta F\left(N_{A}, N_{B}\right)\right\} \tag{3}
+\end{equation*}
+
+
+with
+
+
+\begin{equation*}
+-\beta F\left(N_{A}, N_{B}\right)=\log \left[\left(N_{A} ! N_{B} !\right)^{-1} q_{A}^{N_{A}} q_{B}^{N_{B}}\right], \tag{4}
+\end{equation*}
+
+
+where $\sum_{P}$ is over all the partitions of $N$ molecules into $N_{A}$ molecules of type $A$ and $N_{B}$ molecules of type $B, q_{A}$ is the Boltzmann weighted sum over states of isomer $A$, and $q_{B}$ is similarly defined.
+
+(b) Show that the condition of chemical equilibria is identical to finding the partitioning that minimizes the Helmholtz free energy
+
+
+\begin{equation*}
+\frac{\partial F}{\partial\left\langle N_{A}\right\rangle}=\frac{\partial F}{\partial\left\langle N_{B}\right\rangle}=0 \tag{5}
+\end{equation*}
+
+
+subject to the constraint that $\left\langle N_{A}\right\rangle+\left\langle N_{B}\right\rangle=N$ is fixed.
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item (15 points) (4.25 from Chandler) Use the information compiled in Chapter 8 of Hill's Introduction to Statistical Thermodynamics to calculate the equilibrium constant, $K$, for the reaction $I_{2} \rightleftharpoons 2 I$ when the reaction occurs in the dilute gas phase at $T=1000^{\circ} \mathrm{K}$. (Note: For the electronic partition function, you need to consider the difference in degeneracies of the ground states of the iodine atom and molecule, $g_{e, I}=4, g_{e, I_{2}}=1$. This is based on the molecular orbital theory. You are not required to show this.)
+
+  \item (50 pts.) Consider a one-dimensional monatomic crystal of $N$ atoms with equilibrium nearest neighbor spacing a. In order to minimize boundary effects, assume a periodic boundary condition, i.e., $x_{N+1}=x_{1}$ where $x_{i}$ is the position of the $i$ th atom. If the atoms interact only with nearest neighbors via a potential $u\left(x_{i+1}-x_{i}\right)$,
+
+\end{enumerate}
+
+(i) show that the energy of the crystal can be written in the form
+
+
+\begin{equation*}
+H=\frac{m}{2} \sum_{i=1}^{N} \dot{\xi}_{i}^{2}+\frac{K}{2} \sum_{i=1}^{N}\left(\xi_{i+1}-\xi_{i}\right)^{2}+N u(a) \tag{6}
+\end{equation*}
+
+
+to quadratic order in the displacement $\xi_{i} \equiv x_{i}-x_{i}^{(0)}$, where $x_{i}^{(0)}$ is the equilibrium position of the $i$ th atom. What is $K$ ?
+(ii) Now decompose configurations of atoms into normal modes.
+
+(a) Define normal modes $\eta_{k}$ such that $\xi_{j}$ is a linear superposition of $\eta_{k}$
+
+
+\begin{equation*}
+\xi_{j}=\frac{1}{\sqrt{2 N}} \sum_{k} \eta_{k} e^{i(j a k)} \tag{7}
+\end{equation*}
+
+
+Show that the periodic boundary condition leads to $k=\frac{2 \pi n}{N a}$ where $n$ is any integer.
+
+Show further that adding $\frac{2 \pi}{a}$ to $k$ does not change $\xi_{j}$. Therefore there are only $N$ independent modes. We choose $n \in\left[-\frac{N}{2}, \frac{N}{2}-1\right]$ (assuming $N$ even).
+
+(b) Show that the fact that the $\xi_{j}$ 's are real leads to $\eta_{k}^{*}=\eta_{-k}$, where $\eta_{k}^{*}$ is the complex conjugate of $\eta_{k}$.
+
+(iii) It can be shown that the normal mode coordinates $\eta_{k}$ diagonalize the Hamiltonian:
+
+
+\begin{equation*}
+\sum_{j}\left(\xi_{j+1}-\xi_{j}\right)^{2}=\sum_{k>0}\left[\left(\eta_{k}^{R}\right)^{2}+\left(\eta_{k}^{I}\right)^{2}\right] 4 \sin ^{2}\left(\frac{1}{2} k a\right) \tag{8}
+\end{equation*}
+
+
+and
+
+
+\begin{equation*}
+\sum_{j} \dot{\xi}_{j}^{2}=\sum_{k>0}\left[\left(\dot{\eta}_{k}^{R}\right)^{2}+\left(\dot{\eta}_{k}^{I}\right)^{2}\right] \tag{9}
+\end{equation*}
+
+
+where $\eta_{k}^{R}$ and $\eta_{k}^{I}$ are the real and imaginary parts of $\eta_{k}$. What is the frequency for each normal mode $\omega_{k}$ ? What is the speed of sound for this model? (The speed of sound is defined as $\left.\frac{d \omega_{k}}{d k}\right|_{k=0}$ ).
+
+(iv) Show that in a large 1-D solid, the density (or degenercy) of normal modes with the frequencies between $\omega$ and $\omega+d \omega$ is
+
+
+\begin{equation*}
+g(\omega) d \omega=\frac{2 N}{\pi \omega_{m} \sqrt{1-\left(\omega / \omega_{m}\right)^{2}}} d \omega \tag{10}
+\end{equation*}
+
+
+where $\omega_{m}$ is the maximum frequency of normal modes.
+
+(v) Compare the Debye model and the exact results.
+
+(a) If one is to make the Debye model for this 1-D solid, what is its Debye temperature $\Theta_{D}$ ? Why is the Debye frequency $\omega_{D}$ larger than the maximum frequency allowed in the system $\omega_{m}$ ?
+
+(b) Show that one gets the same dependency of the heat capacity on temperature at very low temperature with the Debye approximation and with the exact degeneracy. Why does the Debye model give an accurate result even though unphysical normal modes are considered?
+
+
+\end{document}

@@ -1,0 +1,125 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{PROBLEMS: }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Physics $125 \mathrm{~b}$
+
+Problem set number 7
+
+Due midnight Wednesday, February 21, 2024
+
+READING: Pages 592-607 in Shankar on Berry's phase.
+
+\begin{enumerate}
+  \setcounter{enumi}{24}
+  \item Let's continue a bit further with the dipole interaction of problem 24. You obtained, I hope, an expression for the "electric dipole Hamiltonian". But it might look a bit mysterious. If this really describes an electric dipole interaction with a uniform external field, we might expect the Hamiltonian to look something like
+\end{enumerate}
+
+
+\begin{equation*}
+H_{D}^{\prime}=-q E Z \sin \omega t . \tag{1}
+\end{equation*}
+
+
+That is, $q Z$ looks like a dipole moment. Consider the expectation value $\left\langle n\left|P_{z}\right| 0\right\rangle$ with respect to two eigenstates of $H_{0}$. Show that this can be written in terms of an expectation value $\langle n|Z| 0\rangle$ and quantities such as the electron mass, $m$, and the energy difference between the states. Rewrite $H_{D}$ using this relation. Does it look more intuitive now?
+
+\begin{enumerate}
+  \setcounter{enumi}{25}
+  \item When we continue to apply our dipole approximation to an atom, we'll find that the dipole operator produces transitions from the ground state $|0\rangle$ to other eigenstates, $|n\rangle$, of $H_{0}$. The relative strengths of these transitions is given by an "oscillator strength":
+\end{enumerate}
+
+
+\begin{equation*}
+f_{n 0}=2 m \omega_{n 0}|\langle n|Z| 0\rangle|^{2}, \tag{2}
+\end{equation*}
+
+
+where $\omega_{n 0}=E_{n}-E_{0}$ is the energy difference between the states. Note that $f_{n 0}$ is dimensionless. Demonstrate the oscillator strength "sum rule":
+
+
+\begin{equation*}
+\sum_{n} f_{n 0}=1 \tag{3}
+\end{equation*}
+
+
+The work you have done in problem 25 will likely come in handy here.
+
+\begin{enumerate}
+  \setcounter{enumi}{26}
+  \item We discussed Berry's phase in class, including the example of the Aharonov-Bohm effect. Let us try another example.
+\end{enumerate}
+
+Consider a spin- $1 / 2$ particle of magnetic moment $\mu$ in a magnetic field, $\mathbf{B}$. Let the strength of the magnetic field be a constant, but suppose that its direction is slowly changing. Suppose the magnetic field vector is swept through a closed curve (i.e., think of the tip of its vector as being varied along a closed curve on the surface of a sphere). Thus, two parameters describing the direction of the field are being varied, which we might take to be the polar angles $(\theta, \phi)$.
+
+(a) What does "slow" mean? That is, on what time scale should the variation be slow, in order for the adiabatic approximation to be reasonable?
+
+(b) What is the expectation value of the spin vector in the adiabatic ground state?
+(c) Express the adiabatic ground state wave function, $\psi_{\theta \phi}^{(0)}$, in terms of the adiabaticallyvaried parameters. You can in principle achieve this from your result to part (b), but it will probably be easier to accomplish by performing a rotation on a vector to the desired polar angles. The text pages 329-333 discuss finite rotations. The discussion of spin-1/2 in Chapter 14 of the text may also be helpful. I have also uploaded to module 7 the supplementary note on angular momentum from $\mathrm{Ph} 125$ a.
+
+(d) Suppose we let the $\mathbf{B}$ field direction rotate slowly around the 3-axis at constant $\theta$. Calculate Berry's phase for this situation. [Recall that Berry's phase is the change in the phase of the adiabatic wave function (ground state here) over one complete circuit in parameter space. We found that the Berry phase is given by:
+
+
+\begin{equation*}
+\gamma_{B}=i \oint d \boldsymbol{\alpha} \cdot\left\langle\psi_{\boldsymbol{\alpha}}^{(0)} \mid \nabla_{\boldsymbol{\alpha}} \psi_{\boldsymbol{\alpha}}^{(0)}\right\rangle \tag{4}
+\end{equation*}
+
+
+where $\boldsymbol{\alpha}$ is a vector in parameter space.] See if you can give a geometric interpretation to your answer, in terms of an amount of solid angle swept out by the circuit in parameter space.
+
+\begin{enumerate}
+  \setcounter{enumi}{27}
+  \item Let us investigate our quantum electromagnetic field operators and in particular think about a notion for the energy density in the vacuum. We defined the quantum mechanical electromagnetic field operators $\hat{A}_{\mathrm{k}} \boldsymbol{\epsilon}$ and $\hat{A}_{\mathrm{k} \boldsymbol{\epsilon}}^{\dagger}$ :
+\end{enumerate}
+
+
+\begin{align*}
+& \hat{A}_{\mathbf{k} \epsilon}\left|N_{\mathbf{k}_{1} \epsilon_{1}}, \ldots, N_{\mathbf{k} \epsilon}, \ldots\right\rangle=\sqrt{\frac{2 \pi}{\omega}} \sqrt{N_{\mathbf{k} \epsilon}}\left|N_{\mathbf{k}_{1} \epsilon_{1}}, \ldots, N_{\mathbf{k} \epsilon}-1, \ldots\right\rangle  \tag{5}\\
+& \hat{A}_{\mathbf{k} \epsilon}^{\dagger}\left|N_{\mathbf{k}_{1} \epsilon_{1}}, \ldots, N_{\mathbf{k} \epsilon}, \ldots\right\rangle=\sqrt{\frac{2 \pi}{\omega}} \sqrt{N_{\mathbf{k} \epsilon}+1}\left|N_{\mathbf{k}_{1} \epsilon_{1}}, \ldots, N_{\mathbf{k} \epsilon}+1, \ldots\right\rangle . \tag{6}
+\end{align*}
+
+
+(a) Determine the commutation relations among these operators.
+
+(b) We may define the quantum mechanical electric field operator according to:
+
+
+\begin{equation*}
+\hat{\mathbf{E}}(\mathbf{x})=\frac{1}{\sqrt{V}} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right) . \tag{7}
+\end{equation*}
+
+
+Make sure this definition makes sense to you. We know that classically we can compute the energy density in an electromagnetic field as proportional to the squared electric (plus squared magnetic) fields. Compute the expectation value:
+
+
+\begin{equation*}
+\left\langle\Omega\left|\hat{\mathbf{E}}(\mathbf{x}) \cdot \hat{\mathbf{E}}\left(\mathbf{x}^{\prime}\right)\right| \Omega\right\rangle \tag{8}
+\end{equation*}
+
+
+Try to express your answer in terms of a dimensionless integral in one dimension (which will perhaps look divergent). Make sure the dimension of the coefficient is what you expect.
+
+(c) Now let's consider the average, $\hat{\overline{\mathbf{E}}}(\mathbf{x})$, of $\hat{\mathbf{E}}(\mathbf{x})$ over a small volume $\mathcal{V}$. That is, we are interested in the average energy density in a small volume. What is
+
+
+\begin{equation*}
+\left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle, \tag{9}
+\end{equation*}
+
+
+and what happens as $\mathcal{V} \rightarrow 0$ ? You may wish to think about your result in terms of harmonic oscillators and zero point energies.
+
+
+\end{document}

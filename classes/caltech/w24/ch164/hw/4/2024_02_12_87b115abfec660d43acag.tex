@@ -7,7 +7,6 @@
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
 \usepackage{physics}
-On Friday
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
 
@@ -309,25 +308,78 @@ The number of particles is given by:
 \end{equation}
 which we can express in terms of an integral of the distribution mortified by the density of states:
 \begin{equation}
-  N = \int_{0}^{\infty} g(\epsilon) f(\epsilon, T) d\epsilon
+  N = \int_{0}^{\infty} g(\epsilon) f(\epsilon, T) d\epsilon = \int_{0}^{\mu } g(\epsilon) d\epsilon + \frac{\pi^2}{6} (kT)^2 g^{\prime}(\mu) + \ldots
 \end{equation}
-Form Callen, we have for the density of states:
+This gives:
 \begin{equation}
-  g(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \varepsilon^{1 / 2}
+  N = \frac{V \left(\frac{m}{\hbar^{2}}\right)^{1.5} \cdot \left(0.058925565098879 \pi^{2} T^{2} k^{2} + 0.471404520791032 \mu^{2.0}\right)}{\pi^{2} \mu^{0.5}}
 \end{equation}
-So the derivative of this with respect to $\epsilon$ is:
+
+Considering the limit as the temperature vanishes and substituting in for the firmly energy, we get:
 \begin{equation}
-  g^{\prime}(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \frac{1}{2} \varepsilon^{-1 / 2}
+  N = \frac{0.471404520791032 V \varepsilon _{F}^{1.5} \left(\frac{m}{\hbar^{2}}\right)^{1.5}}{\pi^{2}}
 \end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+# define the variables needed for this density of states: g(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \varepsilon^{1 / 2}
+V, m, hbar, eps = symbols('V m hbar eps')
+g = V / (4 * pi**2) * (2 * m / hbar**2)**(3 / 2) * eps**(1 / 2)
+# take its divisive with respect to epsilon 
+dg = diff(g, eps)
+# integrate this relation: \int_{0}^{\mu } g(\epsilon) d\epsilon
+mu = symbols('mu')
+int_g = integrate(g, (eps, 0, mu))
+# then consider the sum of these N = \int_{0}^{\infty} g(\epsilon) f(\epsilon, T) d\epsilon = \int_{0}^{\mu } g(\epsilon) d\epsilon + \frac{\pi^2}{6} (kT)^2 g^{\prime}(\mu) + \ldots
+T, k = symbols('T k')
+N = int_g + pi**2 / 6 * (k * T)**2 * dg.subs(eps, mu)
+# print the result in latex
+# print(latex(N.simplify()))
+# consider the limit of this as kT \to 0 and set \mu to be the Fermi energy \varepsilon_F
+eps_F = symbols('eps_F')
+N = N.subs({T: 0, mu: eps_F})
+# print the result in latex
+print(latex(N.simplify()))
+\end{lstlisting}
 e) (10 pts.) Invert this relationship to obtain $\mu(T)$ as a function of $k T / \epsilon_{F}$ (to second order) for fixed $N$.
-
+\subsection{}
+I attempted this problem with the script:
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
+# define the variables needed for this density of states: g(\epsilon) = \frac{V}{4 \pi^2}\left(\frac{2 m}{\hbar^2}\right)^{3 / 2} \varepsilon^{1 / 2}
+V, m, hbar, eps = symbols('V m hbar eps')
+g = V / (4 * pi**2) * (2 * m / hbar**2)**(3 / 2) * eps**(1 / 2)
+# take its divisive with respect to epsilon 
+dg = diff(g, eps)
+# integrate this relation: \int_{0}^{\mu } g(\epsilon) d\epsilon
+mu = symbols('mu')
+int_g = integrate(g, (eps, 0, mu))
+# then consider the sum of these expression_for_and = \int_{0}^{\infty} g(\epsilon) f(\epsilon, T) d\epsilon = \int_{0}^{\mu } g(\epsilon) d\epsilon + \frac{\pi^2}{6} (kT)^2 g^{\prime}(\mu) + \ldots
+T, k = symbols('T k')
+expression_for_and = int_g + pi**2 / 6 * (k * T)**2 * dg.subs(eps, mu)
+# I want you to solve the expression for expression_for_and in terms of \mu
+# consider the limit of this as kT \to 0 and set \mu to be the Fermi energy \varepsilon_F
+eps_F = symbols('eps_F')
+expression_for_and_in_epsf = expression_for_and.subs({T: 0, mu: eps_F})
+# acquit the expression for expression_for_and with expression_for_and_in_epsf and solve for \mu
+mu_solution = solve(expression_for_and - expression_for_and_in_epsf, mu)
+# print the solution in terms of \varepsilon_F in latex
+print(latex(mu_solution[0]))
+\end{lstlisting}
+but didn't get a good answer. A friend got the following result:
+\begin{equation}
+  \mu = \varepsilon_F \left( 1 - \frac{\pi^2}{12} \left(\frac{kT}{\varepsilon_F}\right)^2 \right)
+\end{equation}
+so I will continue with this.\\
 f) (5 pts.) Similarly obtain an expansion for the internal energy $E$ as a function of $k T / \mu$ (to second order).
-
-g) (5 pts.) Substituting in $\mu(T)$ into the energy expansion, obtain an expansion of $E$ in $k T / \epsilon_{F}$ to second order, and thus $C_{v}$. Hence see why we skipped the detailed computation in class.
-e) (10 pts.) Invert this relationship to obtain $\mu(T)$ as a function of $k T / \epsilon_{F}$ (to second order) for fixed $N$.
-
-f) (5 pts.) Similarly obtain an expansion for the internal energy $E$ as a function of $k T / \mu$ (to second order).
-
+\subsection{}
+The internal energy is given by:
+\begin{equation}
+  E = \int_{0}^{\infty} \epsilon g(\epsilon) f(\epsilon, T) d\epsilon 
+\end{equation}
+just as before, we can use the computer algebra to obtain the expansion:
+i[]
 g) (5 pts.) Substituting in $\mu(T)$ into the energy expansion, obtain an expansion of $E$ in $k T / \epsilon_{F}$ to second order, and thus $C_{v}$. Hence see why we skipped the detailed computation in class.
 \section{}
 \begin{enumerate}

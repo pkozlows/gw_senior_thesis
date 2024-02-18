@@ -112,7 +112,7 @@ def my_drpa(mf):
     # print(np.max(np.abs(normalization - np.diag(np.diag(normalization)))))
     # front out the normalization
     normalization = (X_u + Y_u).T @ (X_u-Y_u)
-    print(np.diag(normalization))
+    # print(np.diag(normalization))
 
     # print out the normalization matrix manes its diagonal
     # now my vectors are orthogonal but not yet normalized
@@ -135,7 +135,7 @@ def my_drpa(mf):
         combined_representation_m[:,icol] /= np.sqrt(normalization[icol, icol])
 
     normalization = combined_representation.T @ combined_representation_m
-    print('Normalization \n', np.diag(normalization))
+    # print('Normalization \n', np.diag(normalization))
 
     # now that us compute the V matrix
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]

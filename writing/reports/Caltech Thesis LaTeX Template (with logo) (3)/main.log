@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  8 DEC 2023 19:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  17 FEB 2024 21:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1381,52 +1381,33 @@ Overfull \hbox (14.0142pt too wide) in paragraph at lines 84--85
 
 File: caltech.png Graphic file (type png)
 <use caltech.png>
-Package pdftex.def Info: caltech.png  used on input line 94.
+Package pdftex.def Info: caltech.png  used on input line 98.
 (pdftex.def)             Requested size: 119.2467pt x 31.29822pt.
 [1
 
 
 
 
-] [2]
+]
 \openout6 = `main.ent'.
 
- [3]
+ [2] [3] [4
+
+
+] [5]
 \c@blx@maxsegment@2=\count510
 \c@blx@sectionciteorder@2=\count511
-Package biblatex Info: Reference section=2 on input line 127.
-Package biblatex Info: Setting label 'refsection:2' on input line 127.
+Package biblatex Info: Reference section=2 on input line 157.
+Package biblatex Info: Setting label 'refsection:2' on input line 157.
 
 
-LaTeX Warning: Citation 'GMP81' on page 4 undefined on input line 128.
+LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 157.
 
 
-LaTeX Warning: Citation 'Ful83' on page 4 undefined on input line 128.
+LaTeX Warning: Empty bibliography on input line 157.
 
-
-LaTeX Warning: Empty bibliography on input line 130.
-
-Package biblatex Info: Reference section=0 on input line 131.
-[4
-
-
-]
-\c@blx@maxsegment@3=\count512
-\c@blx@sectionciteorder@3=\count513
-Package biblatex Info: Reference section=3 on input line 136.
-Package biblatex Info: Setting label 'refsection:3' on input line 136.
-
-
-LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 136.
-
-
-LaTeX Warning: Empty bibliography on input line 136.
-
-Package biblatex Info: Reference section=0 on input line 136.
-[5
-
-
-] [6
+Package biblatex Info: Reference section=0 on input line 157.
+[6
 
 
 ] [7
@@ -1438,32 +1419,35 @@ Package biblatex Info: Reference section=0 on input line 136.
 ] [9
 
 
+] [10
+
+
 ]
 
-LaTeX Warning: Empty bibliography on input line 146.
+LaTeX Warning: Empty bibliography on input line 167.
 
-[10
-
-
-] [11
+[11
 
 
 ] [12
 
 
+] [13
+
+
 ]
 runsystem(makeindex -s simple_letters main.idx)...executed safely (allowed).
 
- (./main.ind) [13
+ (./main.ind) [14
 
 
 
 ] (./main.ent
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.3pt on input line 2.
-) [14
+) [15
 
-] [15
+] [16
 
 
 ]
@@ -1490,18 +1474,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30545 strings out of 478268
- 572859 string characters out of 5846347
- 1387926 words of memory out of 5000000
- 48267 multiletter control sequences out of 15000+600000
- 520776 words of font info for 92 fonts, out of 8000000 for 9000
+ 30570 strings out of 478268
+ 573129 string characters out of 5846347
+ 1388859 words of memory out of 5000000
+ 48273 multiletter control sequences out of 15000+600000
+ 540285 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,12n,120p,1254b,1315s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (22 pages, 148843 bytes).
+ 125i,11n,120p,1254b,1313s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on main.pdf (23 pages, 182799 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 135 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  530 words of extra memory for PDF output out of 10000 (max. 10000000)
 

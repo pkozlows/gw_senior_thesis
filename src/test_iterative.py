@@ -69,27 +69,42 @@ class G0W0TestBase(unittest.TestCase):
         pyscf_gw = gw.GW(fock_mf, freq_int='exact', tdmf=pyscf_tddft)
         pyscf_gw.kernel(orbs=[orbital_number])
         expected_result = pyscf_gw.mo_energy*self.h2ev
-
-        self.assertAlmostEqual(my_result, expected_result[orbital_number], delta=1e-7)
+        if fock == simple_fock:
+            self.assertAlmostEqual(my_result, expected_result[orbital_number], delta=1e-7)
+        elif fock == fock_dft:
+            self.assertAlmostEqual(my_result, expected_result[orbital_number], delta=1e-4)
+# test case with water and simple fock with dtda
 class TestG0W0WithhfAndDRPA(G0W0TestBase):
     def test_g0w0(self):
         self.run_g0w0_test('water', 'hf', simple_fock, 'drpa')
-
+# test case with water and dft fock with drpa
 class TestG0W0WithSimpleFockAndDTDAh20(G0W0TestBase):
     def test_g0w0(self):
         self.run_g0w0_test('water', 'hf', simple_fock, 'dtda')
-
-# class TestG0W0WithdftAndDTDAh20(G0W0TestBase):
-#     def test_g0w0(self):
-#         self.run_g0w0_test('water', 'dft', fock_dft, 'dtda')
-
+# test case with water and dft fock with dtda
+class TestG0W0WithdftAndDTDAh20(G0W0TestBase):
+    def test_g0w0(self):
+        self.run_g0w0_test('water', 'dft', fock_dft, 'dtda')
+# test case with water and dft fock with drpa
+class TestG0W0WithdftAndDrpah20(G0W0TestBase):
+    def test_g0w0(self):
+        self.run_g0w0_test('water', 'dft', fock_dft, 'drpa')
+# # test case with methane and simple fock with dtda
 # class TestG0W0WithSimpleFockAndDTDAmethane(G0W0TestBase):
 #     def test_g0w0(self):
 #         self.run_g0w0_test('methane', 'hf',simple_fock, 'dtda')
-
+# # test case with methane and dft fock with dtda
 # class TestG0W0WithdftAndDTDAmethane(G0W0TestBase):
 #     def test_g0w0(self):
 #         self.run_g0w0_test('methane', 'dft', fock_dft, 'dtda')
+# # test case with methane and simple fock with drpa
+# class TestG0W0WithSimpleFockAndDRPAmethane(G0W0TestBase):
+#     def test_g0w0(self):
+#         self.run_g0w0_test('methane', 'hf',simple_fock, 'drpa')
+# # test case with methane and dft fock with drpa
+# class TestG0W0WithdftAndDRPAmethane(G0W0TestBase):
+#     def test_g0w0(self):
+#         self.run_g0w0_test('methane', 'dft', fock_dft, 'drpa')
 
 # class TestG0W0WithSimpleFockAndDTDAh2(G0W0TestBase):
 #     def test_g0w0(self):

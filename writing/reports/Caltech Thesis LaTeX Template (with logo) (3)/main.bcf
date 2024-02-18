@@ -2369,20 +2369,6 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">ownpubs.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="2">
-    <bcf:citekey order="1">GMP81</bcf:citekey>
-    <bcf:citekey order="1">Ful83</bcf:citekey>
-    <bcf:citekey order="2">GMP81</bcf:citekey>
-    <bcf:citekey order="3">Ful83</bcf:citekey>
-  </bcf:section>
-  <!-- SECTION 0 (cont.) -->
-  <bcf:section number="0">
-  </bcf:section>
-  <!-- SECTION 3 -->
-  <bcf:bibdata section="3">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">example.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">ownpubs.bib</bcf:datasource>
-  </bcf:bibdata>
-  <bcf:section number="3">
     <bcf:citekey order="1" nocite="1">Cahn:etal:2015</bcf:citekey>
     <bcf:citekey order="2">Cahn:etal:2015</bcf:citekey>
   </bcf:section>
@@ -2456,15 +2442,6 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
   <bcf:datalist section="2"
-                name="nyt/global//global/global"
-                type="entry"
-                sortingtemplatename="nyt"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
-  <bcf:datalist section="3"
                 name="nyt/global//global/global"
                 type="entry"
                 sortingtemplatename="nyt"

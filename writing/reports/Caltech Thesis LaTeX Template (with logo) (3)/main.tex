@@ -86,9 +86,13 @@ If you're new to \LaTeX{} and would like to begin by learning the basics, please
 You can define nomenclatures \index{nomenclature} as you talk about key terms in your thesis. So what's a galaxy? \nomenclature{Galaxy}{A system of stars independent from all other systems}
 
 
-\section{This is a Section}
-\lipsum[1-2]
-
+\section{$G_0W_0$}
+\subsection{Interpretive procedure}
+The procedure that was used to compute the quasiparticle energies is given by the below equation:
+\begin{equation}
+    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT }] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
+\end{equation}
+We explain the notation starting from left to right. The first term response to taking the diagonal $\delta _{pq}$ of the harte fog fog matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma $. These electron densities are obtained form a previous mean field calculation, either $\gamma _{DFT}$ or $\gamma _{HF}$. 
 \begin{figure}[hbt!]
 \centering
 \includegraphics[width=.3\textwidth]{caltech.png}
@@ -123,12 +127,29 @@ Here's an endnote.\endnote{Endnotes are notes that you can use to explain text i
 \section{This is Another Section}
 \lipsum[6-7] 
 
-\chapter{This is the Second Chapter}
-\begin{refsection}
-If you'd like to have separate bibliographies at the end of each chapter, put a \verb|refsection| around the material of each chapter, then cite as usual -- e.g.~\citep{GMP81,Ful83}. Then do a \verb|\printbibliography| just before the \verb|refsection| ends. \index{bibliography!by chapter}
-
-\printbibliography[heading=subbibliography]
-\end{refsection}
+\chapter{$G_0W_0$}
+\section{Interpretive procedure}
+The procedure that was used to compute the quasiparticle energies is given by the below equation:
+\begin{equation}
+    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT}] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
+\end{equation}
+We explain the notation starting from left to right. The first term responds to taking the diagonal $\delta_{pq}$ of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. 
+\subsection{The Fock Matrix}
+In the basis of atomic orbitals, this is given by:
+\begin{equation}
+F_{\mu\nu}^{HF} = h_{\mu\nu} + \sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\nu|\lambda\sigma) - \frac{1}{2}\sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\lambda|\nu\sigma)
+\end{equation}
+where $h_{\mu\nu}$ is the one-electron part of the Hamiltonian, $P_{\lambda\sigma}$ is the density matrix, and $(\mu\nu|\lambda\sigma)$ is one of the two-electron integrals. Cite Szabo. This is the simple form of the Hartree-Fock matrix that we want to use here and not the DFT Fock matrix. We transform this Fock matrix into the MO basis with:
+\begin{equation}
+   F_{pq} = \sum_{\mu} \sum_{\nu} C_{\mu p}^{*}F_{\mu\nu}C_{\nu q}
+\end{equation}
+where $C$ is the matrix of MO coefficients. Another useful identity is for the density matrix in terms of the MO coefficients from the mean-field calculation: 
+\begin{equation}
+P_{\mu\nu} = 2\sum_{i=1}^{N/2}C_{\mu i}C_{\nu i}^{*}
+\end{equation}
+We note that the sum runs only over the $N/2$ occupied \emph{spatial} orbitals.
+\subsection{Real Correlation-Solve Energy}
+This is the second term in 2.1. It is dynamic, as opposed to the previous Fock term that was discussed, as it is updated with a new quasiparticle energy in each iteration. In the case of the $G_0W_0$ approximation, we are only interested in the diagonal element of $\Sigma^{corr}$ corresponding to the orbital with index $p$. This function is evaluated at the QP energy $\varepsilon_{p}^{QP}$ just obtained in the previous iteration. We will go into greater detail about the form of $\Sigma^{corr}$ in the next chapter.
 
 
 \chapter{This is the Third Chapter}

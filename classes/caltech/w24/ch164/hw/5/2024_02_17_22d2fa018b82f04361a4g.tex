@@ -53,6 +53,7 @@
 
 \begin{document}
 \maketitle
+\section{}
 \begin{enumerate}
   \item (15 points) (4.15 from Chandler) Consider an isomerization process $A \rightleftharpoons B$, where $A$ and $B$ refer to the different isomer states of a molecule. Imagine that the process takes place in a dilute gas, and that $\Delta \epsilon$ is the energy difference between state $A$ and state $B$. According to the Boltzmann distribution law, the equilibrium ratio of $A$ and $B$ populations is given by
 \end{enumerate}
@@ -64,7 +65,108 @@
 
 
 where $g_{A}$ and $g_{B}$ are the degeneracies of states $A$ and $B$, respectively. Show how this same result follows from the condition of chemical equilibria, $\mu_{A}=\mu_{B}$.
+\subsection{}
+The total partition function for the system will be given by:
+\begin{equation}
+Q=Q^A Q^B=\frac{1}{N_{A} !} q_A^{N_A} \frac{1}{N_{B} !} q_B^{N_B}
+\end{equation}
+where $N_A$ and $N_B$ are the number of molecules in the states $A$ and $B$ respectively. 
+The equation for the home holds free energy is:
+\begin{equation}
+F=-k_B T \log Q
+\end{equation}
+So we plug in to get:
+\begin{equation}
+F=-k_B T \log \left(\frac{1}{N_{A} !} q_A^{N_A} \frac{1}{N_{B} !} q_B^{N_B}\right) = -k_B T \log \left(\frac{1}{N_{A} !} q_A^{N_A}\right) -k_B T \log \left(\frac{1}{N_{B} !} q_B^{N_B}\right) = 
+\end{equation}
+Further separation of the logarithms gives:
+\begin{equation}
+  = kT\left( \ln \left(N_A!\right) - N_A \ln q_A + \ln \left(N_B!\right) - N_B \ln q_B\right)
+\end{equation}
+We can use the Stirling approximation to get:
+\begin{equation}
+  = kT\left( N_A \ln N_A - N_A - N_A \ln q_A + N_B \ln N_B - N_B - N_B \ln q_B\right)
+\end{equation}
+Now, we know that the derivative of this free energy with respect to the number of particles in a state gives the chemical potential for the state:
+\begin{equation}
+  \mu_{A,B} = \frac{\partial F}{\partial N_{A,B}}
+\end{equation}
+For the state $A$ we get:
+\begin{equation}
+  \mu_A = kT \left(\log{\left(N_{A} \right)} - \log{\left(q_{A} \right)}\right)
+\end{equation}
+And for the state $B$ we get:
+\begin{equation}
+  \mu_B = kT \left(\log{\left(N_{B} \right)} - \log{\left(q_{B} \right)}\right)
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, log, latex
 
+# Define symbols
+kT, N_A, N_B, q_A, q_B = symbols('kT N_A N_B q_A q_B')
+
+# Define the free energy expression using Stirling's approximation
+F = kT * (N_A * log(N_A) - N_A - N_A * log(q_A) + N_B * log(N_B) - N_B - N_B * log(q_B))
+
+# Compute the derivatives
+mu_A = diff(F, N_A)
+mu_B = diff(F, N_B)
+
+# Display the results in LaTeX
+mu_A_latex = mu_A.simplify().doit()
+mu_B_latex = mu_B.simplify().doit()
+
+print(latex(mu_A_latex))
+# latex(mu_B_latex)
+\end{lstlisting}
+The equilibrium contention tells us that we can set both equations equal to each other:
+\begin{equation}
+  \mu_A = \mu_B \rightarrow kT \left(\log{\left(N_{A} \right)} - \log{\left(q_{A} \right)}\right) = kT \left(\log{\left(N_{B} \right)} - \log{\left(q_{B} \right)}\right)
+\end{equation}
+We also consider that we have the form for the single partial partition functions:
+\begin{equation}
+  q_A = g_A e^{-\beta \epsilon_A}
+\end{equation}
+\begin{equation}
+  q_B = g_B e^{-\beta \epsilon_B}
+\end{equation}
+We can use these to get:
+\begin{equation}
+  \log{\left(q_{A} \right)} = \log{\left(g_A e^{-\beta \epsilon_A} \right)} = \log{\left(g_A \right)} - \beta \epsilon_A
+\end{equation}
+\begin{equation}
+  \log{\left(q_{B} \right)} = \log{\left(g_B e^{-\beta \epsilon_B} \right)} = \log{\left(g_B \right)} - \beta \epsilon_B
+\end{equation}
+We can use these to get:
+\begin{equation}
+  kT \left(\log{\left(N_{A} \right)} - \log{\left(q_{A} \right)}\right) = kT \left(\log{\left(N_{A} \right)} - \log{\left(g_A \right)} + \beta \epsilon_A\right)
+\end{equation}
+\begin{equation}
+  kT \left(\log{\left(N_{B} \right)} - \log{\left(q_{B} \right)}\right) = kT \left(\log{\left(N_{B} \right)} - \log{\left(g_B \right)} + \beta \epsilon_B\right)
+\end{equation}
+Setting but size equate again:
+\begin{equation}
+  kT \left(\log{\left(N_{A} \right)} - \log{\left(g_A \right)} + \beta \epsilon_A\right) = kT \left(\log{\left(N_{B} \right)} - \log{\left(g_B \right)} + \beta \epsilon_B\right)
+\end{equation}
+We can cancel the common factor out font from both sites and exponential both sites:
+\begin{equation}
+  \exp{\left(\log{\left(N_{A} \right)} - \log{\left(g_A \right)} + \beta \epsilon_A\right)} = \exp{\left(\log{\left(N_{B} \right)} - \log{\left(g_B \right)} + \beta \epsilon_B\right)}
+\end{equation}
+We can use the properties of the logarithm to get:
+\begin{equation}
+  \frac{N_A}{g_A} e^{\beta \epsilon_A} = \frac{N_B}{g_B} e^{\beta \epsilon_B}
+\end{equation}
+Rearranging the terms now:
+\begin{equation}
+  \frac{N_A}{N_B} = \frac{g_A}{g_B} e^{\beta \epsilon_B - \beta \epsilon_A}
+\end{equation}
+Defining the energy difference as $\Delta \epsilon = \epsilon_A - \epsilon_B$ we get:
+\begin{equation}
+  \frac{N_A}{N_B} = \frac{g_A}{g_B} e^{-\beta \Delta \epsilon}
+\end{equation}
+
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item (20 points) (4.16 from Chandler) Consider the system described in problem 1. The canonical partition function is
@@ -95,6 +197,48 @@ with
 
 
 where $\sum_{P}$ is over all the partitions of $N$ molecules into $N_{A}$ molecules of type $A$ and $N_{B}$ molecules of type $B, q_{A}$ is the Boltzmann weighted sum over states of isomer $A$, and $q_{B}$ is similarly defined.
+\subsection{}
+A single practical partition function is defined as:
+\begin{equation}
+q = \sum_{i} e^{-\beta \epsilon_i}
+\end{equation}
+In this case, we have only two options; state $A$ and state $B$. So the single particle partition function is just a sum of the partition functions for each isomer
+\begin{equation}
+q = q_A + q_B
+\end{equation}
+where:
+\begin{equation}
+q_A = g_A e^{-\beta \epsilon_A}
+\end{equation}
+\begin{equation}
+q_B = g_B e^{-\beta \epsilon_B}
+\end{equation}
+The total partition function is then:
+\begin{equation}
+Q=\frac{q^{N}}{N !} = \frac{\left(q_A + q_B\right)^{N}}{N !}
+\end{equation}
+This resembles the binomial expansion:
+\begin{equation}
+\left(a+b\right)^N = \sum_{N} \binom{N}{N_A} a^{N_A} b^{N_B}
+\end{equation}
+where the sum is over all the partitions of $N$ molecules into $N_{A}$ molecules of type $A$ and $N_{B}$ molecules of type $B$. So, we get:
+\begin{equation}
+Q=\frac{1}{N!}\sum_{N_A = 0}^{
+N} \frac{N!}{N_A! N_B!} q_A^{N_A} q_B^{N_B} = \sum_{P} \frac{q_A^{N_A} q_B^{N_B}}{N_A! N_B!}
+\end{equation}
+Taking the logarithm and then exponentiating the inside of the sum we get:
+\begin{equation}
+Q = \sum_{P} \exp{\left(\log{\left(\frac{q_A^{N_A} q_B^{N_B}}{N_A! N_B!}\right)}\right)}
+\end{equation}
+And we know that this should be the same as:
+\begin{equation}
+Q = \sum_{P} \exp{\left(-\beta F\left(N_{A}, N_{B}\right)\right)}
+\end{equation}
+So, by inspection, we have:
+\begin{equation}
+-\beta F\left(N_{A}, N_{B}\right)=\log \left[\left(N_{A} ! N_{B} !\right)^{-1} q_{A}^{N_{A}} q_{B}^{N_{B}}\right]
+\end{equation}
+
 
 (b) Show that the condition of chemical equilibria is identical to finding the partitioning that minimizes the Helmholtz free energy
 
@@ -105,10 +249,75 @@ where $\sum_{P}$ is over all the partitions of $N$ molecules into $N_{A}$ molecu
 
 
 subject to the constraint that $\left\langle N_{A}\right\rangle+\left\langle N_{B}\right\rangle=N$ is fixed.
+\subsection{}
+Solving for $F(N_A, N_B)$ we get:
+\begin{equation}
+F(N_A, N_B) = -kT \log \left[\left(N_{A} ! N_{B} !\right)^{-1} q_{A}^{N_{A}} q_{B}^{N_{B}}\right]
+\end{equation}
+Separating the logarithm we get:
+\begin{equation}
+F(N_A, N_B) = -kT \left(\log{q_{A}^{N_{A}} } + \log{q_{B}^{N_{B}} } - \log{N_{A} ! } - \log{N_{B} ! }\right)
+\end{equation}
+We can use the Stirling approximation to get:
+\begin{equation}
+F(N_A, N_B) = -kT \left(N_{A} \log{q_{A}} + N_{B} \log{q_{B}} - N_{A} \log{N_{A}} + N_{A} - N_{B} \log{N_{B}} + N_{B}\right)
+\end{equation}
+Taking the appropriate derivatives gives:
+\begin{equation}
+\frac{\partial F}{\partial N_A} = kT \log\left(\frac{N_A}{q_A}\right)
+\end{equation}
+We set this equal to 0:
+\begin{equation}
+  \log\left(\frac{N_A}{q_A}\right) = 0 \rightarrow \frac{N_A}{q_A} = 1 \rightarrow N_A = q_A
+\end{equation}
+\begin{equation}
+  \frac{\partial F}{\partial N_B} = kT \log\left(\frac{N_B}{q_B}\right)
+\end{equation}
+We set this equal to 0:
+\begin{equation}
+  \log\left(\frac{N_B}{q_B}\right) = 0 \rightarrow \frac{N_B}{q_B} = 1 \rightarrow N_B = q_B
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, log
 
+# Define symbols
+k, T, N_A, N_B, q_A, q_B = symbols('k T N_A N_B q_A q_B', real=True, positive=True)
+
+# Helmholtz free energy function
+F = -k*T*(N_A*log(q_A) + N_B*log(q_B) - N_A*log(N_A) + N_A - N_B*log(N_B) + N_B)
+
+# Derivatives with respect to N_A and N_B
+dF_dN_A = diff(F, N_A)
+dF_dN_B = diff(F, N_B)
+
+dF_dN_A.simplify(), dF_dN_B.simplify()
+
+\end{lstlisting}
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item (15 points) (4.25 from Chandler) Use the information compiled in Chapter 8 of Hill's Introduction to Statistical Thermodynamics to calculate the equilibrium constant, $K$, for the reaction $I_{2} \rightleftharpoons 2 I$ when the reaction occurs in the dilute gas phase at $T=1000^{\circ} \mathrm{K}$. (Note: For the electronic partition function, you need to consider the difference in degeneracies of the ground states of the iodine atom and molecule, $g_{e, I}=4, g_{e, I_{2}}=1$. This is based on the molecular orbital theory. You are not required to show this.)
+\subsection{}
+We want to start by considering the individual partition functions for the molecule. We use the following formula to compute the one for the molecule:
+\begin{equation}
+\begin{aligned}
+q_{\mathrm{int}}=g_{0, e}\left(2 I_A+1\right)\left(2 I_B+1\right) e^{-\beta \epsilon_{00}} q_{\mathrm{vi}} q_{\mathrm{ro}} / \sigma_{A B}
+\end{aligned}
+\end{equation}
+where we have:
+$q_{\mathrm{ro}}=T / \Theta_{\mathrm{ro}}$. Also the degeneracy of the iodine molecule is $g_{e, I_{2}}=1$. 
+and then the total partition function for the species will be:
+$$
+q_i=\left(V / \lambda_i^3\right) q_i^{(\text {int })},
+$$
+where $q_i^{(\text {int })}$ is for species $i$ the $q_{\text {int }}(T)$ of the previous section, and
+$$
+\lambda_i=h / \sqrt{2 \pi m_i k_B T}
+$$
+The nuclear spin quantum numbers are going to be the same for the diatomic $I_A=I_B=\frac{5}{2}$. Additionally, since we are dealing with a diatomic $\sigma _{A B}=2$. We get the rotational temperature from Hill as $\theta_{\text {rot }}=0.054 \mathrm{K}$. The vibrational temperature is $\theta_{\text {vib }}=310 \mathrm{K}$. We choose for the $\epsilon_{0,0}=-D_0=-1.54 \text{eV}$ and then use $q_v=\frac{1}{1-\exp \left(-\theta_v / T\right)}$. By doing this, we note that we have chosen the ground state energy as $-D_0=-D_e+\frac{1}{2}\hbar\omega $. Following the same procedure for the iodine atom, we just get that:
+\begin{equation}
+  q_{\text{int}}= 4
+\end{equation}
 \section{}
   \item (50 pts.) Consider a one-dimensional monatomic crystal of $N$ atoms with equilibrium nearest neighbor spacing a. In order to minimize boundary effects, assume a periodic boundary condition, i.e., $x_{N+1}=x_{1}$ where $x_{i}$ is the position of the $i$ th atom. If the atoms interact only with nearest neighbors via a potential $u\left(x_{i+1}-x_{i}\right)$,
 

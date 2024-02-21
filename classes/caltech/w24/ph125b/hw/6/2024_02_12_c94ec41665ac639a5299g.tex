@@ -45,6 +45,7 @@
 
 
 \begin{document}
+\emph{I have a standing extension of 3 days from the professor.}\\
 READING: Section 19.1-19.3 in Shankar on scattering and the Born approximation. PROBLEMS:
 \section{}
 \begin{enumerate}
@@ -67,7 +68,7 @@ $$
 
 and $\psi_{L, R}(\mathbf{x}, t)$ satisfy the Schrödinger equation when $\Phi=0$.
 \subsection{}
-In case the Hamiltonian we wanted to solve was:
+In this case the Hamiltonian we wanted to solve was:
 \begin{equation}
   H=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t)]^{2}
 \end{equation}
@@ -103,7 +104,7 @@ Now let us consider the action of the nabla operator on $g_L$. Along the left pa
 \end{equation}
 because
 \begin{equation}
-  g_L(\mathbf{x}) - g_L() = \int_{\mathbf{x}_0}^{\mathbf{x}} d \mathbf{x} \cdot \mathbf{A}_L(\mathbf{x})
+  g_L(\mathbf{x}) - g_L(\mathbf{x}_0) = \int_{\mathbf{x}_0}^{\mathbf{x}} d \mathbf{x} \cdot \mathbf{A}_L(\mathbf{x})
 \end{equation}
 We can choose a gauge such that the vector potential has $\nabla \cdot \mathbf{A} = 0$. We do this by letting $\mathbf{A} \rightarrow \mathbf{A} + \nabla \chi$ where we have $\nabla^2 \chi = -\nabla \cdot \mathbf{A}$. With this, we can have:
 \begin{equation}
@@ -142,11 +143,11 @@ I was working with a friend while he was doing this, but I am not quite followin
 \end{equation}
 Now, we can use the assertion for the time-dependent Schrödinger equation:
 \begin{equation}
-  = e^{\alpha} i \partial_t \psi 
+  = e^{\alpha} i (\partial_t \psi) 
 \end{equation}
 We want to bring the complex exponential inside of the parenthesis, but we have to flip the sign:
 \begin{equation}
-  = -i \partial_t \psi e^{\alpha}
+  = -i (\partial_t \psi e^{\alpha})
 \end{equation}
 So we have shown that this left-side solution satisfies the Schrödinger equation when in the Coulomb gauge. The same process can be done with the right-side solution. And then when we superimpose the two, the sum $\Phi_L + \Phi_R$ will also satisfy the Schrödinger equation.
 \begin{enumerate}
@@ -173,24 +174,38 @@ If $i \partial_{t} \psi=H \psi$ and $i \partial_{t} \psi^{\prime}=H^{\prime} \ps
 $$
 \psi^{\prime}(\mathbf{x}, t)=e^{i q \chi(\mathbf{x}, t)} \psi(\mathbf{x}, t)
 $$
-We will start by making the ansatz that $\Psi^{\prime} = e^{i q \chi(\mathbf{x}, t)} \Psi$.
-We will call the first time dependent short ensure equation, $A$, and the second, $B$.
-and if we have guessed $\Psi^{\prime}$ correctly, then $B$ is true. 
-We want to consider the relationship:
+We will start by making the ansatz that $\Psi^{\prime} = e^{i q \chi(\mathbf{x}, t)} \Psi$. We can do this because we know that in introducing an arbitrary phase factor to the wave function, the physics (the probability density) involved is the same.
+The time-dependent Schrödinger equation for the new wave function is:
 \begin{equation}
-  e^{-i q \chi(\mathbf{x}, t)} B - A
+  i \partial_t \Psi^{\prime} = H^{\prime} \Psi^{\prime}
+\end{equation}
+First, we will consider how the left-hand side responds after we input the form for our new wave function:
+\begin{equation}
+  i \partial_t \Psi^{\prime} = i \partial_t \left( e^{i q \chi(\mathbf{x}, t)} \Psi \right)
+\end{equation}
+We can use the product rule for differentiation:
+\begin{equation}
+  = i e^{i q \chi(\mathbf{x}, t)} \partial_t \Psi + i \Psi e^{i q \chi(\mathbf{x}, t)} \partial_t \left( i q \chi(\mathbf{x}, t) \right)
+\end{equation}
+Both terms have the same exponential term, so we can factor that, and additionally, the second term has a factor of the imaginary number squared, so the sign flips to negative:
+\begin{equation}
+  = e^{i q \chi(\mathbf{x}, t)} \left( i \partial_t \Psi - q \partial_t \chi \Psi \right)
+\end{equation}
+We can substitute the time-dependent Schrödinger equation relation for the original wave function for the first term:
+\begin{equation}
+  = e^{i q \chi(\mathbf{x}, t)} (H \Psi - q \partial_t \chi \Psi)
+\end{equation}
+Multiplying each side of the relation by the negative of the exponential and solving for the second term gives:
+\begin{equation}
+  -q \partial_t \chi \Psi = e^{-i q \chi(\mathbf{x}, t)} H^{\prime} \Psi^{\prime} - H \Psi
 \end{equation}
 
-\subsection{}
-The hambletonian with the gauge transformation is given by the same, but with the prime notation:
+We want to find a function $\chi$ that satisfies this relation. In with follows, we want to use the column gauge for the vacatur potential, search that, as in the previous problem, we have $\nabla \cdot \mathbf{A} = 0$. For the manipulations that follow, let us express the new Hamiltonian in terms of the old one by looking at how the gauge transformation changes things:
 \begin{equation}
-  H^{\prime}=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}^{\prime}(\mathbf{x}, t)]^{2}+q \Phi^{\prime}(\mathbf{x}, t)+U(\mathbf{x}, t)
+  H^{\prime} = H + \frac{1}{2m} \left( -i \nabla \cdot \nabla \chi - i q \nabla \chi \cdot \mathbf{A} - i q \mathbf{A} \cdot \nabla \chi + q^2 \nabla \chi \cdot \nabla \chi \right) - q \nabla \chi \cdot \mathbf{A} - q \partial_t \chi
 \end{equation}
-Plugging in the relations for the crimes:
-\begin{equation}
-  H^{\prime}=\frac{1}{2 m}[\mathbf{p}-q \mathbf{A}(\mathbf{x}, t) - q \nabla \chi(\mathbf{x}, t)]^{2}+q \Phi(\mathbf{x}, t) - q \partial_{t} \chi(\mathbf{x}, t) + U(\mathbf{x}, t)
-\end{equation}
-We assume that our solution is like $e^{i q \chi(\mathbf{x}, t)} \psi(\mathbf{x}, t)$, so we can plug this in to the Hamiltonian:
+I am not completely understanding what follows, but I believe I approached the proof correctly.
+
 
 \section{}
 \begin{enumerate}

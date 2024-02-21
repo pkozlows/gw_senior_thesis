@@ -294,6 +294,7 @@ dF_dN_B = diff(F, N_B)
 dF_dN_A.simplify(), dF_dN_B.simplify()
 
 \end{lstlisting}
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item (15 points) (4.25 from Chandler) Use the information compiled in Chapter 8 of Hill's Introduction to Statistical Thermodynamics to calculate the equilibrium constant, $K$, for the reaction $I_{2} \rightleftharpoons 2 I$ when the reaction occurs in the dilute gas phase at $T=1000^{\circ} \mathrm{K}$. (Note: For the electronic partition function, you need to consider the difference in degeneracies of the ground states of the iodine atom and molecule, $g_{e, I}=4, g_{e, I_{2}}=1$. This is based on the molecular orbital theory. You are not required to show this.)
@@ -334,7 +335,19 @@ H=\frac{m}{2} \sum_{i=1}^{N} \dot{\xi}_{i}^{2}+\frac{K}{2} \sum_{i=1}^{N}\left(\
 to quadratic order in the displacement $\xi_{i} \equiv x_{i}-x_{i}^{(0)}$, where $x_{i}^{(0)}$ is the equilibrium position of the $i$ th atom. What is $K$ ?
 \subsection{}
 \subsubsection{}
-The third term is fairly simple because it simply describes the interventions of an all of the atoms with their nearest neighbors at alates spacing of $a$. That is, there are $N$ atoms with a supervision distance from their nearest neighbors of $a$, so the total energy is $N u(a)$. The first term represents a kinetic energy of the form $\frac{mv^2}{2}$. But in this case, the velocity we are interested in the first derivative of the displacement distance over a sum over all of the atoms in the cristal. 
+These definitions mean that $\dot{\xi}_{i}$ is the velocity and is equal to the time derivative of $\xi_{i}=x_{i}-x_{i}^{(0)}\rightarrow \dot{\xi}_{i}=\dot{x}_{i}$. So the first term is just the kinetic anergy:
+\begin{equation}
+  \frac{m}{2}\sum_{i=1}^{N} v_{i}^{2} = \frac{m}{2}\sum_{i=1}^{N} \dot{\xi}_{i}^{2}
+\end{equation}
+The potential energy is:
+\begin{equation}
+  u(x_{i+1}-x_{i}) = u(x_{i+1}-x_{i+1}^{(0)}+x_{i+1}^{(0)}-x_{i}^{(0)}+x_{i}^{(0)}-x_{i}) = u(\xi_{i+1}-\xi_{i}+a)
+\end{equation}
+
+We want to tailor expand this latter function in powers of $\xi_{i+1}-\xi_{i}$:
+\begin{equation}
+  u(\xi_{i+1}-\xi_{i}+a) = u(a) + \left(\xi_{i+1}-\xi_{i}\right)u'(a) + \frac{1}{2}\left(\xi_{i+1}-\xi_{i}\right)^2u''(a) + \ldots
+\end{equation}
 
 (ii) Now decompose configurations of atoms into normal modes.
 \subsubsection{}

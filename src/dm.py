@@ -1,7 +1,6 @@
 import pyscf
 from pyscf.dft import rks
 from pyscf.tdscf.rks import dTDA, dRPA
-import numpy as np
 from mf import setup_molecule, calculate_mean_field
 import numpy as np
 from tda import my_dtda, my_drpa
@@ -54,21 +53,21 @@ def lin_gw_dm(td, mf):
 
     return dm
 
-mol = setup_molecule('h2')
-mf = calculate_mean_field(mol, 'hf')
-td = my_dtda(mf)
-dm = lin_gw_dm(td, mf)
-# diagonalize the density matrix
-e, v = np.linalg.eigh(dm)
-print(v.shape)
-# ;rint the natural orbital occupation numbers
-print(e)
-# front the sum of the natural or brutal occupation numbers
-print(np.sum(e))
-# make a rdm_1 using the pyscf implementation and diagonalize it for the smae mf
-rdm_1 = mf.make_rdm1()
-e, v = np.linalg.eigh(rdm_1)
-print(e)
-print(np.sum(e))
-# get the trace of this matrix
-print(np.trace(rdm_1))
+# mol = setup_molecule('h2')
+# mf = calculate_mean_field(mol, 'hf')
+# td = my_dtda(mf)
+# dm = lin_gw_dm(td, mf)
+# # diagonalize the density matrix
+# e, v = np.linalg.eigh(dm)
+# print(v.shape)
+# # ;rint the natural orbital occupation numbers
+# print(e)
+# # front the sum of the natural or brutal occupation numbers
+# print(np.sum(e))
+# # make a rdm_1 using the pyscf implementation and diagonalize it for the smae mf
+# rdm_1 = mf.make_rdm1()
+# e, v = np.linalg.eigh(rdm_1)
+# print(e)
+# print(np.sum(e))
+# # get the trace of this matrix
+# print(np.trace(rdm_1))

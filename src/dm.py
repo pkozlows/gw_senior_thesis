@@ -54,7 +54,7 @@ def lin_gw_dm(td, mf):
     dm[n_occupied:, :n_occupied] += mixed_block.T
     
 
-    return 2*dm
+    return dm
 # mol = setup_molecule('h2')
 # mf = calculate_mean_field(mol, 'hf')
 # td = my_dtda(mf)

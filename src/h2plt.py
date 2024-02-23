@@ -18,19 +18,33 @@ for bond_distance in np.arange(0.5, 6.0, 0.1):
         basis='ccpvdz',
         symmetry=True,
     )
+    # start with hf
     mf = scf.RHF(molecule)
     mf.kernel()
     norbs = mf.mo_energy.shape[0]
     hf_dm = np.diag(mf.mo_occ)
+    # now do fci
     fci_solver = fci.FCI(molecule, mf.mo_coeff)
     e, fci_wfn = fci_solver.kernel()
     fci_dm = fci_solver.make_rdm1(fci_wfn, norbs, mf.mol.nelectron)
+    # now do dtda
     g0w0_dtda_dm = lin_gw_dm(my_dtda(mf), mf)
+    # tda_e, tda_wfn = np.linalg.eigh(g0w0_dtda_dm)
+    # diag_tda = np.diag(tda_e)
+    # now do drpa
     g0w0_drpa_dm = lin_gw_dm(my_drpa(mf), mf)
+    # drpa_e, drpa_wfn = np.linalg.eigh(g0w0_drpa_dm)
+    # diag_drpa = np.diag(drpa_e)
 
     # Add occupations for each method
     for key, dm in zip(['hf', 'fci', 'dtda', 'drpa'], [hf_dm, fci_dm, g0w0_dtda_dm, g0w0_drpa_dm]):
-        occupations[key].append((dm[0, 0], dm[1, 1] if key not in ['dtda', 'drpa'] else -dm[1, 1]))
+        if key in ['dtda', 'drpa']:
+            # For 'dtda' and 'drpa', multiply both state 0 and state 1 values by 2
+            # Negate the second value as per your requirement
+            occupations[key].append((2*dm[0, 0],  -2*dm[1, 1]))
+        else:
+            # For 'hf' and 'fci', use the values directly without modification
+            occupations[key].append((dm[0, 0], dm[1, 1]))
 
 # Plotting
 markers = {'hf': '*', 'fci': '+', 'dtda': 'x', 'drpa': '^'}

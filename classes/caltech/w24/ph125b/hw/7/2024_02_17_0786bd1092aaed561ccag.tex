@@ -112,15 +112,32 @@ The matrix element of the $Z$ operator between the final and initial states in t
 \begin{equation}
   \left\langle n\left|Z\right| 0\right\rangle = \frac{i\hbar}{m(E_n-E_0)}\left\langle n\left|P_{z}\right| 0\right\rangle
 \end{equation}
-So we can rewrite the dipole Hamiltonian as:
+Or then solving for $P_z$ in terms of $Z$:
 \begin{equation}
-  \left\langle n\left|H_{D}\right| 0\right\rangle = -qE\sin(\omega t)\frac{i\hbar}{m(E_n-E_0)}\left\langle n\left|P_{z}\right| 0\right\rangle
+  \left\langle n\left|P_{z}\right| 0\right\rangle = -i\hbar m(E_n-E_0)\left\langle n\left|Z\right| 0\right\rangle
 \end{equation}
-So without the expectation value, I got:
+Setting $\hbar = 1$ and doing $\omega = E_n-E_0$ gives:
 \begin{equation}
-  H_{D}=-qE\sin(\omega t)\frac{i\hbar}{m(E_n-E_0)}P_{z}
+  \left\langle n\left|P_{z}\right| 0\right\rangle = -i m\omega \left\langle n\left|Z\right| 0\right\rangle
 \end{equation}
-The original Hamiltonian for the electronic dipole was more intuitive as two charges separated by a distance $Z$ and then interacting with an electric field $E$. In this problem, we got something in terms of the momentum operator, which is not as intuitive as what was said previously.
+Things will hold generally, because we have the same expectation value on both sides:
+\begin{equation}
+  P_{z}=-i m\omega Z
+\end{equation}
+From the previous problem set, we had:
+\begin{equation}
+  H_D = \frac{q }{m}P_z \frac{E_0}{\omega} \sin(\omega t)
+\end{equation}
+Using our expression for $P_z$ gives:
+\begin{equation}
+  H_D = \frac{q}{m}\left(-i m\omega Z\right) \frac{E_0}{\omega} \sin(\omega t) = -qE\sin(\omega t)Z
+\end{equation}
+% So we can rewrite the dipole Hamiltonian as:
+% \begin{equation}
+%   \left\langle n\left|H_{D}\right| 0\right\rangle = -qE\sin(\omega t)\frac{i\hbar}{m(E_n-E_0)}\left\langle n\left|P_{z}\right| 0\right\rangle
+% \end{equation}
+
+This looks a lot more intuitive now as we have two charges separated by a distance $Z$ and then interacting with an electric field $E$. What we had previously was not so intuitive, as it is hard to imagine a deal moment in terms of the moment anthem I pervade or $P_z$.
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{25}
@@ -177,11 +194,11 @@ Consider a spin- $1 / 2$ particle of magnetic moment $\mu$ in a magnetic field, 
 \subsection{}
 This is a two state system with two energies:
 \begin{equation}
-  E_{\pm}=\pm \mu B
+  E_{\pm}=\pm |\mu| |B|
 \end{equation}
 The magnitude of the energy difference is:
 \begin{equation}
-  \Delta = 2\mu B
+  \Delta = 2|\mu| |B|
 \end{equation}
 We have the following condition from the nodes:
 \begin{figure}
@@ -194,7 +211,7 @@ So, our condition is:
 \end{equation}
 Alternatively, we have:
 \begin{equation}
-  T \gg \frac{1}{2\mu B}
+  T \gg \frac{1}{\Delta}
 \end{equation}
 
 (b) What is the expectation value of the spin vector in the adiabatic ground state?
@@ -205,11 +222,35 @@ When we just were considering the expectation value of the spent vector at $\the
 \end{equation}
 But now the versal will simply be the same as the Fabius one but with the unit vector in the direction of the magnetic field:
 \begin{equation}
-  \bra{\Psi _{\theta \phi}^{(0)}}\mathbf{S}\ket{\Psi _{\theta \phi}^{(0)}} = \frac{1}{2}\hat{e}_{B}
+  \bra{\Psi _{\theta \phi}^{(0)}}\mathbf{S}\ket{\Psi _{\theta \phi}^{(0)}} = \frac{1}{2}\hat{e}_{\theta , \phi}
 \end{equation}
 where $\hat{e}_{B}$ is the unit vector in the direction of the magnetic field and depends on the polar angles.
+We know of this:
+$\begin{aligned} & \hat{n}_z=\cos \theta \\ & \hat{n}_x=\sin \theta \cos \phi \\ & \hat{n}_y=\sin \theta \sin \phi\end{aligned}$
+So, we can write the expectation value as:
+\begin{equation}
+  \bra{\Psi _{\theta \phi}^{(0)}}\mathbf{S}\ket{\Psi _{\theta \phi}^{(0)}} = \frac{1}{2}\left( \cos \theta \hat{e}_{z} + \sin \theta \cos \phi \hat{e}_{x} + \sin \theta \sin \phi \hat{e}_{y}\right)
+\end{equation}
 
 (c) Express the adiabatic ground state wave function, $\psi_{\theta \phi}^{(0)}$, in terms of the adiabaticallyvaried parameters. You can in principle achieve this from your result to part (b), but it will probably be easier to accomplish by performing a rotation on a vector to the desired polar angles. The text pages 329-333 discuss finite rotations. The discussion of spin-1/2 in Chapter 14 of the text may also be helpful. I have also uploaded to module 7 the supplementary note on angular momentum from $\mathrm{Ph} 125$ a.
+\subsection{}
+The expression for this in the $\hat{e}_{z}$ basis is:
+\begin{equation}
+\begin{gathered}
+\mid \hat{n} \text { up }\rangle \equiv|\hat{n}+\rangle=\left[\begin{array}{c}
+\cos (\theta / 2) e^{-i \phi / 2} \\
+\sin (\theta / 2) e^{i \phi / 2}
+\end{array}\right] \\
+\mid \hat{n} \text { down }\rangle \equiv|\hat{n}-\rangle=\left[\begin{array}{c}
+-\sin (\theta / 2) e^{-i \phi / 2} \\
+\cos (\theta / 2) e^{i \phi / 2}
+\end{array}\right]
+\end{gathered}
+\end{equation}
+The first is for when the spin is aligned with the magnetic field and the second is for when the spin is opposite the magnetic field. The ground state is the one with the lowest energy, so we have that the ground state is the one with the spin aligned with the magnetic field. So, we have that:
+\begin{equation}
+  \ket{\Psi _{\theta \phi}^{(0)}} = \ket{\hat{n}+\rangle}
+\end{equation}
 
 (d) Suppose we let the $\mathbf{B}$ field direction rotate slowly around the 3-axis at constant $\theta$. Calculate Berry's phase for this situation. [Recall that Berry's phase is the change in the phase of the adiabatic wave function (ground state here) over one complete circuit in parameter space. We found that the Berry phase is given by:
 
@@ -220,6 +261,52 @@ where $\hat{e}_{B}$ is the unit vector in the direction of the magnetic field an
 
 
 where $\boldsymbol{\alpha}$ is a vector in parameter space.] See if you can give a geometric interpretation to your answer, in terms of an amount of solid angle swept out by the circuit in parameter space.
+\subsection{}
+In our case, $\boldsymbol{\alpha}$ is the vector of the polar angles, but $\theta $ is constant, so we only have to consider the variation of $\phi$. 
+So we want to consider the integral:
+\begin{equation}
+  \gamma_B=i\oint d \phi \left\langle\Psi _{\theta \phi}^{(0)}\mid \nabla_{\phi} \Psi _{\theta \phi}^{(0)}\right\rangle
+\end{equation}
+The ground state wave function is:
+\begin{equation}
+  \ket{\Psi _{\theta \phi}^{(0)}} = \ket{\hat{n}+\rangle} = \left[\begin{array}{c}
+\cos (\theta / 2) e^{-i \phi / 2} \\
+\sin (\theta / 2) e^{i \phi / 2}
+\end{array}\right]
+\end{equation}
+The gradient of the wave function is:
+\begin{equation}
+  \nabla_{\phi}\ket{\Psi _{\theta \phi}^{(0)}} = \left[\begin{array}{c}
+-\frac{i}{2}\cos (\theta / 2) e^{-i \phi / 2} \\
+\frac{i}{2}\sin (\theta / 2) e^{i \phi / 2}
+\end{array}\right]
+\end{equation}
+We evaluate this integral to give:
+\begin{equation}
+\gamma_B=i(-i \pi \cos (\theta)) = \pi \cos (\theta)
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import exp
+
+# Correcting the expressions for the wave function components with exponential function
+psi_0 = cos(theta/2) * exp(-I * phi / 2)
+psi_1 = sin(theta/2) * exp(I * phi / 2)
+
+# Correcting the gradient expressions
+grad_psi_0 = -I/2 * psi_0
+grad_psi_1 = I/2 * psi_1
+
+# Inner product calculation with the corrected gradient
+inner_product = (psi_0.conjugate() * grad_psi_0 + psi_1.conjugate() * grad_psi_1).simplify()
+
+# Berry phase calculation
+berry_phase = integrate(inner_product, (phi, 0, 2*pi))
+
+berry_phase.simplify()
+\end{lstlisting}
+So when the magnetic field does one circuit and perimeter space, it acquires a phase of $\pi \cos (\theta)$. This is the solid angle swept out by the circuit in parameter space.
+
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{27}

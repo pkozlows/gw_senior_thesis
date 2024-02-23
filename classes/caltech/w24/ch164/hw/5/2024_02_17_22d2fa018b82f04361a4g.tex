@@ -250,50 +250,80 @@ So, by inspection, we have:
 
 subject to the constraint that $\left\langle N_{A}\right\rangle+\left\langle N_{B}\right\rangle=N$ is fixed.
 \subsection{}
-Solving for $F(N_A, N_B)$ we get:
+We will start by assuming the equilibrium condition of the chemical potentials:
 \begin{equation}
-F(N_A, N_B) = -kT \log \left[\left(N_{A} ! N_{B} !\right)^{-1} q_{A}^{N_{A}} q_{B}^{N_{B}}\right]
+\mu_A = \mu_B
 \end{equation}
-Separating the logarithm we get:
+we will use this to prove equation 5.
+Since the contract variable of the chemical potential is $\beta N$, we have the relation:
 \begin{equation}
-F(N_A, N_B) = -kT \left(\log{q_{A}^{N_{A}} } + \log{q_{B}^{N_{B}} } - \log{N_{A} ! } - \log{N_{B} ! }\right)
+\mu = -\frac{\partial \ln Q}{\partial \beta N}
 \end{equation}
-We can use the Stirling approximation to get:
+and therefore for the state $A$ we get:
 \begin{equation}
-F(N_A, N_B) = -kT \left(N_{A} \log{q_{A}} + N_{B} \log{q_{B}} - N_{A} \log{N_{A}} + N_{A} - N_{B} \log{N_{B}} + N_{B}\right)
+\mu_A = -\frac{\partial \ln Q}{\partial \beta N_A}
 \end{equation}
-Taking the appropriate derivatives gives:
+and for the state $B$ we get:
 \begin{equation}
-\frac{\partial F}{\partial N_A} = kT \log\left(\frac{N_A}{q_A}\right)
+\mu_B = -\frac{\partial \ln Q}{\partial \beta N_B}
 \end{equation}
-We set this equal to 0:
+The condition for the chemical equilibrium gives:
 \begin{equation}
-  \log\left(\frac{N_A}{q_A}\right) = 0 \rightarrow \frac{N_A}{q_A} = 1 \rightarrow N_A = q_A
+\frac{\partial F }{\partial N_A} = \frac{\partial F }{\partial N_B}
 \end{equation}
+But because we have the constraint that $N_A + N_B = N$, this means that:
 \begin{equation}
-  \frac{\partial F}{\partial N_B} = kT \log\left(\frac{N_B}{q_B}\right)
+\frac{\partial F }{\partial N_A} = -\frac{\partial F }{\partial N_B}
 \end{equation}
-We set this equal to 0:
+For both identities to hold, we need to have:
 \begin{equation}
-  \log\left(\frac{N_B}{q_B}\right) = 0 \rightarrow \frac{N_B}{q_B} = 1 \rightarrow N_B = q_B
+\frac{\partial F }{\partial N_A} = \frac{\partial F }{\partial N_B} = 0
 \end{equation}
-% Inline Python code in the document
-\begin{lstlisting}[language=Python]
-from sympy import symbols, diff, log
+% \subsection{}
+% Solving for $F(N_A, N_B)$ we get:
+% \begin{equation}
+% F(N_A, N_B) = -kT \log \left[\left(N_{A} ! N_{B} !\right)^{-1} q_{A}^{N_{A}} q_{B}^{N_{B}}\right]
+% \end{equation}
+% Separating the logarithm we get:
+% \begin{equation}
+% F(N_A, N_B) = -kT \left(\log{q_{A}^{N_{A}} } + \log{q_{B}^{N_{B}} } - \log{N_{A} ! } - \log{N_{B} ! }\right)
+% \end{equation}
+% We can use the Stirling approximation to get:
+% \begin{equation}
+% F(N_A, N_B) = -kT \left(N_{A} \log{q_{A}} + N_{B} \log{q_{B}} - N_{A} \log{N_{A}} + N_{A} - N_{B} \log{N_{B}} + N_{B}\right)
+% \end{equation}
+% Taking the appropriate derivatives gives:
+% \begin{equation}
+% \frac{\partial F}{\partial N_A} = kT \log\left(\frac{N_A}{q_A}\right)
+% \end{equation}
+% We set this equal to 0:
+% \begin{equation}
+%   \log\left(\frac{N_A}{q_A}\right) = 0 \rightarrow \frac{N_A}{q_A} = 1 \rightarrow N_A = q_A
+% \end{equation}
+% \begin{equation}
+%   \frac{\partial F}{\partial N_B} = kT \log\left(\frac{N_B}{q_B}\right)
+% \end{equation}
+% We set this equal to 0:
+% \begin{equation}
+%   \log\left(\frac{N_B}{q_B}\right) = 0 \rightarrow \frac{N_B}{q_B} = 1 \rightarrow N_B = q_B
+% \end{equation}
+% % Inline Python code in the document
+% \begin{lstlisting}[language=Python]
+% from sympy import symbols, diff, log
 
-# Define symbols
-k, T, N_A, N_B, q_A, q_B = symbols('k T N_A N_B q_A q_B', real=True, positive=True)
+% # Define symbols
+% k, T, N_A, N_B, q_A, q_B = symbols('k T N_A N_B q_A q_B', real=True, positive=True)
 
-# Helmholtz free energy function
-F = -k*T*(N_A*log(q_A) + N_B*log(q_B) - N_A*log(N_A) + N_A - N_B*log(N_B) + N_B)
+% # Helmholtz free energy function
+% F = -k*T*(N_A*log(q_A) + N_B*log(q_B) - N_A*log(N_A) + N_A - N_B*log(N_B) + N_B)
 
-# Derivatives with respect to N_A and N_B
-dF_dN_A = diff(F, N_A)
-dF_dN_B = diff(F, N_B)
+% # Derivatives with respect to N_A and N_B
+% dF_dN_A = diff(F, N_A)
+% dF_dN_B = diff(F, N_B)
 
-dF_dN_A.simplify(), dF_dN_B.simplify()
+% dF_dN_A.simplify(), dF_dN_B.simplify()
 
-\end{lstlisting}
+% \end{lstlisting}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{2}
@@ -315,10 +345,101 @@ where $q_i^{(\text {int })}$ is for species $i$ the $q_{\text {int }}(T)$ of the
 $$
 \lambda_i=h / \sqrt{2 \pi m_i k_B T}
 $$
+is the thermal de Broglie wavelength of species $i$.
+The mass that goes into this is simply that of the iodine atom or the combined mass of two iodine atoms for the diatomic.
 The nuclear spin quantum numbers are going to be the same for the diatomic $I_A=I_B=\frac{5}{2}$. Additionally, since we are dealing with a diatomic $\sigma _{A B}=2$. We get the rotational temperature from Hill as $\theta_{\text {rot }}=0.054 \mathrm{K}$. The vibrational temperature is $\theta_{\text {vib }}=310 \mathrm{K}$. We choose for the $\epsilon_{0,0}=-D_0=-1.54 \text{eV}$ and then use $q_v=\frac{1}{1-\exp \left(-\theta_v / T\right)}$. By doing this, we note that we have chosen the ground state energy as $-D_0=-D_e+\frac{1}{2}\hbar\omega $. Following the same procedure for the iodine atom, we just get that:
 \begin{equation}
   q_{\text{int}}= 4
 \end{equation}
+The condition for chemical equilibrium will be $\sum_{\nu} \nu_{i} \mu_{i}=0$. So for the reaction $I_{2} \rightleftharpoons 2 I$ we get:
+\begin{equation}
+  \mu_{I_2} = 2\mu_{I}
+\end{equation}
+This gives the following algorithm. Since we know the partition function for the system, we can find the free energy using:
+\begin{equation}
+  F = -kT \log Q
+\end{equation}
+We can then use the free energy to find the chemical potential using:
+\begin{equation}
+  \mu = \frac{\partial F}{\partial N}
+\end{equation}
+We can then use the chemical potential to find the equilibrium constant using:
+\begin{equation}
+  K = e^{-\beta \Delta G}
+\end{equation}
+where $\Delta G = \mu_{I_2} - 2\mu_{I}$. 
+Performing the calculations we get:
+\begin{equation}
+  K = 0.00110582457135813 \frac{\text{mol}}{m^3}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, exp, sqrt, pi, log, solve
+
+# Defining symbols
+T, V, h, k_B, Theta_rot, Theta_vib, epsilon_0_0, m_I, g_e_I2, g_e_I, sigma_AB = symbols(
+    'T V h k_B Theta_rot Theta_vib epsilon_0_0 m_I g_e_I2 g_e_I sigma_AB')
+
+# Given constants
+given_constants = {
+    h: 6.62607015e-34,  # Planck's constant, J*s
+    k_B: 1.380649e-23,  # Boltzmann's constant, J/K
+    Theta_rot: 0.054,  # Rotational temperature, K
+    Theta_vib: 310,  # Vibrational temperature, K
+    epsilon_0_0: -1.54 * 1.602176634e-19,  # Ground state energy, J (converted from eV)
+    m_I: 126.90447 * 1.660539040e-27,  # Mass of iodine atom, kg (converted from u to kg)
+    g_e_I2: 1,  # Degeneracy of iodine molecule
+    g_e_I: 4,  # Degeneracy of iodine atom
+    sigma_AB: 2,  # Symmetry number for I2
+    V: 1  # Assuming volume of 1 m^3 for simplicity
+}
+
+# Nuclear spin quantum numbers for iodine (diatomic), assuming I_A = I_B = 5/2
+I_A = I_B = 5/2
+
+# Calculate partition functions
+# Thermal de Broglie wavelength
+lambda_I = h / sqrt(2 * pi * m_I * k_B * T)
+lambda_I2 = h / sqrt(2 * pi * (2 * m_I) * k_B * T)
+
+# Internal partition function q_int for I2
+q_int_I2 = g_e_I2 * (2 * I_A + 1) * (2 * I_B + 1) * exp(-epsilon_0_0 / (k_B * T)) * (T / Theta_rot) * (1 / (1 - exp(-Theta_vib / T))) / sigma_AB
+
+# Internal partition function q_int for I
+q_int_I = g_e_I  # For iodine atom, considering only electronic degeneracy
+
+# Total partition function for I2 and I
+q_I2 = (V / lambda_I2**3) * q_int_I2
+q_I = (V / lambda_I**3) * q_int_I
+
+# Simplify expressions with given constants
+q_I2_simplified = q_I2.subs(given_constants)
+q_I_simplified = q_I.subs(given_constants)
+
+# Calculate chemical potentials for I2 and I using the simplified partition functions
+mu_I2 = -k_B * T * log(q_I2_simplified / V)
+mu_I = -k_B * T * log(q_I_simplified / V)
+
+# Calculate the equilibrium constant K for the reaction I2 <-> 2I
+Delta_mu = mu_I2 - 2 * mu_I
+K_expression = exp(Delta_mu / (k_B * T))
+K_simplified = K_expression.simplify()
+
+# Substitute T=1000 K and V=1 m^3 into the expression for K to calculate its value at T=1000 K
+K_value_at_1000K = K_simplified.subs({T: 1000, V: 1})
+
+# Evaluate the expression
+K_value_at_1000K.evalf()
+
+#  Avogadro's number
+N_A = 6.02214076e+23  # mol^-1
+
+# Divide K by Avogadro's number to convert to terms of moles
+K_mols_divided = K_value_at_1000K / N_A
+
+K_mols_divided.evalf()
+
+\end{lstlisting}
 \section{}
   \item (50 pts.) Consider a one-dimensional monatomic crystal of $N$ atoms with equilibrium nearest neighbor spacing a. In order to minimize boundary effects, assume a periodic boundary condition, i.e., $x_{N+1}=x_{1}$ where $x_{i}$ is the position of the $i$ th atom. If the atoms interact only with nearest neighbors via a potential $u\left(x_{i+1}-x_{i}\right)$,
 
@@ -348,7 +469,16 @@ We want to tailor expand this latter function in powers of $\xi_{i+1}-\xi_{i}$:
 \begin{equation}
   u(\xi_{i+1}-\xi_{i}+a) = u(a) + \left(\xi_{i+1}-\xi_{i}\right)u'(a) + \frac{1}{2}\left(\xi_{i+1}-\xi_{i}\right)^2u''(a) + \ldots
 \end{equation}
-
+Our expression for the total potential energy is going to involve a sum of this expression $N$ atoms:
+\begin{equation}
+  U = \sum_{i=1}^{N} u(\xi_{i+1}-\xi_{i}+a) = Nu(a) + \sum_{i=1}^{N} \left(\xi_{i+1}-\xi_{i}\right)u'(a) + \frac{1}{2}\sum_{i=1}^{N}\left(\xi_{i+1}-\xi_{i}\right)^2u''(a) + \ldots
+\end{equation}
+On average the displacements over all of the autumns in the latest finish, so the second term vanishes. We are left with:
+\begin{equation}
+  U = Nu(a) + \frac{1}{2}\sum_{i=1}^{N}\left(\xi_{i+1}-\xi_{i}\right)^2u''(a)
+\end{equation}
+So this is where the 2 later terms in our Hulton on come from with $K=u''(a)$.
+\subsection{}
 (ii) Now decompose configurations of atoms into normal modes.
 \subsubsection{}
 (a) Define normal modes $\eta_{k}$ such that $\xi_{j}$ is a linear superposition of $\eta_{k}$
@@ -361,12 +491,51 @@ We want to tailor expand this latter function in powers of $\xi_{i+1}-\xi_{i}$:
 Show that the periodic boundary condition leads to $k=\frac{2 \pi n}{N a}$ where $n$ is any integer.
 
 Show further that adding $\frac{2 \pi}{a}$ to $k$ does not change $\xi_{j}$. Therefore there are only $N$ independent modes. We choose $n \in\left[-\frac{N}{2}, \frac{N}{2}-1\right]$ (assuming $N$ even).
-\subsection{}
-I think this is similar to how quantization comes from the boundary conditions in the particle in a box.
+
+Because of the periodic bander by conditions, we need to have thet:
+\begin{equation}
+  \xi_{N+1} = \xi_{1}
+\end{equation}
+We can use the definition of the normal modes to get:
+\begin{equation}
+  \xi_{N+1} = \frac{1}{\sqrt{2 N}} \sum_{k} \eta_{k} e^{i(N+1) a k}
+\end{equation}
+and then:
+\begin{equation}
+  \xi_{1} = \frac{1}{\sqrt{2 N}} \sum_{k} \eta_{k} e^{i a k}
+\end{equation}
+This implies that:
+\begin{equation}
+  1 = e^{i a N k}
+\end{equation}
+For this condition to be certified, we need:
+\begin{equation}
+  a N k = 2 \pi n
+\end{equation}
+where $n$ is any integer. We can then solve for $k$ to get:
+\begin{equation}
+  k = \frac{2 \pi n}{N a}
+\end{equation}
+
 
 (b) Show that the fact that the $\xi_{j}$ 's are real leads to $\eta_{k}^{*}=\eta_{-k}$, where $\eta_{k}^{*}$ is the complex conjugate of $\eta_{k}$.
 \subsection{}
-This has to be related to taking the complex contract of a plain wave exponential.
+The fact that the $\xi_{j}$ 's are real means that:
+\begin{equation}
+  \xi_{j} = \xi_{j}^{*}
+\end{equation}
+We can use the definition of the normal modes to get:
+\begin{equation}
+  \xi_{j} = \frac{1}{\sqrt{2 N}} \sum_{k} \eta_{k} e^{i j a k}
+\end{equation}
+and then:
+\begin{equation}
+  \xi_{j}^{*} = \frac{1}{\sqrt{2 N}} \sum_{k} \eta_{k}^{*} e^{-i j a k}
+\end{equation}
+This equality can only be accomplished (the exponentials only match) when we have the top sum running over $-k$ instead of $k$. This means that:
+\begin{equation}
+  \eta_{k}^{*} = \eta_{-k}
+\end{equation}
 
 (iii) It can be shown that the normal mode coordinates $\eta_{k}$ diagonalize the Hamiltonian:
 

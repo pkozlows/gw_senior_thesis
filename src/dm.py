@@ -1,6 +1,7 @@
 import pyscf
 from pyscf.dft import rks
 from pyscf.tdscf.rks import dTDA, dRPA
+import numpy as np
 from mf import setup_molecule, calculate_mean_field
 import numpy as np
 from tda import my_dtda, my_drpa
@@ -46,13 +47,14 @@ def lin_gw_dm(td, mf):
     mixed_block = (1/(orbital_energies[:n_occupied, None] - orbital_energies[None, n_occupied:]))*(first_sum - second_sum)
 
     # stack the blocks to form the density matrix
+    dm = dm.astype('complex128')
     dm[:n_occupied, :n_occupied] += occ_block
     dm[n_occupied:, n_occupied:] += virt_block
     dm[:n_occupied, n_occupied:] += mixed_block
     dm[n_occupied:, :n_occupied] += mixed_block.T
+    
 
-    return dm
-
+    return 2*dm
 # mol = setup_molecule('h2')
 # mf = calculate_mean_field(mol, 'hf')
 # td = my_dtda(mf)

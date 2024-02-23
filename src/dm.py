@@ -47,14 +47,13 @@ def lin_gw_dm(td, mf):
     mixed_block = (1/(orbital_energies[:n_occupied, None] - orbital_energies[None, n_occupied:]))*(first_sum - second_sum)
 
     # stack the blocks to form the density matrix
-    dm = dm.astype('complex128')
-    dm[:n_occupied, :n_occupied] += occ_block
-    dm[n_occupied:, n_occupied:] += virt_block
-    dm[:n_occupied, n_occupied:] += mixed_block
-    dm[n_occupied:, :n_occupied] += mixed_block.T
+    dm[:n_occupied, :n_occupied] += np.real(occ_block)
+    dm[n_occupied:, n_occupied:] += np.real(virt_block)
+    dm[:n_occupied, n_occupied:] += np.real(mixed_block)
+    dm[n_occupied:, :n_occupied] += np.real(mixed_block.T)
     
 
-    return dm
+    return 2*dm
 # mol = setup_molecule('h2')
 # mf = calculate_mean_field(mol, 'hf')
 # td = my_dtda(mf)
@@ -67,7 +66,7 @@ def lin_gw_dm(td, mf):
 # # front the sum of the natural or brutal occupation numbers
 # print(np.sum(e))
 # # make a rdm_1 using the pyscf implementation and diagonalize it for the smae mf
-# rdm_1 = mf.make_rdm1()
+# rdm_1 = x.make_rdm1()
 # e, v = np.linalg.eigh(rdm_1)
 # print(e)
 # print(np.sum(e))

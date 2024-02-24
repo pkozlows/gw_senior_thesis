@@ -38,12 +38,7 @@ for bond_distance in np.arange(0.5, 6.0, 0.25):
 
     # Add occupations for each method
     for key, dm in zip(['hf', 'fci', 'dtda', 'drpa'], [hf_dm, fci_dm, diag_tda, diag_drpa]):
-        if key in ['dtda', 'drpa']:
-            # For 'dtda' and 'drpa', multiply both state 0 and state 1 values by 2
-            occupations[key].append((dm[0, 0],  dm[1, 1]))
-        else:
-            # For 'hf' and 'fci', use the values directly without modification
-            occupations[key].append((dm[0, 0], dm[1, 1]))
+        occupations[key].append((dm[0, 0], dm[1, 1]))
 
 # Plotting
 markers = {'hf': '*', 'fci': '+', 'dtda': 'x', 'drpa': '^'}

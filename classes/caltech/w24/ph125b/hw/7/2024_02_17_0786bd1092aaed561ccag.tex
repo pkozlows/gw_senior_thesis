@@ -56,7 +56,8 @@ Problem set number 7
 
 Due midnight Wednesday, February 21, 2024
 
-READING: Pages 592-607 in Shankar on Berry's phase.
+READING: Pages 592-607 in Shankar on Berry's phase.\\
+\emph{I have an extension until end of the day on Saturday from the professor.}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{24}
@@ -407,6 +408,37 @@ Make sure this definition makes sense to you. We know that classically we can co
 
 
 Try to express your answer in terms of a dimensionless integral in one dimension (which will perhaps look divergent). Make sure the dimension of the coefficient is what you expect.
+\subsection{}
+The dot product of the electric field operator multiplied by itself, with the second term carrying a prime, is:
+\begin{equation}
+  \hat{\mathbf{E}}(\mathbf{x}) \cdot \hat{\mathbf{E}}\left(\mathbf{x}^{\prime}\right) = \frac{1}{V}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\sum_{\mathbf{k}^{\prime} \boldsymbol{\epsilon}^{\prime}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\cdot \left(-i \omega \hat{A}_{\mathbf{k}^{\prime} \boldsymbol{\epsilon}^{\prime}} \boldsymbol{\epsilon}^{\prime} e^{i \mathbf{k}^{\prime} \cdot \mathbf{x}^{\prime}}+i \omega \hat{A}_{\mathbf{k}^{\prime} \boldsymbol{\epsilon}^{\prime}}^{\dagger} \boldsymbol{\epsilon}^{\prime *} e^{-i \mathbf{k}^{\prime} \cdot \mathbf{x}^{\prime}}\right)
+\end{equation}
+Since we are operating on the vacuum state, we know that terms with the creation operator followed by the annihilation operator vanish, we can factor out the $\omega^2$. And we also know from the previous part that even with the ideal ordering of the second quantization operators, the terms vanish unless we have that they are operating on the same modes and polarization vectors, so it simplifies to only one sum. Furthermore, this expression is shorter, so we now consider its expectation value inside the vacuum state:
+\begin{equation}
+  \left\langle\Omega\left|\hat{\mathbf{E}}(\mathbf{x}) \cdot \hat{\mathbf{E}}\left(\mathbf{x}^{\prime}\right)\right| \Omega\right\rangle = \frac{1}{V}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega ^{2}\left\langle\Omega\left|\hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}\hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}^{\prime}}\right| \Omega\right\rangle
+\end{equation}
+We can also take the resulting exponential combination outside of the matrix element and simplify:
+\begin{equation}
+  = \frac{1}{V}\sum_{\mathbf{k} \boldsymbol{\epsilon}} \omega ^{2}|\boldsymbol{\epsilon}|^2 e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)}\left\langle\Omega\left|\hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger}\right| \Omega\right\rangle
+\end{equation}
+We know that the norm of the polarization vector will always be 1:
+\begin{equation}
+  = \frac{1}{V}\sum_{\mathbf{k} \boldsymbol{\epsilon}} \omega ^{2}e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)}\left\langle\Omega\left|\hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger}\right| \Omega\right\rangle
+\end{equation}
+The matrix element will add a factor of $\frac{2\pi}{\omega }$:
+\begin{equation}
+  = \frac{2\pi }{V}\sum_{\mathbf{k} \boldsymbol{\epsilon}} \omega e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)}
+\end{equation}
+Since the spectrum of modes is nearly continuous, we can approximate this as an integral:
+\begin{equation}
+  = \frac{2\pi \ }{V}\int d^3k \omega e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)} = \frac{2\pi }{V}\iiint \omega \frac{k^{2} \dd{k}\dd{\Omega}}{(2\pi)^3} e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)}
+\end{equation}
+There is no element in the interpret that depends on the solid ankle, so this just introduces a factor of $4\pi$ and we know that the frequency is related to the wave vector by a dispersion relation $\omega = ck$, so we can write:
+\begin{equation}
+  = \frac{8 \pi ^2  c}{8\pi^3V}\int_{0}^{\infty } k^3 \dd{k} e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)} = \frac{c}{\pi V}\int_{0}^{\infty } k^3 \dd{k} e^{i \textbf{k}\left( \textbf{x}-\textbf{x}^{\prime}\right)}
+\end{equation}
+
+
 
 (c) Now let's consider the average, $\hat{\overline{\mathbf{E}}}(\mathbf{x})$, of $\hat{\mathbf{E}}(\mathbf{x})$ over a small volume $\mathcal{V}$. That is, we are interested in the average energy density in a small volume. What is
 
@@ -418,44 +450,110 @@ Try to express your answer in terms of a dimensionless integral in one dimension
 
 and what happens as $\mathcal{V} \rightarrow 0$ ? You may wish to think about your result in terms of harmonic oscillators and zero point energies.
 \subsection{}
-The average of the electric field over a small volume $\mathcal{V}$ is given by:
+We want to consider the average of the electric fueled over a small volume $V^{^{\prime}}$ different from the volume for this expression $V$. We have:
 \begin{equation}
-  \hat{\overline{\mathbf{E}}}(\mathbf{x})=\mathcal{V}^{-3/2}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)
+  \hat{\overline{\mathbf{E}}}(\mathbf{x})=\frac{1}{V^{^{\prime}}} \int_{V^{^{\prime}}}\hat{\mathbf{E}}(\mathbf{x})\dd[3]{x} 
 \end{equation}
-so the square of this relation is:
+We will say that $V^{\prime}$ is the volume of a cube which we will later take to be small with side length $2L$ centered at a $\vec{x}$. We want to calculate the average field inside of this Cube. Expanding out the electric field operator with then the expression for the average field:
 \begin{equation}
-  (\hat{\overline{\mathbf{E}}}(\mathbf{x}))^2=\mathcal{V}^{-3}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\sum_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}\left(-i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} e^{i \mathbf{k^{\prime}} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} e^{-i \mathbf{k^{\prime}} \cdot \mathbf{x}}\right)
+  \hat{\overline{\mathbf{E}}}(\mathbf{x})=\frac{1}{V^{^{\prime}}} \int_{V^{^{\prime}}}\frac{1}{\sqrt{V}} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\dd[3]{x}
 \end{equation}
-Moving the summations out font gives:
+We can bring outside the regular volume since it is just a constant, we can take out the summation from the integral as well, and we can also take out the factor of $i \omega$:
 \begin{equation}
-  (\hat{\overline{\mathbf{E}}}(\mathbf{x}))^2=\mathcal{V}^{-3}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\left(-i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} e^{i \mathbf{k^{\prime}} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} e^{-i \mathbf{k^{\prime}} \cdot \mathbf{x}}\right)
+  \hat{\overline{\mathbf{E}}}(\mathbf{x})=\frac{1}{V^{^{\prime}}\sqrt{V}} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \int_{V^{^{\prime}}}e^{i \mathbf{k} \cdot \mathbf{x}}\dd[3]{x}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} \left(\int_{V^{^{\prime}}}e^{i \mathbf{k} \cdot \mathbf{x}}\dd[3]{x}\right)^*\right)
 \end{equation}
-We multiply this out to get and factor out the $\omega^2$ to get:
+We start out by computing the into Gal, in a single dimension, but then we can easily gene rasta it to all 3 dimensions:
 \begin{equation}
-\begin{aligned}
-=\frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}\Bigg( 
-&-e^{i \mathbf{x}\cdot (\mathbf{k}+\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} \\
-&- e^{-i \mathbf{x}\cdot (\mathbf{k}+\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*}\\
-&+ e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} \\
-&+ e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}}\Bigg)
-\end{aligned}
+  \int_{x-L}^{x+L}e^{ikx}\dd{x} = \frac{1}{ik}e^{ikx}\Bigg|_{x-L}^{x+L} = \frac{1}{ik}\left(e^{ik(x+L)}-e^{ik(x-L)}\right)
 \end{equation}
-Since we are operating on the vacuum state, the terms which have an annihilation operator on the right side or a creation operator on the left side it well vanish, so we are just left with the third term:
+We can factor out a common factor of $e^{ikx}$ from the exponentials and then also substitute the sine function for the exponentials:
 \begin{equation}
-  =\frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*}
+  = \frac{1}{ik}e^{ikx}\left(2i\sin(kL)\right) = \frac{2}{k}e^{ikx}\sin(kL)
 \end{equation}
-Now, we insert this relation between two vacuum states:
+In three dimensions, this will simply become the product of the three one-dimensional integrals:
 \begin{equation}
-  \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\boldsymbol{\epsilon} \boldsymbol{\epsilon^{\prime}}^{*}\left\langle\Omega\left|\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger}\right| \Omega\right\rangle
+  \int_{V^{^{\prime}}}e^{i \mathbf{k} \cdot \mathbf{x}}\dd[3]{x} = 8 e^{i \mathbf{k} \cdot \mathbf{x}}\left( \frac{\sin(kL)}{k}\right)^3
 \end{equation}
-The summations will pick out only the term which has the same $\mathbf{k}$ and $\boldsymbol{\epsilon}$, so we get two kronecker deltas instead of the sums:
+We can now substitute this back into the expression for the average electric field and then we also know that $V^{^{\prime}} = (2L)^3$:
 \begin{equation}
-  \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{\omega ^2}{\mathcal{V}^{3}}|\boldsymbol{\varepsilon }^2|\left\langle\Omega\left|\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger}\right| \Omega\right\rangle
+  \hat{\overline{\mathbf{E}}}(\mathbf{x})=\frac{-8i}{8L^3\sqrt{V}} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega \left( \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}- \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right) (\frac{\sin(kL)}{k})^3
 \end{equation}
-It was showed in the notes that this expectation value just becomes $\frac{2\pi}{\omega }$, so we get:
 \begin{equation}
-  \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{2\pi\omega }{\mathcal{V}^{3}}|\boldsymbol{\varepsilon }^2|
+  = - \frac{i}{\sqrt{V}} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega \left( \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}- \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right) (\frac{\sin(kL)}{kL})^3
 \end{equation}
-As the volume goes to zero, the energy density goes to infinity, which is the zero-point energy of the electromagnetic field. The volume is proportional to the wavelength in a cavity, and this is inversely related to the frequency of a harmonic oscillator. As the frequency of a harmonic oscillator goes to infinity, the energy also goes to infinity.
+Now, we consider the expectation value of the square:
+\begin{equation}
+  \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle
+\end{equation}
+By the sang logic as in the copious problem, we know that only one term survives from this multiplication:
+\begin{equation}
+  = +\frac{1}{V} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega^2 \left\langle\Omega\left|\hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger}\right| \Omega\right\rangle (\frac{\sin(kL)}{kL})^6
+\end{equation}
+We know that the matrix element will add a factor of $\frac{2\pi}{\omega }$:
+\begin{equation}
+  = \frac{2\pi}{V} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega \left(\frac{\sin(kL)}{kL}\right)^6
+\end{equation}
+Since we want to take the limit of a small cube, we have that $L \rightarrow 0$:
+\begin{equation}
+  \lim_{L \rightarrow 0}\frac{\sin(kL)}{kL} =\frac{kL}{kL} = 1
+\end{equation}
+So, the matrix element simplifies to:
+\begin{equation}
+  \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{2\pi}{V} \sum_{\mathbf{k} \boldsymbol{\epsilon}}\omega
+\end{equation}
+Again, we can approximate the sum as and integral:
+\begin{equation}
+  = \frac{2\pi}{V}\iiint \omega \frac{k^{2} \dd{k}\dd{\Omega}}{(2\pi)^3}
+\end{equation}
+Again, the integral over the solid angle $\dd{\Omega}$ will just introduce a factor of $4\pi$, and we know that the frequency is related to the wave vector by a dispersion relation $\omega = ck$, so we can write:
+\begin{equation}
+  = \frac{ c}{\pi V}\int_{0}^{\infty } k^3 \dd{k}
+\end{equation}
+To get a sensual enter form this integral, we have to substitute the upper limit $\Gamma \equiv \infty$:
+\begin{equation}
+  = \frac{ c}{\pi V}\int_{0}^{\Gamma } k^3 \dd{k} = \frac{ c}{\pi V}\frac{k^4}{4}\Bigg|_{0}^{\Gamma} = \frac{ c}{4\pi V}\Gamma^4
+\end{equation}
+This expectation value seems to be essentially infinite but other wise I am not sure how to interpret this result.
+
+% \subsection{}
+% The average of the electric field over a small volume $\mathcal{V}$ is given by:
+% \begin{equation}
+%   \hat{\overline{\mathbf{E}}}(\mathbf{x})=\mathcal{V}^{-3/2}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)
+% \(end{equation})
+% so the square of this relation is:
+% \begin{equation}
+%   (\hat{\overline{\mathbf{E}}}(\mathbf{x}))^2=\mathcal{V}^{-3}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\sum_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}\left(-i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} e^{i \mathbf{k^{\prime}} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} e^{-i \mathbf{k^{\prime}} \cdot \mathbf{x}}\right)
+% \end{equation}
+% Moving the summations out font gives:
+% \begin{equation}
+%   (\hat{\overline{\mathbf{E}}}(\mathbf{x}))^2=\mathcal{V}^{-3}\sum_{\mathbf{k} \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}\left(-i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}} \boldsymbol{\epsilon} e^{i \mathbf{k} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k} \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} e^{-i \mathbf{k} \cdot \mathbf{x}}\right)\left(-i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} e^{i \mathbf{k^{\prime}} \cdot \mathbf{x}}+i \omega \hat{A}_{\mathbf{k^{\prime}} \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} e^{-i \mathbf{k^{\prime}} \cdot \mathbf{x}}\right)
+% \end{equation}
+% We multiply this out to get and factor out the $\omega^2$ to get:
+% \begin{equation}
+% \begin{aligned}
+% =\frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}\Bigg( 
+% &-e^{i \mathbf{x}\cdot (\mathbf{k}+\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}} \\
+% &- e^{-i \mathbf{x}\cdot (\mathbf{k}+\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*}\\
+% &+ e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*} \\
+% &+ e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger} \boldsymbol{\epsilon}^{*} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}} \boldsymbol{\epsilon^{\prime}}\Bigg)
+% \end{aligned}
+% \end{equation}
+% Since we are operating on the vacuum state, the terms which have an annihilation operator on the right side or a creation operator on the left side it well vanish, so we are just left with the third term:
+% \begin{equation}
+%   =\frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \boldsymbol{\epsilon} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger} \boldsymbol{\epsilon^{\prime}}^{*}
+% \end{equation}
+% Now, we insert this relation between two vacuum states:
+% \begin{equation}
+%   \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{\omega ^2}{\mathcal{V}^{3}}\sum_{\mathbf{k}, \boldsymbol{\epsilon}}\sum_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}e^{i \mathbf{x}\cdot (\mathbf{k}-\mathbf{k^{\prime}})}\boldsymbol{\epsilon} \boldsymbol{\epsilon^{\prime}}^{*}\left\langle\Omega\left|\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k^{\prime}}, \boldsymbol{\epsilon^{\prime}}}^{\dagger}\right| \Omega\right\rangle
+% \end{equation}
+% The summations will pick out only the term which has the same $\mathbf{k}$ and $\boldsymbol{\epsilon}$, so we get two kronecker deltas instead of the sums:
+% \begin{equation}
+%   \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{\omega ^2}{\mathcal{V}^{3}}|\boldsymbol{\varepsilon }^2|\left\langle\Omega\left|\hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}} \hat{A}_{\mathbf{k}, \boldsymbol{\epsilon}}^{\dagger}\right| \Omega\right\rangle
+% \end{equation}
+% It was showed in the notes that this expectation value just becomes $\frac{2\pi}{\omega }$, so we get:
+% \begin{equation}
+%   \left\langle\Omega\left|[\hat{\overline{\mathbf{E}}}(\mathbf{x})]^{2}\right| \Omega\right\rangle = \frac{2\pi\omega }{\mathcal{V}^{3}}|\boldsymbol{\varepsilon }^2|
+% \end{equation}
+% As the volume goes to zero, the energy density goes to infinity, which is the zero-point energy of the electromagnetic field. The volume is proportional to the wavelength in a cavity, and this is inversely related to the frequency of a harmonic oscillator. As the frequency of a harmonic oscillator goes to infinity, the energy also goes to infinity.
  
 \end{document}

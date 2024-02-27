@@ -555,7 +555,100 @@ and
 
 where $\eta_{k}^{R}$ and $\eta_{k}^{I}$ are the real and imaginary parts of $\eta_{k}$. What is the frequency for each normal mode $\omega_{k}$ ? What is the speed of sound for this model? (The speed of sound is defined as $\left.\frac{d \omega_{k}}{d k}\right|_{k=0}$ ).
 \subsection{}
-The frequencies of the normal moods are going to be given by the agent values of this diagonal matrix.
+We start by considering the equation:
+\begin{equation}
+  -m  \ddot{x}= \frac{\partial H}{\partial x}
+\end{equation}
+We want to consider this equation but specifically for item $j$ and then we can also use the relation $x_j = \xi_j$. We get:
+\begin{equation}
+  -m  \ddot{\xi}_{j}= \frac{\partial H}{\partial \xi_{j}}
+\end{equation}
+Our Helmut union was defined as:
+\begin{equation}
+  H=\frac{m}{2} \sum_{i=1}^{N} \dot{\xi}_{i}^{2}+\frac{K}{2} \sum_{i=1}^{N}\left(\xi_{i+1}-\xi_{i}\right)^{2}+N u(a)
+\end{equation}
+For the first term all of the terms in the summation will automatically be 0, unless $i=j$. Further more even for the term $i=j$ this involves:
+\begin{equation}
+  \frac{\partial }{\partial \xi_{j}}\frac{\partial \xi_{j}}{\partial t} = \frac{\partial }{\partial t}\frac{\partial \xi_{j}}{\partial \xi_{j}} = \frac{\partial }{\partial t}1 = 0
+\end{equation}
+So the first term in the Hamiltonian does not contribute to the equation of motion. The third term also vanishes as it has no dependence on $\xi_j$. The second term only doesn't vanish when we have either $i=j$ or $i=j-1$. Taking the derivative and applying the chain rule gives for the derivative:
+\begin{equation}
+  \frac{\partial H}{\partial \xi_{j}} = -K\left(\xi_{j+1}-\xi_{j}\right) + K\left(\xi_{j}-\xi_{j-1}\right)
+\end{equation}
+So for the equation of motion we get:
+\begin{equation}
+  -m  \ddot{\xi}_{j}= K(2 \xi_{j}-\xi_{j+1}-\xi_{j-1})
+\end{equation}
+Now substituting in for the four year transform expression for the normal modes:
+\begin{equation}
+  -\frac{m}{\sqrt{2N}} \sum_{k} \ddot{\eta}_{k} e^{i j a k}= K(2 \frac{1}{\sqrt{2N}} \sum_{k} \eta_{k} e^{i j a k}-\frac{1}{\sqrt{2N}} \sum_{k} \eta_{k} e^{i (j+1) a k}-\frac{1}{\sqrt{2N}} \sum_{k} \eta_{k} e^{i (j-1) a k})
+\end{equation}
+We can then multiply both sides by $\sqrt{2N} e^{-i j a k}$ and equate the terms in the summations to get:
+\begin{equation}
+  -m \ddot{\eta}_{k} = K(2 - e^{i a k} - e^{-i a k})\eta_{k}
+\end{equation}
+Recognizing that $e^{i a k} + e^{-i a k} = 2 \cos(a k)$ we get:
+\begin{equation}
+\ddot{\eta}_{k} = -\frac{2K}{m} \eta_{k} (1 - \cos(a k)) 
+\end{equation}
+If we set $f(k) = - \frac{2K}{m} (1 - \cos(a k))$ we get a Sturm-Liouville equation:
+\begin{equation}
+\ddot{\eta}_{k} = f(k) \eta_{k}
+\end{equation}
+The general solution to this equation is:
+\begin{equation}
+\eta_{k} = A \cos(\omega_k t) + B \sin(\omega_k t)
+\end{equation}
+where $\omega_k$ is the frequency for each normal mode. We can solve for $\omega_k$ by taking the second derivative of the general solution and then substituting it into the equation of motion. We get:
+\begin{equation}
+\ddot{\eta}_{k} = -A \omega_k^2 \cos(\omega_k t) - B \omega_k^2 \sin(\omega_k t)
+\end{equation}
+Substituting this into the equation of motion we get:
+\begin{equation}
+-A \omega_k^2 \cos(\omega_k t) - B \omega_k^2 \sin(\omega_k t) = f(k) (A \cos(\omega_k t) + B \sin(\omega_k t))
+\end{equation}
+On the left hand side we can factor out a $-\omega_k^2$ and then divide by the general solution to get:
+\begin{equation}
+-\omega_k^2 = f(k)
+\end{equation}
+So the frequency for each normal mode $\omega_{k}$ is:
+\begin{equation}
+\omega_k = \sqrt{\frac{2K}{m} (1 - \cos(a k))}
+\end{equation}
+The speed of sound for this model is defined as $\left.\frac{d \omega_{k}}{d k}\right|_{k=0}$. At first I just took the derivative of $\omega_k$ with respect to $k$ and then evaluated it at $k=0$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, cos, sin, sqrt, diff
+
+# Define symbols
+K, m, a, k = symbols('K m a k')
+
+# Original omega_k equation
+omega_k = sqrt(2*K/m * (1 - cos(a*k)))
+
+# Derivative of omega_k with respect to k
+d_omega_k_dk = diff(omega_k, k)
+
+# Evaluate the derivative at k=0
+d_omega_k_dk_at_0 = d_omega_k_dk.subs(k, 0)
+
+omega_k, d_omega_k_dk, d_omega_k_dk_at_0
+
+\end{lstlisting}
+However, this gave me a divided by zero error, so I have to apply L'Hopital's rule to get the result. This gives me:
+\begin{equation}
+  \frac{d \omega_{k}}{d k} \eval _{k=0} = \frac{a \sqrt{ K}}{\sqrt{m}}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import limit
+
+# Apply L'Hopital's rule by evaluating the limit of the derivative as k approaches 0
+speed_of_sound = limit(d_omega_k_dk, k, 0)
+
+speed_of_sound
+\end{lstlisting}
+
 
 (iv) Show that in a large 1-D solid, the density (or degenercy) of normal modes with the frequencies between $\omega$ and $\omega+d \omega$ is
 
@@ -566,12 +659,58 @@ g(\omega) d \omega=\frac{2 N}{\pi \omega_{m} \sqrt{1-\left(\omega / \omega_{m}\r
 
 
 where $\omega_{m}$ is the maximum frequency of normal modes.
+\subsection{}
+We had the expression for the frequency:
+\begin{equation}
+\omega_k = \sqrt{\frac{2K}{m} (1 - \cos(a k))} = 2 \sqrt{\frac{K}{m}} \sin\left(\frac{1}{2} a k\right)
+\end{equation}
+We know from the periodic boundary conditions that $k=\frac{2 \pi n}{N a}$ where $n$ is any integer. We plug this in to get:
+\begin{equation}
+\omega_k = 2 \sqrt{\frac{K}{m}} \sin\left(\frac{\pi n}{N}\right)
+\end{equation}
+The maximum possible value of the frequency occurs when $\sin \left(\frac{\pi n}{N}\right) = 1$. This gives us:
+\begin{equation}
+\omega_m = 2 \sqrt{\frac{K}{m}}
+\end{equation}
+We know the relation:
+\begin{equation}
+  \frac{\dd{\omega }}{\dd{k}} = \frac{\dd{\omega }}{\dd{n}} \frac{\dd{n}}{\dd{k}} \rightarrow  \dd{n} \left( \frac{\dd{\omega }}{\dd{k} }\right) = \dd{\omega } \left( \frac{\dd{n}}{\dd{k} }\right)
+\end{equation}
+Solving for $\dd{n}$ we get:
+\begin{equation}
+  \dd{n} = \dd{\omega } \left( \frac{\dd{n}}{\dd{k} }\right) \left( \frac{\dd{\omega }}{\dd{k} }\right)^{-1}
+\end{equation}
+\begin{equation}
+  \frac{\dd{\omega }}{\dd{n}}= \frac{\dd{\omega }}{\dd{k} }\left( \frac{\dd{n}}{\dd{k} }\right)^{-1}
+\end{equation}
+Now, from our previous definition of the frequency, we know that:
+\begin{equation}
+  \frac{\dd{\omega }}{\dd{n}} = \frac{2\pi}{N} \sqrt{\frac{K}{m}} \cos\left(\frac{\pi n}{N}\right) =\omega_{m} \frac{\pi}{N} \cos\left(\frac{\pi n}{N}\right) 
+\end{equation}
+Now, we also know the expression for the frequency:
+\begin{equation}
+  \omega =\omega _{m} \sin\left(\frac{\pi n}{N}\right)
+\end{equation}
+Not fur how to forced from here.
 
 (v) Compare the Debye model and the exact results.
+\subsection{}
+What we found was that the density of normal mode with the frequencies between $\omega$ and $\omega+d \omega$ is:
+\begin{equation}
+g(\omega) d \omega=\frac{2 N}{\pi \omega_{m} \sqrt{1-\left(\omega / \omega_{m}\right)^{2}}} d \omega
+\end{equation}
 
 (a) If one is to make the Debye model for this 1-D solid, what is its Debye temperature $\Theta_{D}$ ? Why is the Debye frequency $\omega_{D}$ larger than the maximum frequency allowed in the system $\omega_{m}$ ?
+\subsection{}
+From the notes, we find that:
+\begin{equation}
+  \Theta_{D} = \frac{\hbar \omega_{D}}{k_B}
+\end{equation}
+Although I didn't perform this integration, I remember that at one point we made the approximation that the phonon spectrum is continuous and can be approximated by an integral. Not sure if this has something to do with it.
 
-(b) Show that one gets the same dependency of the heat capacity on temperature at very low temperature with the Debye approximation and with the exact degeneracy. Why does the Debye model give an accurate result even though unphysical normal modes are considered?
+(b) Show that one gets the same dependency of the heat capacity on temperature at very low temperature with the Debye approximation and with the exact degeneracy. Why does the Debye model give an accurate result even  unphysical normal modes are considered?
+\subsection{}
+When considering the heat capacity at a very low temperature, only low-energy phonons can be occupied. So even though the Debye model might consider frequencies above what is physical, these modes are not populated at low temperatures.
 
 
 \end{document}

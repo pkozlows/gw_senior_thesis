@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  17 FEB 2024 21:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  23 FEB 2024 21:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1164,51 +1164,51 @@ Package: xparse 2022-01-12 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2022/02/02 v3.17 expl3 case changing code for biblatex
 ))
-LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 33.
+LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 45.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 33.
+(Font)              scaled to size 12.0pt on input line 45.
 \@quotelevel=\count498
 \@quotereset=\count499
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 33.
-LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 33.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 45.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 45.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 33.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 33.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 45.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 33.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 33.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 45.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 33.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 33.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 45.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 45.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    ... okay on input line 45.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1279,34 +1279,34 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' not found.
 
 No file main.bbl.
-Package biblatex Info: Reference section=0 on input line 33.
-Package biblatex Info: Reference segment=0 on input line 33.
+Package biblatex Info: Reference section=0 on input line 45.
+Package biblatex Info: Reference segment=0 on input line 45.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 54.
+(Font)              scaled to size 17.28pt on input line 66.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 54.
+(Font)              scaled to size 14.4pt on input line 66.
 <caltech.png, id=4, 183.5658pt x 48.18pt>
 File: caltech.png Graphic file (type png)
 <use caltech.png>
-Package pdftex.def Info: caltech.png  used on input line 54.
+Package pdftex.def Info: caltech.png  used on input line 66.
 (pdftex.def)             Requested size: 144.54pt x 37.93752pt.
 [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./caltech.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 54.
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 66.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 54.
+(Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 54.
-LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 54.
+(Font)              scaled to size 10.0pt on input line 66.
+LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 66.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 10.0pt on input line 54.
+(Font)              scaled to size 10.0pt on input line 66.
  [2
 
 ] [3
@@ -1319,19 +1319,19 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 ]
 \c@blx@maxsegment@1=\count508
 \c@blx@sectionciteorder@1=\count509
-Package biblatex Info: Reference section=1 on input line 68.
-Package biblatex Info: Setting label 'refsection:1' on input line 68.
+Package biblatex Info: Reference section=1 on input line 80.
+Package biblatex Info: Setting label 'refsection:1' on input line 80.
 
 
-LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 68.
+LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 80.
 
 
-LaTeX Warning: Citation 'Cahn:etal:2016' undefined on input line 68.
+LaTeX Warning: Citation 'Cahn:etal:2016' undefined on input line 80.
 
 
-LaTeX Warning: Empty bibliography on input line 69.
+LaTeX Warning: Empty bibliography on input line 81.
 
-Package biblatex Info: Reference section=0 on input line 69.
+Package biblatex Info: Reference section=0 on input line 81.
 (./main.toc
 LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 3.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1minntx.fd
@@ -1362,52 +1362,42 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 
 ]
 No file main.nls.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 12.0pt on input line 79.
 
-LaTeX Warning: Citation 'GMP81' on page 1 undefined on input line 81.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 81.
-
-LaTeX Warning: Citation 'PP98' on page 1 undefined on input line 81.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 84.
-
-Overfull \hbox (14.0142pt too wide) in paragraph at lines 84--85
-\T1/ntxtt/m/n/12 https : / / www . overleaf . com / latex / learn / free -[] online -[] introduction -[] to -[]
+Overfull \hbox (100.06389pt too wide) in paragraph at lines 91--102
+\T1/ntxtlf/m/n/12 spa-tial or-bitals. [] 
  []
 
-File: caltech.png Graphic file (type png)
-<use caltech.png>
-Package pdftex.def Info: caltech.png  used on input line 98.
-(pdftex.def)             Requested size: 119.2467pt x 31.29822pt.
 [1
 
 
 
 
 ]
-\openout6 = `main.ent'.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 108.
+ [2
 
- [2] [3] [4
 
-
-] [5]
+] [3]
 \c@blx@maxsegment@2=\count510
 \c@blx@sectionciteorder@2=\count511
-Package biblatex Info: Reference section=2 on input line 157.
-Package biblatex Info: Setting label 'refsection:2' on input line 157.
+Package biblatex Info: Reference section=2 on input line 134.
+Package biblatex Info: Setting label 'refsection:2' on input line 134.
 
 
-LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 157.
+LaTeX Warning: Citation 'Cahn:etal:2015' undefined on input line 134.
 
 
-LaTeX Warning: Empty bibliography on input line 157.
+LaTeX Warning: Empty bibliography on input line 134.
 
-Package biblatex Info: Reference section=0 on input line 157.
-[6
+Package biblatex Info: Reference section=0 on input line 134.
+[4
+
+
+] [5
+
+
+] [6
 
 
 ] [7
@@ -1416,38 +1406,29 @@ Package biblatex Info: Reference section=0 on input line 157.
 ] [8
 
 
-] [9
+]
+
+LaTeX Warning: Empty bibliography on input line 144.
+
+[9
 
 
 ] [10
 
 
-]
-
-LaTeX Warning: Empty bibliography on input line 167.
-
-[11
-
-
-] [12
-
-
-] [13
+] [11
 
 
 ]
 runsystem(makeindex -s simple_letters main.idx)...executed safely (allowed).
 
- (./main.ind) [14
+ (./main.ind) (./main.ent) [12
 
 
+]
+\openout6 = `main.ent'.
 
-] (./main.ent
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 2.
-) [15
-
-] [16
+ [13
 
 
 ]
@@ -1474,18 +1455,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30570 strings out of 478268
- 573129 string characters out of 5846347
- 1388859 words of memory out of 5000000
- 48273 multiletter control sequences out of 15000+600000
- 540285 words of font info for 135 fonts, out of 8000000 for 9000
+ 30347 strings out of 478268
+ 568895 string characters out of 5846347
+ 1388856 words of memory out of 5000000
+ 48052 multiletter control sequences out of 15000+600000
+ 522679 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,11n,120p,1254b,1313s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,11n,120p,1254b,1044s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (23 pages, 182799 bytes).
+Output written on main.pdf (20 pages, 175550 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  530 words of extra memory for PDF output out of 10000 (max. 10000000)
 

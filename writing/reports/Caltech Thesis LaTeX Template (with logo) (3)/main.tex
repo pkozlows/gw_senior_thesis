@@ -25,6 +25,18 @@
     % IMPORTANT: load a style suitable for your discipline
     style=authoryear
 ]{biblatex}
+\usepackage{nomencl}
+\makenomenclature
+%% This code creates the groups
+% -----------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{M}{Molecular orbital basis}{%
+  \ifstrequal{#1}{N}{Number sets}{%
+  \ifstrequal{#1}{O}{Other symbols}{}}}%
+]}
+% -----------------------------------------
 
 % Name of your .bib file(s)
 \addbibresource{example.bib}
@@ -75,57 +87,22 @@
 
 \mainmatter
 
-\chapter{Introduction}
-Start off all chapters with \verb|chapter|. \index{chapter!numbered} \verb|\extrachapter| will give you an unnumbered chapter that's added to the Table of Contents. \index{chapter!unnumbered}
-
-Here's an example of a citation \citep{GMP81}. Here's another \citep{PP98}. These will appear in the big bibliography at the end of the thesis.
-\index{bibliography}
-
-If you're new to \LaTeX{} and would like to begin by learning the basics, please see our free online course available at:\\ \url{https://www.overleaf.com/latex/learn/free-online-introduction-to-latex-part-1} \index{LaTeX@\LaTeX}
-
-You can define nomenclatures \index{nomenclature} as you talk about key terms in your thesis. So what's a galaxy? \nomenclature{Galaxy}{A system of stars independent from all other systems}
-
-
-\section{$G_0W_0$}
-\subsection{Interpretive procedure}
-The procedure that was used to compute the quasiparticle energies is given by the below equation:
-\begin{equation}
-    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT }] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
-\end{equation}
-We explain the notation starting from left to right. The first term response to taking the diagonal $\delta _{pq}$ of the harte fog fog matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma $. These electron densities are obtained form a previous mean field calculation, either $\gamma _{DFT}$ or $\gamma _{HF}$. 
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=.3\textwidth]{caltech.png}
-\caption{This is a figure}\label{fig:logo}
-\index{figures}
-\end{figure}
-
-\subsection{This is a subsection}
-
-\begin{table}[hbt!]
-\centering
-\begin{tabular}{ll}
+\chapter{nomenclature}
+What follows is uses the restricted Hartree-Fock formalism with doubly occupied spatial orbitals.
+\begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}
+Symbol & Description \\
 \hline
-Area & Count\\
-\hline
-North & 100\\
-South & 200\\
-East & 80\\
-West & 140\\
-\hline
+\(i,j,k,l\) & Occupied orbitals \\
+\(a,b,c,d\) & Virtual orbitals \\
+\(p,q,r,s\) & General MO basis \\
+\(\mu,\nu,\lambda,\sigma\) & AO basis \\
+\((\mu\nu|\lambda\sigma)\) & Two-electron integrals \\
+
 \end{tabular}
-\caption{This is a table}\label{tab:sample}
-\index{tables}
-\end{table}
 
-\lipsum[3] \nomenclature{Asteroid}{A very small planet ranging from 1,000 km to less than one km in diameter. Asteroids are found commonly around other larger planets}
 
-\lipsum[4-5] 
 
-Here's an endnote.\endnote{Endnotes are notes that you can use to explain text in a document.}
 
-\section{This is Another Section}
-\lipsum[6-7] 
 
 \chapter{$G_0W_0$}
 \section{Interpretive procedure}
@@ -133,7 +110,7 @@ The procedure that was used to compute the quasiparticle energies is given by th
 \begin{equation}
     \delta_{pq}F_{pq}^{HF}[\gamma^{DFT}] + \Sigma_{p}^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}
 \end{equation}
-We explain the notation starting from left to right. The first term responds to taking the diagonal $\delta_{pq}$ of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. 
+We explain the notation starting from left to right. The first term corresponds to taking the diagonal $\delta_{pq}$ of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. The second term evaluates the real part of the correlation self-energy for the $\varepsilon_{p}^{QP}$ determined in the previous  iteration. The right side of the equality gives the updated quasiparticle energy.
 \subsection{The Fock Matrix}
 In the basis of atomic orbitals, this is given by:
 \begin{equation}

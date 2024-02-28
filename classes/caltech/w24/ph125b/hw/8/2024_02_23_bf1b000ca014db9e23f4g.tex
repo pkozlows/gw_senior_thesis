@@ -103,7 +103,7 @@ Now we project this expression onto an Aubrey state, called $|n\rangle$ and expa
 \end{equation}
 where we defined $\omega _{n0} \equiv \omega _n - \omega _0$. The make aliment does not depend on time, so we can take it outside of the integral:
 \begin{equation}
-\left\langle n|\psi(t)\right\rangle = \delta _{n0} - \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \int_{t_0}^t e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1
+\left\langle n|\psi(t)\right\rangle = \delta _{n0} -i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \int_{t_0}^t e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1
 \end{equation}
 We know that the lower bound $t_0$ is 0, so we can replace it with that:
 \begin{equation}
@@ -126,7 +126,7 @@ So we can use this to do the integrals:
 \end{equation}
 Plugging these back into the expression for the wave function gives:
 \begin{equation}
-\left\langle n|\psi(t)\right\rangle = \delta _{n0} - \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left\langle n|\psi(t)\right\rangle = \delta _{n0} -i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
 The total wave function will be a sum over these projections:
 \begin{equation}
@@ -134,11 +134,15 @@ The total wave function will be a sum over these projections:
 \end{equation}
 The Kronecker delta will kill off all the terms in the sum except for the one where $n=0$, so we can simplify the sum to:
 \begin{equation}
-\left|\psi(t)\right\rangle = \left|0\right\rangle - \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left|\psi(t)\right\rangle = \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
-This is in the Heisenberg representation, so if we want to go to the Schrödinger representation, we have to multiply the RHS by $e^{-i \omega _0 t}$:
+This is in the Heisenberg representation, so if we want to go to the Schrödinger representation, we have to multiply the RHS by $e^{i\omega_n t}$:
 \begin{equation}
-\left|\psi(t)\right\rangle = e^{-i \omega _0 t} \left|0\right\rangle - \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|Z\right|0\right\rangle \left( \frac{e^{i\left(\omega_{n 0}-\omega_0+\omega\right) t}-e^{-i \omega_0 t}}{2\left(\omega_{n 0}+\omega\right)}-\frac{e^{i\left(\omega_{n 0}-\omega_0-\omega\right) t}-e^{-i \omega_0 t}}{2\left(\omega_{n 0}-\omega\right)} \right)
+\left|\psi_t\right\rangle = e^{i\omega_{0} t} \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} e^{i\omega_n t} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\end{equation}
+And then we multiply through by $e^{-i\omega_0 t}$ to get the Schrödinger representation:
+\begin{equation}
+e^{-i\omega t}\left|\psi_t\right\rangle = \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} e^{i(\omega_n - \omega_0) t} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
 % \begin{equation}
 % \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1 = \frac{1}{2i} \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} e^{i \omega t_1} d t_1 - \frac{1}{2i} \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} e^{-i \omega t_1} d t_1
@@ -174,7 +178,16 @@ This is in the Heisenberg representation, so if we want to go to the Schrödinge
 Compute this to first order in the external field. You may assume that the natural oscillator $\left(\omega_{n 0}\right)$ time dependence damps out (even though we haven't put in a damping term) and may be neglected, so only the forced oscillation from the external field is left. The discussion on Shankar page 459 may help to deal with the zeroth order term. Your homework from last week can be useful to express matrix elements of $P_{z}$ in terms of matrix elements of $Z$. Note the appearance of the oscillator strengths ( up to a factor of $m$ ) you found a sum rule for last week.
 
 We have derived a result that can be used in providing a model for the dielectric constant of a material.
-
+\subsection{}
+We know that the Mathis amendments of $P_z$ are related to those of $Z$ by:
+\begin{equation}
+\left\langle n\left|P_{z}\right|0\right\rangle = -i m \omega_{n 0} \left\langle n\left|Z\right|0\right\rangle
+\end{equation}
+So we plug this into our previous expression for the wave function:
+\begin{equation}
+\left|\psi(t) \right\rangle = \left|0\right\rangle + \frac{q \omega _{n0}}{\omega } \sum_{n} \left|n\right\rangle \left\langle n\left|Z\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\end{equation}
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{30}
   \item In our discussion of scattering theory, we supposed we had a beam of particles from some ensemble of wave packets, and obtained an "effective" (observed) differential cross-section:
@@ -187,10 +200,48 @@ We have derived a result that can be used in providing a model for the dielectri
 
 
 As discussed in class, $P(\mu ; \alpha ; \mathbf{x})$ is the probability that a particle with beam parameters $(\alpha ; \mathbf{x})$ scatters into solid angle element $d \Omega_{\mathbf{u}}$ about direction $\mathbf{u}$. The probability density function for $\alpha$, which could be a multi-dimensional quantity, is $f(\alpha)$. This formula assumes that the beam particles are distributed uniformly in a disk of radius $R$ centered at the origin in the $\hat{e}_{1}-\hat{e}_{2}$ plane, and that the distribution of the shape parameter $\alpha$ is uncorrelated with position in this disk. The purpose of this problem is to see that this can be generalized further, and in the process to give you a chance to think about what we are doing.
+\subsection{}
+(a) Try to obtain an expression for $\sigma_{\text {eff }}(\mathbf{u})$ without making these assumptions. You will likely find it useful to define a notion of an "effective area" of the beam.\\
+In class, we assumed that the beam particles were distributed uniformly in a disk of radius $R$ centered at the origin in the $\hat{e}_{1}-\hat{e}_{2}$ plane.In this case, the formula for the probability is different because we want to consider a $P(\alpha , x)$ instead of $P(\alpha )$. We know that the probability is different because our distribution depends on the position of the particle. We can write the probability as:
+\begin{equation}
+P(\mu ; \alpha ; \mathbf{x}) = \int_{(\infty)}^{(\infty)} \dd{\textbf{q}}\int_{(\infty)}^{(\infty)} \dd{\textbf{q}^{\prime}} \delta(q-q^{\prime}) T(q\textbf(u), \textbf{q})T^*(q^{\prime}\textbf(u), \textbf{q}^{\prime}) \phi(\textbf{q}; \alpha) \phi_0^*(\textbf{q}^{\prime}; \alpha) e^{-ix(q-q^{\prime})}
+\end{equation}
+And then we know that the distribution $f(\alpha, \textbf{x})$ is normalized, so we can write it as:
+\begin{equation}
+1 = \int_{(\infty)}^{(\infty)} \dd{\alpha} \int_{(\infty)}^{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x})
+\end{equation}
+And the differential cross section for a certain $\textbf{u}$ is given by:
+\begin{equation}
+\frac{d\sigma_{\text{eff}^{\textbf{u}}}}{d\Omega} = A_{\text{eff}}(u) \int_{(\infty)}^{(\infty)} \dd{\alpha} \int_{(\infty)}^{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x}) P(\mu ; \alpha ; \mathbf{x})
+\end{equation}
+But then for the total effective cross section:
+\begin{equation}
+\sigma_{\text{T eff}}(\textbf{u}) = a
+\end{equation}
+for $|\textbf{x}| < \sqrt{\frac{\pi}{a}}$. But then we know that the probability for all solid angles is 1 within the domainc, so we can write:
+\begin{equation}
+\int_{(\infty)} P \dd{\Omega} = 1
+\end{equation}
+So then for the target area $a$, we know it is given by:
+\begin{equation}
+a = A_{\text{eff}}(u) \int_{(\infty)}^{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})
+\end{equation}
+Rearranging terms gives us an expression for the effective area:
+\begin{equation}
+A_{\text{eff}}(a) = \frac{a}{\int_{(\infty)}^{(\infty)} \dd{\alpha} \int_{(\infty)}^{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
+\end{equation}
+Then the effective area is the limit as the target area goes to 0:
+\begin{equation}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(\infty)}^{(\infty)} \dd{\alpha} \int_{(\infty)}^{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
+\end{equation}
+I need to take the bands of the integral
+\subsection{}
 
-(a) Try to obtain an expression for $\sigma_{\text {eff }}(\mathbf{u})$ without making these assumptions. You will likely find it useful to define a notion of an "effective area" of the beam.
-
-(b) Using part (a), write down an expression for $\sigma_{\text {eff }}(\mathbf{u})$ appropriate to the case where the beam particles are distributed according to a Gaussian of standard deviation $\rho$ in radial distance from the origin (in the $\hat{e}_{2}-\hat{e}_{3}$ plane), and where the wave packets are also drawn from a Gaussian distribution in the expectation value of the magnitude of the momentum. Let the standard deviation of this momentum distribution be $\alpha=\alpha(\mathbf{x})$, for beam position $\mathbf{x}$. Your answer will likely have an intuitive feel to it.
+(b) Using part (a), write down an expression for $\sigma_{\text {eff }}(\mathbf{u})$ appropriate to the case where the beam particles are distributed according to a Gaussian of standard deviation $\rho$ in radial distance from the origin (in the $\hat{e}_{2}-\hat{e}_{3}$ plane), and where the wave packets are also drawn from a Gaussian distribution in the expectation value of the magnitude of the momentum. Let the standard deviation of this momentum distribution be $\alpha=\alpha(\mathbf{x})$, for beam position $\mathbf{x}$. Your answer will likely have an intuitive feel to it.\\
+A Gaussian distribution in the expectation value of the magnitude of the momentum is given by:
+\begin{equation}
+f(\alpha) = \frac{1}{\sqrt{2 \pi} \rho} e^{-\frac{\alpha^2}{2 \rho^2}}
+\end{equation}1
 
 (c) For your generalized result of part (a), try to repeat our limiting case argument to obtain the "fundamental" cross section.
 

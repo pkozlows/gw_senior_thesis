@@ -7,6 +7,8 @@
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
 \usepackage{graphicx}
+\usepackage{physics}
+
 
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
@@ -59,14 +61,172 @@ Out of 100 Points
 \begin{enumerate}
   \item Consider a liquid at temperature $T$ in equilibrium with its vapor (at pressure $p$ ). Assume that the liquid-vapor interface is planar and that the vapor can be regarded as ideal.
 \end{enumerate}
+\subsection{}
+(i) (20 points) Use the Maxwell-Boltzmann distribution to find the average number of vapor molecules that hit the interface per unit area per unit time.\\
+The distributio is given by:
+\begin{equation}
+f(\textbf{v}) \dd{\textbf{v}} = \left(\frac{m}{2\pi k T}\right)^{3/2} \exp\left(-\frac{m |\textbf{v}|^2}{2 k T}\right) \dd{\textbf{v}}
+\end{equation}
+where $m$ is the mass of the molecule, $k$ is the Boltzmann constant, and $T$ is the temperature.
+We know that $|\textbf{v}|^2 = v_x^2 + v_y^2 + v_z^2$.
+We are interested in the slugs to through and interface, so we want to consider the expectation value of the speed in the z direction.
+\begin{equation}
+\langle v_z \rangle = \left(\frac{m}{2\pi k T}\right)^{3/2} \int_{-\infty}^{\infty} \exp\left(-\frac{m v_x^2}{2 k T}\right) \dd{v_x} \int_{-\infty}^{\infty} \exp\left(-\frac{m v_y^2}{2 k T}\right) \dd{v_y} \int_{-\infty}^{\infty} v_z \exp\left(-\frac{m v_z^2}{2 k T}\right) \dd{v_z}
+\end{equation}
+The first two integrals are just cations that each evaluate to $\sqrt{2\pi k T/m}$, so we are left with:
+\begin{equation}
+\langle v_z \rangle = \left(\frac{m}{2\pi k T}\right)^{1/2} \int_{-\infty}^{\infty} v_z \exp\left(-\frac{m v_z^2}{2 k T}\right) \dd{v_z}
+\end{equation}
+But we only care about the velocity in the positive direction, so this becomes:
+\begin{equation}
+\langle v_{z+} \rangle = \left(\frac{m}{2\pi k T}\right)^{1/2} \int_{0}^{\infty} v_z \exp\left(-\frac{m v_z^2}{2 k T}\right) \dd{v_z}
+\end{equation}
+\begin{equation}
+  \langle v_{z+} \rangle = \frac{\sqrt{2kT}}{2 \sqrt{\pi m}}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import *
 
-(i) (20 points) Use the Maxwell-Boltzmann distribution to find the average number of vapor molecules that hit the interface per unit area per unit time.
+# Define symbols for this \langle v_{z+} \rangle = \left(\frac{m}{2\pi k T}\right)^{1/2} \int_{0}^{\infty} v_z \exp\left(-\frac{m v_z^2}{2 k T}\right) \dd{v_z}
+m, T, k = symbols('m T k', real=True, positive=True)
+v_z = symbols('v_z', real=True)
 
-(ii) (10 points) If a fraction $\phi$ of these molecules are bounced back, find the rate of evaporation of the liquid, i.e., the number of molecules that evaporate from the liquid per unit area per unit time.
+# Define the integrand
+integrand = v_z * exp(-m * v_z**2 / (2 * k * T))
+
+# Compute the integral
+integral = integrate(integrand, (v_z, 0, oo))
+
+# Simplify the result
+integral = simplify(integral)
+
+# multiply by the prefactor
+integral = sqrt(m / (2 * pi * k * T)) * integral
+
+# simplify the result
+integral = simplify(integral)
+
+# Print the result
+print(latex(integral)) 
+\end{lstlisting}
+The total flux $j$ is given by:
+\begin{equation}
+j = \rho \langle v_{z+} \rangle
+\end{equation}
+From the ideal gas law, we get that $\rho = \frac{p}{kT}$, so the flux is:
+\begin{equation}
+j = \frac{p}{kT} \frac{\sqrt{2kT}}{2 \sqrt{\pi m}}
+\end{equation}
+\subsection{}
+(ii) (10 points) If a fraction $\phi$ of these molecules are bounced back, find the rate of evaporation of the liquid, i.e., the number of molecules that evaporate from the liquid per unit area per unit time.\\
+For computing the rat of evaporation, we want to instead consider the compliment of the fraction of molecules bouncing back, or $1-\phi$. So the rate of evaporation is:
+\begin{equation}
+j_{\text{evap}} = j \cdot (1-\phi) = \frac{p}{kT} \frac{\sqrt{2kT}}{2 \sqrt{\pi m}} \cdot (1-\phi)
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item (20 points) Derive the adsorption isotherm for a 2-component ideal gas containing species $A$ and $B$. Assume that each adsorption site can only be singly occupied. The adsorption energy for species $A$ is $-\varepsilon_{A}$ and that for species $B$ is $-\varepsilon_{B}$. Express your result in terms of the partial pressures of each component.
+\subsection{}
+The grand canonical partition function is given by 
+\begin{equation}
+\Xi\left(N, T, \mu_A, \mu_B\right)=\sum_{N_A=0}^N \sum_{N_B=0}^{N-N_A}\left(\begin{array}{c}
+N \\
+N_A
+\end{array}\right)\left(\begin{array}{c}
+N-N_A \\
+N_B
+\end{array}\right) e^{\beta N_A\left(\mu_A+\epsilon_A\right)} e^{\beta N_B\left(\mu_B+\epsilon_B\right)}
+\end{equation}
+We will attempt to explain this form. The first submission is over the first species and it runs from 0 to the total particle number. The second submission is similar and it runs from 0 to the number of particles left after the first selection. The first binomial coefficient represents the number of ways to choose $N_A$ particles from the total number of particles. The second binomial coefficient represents the number of ways to choose $N_B$ particles from the remaining number of particles after the first selection. The first exponential term represents the energy and chemical potential contribution from the first species and the second exponential term represents the energy and chemical potential contribution from the second species. We can use the multinomial theorem to simplify this expression:
+\begin{equation}
+\Xi\left(N, T, \mu_A, \mu_B\right)=(1+e^{\beta\left(\mu_A+\epsilon_A\right)}+e^{\beta\left(\mu_B+\epsilon_B\right)})^N
+\end{equation}
+The fraction of sites occupied by species $A$ is $\Theta _{A} = \frac{\langle N_A \rangle}{N}$ and the fraction of sites occupied by species $B$ is $\Theta _{B} = \frac{\langle N_B \rangle}{N}$. We want to find $\langle N_A \rangle$ and $\langle N_B \rangle$. We know that the grand potential is given by:
+\begin{equation}
+\Omega = -kT \ln \Xi
+\end{equation}
+and then also the differential of the grand potential is given by:
+\begin{equation}
+\dd{\Omega} = -S \dd{T} - P \dd{V} - \sum_i \mu_i \dd{N_i} = -S \dd{T} - P \dd{V} - N_A \dd{\mu_A} - N_B \dd{\mu_B}
+\end{equation}
+So the expectation value of the particle number of the first species is given by:
+\begin{equation}
+\langle N_A \rangle = -\left(\frac{\partial \Omega}{\partial \mu_A}\right)_{T, V, \mu_B} = \left( \frac{\partial \ln \Xi}{\partial \beta \mu_A}\right)_{T, V, \mu_B}
+\end{equation}
+So, using this algorithm, we can get $\Theta _{A}$ and $\Theta _{B}$.
+\begin{equation}
+\Theta_A=\frac{\exp \left(\frac{\epsilon_A+\mu_A}{k T}\right)}{\exp \left(\frac{\epsilon_A+\mu_A}{k T}\right)+\exp \left(\frac{\epsilon_B+\mu_B}{k T}\right)+1}
+\end{equation}
+\begin{equation}
+\Theta_B=\frac{\exp \left(\frac{\epsilon_B+\mu_B}{k T}\right)}{\exp \left(\frac{\epsilon_A+\mu_A}{k T}\right)+\exp \left(\frac{\epsilon_B+\mu_B}{k T}\right)+1}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, exp, diff, solve, ln, simplify
+
+# Define symbols
+N, T, beta, mu_A, mu_B, epsilon_A, epsilon_B = symbols('N T beta mu_A mu_B epsilon_A epsilon_B')
+N_A, N_B = symbols('N_A N_B')
+k = symbols('k')
+
+# Define the grand canonical partition function simplified expression
+Xi = (1 + exp(beta*(mu_A + epsilon_A)) + exp(beta*(mu_B + epsilon_B)))**N
+
+# Calculate the grand potential Omega
+Omega = -k*T*ln(Xi)
+
+# Calculate the expectation value of N_A and N_B
+dOmega_dmuA = diff(Omega, mu_A)
+dOmega_dmuB = diff(Omega, mu_B)
+
+# Solve for <N_A> and <N_B>
+N_A_avg = -dOmega_dmuA
+N_B_avg = -dOmega_dmuB
+
+# Calculate the fraction of sites occupied by species A and B
+Theta_A = N_A_avg / N
+Theta_B = N_B_avg / N
+
+simplify(N_A_avg), simplify(N_B_avg), simplify(Theta_A), simplify(Theta_B)
+
+\end{lstlisting}
+We have $\theta_A\left(T, \epsilon_A, \epsilon_B, \mu_A, \mu_B\right)$ and we want to go to $\theta_A\left(T, \epsilon_A, \epsilon_B, P_A, P_B\right)$. We can use the equality of the chemical potentials in adsorption:
+\begin{equation}
+\beta \mu_A^{\text {ads }}=\beta \mu_A^{\text {free }}=\rho_A \Lambda_A^3
+\end{equation}
+And from that ideal gas law, we know that $\rho_A = \frac{P_A}{kT}$, so we can write:
+\begin{equation}
+\beta \mu_A^{\text {ads }}=\frac{P_A \Lambda_A^3}{kT}
+\end{equation}
+and for the second species:
+\begin{equation}
+\beta \mu_B^{\text {ads }}=\frac{P_B \Lambda_B^3}{kT}
+\end{equation}
+Substituting these into the expression for $\Theta_A$ and $\Theta_B$and simplifying::
+\begin{equation}
+\Theta_A = \frac{\Lambda_A^3 P_A \exp\left(\frac{\epsilon_A}{T k}\right)}{\Lambda_A^3 P_A \exp\left(\frac{\epsilon_A}{T k}\right) + \Lambda_B^3 P_B \exp\left(\frac{\epsilon_B}{T k}\right) + T k}
+\end{equation}
+\begin{equation}
+\Theta_B = \frac{\Lambda_B^3 P_B \exp\left(\frac{\epsilon_B}{T k}\right)}{\Lambda_A^3 P_A \exp\left(\frac{\epsilon_A}{T k}\right) + \Lambda_B^3 P_B \exp\left(\frac{\epsilon_B}{T k}\right) + T k}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Define new symbols for partial pressures P_A and P_B, and thermal de Broglie wavelengths Lambda_A and Lambda_B
+P_A, P_B, Lambda_A, Lambda_B = symbols('P_A P_B Lambda_A Lambda_B')
+
+# Replace beta * mu_A and beta * mu_B in the expressions for Theta_A and Theta_B
+Theta_A_expr = exp((epsilon_A + k*T*ln(P_A * Lambda_A**3 / (k*T)))/(k*T)) / \
+               (exp((epsilon_A + k*T*ln(P_A * Lambda_A**3 / (k*T)))/(k*T)) + 
+                exp((epsilon_B + k*T*ln(P_B * Lambda_B**3 / (k*T)))/(k*T)) + 1)
+
+Theta_B_expr = exp((epsilon_B + k*T*ln(P_B * Lambda_B**3 / (k*T)))/(k*T)) / \
+               (exp((epsilon_A + k*T*ln(P_A * Lambda_A**3 / (k*T)))/(k*T)) + 
+                exp((epsilon_B + k*T*ln(P_B * Lambda_B**3 / (k*T)))/(k*T)) + 1)
+
+simplify(Theta_A_expr), simplify(Theta_B_expr)
+\end{lstlisting}
 \section{}
   \item For the noninteracting Ising model, the joint probability for the system factorizes into a product of the probability for each spin, i.e., $P(\{s\})=\prod_{i} p_{i}\left(s_{i}\right)$.
 
@@ -94,7 +254,7 @@ S=-k \sum_{[s] } \sum_{i} \ln p_{i}\left(s_{i}\right) \prod_{i} p_{i}\left(s_{i}
 We can use the fact that the spins are not interacting to chance introduce a song over the individual spins at a given site $s_i$:
 \begin{equation}
 S=-k \sum_{i} \sum_{s_{i}} p_{i}\left(s_{i}\right) \ln p_{i}\left(s_{i}\right)
-\end{equation}
+ \end{equation}
 
 \subsection{}
 (ii) (5 points) Introducing the order parameter (average spin) $m_{i}=\left\langle s_{i}\right\rangle$, show that the variational free energy is
@@ -113,7 +273,7 @@ where $E$ is the energy of the system and $S$ is the entropy. We found the energ
 \end{equation}
 So using our previously derived expression for the entropy, we can plug in to the above equation for the free energy:
 \begin{equation}
-G=-\sum_i \sum_{s_i} h_i s_i p_i\left(s_i\right)-kT\sum_i \sum_{s_i} p_i\left(s_i\right) \ln p_i\left(s_i\right)
+G=-\sum_i \sum_{s_i} h_i s_i p_i\left(s_i\right)+kT\sum_i \sum_{s_i} p_i\left(s_i\right) \ln p_i\left(s_i\right)
 \end{equation}
 But we know that the sum of the probabilities that a given state has a spin pointing up or down has to be 1: $p_i\left(s_i=1\right)+p_i\left(s_i=-1\right)=1$. Also, from the definition of the magnetization we know that $m_i=\left\langle s_i\right\rangle=p_i\left(s_i=1\right)-p_i\left(s_i=-1\right)$. So we can write the spin probability in terms of the magnetization as:
 \begin{equation}
@@ -121,7 +281,7 @@ p_i\left(s_i=\pm1\right)=\frac{1\pm m_i}{2}
 \end{equation}
 We can use this to get read of the sum over the individual spins at a given site and rewrite this in terms of the magnetization:
 \begin{equation}
-G=-\sum_i h_i m_i-kT\sum_i \left(\frac{1+m_i}{2} \ln \frac{1+m_i}{2}+\frac{1-m_i}{2} \ln \frac{1-m_i}{2}\right)
+G=-\sum_i h_i m_i+kT\sum_i \left(\frac{1+m_i}{2} \ln \frac{1+m_i}{2}+\frac{1-m_i}{2} \ln \frac{1-m_i}{2}\right)
 \end{equation}
 \subsection{}
 
@@ -161,13 +321,9 @@ solution = solve(dG_dmi_correct, mi)
 
 solution
 \end{lstlisting}
-Now we want to plug this versal in to the expression for the free energy that we derived in the previous part, which is:
+Now, that we have found this equation of state, we want to plug it back into our expression for the variational free energy:
 \begin{equation}
-G=-\sum_i h_i m_i-kT\sum_i \left(\frac{1+m_i}{2} \ln \frac{1+m_i}{2}+\frac{1-m_i}{2} \ln \frac{1-m_i}{2}\right)
-\end{equation}
-We plug in our expression for the magnetization:
-\begin{equation}
-G=-\sum_i h_i \tanh \left(\beta h_i\right)-kT\sum_i \left(\frac{1+\tanh \left(\beta h_i\right)}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{1-\tanh \left(\beta h_i\right)}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}\right)
+G=-\sum_i h_i \tanh \left(\beta h_i\right) + kT \sum_i \left(\frac{1+\tanh \left(\beta h_i\right)}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{1-\tanh \left(\beta h_i\right)}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}\right)
 \end{equation}
 \section{}
 \begin{enumerate}
@@ -248,6 +404,10 @@ So the trace of this matrix is:
 \begin{equation}
 \operatorname{Tr}\left(\mathbf{T}^{N}\right)=\lambda_{+}^{N}+\lambda_{-}^{N}
 \end{equation}
+Because $\lambda_{+}$ is even slightly larger than $\lambda_{-}$, in the thermo dynamic limit with a large $N$, we can approximate:
+\begin{equation}
+\operatorname{Tr}\left(\mathbf{T}^{N}\right)\approx\lambda_{+}^{N}
+\end{equation}
 \subsection{}
 
 (ii) (10 points) Show that the eigenvalues are
@@ -268,13 +428,59 @@ For the term outside of the square root we can take out a common factor of $e^{\
 \begin{equation}
 \lambda_{ \pm}=\mathrm{e}^{\beta K} \cosh (\beta h) \pm \frac{\sqrt{\left(e^{\beta(K - h)} + e^{\beta(K + h)}\right)^2 - 8\sinh(2K\beta)}}{2}
 \end{equation}
-We see that the experiential term inside of the prentices can also be turned into a $\cosh$ term using the identity $\cosh (\beta h) = \frac{e^{\beta h} + e^{-\beta h}}{2}$:
-\begin{equation}
-\lambda_{ \pm}=\mathrm{e}^{\beta K} \cosh (\beta h) \pm\frac{\sqrt{\left( 2e^{\beta K} \cosh (\beta h) \right)^2 - 8\sinh(2K\beta)}}{2}
-\end{equation}
 \subsection{}
 (iii) (10 points) Examine and comment on the behavior of entropy and energy at $T=0$ and $T=\infty$.
+Since we know the partition function, the expression for the energy is:
+\begin{equation}
+\langle E\rangle=-\frac{\partial \ln Z}{\partial \beta}
+\end{equation}
+We start by considering $\ln Z$:
+\begin{equation}
+\ln Z = N \ln \lambda_{+}
+\end{equation}
+taking the derivative with respect to $\beta$, we get:
+\begin{equation}
+\langle E\rangle=-N\left(\frac{K e^{2 \beta K}+h \sinh (\beta h)}{\sqrt{e^{4 \beta K} \sinh ^2(\beta h)+1}}+K\right)
+\end{equation}
+In the limit of $T=0$, $\beta \rightarrow \infty$, the energy will be:
+\begin{equation}
+\langle E\rangle=-N\left(\frac{K e^{2 \beta K}}{e^{2 \beta K}\sinh(\beta h)}+K\right)=-N\left(\frac{K}{\sinh(\beta h)}+K\right)=-NK
+\end{equation}
+In the limit of $T=\infty$, $\beta \rightarrow 0$, the energy will be:
+\begin{equation}
+\langle E\rangle=-N\left( \frac{1}{1} + K\right)=-N(1+K)
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, exp, cosh, sinh, sqrt, diff, ln
 
+# Define symbols
+beta, K, h, N = symbols('beta K h N', real=True)
+
+# Define lambda_+ based on the given expression
+lambda_plus = exp(beta * K) * cosh(beta * h) + sqrt(exp(2 * beta * K) * sinh(beta * h)**2 + exp(-2 * beta * K))
+
+# Compute the derivative of ln(lambda_+) with respect to beta
+d_ln_lambda_plus_dbeta = diff(ln(lambda_plus), beta)
+
+# Energy expression
+E = -N * d_ln_lambda_plus_dbeta
+
+E.simplify()
+\end{lstlisting}
+
+We know that:
+\begin{equation}
+S=k(\ln Z+\beta E)
+\end{equation}
+Substituting in the expression for the partition function:
+\begin{equation}
+S=k\left(N \ln \lambda_{+}+\beta E\right)
+\end{equation}
+Now, we substitute for the energy and $\lambda_{+}$:
+\begin{equation}
+S=k\left(N \ln \lambda_{+}+\beta E\right)=k\left(N \ln \lambda_{+}-\beta N\left(\frac{K e^{2 \beta K}+h \sinh (\beta h)}{\sqrt{e^{4 \beta K} \sinh ^2(\beta h)+1}}+K\right)\right)
+\end{equation}
 (iv) (Bonus 15 points) Show that the spin-spin correlation function at zero external field is given by
 
 

@@ -29,11 +29,19 @@ for bond_distance in np.arange(0.5, 6.0, 0.25):
     fci_dm = fci_solver.make_rdm1(fci_wfn, norbs, mf.mol.nelectron)
     # now do dtda
     g0w0_dtda_dm = lin_gw_dm(my_dtda(mf), mf)
-    tda_e, tda_wfn = np.linalg.eig(g0w0_dtda_dm)
+    # assert that this density matrix is hermitian
+    assert np.allclose(g0w0_dtda_dm, g0w0_dtda_dm.T)
+    tda_e, tda_wfn = np.linalg.eigh(g0w0_dtda_dm)
+    # sort the energies and reverse order
+    tda_e = np.sort(tda_e)[::-1]
     diag_tda = np.diag(tda_e)
     # now do drpa
     g0w0_drpa_dm = lin_gw_dm(my_drpa(mf), mf)
-    drpa_e, drpa_wfn = np.linalg.eig(g0w0_drpa_dm)
+    # assert that this density matrix is hermitian
+    assert np.allclose(g0w0_drpa_dm, g0w0_drpa_dm.T)
+    drpa_e, drpa_wfn = np.linalg.eigh(g0w0_drpa_dm)
+    # sort the energies and reverse order
+    drpa_e = np.sort(drpa_e)[::-1]
     diag_drpa = np.diag(drpa_e)
 
     # Add occupations for each method
@@ -49,7 +57,7 @@ for state in [1, 2]:
                  marker=markers[method], color=colors[state], linestyle='None', label=f"{method.upper()} State {state}" if state == 1 else None)
 
 # Label the axes
-plt.xlabel('Bond Distance (Angstroms)')
+plt.xlabel('Bond Distance (10^-1 Angstroms)')
 plt.ylabel('Natural Occupation')
 
 # Creating a custom legend

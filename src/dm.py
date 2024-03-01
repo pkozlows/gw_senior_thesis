@@ -20,7 +20,7 @@ def lin_gw_dm(td, mf):
 
     # started with the occupied block
     # Create the delta matrix
-    delta_matrix = np.eye(n_occupied)
+    delta_matrix = np.identity(n_occupied)
     # create the part in the summation
     occ_num = np.einsum('ias,jas->ijas', V_pqn[:n_occupied, n_occupied:, :], V_pqn[:n_occupied, n_occupied:, :])
     occ_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
@@ -33,7 +33,7 @@ def lin_gw_dm(td, mf):
     virt_num = np.einsum('ais,bis->iabs', V_pqn[n_occupied:, :n_occupied, :], V_pqn[n_occupied:, :n_occupied, :])
     virt_denom = (orbital_energies[:n_occupied, None, None] - orbital_energies[None, n_occupied:, None] - omega[None, None, :])
     combined_virt_denom = np.einsum('ias,ibs->iabs', virt_denom, virt_denom)
-    virt_block = (-1)*np.einsum('iabs,iabs->ab', virt_num, 1/(combined_virt_denom))
+    virt_block = np.einsum('iabs,iabs->ab', virt_num, 1/(combined_virt_denom))
 
     # now the mixed block
     first_num = np.einsum('ias,bas->iabs', V_pqn[:n_occupied, n_occupied:, :], V_pqn[n_occupied:, n_occupied:, :])
@@ -46,11 +46,19 @@ def lin_gw_dm(td, mf):
 
     mixed_block = (1/(orbital_energies[:n_occupied, None] - orbital_energies[None, n_occupied:]))*(first_sum - second_sum)
 
+    # if the imaginary part is 0, convert each block to the dtype of np.real
+    if np.imag(occ_block).all() == 0:
+        occ_block = np.real(occ_block)
+    if np.imag(virt_block).all() == 0:
+        virt_block = np.real(virt_block)
+    if np.imag(mixed_block).all() == 0:
+        mixed_block = np.real(mixed_block)
+
     # stack the blocks to form the density matrix
-    dm[:n_occupied, :n_occupied] += np.real(occ_block)
-    dm[n_occupied:, n_occupied:] += np.real(virt_block)
-    dm[:n_occupied, n_occupied:] += np.real(mixed_block)
-    dm[n_occupied:, :n_occupied] += np.real(mixed_block.T)
+    dm[:n_occupied, :n_occupied] += occ_block
+    dm[n_occupied:, n_occupied:] += virt_block
+    dm[:n_occupied, n_occupied:] += mixed_block
+    dm[n_occupied:, :n_occupied] += mixed_block.T
     
 
     return 2*dm

@@ -1,0 +1,203 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{physics}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+\usepackage{graphicx}
+
+
+\title{Ch/ChE 164 Winter 2024 \\
+ Homework Problem Set \#7 \\
+ Due Date: Thursday, March 7, 2024 @ 11:59pm PT \\
+ Out of 100 Points \\
+ Project - Work on Questions 1 and 2 }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\section{}
+\begin{enumerate}
+  \item The Gibbs-Bogoliubov-Feynmann (GBF) variational principle can be used to approximately evaluate integrals. Consider the following integral, which does not admit of an analytical closed form expression:
+\end{enumerate}
+
+
+\begin{equation*}
+I=\int_{-\infty}^{\infty} d x \exp \left(-\frac{1}{2} a x^{2}-\frac{1}{4 !} u x^{4}\right) \tag{1}
+\end{equation*}
+
+
+where $a$ and $u$ are positive constants. We can regard the exponent as a "Hamiltonian"
+
+
+\begin{equation*}
+H=\frac{1}{2} a x^{2}+\frac{1}{4 !} u x^{4} \tag{2}
+\end{equation*}
+
+
+Use the GBF variational method to evaluate the integral approximately by making a reference "Hamiltonian"
+
+
+\begin{equation*}
+H_{R}=\frac{1}{2} A x^{2} \tag{3}
+\end{equation*}
+
+\subsection{}
+(i) (10 points) Derive an expression for $A$ in terms of the parameters $a$ and $u$;\\
+To start with, we can consider the inequality $I \leq I_R \exp \left(\left\langle H-H_R\right\rangle_R\right)$, where $I_R$ is the reference integral for the initial integral $I$, and $\left\langle H-H_R\right\rangle_R$ is the expectation value of the difference between the Hamiltonian and the reference Hamiltonian, evaluated at the reference probability. Our first task is to evaluate the reference integral:
+\begin{equation}
+I_R=\int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right) d x=\sqrt{\frac{2 \pi}{A}}
+\end{equation}
+We cognize this also as a reference partition function.
+Next, we want to find the reference free energy, and it is given by:
+\begin{equation}
+F_R=-\ln I_R=-\ln \sqrt{\frac{2 \pi}{A}}=-\frac{1}{2} \ln \frac{2 \pi}{A}
+\end{equation}
+Next, we want to compute $\left\langle H-H_R\right\rangle_R$, and it is given by:
+\begin{equation}
+\left\langle H-H_R\right\rangle_R=\frac{1}{I_R} \int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right) \left(\frac{1}{2} a x^2+\frac{1}{4 !} u x^4-\frac{1}{2} A x^2\right) d x
+\end{equation}
+We can plug in the expression that we found for the $I_R$ and also combine the ex squared terms in the second prentices of the grand:
+we can make the integrand into 2 integrals by distribution:
+
+\begin{equation}
+\left\langle H-H_R\right\rangle_R=\frac{1}{\sqrt{\frac{2 \pi}{A}}} \int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right)\left(\left(\frac{1}{2} a-\frac{1}{2} A\right) x^2+\frac{1}{4 !} u x^4\right) d x
+\end{equation}
+\begin{equation}
+\left\langle H-H_R\right\rangle_R=\frac{1}{\sqrt{\frac{2 \pi}{A}}} \left(\int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right)\left(\left(\frac{1}{2} a-\frac{1}{2} A\right) x^2\right) d x+\int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right)\left(\frac{1}{4 !} u x^4\right) d x\right)
+\end{equation}
+For the first integral, we have:
+\begin{equation}
+  \int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right)\left(\left(\frac{1}{2} a-\frac{1}{2} A\right) x^2\right) dx = \sqrt{\frac{2\pi}{A}} \cdot \frac{1}{A^2} \left(\frac{1}{2} a - \frac{1}{2} A\right)
+\end{equation}
+For the second integral, we have:
+\begin{equation}
+  \int_{-\infty}^{\infty} \exp \left(-\frac{1}{2} A x^2\right)\left(\frac{1}{4!} u x^4\right) dx = \frac{3u\sqrt{2\pi}}{A^{5/2}}
+\end{equation}
+So, we can plug in the results of the integrals into the expression for $\left\langle H-H_R\right\rangle_R$ and we divide by a factor of $\sqrt{\frac{2 \pi}{A}}$ to get:
+\begin{equation}
+\left\langle H-H_R\right\rangle_R=\frac{1}{A^2} \left(\frac{1}{2} a - \frac{1}{2} A\right) + \frac{3u}{A^{5/2}}
+\end{equation}
+The GBF inequaliy tells us that we can find the variational parameter by minimizing the sum of $F_R$ and $\left\langle H-H_R\right\rangle_R$ with respect to $A$:
+\begin{equation}
+\frac{\partial}{\partial A} \left(F_R + \left\langle H-H_R\right\rangle_R\right) = 0
+\end{equation}
+Plugging in the expressions for $F_R$ and $\left\langle H-H_R\right\rangle_R$, we get:
+\begin{equation}
+\frac{\partial}{\partial A} \left(-\frac{1}{2} \ln \frac{2 \pi}{A} + \frac{1}{A^2} \left(\frac{1}{2} a - \frac{1}{2} A\right) + \frac{3u}{A^{3/2}}\right) = 0
+\end{equation}
+The derivative of the first term is:  
+\begin{equation}
+\frac{\partial}{\partial A} \left(-\frac{1}{2} \ln \frac{2 \pi}{A}\right) = \frac{1}{2A}
+\end{equation}
+The derivative of the second term is:
+\begin{equation}
+\frac{\partial}{\partial A} \left(\frac{1}{A^2} \left(\frac{1}{2} a - \frac{1}{2} A\right)\right) = \frac{\partial}{\partial A} \left(\frac{a}{2A^3} - \frac{1}{2A^2} \right) = \frac{-3a}{2A^4} + \frac{1}{A^3}
+\end{equation}
+The derivative of the third term is:
+\begin{equation}
+\frac{\partial}{\partial A} \left(\frac{3u}{A^{3/2}}\right) = \frac{-9u}{2A^{5/2}}
+\end{equation}
+Combining the derivatives, we get:
+\begin{equation}
+\frac{1}{2A} + \frac{-3a}{2A^4} + \frac{1}{A^3} + \frac{-9u}{2A^{5/2}} = 0
+\end{equation}
+Multiplying through by $A^4$ to clear the denominators, we get:
+\begin{equation}
+\frac{A^3}{2} - \frac{3a}{2} + A - \frac{9uA^{3/2}}{2} = 0
+\end{equation}
+I do not get a result here and not sure why.
+\subsection{}
+(ii) (5 points) Obtain an approximate expression for the integral $I$;
+\subsection{}
+(iii) (5 points) Make a plot of the approximate expression and compare it with the numerical value of the integral for some parameter selections.
+\subsection{}
+(iv) (5 points) Based on your results from (iii) and (iv), comment on the effects of $a$ and $u$ on the accuracy of the GBF method.
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Simple liquid crystals are systems consisting of anisotropic, e.g., rod-like molecules. At high temperatures, the orientations of these molecules are random; this is called the isotropic phase. At low temperatures, molecules align parallel to each other; this is called the nematic phase. The simplest lattice model for this transition is a 3-state model in which a molecule can take any one of the three $(x, y, z)$ orthogonal orientations. If two nearest neighbor molecules lie parallel to each other, there is an energy gain of $-\varepsilon<0$. Otherwise there is no gain. Assuming single occupancy on each site and no vacancy, we may define variables $\sigma_{x}(i), \sigma_{y}(i), \sigma_{z}(i)$, such that $\sigma_{x}(i)=1$ if molecule $i$ lies parallel to the $x$-axis and $\sigma_{x}(i)=0$ if not, and likewise for other directions. (Of course, $\sigma_{x}(i)+\sigma_{y}(i)+\sigma_{z}(i)=1$.)
+\end{enumerate}
+
+The average $\left\langle\sigma_{\alpha}(i)\right\rangle(\alpha=x, y, z)$ gives the fraction of molecules oriented along the $\alpha$-axis. If we take the $z$-axis as the orientation in the nematic state, we may define an order parameter as
+
+
+\begin{equation*}
+S=\frac{1}{2}\left(3\left\langle\sigma_{z}\right\rangle-1\right) \tag{4}
+\end{equation*}
+
+
+such that in the isotropic state $S=0$ and in the nematic state $S>0$.
+
+\subsection
+(i) (15 points) Construct a mean field free energy (per molecule) in terms of the order parameter $S$.
+
+\subsection
+(ii) (10 points) Expand the free energy to 4 th order in $S$. From the form of this free energy, can you tell whether the isotropic-nematic transition is first or second order?
+
+\subsection
+(ii) (15 points) Use the approximate free energy in (ii) to find the isotropic-nematic transition temperature, the value of the order parameter for both phases at the transition, and the latent heat of the transition (the difference of energy between two states.)
+\section{}
+\begin{enumerate}
+  \setcounter{enumi}{2}
+  \item Consider the lattice gas model with a grand partition function
+\end{enumerate}
+
+
+\begin{equation*}
+\Xi(\mu, V, T)=\sum_{\left\{\sigma_{i}\right\}} \exp \left\{\beta \mu \sum_{i} \sigma_{i}+\beta \varepsilon_{0} \sum_{\langle i j\rangle} \sigma_{i} \sigma_{j}\right\} \tag{5}
+\end{equation*}
+
+
+(i) (15 points) Show that there exists a one-to-one correspondence between the parameters in the lattice gas model with those in the Ising model. In particular, show that the pressure for the lattice gas, $p$, is related to the free energy per spin of the Ising model, $f$, via
+
+
+\begin{equation*}
+p=-\frac{1}{2} z J+h-f \tag{6}
+\end{equation*}
+
+
+(We have taken the volume of a lattice site to be 1.)
+
+(i) (20 points) Use the random mixing approximation to derive the pressure-density equation of state for the lattice gas (without using the above correspondence).
+
+
+\end{document}

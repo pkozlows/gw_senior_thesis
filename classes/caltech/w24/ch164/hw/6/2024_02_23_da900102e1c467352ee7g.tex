@@ -249,12 +249,32 @@ S=-k \sum_{[s] } \prod_{i} p_{i}\left(s_{i}\right) \ln \prod_{i} p_{i}\left(s_{i
 \end{equation}
 We can use the fact that the logarithm of a product is the sum of the logarithms of the factors:
 \begin{equation}
-S=-k \sum_{[s] } \sum_{i} \ln p_{i}\left(s_{i}\right) \prod_{i} p_{i}\left(s_{i}\right)
+S=-k \sum_{[s] } \sum_{i} \ln p_{i}\left(s_{i}\right) \prod_{j} p_{j}\left(s_{j}\right)
 \end{equation}
-We can use the fact that the spins are not interacting to chance introduce a song over the individual spins at a given site $s_i$:
+Now we take out the $i$th term from the product over $j$:
+\begin{equation}
+S=-k \sum_{[s] } (\sum_{i} p_{i}\left(s_{i}\right)\ln p_{i}\left(s_{i}\right)) \prod_{j\neq i} p_{j}\left(s_{j}\right)
+\end{equation}
+Now we know that we can decompose the sum overall possible spin configurations into a sum over the individual spins at a given site:
+\begin{equation}
+S=-k \sum_{s_1} \sum_{s_2} \ldots \sum_{s_i} \ldots \sum_{s_N} (\sum_{i} p_{i}\left(s_{i}\right)\ln p_{i}\left(s_{i}\right)) \prod_{j\neq i} p_{j}\left(s_{j}\right) 
+\end{equation}
+Merely rearranging, we get:
+\begin{equation}
+S=-k \sum_{s_1} \sum_{s_2} \ldots \sum_{s_N} (\sum_{s_i} \sum_{i} p_{i}\left(s_{i}\right)\ln p_{i}\left(s_{i}\right)) \prod_{j\neq i} p_{j}\left(s_{j}\right) 
+\end{equation}
+Now we want to prove that the residual is just equal to 1:
+\begin{equation}
+\sum_{s_1} \sum_{s_2} \ldots \ldots \sum_{s_N} \prod_{j\neq i} p_{j}\left(s_{j}\right)  
+\end{equation}
+Inserting each probability in the product into each of its summation, we see:
+\begin{equation}
+=\sum_{s_1} p_{1}\left(s_{1}\right) \sum_{s_2} p_{2}\left(s_{2}\right) \ldots \sum_{s_i} p_{i}\left(s_{i}\right) \ldots \sum_{s_N} p_{N}\left(s_{N}\right)
+\end{equation}
+But we know that the sum of probabilities for a given state has to be 1, so this is trust 1. So we get:
 \begin{equation}
 S=-k \sum_{i} \sum_{s_{i}} p_{i}\left(s_{i}\right) \ln p_{i}\left(s_{i}\right)
- \end{equation}
+\end{equation}
 
 \subsection{}
 (ii) (5 points) Introducing the order parameter (average spin) $m_{i}=\left\langle s_{i}\right\rangle$, show that the variational free energy is
@@ -321,10 +341,37 @@ solution = solve(dG_dmi_correct, mi)
 
 solution
 \end{lstlisting}
-Now, that we have found this equation of state, we want to plug it back into our expression for the variational free energy:
+Now, that we have found this equation of state, we want to plug it for $m_i$ into our expression for the variational free energy. 
 \begin{equation}
-G=-\sum_i h_i \tanh \left(\beta h_i\right) + kT \sum_i \left(\frac{1+\tanh \left(\beta h_i\right)}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{1-\tanh \left(\beta h_i\right)}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}\right)
+G=-\sum_i h_i \tanh \left(\beta h_i\right)+kT\sum_i\left(\frac{1+\tanh \left(\beta h_i\right)}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{1-\tanh \left(\beta h_i\right)}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}\right)
 \end{equation}
+We just consider the second submission for now and we factor out the prefacors at the front of the logarithms:
+\begin{equation}
+\frac{1}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{\tanh \left(\beta h_i\right)}{2} \ln \frac{1+\tanh \left(\beta h_i\right)}{2}+\frac{1}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}-\frac{\tanh \left(\beta h_i\right)}{2} \ln \frac{1-\tanh \left(\beta h_i\right)}{2}
+\end{equation}
+We have like terms that we can group into just two logarithms together:
+\begin{equation}
+\frac{1}{2} \ln \left(\frac{1+\tanh \left(\beta h_i\right)}{2}\cdot\frac{1-\tanh \left(\beta h_i\right)}{2}\right)+ \frac{\tanh \left(\beta h_i\right)}{2} \ln \left(\frac{1+\tanh \left(\beta h_i\right)}{1-\tanh \left(\beta h_i\right)}\right)
+\end{equation}
+Now we can use the definition of the hepatic tangent in terms of exponentials $\tanh \left(\beta h_i\right)=\frac{\exp \left(\beta h_i\right)-\exp \left(-\beta h_i\right)}{\exp \left(\beta h_i\right)+\exp \left(-\beta h_i\right)}$:
+\begin{equation}
+\frac{1}{2} \ln \left(\frac{1-\tanh^2 \left(\beta h_i\right)}{4}\right)+ \frac{\tanh \left(\beta h_i\right)}{2} \ln \left(\frac{\exp \left(2\beta h_i\right)+1}{\exp \left(2\beta h_i\right)-1}\right)
+\end{equation}
+For the first term, we recognize that $1-\tanh^2 \left(\beta h_i\right)=\sech^2 \left(\beta h_i\right)$, so we can write:
+\begin{equation}
+\frac{1}{2} \ln \left(\frac{\sech^2 \left(\beta h_i\right)}{4}\right)+ \frac{\tanh \left(\beta h_i\right)}{2} \ln \left(\frac{\exp \left(2\beta h_i\right)+1}{\exp \left(2\beta h_i\right)-1}\right)
+\end{equation}
+For the first term, we can also take out a square factor from the logo rhythm to cancel out the constant and front:
+\begin{equation}
+\ln \left(\frac{\sech \left(\beta h_i\right)}{2}\right)+ \frac{\tanh \left(\beta h_i\right)}{2} \ln \left(\frac{\exp \left(2\beta h_i\right)+1}{\exp \left(2\beta h_i\right)-1}\right)
+\end{equation}
+Now the definition of the hypergolic secant in terms of exponentials is $\sech \left(\beta h_i\right)=\frac{2}{\exp \left(\beta h_i\right)+\exp \left(-\beta h_i\right)}$, so we can write:
+\begin{equation}
+\ln \left(\frac{1}{\exp \left(\beta h_i\right)+\exp \left(-\beta h_i\right)}\right)+ \frac{\tanh \left(\beta h_i\right)}{2} \ln \left(\frac{\exp \left(2\beta h_i\right)+1}{\exp \left(2\beta h_i\right)-1}\right)
+\end{equation}
+I am not sure where to go from here.1 
+
+
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{3}
@@ -357,6 +404,15 @@ with the transfer matrix
 \]
 
 and $\lambda_{+}$the larger of the two eigenvalues of the transfer matrix, $\lambda_{+}$and $\lambda_{-}$.\\
+Our first step will be to derive the form of this transfer matrix. Given this form of the antonian, we know the partition function is given by:
+\begin{equation}
+Z = \sum_{s_{1} = \pm 1} \sum_{s_{2} = \pm 1} \ldots \sum_{s_{N} = \pm 1} e^{K\beta s_{1}s_{2}+\frac{1}{2}h\beta\left(s_{1}+s_{2}\right)} e^{K\beta s_{2}s_{3}+\frac{1}{2}h\beta\left(s_{2}+s_{3}\right)} \ldots e^{K\beta s_{N}s_{1}+\frac{1}{2}h\beta\left(s_{N}+s_{1}\right)}
+\end{equation}
+By introducing theorthonormal bases of $\ket{+}= \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $\ket{-}= \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ with the identity operator given by $\textbf{I} = \ket{+}\bra{+} + \ket{-}\bra{-}$, we can write a certain term in the partition function as an element of the transfer matrix as:
+\begin{equation}
+e^{K\beta s_{i}s_{i+1}+\frac{1}{2}h\beta\left(s_{i}+s_{i+1}\right)} = \bra{s_i}\textbf{T}\ket{s_{i+1}}
+\end{equation}
+One can extrapolate how the transfer matrix is constructed from this.
 We started by diagnosing the transfer matrix, which gives the Iran values:
 \begin{equation}
   \lambda_{+} = \frac{\sqrt{\left(e^{\beta(K - h)} + e^{\beta(K + h)}\right)^2 - 8\sinh(2K\beta)}}{2} + \frac{e^{\beta(K - h)}}{2} + \frac{e^{\beta(K + h)}}{2}
@@ -386,7 +442,7 @@ lambda_minus = min(eigenvals_simplified, key=lambda x: x.subs({beta: 1, K: 1, h:
 
 lambda_plus, lambda_minus
 \end{lstlisting}
-This will allow us to affectionately take the power of the trace with the metro since if it were not diagonal, this would be nonsensical. Now come in diagonal form this matrix is:
+This will allow us to affectionately take the power of the matrix since if it were not diagonal, this would be nonsensical. Now in diagonal form this matrix is:
 \begin{equation}
 \mathbf{T}=\left(\begin{array}{cc}
 \lambda_{+} & 0 \\
@@ -438,48 +494,45 @@ We start by considering $\ln Z$:
 \begin{equation}
 \ln Z = N \ln \lambda_{+}
 \end{equation}
-taking the derivative with respect to $\beta$, we get:
+We know that in the large beta limit the positive eigenvalue is:
 \begin{equation}
-\langle E\rangle=-N\left(\frac{K e^{2 \beta K}+h \sinh (\beta h)}{\sqrt{e^{4 \beta K} \sinh ^2(\beta h)+1}}+K\right)
+\lambda_{+}=\mathrm{e}^{\beta K} \cosh (\beta h) + \sqrt{\mathrm{e}^{2 \beta K} \sinh ^{2}(\beta h)+\mathrm{e}^{-2 \beta K}} \rightarrow \mathrm{e}^{\beta K} \cosh (\beta h) + \mathrm{e}^{\beta K} \sinh (\beta h)
 \end{equation}
-In the limit of $T=0$, $\beta \rightarrow \infty$, the energy will be:
+Factoring out the common factor of $\mathrm{e}^{\beta K}$ and using the identity $\cosh(\beta h) = \frac{e^{\beta h} + e^{-\beta h}}{2}$ and $\sinh(\beta h) = \frac{e^{\beta h} - e^{-\beta h}}{2}$, we get:
 \begin{equation}
-\langle E\rangle=-N\left(\frac{K e^{2 \beta K}}{e^{2 \beta K}\sinh(\beta h)}+K\right)=-N\left(\frac{K}{\sinh(\beta h)}+K\right)=-NK
+\lambda_{+} \rightarrow \mathrm{e}^{\beta K} \left(\cosh (\beta h) + \sinh (\beta h)\right) = \mathrm{e}^{\beta K} \exp(\beta h)
 \end{equation}
-In the limit of $T=\infty$, $\beta \rightarrow 0$, the energy will be:
+So, the logarithm of the partition function gives:
 \begin{equation}
-\langle E\rangle=-N\left( \frac{1}{1} + K\right)=-N(1+K)
+\ln Z \rightarrow N \left(\beta K + \beta h\right)
 \end{equation}
-% Inline Python code in the document
-\begin{lstlisting}[language=Python]
-from sympy import symbols, exp, cosh, sinh, sqrt, diff, ln
-
-# Define symbols
-beta, K, h, N = symbols('beta K h N', real=True)
-
-# Define lambda_+ based on the given expression
-lambda_plus = exp(beta * K) * cosh(beta * h) + sqrt(exp(2 * beta * K) * sinh(beta * h)**2 + exp(-2 * beta * K))
-
-# Compute the derivative of ln(lambda_+) with respect to beta
-d_ln_lambda_plus_dbeta = diff(ln(lambda_plus), beta)
-
-# Energy expression
-E = -N * d_ln_lambda_plus_dbeta
-
-E.simplify()
-\end{lstlisting}
-
+So, the energy is given by:
+\begin{equation}
+\langle E\rangle=-\frac{\partial \ln Z}{\partial \beta}=-N\left(K+h\right)
+\end{equation}
+Next, we consider the limit of small beta. In this limit, the positive eigenvalue is:
+\begin{equation}
+\lambda_{+}=\mathrm{e}^{\beta K} \cosh (\beta h) + \sqrt{\mathrm{e}^{2 \beta K} \sinh ^{2}(\beta h)+\mathrm{e}^{-2 \beta K}} \rightarrow \mathrm{e}^{\beta K} + e^{-\beta K}
+\end{equation}
+In this limit, this simply gives 2. So, the logarithm of the partition function gives:
+\begin{equation}
+\ln Z \rightarrow N \ln 2
+\end{equation}
+So, the energy is given by:
+\begin{equation}
+\langle E\rangle=-\frac{\partial \ln Z}{\partial \beta}=0
+\end{equation}
 We know that:
 \begin{equation}
 S=k(\ln Z+\beta E)
 \end{equation}
-Substituting in the expression for the partition function:
+Saw, in the limit of high beta, we get:
 \begin{equation}
-S=k\left(N \ln \lambda_{+}+\beta E\right)
+S \rightarrow k(N \left(\beta K + \beta h\right) - \beta N \left(K+h\right)) = 0
 \end{equation}
-Now, we substitute for the energy and $\lambda_{+}$:
+In the limit of small beta, we get:
 \begin{equation}
-S=k\left(N \ln \lambda_{+}+\beta E\right)=k\left(N \ln \lambda_{+}-\beta N\left(\frac{K e^{2 \beta K}+h \sinh (\beta h)}{\sqrt{e^{4 \beta K} \sinh ^2(\beta h)+1}}+K\right)\right)
+S \rightarrow k(N \ln 2 + 0) = kN \ln 2
 \end{equation}
 (iv) (Bonus 15 points) Show that the spin-spin correlation function at zero external field is given by
 

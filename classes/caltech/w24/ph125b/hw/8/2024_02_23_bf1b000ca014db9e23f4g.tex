@@ -49,6 +49,7 @@
 
 \begin{document}
 \maketitle
+\emph{I received extension until Sunday night.}\\
 READING: Sections 19.4-19.5 in Shankar on the Born approximation and the partial wave expansion.
 \section{}
 \begin{enumerate}
@@ -91,7 +92,7 @@ Tugging the initial wave function into this gives:
 \begin{equation}
 |\psi(t)\rangle=\left|0\right\rangle+\frac{1}{i} \int_{t_0}^t V\left(t_1\right)\left|0\right\rangle d t_1 
 \end{equation}
-Now we project this expression onto an Aubrey state, called $|n\rangle$ and expand the expression we have for the potential:
+Now we project this expression onto an arbitrary state, called $|n\rangle$ and expand the expression we have for the potential:
 \begin{equation}
 \begin{aligned}
 \left\langle n|\psi(t)\right\rangle
@@ -103,7 +104,7 @@ Now we project this expression onto an Aubrey state, called $|n\rangle$ and expa
 \end{equation}
 where we defined $\omega _{n0} \equiv \omega _n - \omega _0$. The make aliment does not depend on time, so we can take it outside of the integral:
 \begin{equation}
-\left\langle n|\psi(t)\right\rangle = \delta _{n0} -i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \int_{t_0}^t e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1
+\left\langle n|\psi(t)\right\rangle = \delta _{n0} +i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \int_{t_0}^t e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1
 \end{equation}
 We know that the lower bound $t_0$ is 0, so we can replace it with that:
 \begin{equation}
@@ -126,7 +127,7 @@ So we can use this to do the integrals:
 \end{equation}
 Plugging these back into the expression for the wave function gives:
 \begin{equation}
-\left\langle n|\psi(t)\right\rangle = \delta _{n0} -i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left\langle n|\psi(t)\right\rangle = \delta _{n0} +i \frac{q E}{m \omega} \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
 The total wave function will be a sum over these projections:
 \begin{equation}
@@ -134,15 +135,19 @@ The total wave function will be a sum over these projections:
 \end{equation}
 The Kronecker delta will kill off all the terms in the sum except for the one where $n=0$, so we can simplify the sum to:
 \begin{equation}
-\left|\psi(t)\right\rangle = \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left|\psi(t)\right\rangle = \left|0\right\rangle +i \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
-This is in the Heisenberg representation, so if we want to go to the Schrödinger representation, we have to multiply the RHS by $e^{i\omega_n t}$:
+This is in the Heisenberg representation, so e-if we want to go to the Schrödinger representation, we have to multiply the RHS by $e^{i\omega_n t}$:
 \begin{equation}
-\left|\psi_t\right\rangle = e^{i\omega_{0} t} \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} e^{i\omega_n t} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left|\psi_t\right\rangle = e^{-i\omega_{0} t} \left|0\right\rangle +i \frac{q E}{m \omega} \sum_{n} e^{-i\omega_n t} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
-And then we multiply through by $e^{-i\omega_0 t}$ to get id of the exponential factor in front of the ground state:
+We can get red of the first exponential inside of the summation:
 \begin{equation}
-e^{-i\omega_0 t}\left|\psi_t\right\rangle = \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} e^{i(\omega_n - \omega_0) t} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\left|\psi_t\right\rangle = e^{-i\omega_{0} t} \left|0\right\rangle +i \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i (-\omega _{0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (-\omega_0 - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
+\end{equation}
+Now we multiply the wave function by the face $e^{i\omega_0 t}$:
+\begin{equation}
+e^{i\omega_0 t}\left|\psi_t\right\rangle = \left|0\right\rangle +i \frac{q E}{m \omega} \sum_{n} \left|n\right\rangle \left\langle n\left|P_{z}\right|0\right\rangle \left( \frac{e^{i\omega t}-1}{2 (\omega _{n0} + \omega)} - \frac{e^{i\omega t}-1}{2 (\omega _{n0} - \omega)} \right)
 \end{equation}
 % \begin{equation}
 % \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} \sin \omega t_1 d t_1 = \frac{1}{2i} \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} e^{i \omega t_1} d t_1 - \frac{1}{2i} \int_{-\infty}^{\infty} e^{i \omega _{n0} t_1} e^{-i \omega t_1} d t_1
@@ -179,30 +184,65 @@ Compute this to first order in the external field. You may assume that the natur
 
 We have derived a result that can be used in providing a model for the dielectric constant of a material.
 \subsection{}
+
+We can take advantage of our derivation for the Schrödinger representation of the wave function to write the expectation value of $D_z$ as:
+
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = \bra{\psi_t}q Z\ket{\psi_t} = \bra{e^{i\omega t}\psi_t}q Z\ket{e^{i\omega t}\psi_t}
+\end{equation}
+This relation holds due to the complex conjugation. So we can plug in what we previously had for $e^{i\omega t}\psi_t$. 
+We carry out the distribution just to see what this will look like: To simplify matters, we will make the definitions $a  = i \frac{q E}{2m \omega}$ and $b_n(t)=  \frac{e^{i \omega t} - 1}{(\omega _{n0} + \omega)} - \frac{e^{i \omega t} - 1}{(\omega _{n0} - \omega)}$.
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = \left( \bra{0} + a^* \sum_{n} \bra{n} \langle n\left|P_{z}\right|0\rangle b_n(t)^* \right)q Z \left( \ket{0} + a \sum_{n} \ket{n} \langle n\left|P_{z}\right|0\rangle b_n(t) \right)
+\end{equation}
+Since, we are only interested in finding a solution that goes to first order in the electric field, we can neglect any terms that will have a double submission and for $ \left\langle D_{z}\right\rangle(t)$, we can write:
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = \bra{0}q Z\ket{0} + q\sum_{n} a b_n(t) \langle n\left|P_{z}\right|0\rangle \bra{0}Z\ket{n} + q\sum_{n} a^* b_n(t)^* \langle 0\left|P_{z}\right|n\rangle \bra{n}Z\ket{0} 
+\end{equation}
 We know that the Mathis amendments of $P_z$ are related to those of $Z$ by:
 \begin{equation}
 \left\langle n\left|P_{z}\right|0\right\rangle = -i m \omega_{n 0} \left\langle n\left|Z\right|0\right\rangle
 \end{equation}
-So we plug this into our previous expression for the wave function:
+For this constant out front we can define $\gamma _{n} = -i m \omega_{n 0}$. We can then write the expectation value of $D_z$ as:
 \begin{equation}
-e^{-i\omega_0 t}\left|\psi_t \right\rangle = \left|0\right\rangle -i \frac{q E}{m \omega} \sum_{n} e^{i(\omega_n - \omega_0) t} \left|n\right\rangle \left\langle n\left|P_z\right|0\right\rangle \left( \frac{e^{i (\omega _{n0} + \omega) t} - 1}{2 (\omega _{n0} + \omega)} - \frac{e^{i (\omega _{n0} - \omega) t} - 1}{2 (\omega _{n0} - \omega)} \right)
-\end{equation}
-Because of the damping we know that we can neglect terms of the form $e^{i(\omega_{n0} t)}$, so we can simplify the sum to:
-\begin{equation}
-  e^{-i\omega_0 t}\ket{\psi _{t}} = \ket{0} -i \frac{q E}{m \omega} \sum_{n} e^{i(\omega_n - \omega_0) t} \ket{n} \left\langle n\left|P_z\right|0\right\rangle \left( -\frac{1}{2 (\omega _{n0} + \omega)} + \frac{1 }{2 (\omega _{n0} - \omega)} \right) 
-\end{equation}
-Plugging in the relation between the matrix elements of $P_z$ and $Z$ gives:
-\begin{equation}
-  e^{-i\omega_0 t}\ket{\psi _{t}} = \ket{0} + \frac{qE\omega_{n0}}{\omega} \sum_{n} e^{i(\omega_{n} - \omega_0) t} \ket{n} \left\langle n\left|Z\right|0\right\rangle \left( -\frac{1}{2 (\omega _{n0} + \omega)} + \frac{1 }{2 (\omega _{n0} - \omega)} \right)
+\left\langle D_{z}\right\rangle(t) = \bra{0}q Z\ket{0} + q\sum_{n} a b_n(t) \gamma _{n} \bra{n} Z\ket{0} \bra{n}Z\ket{0}^* + q\sum_{n} a^* b_n(t)^* \gamma _{n}^* \bra{n}Z\ket{0}^* \bra{n}Z\ket{0}
 \end{equation} 
-Now the expectation value of the dipole operator is given by:
+We notice that the charge can be pulled outside of these terms and we can consolidate the sums:
 \begin{equation}
-\left\langle D_{z}\right\rangle(t)=\langle\psi(t)|q Z| \psi(t)\rangle
+\left\langle D_{z}\right\rangle(t) = q\bra{0}Z\ket{0} + q\sum_{n} \left( a b_n(t) \gamma _{n} \bra{n} Z\ket{0} \bra{n}Z\ket{0}^* + a^* b_n(t)^* \gamma _{n}^* \bra{n}Z\ket{0}^* \bra{n}Z\ket{0} \right)
 \end{equation}
-We know that in going from the Heisenberg representation to the short anger representation for this matrix element the exponential terms will cancel since they are conjugated:
+We see that $a^* = -a$,, and $\gamma _{n}^* = -\gamma _{n}$, so we can simplify the expression for the expectation value of $D_z$ to:
 \begin{equation}
-\left\langle D_{z}\right\rangle(t)=\bra{e^{-i\omega_0 t}\psi_t}q Z \ket{e^{-i\omega_0 t}\psi_t} = \bra{\psi_t}q Z\ket{\psi_t}
+\left\langle D_{z}\right\rangle(t) = q\bra{0}Z\ket{0} + q\sum_{n} \left( a b_n(t) \gamma _{n} \bra{n} Z\ket{0} \bra{n}Z\ket{0}^* + a b_n(t)^* \gamma _{n} \bra{n}Z\ket{0}^* \bra{n}Z\ket{0} \right)
 \end{equation}
+Now, we apply $\bra{n}Z\ket{0} \bra{n}Z\ket{0}^{*} = \bra{0}Z\ket{n} \bra{n}Z\ket{0}^{*} = |\bra{n}Z\ket{0}|^2$ to the expression for the expectation value of $D_z$:
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = q\bra{0}Z\ket{0} + q\sum_{n} \left( a b_n(t) \gamma _{n} |\bra{n}Z\ket{0}|^2 + a b_n(t)^* \gamma _{n} |\bra{n}Z\ket{0}|^2 \right)
+\end{equation}
+And combining the terms inside of the submission gives:
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = q\bra{0}Z\ket{0} + q\sum_{n} a \gamma _{n} |\bra{n}Z\ket{0}|^2 \left( b_n(t) + b_n(t)^* \right)
+\end{equation}
+We know that the first term will be zeroed by the argument given in Shankar pg. 459 selection rules section sense the s-wave states of $\ket{0}$ both have the same $l$ and $m$ quantum numbers. So we can write the expectation value of $D_z$ as:
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = q\sum_{n \neq 0} a \gamma _{n} |\bra{n}Z\ket{0}|^2 \left( b_n(t) + b_n(t)^* \right)
+\end{equation}
+The oscillator strings were given in the previous set as:
+\begin{equation}
+  f_{n 0}=2 m \omega_{n 0}|\langle n|Z| 0\rangle|^{2}
+\end{equation}
+With the definition of $\gamma _{n} = -i m \omega_{n 0}$, we can rewrite the oscillator strings as:
+\begin{equation}
+\gamma _{n} |\bra{n}Z\ket{0}|^2 = -i \frac{f_{n 0}}{2}
+\end{equation}
+So we plug this in for our previous expression for the expectation value of $D_z$:
+\begin{equation}
+\left\langle D_{z}\right\rangle(t) = q\sum_{n \neq 0} a \left( -i \frac{f_{n 0}}{2} \right) \left( b_n(t) + b_n(t)^* \right)
+\end{equation}
+where we defined $a = i \frac{q E}{2m \omega}$ and $b_n(t)=  \frac{e^{i \omega t} - 1}{(\omega _{n0} + \omega)} - \frac{e^{i \omega t} - 1}{(\omega _{n0} - \omega)}$.
+
+
+
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{30}
@@ -234,51 +274,115 @@ But then for the total effective cross section:
 \begin{equation}
 \sigma_{\text{T eff}}(\textbf{u}) = a
 \end{equation}
-for $|\textbf{x}| < \sqrt{\frac{\pi}{a}}$. But then we know that the probability for all solid angles is 1 within the domainc, so we can write:
+for $|\textbf{x}| < \sqrt{\frac{a}{\pi}}$. But then we know that the probability for all solid angles is 1 within the domainc, so we can write:
 \begin{equation}
 \int_{(\infty)} P \dd{\Omega} = 1
 \end{equation}
 So then for the target area $a$, we know it is given by:
 \begin{equation}
-a = A_{\text{eff}}(u) \int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})
+a = A_{\text{eff}}(u) \int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})
 \end{equation}
 Rearranging terms gives us an expression for the effective area:
 \begin{equation}
-A_{\text{eff}}(a) = \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
+A_{\text{eff}}(a) = \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
 \end{equation}
 Then the effective area is the limit as the target area goes to 0:
 \begin{equation}
-A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
 \end{equation}
 \subsection{}
 
 (b) Using part (a), write down an expression for $\sigma_{\text {eff }}(\mathbf{u})$ appropriate to the case where the beam particles are distributed according to a Gaussian of standard deviation $\rho$ in radial distance from the origin (in the $\hat{e}_{2}-\hat{e}_{3}$ plane), and where the wave packets are also drawn from a Gaussian distribution in the expectation value of the magnitude of the momentum. Let the standard deviation of this momentum distribution be $\alpha=\alpha(\mathbf{x})$, for beam position $\mathbf{x}$. Your answer will likely have an intuitive feel to it.\\
-Our starting point for this problem will be what we derived in the first part for the deferential fourth section as:
+Our starting point for this problem will be what we derived in the first part for the deferential cross section as:
 \begin{equation}
 \frac{d\sigma_{\text{eff}^{\textbf{u}}}}{d\Omega} = A_{\text{eff}}(u) \int_{(\infty)} \dd{\alpha} \int_{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x}) P(\textbf{u} ; \alpha ; \mathbf{x})
 \end{equation}
 We want to solve for the effective area, which in the previous part of the problem was given by:
 \begin{equation}
-A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(\infty)} \dd{\alpha} \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x})}
 \end{equation}
-Now come we want to wide what the tribute on functioned $f(\alpha, \textbf{x})$ is.
+Now we consider what the distribution $f(\alpha, \textbf{x})$ is.
 \begin{equation}
 f(p, \textbf{x}) = \frac{1}{{2\pi \rho^2}} e^{-\frac{x^2 + y^2}{2\rho^2}} \frac{1}{\sqrt{2\pi } \alpha(\textbf{x})} e^{-\frac{(p^2 - p_0^2)}{2\alpha^2(\textbf{x})}}
 \end{equation}
 We can plug this into the expression for the effective area:
 \begin{equation}
-A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{-\infty}^{\infty} \dd{p} \int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} \frac{1}{{2\pi \rho^2}} e^{-\frac{x^2 + y^2}{2\rho^2}} \frac{1}{\sqrt{2\pi } \alpha(\textbf{x})} e^{-\frac{(p^2 - p_0^2)}{2\alpha^2(\textbf{x})}}}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{-\infty}^{\infty} \dd{p} \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} \frac{1}{{\sqrt{2\pi }\rho^2}} e^{-\frac{r^2}{2\rho^2}} \frac{1}{\sqrt{2\pi } \alpha(\textbf{x})} e^{-\frac{(p^2 - p_0^2)}{2\alpha^2(\textbf{x})}}}
 \end{equation}
-Note that the integral over momentum will just be a Gaussian, which will give us a factor of $\sqrt{2\pi} \alpha(\textbf{x})$ and thus we can get rid of the integral over momentum:
+We know that the integral over momentum is normalized, so:
 \begin{equation}
-A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(|\textbf{x}| < \sqrt{\frac{\pi}{a}})} \dd^2{\textbf{x}} \frac{\alpha(\textbf{x})}{{\sqrt{2\pi} \rho^2}} e^{-\frac{x^2 + y^2}{2\rho^2}}}
+  \int_{(\infty)} \dd{p} \frac{1}{\sqrt{2\pi } \alpha(\textbf{x})} e^{-\frac{(p^2 - p_0^2)}{2\alpha^2(\textbf{x})}} = 1
 \end{equation}
+So we can simplify the expression for the effective area to:
+\begin{equation}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{\int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} \frac{1}{{\sqrt{2\pi }\rho^2}} e^{-\frac{|\textbf{r}|^2}{2\rho^2}}}
+\end{equation}
+ When the targeted limit is infinite small as denoted by $\lim_{a \to 0}$, we can approximate the distribution $f(x, \alpha )$ as $f(0, \alpha )$, so we can take the radius in the integral for the effective area to be equal to zero:
+\begin{equation}
+A_{\text{eff}} = \lim_{a \to 0} \frac{a}{a\cdot\frac{1}{\sqrt{2\pi }\rho^2}e^0} = \sqrt{2\pi }\rho^2
+\end{equation}
+This answer is intuitive, because it says that the effective area is proportional to the standard deviation of the position of particles in the beam.
+ 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{gaussian.png}
 \end{figure}
+\subsection{}
+(c) For your generalized result of part (a), try to repeat our limiting case argument to obtain the "fundamental" cross section.\\
+In the first part of this problem, we found that the differential of the effective cross section is given by:
+\begin{equation}
+\frac{d\sigma_{\text{eff}^{\textbf{u}}}}{d\Omega} = A_{\text{eff}}(u) \int_{(\infty)} \dd{\alpha} \int_{(\infty)} \dd^2{\textbf{x}} f(\alpha, \textbf{x}) P(\textbf{u} ; \alpha ; \mathbf{x})
+\end{equation}
+From the notes, we know that the probability is given by:
+\begin{equation}
+\begin{aligned}
+P(\mathbf{u} ; \alpha ; \mathbf{x})= & \int_{(\infty)} d^3(\mathbf{q}) \int_{(\infty)} d^3\left(\mathbf{q}^{\prime}\right) q^2 \delta\left(q-q^{\prime}\right) \\
+& T(q \mathbf{u}, \mathbf{q}) T^*\left(q^{\prime} \mathbf{u}, \mathbf{q}^{\prime}\right) \phi_0(\mathbf{q} ; \alpha) \phi_0^*\left(\mathbf{q}^{\prime} ; \alpha\right) e^{-i \mathbf{x} \cdot\left(\mathbf{q}-\mathbf{q}^{\prime}\right)}
+\end{aligned}
+\end{equation}
+We just want to change the $\alpha $ to take into account their new dependence on the position $\alpha \rightarrow \alpha(\textbf{x})$ and $\phi_0(\mathbf{q} ; \alpha) \rightarrow \phi_0(\mathbf{q} ; \alpha(\textbf{x}))$. We can then write the probability as:
+\begin{equation}
+\begin{aligned}
+P(\mathbf{u} ; \alpha(\textbf{x}) ; \mathbf{x})= & \int_{(\infty)} d^3(\mathbf{q}) \int_{(\infty)} d^3\left(\mathbf{q}^{\prime}\right) q^2 \delta\left(q-q^{\prime}\right) \\
+& T(q \mathbf{u}, \mathbf{q}) T^*\left(q^{\prime} \mathbf{u}, \mathbf{q}^{\prime}\right) \phi_0(\mathbf{q} ; \alpha(\textbf{x})) \phi_0^*\left(\mathbf{q}^{\prime} ; \alpha(\textbf{x})\right) e^{-i \mathbf{x} \cdot\left(\mathbf{q}-\mathbf{q}^{\prime}\right)}
+\end{aligned}
+\end{equation}
+Following the denervation in the notes for the fundamental cross section, we can assume that the beam is much bigger with respect to the targeted area where the scattering event is taking place. So we can approximate the parameter $\alpha$ as a constant. 
+This means that our original formula for the probability is the same, but without the dependence of the parameter on the position:
+\begin{equation}
+P(\mathbf{u} ; \alpha ; \mathbf{x})= \int_{(\infty)} d^3(\mathbf{q}) \int_{(\infty)} d^3\left(\mathbf{q}^{\prime}\right) q^2 \delta\left(q-q^{\prime}\right) T(q \mathbf{u}, \mathbf{q}) T^*\left(q^{\prime} \mathbf{u}, \mathbf{q}^{\prime}\right) \phi_0(\mathbf{q} ; \alpha) \phi_0^*\left(\mathbf{q}^{\prime} ; \alpha\right) e^{-i \mathbf{x} \cdot\left(\mathbf{q}-\mathbf{q}^{\prime}\right)}
+\end{equation}
+Using this assumption of a large beam, we can also assume that the distribution $f(\alpha, \textbf{x})$ is constant over the targeted area, and in order for the distribution to be normalized, we need to have:
+\begin{equation}
+\int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha, \textbf{x}) = \int_{(|\textbf{x}| < \sqrt{\frac{a}{\pi}})} \dd^2{\textbf{x}} f(\alpha) = A_{\text{eff}} \cdot f(\alpha ) = 1
+\end{equation}
+So, we see approx that:
+\begin{equation}
+  f(\alpha ,\textbf{x}) \approx \frac{f(\alpha )}{A_{\text{eff}}}
+\end{equation}
+We also use the assumption in the notes that the momentum of the beam porticos is sharply peaked\\\\
+While substituting this in, let us also apply the assumption that the momentum in the ("incident") beam is well-defined, i.e.,
+$$
+\phi_0(\mathbf{p} ; \alpha) \approx 0, \quad \text { unless } \mathbf{p} \approx \mathbf{p}_i=p_i \hat{\mathbf{e}}_3 .
+$$
 
-(c) For your generalized result of part (a), try to repeat our limiting case argument to obtain the "fundamental" cross section.
+Thus, the product
+$$
+\phi_0(\mathbf{q} ; \alpha) \phi_0^*\left(\mathbf{q}^{\prime} ; \alpha\right) \approx 0, \quad \text { unless both } \mathbf{q} \approx \mathbf{p}_i \text { and } \mathbf{q}^{\prime} \approx \mathbf{p}_i
+$$
+\\\\
+With these two assumptions in mind, we can follow the deviation in the lecture notes to simplify the probability, but now we multiply by an inverse dependence on the effective area:
+\begin{equation}
+  P(\mathbf{u} ; \alpha(\textbf{x}) ; \mathbf{x})= 2\pi ^{2}\cdot \frac{1}{A_{eff}}\cdot|T(q \mathbf{u}, \textbf{q})|^2 
+\end{equation}
+The actual crass section will just be this multiplied by the effective area again:
+\begin{equation}
+\sigma_{\text{eff}}(\textbf{u}) = A_{\text{eff}} \cdot2\pi ^{2}\cdot \frac{1}{A_{eff}}\cdot|T(q \mathbf{u}, \textbf{q})|^2
+\end{equation}
+Simplifying gives the final expression for the fundamental cross section:
+\begin{equation}
+\sigma = 2\pi ^{2}\cdot |T(q \mathbf{u}, \textbf{q})|^2
+\end{equation}
 \section{}
 \begin{enumerate}
   \setcounter{enumi}{31}

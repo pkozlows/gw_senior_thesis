@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  2 MAR 2024 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  12 MAR 2024 20:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -417,107 +417,144 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 60.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
-{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.105 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.105 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.105 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.105 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.118 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.118 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.118 \begin{equation}
-                      
-pdfTeX warning (ext4): destination with the same identifier (name{equation.1.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.118 \begin{equation}
-                       [3] [4]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg, id=75, 704.6325pt x 691.58376pt>
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
+Overfull \hbox (106.04988pt too wide) detected at line 192
+[][]\OML/cmm/m/it/12 G \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 ^^@[]\OML/cmm/m/it/12 JNz\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 mx\OT1/cmr/m/n/12 )[] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 ^^VxN \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 NkT []
+ []
+
+[5]
+Overfull \hbox (82.07341pt too wide) detected at line 206
+[][]\OML/cmm/m/it/12 g \OMS/cmsy/m/n/12 ^^Q [] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 ^^@[]\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 mx\OT1/cmr/m/n/12 )[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^Vx \OT1/cmr/m/n/12 + []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
+
+ []
+
+[6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 260--262
+
+ []
+
+
+Overfull \hbox (96.68349pt too wide) detected at line 264
+[][][] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 m[]x \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^V \OT1/cmr/m/n/12 + [] [] [] + [] [] [] \OMS/cmsy/m/n/12 ^^@ [] []
+ []
+
+
+Overfull \hbox (71.41763pt too wide) detected at line 268
+[][]\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 m[]x \OT1/cmr/m/n/12 + [] [] [] + [] [] [] \OMS/cmsy/m/n/12 ^^@ [] [] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^V
+ []
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 270.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+<m-x.png, id=179, 361.35pt x 289.08pt>
+File: m-x.png Graphic file (type png)
+<use m-x.png>
+Package pdftex.def Info: m-x.png  used on input line 299.
+(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
+<g-mu.png, id=181, 361.35pt x 289.08pt>
+File: g-mu.png Graphic file (type png)
+<use g-mu.png>
+Package pdftex.def Info: g-mu.png  used on input line 306.
+(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--309
+
+ []
+
+[9 <./m-x.png>] [10 <./g-mu.png>] [11]
+<g-mu-9.png, id=197, 361.35pt x 289.08pt>
+File: g-mu-9.png Graphic file (type png)
+<use g-mu-9.png>
+Package pdftex.def Info: g-mu-9.png  used on input line 313.
+(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
+<drawing.png, id=198, 221.82875pt x 158.5925pt>
+File: drawing.png Graphic file (type png)
+<use drawing.png>
+Package pdftex.def Info: drawing.png  used on input line 317.
+(pdftex.def)             Requested size: 221.82819pt x 158.59209pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--319
+
+ []
+
+[12 <./g-mu-9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
+
+ []
+
+[13 <./drawing.png>]
+<./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg, id=212, 704.6325pt x 691.58376pt>
 File: ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg Graphic file (type jpg)
 <use ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg  used on input line 189.
+Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg  used on input line 364.
 (pdftex.def)             Requested size: 704.6308pt x 691.58206pt.
- [5]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg, id=81, 704.6325pt x 698.61pt>
+ [14]
+<./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg, id=219, 704.6325pt x 698.61pt>
 File: ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg Graphic file (type jpg)
 <use ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg  used on input line 195.
+Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg  used on input line 370.
 (pdftex.def)             Requested size: 704.6308pt x 698.60829pt.
- [6 <./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg>]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg, id=86, 783.92876pt x 741.77126pt>
+ [15 <./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg>]
+<./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg, id=224, 783.92876pt x 741.77126pt>
 File: ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg Graphic file (type jpg)
 <use ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg  used on input line 201.
+Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg  used on input line 376.
 (pdftex.def)             Requested size: 783.92685pt x 741.76945pt.
- [7 <./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg>]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg, id=92, 806.01125pt x 744.7825pt>
+ [16 <./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg>]
+<./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg, id=229, 806.01125pt x 744.7825pt>
 File: ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg Graphic file (type jpg)
 <use ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg  used on input line 207.
+Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg  used on input line 382.
 (pdftex.def)             Requested size: 806.00928pt x 744.78069pt.
- [8 <./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg>] [9 <./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg>] (./2024_03_02_8c82830fbe70d4921a9fg.aux)
+ [17 <./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg>] [18 <./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg>] (./2024_03_02_8c82830fbe70d4921a9fg.aux)
 Package rerunfilecheck Info: File `2024_03_02_8c82830fbe70d4921a9fg.out' has not changed.
-(rerunfilecheck)             Checksum: 11447E3142EDEE4954ED55583CFC9CF1;329.
+(rerunfilecheck)             Checksum: D1BF66209E8339565D1D96AA4D6EDE9B;769.
  ) 
 Here is how much of TeX's memory you used:
- 14502 strings out of 478268
- 229859 string characters out of 5846347
- 533862 words of memory out of 5000000
- 32469 multiletter control sequences out of 15000+600000
- 486896 words of font info for 82 fonts, out of 8000000 for 9000
+ 15066 strings out of 478268
+ 235823 string characters out of 5846347
+ 838352 words of memory out of 5000000
+ 32951 multiletter control sequences out of 15000+600000
+ 489061 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,9n,77p,694b,400s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on 2024_03_02_8c82830fbe70d4921a9fg.pdf (9 pages, 394125 bytes).
+ 68i,9n,77p,1102b,1398s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_03_02_8c82830fbe70d4921a9fg.pdf (18 pages, 816762 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 348 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

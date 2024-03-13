@@ -85,33 +85,100 @@ a) Determine the characteristic variables of the system in the grand canonical e
 As always, we will have the temperature as one of these. In this case, we are told that the total number of particles will replace the volume, so the second variable is $N$. Finally, we are interested in the chemical potentials of both particles, so we will have $\mu_{A}$ and $\mu_{B}$ as the third and fourth variables.
 \subsection{}
 b) Write the Hamiltonian in terms of the spin-state of the system. Remember, only neighbors that are both Type A interact.\\
-There is no external magnetic field for this system, so the Hamiltonian only has the interaction term. The Hamiltonian is given by:
+So we have two submissions. The first runs over all of the particles which are of the first type, and the second runs over all of the nearest neighbors of a particle. With define a spin variable $\tau_{i}$ which can take on talus of $-1$, $0$, or $1$, with the metal value only possible for the particle of the second type and the other two values possible for a particle of the first type. Since we are dealing with a grand canonical ensemble were the number of each particle is not fixed, but the total number must equal to $N$, we can write the Hamiltonian as:
 \begin{equation}
-  \mathcal{H}=-K\sum_{i = 0}^{N_{A}} \sum_{j=0}^{z-1} \sum_{s_i = \pm 1} \sum_{s_j = \pm 1}   \delta _{s_{i},s_{j}} \tag{1}
+  \mathcal{H}=-\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \tau_{i} \tau_{j} - \mu_{A} N_{A} - \mu_{B} N_{B}
 \end{equation}
-where $K$ is the interaction strength, $N_{A}$ is the number of Type A particles, $z$ is the coordination number, and $s_{i}$ and $s_{j}$ are the spins of the particles. The reasoning is as follows: for the first summation we want to go through all the particles of type A, and for each of them we want to go through all the neighbors, as represented by the second summation. Finally, we want to check whether the spins are the same and if they are, then the interaction provides a contribution to the Hamiltonian.
+We can define a variable which tracks the average number of particles of the first type:
+\begin{equation}
+  x = \frac{N_{A}}{N}
+\end{equation}
+Since we know that $N_{A} + N_{B} = N$, we can write $N_{B} = N - N_{A} = N - xN$ and $N_{A} = xN$. We can then write the Hamiltonian as:
+\begin{equation}
+  \mathcal{H}=-\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \tau_{i} \tau_{j} - \mu_{A} xN - \mu_{B} (N - xN)
+\end{equation}
+We can neglect the $N\mu_{B}$ term since it is a constant and does not affect the minimization of the free energy and then we define the difference in chemical potentials as $\Delta \mu = \mu_{A} - \mu_{B}$. We can then write the Hamiltonian as:
+\begin{equation}
+  \mathcal{H}=-\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \tau_{i} \tau_{j} - \Delta \mu xN
+\end{equation}
+
+
 \subsection{}
 c) Define the relative magnetization $m$, and the Type A number fraction $x$ :
-
-
 \begin{align*}
 m & =\frac{\mathcal{M}}{N_{A}}=\frac{\sum_{i=1}^{N} s_{i}}{N_{A}}=\frac{\sum_{i=1}^{N} s_{i}}{x N} ; \quad-1 \leq m \leq 1  \tag{1}\\
 x & =\frac{N_{A}}{N} ; \quad 0 \leq x \leq 1 \tag{2}
 \end{align*}
+Let us first consider the expression for the relative magnetization:
+\begin{equation}
+  m =\frac{\sum_{i=1}^{N} s_{i}}{x N} 
+\end{equation}
+We know that only the first type of Portugal will make any contribution to the summation in the numerator, so we can change its balance to reflect this:
+\begin{equation}
+  m =\frac{\sum_{i=1}^{N_{A}} s_{i}}{x N} = \frac{\sum_{i=1}^{xN} s_{i}}{x N}
+\end{equation}
+This problem reduces to our original problem in the icing model if we know that we are dealing with a particle of the first type, so:
+\begin{equation}
+  m = P(1) - P(-1)
+\end{equation}
+so then isolating $P(1)$ we get:
+\begin{equation}
+  P(1) = m + P(-1) \rightarrow P(1) = m + (1 - P(1)) \rightarrow P(1) = \frac{1 + m}{2}
+\end{equation}
+We plug this into find $P(-1)$:
+\begin{equation}
+  P(-1) = 1 - P(1) = 1 - \frac{1 + m}{2} = \frac{1 - m}{2}
+\end{equation}
+We just have to multiply these probabilities with the fraction of total number of particles of the first type:
+\begin{equation}
+  p(1) = \frac{1 + m}{2}x \quad (-1) = \frac{1 - m}{2}x
+\end{equation}
+And then we know the probability of no spin is just the amount of particles of the second type:
+\begin{equation}
+  p(0) = 1 - x
+\end{equation}
+We can then write the average spin at a given site as:
+\begin{equation}
+  \expval{\tau_{i}} = -1p(-1) + 0p(0) + 1p(1) = -1\frac{1 - m}{2}x + 0(1 - x) + 1\frac{1 + m}{2}x = m x
+\end{equation} 
+
 
 
 Using the mean field approximation, write an expression for the average Hamiltonian in terms of $m$ and $x$. In other words, eliminate all summations over the spin-state.\\
-In a man field approximation, the average field filled by a single particle is:
+Taking the average of the hamiltonian, we get:
 \begin{equation}
-  h_i^{\prime} = K \sum_{j=0}^{z-1} \delta _{s_{i},s_{j}} \tag{3}
+  \expval{\mathcal{H}} = -\frac{1}{2}J \expval{\sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \tau_{i} \tau_{j}} - \Delta \mu xN = -\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \expval{\tau_{i} \tau_{j}} - \Delta \mu xN
+\end{equation}
+But as in our previous derivation of the icing model, we can assume that our spins are decoupled:
+\begin{equation}
+  \expval{\mathcal{H}} = -\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \expval{\tau_{i}} \expval{\tau_{j}} - \Delta \mu xN
+\end{equation}
+But we get the same result if we just replace the bound of the first submission with the total number of particles $N$:
+\begin{equation}
+  \expval{\mathcal{H}} = -\frac{1}{2}J \sum_{i=0}^{N} \sum_{j=0}^{z-1} \expval{\tau_{i}} \expval{\tau_{j}} - \Delta \mu xN
+\end{equation}
+Plugging in our expression for the average spin at a given site, we get:
+\begin{equation}
+  \expval{\mathcal{H}} = -\frac{1}{2}J \sum_{i=0}^{N} \sum_{j=0}^{z-1} (m x) (m x) - \Delta \mu xN
+\end{equation}
+Since the insides of the summations is no longer dependent on the indices, we can just multiply by a factor of $N\cdot z$:
+\begin{equation}
+  \expval{\mathcal{H}} = -\frac{1}{2}J N z (m x)^{2} - \Delta \mu xN
 \end{equation}
 \subsection{}
 d) Write an expression of the Gibbs entropy in terms of $m$ and $x$.\\
 The Gibbs entropy is given by:
 \begin{equation}
-  S=-k \sum_{i} \left[p_{i} \ln p_{i}+\left(1-p_{i}\right) \ln \left(1-p_{i}\right)\right] \tag{4}
+  S=-kN \sum_{\tau_{i}} p(\tau_{i}) \ln p(\tau_{i})
 \end{equation}
-where $p_{i}$ is the probability of the system being in the $i$-th state.
+where we are summing over all possible spins. Also this is an exe extensive property, so we have to multiply by a tarter of $N$. So, this trust includes three terms:
+\begin{equation}
+  S = -kN \left( p(1) \ln p(1) + p(-1) \ln p(-1) + p(0) \ln p(0) \right) 
+\end{equation}
+We can plug in our expressions for the probabilities:
+\begin{equation}
+  S = -kN \left( \frac{1 + m}{2}x \ln \frac{1 + m}{2}x + \frac{1 - m}{2}x \ln \frac{1 - m}{2}x + (1 - x) \ln (1 - x) \right)
+\end{equation}
 \subsection{}
 e) Write the variational free energy, $G$. In addition to the variables characteristic to the ensemble, the free energy should also depend on $m$ and $x$.\\
 The free energy is given by:
@@ -119,7 +186,13 @@ The free energy is given by:
   G=E-TS
 \end{equation}
 where $E$ is the average Hamiltonian and $S$ is the Gibbs entropy. We need to find the average energy and the entropy of the previous problem.
+Plugging in gives us:
+\begin{equation}
+  G = -\frac{1}{2}J N z (m x)^{2} - \Delta \mu xN +NkT \left( \frac{1 + m}{2}x \ln \frac{1 + m}{2}x + \frac{1 - m}{2}x \ln \frac{1 - m}{2}x + (1 - x) \ln (1 - x) \right)
+\end{equation}
 \subsection{}
+
+
 
 f) Express the free energy as a dimensionless free energy per particle, $g$. Define new scaled parameters.
 
@@ -127,40 +200,142 @@ f) Express the free energy as a dimensionless free energy per particle, $g$. Def
 \begin{equation*}
 g \equiv \frac{G}{N k T}, \quad \alpha \equiv \frac{z J}{k T}, \quad \mu \equiv \frac{\Delta \mu}{k T} \equiv \frac{\mu_{A}-\mu_{B}}{k T} \tag{3}
 \end{equation*}
-Now, we want to manipulate the expression for the free energy that we just got.
-
+Now, we want to manipulate the expression for the free energy that we just got. Since we are ingested in a free energy per particle, we know to divide by $N$ and we also know that we can divide by $kT$, which has dimensions of energy, to get a dimensionless quantity:
+\begin{equation}
+  g \equiv \frac{G}{N k T} = -\frac{1}{2} \alpha (m x)^{2} - \mu x + \left( \frac{1 + m}{2}x \ln \frac{1 + m}{2}x + \frac{1 - m}{2}x \ln \frac{1 - m}{2}x + (1 - x) \ln (1 - x) \right)
+\end{equation}
+where we have used the definitions of $\alpha$ and $\mu$ to get the final expression.
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{1}
   \item Analyzing the free energy
 \end{enumerate}
+\subsection{}
+a) State the conditions for phase equilibrium.\\\\
+ Normally, for phase equilbium, we would want the same free energy per particle,  chemical potential, and temperature. However, here all we have to require is that the dimensionless free energy per particle be minimzzed with respect to the variables $m$ and $x$.
+\subsection{}
+b) Minimize the free energy with respect to $m$ to obtain an implicit relationship between $m$ and $x$, i.e. $F(m, x)=0$.\\\\
+Given the free energy per particle for this system, we can minimize it with respect to $m$, to get:
+\begin{equation}
+  \pdv{g}{m} = - 1.0 \alpha m x^{2} - \frac{x \log{\left(x \left(\frac{1}{2} - \frac{m}{2}\right) \right)}}{2} + \frac{x \log{\left(x \left(\frac{m}{2} + \frac{1}{2}\right) \right)}}{2}
+\end{equation}
+We set this all equal to 0 in order to sets by the minimization condition:
+\begin{equation}
+  - 1.0 \alpha m x^{2} - \frac{x \log{\left(x \left(\frac{1}{2} - \frac{m}{2}\right) \right)}}{2} + \frac{x \log{\left(x \left(\frac{m}{2} + \frac{1}{2}\right) \right)}}{2} = 0
+\end{equation}
+Additionally we can multiply by a factor of $\frac{2}{x}$ and also combine the logarithms and move the non logarithmic term to the other side to get:
+\begin{equation}
+  \log{\frac{x\left( \frac{m}{2} + \frac{1}{2} \right)}{x\left( \frac{1}{2} - \frac{m}{2} \right)}} = 2\alpha mx
+\end{equation}
+There is a consolation of the $x$s inside the logarithm, so we can cancel them out and then exponent both sides:
+\begin{equation}
+  \frac{\left( \frac{m}{2} + \frac{1}{2} \right)}{\left( \frac{1}{2} - \frac{m}{2} \right)} = e^{2\alpha mx}
+\end{equation}
+We can then multiply both sides by the denominator:
+\begin{equation}
+  \left( \frac{m}{2} + \frac{1}{2} \right) = e^{2\alpha mx} \left( \frac{1}{2} - \frac{m}{2} \right)
+\end{equation}
+Multiplying through by a factor of 2:
+\begin{equation}
+  m + 1 = e^{2\alpha mx} \left( 1 - m \right)
+\end{equation}
+This gives:
+\begin{equation}
+  m\left(1 + e^{2\alpha mx}\right) = e^{2\alpha mx} - 1
+\end{equation}
+We can then isolate $m$:
+\begin{equation}
+  m = \frac{e^{2\alpha mx} - 1}{1 + e^{2\alpha mx}}
+\end{equation}
+Then we multiply rhs by a factor of $\frac{e^{-\alpha mx}}{e^{-\alpha mx}}$:
+\begin{equation}
+  m = \frac{e^{\alpha mx} - e^{-\alpha mx}}{e^{-\alpha mx} + e^{\alpha mx}}
+\end{equation}
+which gives:
+\begin{equation}
+  m = \tanh{\left(\alpha mx\right)}
+\end{equation}
 
-a) State the conditions for phase equilibrium.
+\subsection{}
+c) Minimize the free energy with respect to $x$ to obtain an equation for $\mu=\mu(m, x)$.\\\\
+We can minimize the free energy with respect to $x$ to get:
+\begin{equation}
+  \pdv{g}{x} = - 1.0 \alpha m^{2} x - \mu + \left(\frac{1}{2} - \frac{m}{2}\right) \log{\left(x \left(\frac{1}{2} - \frac{m}{2}\right) \right)} + \left(\frac{m}{2} + \frac{1}{2}\right) \log{\left(x \left(\frac{m}{2} + \frac{1}{2}\right) \right)} - \log{\left(1 - x \right)}
+\end{equation}
+We can set this equal to 0 to get and solve for $\mu$:
+\begin{equation}
+  - 1.0 \alpha m^{2} x + \left(\frac{1}{2} - \frac{m}{2}\right) \log{\left(x \left(\frac{1}{2} - \frac{m}{2}\right) \right)} + \left(\frac{m}{2} + \frac{1}{2}\right) \log{\left(x \left(\frac{m}{2} + \frac{1}{2}\right) \right)} - \log{\left(1 - x \right)} = \mu
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, diff, ln, latex, solve
 
-b) Minimize the free energy with respect to $m$ to obtain an implicit relationship between $m$ and $x$, i.e. $F(m, x)=0$.
+# Define symbols
+m, x, alpha, mu = symbols('m x alpha mu')
 
-c) Minimize the free energy with respect to $x$ to obtain an equation for $\mu=\mu(m, x)$.
+# Define the expression for g
+g = -1/2 * alpha * (m * x)**2 - mu * x + ((1 + m)/2)*x*ln(((1 + m)/2)*x) + ((1 - m)/2)*x*ln(((1 - m)/2)*x) + (1 - x)*ln(1 - x)
 
+# Calculate the first derivatives
+dg_dm = diff(g, m)
+dg_dx = diff(g, x)
+
+# Solve the equation dg_dx = 0 for mu to get mu as a function of m, x, and alpha
+mu_solution = solve(dg_dx, mu)
+
+print(latex(mu_solution))
+
+
+\end{lstlisting}
+\subsection{}
 d) With these equations in hand, plot the following:\\
-i. $m$ vs $x$ for $\alpha=\{1,2, \ldots, 9\}$.
+\subsubsection{}
+% Inline Python code in the document
 
-ii. $g$ vs $\mu$ for $\alpha=\{1,2, \ldots, 9\}$.
+i. $m$ vs $x$ for $\alpha=\{1,2, \ldots, 9\}$.\\\\
 
+\begin{figure}
+  \centering
+  \includegraphics[max width=\textwidth]{m-x.png}
+\end{figure}
+
+\subsubsection{}
+ii. $g$ vs $\mu$ for $\alpha=\{1,2, \ldots, 9\}$.\\\\
+\begin{figure}
+  \centering
+  \includegraphics[max width=\textwidth]{g-mu.png}
+\end{figure}
 iii. For $\alpha=9$, label the following on the $g$ vs $\mu$ plot: (1) stable disordered state, (2) metastable disordered state, (3) stable ordered state, (4) metastable ordered state, (5) unstable state, (6) spinodal of ordered state, (7) spinodal of disordered state, (8) binodal (coexistence).
+\newpage
+First of all, we will note that when we have disordered and ordered phases, we have $\frac{\partial ^2 g}{\partial \mu ^2} < 0$, or the curves are concave down. We will start by going along the disordered phase where mu starts at zero. The definition of metastability is when the previously stated thermodynamic condition is met, but the system does not have the lowest free energy. This is clearly the case between the points 2 and 3. At 2, the domain of stability for the disordered phase is reached and the system achieves the spinodal of the disordered phase. In the path between 1 and 2 there is the curve of instability. Now, we will start by considering the curve of the ordered phase. It starts off as stable, until it reaches 3, where it enters a domain of metastability (as discussed earlier) and that goes until 1, which is the spinodal of the ordered phase. In this plot, 3 shows the coexistence of the disordered and ordered phases, which is called the binodal point.
+\begin{figure}
+  \centering
+  \includegraphics[max width=\textwidth]{g-mu-9.png}  
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[max width=\textwidth]{drawing.png}
+\end{figure}\\\\
 
 iv. Plot the phase diagram in $\alpha-\mu$ space. Use the domains $1 \leq \alpha \leq 9$ and $0<x<1$ to construct the phase diagram. Please use a sufficiently fine grid in each. How does the addition of impurity influence the phase transition? Does this make sense?
 
 Note that above a certain chemical potential, the phase transition will be second order. Below this chemical potential, the phase transition is first order. You will need to obtain the spinodal(s) and binodal in the first order region, and the criticalline or $\lambda$-line in the second order region. The point which joins the two regions is called the tri-critical point.
 
 v. Extra Credit (5 Pts): Plot the phase diagram in $\alpha^{-1}-x_{B}$ space, where $x_{B}=1-x$ is the type B number fraction in the system.
-
+\section{}
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item 2-dimensional Monte-Carlo simulation in canonical ensemble
 \end{enumerate}
 
 Define a $(40 \times 40)$ square lattice with $N_{A}=x N$ interacting spins that can take $s= \pm 1$ and $N_{B}=N-N_{A}=(1-x) N$ non-interacting spins that can take $s=0$.
+\subsection{}
+a) Write the Hamiltonian in the canonical ensemble as a function of the spin-state of the system assuming nearest neighbor interactions. Don't forget to account for over counting.\\\\
+The Hamiltonian is the same as earlier, but with the exception that here we are just working in the canonical ensemble:
+\begin{equation}
+  \mathcal{H}=-\frac{1}{2}J \sum_{i=0}^{N_{A}} \sum_{j=0}^{z-1} \tau_{i} \tau_{j}
+\end{equation}
 
-a) Write the Hamiltonian in the canonical ensemble as a function of the spin-state of the system assuming nearest neighbor interactions. Don't forget to account for over counting.
 
 b) Write a program to perform Monte Carlo simulations at fixed $(N, x, T)$. For all attempted moves, use the Metropolis-Hastings algorithm to make decisions. Use periodic boundary conditions! Your code should do the following:
 

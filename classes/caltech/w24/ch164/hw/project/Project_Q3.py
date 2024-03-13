@@ -4,21 +4,38 @@ from matplotlib import colors
 
 class MonteCarlo():
 
-    def __init__(self, x, alpha, ni):
-        self.x = x
-        self.beta = alpha
-        self.ni = int(ni)
+    def __init__(self, x, beta, n_iter):
+        self.x = x  # Fraction of interacting spins
+        self.beta = beta  # Inverse temperature
+        self.ni = int(n_iter)  # Number of iterations
         self.N = 1600
-        Na = int(self.N*x)
-        Nb = int(self.N - Na)
+        self.ndim = int(np.sqrt(self.N))  # Assuming a square lattice
+        self.Na = int(self.N*x)
+        self.Nb = int(self.N - self.Na)
 
+        np.random.seed(24)
+
+        # Initialize a two-dimensional square lattice
+        state = np.zeros((self.ndim, self.ndim), dtype=int)
+
+        # Randomly choose Na positions in the lattice for the interacting spins
+        interacting_indices = np.random.choice(self.N, self.Na, replace=False)
+
+        # Convert linear indices to 2D indices and assign s = +/- 1 to these positions
+        for index in interacting_indices:
+            i, j = divmod(index, self.ndim)
+            state[i, j] = np.random.choice([-1, 1])
  
         np.random.seed(24)
 
-
-        ######################################################
-        # INSERT CODE TO OBTAIN INITIAL STATE OF YOUR SYSTEM $
-        ######################################################
+        def plot_state(state, title="Lattice State"):
+            plt.figure(figsize=(6, 6))
+            plt.title(title)
+            plt.imshow(state, cmap='viridis', interpolation='nearest')
+            plt.colorbar(label='Spin Value')
+            plt.savefig('lattice.png')
+        
+        plot_state(state)
    
         self.oldstate = np.copy(state)
         self.newstate = np.copy(state)
@@ -32,10 +49,19 @@ class MonteCarlo():
         self.E /= 8 #overcounting
         self.dE = 0 #placeholder
     
+    
     def run_iter(self):
-        ################################################################
-        # THIS FUNCTION SHOULD RUN ONE SINGLE ITERATION OF YOUR MC SIM #
-        ################################################################
+        # first consider all possible flips
+        for i, Na in enumerate(self.oldstate):
+            # check if the absolute value of the spin is equal to 1
+            if abs(Na) == 1:
+                Working on monte Carlo
+                self.flip(i, j)
+        # now consider all possible swaps
+        
+                
+
+            
         # YOU SHOULD HAVE TWO FOR LOOPS: ONE FOR FLIPS, THE OTHER FOR 
         # SWAPS. AFTER EACH FLIP AND SWAP, YOU SHOULD UPDATE YOUR STATE 
 
@@ -46,15 +72,20 @@ class MonteCarlo():
         # THIS FUNCTION SHOULD PERFORM A FLIP AT INDEX i AND j, AND    #
         # COMPUTE THE ASSOCIATED ENERGY CHANGE WITH THiS FLIP          #
         ################################################################
-        return # NOTHING SHOULD NEED TO BE OUTPUT
+        # changed the sign at index i, j
+        self.newstate[i][j] = -self.newstate[i][j]
+        return
 
 
-    def swap(self, i, j):
+    def swap(self, i, j, nn):
         ################################################################
         # THIS FUNCTION SHOULD PERFORM A SWAP OF INDEX i AND j, AND    #
         # COMPUTE THE ASSOCIATED ENERGY CHANGE WITH THiS SWAP          #
         ################################################################
-        return # NOTHING SHOULD NEED TO BE OUTPUT
+        # from the point of view of a single spin in the squire lattice, perform a swap of spins with one of its 8 nearest neighbors.
+        self.newstate[i][j] = self.oldstate[nn]
+        self.newstate[nn] = self.oldstate[i][j]
+        return
     
     def update(self):
 
@@ -118,6 +149,6 @@ MC = MonteCarlo(0.75,3,1e3)
 
 MC.run()
 
-print(MC.initial)
+print(MC.ibetatial)
 print(MC.final)
 print(MC.ms)

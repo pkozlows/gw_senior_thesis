@@ -2,22 +2,33 @@
 \SingleSpacing 
 \contentsline {chapter}{{Acknowledgements}}{iii}{}%
 \contentsline {chapter}{{Abstract}}{iv}{}%
+\contentsline {chapter}{{Published Content and Contributions}}{v}{}%
 \contentsline {chapter}{Table of Contents}{v}{}%
-\contentsline {chapter}{List of Illustrations}{vi}{}%
-\contentsline {chapter}{List of Tables}{vii}{}%
-\contentsline {chapter}{\chapternumberline {1}nomenclature}{1}{}%
-\contentsline {chapter}{\chapternumberline {2}$G_0W_0$}{2}{}%
-\contentsline {section}{\numberline {2.1}Interpretive procedure}{2}{}%
-\contentsline {subsection}{The Fock Matrix}{2}{}%
-\contentsline {subsection}{Real Correlation-Solve Energy}{2}{}%
-\contentsline {chapter}{\chapternumberline {3}This is the Third Chapter}{4}{}%
-\contentsline {chapter}{\chapternumberline {4}This is the Fourth Chapter}{5}{}%
-\contentsline {chapter}{\chapternumberline {5}This is the Fifth Chapter}{6}{}%
-\contentsline {chapter}{\chapternumberline {6}This is the Sixth Chapter}{7}{}%
-\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{8}{}%
-\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{9}{}%
+\contentsline {chapter}{List of Illustrations}{vii}{}%
+\contentsline {chapter}{List of Tables}{viii}{}%
+\contentsline {chapter}{\chapternumberline {1}Nomenclature}{1}{}%
+\contentsline {chapter}{\chapternumberline {2}Motivation}{2}{}%
+\contentsline {chapter}{\chapternumberline {3}$G_0W_0$ Procedure}{3}{}%
+\contentsline {section}{\numberline {3.1}Iterative equation}{3}{}%
+\contentsline {subsection}{The Fock Matrix}{3}{}%
+\contentsline {subsection}{Real Correlation-Self Energy}{4}{}%
+\contentsline {subsection}{Quasiparticle Energy}{4}{}%
+\contentsline {subsection}{Graphical solution}{5}{}%
+\contentsline {section}{\numberline {3.2}Real correlation Self-Energy}{5}{}%
+\contentsline {section}{\numberline {3.3}Time dependent DFT}{6}{}%
+\contentsline {subsection}{Random Phase Approximation}{6}{}%
+\contentsline {subsubsection}{Spin integration}{7}{}%
+\contentsline {subsection}{Tamm-Dancoff Approximation}{7}{}%
+\contentsline {subsection}{Direct approximation}{7}{}%
+\contentsline {chapter}{\chapternumberline {4}Linearized $G_0W_0$ Density Matrix}{8}{}%
+\contentsline {subsection}{Implementation}{8}{}%
+\contentsline {subsection}{Plotting natural occupations}{9}{}%
+\contentsline {chapter}{\chapternumberline {5}This is the Sixth Chapter}{10}{}%
+\contentsline {chapter}{\chapternumberline {6}This is the Seventh Chapter}{11}{}%
+\contentsline {chapter}{\chapternumberline {7}This is the Eighth Chapter}{12}{}%
+\contentsline {chapter}{Bibliography}{13}{}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Questionnaire}{10}{}%
-\contentsline {appendix}{\chapternumberline {B}Consent Form}{11}{}%
+\contentsline {appendix}{\chapternumberline {A}Questionnaire}{14}{}%
+\contentsline {appendix}{\chapternumberline {B}Consent Form}{15}{}%
 \cftpagenumbersoff {chapter}
-\contentsline {chapter}{{Pocket Material: Map of Case Study Solar Systems}}{13}{}%
+\contentsline {chapter}{{Pocket Material: Map of Case Study Solar Systems}}{17}{}%

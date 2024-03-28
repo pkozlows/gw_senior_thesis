@@ -19,44 +19,289 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{curj_elucidating_2021}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a094ce6d7c228a072c792c805e22643d}{%
-           family={Kozlowski},
-           familyi={K\bibinitperiod},
-           given={Patryk},
+    \entry{sun_recent_2020}{article}{}
+      \name{author}{49}{}{%
+        {{hash=bf2f0fea67d22eff11c39fd7c77f9576}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Qiming},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=2ae30fa8e348ef8dc9a521e98eb79545}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xing},
+           giveni={X\bibinitperiod}}}%
+        {{hash=c5fe9cd46e249f826fbbda650677a082}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Samragni},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7bb8a735bf33214b0d5e54b83e63c8fb}{%
+           family={Bao},
+           familyi={B\bibinitperiod},
+           given={Peng},
            giveni={P\bibinitperiod}}}%
+        {{hash=d69c081c3d8ef2627ac00c6538705842}{%
+           family={Barbry},
+           familyi={B\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=00b6c15ec0c0a2d58580a113d994fc78}{%
+           family={Blunt},
+           familyi={B\bibinitperiod},
+           given={Nick\bibnamedelima S.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0a89f1b9b1538d5cc32590df6dbf3b08}{%
+           family={Bogdanov},
+           familyi={B\bibinitperiod},
+           given={Nikolay\bibnamedelima A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=8c7b2231792946b925014d762dcf665a}{%
+           family={Booth},
+           familyi={B\bibinitperiod},
+           given={George\bibnamedelima H.},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=95d25145789eb692784f0e434ed1b801}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9ac91b5fab335cb044f26fab8a9eb27f}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={Zhi-Hao},
+           giveni={Z\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=8b7bdc35772fad6d8ee2708010f49dce}{%
+           family={Eriksen},
+           familyi={E\bibinitperiod},
+           given={Janus\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=9c1ecb1f7c47cf02e9e994296746328c}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3a9d67501ea85d43b265fde76fbe089a}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Sheng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=adf447d0d6d246f5a5fcd334efdfcf7d}{%
+           family={Hermann},
+           familyi={H\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=851d6cacda1becec188510baffac607c}{%
+           family={Hermes},
+           familyi={H\bibinitperiod},
+           given={Matthew\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=7909012d183f73491a379f92d18fff9d}{%
+           family={Koh},
+           familyi={K\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=c534f76f6db6712a5aa104af267f00a3}{%
+           family={Koval},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=9d22c08c2c5ed286d40e1b044bed9407}{%
+           family={Lehtola},
+           familyi={L\bibinitperiod},
+           given={Susi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8eca32b3641a3a1cb575811e4667929b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Zhendong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=4314a8366b23c342bd6c41855b48f6d2}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Junzi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ce4fd3c8e220c625d9823b65a17165ee}{%
+           family={Mardirossian},
+           familyi={M\bibinitperiod},
+           given={Narbe},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d9d94a0ba9dda30fa08df8c55d66cebc}{%
+           family={McClain},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=336c60bdadf6471997c9682dacd211a2}{%
+           family={Motta},
+           familyi={M\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ab9f294c06bbd7ec06506ee9cd9647d0}{%
+           family={Mussard},
+           familyi={M\bibinitperiod},
+           given={Bastien},
+           giveni={B\bibinitperiod}}}%
+        {{hash=1a3e50a18e5fc31fbb86e0d998958cf3}{%
+           family={Pham},
+           familyi={P\bibinitperiod},
+           given={Hung\bibnamedelima Q.},
+           giveni={H\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=fdbbfd4d3e4fc210fb7faa3464c681ab}{%
+           family={Pulkin},
+           familyi={P\bibinitperiod},
+           given={Artem},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1c5bc62f03752685dde37036efc4d172}{%
+           family={Purwanto},
+           familyi={P\bibinitperiod},
+           given={Wirawan},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e3bf5f8ac1e6215999cf0b360ec84c46}{%
+           family={Robinson},
+           familyi={R\bibinitperiod},
+           given={Paul\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=aa7d9a461be161cae638f2f4f568447f}{%
+           family={Ronca},
+           familyi={R\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+        {{hash=a80907fe4952209721528cc27c1826b3}{%
+           family={Sayfutyarova},
+           familyi={S\bibinitperiod},
+           given={Elvira\bibnamedelima R.},
+           giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=aff7ea81635f3c4136233bd7ce84f46e}{%
+           family={Scheurer},
+           familyi={S\bibinitperiod},
+           given={Maximilian},
+           giveni={M\bibinitperiod}}}%
+        {{hash=34414399188bf56a1a4b56928e2510ea}{%
+           family={Schurkus},
+           familyi={S\bibinitperiod},
+           given={Henry\bibnamedelima F.},
+           giveni={H\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=c70e90dfb1372c46c6250e6f1d5d2a9b}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelimb E.\bibnamedelimi T.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=5a05d4200a93374817b0ccd6830949db}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Chong},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4ec501291e780f5ec2bcbc4c394fa2dc}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Shi-Ning},
+           giveni={S\bibinithyphendelim N\bibinitperiod}}}%
+        {{hash=53962503464fd3d9ddf24dbe37455268}{%
+           family={Upadhyay},
+           familyi={U\bibinitperiod},
+           given={Shiv},
+           giveni={S\bibinitperiod}}}%
+        {{hash=141f53d01fade2f66f7843f4f348470d}{%
+           family={Wagner},
+           familyi={W\bibinitperiod},
+           given={Lucas\bibnamedelima K.},
+           giveni={L\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=bd7d15d79ca36b953d99a1a0aaccb94a}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod}}}%
+        {{hash=ba5188c6cc6d2ed39c22a9e69a0d535f}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={Alec},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0204b9fc3d0323c7a45de2f053ffc203}{%
+           family={Whitfield},
+           familyi={W\bibinitperiod},
+           given={James\bibnamedelima Daniel},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3bfcf6ab73dbb30c2438b3b01bc5fb5c}{%
+           family={Williamson},
+           familyi={W\bibinitperiod},
+           given={Mark\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=9fc73182d7837cef25d9aa53a70c8a93}{%
+           family={Wouters},
+           familyi={W\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8a030e61cb9e9b04c27f699afc0d19f7}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1434440db239d1b6a50ff109de00a2d3}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jason\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=fae721c754734cf29a8b41ff18af98ef}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Tianyu},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c3feaf0f2be533ececca1a3dbde35096}{%
+           family={Berkelbach},
+           familyi={B\bibinitperiod},
+           given={Timothy\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=027548649176a2d51c9ecb5e7bdd747e}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Sandeep},
+           giveni={S\bibinitperiod}}}%
+        {{hash=119b9e8eed85a3a7430fee0cf4a8fcfd}{%
+           family={Sokolov},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelima Yu.},
+           giveni={A\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=9fa3b07f3d74fe2c76629514daf4277d}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={Garnet\bibnamedelima Kin-Lic},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinithyphendelim L\bibinitperiod}}}%
       }
-      \list{language}{1}{%
-        {en}%
-      }
-      \strng{namehash}{a094ce6d7c228a072c792c805e22643d}
-      \strng{fullhash}{a094ce6d7c228a072c792c805e22643d}
-      \strng{bibnamehash}{a094ce6d7c228a072c792c805e22643d}
-      \strng{authorbibnamehash}{a094ce6d7c228a072c792c805e22643d}
-      \strng{authornamehash}{a094ce6d7c228a072c792c805e22643d}
-      \strng{authorfullhash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{namehash}{82e4bff563c82784b765c7573114c8af}
+      \strng{fullhash}{36a85336f1a18a658e7abd8feca58949}
+      \strng{bibnamehash}{82e4bff563c82784b765c7573114c8af}
+      \strng{authorbibnamehash}{82e4bff563c82784b765c7573114c8af}
+      \strng{authornamehash}{82e4bff563c82784b765c7573114c8af}
+      \strng{authorfullhash}{36a85336f1a18a658e7abd8feca58949}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Author: Patryk KozlowskiMentor: Garnet K. Chan and Yang GaoEditor: Hannah X. Chen Introduction Due to the imminent crisis of climate change, developing sustainable methods for fuel and chemical pro…}
-      \field{journaltitle}{CURJ}
-      \field{month}{6}
-      \field{title}{Elucidating {Catalysis} with the “{Gold} {Standard}” of {Quantum} {Chemistry}}
-      \field{urlday}{19}
+      \field{abstract}{PySCF is a Python-based general-purpose electronic structure platform that supports first-principles simulations of molecules and solids as well as accelerates the development of new methodology and complex computational workflows. This paper explains the design and philosophy behind PySCF that enables it to meet these twin objectives. With several case studies, we show how users can easily implement their own methods using PySCF as a development environment. We then summarize the capabilities of PySCF for molecular and solid-state simulations. Finally, we describe the growing ecosystem of projects that use PySCF across the domains of quantum chemistry, materials science, machine learning, and quantum information science.}
+      \field{issn}{0021-9606}
+      \field{journaltitle}{The Journal of Chemical Physics}
+      \field{month}{7}
+      \field{number}{2}
+      \field{title}{Recent developments in the {PySCF} program package}
+      \field{urlday}{22}
       \field{urlmonth}{3}
       \field{urlyear}{2024}
-      \field{year}{2021}
+      \field{volume}{153}
+      \field{year}{2020}
       \field{urldateera}{ce}
+      \field{pages}{024109}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1063/5.0006074
+      \endverb
       \verb{file}
-      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/JXEX8N3Q/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry.html:text/html
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/Q3JZ9237/Sun et al. - 2020 - Recent developments in the PySCF program package.pdf:application/pdf;Snapshot:/Users/patrykkozlowski/Zotero/storage/ZUAG73KH/Recent-developments-in-the-PySCF-program-package.html:text/html
       \endverb
       \verb{urlraw}
-      \verb https://curj.caltech.edu/2021/06/29/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry/
+      \verb https://doi.org/10.1063/5.0006074
       \endverb
       \verb{url}
-      \verb https://curj.caltech.edu/2021/06/29/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry/
+      \verb https://doi.org/10.1063/5.0006074
       \endverb
     \endentry
     \entry{schimka_accurate_2010}{article}{}
@@ -102,8 +347,8 @@
       }
       \strng{namehash}{3edf8108879cdc3275b5143319019cda}
       \strng{fullhash}{17139930a41e28f10b470363c2cea88a}
-      \strng{bibnamehash}{17139930a41e28f10b470363c2cea88a}
-      \strng{authorbibnamehash}{17139930a41e28f10b470363c2cea88a}
+      \strng{bibnamehash}{3edf8108879cdc3275b5143319019cda}
+      \strng{authorbibnamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authornamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authorfullhash}{17139930a41e28f10b470363c2cea88a}
       \field{sortinit}{2}
@@ -139,6 +384,163 @@
       \endverb
       \keyw{Computational methods,interfaces and thin films,Surfaces}
     \endentry
+    \entry{mcclain_gaussian-based_2017}{article}{}
+      \name{author}{4}{}{%
+        {{hash=569d7450deb48a665b0f6ed2c15075a3}{%
+           family={McClain},
+           familyi={M\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bf2f0fea67d22eff11c39fd7c77f9576}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Qiming},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=9fa3b07f3d74fe2c76629514daf4277d}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={Garnet\bibnamedelima Kin-Lic},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=c3feaf0f2be533ececca1a3dbde35096}{%
+           family={Berkelbach},
+           familyi={B\bibinitperiod},
+           given={Timothy\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{acf07235291278c7d6c9481d25c3daed}
+      \strng{fullhash}{93e2014668408cba19b81f265ea34e3d}
+      \strng{bibnamehash}{93e2014668408cba19b81f265ea34e3d}
+      \strng{authorbibnamehash}{93e2014668408cba19b81f265ea34e3d}
+      \strng{authornamehash}{acf07235291278c7d6c9481d25c3daed}
+      \strng{authorfullhash}{93e2014668408cba19b81f265ea34e3d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present the results of Gaussian-based ground-state and excited-state equation-of-motion coupled-cluster theory with single and double excitations for three-dimensional solids. We focus on diamond and silicon, which are paradigmatic covalent semiconductors. In addition to ground-state properties (the lattice constant, bulk modulus, and cohesive energy), we compute the quasiparticle band structure and band gap. We sample the Brillouin zone with up to 64 k-points using norm-conserving pseudopotentials and polarized double- and triple-ζ basis sets, leading to canonical coupled-cluster calculations with as many as 256 electrons in 2176 orbitals.}
+      \field{issn}{1549-9618}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{month}{3}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{3}
+      \field{title}{Gaussian-{Based} {Coupled}-{Cluster} {Theory} for the {Ground}-{State} and {Band} {Structure} of {Solids}}
+      \field{urlday}{22}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{13}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{1209\bibrangedash 1218}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1021/acs.jctc.7b00049
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/KGKLCM2H/McClain et al. - 2017 - Gaussian-Based Coupled-Cluster Theory for the Grou.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/acs.jctc.7b00049
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/acs.jctc.7b00049
+      \endverb
+    \endentry
+    \entry{kozlowski_elucidating_2021}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a094ce6d7c228a072c792c805e22643d}{%
+           family={Kozlowski},
+           familyi={K\bibinitperiod},
+           given={Patryk},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{fullhash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{bibnamehash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{authorbibnamehash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{authornamehash}{a094ce6d7c228a072c792c805e22643d}
+      \strng{authorfullhash}{a094ce6d7c228a072c792c805e22643d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Caltech Undergraduate Research Journal}
+      \field{month}{6}
+      \field{title}{Elucidating {Catalysis} with the “{Gold} {Standard}” of {Quantum} {Chemistry}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/JXEX8N3Q/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://curj.caltech.edu/2021/06/29/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry/
+      \endverb
+      \verb{url}
+      \verb https://curj.caltech.edu/2021/06/29/elucidating-catalysis-with-the-gold-standard-of-quantum-chemistry/
+      \endverb
+    \endentry
+    \entry{noauthor_frontiers_nodate}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{Frontiers {|} {The} {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Frontiers | The GW Compendium\: A Practical Guide to Theoretical Photoemission Spectroscopy:/Users/patrykkozlowski/Zotero/storage/GSVKDXVW/full.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+    \endentry
+    \entry{szabo_modern_2012}{book}{}
+      \name{author}{2}{}{%
+        {{hash=dc52ed3315ff506a9d4fe6a0ab079ae2}{%
+           family={Szabo},
+           familyi={S\bibinitperiod},
+           given={Attila},
+           giveni={A\bibinitperiod}}}%
+        {{hash=977f18e68b981d3d80b363ccb7cbeab7}{%
+           family={Ostlund},
+           familyi={O\bibinitperiod},
+           given={Neil\bibnamedelima S.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Courier Corporation}%
+      }
+      \strng{namehash}{7e4e963df06b39584349eaf439922455}
+      \strng{fullhash}{7e4e963df06b39584349eaf439922455}
+      \strng{bibnamehash}{7e4e963df06b39584349eaf439922455}
+      \strng{authorbibnamehash}{7e4e963df06b39584349eaf439922455}
+      \strng{authornamehash}{7e4e963df06b39584349eaf439922455}
+      \strng{authorfullhash}{7e4e963df06b39584349eaf439922455}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The aim of this graduate-level textbook is to present and explain, at other than a superficial level, modem ab initio approaches to the calculation of the electronic structure and properties of molecules. The first three chapters contain introductory material culminating in a thorough discussion of the Hartree-Fock approximation.The remaining four chapters describe a variety of more sophisticated approaches, which improve upon this approximation.Among the highlights of the seven chapters are (1) a review of the mathematics (mostly matrix algebra) required for the rest of the book, (2) an introduction to the basic techniques, ideas, and notations of quantum chemistry, (3) a thorough discussion of the Hartree-Fock approximation, (4) a treatment of configuration interaction (Cl) and approaches incorporating electron correlation, (5) a description of the independent electron pair approximation and a variety of more sophisticated approaches that incorporate coupling between pairs, (6) a consideration of the perturbative approach to the calculation of the correlation energy of many-electron systems and (7) a brief introduction to the use of the one-particle many-body Green\&\#39;s function in quantum chemistry.Over 150 exercises, designed to help the reader acquire a working knowledge of the material, are embedded in the text. The book is largely self-contained and requires no prerequisite other than a solid undergraduate physical chemistry course; however, some exposure to quantum chemistry will enhance the student\&\#39;s appreciation of the material. Clear and well-written, this text is ideal for the second semester of a two-semester course in quantum chemistry, or for a special topics course.}
+      \field{isbn}{978-0-486-13459-8}
+      \field{month}{6}
+      \field{note}{Google-Books-ID: KQ3DAgAAQBAJ}
+      \field{shorttitle}{Modern {Quantum} {Chemistry}}
+      \field{title}{Modern {Quantum} {Chemistry}: {Introduction} to {Advanced} {Electronic} {Structure} {Theory}}
+      \field{year}{2012}
+      \keyw{Science / Chemistry / General}
+    \endentry
     \entry{dreuw_single-reference_2005}{article}{}
       \name{author}{2}{}{%
         {{hash=0291875bdd7a3c8ffd7502d4aa02d77d}{%
@@ -158,8 +560,8 @@
       \strng{authorbibnamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authornamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authorfullhash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0009-2665}
@@ -203,8 +605,8 @@
       \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}
@@ -235,46 +637,7 @@
       \verb https://doi.org/10.1021/acs.jctc.9b00333
       \endverb
     \endentry
-    \entry{szabo_modern_2012}{book}{}
-      \name{author}{2}{}{%
-        {{hash=dc52ed3315ff506a9d4fe6a0ab079ae2}{%
-           family={Szabo},
-           familyi={S\bibinitperiod},
-           given={Attila},
-           giveni={A\bibinitperiod}}}%
-        {{hash=977f18e68b981d3d80b363ccb7cbeab7}{%
-           family={Ostlund},
-           familyi={O\bibinitperiod},
-           given={Neil\bibnamedelima S.},
-           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {en}%
-      }
-      \list{publisher}{1}{%
-        {Courier Corporation}%
-      }
-      \strng{namehash}{7e4e963df06b39584349eaf439922455}
-      \strng{fullhash}{7e4e963df06b39584349eaf439922455}
-      \strng{bibnamehash}{7e4e963df06b39584349eaf439922455}
-      \strng{authorbibnamehash}{7e4e963df06b39584349eaf439922455}
-      \strng{authornamehash}{7e4e963df06b39584349eaf439922455}
-      \strng{authorfullhash}{7e4e963df06b39584349eaf439922455}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{abstract}{The aim of this graduate-level textbook is to present and explain, at other than a superficial level, modem ab initio approaches to the calculation of the electronic structure and properties of molecules. The first three chapters contain introductory material culminating in a thorough discussion of the Hartree-Fock approximation.The remaining four chapters describe a variety of more sophisticated approaches, which improve upon this approximation.Among the highlights of the seven chapters are (1) a review of the mathematics (mostly matrix algebra) required for the rest of the book, (2) an introduction to the basic techniques, ideas, and notations of quantum chemistry, (3) a thorough discussion of the Hartree-Fock approximation, (4) a treatment of configuration interaction (Cl) and approaches incorporating electron correlation, (5) a description of the independent electron pair approximation and a variety of more sophisticated approaches that incorporate coupling between pairs, (6) a consideration of the perturbative approach to the calculation of the correlation energy of many-electron systems and (7) a brief introduction to the use of the one-particle many-body Green\&\#39;s function in quantum chemistry.Over 150 exercises, designed to help the reader acquire a working knowledge of the material, are embedded in the text. The book is largely self-contained and requires no prerequisite other than a solid undergraduate physical chemistry course; however, some exposure to quantum chemistry will enhance the student\&\#39;s appreciation of the material. Clear and well-written, this text is ideal for the second semester of a two-semester course in quantum chemistry, or for a special topics course.}
-      \field{isbn}{978-0-486-13459-8}
-      \field{month}{6}
-      \field{note}{Google-Books-ID: KQ3DAgAAQBAJ}
-      \field{shorttitle}{Modern {Quantum} {Chemistry}}
-      \field{title}{Modern {Quantum} {Chemistry}: {Introduction} to {Advanced} {Electronic} {Structure} {Theory}}
-      \field{year}{2012}
-      \keyw{Science / Chemistry / General}
-    \endentry
   \enddatalist
-  \missing{szabo2012modern}
 \endrefsection
 
 \refsection{1}

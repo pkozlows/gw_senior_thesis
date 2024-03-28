@@ -5,8 +5,8 @@ from tda import real_corr_se
 from mf import setup_molecule, calculate_mean_field
 from fock import simple_fock
 
-molecule = setup_molecule()
-my_fock = simple_fock(molecule)
+molecule = setup_molecule('water')
+my_fock = simple_fock(calculate_mean_field(molecule, 'hf'))
 # find the number of orbitals
 n_orbitals = molecule.nao_nr()
 # find the number of occupied orbitals
@@ -46,9 +46,9 @@ plt.plot(frequencies_ev, all_correlation_energies_ev[homo_index], label='HOMO')
 
 
 
-plt.title('G0W0 @HF for Water')
+plt.title(r'$G_0W_0 @HF for the Water Molecule')
 plt.xlabel(r'$\omega$ [eV]')
-plt.ylabel(r'$\operatorname{Re}(\Sigma_{pp}^{c})$ [eV]')
+plt.ylabel(r'$\Sigma_{pp}^{c}$ [eV]')
 
 # Add the line y = x + b, converting b to eV as well
 fock_element_ev = my_fock[homo_index, homo_index] * conversion_factor

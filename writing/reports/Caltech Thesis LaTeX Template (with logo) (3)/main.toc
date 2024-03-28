@@ -1,34 +1,38 @@
 \vskip 35pt
 \SingleSpacing 
-\contentsline {chapter}{{Acknowledgements}}{iii}{}%
-\contentsline {chapter}{{Abstract}}{iv}{}%
-\contentsline {chapter}{{Published Content and Contributions}}{v}{}%
-\contentsline {chapter}{Table of Contents}{v}{}%
-\contentsline {chapter}{List of Illustrations}{vii}{}%
-\contentsline {chapter}{List of Tables}{viii}{}%
-\contentsline {chapter}{\chapternumberline {1}Nomenclature}{1}{}%
-\contentsline {chapter}{\chapternumberline {2}Motivation}{2}{}%
-\contentsline {chapter}{\chapternumberline {3}$G_0W_0$ Procedure}{3}{}%
-\contentsline {section}{\numberline {3.1}Iterative equation}{3}{}%
-\contentsline {subsection}{The Fock Matrix}{3}{}%
-\contentsline {subsection}{Real Correlation-Self Energy}{4}{}%
-\contentsline {subsection}{Quasiparticle Energy}{4}{}%
-\contentsline {subsection}{Graphical solution}{5}{}%
-\contentsline {section}{\numberline {3.2}Real correlation Self-Energy}{5}{}%
-\contentsline {section}{\numberline {3.3}Time dependent DFT}{6}{}%
-\contentsline {subsection}{Random Phase Approximation}{6}{}%
-\contentsline {subsubsection}{Spin integration}{7}{}%
-\contentsline {subsection}{Tamm-Dancoff Approximation}{7}{}%
-\contentsline {subsection}{Direct approximation}{7}{}%
-\contentsline {chapter}{\chapternumberline {4}Linearized $G_0W_0$ Density Matrix}{8}{}%
-\contentsline {subsection}{Implementation}{8}{}%
-\contentsline {subsection}{Plotting natural occupations}{9}{}%
-\contentsline {chapter}{\chapternumberline {5}This is the Sixth Chapter}{10}{}%
-\contentsline {chapter}{\chapternumberline {6}This is the Seventh Chapter}{11}{}%
-\contentsline {chapter}{\chapternumberline {7}This is the Eighth Chapter}{12}{}%
-\contentsline {chapter}{Bibliography}{13}{}%
+\contentsline {chapter}{{Acknowledgements}}{iii}{chapter*.2}%
+\contentsline {chapter}{{Abstract}}{iv}{chapter*.3}%
+\contentsline {chapter}{{Published Content and Contributions}}{v}{chapter*.4}%
+\contentsline {chapter}{Table of Contents}{v}{section*.5}%
+\contentsline {chapter}{List of Illustrations}{vii}{section*.6}%
+\contentsline {chapter}{List of Tables}{viii}{section*.7}%
+\contentsline {chapter}{\chapternumberline {1}Nomenclature}{1}{chapter.1}%
+\contentsline {chapter}{\chapternumberline {2}Motivation}{2}{chapter.2}%
+\contentsline {chapter}{\chapternumberline {3}Theoretical Background}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Mean Field Methods}{4}{section.3.1}%
+\contentsline {subsection}{Hartree-Fock}{4}{section*.8}%
+\contentsline {subsection}{Density Functional Theory (DFT)}{5}{section*.9}%
+\contentsline {section}{\numberline {3.2}Many-body perturbation theory}{5}{section.3.2}%
+\contentsline {chapter}{\chapternumberline {4}$G_0W_0$ Procedure}{6}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Iterative equation}{6}{section.4.1}%
+\contentsline {subsection}{The Fock Matrix}{6}{section*.10}%
+\contentsline {subsection}{Correlation-Self Energy}{7}{section*.11}%
+\contentsline {subsection}{updated $\varepsilon _{p}^{QP}$}{7}{section*.12}%
+\contentsline {subsection}{Graphical solution}{8}{section*.13}%
+\contentsline {section}{\numberline {4.2}Correlation Self-Energy}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Time dependent DFT}{9}{section.4.3}%
+\contentsline {subsection}{Random Phase Approximation}{9}{section*.14}%
+\contentsline {subsection}{Tamm-Dancoff Approximation}{9}{section*.15}%
+\contentsline {subsection}{Direct approximation}{10}{section*.16}%
+\contentsline {chapter}{\chapternumberline {5}Linearized $G_0W_0$ Density Matrix}{11}{chapter.5}%
+\contentsline {subsection}{Implementation}{11}{section*.17}%
+\contentsline {subsection}{Plotting natural occupations}{12}{section*.18}%
+\contentsline {chapter}{\chapternumberline {6}This is the Sixth Chapter}{13}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{14}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{15}{chapter.8}%
+\contentsline {chapter}{Bibliography}{16}{section*.20}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Questionnaire}{14}{}%
-\contentsline {appendix}{\chapternumberline {B}Consent Form}{15}{}%
+\contentsline {appendix}{\chapternumberline {A}Questionnaire}{17}{appendix.A}%
+\contentsline {appendix}{\chapternumberline {B}Consent Form}{18}{appendix.B}%
 \cftpagenumbersoff {chapter}
-\contentsline {chapter}{{Pocket Material: Map of Case Study Solar Systems}}{17}{}%
+\contentsline {chapter}{{Pocket Material: Map of Case Study Solar Systems}}{20}{appendix*.22}%

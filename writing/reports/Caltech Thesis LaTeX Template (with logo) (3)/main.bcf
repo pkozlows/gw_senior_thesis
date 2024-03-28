@@ -91,7 +91,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>15</bcf:value>
+      <bcf:value>5</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -99,7 +99,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>15</bcf:value>
+      <bcf:value>5</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -317,7 +317,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>15</bcf:value>
+      <bcf:value>5</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -325,7 +325,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>15</bcf:value>
+      <bcf:value>5</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -627,9 +627,7 @@
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
     <bcf:option datatype="boolean">articletitle</bcf:option>
-    <bcf:option datatype="boolean">chaptertitle</bcf:option>
-    <bcf:option datatype="boolean">pageranges</bcf:option>
-    <bcf:option datatype="boolean">biblabel</bcf:option>
+    <bcf:option datatype="boolean">intitle</bcf:option>
     <bcf:option datatype="boolean">subentrycomp</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
@@ -2366,15 +2364,23 @@
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
-    <bcf:citekey order="1">curj_elucidating_2021</bcf:citekey>
-    <bcf:citekey order="2">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="3">dreuw_single-reference_2005</bcf:citekey>
-    <bcf:citekey order="4">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="5">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="6">curj_elucidating_2021</bcf:citekey>
-    <bcf:citekey order="7">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="8">dreuw_single-reference_2005</bcf:citekey>
-    <bcf:citekey order="9">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="1">sun_recent_2020</bcf:citekey>
+    <bcf:citekey order="2">schimka_accurate_2010</bcf:citekey>
+    <bcf:citekey order="3">mcclain_gaussian-based_2017</bcf:citekey>
+    <bcf:citekey order="4">kozlowski_elucidating_2021</bcf:citekey>
+    <bcf:citekey order="5">noauthor_frontiers_nodate</bcf:citekey>
+    <bcf:citekey order="6">szabo_modern_2012</bcf:citekey>
+    <bcf:citekey order="7">dreuw_single-reference_2005</bcf:citekey>
+    <bcf:citekey order="8">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="9">szabo_modern_2012</bcf:citekey>
+    <bcf:citekey order="10">sun_recent_2020</bcf:citekey>
+    <bcf:citekey order="11">schimka_accurate_2010</bcf:citekey>
+    <bcf:citekey order="12">mcclain_gaussian-based_2017</bcf:citekey>
+    <bcf:citekey order="13">kozlowski_elucidating_2021</bcf:citekey>
+    <bcf:citekey order="14">noauthor_frontiers_nodate</bcf:citekey>
+    <bcf:citekey order="15">szabo_modern_2012</bcf:citekey>
+    <bcf:citekey order="16">dreuw_single-reference_2005</bcf:citekey>
+    <bcf:citekey order="17">bruneval_assessment_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

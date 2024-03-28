@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{physics}
+
+\title{Linearized $G_0W_0$ Density Matrix}
+\author{Patryk Kozlowski}
+\date{\today}
+\begin{document}
+\maketitle
+We have the equation for the density matrix:
+\begin{equation}
+\begin{aligned}
+\gamma^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right)= & \gamma_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right) -\frac{\mathrm{i}}{2 \pi} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \mathrm{~d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} G_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_3, \omega\right) \Sigma_c^\sigma\left(\mathbf{r}_3, \mathbf{r}_4, \omega\right) G_0^\sigma\left(\mathbf{r}_4, \mathbf{r}_2, \omega\right)
+\end{aligned}
+\end{equation}
+with the following definitions:
+\begin{equation}
+D_{p q \sigma}=\left\langle p \sigma\left|\gamma^\sigma\right| q \sigma\right\rangle
+\end{equation}
+Now we want to apply this bra-ket notation to the equation above. We can write the equation as, also redefining the integration over $\mathbf{r}_3$ and $\mathbf{r}_4$ as $\sum_{r}$ and $\sum_{t}$, respectively: 
+\begin{equation}
+    D_{p q \sigma}=\bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \bra{p\sigma } G_0^\sigma (\omega) \ket{r\sigma } \bra{r\sigma } \Sigma_c^\sigma (\omega) \ket{t\sigma } \bra{t\sigma } G_0^\sigma (\omega) \ket{q\sigma }
+\end{equation}
+with the following definitions:
+\begin{equation}
+G_{0 p q}^\sigma=\sum_i \frac{\delta_{p q} \delta_{p i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p q} \delta_{p a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+\Sigma_{c p q}^\sigma(\omega)= & \sum_{i s} \frac{w_{p i \sigma}^s w_{q i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{p a \sigma}^s w_{q a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta}
+\end{aligned}
+\end{equation}
+Plugging in these definitions, we get:
+\begin{equation}
+\begin{aligned}
+D_{p q \sigma}= & \bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
+& \left( \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+\end{aligned}
+\end{equation}
+Now we consider only the integral over $\omega$:
+\begin{equation}
+\begin{aligned}
+I = & \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
+& \left( \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+\end{aligned}
+\end{equation}
+Considering the first two parenthesis, we notice that the latter delta functions for the first and second expression in the first term will only be non-zero when they multiply the first and second expression in the second term, respectively. This means that we can simplify the expression to:
+\begin{equation}
+\begin{aligned}
+I = & \sum_{r} \sum_{t} \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right.\\
+& \left. + \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+\end{aligned}
+\end{equation}
+The delta function terms will pick out a single term in the sum over excitation vector, so we can relabel the indices to:
+\begin{equation}
+\begin{aligned}
+I = & \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_{is} \frac{w_{p i \sigma}^s w_{q i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2 \right)\\
+& + \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_{as} \frac{w_{p a \sigma}^s w_{q a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2 \right)
+\end{aligned}
+\end{equation}
+Considering only the first term we can swab the summation with the integral:
+\begin{equation}
+I_1 = \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2
+\end{equation}
+This suggests a simple pole at $\omega = \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta$ and a pole of the second order at $\omega = \epsilon_{i \sigma} + \mathrm{i} \eta$. We have:
+\begin{equation}
+f(\omega) = \frac{\mathrm{e}^{\mathrm{i \omega \eta }}}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2
+\end{equation}
+We start by considering the first pole at $\omega = \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta$. We consider:
+\begin{equation}
+g_0(\omega) = \left( \omega - \epsilon_{i \sigma} + \Omega_s - \mathrm{i} \eta \right) f(\omega) = e^{i \omega \eta} \left( \frac{1}{\omega - \epsilon_{i \sigma} - i \eta} \right)^2
+\end{equation}
+Evaluating this at the pole, we get:
+\begin{equation}
+g_0(\epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta) = e^{i (\epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta) \eta} \left( -\frac{1}{\Omega_s} \right)^2
+\end{equation}
+Now we consider the second pole at $\omega = \epsilon_{i \sigma} + \mathrm{i} \eta$. We consider:
+\begin{equation}
+g_1(\omega) = \left( \omega - \epsilon_{i \sigma} - \mathrm{i} \eta \right)^2 f(\omega) = \frac{e^{i \omega \eta}}{\omega - \epsilon_{i \sigma} + \Omega_s - \mathrm{i} \eta}
+\end{equation}
+Evaluating this at the pole, we get:
+\begin{equation}
+g_1(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{e^{i (\epsilon_{i \sigma} + \mathrm{i} \eta) \eta}}{\Omega_s}
+\end{equation}
+So,
+\begin{equation}
+I_1 = 2\pi i \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \left( e^{i \left( \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta \right) \eta} \left( -\frac{1}{\Omega_s} \right)^2 + \frac{e^{i \left( \epsilon_{i \sigma} + \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
+\end{equation}
+Now we consider the second term:
+\begin{equation}
+I_2 = \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2
+\end{equation}
+This suggests a simple pole at $\omega = \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta$ and a pole of the second order at $\omega = \epsilon_{a \sigma} - \mathrm{i} \eta$. We have:
+\begin{equation}
+f(\omega) = \frac{\mathrm{e}^{\mathrm{i \omega \eta }}}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2
+\end{equation}
+We start by considering the first pole at $\omega = \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta$. We consider:
+\begin{equation}
+g_0(\omega) = \left( \omega - \epsilon_{a \sigma} - \Omega_s + \mathrm{i} \eta \right) f(\omega) = e^{i \omega \eta} \left( \frac{1}{\omega - \epsilon_{a \sigma} + i \eta} \right)^2
+\end{equation}
+Evaluating this at the pole, we get:
+\begin{equation}
+g_0(\epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta) = e^{i (\epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta) \eta} \left( \frac{1}{\Omega_s} \right)^2
+\end{equation}
+Now we consider the second pole at $\omega = \epsilon_{a \sigma} - \mathrm{i} \eta$. We consider:
+\begin{equation}
+g_1(\omega) = \left( \omega - \epsilon_{a \sigma} - \mathrm{i} \eta \right)^2 f(\omega) = \frac{e^{i \omega \eta}}{\omega - \epsilon_{a \sigma} - \Omega_s + \mathrm{i} \eta}
+\end{equation}
+Evaluating this at the pole, we get:
+\begin{equation}
+g_1(\epsilon_{a \sigma} - \mathrm{i} \eta) = -\frac{e^{i (\epsilon_{a \sigma} - \mathrm{i} \eta) \eta}}{\Omega_s}
+\end{equation}
+So,
+\begin{equation}
+I_2 = 2\pi i \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \left( e^{i \left( \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta \right) \eta} \left( \frac{1}{\Omega_s} \right)^2 - \frac{e^{i \left( \epsilon_{a \sigma} - \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
+\end{equation}
+So,
+\begin{equation}
+\begin{aligned}
+I = & I_1 + I_2\\
+= & 2\pi i \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \left( e^{i \left( \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta \right) \eta} \left( -\frac{1}{\Omega_s} \right)^2 + \frac{e^{i \left( \epsilon_{i \sigma} + \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)\\
+& + 2\pi i \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \left( e^{i \left( \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta \right) \eta} \left( \frac{1}{\Omega_s} \right)^2 - \frac{e^{i \left( \epsilon_{a \sigma} - \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
+\end{aligned}
+\end{equation}
+\end{document}

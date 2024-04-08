@@ -75,39 +75,51 @@ def sparse_hamiltonian(L, h, J=1, periodic=False):
     for i in range(2**L):
         # turn that index into a binary string
         bi = binary_string(i, L)
-        # loop over the index j
-        for j in range(i, 2**L):
-            # turn that index into a binary string
-            bj = binary_string(j, L)
-            # if i == j, we are on the diagonal and we want to add all the interactions in the chain
-            if i == j:
-                total_interaction = 0
-                # initialize the loop range based on the boundary conditions
-                loop_range = L if periodic else L - 1
-                # loop over the spins in the chain i.e. loop_range
-                for k in range(loop_range):
-                    # Handle periodic boundary by wrapping the index
-                    next_k = (k + 1) % L if periodic else k + 1
-                    # Add neighbor interaction based on the spin values
-                    total_interaction += -J * (1 if bi[k] == bi[next_k] else -1)
-                # tabulate the entries
-                if total_interaction != 0:
-                    row.append(i)
-                    col.append(j)
-                    data.append(total_interaction)
-            else:  # Off-diagonal elements, only for transverse field flips
-                diff = [bj != bi for bj, bi in zip(bj, bi)]
-                # Only one bit/spin differs
-                if sum(diff) == 1:  
-                    transverse_contribution = -h
-                    # Transverse field contribution
-                    row.append(i)
-                    col.append(j)
-                    data.append(transverse_contribution)
+
+        # to the diagonal element first
+        total_interaction = 0
+        # initialize the loop range based on the boundary conditions
+        loop_range = L if periodic else L - 1
+        for k in range(loop_range):
+            # Handle periodic boundary by wrapping the index
+            next_k = (k + 1) % L if periodic else k + 1
+            # Add neighbor interaction based on the spin values
+            total_interaction += -J * (1 if bi[k] == bi[next_k] else -1)
+        row.append(i)
+        col.append(i)
+        data.append(total_interaction)
+
+        # now consider the off-diagonal elements connected by a single spin flip
+        # make a function that takes the bit i and returns a list of basis states connected by a single flip
+        def flip(i):
+            connected_bases_states = []
+            for j in range(L):
+                flip_i = i ^ (1 << j)
+                connected_bases_states.append(flip_i)
+            return connected_bases_states
+        
+        # loop over the connected basis states
+        for flip_i in flip(i):
+            row.append(i)
+            col.append(flip_i)
+            data.append(-h)       
 
     # Create a sparse matrix from the lists
     H = scipy.sparse.coo_matrix((data, (row, col)), shape=(2**L, 2**L))
     return H
+
+# # com[are dense] and sparse open hamiltonaian matrices for L=4 and h=1
+# L = 4
+# h = 1
+# dense = open_dense_hamiltonian_explicit(L, h)
+# sparse = sparse_hamiltonian(L, h).toarray()
+# # make a port of the differences and the piecewise elements of both matrices so that it is easy to find the discrepancies
+# plt.figure()
+# plt.imshow(dense - sparse, cmap='seismic', vmin=-1, vmax=1)  # Adjust vmin and vmax as needed
+# plt.colorbar()
+# plt.title('Differences between dense and sparse Hamiltonians')
+# plt.savefig('dense_sparse_diff.png')
+
 
 
 L = [8, 10, 12, 14]
@@ -115,18 +127,19 @@ h_range = np.linspace(0, 2, 7)  # Generates 8 values of h from 0 to 2
 
 for l in L:
     plt.figure()
-    plt.title(f'L={l}')
-    ground_state_energies = []  # To store ground state energies for different h
+    plt.title(f'Sparse L={l}')
+    open_ground_state_energies = []  # To store ground state energies for different h
+    periodic_ground_state_energies = []  # To store ground state energies for different h
     for hi in h_range:
         # for the given hi, comupte gs energy for both periodic and non-periodic
         H = sparse_hamiltonian(l, hi)
         H_periodic = sparse_hamiltonian(l, hi, periodic=True)
         # Compute the ground state energy using the lowest eigenvalue
-        ground_state_energies.append(min(scipy.sparse.linalg.eigsh(H, k=1, which='SA')[0]))
-        ground_state_energies.append(min(scipy.sparse.linalg.eigsh(H_periodic, k=1, which='SA')[0]))
+        open_ground_state_energies.append(min(scipy.sparse.linalg.eigsh(H, k=1, which='SA')[0]))
+        periodic_ground_state_energies.append(min(scipy.sparse.linalg.eigsh(H_periodic, k=1, which='SA')[0]))
     # plot the ground state energy as a function of h for both periodic and non-periodic
-    plt.plot(h_range, ground_state_energies[:len(h_range)], label='Non-periodic')
-    plt.plot(h_range, ground_state_energies[len(h_range):], label='Periodic')
+    plt.plot(h_range, open_ground_state_energies, label='Non-periodic')
+    plt.plot(h_range, periodic_ground_state_energies, label='Periodic')
     plt.xlabel('h')
     plt.ylabel('Ground state energy')
     plt.legend()
@@ -135,7 +148,7 @@ for l in L:
 
 for l in L:
     plt.figure()
-    plt.title(f'L={l}')
+    plt.title(f'Dense L={l}')
     open_ground_state_energies = []  # To store ground state energies for different h
     periodic_ground_state_energies = []  # To store ground state energies for different h
     for hi in h_range:

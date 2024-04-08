@@ -48,7 +48,7 @@ class MonteCarlo():
         plt.imshow(state, cmap='viridis', interpolation='nearest')
         plt.colorbar(label='Spin Value')
         # Dynamically generate the filename using the iteration number
-        filename = f"lattice_state_{n_iter}.png"
+        filename = f"lattice_state_{n_iter}_{self.x}.png"
         plt.savefig(filename)
         plt.close()  # Close the figure after saving to free up memory
         return
@@ -187,26 +187,96 @@ class MonteCarlo():
         self.Es = [self.get_energy()]
 
         for i in range(self.ni):
+            # plot the state if it is the initial state
+            if i == 0:
+                self.plot_state(self.oldstate, i, title='Initial Lattice State')
+
             self.run_iter()
-            if i % 200 == 0:
-                self.plot_state(self.oldstate, i)            
+
             
             self.Es.append(self.get_energy())
             self.ms.append(self.get_m())
+            # plot the state if it is the final state
+            if i == self.ni - 1:
+                self.plot_state(self.oldstate, i, title='Final Lattice State')
+                
         
         self.final = self.oldstate
+def plot_magnetization_vs_iterations(x, alpha, n_iter):
+    plt.figure()
+    plt.plot(MC.ms)
+    plt.xlabel('Iterations')
+    plt.ylabel('Magnetization')
+    plt.title(f'Magnetization vs Iterations for x = {x}')
+    plt.savefig(f'magnetization_vs_iterations_{x}.png')
+    return
+def plot_energy_vs_iterations(x, alpha, n_iter):
+    plt.figure()
+    plt.plot(MC.Es)
+    plt.xlabel('Iterations')
+    plt.ylabel('Energy')
+    plt.title(f'Energy vs Iterations for x = {x}')
+    plt.savefig(f'energy_vs_iterations_{x}.png')
+    return
+def plot_x_vs_m(x, get_m):
+    # take the average absolute value of the magnetization over the last 500 iterations
+    m = np.mean(get_m[500:])
+    plt.figure()
+    plt.plot(x, m)
+    plt.xlabel('x')
+    plt.ylabel('Magnetization')
+    plt.title('Magnetization vs x')
+    plt.savefig('magnetization_vs_x.png')
+    return
+# Define parameters
+x = np.linspace(0.2, 1, 10)
+alpha = 3
+n_iters = int(1e4)  # Ensure n_iters is an integer
 
-MC = MonteCarlo(0.75,3,1e3)
+# Initialize an empty list for plotting
+x_m = []
 
-MC.run()
+# Loop over different values of x
+for i in range(len(x)):
+    MC = MonteCarlo(x[i], alpha, n_iters)
+    MC.run()
+    # Get the absolute value of the average value of the magnetization over the last 500 iterations
+    m = np.mean(np.abs(MC.ms[500:]))
+    # Store the value in a tuple like (x, m)
+    x_m.append((x[i], m))
 
-print(MC.initial)
-print(MC.final)
-print(MC.ms)
-# plot the energies vs the number of iterations
+# Extract x and m values for plotting
+x_values, m_values = zip(*x_m)
+
+# Plot the information
 plt.figure()
-plt.plot(MC.Es)
-plt.xlabel('Iterations')
-plt.ylabel('Energy')
-plt.title('Energy vs Iterations')
-plt.savefig('Energy_vs_Iterations.png')
+plt.plot(x_values, m_values, marker='o')  # Added marker for clarity
+plt.xlabel('x')
+plt.ylabel('Magnetization')
+plt.title('Magnetization vs x')
+plt.savefig('magnetization_vs_x_2.png')
+
+    
+    
+x = [1, 0.75, 0.4]
+alpha = [0.5, 3, 1]
+n_iters = [1e3, 1e4, 1e4]
+
+# make a dictionary for all of the trials whose entries are given in the correct order in the lists above
+trials = {'x': x, 'alpha': alpha, 'n_iters': n_iters}
+for i in range(3):
+    MC = MonteCarlo(trials['x'][i], trials['alpha'][i], trials['n_iters'][i])
+    MC.run()
+    # plot the energies vs the number of iterations
+    plot_energy_vs_iterations(trials['x'][i], trials['alpha'][i], trials['n_iters'][i])
+    # plot the magnetization vs the number of iterations
+    plot_magnetization_vs_iterations(trials['x'][i], trials['alpha'][i], trials['n_iters'][i])
+
+
+
+# print(MC.initial)
+
+# print(MC.final)
+# print(MC.ms)
+# plot the energies vs the number of iterations
+

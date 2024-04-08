@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  12 MAR 2024 20:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  17 MAR 2024 18:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -489,72 +489,172 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--309
  []
 
 [9 <./m-x.png>] [10 <./g-mu.png>] [11]
-<g-mu-9.png, id=197, 361.35pt x 289.08pt>
-File: g-mu-9.png Graphic file (type png)
-<use g-mu-9.png>
-Package pdftex.def Info: g-mu-9.png  used on input line 313.
-(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
-<drawing.png, id=198, 221.82875pt x 158.5925pt>
+<drawing.png, id=197, 221.82875pt x 158.5925pt>
 File: drawing.png Graphic file (type png)
 <use drawing.png>
-Package pdftex.def Info: drawing.png  used on input line 317.
+Package pdftex.def Info: drawing.png  used on input line 312.
 (pdftex.def)             Requested size: 221.82819pt x 158.59209pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--319
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--319
-
- []
-
-[12 <./g-mu-9.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 333--335
+<g-mu-9.png, id=198, 361.35pt x 289.08pt>
+File: g-mu-9.png Graphic file (type png)
+<use g-mu-9.png>
+Package pdftex.def Info: g-mu-9.png  used on input line 317.
+(pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
+ [12 <./drawing.png>] [13 <./g-mu-9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
 
  []
 
-[13 <./drawing.png>]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg, id=212, 704.6325pt x 691.58376pt>
-File: ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg Graphic file (type jpg)
-<use ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg  used on input line 364.
-(pdftex.def)             Requested size: 704.6308pt x 691.58206pt.
- [14]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg, id=219, 704.6325pt x 698.61pt>
-File: ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg Graphic file (type jpg)
-<use ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg  used on input line 370.
-(pdftex.def)             Requested size: 704.6308pt x 698.60829pt.
- [15 <./images//2024_03_02_8c82830fbe70d4921a9fg-4(1).jpg>]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg, id=224, 783.92876pt x 741.77126pt>
-File: ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg Graphic file (type jpg)
-<use ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg  used on input line 376.
-(pdftex.def)             Requested size: 783.92685pt x 741.76945pt.
- [16 <./images//2024_03_02_8c82830fbe70d4921a9fg-4.jpg>]
-<./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg, id=229, 806.01125pt x 744.7825pt>
-File: ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg Graphic file (type jpg)
-<use ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg>
-Package pdftex.def Info: ./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg  used on input line 382.
-(pdftex.def)             Requested size: 806.00928pt x 744.78069pt.
- [17 <./images//2024_03_02_8c82830fbe70d4921a9fg-5(1).jpg>] [18 <./images//2024_03_02_8c82830fbe70d4921a9fg-5.jpg>] (./2024_03_02_8c82830fbe70d4921a9fg.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
+
+ []
+
+[14] [15] [16]
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 451--452
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 454--455
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 462--463
+[][][][] 
+ []
+
+[17]
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 465--466
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 481--482
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 484--486
+[][][][] 
+ []
+
+[18]
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 497--498
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 500--501
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 509--510
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 513--514
+[][][][] 
+ []
+
+[19]
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 531--532
+[][][][] 
+ []
+
+
+Overfull \hbox (26.80695pt too wide) in paragraph at lines 534--535
+[][][][] 
+ []
+
+[20] [21] [22]
+<energy_vs_iterations_1.png, id=497, 462.528pt x 346.896pt>
+File: energy_vs_iterations_1.png Graphic file (type png)
+<use energy_vs_iterations_1.png>
+Package pdftex.def Info: energy_vs_iterations_1.png  used on input line 608.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<magnetization_vs_iterations_1.png, id=498, 462.528pt x 346.896pt>
+File: magnetization_vs_iterations_1.png Graphic file (type png)
+<use magnetization_vs_iterations_1.png>
+Package pdftex.def Info: magnetization_vs_iterations_1.png  used on input line 612.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<lattice_state_0_1.png, id=499, 433.62pt x 433.62pt>
+File: lattice_state_0_1.png Graphic file (type png)
+<use lattice_state_0_1.png>
+Package pdftex.def Info: lattice_state_0_1.png  used on input line 616.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+<lattice_state_999_1.png, id=500, 433.62pt x 433.62pt>
+File: lattice_state_999_1.png Graphic file (type png)
+<use lattice_state_999_1.png>
+Package pdftex.def Info: lattice_state_999_1.png  used on input line 620.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+ [23 <./energy_vs_iterations_1.png>] [24 <./magnetization_vs_iterations_1.png>] [25 <./lattice_state_0_1.png>] [26 <./lattice_state_999_1.png>]
+<energy_vs_iterations_0.75.png, id=523, 462.528pt x 346.896pt>
+File: energy_vs_iterations_0.75.png Graphic file (type png)
+<use energy_vs_iterations_0.75.png>
+Package pdftex.def Info: energy_vs_iterations_0.75.png  used on input line 627.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<magnetization_vs_iterations_0.75.png, id=524, 462.528pt x 346.896pt>
+File: magnetization_vs_iterations_0.75.png Graphic file (type png)
+<use magnetization_vs_iterations_0.75.png>
+Package pdftex.def Info: magnetization_vs_iterations_0.75.png  used on input line 631.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<lattice_state_0_0.75.png, id=525, 433.62pt x 433.62pt>
+File: lattice_state_0_0.75.png Graphic file (type png)
+<use lattice_state_0_0.75.png>
+Package pdftex.def Info: lattice_state_0_0.75.png  used on input line 635.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+<lattice_state_9999_0.75.png, id=526, 433.62pt x 433.62pt>
+File: lattice_state_9999_0.75.png Graphic file (type png)
+<use lattice_state_9999_0.75.png>
+Package pdftex.def Info: lattice_state_9999_0.75.png  used on input line 639.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+ [27 <./energy_vs_iterations_0.75.png>] [28 <./magnetization_vs_iterations_0.75.png>] [29 <./lattice_state_0_0.75.png>] [30 <./lattice_state_9999_0.75.png>]
+<energy_vs_iterations_0.4.png, id=547, 462.528pt x 346.896pt>
+File: energy_vs_iterations_0.4.png Graphic file (type png)
+<use energy_vs_iterations_0.4.png>
+Package pdftex.def Info: energy_vs_iterations_0.4.png  used on input line 644.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<magnetization_vs_iterations_0.4.png, id=548, 462.528pt x 346.896pt>
+File: magnetization_vs_iterations_0.4.png Graphic file (type png)
+<use magnetization_vs_iterations_0.4.png>
+Package pdftex.def Info: magnetization_vs_iterations_0.4.png  used on input line 648.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+<lattice_state_0_0.4.png, id=549, 433.62pt x 433.62pt>
+File: lattice_state_0_0.4.png Graphic file (type png)
+<use lattice_state_0_0.4.png>
+Package pdftex.def Info: lattice_state_0_0.4.png  used on input line 652.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+<lattice_state_9999_0.4.png, id=550, 433.62pt x 433.62pt>
+File: lattice_state_9999_0.4.png Graphic file (type png)
+<use lattice_state_9999_0.4.png>
+Package pdftex.def Info: lattice_state_9999_0.4.png  used on input line 656.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+ [31 <./energy_vs_iterations_0.4.png>] [32 <./magnetization_vs_iterations_0.4.png>] [33 <./lattice_state_0_0.4.png>] [34 <./lattice_state_9999_0.4.png>]
+<magnetization_vs_x.png, id=572, 462.528pt x 346.896pt>
+File: magnetization_vs_x.png Graphic file (type png)
+<use magnetization_vs_x.png>
+Package pdftex.def Info: magnetization_vs_x.png  used on input line 666.
+(pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
+ [35 <./magnetization_vs_x.png>] [36] (./2024_03_02_8c82830fbe70d4921a9fg.aux)
 Package rerunfilecheck Info: File `2024_03_02_8c82830fbe70d4921a9fg.out' has not changed.
 (rerunfilecheck)             Checksum: D1BF66209E8339565D1D96AA4D6EDE9B;769.
  ) 
 Here is how much of TeX's memory you used:
- 15066 strings out of 478268
- 235823 string characters out of 5846347
- 838352 words of memory out of 5000000
- 32951 multiletter control sequences out of 15000+600000
- 489061 words of font info for 86 fonts, out of 8000000 for 9000
+ 15483 strings out of 478268
+ 241417 string characters out of 5846347
+ 1078352 words of memory out of 5000000
+ 33068 multiletter control sequences out of 15000+600000
+ 489745 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,9n,77p,1102b,1398s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 2024_03_02_8c82830fbe70d4921a9fg.pdf (18 pages, 816762 bytes).
+ 68i,9n,77p,1102b,1957s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_03_02_8c82830fbe70d4921a9fg.pdf (36 pages, 961573 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 94 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 783 PDF objects out of 1000 (max. 8388607)
+ 661 compressed objects within 7 object streams
+ 383 named destinations out of 1000 (max. 500000)
+ 214 words of extra memory for PDF output out of 10000 (max. 10000000)
 

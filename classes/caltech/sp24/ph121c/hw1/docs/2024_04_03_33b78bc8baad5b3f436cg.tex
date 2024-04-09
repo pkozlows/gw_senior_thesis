@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -8,6 +8,41 @@
 \usepackage{stmaryrd}
 \usepackage{bbold}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{{../data/}}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
 \hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
 \urlstyle{same}
 
@@ -21,11 +56,11 @@ TA: Liam O'Brien}
 
 \begin{document}
 \maketitle
-Ph 121C: Computational Physics Lab, Spring 2023
+Ph 121C: Computational Physics Lab, Spring 2024
 
 California Institute of Technology
 
-Due: Tuesday, April 18, 2023
+Due: Tuesday, April 16, 2024
 
 \section*{1 Introduction to quantum phase transitions}
 In this assignment we will learn about the exact diagonalization method for quantum many-body physics and use it to investigate the phenomenon of quantum phase transitions in condensed matter systems. The analysis of phase transitions that occur at finite temperature should be familiar to you from statistical mechanics courses. These include transitions to superconductivity and superfluidity, as well as the transition to ferromagnetism at the Curie temperature. Generally speaking, a finite-temperature phase transition involves non-analyticity in some derivative of a system's free energy as a function of temperature. Continuous, or second-order, phase transitions fall into universality classes according to the power-law divergence of physical quantities like heat capacity and susceptibility, and the disappearance of the order parameter. All finite-temperature phase transitions are ultimately "classical," because above some length scale the phase change is primarily driven by thermal fluctuations.
@@ -132,7 +167,7 @@ Rather than calculating $\left\langle M^{2}\right\rangle$, it is actually more i
 Exact diagonalization (ED) is a numerical method which entails constructing an explicit representation of the Hamiltonian operator in the Hilbert space $\mathcal{H}$, which one can diagonalize using standard numerical linear algebra tools. The primary advantage of ED is that it can be applied to any system in essentially the same way. The impediment to using ED is that it quickly becomes infeasible due to the exponential growth in dimension of the Hilbert space of a many-body system.
 
 \subsection*{3.1 Dense diagonalization methods}
-The most straightforward approach to ED is to simply represent the entire Hamiltonian as a dense matrix. To do so requires storing $\operatorname{dim}(\mathcal{H})^{2}=\left(2^{L}\right)^{2}$ elements, a cost which quickly becomes prohibitive: already for $L=16, H$ requires $34 \mathrm{~GB}$ of memory in double precision floats. In order to explicitly generate the Hamiltonian one can simply compute all $\left(2^{L}\right)^{2}$ matrix elements as $H_{\alpha \beta} \equiv\left\langle e_{\alpha}|H| e_{\beta}\right\rangle$ using, e.g., the mapping from spin configurations to basis states described in (1). The Hermiticity of $H\left(H_{\beta \alpha}=H_{\alpha \beta}^{*}\right)$ can reduce the memory cost by a factor of roughly 2 . One can also use diagonalization routines optimized for Hermitian matrices, or for real symmetric matrices if all matrix elements $H_{\alpha \beta}$ are real, which significantly improves algorithmic performance.
+The most straightforward approach to ED is to simply represent the entire Hamiltonian as a dense matrix. To do so requires storing $\operatorname{dim}(\mathcal{H})^{2}=\left(2^{L}\right)^{2}$ elements, a cost which quickly becomes prohibitive: already for $L=16, H$ requires $34 \mathrm{~GB}$ of memory in double precision floats. In order to explicitly generate the Hamiltonian one can simply compute all $\left(2^{L}\right)^{2}$ matrix elements as $H_{\alpha \beta} \equiv\left\langle e_{\alpha}|H| e_{\beta}\right\rangle$ using, e.g., the mapping from spin configurations to basis states described in (1). The Hermiticity of $H\left(H_{\beta \alpha}=H_{\alpha \beta}^{*}\right)$ can reduce the memory cost by a factor of roughly 2 . One can also use diagonalization routines optimized for Hermitian matrices, or for real symmetric matrices if all matrix elements $H_{\alpha \beta}$ are real, which significantly improves algorithmic performance.\\
 
 \subsection*{3.2 Sparse matrix representation}
 Written in the basis (1), nearly all of the matrix elements of $H$ will turn out to be 0 . To understand this, consider the structure of the terms comprising the Hamiltonian, described in Sec. 2.2. Only very specific types of states are connected by each of the local terms. Consider, for example, $\sigma_{j}^{z} \sigma_{j+1}^{z}$, whose explicit form is shown in (6). To have a nonzero matrix element for this term, two basis states $\left|e_{\alpha}\right\rangle$ and $\left|e_{\beta}\right\rangle$ must be identical on all sites where the operator acts trivially, in order to be connected by all $L-2$ identities $\mathbb{I}_{k}, k \neq j, j+1$. Because $\sigma_{j}^{z} \sigma_{j+1}^{z}$ acting in the local Hilbert space is also diagonal, it connects only basis states which are identical on all sites including $j$ and $j+1$, but with the crucial addition of a sign to the matrix element for certain two-spin configurations:
@@ -187,15 +222,185 @@ For simplicity, in the following we set the parameter $J=1$ in (4) and vary $h$.
 \subsection*{4.1 Dense ED}
 Generate the quantum Ising Hamiltonian (4) as a dense matrix and call an explicit diagonalization routine for the entire spectrum for system sizes $L=8,10,12,14$, and for a range of values of $h$. Plot the ground state energy as a function of $h$ for the various $L$. Compare the open systems with periodic ones for the same parameters - how does each phase react to the boundaries?
 
+\subsubsection{}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{dense_ising_model_L8.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{dense_ising_model_L10.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{dense_ising_model_L12.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{dense_ising_model_L14.png}
+\end{figure}
+
+The paramagnetic phase (with the larger h value) does not care whether the boundaries are open or periodic because the assortment of spins is random and ways. For the ferromagnetic phase, there is a clear preference for the periodic boundary conditions, because this allows for an extra interaction term that minimizes the total energy even more.
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+sigma_x = np.array([[0, 1], [1, 0]])
+sigma_z = np.array([[1, 0], [0, -1]])
+I = np.identity(2)
+
+def tensor_product(matrices):
+    """Calculate the tensor product of a list of matrices."""
+    result = matrices[0]
+    for matrix in matrices[1:]:
+        result = np.kron(result, matrix)
+    return result
+
+def open_dense_hamiltonian_explicit(L, h, J=1):
+    # Initialize Hamiltonian to zero matrix
+    H = np.zeros((2**L, 2**L))
+    
+    # Interaction term
+    for i in range(L - 1):  # Add periodic term at the end if periodic
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_z  # Apply sigma_z at position i
+        matrices[(i + 1)] = sigma_z  # Apply sigma_z at position (i+1) modulo L for periodic
+        H += -J * tensor_product(matrices)
+    
+    # Transverse field term
+    for i in range(L):
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_x  # Apply sigma_x at position i
+        H += -h * tensor_product(matrices)
+    
+    return H
+
+def periodic_dense_hamiltonian_explicit(L, h, J=1):
+    # Initialize Hamiltonian to zero matrix
+    H = np.zeros((2**L, 2**L))
+    
+    # Interaction term
+    for i in range(L):  # Add periodic term at the end if periodic
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_z  # Apply sigma_z at position i
+        matrices[(i + 1) % L] = sigma_z  # Apply sigma_z at position (i+1) modulo L for periodic
+        H += -J * tensor_product(matrices)
+    
+    # Transverse field term
+    for i in range(L):
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_x  # Apply sigma_x at position i
+        H += -h * tensor_product(matrices)
+    
+    return H
+
+L = [8, 10, 12, 14]
+h_range = np.linspace(0, 2, 7)  # Generates 8 values of h from 0 to 2
+
+for l in L:
+    plt.figure()
+    plt.title(f'Dense L={l}')
+    open_ground_state_energies = []  # To store ground state energies for different h
+    periodic_ground_state_energies = []  # To store ground state energies for different h
+    for hi in h_range:
+        # for the given hi, comupte gs energy for both periodic and non-periodic
+        H = open_dense_hamiltonian_explicit(l, hi)
+        print(f'H: hi={hi}\n{H}')
+        H_periodic = periodic_dense_hamiltonian_explicit(l, hi)
+        # Compute the ground state energy using the lowest eigenvalue
+        open_ground_state_energies.append(min(np.linalg.eigvalsh(H)))
+        periodic_ground_state_energies.append(min(np.linalg.eigvalsh(H_periodic)))
+    # plot the ground state energy as a function of h for both periodic and non-periodic
+    plt.plot(h_range, open_ground_state_energies, label='Non-periodic')
+    plt.plot(h_range, periodic_ground_state_energies, label='Periodic')
+    plt.xlabel('h')
+    plt.ylabel('Ground state energy')
+    plt.legend()
+    # save a tout for the given value of L
+    plt.savefig(f'dense_ising_model_L{l}.png')
+\end{lstlisting}
+
+
+
 \subsection*{4.2 Sparse ED}
 Construct the same Hamiltonian as a sparse matrix and use a sparse matrix diagonalization routine provided by a standard library. Obtain the ground state and a few excited states, and for small system sizes verify your results against the dense ED solution. How large of a system can you push the sparse diagonalization routine to solve?
 
+
 Optional. Try implementing your own Lanczos routine.
+\subsubsection{}
+As can be seen from the plot, the energies for the GS and first excited states are identical for the L=10 and L=12 systems.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{enhanced_compare_ising_model_L10.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{enhanced_compare_ising_model_L12.png}
+\end{figure}
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def sparse_hamiltonian(L, h, J=1, periodic=False):
+    row = []
+    col = []
+    data = []
+    # loop over the index i
+    for i in range(2**L):
+        # turn that index into a binary string
+        bi = binary_string(i, L)
+
+        # to the diagonal element first
+        total_interaction = 0
+        # initialize the loop range based on the boundary conditions
+        loop_range = L if periodic else L - 1
+        for k in range(loop_range):
+            # Handle periodic boundary by wrapping the index
+            next_k = (k + 1) % L if periodic else k + 1
+            # Add neighbor interaction based on the spin values
+            total_interaction += -J * (1 if bi[k] == bi[next_k] else -1)
+        row.append(i)
+        col.append(i)
+        data.append(total_interaction)
+
+        # now consider the off-diagonal elements connected by a single spin flip
+        # make a function that takes the bit i and returns a list of basis states connected by a single flip
+        def flip(i):
+            connected_bases_states = []
+            for j in range(L):
+                flip_i = i ^ (1 << j)
+                connected_bases_states.append(flip_i)
+            return connected_bases_states
+        
+        # loop over the connected basis states
+        for flip_i in flip(i):
+            row.append(i)
+            col.append(flip_i)
+            data.append(-h)       
+
+    # Create a sparse matrix from the lists
+    H = scipy.sparse.coo_matrix((data, (row, col)), shape=(2**L, 2**L))
+    return H
+\end{lstlisting}
+
+
 
 \subsection*{4.3 Study of convergence with system size}
 For representative values of $h$ inside each phase (e.g., $h=0.3$ in the ferromagnetic phase and $h=1.7$ in the paramagnet), study the $L$ dependence of the ground state energy per site, $E_{\mathrm{gs}}(L) / L$, for systems with both periodic and open boundary conditions. Comment on the approach to the thermodynamic limit $L \rightarrow \infty$ for the two types of boundaries.
 
+
+
 It should be clear that periodic boundaries are preferred in order to minimize finite-size effects. However, sometimes open boundary conditions are preferred for technical reasons. An important example is the tensor network representation we will implement later in the course. One can mitigate the effects of the boundaries and better estimate the bulk energy per site using the following trick: for the system with open boundary conditions, plot the values $[E(L=10)-E(L=8)] / 2$, $[E(L=12)-E(L=10)] / 2$, etc. These quantities can be thought of as ground state energy per site for the two sites added in the middle, which feel reduced boundary effects.
+\subsubsection{}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{convergence.png}
+\end{figure}
+
+Both type of boundaries approach a thermodynamic limit as the system size increases. That is, the periodic systems should be more accurate, but this doesn't matter so much in the thermodynamic limit. One also notices that when we have a small transverse field $h$, the interaction terms dominatet, so the fined size effect is quite pronounced, but this is not the case when we have the larger value for $h$.
 
 \subsection*{4.4 Finding the quantum phase transition}
 From now on, consider only the chain with periodic boundary conditions. The quantum phase transition can be identified via the closing of the energy gap, as described in Sec. 2.3. Using the sparse eigensolver, plot the excitation energies (relative to the ground state) for a few excited states vs. $h$ for your largest system size. Estimate the critical field $h_{c}$ from this study and compare with the known value of $h_{c}=1$. The excitation gap is expected to vanish as $\Delta \sim\left|h-h_{c}\right|^{\nu}$. Can you determine the exponent $\nu$ from your data?

@@ -46,11 +46,10 @@ for basis in basis_sets:
     gw_energies.append(gw_homo_energy)
 
 # Plotting
-plt.plot(gw_energies, 'o-', label='GW')  # add label here
+plt.plot(gw_energies, 'o-', label=f'$G_0W_0$')  # add label here
 plt.plot(dft_energies, 'o-', label='DFT')  # add label here
 plt.xticks(ticks=range(len(basis_sets)), labels=basis_sets, rotation=45)
-plt.ylabel('HOMO Energy (Hartree)')
-plt.title('HOMO Energy vs. Basis Set for Water @PBE')
+plt.ylabel('HOMO Energy (Hartrees)')
 plt.tight_layout()
 plt.grid(True)
 plt.legend()  # Add the legend

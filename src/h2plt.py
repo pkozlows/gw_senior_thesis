@@ -57,7 +57,7 @@ for state in [1, 2]:
                  marker=markers[method], color=colors[state], linestyle='None', label=f"{method.upper()} State {state}" if state == 1 else None)
 
 # Label the axes
-plt.xlabel('Bond Distance (10^-1 Angstroms)')
+plt.xlabel('Bond Distance ($10^{-1} \AA$)')
 plt.ylabel('Natural Occupation')
 
 # Creating a custom legend
@@ -77,5 +77,4 @@ plt.legend(handles=legend_elements, loc='best', edgecolor='black')
 
 
 # Title and save
-plt.title('Natural Occupation of the First Two States of H2')
 plt.savefig('h2_occupations.png')

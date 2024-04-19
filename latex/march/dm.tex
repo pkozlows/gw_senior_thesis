@@ -3,6 +3,41 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{physics}
+\usepackage{hyperref}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
 
 \title{Linearized $G_0W_0$ Density Matrix}
 \author{Patryk Kozlowski}
@@ -13,17 +48,62 @@ We have the equation for the density matrix:
 \begin{equation}
 \begin{aligned}
 \gamma^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right)= & \gamma_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right) -\frac{\mathrm{i}}{2 \pi} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \mathrm{~d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} G_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_3, \omega\right) \Sigma_c^\sigma\left(\mathbf{r}_3, \mathbf{r}_4, \omega\right) G_0^\sigma\left(\mathbf{r}_4, \mathbf{r}_2, \omega\right)
+\label{eqn:init_dm}
 \end{aligned}
 \end{equation}
-with the following definitions:
+In order to simplify the integral, Let us consider
+\begin{equation}
+I = \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4  G_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_3\right) \Sigma_c^\sigma\left(\mathbf{r}_3, \mathbf{r}_4\right) G_0^\sigma\left(\mathbf{r}_4, \mathbf{r}_2\right)
+\end{equation}
+The noninteracting Green's function is defined as:
+\begin{equation}
+G_0\left(\mathbf{r}_1, \mathbf{r}_2, \right) = \sum_{pq} \phi_p^*(\mathbf{r}_1) G_{p q} \phi_q(\mathbf{r}_2)
+\end{equation}
+and likewise for the self-energy:
+\begin{equation}
+\Sigma_c\left(\mathbf{r}_1, \mathbf{r}_2\right) = \sum_{pq} \phi_p^*(\mathbf{r}_1) \Sigma_{ p q} \phi_q(\mathbf{r}_2)
+\end{equation}
+where $G_{p q}$ and $\Sigma_{p q}$ are the matrix elements of the noninteracting Green's function and the self-energy, respectively. We can rewrite the integral as:
+\begin{equation}
+I = \sum_{pq} \sum_{rs} \sum_{tu} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \phi_p^*(\mathbf{r}_1) G_{p q} \phi_q(\mathbf{r}_3) \phi_r^*(\mathbf{r}_3) \Sigma_{r s} \phi_s(\mathbf{r}_4) \phi_t^*(\mathbf{r}_4) G_{t u} \phi_u(\mathbf{r}_2)
+\end{equation}
+We can simplify this expression by using the orthonormality of the basis functions:
+\begin{equation}
+\int \mathrm{d} \mathbf{r} \phi_q^*(\mathbf{r}) \phi_r(\mathbf{r}) = \delta_{qr}
+\end{equation}
+So we can simplify the expression to:
+\begin{equation}
+I = \sum_{pq} \sum_{r} \sum_{t} \phi_p^*(\mathbf{r}_1) G_{p r} \phi_r(\mathbf{r}) \phi_r^*(\mathbf{r}) \Sigma_{r t} \phi_t(\mathbf{r}^\prime) \phi_t^*(\mathbf{r}^\prime) G_{t q} \phi_q(\mathbf{r}_2)
+\end{equation}
+We use this and then also rewrite equation \ref{eqn:init_dm} in terms of the matrix elements of the density matrix
+with the following definition:
 \begin{equation}
 D_{p q \sigma}=\left\langle p \sigma\left|\gamma^\sigma\right| q \sigma\right\rangle
 \end{equation}
-Now we want to apply this bra-ket notation to the equation above. We can write the equation as, also redefining the integration over $\mathbf{r}_3$ and $\mathbf{r}_4$ as $\sum_{r}$ and $\sum_{t}$, respectively: 
+By the derivation above, we can rewrite equation \ref{eqn:init_dm} as:
 \begin{equation}
-    D_{p q \sigma}=\bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \bra{p\sigma } G_0^\sigma (\omega) \ket{r\sigma } \bra{r\sigma } \Sigma_c^\sigma (\omega) \ket{t\sigma } \bra{t\sigma } G_0^\sigma (\omega) \ket{q\sigma }
+    D_{p q \sigma}=\bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int_{-\infty }^{\infty } \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \bra{p\sigma } G_0^\sigma (\omega) \ket{r\sigma } \bra{r\sigma } \Sigma_c^\sigma (\omega) \ket{t\sigma } \bra{t\sigma } G_0^\sigma (\omega) \ket{q\sigma }
+\label{eqn:mo_dm}
 \end{equation}
-with the following definitions:
+% We want to convince ourselves that one can move from equation \ref{eqn:init_dm} to \ref{eqn:mo_dm}. Start by considering the definition of the noninteracting Green's function:
+% \begin{equation}
+% G_{0}(\mathbf{r}_1, \mathbf{r}_2, \omega) = \sum_{pq} \phi_p^*(\mathbf{r}_1) G_{p q}(\omega) \phi_q(\mathbf{r}_2)
+% \end{equation}
+% Let us first consider the simple case of:
+% \begin{equation}
+% \int \mathrm{d} \mathbf{r}_3 G_0(\mathbf{r}_1, \mathbf{r}_3)G_0(\mathbf{r}_3, \mathbf{r}_2) = \sum_{pq} \sum_{rs} \int \mathrm{d} \mathbf{r}_3 \phi_p^*(\mathbf{r}_1) G_{p q}(\omega) \phi_q(\mathbf{r}_3) \phi_r^*(\mathbf{r}_3) G_{r s}(\omega) \phi_s(\mathbf{r}_2)
+% \end{equation}
+% The more complicated case of the transition from equation \ref{eqn:init_dm} to \ref{eqn:mo_dm} can be generalized from this.
+% By orthonormality of the basis, we know that $\int \mathrm{d} \mathbf{r}_3 \phi_q(\mathbf{r}_3) \phi_r^*(\mathbf{r}_3) = \delta_{qr}$, so we can simplify the expression to:
+% \begin{equation}
+% \int \mathrm{d} \mathbf{r}_3 G_0(\mathbf{r}_1, \mathbf{r}_3)G_0(\mathbf{r}_3, \mathbf{r}_2) = \sum_{ps} \sum_{q} \phi_p^*(\mathbf{r}_1) G_{p q}(\omega) \phi_q(\mathbf{r}_2) \phi_q^*(\mathbf{r}_2) G_{q s}(\omega) \phi_s(\mathbf{r}_2)
+% \end{equation}
+% which in the bra-ket notation is:
+% \begin{equation}
+% \sum_{ps}\sum_{q}\bra{p} G_0 (\omega) \ket{q} \bra{q} G_0 (\omega) \ket{s}
+% \end{equation}
+% So we can see that the transition from equation \ref{eqn:init_dm} to \ref{eqn:mo_dm} is valid with the only integral remaining as the one over frequency.
+Next, we plug in the following definitions into equation \ref{eqn:mo_dm}:
 \begin{equation}
 G_{0 p q}^\sigma=\sum_i \frac{\delta_{p q} \delta_{p i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p q} \delta_{p a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta}
 \end{equation}
@@ -36,93 +116,413 @@ and
 Plugging in these definitions, we get:
 \begin{equation}
 \begin{aligned}
-D_{p q \sigma}= & \bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
-& \left( \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+D_{p q \sigma}= & \bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int_{-\infty }^{\infty } \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{p i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{p a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
+& \left( \sum_{k s} \frac{w_{r k \sigma}^s w_{t k \sigma}^s}{\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{c s} \frac{w_{r c \sigma}^s w_{t c \sigma}^s}{\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_j \frac{\delta_{t q} \delta_{t j}}{\omega-\epsilon_{j \sigma}-\mathrm{i} \eta}+\sum_b \frac{\delta_{t q} \delta_{t b}}{\omega-\epsilon_{b \sigma}+\mathrm{i} \eta} \right)
 \end{aligned}
 \end{equation}
-Now we consider only the integral over $\omega$:
+Let us just distribute the integral, which technically spawns 8 terms. Also note that the delta functions will get rid of the sums over r and t:
 \begin{equation}
 \begin{aligned}
-I = & \sum_{r} \sum_{t} \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
-& \left( \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+I = \int_{-\infty }^{\infty }\mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} 
+& \left( \sum_{ijks} \left( \frac{w_{i k \sigma}^s w_{j k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{ibks} \left( \frac{w_{i k \sigma}^s w_{b k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{ijcs} \left( \frac{w_{i c \sigma}^s w_{j c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{ibcs} \left( \frac{w_{i c \sigma}^s w_{b c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right. \\
+& \left. + \sum_{ajks} \left( \frac{w_{a k \sigma}^s w_{j k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{abks} \left( \frac{w_{a k \sigma}^s w_{b k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{ajcs} \left( \frac{w_{a c \sigma}^s w_{j c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
+& \left. + \sum_{abcs} \left( \frac{w_{a c \sigma}^s w_{b c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right)
 \end{aligned}
+\label{eqn:long_integral}
 \end{equation}
-Considering the first two parenthesis, we notice that the latter delta functions for the first and second expression in the first term will only be non-zero when they multiply the first and second expression in the second term, respectively. This means that we can simplify the expression to:
+At this point, we note the following relation between integrals $\oint_{D_{\pm}} f(z) = \int_{-R}^R f(z) + \int_{{C_R}_{\pm}} f(z)$. $D_{\pm}$ is a semicircular domain in either half of the complex plane, ${C_R}_{\pm}$ is the semicircle in the upper or lower part of the complex plane, and $R$ is the radius of the semicircle. We are able to take $R\rightarrow \infty$ and since $f(z)=e^{i\omega \eta}g(z)$, where $g(z)$ is analytic on $D$ except for a finite number of poles, the integral over the semicircle will vanish by Jordan's lemma, leaving us with $\int_{-R=-\infty}^{R=\infty} f(z)= \oint_{D_{\pm}} f(z)$. The contribution over the fully occupied block will be given by the following two terms:
 \begin{equation}
 \begin{aligned}
-I = & \sum_{r} \sum_{t} \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_i \frac{\delta_{p r} \delta_{r i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \sum_{i s} \frac{w_{r i \sigma}^s w_{t i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \sum_i \frac{\delta_{t q} \delta_{t i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right.\\
-& \left. + \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_a \frac{\delta_{p r} \delta_{r a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \sum_{a s} \frac{w_{r a \sigma}^s w_{t a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \sum_a \frac{\delta_{t q} \delta_{t a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)
+I_{ij} =& \sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s \oint_{D+} \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}\\
+& + \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \oint_{D+} \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 \end{aligned}
 \end{equation}
-The delta function terms will pick out a single term in the sum over excitation vector, so we can relabel the indices to:
+Due to the contour that is chosen for this case, we have poles for the first term at $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, $\omega_{12} = \epsilon _{i\sigma } + \mathrm{i} \eta$, and $\omega_{13} = \epsilon _{j\sigma } + \mathrm{i} \eta$. For such simple poles, the Cauchy residue theorem simplifies to:
 \begin{equation}
-\begin{aligned}
-I = & \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_{is} \frac{w_{p i \sigma}^s w_{q i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2 \right)\\
-& + \left( \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \sum_{as} \frac{w_{p a \sigma}^s w_{q a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2 \right)
-\end{aligned}
+\operatorname{Res}_{\omega =\omega _0} f(\omega )= \phi^{}\left(\omega _0\right)
+\label{eqn:cauchy_residue}
 \end{equation}
-Considering only the first term we can swab the summation with the integral:
+where $\phi_{\omega _0}(\omega ) = (\omega - \omega_0) f(\omega )$. For the first of these integrals in the occupied block, we have:
 \begin{equation}
-I_1 = \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 \end{equation}
-This suggests a simple pole at $\omega = \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta$ and a pole of the second order at $\omega = \epsilon_{i \sigma} + \mathrm{i} \eta$. We have:
+Plugging in $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, we get:
 \begin{equation}
-f(\omega) = \frac{\mathrm{e}^{\mathrm{i \omega \eta }}}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta} \right)^2
-\end{equation}
-We start by considering the first pole at $\omega = \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta$. We consider:
-\begin{equation}
-g_0(\omega) = \left( \omega - \epsilon_{i \sigma} + \Omega_s - \mathrm{i} \eta \right) f(\omega) = e^{i \omega \eta} \left( \frac{1}{\omega - \epsilon_{i \sigma} - i \eta} \right)^2
+\phi_{\omega_{11}}(\omega) = (\omega - \epsilon_{k \sigma} + \Omega_s - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 \end{equation}
 Evaluating this at the pole, we get:
 \begin{equation}
-g_0(\epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta) = e^{i (\epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta) \eta} \left( -\frac{1}{\Omega_s} \right)^2
+\phi_{\omega_{11}}(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta) = \frac{e^{i(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta) \eta }}{(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta-\epsilon_{i \sigma}-\mathrm{i} \eta)(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 \end{equation}
-Now we consider the second pole at $\omega = \epsilon_{i \sigma} + \mathrm{i} \eta$. We consider:
+In the limit $\eta \to 0$, we get:
 \begin{equation}
-g_1(\omega) = \left( \omega - \epsilon_{i \sigma} - \mathrm{i} \eta \right)^2 f(\omega) = \frac{e^{i \omega \eta}}{\omega - \epsilon_{i \sigma} + \Omega_s - \mathrm{i} \eta}
+\boxed{\phi_{\omega_{11}}(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta) = \frac{1}{(\epsilon_{k \sigma} - \Omega_s -\epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s -\epsilon_{j \sigma})}}
 \end{equation}
-Evaluating this at the pole, we get:
+For the other poles, the procedure is similar, so I will just summarise the results:
+
+% Now we consider the second pole at $\omega_{12} = \epsilon _{i\sigma } + \mathrm{i} \eta$. We consider:
+% \begin{equation}
+% \phi_{\omega_{12}}(\omega) = (\omega - \epsilon_{i \sigma} - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{12} = \epsilon _{i\sigma } + \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{e^{i(\epsilon_{i \sigma} + \mathrm{i} \eta) \eta }}{(\epsilon_{i \sigma} + \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{i \sigma} + \mathrm{i} \eta-\epsilon_{j \sigma}-\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
 \begin{equation}
-g_1(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{e^{i (\epsilon_{i \sigma} + \mathrm{i} \eta) \eta}}{\Omega_s}
+\boxed{\phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}}
 \end{equation}
-So,
+% Now we consider the third pole at $\omega_{13} = \epsilon _{j\sigma } + \mathrm{i} \eta$. We consider:
+% \begin{equation}
+% \phi_{\omega_{13}}(\omega) = (\omega - \epsilon_{j \sigma} - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{13} = \epsilon _{j\sigma } + \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{13}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{e^{i(\epsilon_{j \sigma} + \mathrm{i} \eta) \eta }}{(\epsilon_{j \sigma} + \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{j \sigma} + \mathrm{i} \eta-\epsilon_{i \sigma}-\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
 \begin{equation}
-I_1 = 2\pi i \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \left( e^{i \left( \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta \right) \eta} \left( -\frac{1}{\Omega_s} \right)^2 + \frac{e^{i \left( \epsilon_{i \sigma} + \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
+\boxed{\phi_{\omega_{13}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}}
 \end{equation}
-Now we consider the second term:
-\begin{equation}
-I_2 = \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2
-\end{equation}
-This suggests a simple pole at $\omega = \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta$ and a pole of the second order at $\omega = \epsilon_{a \sigma} - \mathrm{i} \eta$. We have:
-\begin{equation}
-f(\omega) = \frac{\mathrm{e}^{\mathrm{i \omega \eta }}}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta} \left(\frac{1}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)^2
-\end{equation}
-We start by considering the first pole at $\omega = \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta$. We consider:
-\begin{equation}
-g_0(\omega) = \left( \omega - \epsilon_{a \sigma} - \Omega_s + \mathrm{i} \eta \right) f(\omega) = e^{i \omega \eta} \left( \frac{1}{\omega - \epsilon_{a \sigma} + i \eta} \right)^2
-\end{equation}
-Evaluating this at the pole, we get:
-\begin{equation}
-g_0(\epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta) = e^{i (\epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta) \eta} \left( \frac{1}{\Omega_s} \right)^2
-\end{equation}
-Now we consider the second pole at $\omega = \epsilon_{a \sigma} - \mathrm{i} \eta$. We consider:
-\begin{equation}
-g_1(\omega) = \left( \omega - \epsilon_{a \sigma} - \mathrm{i} \eta \right)^2 f(\omega) = \frac{e^{i \omega \eta}}{\omega - \epsilon_{a \sigma} - \Omega_s + \mathrm{i} \eta}
-\end{equation}
-Evaluating this at the pole, we get:
-\begin{equation}
-g_1(\epsilon_{a \sigma} - \mathrm{i} \eta) = -\frac{e^{i (\epsilon_{a \sigma} - \mathrm{i} \eta) \eta}}{\Omega_s}
-\end{equation}
-So,
-\begin{equation}
-I_2 = 2\pi i \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \left( e^{i \left( \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta \right) \eta} \left( \frac{1}{\Omega_s} \right)^2 - \frac{e^{i \left( \epsilon_{a \sigma} - \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
-\end{equation}
-So,
+By Cauchy's residue theorem,  the first term of the integral will be given by:
 \begin{equation}
 \begin{aligned}
-I = & I_1 + I_2\\
-= & 2\pi i \sum_{is} \left( w_{p i \sigma}^s w_{q i \sigma}^s \right) \left( e^{i \left( \epsilon_{i \sigma} - \Omega_s + \mathrm{i} \eta \right) \eta} \left( -\frac{1}{\Omega_s} \right)^2 + \frac{e^{i \left( \epsilon_{i \sigma} + \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)\\
-& + 2\pi i \sum_{as} \left( w_{p a \sigma}^s w_{q a \sigma}^s \right) \left( e^{i \left( \epsilon_{a \sigma} + \Omega_s - \mathrm{i} \eta \right) \eta} \left( \frac{1}{\Omega_s} \right)^2 - \frac{e^{i \left( \epsilon_{a \sigma} - \mathrm{i} \eta \right) \eta}}{\Omega_s} \right)
+2\pi i \sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s & \left( \frac{1}{(\epsilon_{k \sigma} - \Omega_s -\epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s -\epsilon_{j \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{j \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})} \right)
 \end{aligned}
 \end{equation}
+We move on to the second integral in the occupied block. It only has two poles in the fully occupied contour: $\omega_{21} = \epsilon _{i\sigma } + \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{j\sigma } + \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+\begin{equation}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
+\end{equation}
+So $\phi_{\omega_{21}}(\omega _{21})$ is:
+\begin{equation}
+\boxed{\phi_{\omega_{21}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}}
+\end{equation}
+Now we consider the second pole at $\omega_{22} = \epsilon _{j\sigma } + \mathrm{i} \eta$
+\begin{equation}
+\boxed{\phi_{\omega_{22}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}}
+\end{equation}
+So the second term of the integral will be given by:
+\begin{equation}
+\begin{aligned}
+2\pi i \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s & \left( \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})} \right)
+\end{aligned}
+\end{equation}
+
+
+\begin{table}[h]
+\centering
+\caption{Summary of Poles and their Residues}
+\begin{tabular}{|c|c|c|}
+\hline
+Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_1$} \\
+\hline
+$\omega_{11}$ & $\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{k \sigma} - \Omega_s -\epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s -\epsilon_{j \sigma})}$ \\
+$\omega_{12}$ & $\epsilon_{i \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}$ \\
+$\omega_{13}$ & $\epsilon_{j \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{j \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_2$} \\
+\hline
+$\omega_{21}$ & $\epsilon_{i \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}$ \\
+$\omega_{22}$ & $\epsilon_{j \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}$ \\
+\hline
+\end{tabular}
+\end{table}
+Adding the two terms together, we get:
+\begin{equation}
+\begin{aligned}
+I_{ij} = 2\pi i \Bigg( & \sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s \left( \frac{1}{(\epsilon_{k \sigma} - \Omega_s - \epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{i \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right) \\
+& + \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \left( \frac{1}{(\epsilon_{i \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right) \Bigg)
+\end{aligned}
+\end{equation}
+Let as first just consider the first term:
+\begin{equation}
+\sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s \left( \frac{1}{(\epsilon_{k \sigma} - \Omega_s - \epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{i \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right)
+\end{equation}
+Getting a common denominator for all of the terms:
+\begin{equation}
+\begin{aligned}
+& \frac{1}{(\epsilon_{k \sigma} - \Omega_s - \epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{i \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \\
+& = \frac{\left( \epsilon_{i\sigma } - \epsilon_{j\sigma } \right)}{\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{i\sigma }\right)\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{j\sigma }\right)\left(\epsilon_{i\sigma } - \epsilon_{j\sigma }\right)} - \frac{\left( \epsilon_{k\sigma } - \Omega _s - \epsilon_{j\sigma } \right)}{\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{i\sigma }\right)\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{j\sigma }\right)\left(\epsilon_{i\sigma } - \epsilon_{j\sigma }\right)}\\
+& + \frac{\left( \epsilon_{k\sigma } - \Omega _s - \epsilon_{i\sigma } \right)}{\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{i\sigma }\right)\left(\epsilon_{k\sigma } - \Omega _s - \epsilon_{j\sigma }\right)\left(\epsilon_{i\sigma } - \epsilon_{j\sigma }\right)} \\
+&=0
+\end{aligned}
+\end{equation}
+So the first term simplifies to zero. The second term is:
+\begin{equation}
+\sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \left( \frac{1}{(\epsilon_{i \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right)
+\end{equation}
+Getting a common denominator for all of the terms:
+\begin{equation}
+\begin{aligned}
+& \frac{1}{(\epsilon_{i \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \\
+& = \frac{\left( \epsilon_{j\sigma } - \epsilon_{c\sigma } - \Omega _s \right)}{\left(\epsilon_{i\sigma } - \epsilon_{c\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{j\sigma }\right)\left(\epsilon_{j\sigma } - \epsilon_{c\sigma } - \Omega _s\right)} - \frac{\left( \epsilon_{i\sigma } - \epsilon_{c\sigma } - \Omega _s \right)}{\left(\epsilon_{i\sigma } - \epsilon_{c\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{j\sigma }\right)\left(\epsilon_{j\sigma } - \epsilon_{c\sigma } - \Omega _s\right)}\\
+&=\frac{\left( \epsilon _{j\sigma } - \epsilon _{i\sigma } \right)}{\left(\epsilon _{i\sigma } - \epsilon _{c\sigma } - \Omega _s\right)\left(\epsilon _{j\sigma } - \epsilon _{c\sigma } - \Omega _s\right)\left(\epsilon _{i\sigma } - \epsilon _{j\sigma }\right)}\\
+&= -\frac{1}{\left(\epsilon _{i\sigma } - \epsilon _{c\sigma } - \Omega _s\right)\left(\epsilon _{j\sigma } - \epsilon _{c\sigma } - \Omega _s\right)}=-\frac{1}{\left(\Omega _s + \epsilon _{c\sigma } - \epsilon _{i\sigma }\right)\left(\Omega _s + \epsilon _{c\sigma } - \epsilon _{j\sigma }\right)}
+\end{aligned}
+\end{equation}
+So we see that the whole integral just evaluate to the second term, giving:
+\begin{equation}
+I_{ij} = -2\pi i \sum_{cs}\frac{w_{i c \sigma}^s w_{j c \sigma}^s}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}
+\end{equation}
+So, the expression for $D_{ij}$ is:
+\begin{equation}
+D_{ij} = \bra{i\sigma } \gamma _0^\sigma \ket{j\sigma } + \frac{2\pi i^2}{2\pi} \sum_{cs}\frac{w_{ic} w_{jc}}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}
+\end{equation}
+The first term is the matrix element of the noninteracting part of the density matrix, so this just simplifies to $\delta _{ij}$ and then we relabel the virtual index $c\rightarrow a$:
+\begin{equation}
+D_{ij} = \delta _{ij} - \sum_{as}\frac{w_{ia} w_{ja}}{(\Omega_s + \epsilon_{a \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{a \sigma} - \epsilon_{j \sigma})}
+\end{equation}
+
+
+\section{Fully Virtual Block}
+For the fully virtual block, we need to consider third to last and last terms of the integral in equation \ref{eqn:long_integral}:
+\begin{equation}
+\begin{aligned}
+I_{ab} =& \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}\\
+& + \sum_{cs} w_{a c \sigma}^s w_{b c \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{aligned}
+\end{equation}
+Due to the contour that is chosen for this case, we have poles for the first term at just $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$ and $\omega_{12} = \epsilon _{b \sigma } - \mathrm{i} \eta$. Using the Cauchy residue theorem from equation \ref{eqn:cauchy_residue}:
+\begin{equation}
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{equation}
+Plugging in $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{11}}(\omega) = (\omega - \epsilon_{a \sigma} + \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% Evaluating this at the pole, we get:
+% \begin{equation}
+% \phi_{\omega_{11}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{a \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{11}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}}
+\end{equation}
+% Now we consider the second pole at $\omega_{12} = \epsilon _{b\sigma } - \mathrm{i} \eta$. We consider:
+% \begin{equation}
+% \phi_{\omega_{12}}(\omega) = (\omega - \epsilon_{b \sigma} - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{12} = \epsilon _{b\sigma } - \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{12}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{b \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{12}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}}
+\end{equation}
+So the first term of the integral will be given by:
+\begin{equation}
+\begin{aligned}
+2\pi i \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s & \left( \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right)
+\end{aligned}
+\end{equation}
+We move on to the second integral in the virtual block. It has now three poles in the fully virtual contour: $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$, $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$, and $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+\begin{equation}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{equation}
+So $\phi_{\omega_{21}}(\omega _{21})$ is:
+% \begin{equation}
+% \phi_{\omega_{21}}(\omega) = (\omega - \epsilon_{c \sigma} - \Omega_s + \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) \eta }}{(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}}
+\end{equation}
+Now we consider the second pole at $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$.
+% \begin{equation}
+% \phi_{\omega_{22}}(\omega) = (\omega - \epsilon_{a \sigma} - \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{22}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{a \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{22}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}}
+\end{equation}
+Now we consider the third pole at $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$.
+% \begin{equation}
+% \phi_{\omega_{23}}(\omega) = (\omega - \epsilon_{b \sigma} - \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% Plugging in $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$, we get:
+% \begin{equation}
+% \phi_{\omega_{23}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{b \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)}
+% \end{equation}
+% In the limit $\eta \to 0$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{23}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}}
+\end{equation}
+So the second term of the integral will be given by:
+\begin{equation}
+\begin{aligned}
+2\pi i \sum_{cs} w_{a c \sigma}^s w_{b c \sigma}^s & \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right)
+\end{aligned}
+\end{equation}
+The results we got are summarized in the table:
+\begin{table}[h]
+\centering
+\caption{Summary of Poles and their Residues}
+\begin{tabular}{|c|c|c|}
+\hline
+Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_1$} \\
+\hline
+$\omega_{11}$ & $\epsilon_{a \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}$ \\
+$\omega_{12}$ & $\epsilon_{b \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_2$} \\
+\hline
+$\omega_{21}$ & $\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}$ \\
+$\omega_{22}$ & $\epsilon_{a \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}$ \\
+$\omega_{23}$ & $\epsilon_{b \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}$ \\
+\end{tabular}
+\end{table}
+Adding the two terms together, we get:
+\begin{equation}
+\begin{aligned}
+I_{ab} = 2\pi i \Bigg( & \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s \left( \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right) \\
+& + \sum_{cs} w_{a c \sigma}^s w_{b c \sigma}^s \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right) \Bigg)
+\end{aligned}
+\end{equation}
+A similar simplification as the one done before gives:
+\begin{equation}
+I_{ab} = -2\pi i \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}
+\end{equation}
+So, the expression for $D_{ab}$ is:
+\begin{equation}
+D_{ab} = \bra{a\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi} \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}
+\end{equation}
+The matrix element of the noninteracting density matrix does not mix virtual states and we relabel the occupied index $k\rightarrow i$:
+\begin{equation}
+D_{ab} = - \sum_{is}\frac{w_{ai} w_{bi}}{(\Omega_s + \epsilon_{i \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{i \sigma} - \epsilon_{b \sigma})}
+\end{equation}
+Now, we want to consider the mixed block i.e. the second and fourth terms of the integral in equation \ref{eqn:long_integral}:
+\begin{equation}
+\begin{aligned}
+I_{ib} =& \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}\\
+& + \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{aligned}
+\end{equation}
+Due to the contour that is chosen for this case, we have poles for the first term which lies in the upper half of the complex plane at $\omega_{11} = \epsilon _{k \sigma } - \Omega_s + \mathrm{i} \eta$ and $\omega_{12} = \epsilon _{i \sigma } + \mathrm{i} \eta$.
+Using the Cauchy residue theorem from equation \ref{eqn:cauchy_residue}:
+\begin{equation}
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{equation}
+Plugging in $\omega_{11} = \epsilon _{k \sigma } - \Omega_s + \mathrm{i} \eta$, we get:
+\begin{equation}
+\boxed{\phi_{\omega_{11}}(\epsilon_{k \sigma } - \Omega_s + \mathrm{i} \eta) = \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)}}
+\end{equation}
+Now we consider the second pole at $\omega_{12} = \epsilon _{i \sigma } + \mathrm{i} \eta$.
+\begin{equation}
+\boxed{\phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}}
+\end{equation}
+So the first term of the integral will be given by:
+\begin{equation}
+\begin{aligned}
+2\pi i \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s & \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
+& \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})} \right)
+\end{aligned}
+\end{equation}
+We move on to the second integral in the mixed block. It has two poles in $D_-$: $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+\begin{equation}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+\end{equation}
+So $\phi_{\omega_{21}}(\omega _{21})$ is:
+\begin{equation}
+\boxed{\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}}
+\end{equation}
+Now we consider the second pole at $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$.
+\begin{equation}
+\boxed{\phi_{\omega_{22}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})}}
+\end{equation}
+So the second term of the integral will be given by:
+\begin{equation}
+\begin{aligned}
+2\pi i \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s & \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right)
+\end{aligned}
+\end{equation}
+The results we got are summarized in the table:
+\begin{table}[h]
+\centering
+\caption{Summary of Poles and their Residues}
+\begin{tabular}{|c|c|c|}
+\hline
+Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_1$} \\
+\hline
+$\omega_{11}$ & $\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)}$ \\
+$\omega_{12}$ & $\epsilon_{i \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}$ \\
+\hline
+\multicolumn{3}{|c|}{Series $\omega_2$} \\
+\hline
+$\omega_{21}$ & $\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}$ \\
+$\omega_{22}$ & $\epsilon_{b \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})}$ \\
+\end{tabular}
+\end{table}
+Adding the two terms together, we get:
+\begin{equation}
+\begin{aligned}
+I_{ib} = 2\pi i \Bigg( & \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
+& \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})} \right) \\
+& + \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right) \Bigg)
+\end{aligned}
+\end{equation}
+Let us make some simplifications on the first term:
+\begin{equation}
+\begin{aligned}
+& \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
+& \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})} \right) \\
+& = \frac{\left( \epsilon_{i\sigma } - \epsilon_{b\sigma } \right)}{\left(\epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s\right)\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{b\sigma }\right)} - \frac{\left(\epsilon _{k\sigma } - \epsilon _{b\sigma} + \Omega _s \right)}{\left(\epsilon _{k\sigma } - \epsilon _{i\sigma} + \Omega _s\right)\left(\epsilon _{k\sigma } - \epsilon _{b\sigma} - \Omega _s\right)\left(\epsilon _{i\sigma } - \epsilon _{b\sigma}\right)}\\
+& = - \frac{\left( \epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s \right)}{\left(\epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s\right)\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{b\sigma }\right)} = -\frac{1}{\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i \sigma } - \epsilon_{b \sigma }\right)}
+\end{aligned}
+\end{equation}
+Doing the same for the second term will give:
+\begin{equation}
+\begin{aligned}
+& \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
+& \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right) \\
+& = \frac{\left( \epsilon_{b\sigma } - \epsilon_{i\sigma } \right)}{\left(\epsilon_{c\sigma } + \Omega _s - \epsilon_{i\sigma}\right)\left(\epsilon_{c\sigma } + \Omega _s - \epsilon_{b\sigma}\right)\left(\epsilon_{b\sigma } - \epsilon_{i\sigma}\right)} - \frac{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma } \right)}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{b\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)}\\
+& = \frac{\epsilon _{b\sigma } - \epsilon _{c \sigma} - \Omega _s}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{b\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)} = - \frac{1}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)}
+\end{aligned}
+\end{equation}
+So, the expression for $D_{ib}$ is:
+\begin{equation}
+D_{ib} = \bra{i\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi\left( \epsilon _{i\sigma } - \epsilon _{b\sigma } \right)} \left[ \sum_{ks} \frac{w_{ik}^s w_{bk}^s}{\epsilon _{k\sigma } - \epsilon _{b\sigma } - \Omega _s} - \sum_{cs} \frac{w_{ic}^s w_{bc}^s}{\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}} \right]
+\end{equation}
+The matrix element of the noninteracting density matrix does not mix copied wait virtual states and we relabel the occupied index $k\rightarrow j$ and the virtual index $c\rightarrow a$:
+\begin{equation}
+D_{ib} = \frac{1}{\epsilon _{i\sigma } - \epsilon _{b\sigma }} \left[ \sum_{as} \frac{w_{ia}^s w_{ba}^s}{\epsilon _{i\sigma } - \epsilon _{a\sigma } - \Omega _s} - \sum_{js} \frac{w_{ij}^s w_{bj}^s}{\epsilon _{j\sigma } - \epsilon _{b\sigma } - \Omega _s} \right]
+\end{equation}
+I am just curious what would happen if we chose the opposite contour for the previous integrations. We would just have one pole in $D_-$ at $\omega_{11} = \epsilon _{b \sigma } - \mathrm{i} \eta$ for the first term and $\omega_{21} = \epsilon _{i \sigma } + \mathrm{i} \eta$ for the second term. The residues would be:
+\begin{equation}
+\begin{aligned}
+\phi_{\omega_{11}}(\epsilon_{b \sigma } - \mathrm{i} \eta) & = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \\
+\phi_{\omega_{21}}(\epsilon_{i \sigma} + \mathrm{i} \eta) & = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}
+\end{aligned}
+\end{equation}
+% Finally, we consider the last term of the integral in the mixed block:
 \end{document}

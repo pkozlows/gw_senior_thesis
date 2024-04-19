@@ -9,13 +9,13 @@ def setup_molecule(name):
         basis = 'ccpvdz',
         symmetry = True,
     )
-    if name == 'h2':
+    elif name == 'h2':
         molecule = pyscf.M(
         atom = 'H  0 0 0; H  0 0 0.735',
         basis = 'ccpvdz',
         symmetry = True,
     )
-    if name == 'methane':
+    elif name == 'methane':
         molecule = pyscf.M(
         atom = 'C  0 0 0; H  0 0 1.08; H  0 1.02 -0.36; H  -0.88 -0.51 -0.36; H  0.88 -0.51 -0.36',
         basis = 'ccpvdz',
@@ -28,12 +28,12 @@ def calculate_mean_field(molecule, method):
 
     # run the mean field calculation
     if method == 'dft':
-        mf = rks.RKS(setup_molecule(molecule))
+        mf = rks.RKS(molecule)
         mf.xc = 'pbe'
         mf.verbose = 0
         mf.kernel()
     elif method == 'hf':
-        mf = rks.RKS(setup_molecule(molecule))
+        mf = rks.RKS(molecule)
         mf.xc = 'hf'
         mf.verbose = 0
         mf.kernel()

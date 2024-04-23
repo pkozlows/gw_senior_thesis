@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  31 MAR 2024 09:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  19 APR 2024 19:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1456,7 +1456,7 @@ File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 14.4pt on input line 101.
-<caltech.png, id=95, 183.5658pt x 48.18pt>
+<caltech.png, id=107, 183.5658pt x 48.18pt>
 File: caltech.png Graphic file (type png)
 <use caltech.png>
 Package pdftex.def Info: caltech.png  used on input line 101.
@@ -1529,7 +1529,7 @@ l.136 \chapter
 
 
 ]
-<water_gw.png, id=194, 462.528pt x 346.896pt>
+<water_gw.png, id=215, 462.528pt x 346.896pt>
 File: water_gw.png Graphic file (type png)
 <use water_gw.png>
 Package pdftex.def Info: water_gw.png  used on input line 142.
@@ -1573,7 +1573,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
 
 ] [7]
-<correlation_energies.png, id=244, 622.2447pt x 499.3857pt>
+<correlation_energies.png, id=265, 622.2447pt x 499.3857pt>
 File: correlation_energies.png Graphic file (type png)
 <use correlation_energies.png>
 Package pdftex.def Info: correlation_energies.png  used on input line 223.
@@ -1604,12 +1604,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ]
-<h2_occupations.png, id=289, 462.528pt x 346.896pt>
+<h2_occupations.png, id=310, 462.528pt x 346.896pt>
 File: h2_occupations.png Graphic file (type png)
 <use h2_occupations.png>
 Package pdftex.def Info: h2_occupations.png  used on input line 321.
 (pdftex.def)             Requested size: 397.485pt x 298.12889pt.
-<h2_mo.png, id=292, 443.6575pt x 305.14pt>
+<h2_mo.png, id=313, 443.6575pt x 305.14pt>
 File: h2_mo.png Graphic file (type png)
 <use h2_mo.png>
 Package pdftex.def Info: h2_mo.png  used on input line 328.
@@ -1634,25 +1634,69 @@ Overfull \hbox (4.44046pt too wide) in paragraph at lines 338--338
 [17
 
 
-] [18
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 342.
 
 
-] [19
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 342.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 342.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 342.
+
+
+Overfull \hbox (48.08215pt too wide) detected at line 349
+[][][][]
+ []
+
+
+Overfull \hbox (82.191pt too wide) detected at line 378
+[][]\OML/ntxmi/m/it/12 D[] \U/ntxmia/m/it/12 = [] \OML/ntxmi/m/it/12 ^^M[] [] \LMS/ntxsy/m/n/12 ^^@ [] [] [] [][] \OT1/minntx/m/n/12 d\OML/ntxmi/m/it/12 !\OT1/minntx/m/n/12 e[] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \U/ntxmia/m/it/12 ^^F[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º []
+ []
+
+[18
 
 
 ]
+Overfull \hbox (65.21594pt too wide) detected at line 395
+[][][][]
+ []
+
+[19] [20]
+Overfull \hbox (40.44444pt too wide) detected at line 485
+[][][][]
+ []
+
+[21]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (31.10179pt too wide) detected at line 619
+[][][][]
+ []
+
+[22] [23]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24] [25]
 runsystem(makeindex -s simple_letters main.idx)...executed safely (allowed).
 
  (./main.ind)
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 347.
- (./main.ent) [20
-
-
-]
+(Font)              scaled to size 10.0pt on input line 749.
+ (./main.ent)
 \openout6 = `main.ent'.
 
- [21
+ [26
 
 
 ]
@@ -1666,25 +1710,37 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 \openout12 = `main.lot'.
 
  (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 85016B81FE1506A7CD075DA1DFFCC726;3348.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 0345BF56B2C658CD499E9370480EB317;3974
+(rerunfilecheck)             After:  B1483BAA6832A606766F3960FB6F4177;3558.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38767 strings out of 478268
- 697352 string characters out of 5846347
- 1517679 words of memory out of 5000000
- 56253 multiletter control sequences out of 15000+600000
- 557531 words of font info for 151 fonts, out of 8000000 for 9000
+ 38840 strings out of 478268
+ 698374 string characters out of 5846347
+ 1528286 words of memory out of 5000000
+ 56264 multiletter control sequences out of 15000+600000
+ 558904 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,12n,120p,2022b,1815s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (28 pages, 408344 bytes).
+
+pdfTeX warning (dest): name{appendix*.19} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{appendix.B} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
+Output written on main.pdf (33 pages, 445413 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 363 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 726 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 475 compressed objects within 5 object streams
+ 154 named destinations out of 1000 (max. 500000)
+ 750 words of extra memory for PDF output out of 10000 (max. 10000000)
 

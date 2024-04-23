@@ -44,10 +44,13 @@ def fock_dft(mf):
     exchange_matrix += np.einsum('rs,prqs->pq', mf.make_rdm1(), mf.mol.intor('int2e').reshape((n_orbitals, n_orbitals, n_orbitals, n_orbitals)))
 
     # add the terms
+    
     ao_fock += (h_core + coulumb_matrix - 0.5*exchange_matrix)
 
     # convert the fock matrix to the molecular orbital basis
-    mo_fock = np.einsum('ia,ij,jb->ab', mf.mo_coeff, ao_fock, mf.mo_coeff)
+    mo_fock = np.einsum('pi,pq,qj->ij', mf.mo_coeff, ao_fock, mf.mo_coeff.conj())
+    # check if the fock matrix is diagonal
+    assert(np.allclose(mo_fock, np.diag(np.diag(mo_fock)), atol=1e-6))
 
     return mo_fock
 

@@ -30,7 +30,7 @@
 \contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{16}{chapter.8}%
 \contentsline {chapter}{Bibliography}{17}{section*.17}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Questionnaire}{18}{appendix.A}%
-\contentsline {appendix}{\chapternumberline {B}Consent Form}{19}{appendix.B}%
-\cftpagenumbersoff {chapter}
-\contentsline {chapter}{{Pocket Material: Map of Case Study Solar Systems}}{21}{appendix*.19}%
+\contentsline {appendix}{\chapternumberline {A}Derivation of the linearized $G_0W_0$ density matrix}{18}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Fully occupied block}{20}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Fully Virtual Block}{22}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Mixed Block}{24}{section.A.3}%

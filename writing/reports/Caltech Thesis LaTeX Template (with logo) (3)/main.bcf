@@ -2366,14 +2366,16 @@
     <bcf:citekey order="16">bruneval_assessment_2019</bcf:citekey>
     <bcf:citekey order="17">bruneval_assessment_2019</bcf:citekey>
     <bcf:citekey order="18">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="19">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="20">schimka_accurate_2010</bcf:citekey>
-    <bcf:citekey order="21">mcclain_gaussian-based_2017</bcf:citekey>
-    <bcf:citekey order="22">kozlowski_elucidating_2021</bcf:citekey>
-    <bcf:citekey order="23">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="24">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="25">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="26">dreuw_single-reference_2005</bcf:citekey>
+    <bcf:citekey order="19">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="20">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="21">sun_recent_2020</bcf:citekey>
+    <bcf:citekey order="22">schimka_accurate_2010</bcf:citekey>
+    <bcf:citekey order="23">mcclain_gaussian-based_2017</bcf:citekey>
+    <bcf:citekey order="24">kozlowski_elucidating_2021</bcf:citekey>
+    <bcf:citekey order="25">noauthor_frontiers_nodate</bcf:citekey>
+    <bcf:citekey order="26">szabo_modern_2012</bcf:citekey>
+    <bcf:citekey order="27">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="28">dreuw_single-reference_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

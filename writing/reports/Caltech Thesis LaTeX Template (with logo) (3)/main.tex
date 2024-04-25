@@ -265,6 +265,72 @@ and $B$ is
 \label{eq: B matrix RPA}
 \end{equation}
 
+We can work to simplify this eigenvalue problem. Since we know that the negative and positive eigenvalues for the RPA are the same in magnitude, we can simplify the matrix equation to:
+\begin{equation}
+\begin{bmatrix}
+A & B \\
+-B & -A
+\end{bmatrix}
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+= \omega
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+\end{equation}
+This suggests breaking down the problem into a set of linear equations:
+\begin{align}
+    AX + BY &= \omega X\\
+    -BX-AY &= \omega Y
+\end{align}
+which can be simplified by the addition:
+\begin{equation}
+    (A-B)(X-Y)= \omega (X+Y)
+\end{equation}
+which means:
+\begin{equation}
+    (X+Y) = \omega^{-1}(A-B)(X-Y)
+\label{eqn:addition}
+\end{equation}
+Doing the subtraction instead gives:
+\begin{equation}
+    (A+B)(X+Y)= \omega (X-Y)
+\label{eqn:for_subtraction}
+\end{equation}
+Similarly, we can isolate:
+\begin{equation}
+    (X-Y) = \omega^{-1}(A+B)(X+Y)
+\label{eqn:subtraction}
+\end{equation}
+Substituting in for $X+Y$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}:
+\begin{equation}
+    \omega^{-1}(A+B)(A-B)(X-Y) = \omega (X-Y)
+\end{equation}
+Multiplication by $\omega$ gives:
+\begin{equation}
+    (A+B)(A-B)(X-Y) = \omega^2 (X-Y)
+\end{equation}
+Now, we plug the defintion in \ref{eqn:subtraction} for the $(X-Y)$ terms:
+\begin{equation}
+    (A+B)(A-B)\omega^{-1}(A+B)(X+Y) = \omega^2 \omega^{-1}(A+B)(X+Y)
+\end{equation}
+Multiplication through by $\omega$ gives and $(A+B)^{-1}$ gives:
+\begin{equation}
+    (A-B)(A+B)(X+Y) = \omega^{2} (X+Y)
+\end{equation}
+At this point we want to define $T=(A-B)^{-\frac{1}{2}}(X+Y)$, so that we can write:
+\begin{equation}
+    (A-B)(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} (A-B)^{\frac{1}{2}}T
+\end{equation}
+Dividing through by $(A-B)^{\frac{1}{2}}$ gives:
+\begin{equation}
+    (A-B)^{\frac{1}{2}}(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} T
+\end{equation}
+
+
 The excitation vectors $\textbf{V}^{\mu}$ are taken by considering a contraction of two tensors. First, we consider the sum of $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a,\mu} = \textbf{X}_{i,a,\mu} + \textbf{Y}_{i,a,\mu}$. Then we contract this with the two-electron integrals:
 \begin{equation}
     \textbf{W}_{p,q,i,a} = \sqrt{2} \sum_{p,q,i,a} (pq|ia)

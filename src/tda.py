@@ -185,7 +185,7 @@ def real_corr_se(freq, tddft, mf):
     occupied_denominator = np.zeros((n_occupied, excitations))
     # make the denominator
     occupied_denominator += (freq - orbital_energies[:n_occupied, None] + omega[None, :])
-    # contract them
+    # contract them 
     first_some = np.einsum('pqu,qu->p', exc_occ_vector, 1/occupied_denominator)
 
     # make the V in the second sum

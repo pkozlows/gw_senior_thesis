@@ -20,17 +20,17 @@
 \contentsline {subsection}{Graphical solution}{8}{section*.11}%
 \contentsline {section}{\numberline {4.2}Correlation Self-Energy}{9}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Random Phase Approximation}{9}{section.4.3}%
-\contentsline {subsection}{Tamm-Dancoff Approximation}{10}{section*.12}%
-\contentsline {subsection}{Direct approximation}{10}{section*.13}%
-\contentsline {chapter}{\chapternumberline {5}Linearized $G_0W_0$ Density Matrix}{11}{chapter.5}%
-\contentsline {subsection}{Implementation}{11}{section*.14}%
-\contentsline {subsection}{Plotting natural occupations}{12}{section*.15}%
-\contentsline {chapter}{\chapternumberline {6}This is the Sixth Chapter}{14}{chapter.6}%
-\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{15}{chapter.7}%
-\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{16}{chapter.8}%
-\contentsline {chapter}{Bibliography}{17}{section*.17}%
+\contentsline {subsection}{Tamm-Dancoff Approximation}{11}{section*.12}%
+\contentsline {subsection}{Direct approximation}{11}{section*.13}%
+\contentsline {chapter}{\chapternumberline {5}Linearized $G_0W_0$ Density Matrix}{12}{chapter.5}%
+\contentsline {subsection}{Implementation}{12}{section*.14}%
+\contentsline {subsection}{Plotting natural occupations}{13}{section*.15}%
+\contentsline {chapter}{\chapternumberline {6}This is the Sixth Chapter}{15}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{16}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{17}{chapter.8}%
+\contentsline {chapter}{Bibliography}{18}{section*.17}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Derivation of the linearized $G_0W_0$ density matrix}{18}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Fully occupied block}{20}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Fully Virtual Block}{22}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Mixed Block}{24}{section.A.3}%
+\contentsline {appendix}{\chapternumberline {A}Derivation of the linearized $G_0W_0$ density matrix}{19}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Fully occupied block}{21}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Fully Virtual Block}{23}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Mixed Block}{25}{section.A.3}%

@@ -30,7 +30,7 @@ def setup_molecule(name):
         molecule.build(
             atom = 'H  0 0 0; Cl  0 0 1.27',
             basis = 'ccpvdz',
-            symmetry = True,
+            symmetry = False,
         )
     elif name == 'nh3':
         molecule = gto.Mole()
@@ -68,6 +68,7 @@ def calculate_mean_field(molecule, method):
     elif method == 'hf':
         mf = rks.RKS(molecule)
         mf.xc = 'hf'
+        mf.conv_tol = 1e-12
         mf.verbose = 0
         mf.kernel()
             

@@ -27,7 +27,8 @@ def g0w0(orbital_number, fock_mo, real_corr_se, corr_mf, tddft):
         new_qpe = fock_element + real_corr_se(qpe, tddft, corr_mf)[orbital_number]
 
         # Check if the convergence criterion is met
-        if np.abs(new_qpe - qpe) <= tol:
+        if np.abs(new_qpe - qpe)  <= tol:
+            print(iter)
             break
 
         qpe = new_qpe

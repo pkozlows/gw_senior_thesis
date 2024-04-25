@@ -72,13 +72,13 @@ class G0W0Test(G0W0TestBase):
     pass  # Empty class, we'll add test methods to it dynamically
 
 def add_dynamic_tests():
-    species = ['water', 'nh3', 'methane]
+    species = ['hcl']
     offsets = [-3, -2, -1, 0, 1, 2, 3, 4]
 
     def create_test(species, offset):
         def test(self):
             with self.subTest(species=species, offset=offset):
-                self.run_g0w0_test(species, 'hf', simple_fock, 'drpa', offset)
+                self.run_g0w0_test(species, 'hf', simple_fock, 'dtda', offset)
         return test
 
     for s in species:

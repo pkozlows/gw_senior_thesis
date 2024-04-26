@@ -289,6 +289,7 @@ This suggests breaking down the problem into a set of linear equations:
 which can be simplified by the addition:
 \begin{equation}
     (A-B)(X-Y)= \omega (X+Y)
+\label{eqn:for_addition}
 \end{equation}
 which means:
 \begin{equation}
@@ -304,6 +305,14 @@ Similarly, we can isolate:
 \begin{equation}
     (X-Y) = \omega^{-1}(A+B)(X+Y)
 \label{eqn:subtraction}
+\end{equation}
+Equations \ref{eqn:for_addition} and \ref{eqn:for_subtraction} can be combined men that we should get, respectively:
+\begin{equation}
+    \boxed{\omega = (X-Y)^{\dag} (A-B)(X-Y)}
+\end{equation}
+and
+\begin{equation}
+    \boxed{\omega = (X+Y)^{\dag} (A+B)(X+Y)}
 \end{equation}
 Substituting in for $X+Y$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}:
 \begin{equation}
@@ -329,9 +338,17 @@ Dividing through by $(A-B)^{\frac{1}{2}}$ gives:
 \begin{equation}
     (A-B)^{\frac{1}{2}}(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} T
 \end{equation}
-Once the icon vague problem is solved, we need to normalize the vectors $T$. We see the relation:
+Once the eigenvalue problem is solved, we need to normalize the vectors $T$. We see the relation:
 \begin{equation}
     (X+Y) = (A-B)^{\frac{1}{2}}T
+\end{equation}
+And then for normalization, we need:
+\begin{equation}
+    (X-Y)^{\dag}(X+Y)=1
+\end{equation}
+So we need:
+\begin{equation}
+    (X-Y)=(A-B)^{-1}(X+Y)\omega 
 \end{equation}
 
 

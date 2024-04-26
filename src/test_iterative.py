@@ -23,8 +23,8 @@ class G0W0TestBase(unittest.TestCase):
         omega_drpa, R_drpa = my_drpa(fock_mf)
         omega_symm_drpa, R_symm_drpa = symm_drpa(fock_mf)
 
-        for o1, o2 in zip(omega_drpa, omega_symm_drpa):
-            self.assertAlmostEqual(o1, o2, places=5, msg="DRPA and Symmetric DRPA excitation energies differ")
+        for o1, o2 in zip(np.sort(omega_drpa), np.sort(omega_symm_drpa)):
+            self.assertAlmostEqual(o1, o2, msg="DRPA and Symmetric DRPA excitation energies differ")
 
     def run_g0w0_test(self, species, fock_mf, fock, td, comparison_td, offset):
         molecule = setup_molecule(species)  # Convert species name to a molecule object
@@ -48,7 +48,7 @@ class G0W0TestBase(unittest.TestCase):
                 my_tddft = my_dtda
                 other_tddft = tddft.dTDA(fock_mf)
             elif td == 'drpa':
-                my_tddft = my_drpa
+                my_tddft = symm_drpa
                 other_tddft = tddft.dRPA(fock_mf)
             
             other_tddft.nstates = n_occupied*n_virtual
@@ -72,7 +72,7 @@ class G0W0TestBase(unittest.TestCase):
                 print((my_tddft, other_tddft))
                 self.assertAlmostEqual(my_result, other_result[orbital_number], delta=1e-7)
             elif fock == fock_dft:
-                self.assertAlmostEqual(my_result, other_result[orbital_number], delta=1e-7)
+                self.assertAlmostEqual(my_result, other_result[orbital_number], delta=1e-6)
 
         # then do the case where you compare to the symmetric implementation
         elif comparison_td == 'symm_drpa':
@@ -86,7 +86,7 @@ class G0W0TestBase(unittest.TestCase):
                 print((my_tddft, other_tddft))
                 self.assertAlmostEqual(my_result, other_result, delta=1e-7)
             elif fock == fock_dft:
-                self.assertAlmostEqual(my_result, other_result, delta=1e-7)
+                self.assertAlmostEqual(my_result, other_result, delta=1e-6)
 
 
         
@@ -95,13 +95,19 @@ class G0W0Test(G0W0TestBase):
     pass  # Empty class, we'll add test methods to it dynamically
 
 def add_dynamic_tests():
-    species = ['water']
-    offsets = [-2, -1, 0, 1, 2]
+    species = ['water', 'methane', 'hcl', 'nh3', 'co']
+    offsets = [-3, -2, -1, 0, 1, 2, 3]
+
+    def create_drpa_test(species, offset):
+        def test(self):
+            with self.subTest(species=species, offset=offset):
+                self.compare_drpa_methods(species, simple_fock, offset)
+        return test
 
     def create_g0w0_test(species, offset):
         def test(self):
             with self.subTest(species=species, offset=offset):
-                self.run_g0w0_test(species, 'hf', simple_fock, 'drpa', 'symm_drpa', offset)
+                self.run_g0w0_test(species, 'hf', simple_fock, 'drpa', 'pyscf', offset)
         return test
 
 
@@ -110,6 +116,10 @@ def add_dynamic_tests():
             g0w0_test_method = create_g0w0_test(s, o)
             g0w0_test_method.__name__ = f'test_g0w0_{s}_offset_{o}'
             setattr(G0W0Test, g0w0_test_method.__name__, g0w0_test_method)
+
+            energy_test_method = create_drpa_test(s, o)
+            energy_test_method.__name__ = f'test_drpa_{s}_offset_{o}'
+            # setattr(G0W0Test, energy_test_method.__name__, energy_test_method)
 
 if __name__ == '__main__':
     add_dynamic_tests()

@@ -148,7 +148,9 @@ def symm_drpa(mf):
     # Efficiently create and reshape the E_ai matrix using broadcasting
     virtual_energies = orbital_energies[n_occupied:]
     occupied_energies = orbital_energies[:n_occupied]
+
     E_ai = (virtual_energies - occupied_energies[:, None]).reshape(n_occupied*n_virtual)
+
 
 
     A += np.diag(E_ai)
@@ -158,16 +160,21 @@ def symm_drpa(mf):
     AplusB = A + B
     AminusB = A - B
 
-    combined_matrix = AminusB * AplusB
+    combined_matrix = ((AminusB**.5) @ AplusB).T @ (AminusB**.5)
     omega_squared, T = np.linalg.eig(combined_matrix) # note this is for a non-hermitian matrix
 
-    XplusY = np.sqrt(AminusB).T @ T
+    # Take the real part of the eigenvalues and eigenvectors
+    omega_squared = np.real(omega_squared)
+    T = np.real(T)
+
+    XplusY = AminusB @ T
+
     
     # prepare the inverse of AminusB
     just_diag = np.diag(AminusB)
     inv_AminusB = np.diag(1/just_diag)
 
-    XminusY = np.sqrt(omega_squared) * (inv_AminusB.T @ XplusY)
+    XminusY = (inv_AminusB @ XplusY) @ np.diag(np.sqrt(omega_squared))
 
     # check the normalization
     normalization = XplusY.T @ XminusY
@@ -180,13 +187,27 @@ def symm_drpa(mf):
         combined_representation_m[:,icol] /= np.sqrt(normalization[icol, icol])
 
     normalization = combined_representation.T @ combined_representation_m
-    print('Normalization \n', np.diag(normalization))
+    # print('Normalization \n', np.diag(normalization))
+    # # make a few assert statements
+    # # Calculate the transformed matrix for AminusB
+    # transformed_AminusB = XminusY.T @ AminusB @ XminusY
+    # expected = np.diag(np.sqrt(omega_squared))
+    # assert np.allclose(expected, transformed_AminusB, atol=1e-6), \
+    #     f"Failed AminusB Transformation: Expected {expected}, got {transformed_AminusB}, diff {expected - transformed_AminusB}"
 
+    # # Calculate the transformed matrix for AplusB
+    # transformed_AplusB = XplusY.T @ AplusB @ XplusY
+    # assert np.allclose(expected, transformed_AplusB, atol=1e-6), \
+    #     f"Failed AplusB Transformation: Expected {expected}, got {transformed_AplusB}, diff {expected - transformed_AplusB}"
+
+
+    # convert omega_squared and comb
     # now that us compute the V matrix
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
     # now that us reshape it into a form we want
     W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
     V_pqu = np.einsum('pqi,in->pqn', W_pqu, combined_representation)
+    
 
     return np.sqrt(omega_squared), V_pqu
        

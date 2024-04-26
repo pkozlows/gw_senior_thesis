@@ -91,16 +91,8 @@ def my_drpa(mf):
     positive_indices = np.where(omega > 0)[0]
     negative_indices = np.where(omega < 0)[0]
 
-    # Make sure the lengths are equal
-    assert len(positive_indices) == len(negative_indices), "Number of positive and negative eigenvalues do not match."
-
     # Extract the actual eigenvalues using the indices
     positive_eigenvalues = omega[positive_indices]
-    negative_eigenvalues = omega[negative_indices]
-
-    # Check if the absolute values of the positive eigenvalues are identical to the absolute values of the negative ones
-    # Sort both arrays to ensure the comparison is order-independent
-    assert np.allclose(np.sort(np.abs(positive_eigenvalues)), np.sort(np.abs(negative_eigenvalues))), "Absolute values of positive and negative eigenvalues do not match."
 
     # Select corresponding eigenvectors
     R_positive = R[:, positive_indices]
@@ -113,20 +105,6 @@ def my_drpa(mf):
     # front out the normalization
     normalization = (X_u + Y_u).T @ (X_u-Y_u)
     # print(np.diag(normalization))
-
-    # print out the normalization matrix manes its diagonal
-    # now my vectors are orthogonal but not yet normalized
-
-
-    # # Add the positive and negative parts pairwise
-    # combined_representation = X_u + Y_u
-    # vec = []
-    # for icol, col in enumerate(combined_representation):
-    #     # norm = col.T@(X_u-Y_u)[:,icol]
-    #     # print(norm)
-    #     col /= np.sqrt(normalization[icol, icol])
-    #     vec.append(col)
-    # combined_representation = np.array(vec)
 
     combined_representation = (X_u + Y_u).copy()
     combined_representation_m = (X_u - Y_u).copy()
@@ -144,6 +122,94 @@ def my_drpa(mf):
     V_pqu = np.einsum('pqi,in->pqn', W_pqu, combined_representation)
 
     return positive_eigenvalues, V_pqu
+
+def symm_drpa(mf):
+    '''Calculates the excitation energies and the R matrix for the molecule in the direct rpa.
+
+    Args:
+        mf (object): An object representing the molecule.
+
+    Returns:
+        tuple: A tuple containing the excitation energies and the R matrix.
+    '''
+
+    n_orbitals = mf.mol.nao_nr()
+    n_occupied = mf.mol.nelectron//2
+    n_virtual = n_orbitals - n_occupied
+    # get the orbital energies
+    orbital_energies = mf.mo_energy
+    # get the MO integrals
+    eri_mo = mf.mol.ao2mo(mf.mo_coeff, compact=False).reshape(n_orbitals, n_orbitals, n_orbitals, n_orbitals)
+    
+    # Direct assignment to A and B matrices
+    A = 2 * eri_mo[:n_occupied, n_occupied:, :n_occupied, n_occupied:].reshape(n_occupied*n_virtual, n_occupied*n_virtual)
+    B = A.copy()  # Assuming B is the same as A in your case
+
+    # Efficiently create and reshape the E_ai matrix using broadcasting
+    virtual_energies = orbital_energies[n_occupied:]
+    occupied_energies = orbital_energies[:n_occupied]
+
+    E_ai = (virtual_energies - occupied_energies[:, None]).reshape(n_occupied*n_virtual)
+
+
+
+    A += np.diag(E_ai)
+    
+
+    # Stack the matrices to create the combined matrix
+    AplusB = A + B
+    AminusB = A - B
+
+    combined_matrix = ((AminusB**.5) @ AplusB).T @ (AminusB**.5)
+    omega_squared, T = np.linalg.eig(combined_matrix) # note this is for a non-hermitian matrix
+
+    # Take the real part of the eigenvalues and eigenvectors
+    omega_squared = np.real(omega_squared)
+    T = np.real(T)
+
+    XplusY = AminusB @ T
+
+    
+    # prepare the inverse of AminusB
+    just_diag = np.diag(AminusB)
+    inv_AminusB = np.diag(1/just_diag)
+
+    XminusY = (inv_AminusB @ XplusY) @ np.diag(np.sqrt(omega_squared))
+
+    # check the normalization
+    normalization = XplusY.T @ XminusY
+    # print(np.diag(normalization))
+
+    combined_representation = (XplusY).copy()
+    combined_representation_m = (XminusY).copy()
+    for icol, col in enumerate(combined_representation):
+        combined_representation[:,icol] /= np.sqrt(normalization[icol, icol])
+        combined_representation_m[:,icol] /= np.sqrt(normalization[icol, icol])
+
+    normalization = combined_representation.T @ combined_representation_m
+    # print('Normalization \n', np.diag(normalization))
+    # # make a few assert statements
+    # # Calculate the transformed matrix for AminusB
+    # transformed_AminusB = XminusY.T @ AminusB @ XminusY
+    # expected = np.diag(np.sqrt(omega_squared))
+    # assert np.allclose(expected, transformed_AminusB, atol=1e-6), \
+    #     f"Failed AminusB Transformation: Expected {expected}, got {transformed_AminusB}, diff {expected - transformed_AminusB}"
+
+    # # Calculate the transformed matrix for AplusB
+    # transformed_AplusB = XplusY.T @ AplusB @ XplusY
+    # assert np.allclose(expected, transformed_AplusB, atol=1e-6), \
+    #     f"Failed AplusB Transformation: Expected {expected}, got {transformed_AplusB}, diff {expected - transformed_AplusB}"
+
+
+    # convert omega_squared and comb
+    # now that us compute the V matrix
+    W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
+    # now that us reshape it into a form we want
+    W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)
+    V_pqu = np.einsum('pqi,in->pqn', W_pqu, combined_representation)
+    
+
+    return np.sqrt(omega_squared), V_pqu
        
 
 def real_corr_se(freq, tddft, mf):

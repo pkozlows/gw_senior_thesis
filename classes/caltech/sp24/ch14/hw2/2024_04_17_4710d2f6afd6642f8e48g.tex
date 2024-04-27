@@ -1,0 +1,337 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+\title{Ch14 Spring term 2024 }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Problem set 2
+
+due April 18, 2024
+
+please indicate length of time needed for this problem set
+
+unless otherwise stated, assume $\mathrm{T}=25^{\circ} \mathrm{C}$, that activities = concentrations and $\mathrm{Kw}=10^{-14}$. unless otherwise specified, give answers to 3 significant figures.
+\section{}
+Calculate the $\mathrm{pH}$ to the nearest $0.01 \mathrm{pH}$ unit for
+Assume $\mathrm{HCl}$ is fully dissociated, and $\mathrm{Kw}=10^{-14}$.\\\\
+If we assume that $\mathrm{HCl}$ is fully dissociated, then the concentration of $\mathrm{H}^{+}$ is equal to the concentration of $\mathrm{HCl}$, and the $\mathrm{pH}$ is given by $\mathrm{pH}=-\log _{10}\left(\left[\mathrm{H}^{+}\right]\right)$.
+\subsection{}
+a $10^{-2} \mathrm{M}$ solution of $\mathrm{HCl}$
+\subsubsection{Answer}
+This translates to a concentration of $\mathrm{H}^{+}$ of $10^{-2} \mathrm{M}$. Next, we can calculate the $\mathrm{pH}$ as follows:
+\begin{equation}
+  \mathrm{pH}=-\log _{10}\left(10^{-2}\right)=2
+\end{equation}
+\subsection{}
+a $10^{-10} \mathrm{M}$ solution of $\mathrm{HCl}$
+\subsubsection{Answer}
+This translates to a concentration of $\mathrm{H}^{+}$ of $10^{-10} \mathrm{M}$. Next, we can calculate the $\mathrm{pH}$ as follows:
+\begin{equation}
+  \mathrm{pH}=-\log _{10}\left(10^{-10}\right)=10
+\end{equation}
+\section{}
+
+
+for problems 2-4, assume that the concentrations are such that the "weak acid approximation" $\left(H^{+}\right) \sim \sqrt{K_{a} C_{0}}$ (or the corresponding "weak base approximation") is valid.
+\subsection{}
+Calculate the $\mathrm{pH}$ to the nearest $0.01 \mathrm{pH}$ unit for the following solutions. Use pKa $=4.75$ for acetic acid, $\mathrm{pK}_{\mathrm{b}}=4.75$ for ammonia, and $\mathrm{Kw}=10^{-14}$.
+\subsubsection{}
+$10^{-2} \mathrm{M}$ solution of acetic acid
+\subsubsection{Answer}
+Because the pKa of acetic acid is $4.75$, its $K_{a}$ is $10^{-4.75}$. The concentration of acetic acid is $10^{-2} \mathrm{M}$, so the concentration of $\mathrm{H}^{+}$ is given by the equation
+\begin{equation}
+  \left[\mathrm{H}^{+}\right]=\sqrt{K_{a} C_{0}}=\sqrt{10^{-4.75} \times 10^{-2}}=10^{-3.375}
+\end{equation}
+Next, we can calculate the $\mathrm{pH}$ as follows:
+\begin{equation}
+  \mathrm{pH}=-\log _{10}\left(10^{-3.375}\right)=3.375
+\end{equation}
+and with the correct number of significant figures, the $\mathrm{pH}$ is $3.38$.
+\subsubsection{}
+$10^{-2} \mathrm{M}$ solution of $\mathrm{NH}_{3}$
+\subsubsection{Answer}
+Because the $\mathrm{pK}_{\mathrm{b}}$ of ammonia is $4.75$, its $K_{b}$ is $10^{-4.75}$. The concentration of ammonia is $10^{-2} \mathrm{M}$, so the concentration of $\mathrm{OH}^{-}$ is given by the equation
+\begin{equation}
+  \left[\mathrm{OH}^{-}\right]=\sqrt{K_{b} C_{0}}=\sqrt{10^{-4.75} \times 10^{-2}}=10^{-3.375}
+\end{equation}
+Next, we can calculate the $\mathrm{pOH}$ as follows:
+\begin{equation}
+  \mathrm{pOH}=-\log _{10}\left(10^{-3.375}\right)=3.375
+\end{equation}
+and with the correct number of significant figures, the $\mathrm{pOH}$ is $3.38$. Finally, we can calculate the $\mathrm{pH}$ as follows:
+\begin{equation}
+  \mathrm{pH}=14-\mathrm{pOH}=14-3.38=10.62
+\end{equation}
+\section{}
+In a $0.1 \mathrm{M}$ solution of $\mathrm{NH}_{4} \mathrm{Cl}$ in water, calculate the concentrations of $\mathrm{NH}_{4}{ }^{+}$and $\mathrm{NH}_{3}$. The $\mathrm{pK}_{\mathrm{a}}$ of $\mathrm{NH}_{4}{ }^{+}$is 9.25 .
+\subsection{Answer}
+The concentration of $\mathrm{NH}_{4}{ }^{+}$ is trivially $0.1 \mathrm{M}$. As for the concentration of $\mathrm{NH}_{3}$, we can use equations to calculate $K_b$:
+\begin{equation}
+  K_{b}=\frac{K_{w}}{K_{a}}
+\end{equation}
+Then, we want to calculate the concentration of $\mathrm{OH}^{-}$:
+\begin{equation}
+  \left[\mathrm{OH}^{-}\right]=\sqrt{K_{b} C_{0}}
+\end{equation}
+Finally, we can calculate the concentration of $\mathrm{NH}_{3}$ using the equilibrium equation:
+\begin{equation}
+  \left[\mathrm{NH}_{3}\right]=\frac{\left[\mathrm{NH}_{4}{ }^{+}\right]\left[\mathrm{OH}^{-}\right]}{K_{b}}
+\end{equation}
+We end up with
+\begin{equation}
+  \left[\mathrm{NH}_{3}\right]=7.50 \mathrm{M} \times 10^{-3}
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Constants for calculations
+Ka = 10**(-9.25)
+Kw = 10**(-14)
+C0_NH4Cl = 0.1  # Molarity of NH4Cl, thus [NH4+]
+
+# Calculate Kb for NH3
+Kb = Kw / Ka
+
+# Calculate [OH-] using the approximation for weak bases
+OH_minus = (Kb * C0_NH4Cl)**0.5
+H_plus = Kw / OH_minus
+
+# Calculate [NH3] using the relation with OH- and NH4+
+NH3 = (OH_minus * C0_NH4Cl) / Kb
+
+NH3
+\end{lstlisting}
+\section{}
+The $\mathrm{pH}$ of a $0.10 \mathrm{M}$ solution of a certain amine, $\mathrm{R}-\mathrm{NH}_{2}$, is 11.80. What is the $\mathrm{pK}_\mathrm{b}$ of this amine?
+\subsection{Answer}
+From the pH, we calculate the concentration of $\mathrm{H}^{+}$ as follows:
+\begin{equation}
+  \left[\mathrm{H}^{+}\right] = 10^{-\mathrm{pH}}
+\end{equation}
+Using this, the concentration of $\mathrm{OH}^{-}$ is determined by the water ion-product, $K_{w}$:
+\begin{equation}
+  \left[\mathrm{OH}^{-}\right] = \frac{K_{w}}{\left[\mathrm{H}^{+}\right]}
+\end{equation}
+Assuming that all the amine is initially present as $\mathrm{R}-\mathrm{NH}_{2}$ and the solution is 0.10 M, the concentration of $\mathrm{R}-\mathrm{NH}_{3}^{+}$ formed by the reaction of $\mathrm{R}-\mathrm{NH}_{2}$ with water is equal to $\left[\mathrm{OH}^{-}\right]$. The equilibrium constant for the base, $K_{b}$, is then:
+\begin{equation}
+  K_{b} = \frac{\left[\mathrm{OH}^{-}\right]^{2}}{0.10}
+\end{equation}
+Finally, the $\mathrm{pK}_\mathrm{b}$ is calculated using:
+\begin{equation}
+  \mathrm{pK}_\mathrm{b} = -\log_{10}(K_{b})
+\end{equation}
+This gives us a $\mathrm{pK}_\mathrm{b}$ of 3.40.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import math
+# Constants
+pH = 11.80
+C0_amine = 0.10  # Molarity of the amine
+Kw = 10**-14
+
+# Calculate [H+]
+H_plus = 10**(-pH)
+
+# Calculate [OH-]
+OH_minus = Kw / H_plus
+
+# Assuming [OH-] equals the amount of amine that reacted and [R-NH2] is approximately equal to the initial concentration
+Kb = (OH_minus**2) / C0_amine
+
+# Calculate pKb
+pKb = -math.log10(Kb)
+
+pKb
+
+\end{lstlisting}
+
+\section{}
+Tris(hydroxymethyl)aminomethane (Tris) is a frequently used buffer component for biochemical studies. The structure of Tris in the basic form will be abbreviated in this problem as $\mathrm{R}-\mathrm{NH}_{2}$. The acid dissociation equilibrium may be represented as
+$$
+\mathrm{R}-\mathrm{NH}_{3}^{+} \leftrightarrow \mathrm{R}-\mathrm{NH}_{2}+\mathrm{H}^{+} \quad \mathrm{pKa}=8.10 ; \Delta \mathrm{H}^{\circ}=+50 \mathrm{~kJ} / \mathrm{mole}
+$$
+
+where $\mathrm{pKa}=-\log _{10} \mathrm{~K}_{\mathrm{a}}$, and $\mathrm{K}_{\mathrm{a}}$ is the equilibrium constant for this acid dissociation reaction. $\mathrm{K}_{\mathrm{a}}$ is a function of temperature since $\Delta \mathrm{H}^{\circ}$ is non-zero.
+
+Although Tris is widely used, it has the serious drawback that the $\mathrm{pH}$ of a buffered solution varies significantly with temperature. Based on the van't Hoff equation that we've discussed in class, numerically evaluate $\partial p K_{a} / \partial T$, the change in pKa with a change in temperature, for Tris buffer at $\mathrm{T}=25^{\circ} \mathrm{C}$.
+
+If this derivative is assumed to be constant, independent of temperature (this is not actually true, but is a reasonable approximation), calculate the expected pKa of Tris buffer at $0{ }^{\circ} \mathrm{C}$.
+\subsection{Answer}
+The van't Hoff equation in our case is given by:
+\begin{equation}
+  \left( \frac{\partial \ln K_{a}}{\partial T} \right) _{p} = \frac{\Delta H^{\circ}}{RT^{2}}
+\end{equation}
+The relationship between $K_{a}$ and $\mathrm{pKa}$ is given by:
+\begin{equation}
+  pKa = -\log_{10}(K_{a})
+\end{equation}
+Differentiating this equation with respect to $T$ gives:
+\begin{equation}
+  \frac{\partial pKa}{\partial T} = - \frac{1}{\ln(10)} \frac{\partial \ln K_{a}}{\partial T}
+\end{equation}
+Substituting the van't Hoff equation into this gives:
+\begin{equation}
+  \frac{\partial pKa}{\partial T} = - \frac{\Delta H^{\circ}}{RT^{2} \ln(10)}
+\end{equation}
+Evaluating this at $T=25^{\circ} \mathrm{C}$ gives:
+\begin{equation}
+  \frac{\partial pKa}{\partial T} = - \frac{50000}{(8.314 \times 298.15^{2}) \ln(10)} = -0.0294 \frac{1}{K}
+\end{equation}
+Finally, we can calculate the expected $\mathrm{pKa}$ at $0^{\circ} \mathrm{C}$ as follows:
+\begin{equation}
+  \mathrm{pKa}_{0^{\circ} \mathrm{C}} = \mathrm{pKa}_{25^{\circ} \mathrm{C}} + \left( \frac{\partial pKa}{\partial T} \right) \times (0 - 25)
+\end{equation}
+This one gives us a $\mathrm{pKa}$ of $8.83$ at $0^{\circ} \mathrm{C}$.
+% Inline Python code in the document
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+# Constants
+R = 8.314  # J/(molxK)
+Delta_H = 50000  # J/mol
+T = 298.15  # K
+pKa_25 = 8.10
+
+# Calculate the partial derivative of pKa with respect to temperature
+partial_pKa_partial_T = -1 / np.log(10) * (Delta_H / (R * T**2))
+
+# Calculate the pKa at 0 degrees Celsius (273.15 K)
+Delta_T = 273.15 - 298.15
+pKa_0 = pKa_25 + partial_pKa_partial_T * Delta_T
+
+partial_pKa_partial_T, pKa_0
+\end{lstlisting}
+
+\section{}
+A solution with the following composition is prepared
+
+0.15 liter of $1.0 \mathrm{M}$ ammonium hydroxide $\left(\mathrm{NH}_{4}{ }^{+} \mathrm{OH}^{-}\right)$
+
+0.10 liter of $0.5 \mathrm{M}$ ammonium chloride $\left(\mathrm{NH}_{4}^{+} \mathrm{Cl}^{-}\right)$
+
+0.10 liter of $1.0 \mathrm{M}$ acetic acid $\left(\mathrm{CH}_{3} \mathrm{CO}_{2} \mathrm{H}\right)$
+
+distilled $\mathrm{H}_{2} \mathrm{O}$ is added to a final volume of 1.0 liter.
+
+Using either graphical (such as Excel ${ }^{\circledR}$ ) or numerical (such as Mathematica ${ }^{\circledR}$ ) methods, calculate the $\mathrm{pH}$ of this solution without any approximations. You may wish to start from the charge balance equation, incorporating mass balance and equilibrium relationships to get an equation that may be solved for $\left(\mathrm{H}^{+}\right)$.
+
+The pKa's of acetic acid and ammonium are $\mathrm{pK}_{1}=4.75$ and $\mathrm{pK}_{2}=9.25$, respectively. Hint: the final $\mathrm{pH}$ is $\sim 9$.
+\subsection{Answer}
+We want to start by setting up mass balance equations. First we are interested in the total concentration of $\mathrm{NH}_{4}^{+}$ in the solution. There are two sources for this; the ammonium hydroxide and the ammonium chloride. The total concentration of $\mathrm{NH}_{4}^{+}$ is given by:
+\begin{equation}
+  \left[\mathrm{NH}_{4}^{+}\right] = \left[\mathrm{NH}_{}^{+}\right]_{\text {hydroxide }} + \left[\mathrm{NH}_{4}^{+}\right]_{\text {chloride }}
+\end{equation}
+and then, we are interested in the concentration of $\mathrm{CH}_{3} \mathrm{CO}_{2} \mathrm{H}$ in the solution. The total concentration of $\mathrm{CH}_{3} \mathrm{CO}_{2} \mathrm{H}$ is given by:
+\begin{equation}
+  \left[\mathrm{CH}_{3} \mathrm{CO}_{2} \mathrm{H}\right] = \left[\mathrm{CH}_{3} \mathrm{CO}_{2} \mathrm{H}\right]
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Initial concentrations
+V_total = 1.0  # Total volume in liters
+C_NH4OH = 0.15 * 1.0 / V_total  # Concentration of NH4+ from NH4OH
+C_NH4Cl = 0.10 * 0.5 / V_total  # Concentration of NH4+ from NH4Cl
+C_CH3COOH = 0.10 * 1.0 / V_total  # Initial concentration of CH3COOH
+
+# Total NH4+ concentration
+C_NH4_plus_total = C_NH4OH + C_NH4Cl
+\end{lstlisting}
+We also know the constance of
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Constants
+Kw = 10**-14  # Water ionization constant
+Ka_acetic = 10**-4.75  # Acetic acid dissociation constant
+Ka_ammonium = 10**-9.25  # Ammonium hydrolysis constant
+\end{lstlisting}
+Next, we can set up the charge balance equation. The total charge in the solution is given by:
+\begin{equation}
+  \left[\mathrm{H}^{+}\right] + \left[\mathrm{NH}_{4}^{+}\right] = \left[\mathrm{OH}^{-}\right] + \left[\mathrm{CH}_{3} \mathrm{CO}_{2}^{-}\right] + \left[\mathrm{Cl}^{-}\right] 
+\end{equation}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq1 = H_plus + NH4_plus - OH_minus - CH3COO_minus - C_Cl_minus  # Charge balance
+\end{lstlisting}
+Then we want to use the mass balance for ammonium
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq2 = NH4_plus + NH3 - C_NH4_plus_total  # Total NH4 balance
+\end{lstlisting}
+and the mass balance for acetic acid
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq3 = CH3COOH + CH3COO_minus - C_CH3COOH  # Total acetic acid balance
+\end{lstlisting}
+Then, we want to consider the auto-ionization of water
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq4 = H_plus * OH_minus - Kw  # Water ionization
+\end{lstlisting}
+the equilibrium for the ammonia
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq5 = NH3 * H_plus - NH4_plus * Ka_ammonium  # Ammonium hydrolysis
+\end{lstlisting}
+and the equilibrium for acetic acid
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+eq6 = CH3COO_minus * H_plus - CH3COOH * Ka_acetic  # Acetic acid dissociation
+\end{lstlisting}
+Finally, we can solve the system of equations given our knowledge of initial values
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# Initial guesses for [H+], [NH4+], [NH3], [OH-], [CH3COOH], [CH3COO-]
+initial_guesses = [1e-7, C_NH4_plus_total, 0.01, 1e-7, C_CH3COOH, 0.01]
+solution = fsolve(equations, initial_guesses)
+\end{lstlisting}
+Then we use the following to get the pH
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+pH = -np.log10(solution[0])
+\end{lstlisting}
+This gives a final value of $\mathrm{pH} = 8.77$.
+
+\end{document}

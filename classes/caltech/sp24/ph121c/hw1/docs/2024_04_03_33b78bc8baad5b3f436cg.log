@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  9 APR 2024 08:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  26 APR 2024 20:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -373,99 +373,75 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 59.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+<../data//bulk_energy_density_h0.3.png, id=12, 722.7pt x 433.62pt>
+File: ../data//bulk_energy_density_h0.3.png Graphic file (type png)
+<use ../data//bulk_energy_density_h0.3.png>
+Package pdftex.def Info: ../data//bulk_energy_density_h0.3.png  used on input line 92.
+(pdftex.def)             Requested size: 390.0pt x 233.99913pt.
+<../data//bulk_energy_density_h1.7.png, id=14, 722.7pt x 433.62pt>
+File: ../data//bulk_energy_density_h1.7.png Graphic file (type png)
+<use ../data//bulk_energy_density_h1.7.png>
+Package pdftex.def Info: ../data//bulk_energy_density_h1.7.png  used on input line 97.
+(pdftex.def)             Requested size: 390.0pt x 233.99913pt.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 72.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/bbold/Ubbold.fd) [2] [3] [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
-
- []
-
-[7] [8] [9] [10]
-<../data//dense_ising_model_L8.png, id=95, 462.528pt x 346.896pt>
-File: ../data//dense_ising_model_L8.png Graphic file (type png)
-<use ../data//dense_ising_model_L8.png>
-Package pdftex.def Info: ../data//dense_ising_model_L8.png  used on input line 229.
-(pdftex.def)             Requested size: 292.5pt x 219.38724pt.
-<../data//dense_ising_model_L10.png, id=97, 462.528pt x 346.896pt>
-File: ../data//dense_ising_model_L10.png Graphic file (type png)
-<use ../data//dense_ising_model_L10.png>
-Package pdftex.def Info: ../data//dense_ising_model_L10.png  used on input line 234.
-(pdftex.def)             Requested size: 292.5pt x 219.38724pt.
-<../data//dense_ising_model_L12.png, id=98, 462.528pt x 346.896pt>
-File: ../data//dense_ising_model_L12.png Graphic file (type png)
-<use ../data//dense_ising_model_L12.png>
-Package pdftex.def Info: ../data//dense_ising_model_L12.png  used on input line 239.
-(pdftex.def)             Requested size: 292.5pt x 219.38724pt.
-<../data//dense_ising_model_L14.png, id=99, 462.528pt x 346.896pt>
-File: ../data//dense_ising_model_L14.png Graphic file (type png)
-<use ../data//dense_ising_model_L14.png>
-Package pdftex.def Info: ../data//dense_ising_model_L14.png  used on input line 244.
-(pdftex.def)             Requested size: 292.5pt x 219.38724pt.
- [11 <../data//dense_ising_model_L8.png>] [12 <../data//dense_ising_model_L10.png> <../data//dense_ising_model_L12.png>] (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 250.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 101.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [13 <../data//dense_ising_model_L14.png>] [14]
-<../data//enhanced_compare_ising_model_L10.png, id=188, 867.24pt x 578.16pt>
-File: ../data//enhanced_compare_ising_model_L10.png Graphic file (type png)
-<use ../data//enhanced_compare_ising_model_L10.png>
-Package pdftex.def Info: ../data//enhanced_compare_ising_model_L10.png  used on input line 337.
-(pdftex.def)             Requested size: 390.0pt x 260.00197pt.
-<../data//enhanced_compare_ising_model_L12.png, id=189, 867.24pt x 578.16pt>
-File: ../data//enhanced_compare_ising_model_L12.png Graphic file (type png)
-<use ../data//enhanced_compare_ising_model_L12.png>
-Package pdftex.def Info: ../data//enhanced_compare_ising_model_L12.png  used on input line 342.
-(pdftex.def)             Requested size: 390.0pt x 260.00197pt.
- [15] [16 <../data//enhanced_compare_ising_model_L10.png> <../data//enhanced_compare_ising_model_L12.png>] [17]
-<../data//convergence.png, id=261, 1011.78pt x 505.89pt>
-File: ../data//convergence.png Graphic file (type png)
-<use ../data//convergence.png>
-Package pdftex.def Info: ../data//convergence.png  used on input line 400.
+) [2 <../data//bulk_energy_density_h0.3.png>] [3 <../data//bulk_energy_density_h1.7.png>]
+<../data//convergence_h0.3.png, id=70, 1011.78pt x 505.89pt>
+File: ../data//convergence_h0.3.png Graphic file (type png)
+<use ../data//convergence_h0.3.png>
+Package pdftex.def Info: ../data//convergence_h0.3.png  used on input line 131.
 (pdftex.def)             Requested size: 390.0pt x 195.00368pt.
- [18 <../data//convergence.png>]
-Overfull \hbox (0.9184pt too wide) in paragraph at lines 408--409
-[]\T1/cmr/m/n/12 Another straight-for-ward tech-nique to find the phase tran-si-tion is by study-
- []
+<../data//convergence_h1.7.png, id=71, 1011.78pt x 505.89pt>
+File: ../data//convergence_h1.7.png Graphic file (type png)
+<use ../data//convergence_h1.7.png>
+Package pdftex.def Info: ../data//convergence_h1.7.png  used on input line 135.
+(pdftex.def)             Requested size: 390.0pt x 195.00368pt.
+ [4 <../data//convergence_h0.3.png> <../data//convergence_h1.7.png>] [5] [6]
+<../data//4-6_L10_energies.png, id=135, 722.7pt x 433.62pt>
+File: ../data//4-6_L10_energies.png Graphic file (type png)
+<use ../data//4-6_L10_energies.png>
+Package pdftex.def Info: ../data//4-6_L10_energies.png  used on input line 203.
+(pdftex.def)             Requested size: 390.0pt x 233.99913pt.
+ [7 <../data//4-6_L10_energies.png>] [8] [9]
+<../data//4-6_parity_resolved_energies.png, id=238, 722.7pt x 433.62pt>
+File: ../data//4-6_parity_resolved_energies.png Graphic file (type png)
+<use ../data//4-6_parity_resolved_energies.png>
+Package pdftex.def Info: ../data//4-6_parity_resolved_energies.png  used on input line 321.
+(pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 
 
-Overfull \hbox (33.60056pt too wide) in paragraph at lines 408--409
-\T1/cmr/m/n/12 ground states at con-sec-u-tive $\OML/cmm/m/it/12 h$ \T1/cmr/m/n/12 and $\OML/cmm/m/it/12 h \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^Nh$ \T1/cmr/m/n/12 and plot the fi-delity $[]$
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19]
-
-LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 432.
-
-[20] [21]
-Overfull \hbox (0.4866pt too wide) in paragraph at lines 469--470
-\T1/cmr/m/n/12 gapped so-called "va-lence bond solid" (VBS) phase that spon-ta-neously breaks
- []
-
-[22] (./2024_04_03_33b78bc8baad5b3f436cg.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+[10] [11 <../data//4-6_parity_resolved_energies.png>]
+<../data//4-6_L_dependence.png, id=302, 722.7pt x 433.62pt>
+File: ../data//4-6_L_dependence.png Graphic file (type png)
+<use ../data//4-6_L_dependence.png>
+Package pdftex.def Info: ../data//4-6_L_dependence.png  used on input line 371.
+(pdftex.def)             Requested size: 390.0pt x 233.99913pt.
+ [12 <../data//4-6_L_dependence.png>] [13] [14] (./2024_04_03_33b78bc8baad5b3f436cg.aux)
 Package rerunfilecheck Info: File `2024_04_03_33b78bc8baad5b3f436cg.out' has not changed.
-(rerunfilecheck)             Checksum: 63D242F08AC8E124D63989C2EBEDFA0B;135.
+(rerunfilecheck)             Checksum: 3AA1D141D083837C5A8D2BA61F165355;166.
  ) 
 Here is how much of TeX's memory you used:
- 13508 strings out of 478268
- 211739 string characters out of 5846347
- 1007654 words of memory out of 5000000
- 31324 multiletter control sequences out of 15000+600000
- 493418 words of font info for 100 fonts, out of 8000000 for 9000
+ 13587 strings out of 478268
+ 213073 string characters out of 5846347
+ 1048295 words of memory out of 5000000
+ 31339 multiletter control sequences out of 15000+600000
+ 485282 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,68p,1522b,2044s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 2024_04_03_33b78bc8baad5b3f436cg.pdf (22 pages, 645250 bytes).
+ 60i,7n,68p,788b,2044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_04_03_33b78bc8baad5b3f436cg.pdf (14 pages, 529538 bytes).
 PDF statistics:
- 433 PDF objects out of 1000 (max. 8388607)
- 347 compressed objects within 4 object streams
- 179 named destinations out of 1000 (max. 500000)
- 60 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 475 PDF objects out of 1000 (max. 8388607)
+ 412 compressed objects within 5 object streams
+ 266 named destinations out of 1000 (max. 500000)
+ 52 words of extra memory for PDF output out of 10000 (max. 10000000)
 

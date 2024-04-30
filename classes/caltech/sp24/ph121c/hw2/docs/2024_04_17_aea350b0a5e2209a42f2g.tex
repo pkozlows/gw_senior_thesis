@@ -739,12 +739,166 @@ plt.savefig('entanglement_entropy_middle_spectrum.png')
 \subsection*{5.4.1 Optional. Volume law for random states}
 Generate a random vector in the same Hilbert space of $L$ spins and study its entanglement $S(\ell ; L)$. You will get a reasonably random vector by simply choosing an i.i.d. random value - for example, uniformly distributed in $[-1,1]$ - for each amplitude of the $2^{L}$ basis states. However, in order\\
 to actually sample a random vector with a basis-independent distribution uniform over the unit sphere (in the manifold of states that can be written as real-valued wavefunctions), you can choose coefficients from a Gaussian distribution. Remember to normalize your vectors. Repeating this process, you will observe average scaling with the volume law of entanglement.
+\newpage
 
 \subsection*{5.5 Matrix product state representation for ground states}
 Return to the setup in Sec. 5.2, considering the ground state $\left|\psi_{\text {gs }}\right\rangle$ with open b.c., using a sparse eigensolver to reach larger sizes. You should now consider two points, one fairly close to the phase transition, say $h / J=5 / 4$, and one exactly at $h / J=(h / J)_{c}=1$. Compute MPS approximations of the ED wavefunction, varying the bond dimension $k$. What is the actual reduction in storage space you achieve? Contract the virtual indices of the tensors of the MPS to obtain exponentially large $\left|\tilde{\psi}_{\mathrm{gs}}(k)\right\rangle$ and compute the overlap $\left\langle\tilde{\psi}_{\mathrm{gs}}(k) \mid \psi_{\mathrm{gs}}\right\rangle$ with the original ED wavefunction.
+\subsubsection{Answer}
+My results are shown. The approximation is not that good for k=1, but it is surprisingly good for the ground state as k increases even in small increments. This is likely because we tried to approximate the ground state which does not have much entanglement and can be well approximated as a product state. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{overlap.png}
+\caption{Overlap between the MPS approximation and the exact ground state}
+\end{figure}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import numpy as np
+from scipy.sparse.linalg import eigsh  # Sparse matrix eigensolver
+from hw1 import sparse_hamiltonian  # Assuming this function generates your Hamiltonian
+from numpy.linalg import norm
 
-\subsection*{5.5.1 Efficient calculations with MPS}
+def truncate_svd(matrix, k):
+    """
+    Truncates the singular value decomposition (SVD) of a matrix.
+
+    Parameters:
+    matrix (ndarray): The input matrix.
+    k (int): The number of singular values to keep.
+
+    Returns:
+    ndarray: The truncated left singular vectors.
+    ndarray: The truncated singular values.
+    ndarray: The truncated right singular vectors.
+    """
+    u, s, vt = np.linalg.svd(matrix, full_matrices=False)
+    return u[:, :k], np.diag(s[:k]), vt[:k, :]
+
+
+
+def compute_mps(state, k):
+    # this is just the length of the system
+    L = int(np.log2(state.size))
+    # prepare the state for the initial SVD
+    state = state.reshape((2, -1))
+    # list to store the mps tensors
+    mps_tensors = []
+    # initialize a previous bond dimension
+    previous_k = 2
+
+    # loop over the system
+    for i in range(1, L+1):
+        # make the SVD
+        u, s, vt = truncate_svd(state, k)
+        # current bond dimension
+        current_k = min(k, u.shape[1])
+        # debugging
+        print(f'Current state shape: {state.shape}, u shape: {u.shape}, s shape: {s.shape}, vt shape: {vt.shape}')
+
+        # for the first iteration
+        if i == 1:
+            mps_tensors.append(u.reshape((previous_k, -1)))
+        # for the middle iterations
+        elif i < L:
+            # append the rank 3 tensor following the notation of the tensor network diagrams
+            mps_tensors.append(u.reshape((previous_k, 2, current_k)))
+        # for the last iteration
+        else:
+            mps_tensors.append(u.reshape((previous_k, -1)))
+            break
+        # prepare the state for the next iteration
+        state = (s @ vt).reshape((2*current_k, -1))
+        # update the previous bond dimension
+        previous_k = current_k
+
+    return mps_tensors
+
+
+
+
+
+def reconstruct_state(mps_tensors):
+    state = mps_tensors[0]  # Start with the first tensor, assumed to be a matrix.
+
+    for j in range(1, len(mps_tensors)):
+        next_tensor = mps_tensors[j]
+
+        # this is for the first construction
+        if len(state.shape) == 2:
+            # print(f"before state shape: {state.shape}, tensor shape: {next_tensor.shape}")
+            state = np.einsum('ij,jkl->ikl', state, next_tensor)
+        # this is for the middle cases
+        elif len(state.shape) == 3 and len(next_tensor.shape) == 3:
+            state = state.reshape(-1, state.shape[2])
+            # print(f"before state shape: {state.shape}, tensor shape: {next_tensor.shape}")
+            state = np.einsum('ij,jkl->ikl', state, next_tensor)
+        # now for the final case
+        elif len(next_tensor.shape) == 2:
+            state = state.reshape(-1, state.shape[2])
+            next_tensor = next_tensor.reshape(state.shape[1], -1)
+            print(f"before state shape: {state.shape}, tensor shape: {next_tensor.shape}")
+            state = np.einsum('ij,jk->ik', state, next_tensor)
+            
+
+    return state.reshape(-1)  # Flatten the final state to a 1D array
+
+
+
+
+
+
+
+def calculate_overlap(original, reconstructed):
+    return np.abs(np.vdot(original, reconstructed) / (norm(original) * norm(reconstructed)))
+
+# Parameters
+L = 16 # System size
+h_values = [5/4, 1]  # Near and at the critical point
+k_values = np.arange(1, 10, 1)  # Bond dimensions for MPS, from 1 to 20 inclusive
+
+
+results = {}
+
+for h in h_values:
+    H = sparse_hamiltonian(L, h, periodic=False)
+    eigenvalues, eigenvectors = eigsh(H.astype(np.float64), k=1, which='SA')
+    gs = eigenvectors[:, 0]
+    gs /= np.linalg.norm(gs)
+    results[h] = {}
+
+    for k in k_values:
+        mps_tensors = compute_mps(gs, k)
+        print(mps_tensors)
+        reconstructed_gs = reconstruct_state(mps_tensors)
+        # print out the gs and reconstructed_gs
+        print(f"gs: {gs}")
+        print(f"reconstructed_gs: {reconstructed_gs}")
+        overlap = calculate_overlap(gs, reconstructed_gs)
+        num_params_original = gs.size
+        num_params_mps = sum(t.size for t in mps_tensors)
+        storage_reduction = num_params_original / num_params_mps
+        results[h][k] = {
+            'ground_state': gs,
+            'mps': mps_tensors,
+            'overlap': overlap,
+            'storage_reduction': storage_reduction
+        }
+
+# Printing or processing results as needed
+for h in results:
+    for k in results[h]:
+        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+
+\end{lstlisting}
+\newpage
+
+\subsection*{5.5. Efficient calculations with MPS}
 We will now make use of the efficient measurements afforded by MPS, which are described in Sec. 4.3. Set up such a calculation for $E(k)=\left\langle\tilde{\psi}_{\mathrm{gs}}(k)|H| \tilde{\psi}_{\mathrm{gs}}(k)\right\rangle /\left\langle\tilde{\psi}_{\mathrm{gs}}(k) \mid \tilde{\psi}_{\mathrm{gs}}(k)\right\rangle$ using the MPS, comparing your answer with the known energy eigenvalue that was given by your exact diagonalization routine. Also compute the same correlation functions you studied in Assignment 1, for both values of $h / J$, and examine the convergence of the results in each case for several values of $k$.
+\subsubsection{Answer}
+We know that the quantum Ising model has a Hamiltonian given by
+\begin{equation*}
+H=-J \sum_{i=1}^{L-1} \sigma_{i}^{z} \sigma_{i+1}^{z}-h \sum_{i=1}^{L} \sigma_{i}^{x} \tag{1}
+\end{equation*}
+where $\sigma_{i}^{x}, \sigma_{i}^{z}$ are the Pauli matrices acting on site $i$, and $J, h$ are the coupling constants. The ground state energy of the quantum Ising model can be calculated using the MPS representation of the ground state. The energy of the ground state is given by
 
 \subsection*{5.5.2 Bringing an MPS to a canonical form with an orthogonality center}
 Consider an MPS state of the form Eq. (19) with bond dimension 2 and matrices

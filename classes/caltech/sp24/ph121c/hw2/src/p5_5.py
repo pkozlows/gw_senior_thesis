@@ -4,43 +4,60 @@ from hw1 import sparse_hamiltonian  # Assuming this function generates your Hami
 from numpy.linalg import norm
 
 def truncate_svd(matrix, k):
+    """
+    Truncates the singular value decomposition (SVD) of a matrix.
+
+    Parameters:
+    matrix (ndarray): The input matrix.
+    k (int): The number of singular values to keep.
+
+    Returns:
+    ndarray: The truncated left singular vectors.
+    ndarray: The truncated singular values.
+    ndarray: The truncated right singular vectors.
+    """
     u, s, vt = np.linalg.svd(matrix, full_matrices=False)
     return u[:, :k], np.diag(s[:k]), vt[:k, :]
 
 
 
 def compute_mps(state, k):
+    # this is just the length of the system
     L = int(np.log2(state.size))
-    state = state.reshape((2, -1))  # Initial split for the first spin
+    # prepare the state for the initial SVD
+    state = state.reshape((2, -1))
+    # list to store the mps tensors
     mps_tensors = []
-    # in nationalize a previous bond index
+    # initialize a previous bond dimension
     previous_k = 2
 
-    for i in range(1, L):
-        # print out the current state
-        print(f'Current state shape: {state.shape}')
+    # loop over the system
+    for i in range(1, L+1):
+        # make the SVD
         u, s, vt = truncate_svd(state, k)
-        current_k = min(k, u.shape[1])  # Adjust k based on available singular values
+        # current bond dimension
+        current_k = min(k, u.shape[1])
+        # debugging
+        # print(f'Current state shape: {state.shape}, u shape: {u.shape}, s shape: {s.shape}, vt shape: {vt.shape}')
 
-        # first we handle the first case
+        # for the first iteration
         if i == 1:
-        #     print(f'appendage shape: {u_reshaped.shape}')
-            mps_tensors.append(u)
-        # handle the middle cases
-        elif i < L - 1:
-            u_reshaped = u.reshape((previous_k, 2, current_k))
-            print(f'appendage shape: {u_reshaped.shape}')
-            mps_tensors.append(u_reshaped)
-        # handle the final case
+            mps_tensors.append(u.reshape((previous_k, -1)))
+        # for the middle iterations
+        elif i < L:
+            # append the rank 3 tensor following the notation of the tensor network diagrams
+            mps_tensors.append(u.reshape((previous_k, 2, current_k)))
+        # for the last iteration
         else:
-            u_reshaped = u.reshape((2, -1))
-            # print(f'appendage shape: {u_reshaped.shape}')
-            mps_tensors.append(u_reshaped)
-            # finish the lope
+            mps_tensors.append(u.reshape((previous_k, -1)))
             break
+        # prepare the state for the next iteration
+        state = (s @ vt).reshape((2*current_k, -1))
+        # update the previous bond dimension
         previous_k = current_k
-        state = (s @ vt).reshape((2 * current_k, -1))
+
     return mps_tensors
+
 
 
 
@@ -58,7 +75,7 @@ def reconstruct_state(mps_tensors):
         # this is for the middle cases
         elif len(state.shape) == 3 and len(next_tensor.shape) == 3:
             state = state.reshape(-1, state.shape[2])
-            print(f"before state shape: {state.shape}, tensor shape: {next_tensor.shape}")
+            # print(f"before state shape: {state.shape}, tensor shape: {next_tensor.shape}")
             state = np.einsum('ij,jkl->ikl', state, next_tensor)
         # now for the final case
         elif len(next_tensor.shape) == 2:
@@ -68,8 +85,7 @@ def reconstruct_state(mps_tensors):
             state = np.einsum('ij,jk->ik', state, next_tensor)
             
 
-    final_state = state.reshape(-1)  # Flatten the final state to a 1D array
-    return final_state
+    return state.reshape(-1)  # Flatten the final state to a 1D array
 
 
 
@@ -83,7 +99,7 @@ def calculate_overlap(original, reconstructed):
 # Parameters
 L = 16 # System size
 h_values = [5/4, 1]  # Near and at the critical point
-k_values = np.arange(6, 106, 5)  # Bond dimensions for MPS, from 1 to 20 inclusive
+k_values = np.arange(1, 10, 1)  # Bond dimensions for MPS, from 1 to 20 inclusive
 
 
 results = {}
@@ -97,7 +113,11 @@ for h in h_values:
 
     for k in k_values:
         mps_tensors = compute_mps(gs, k)
+        # print(mps_tensors)
         reconstructed_gs = reconstruct_state(mps_tensors)
+        # print out the gs and reconstructed_gs
+        # print(f"gs: {gs}")
+        # print(f"reconstructed_gs: {reconstructed_gs}")
         overlap = calculate_overlap(gs, reconstructed_gs)
         num_params_original = gs.size
         num_params_mps = sum(t.size for t in mps_tensors)
@@ -112,4 +132,5 @@ for h in h_values:
 # Printing or processing results as needed
 for h in results:
     for k in results[h]:
-        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+        pass
+        # print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")

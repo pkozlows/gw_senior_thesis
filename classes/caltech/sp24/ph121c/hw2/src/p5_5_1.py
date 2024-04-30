@@ -11,10 +11,10 @@ def apply_interaction(tensor):
         return np.einsum('ij,ik->jk', sigma_z, tensor)
     # check if we are dealing with a tensor in the middle
     elif len(tensor.shape) == 3:
-        return np.einsum('ij,hjk->hik', sigma_z, tensor)
+        return np.einsum('ij,hjk->kih', sigma_z, tensor)
     # check if we are dealing with the last tensor
     elif len(tensor.shape) == 2 and tensor.shape[1] == 2:
-        return np.einsum('ik,jk->ik', sigma_z, tensor)
+        return np.einsum('ik,jk->ij', sigma_z, tensor)
 
 def apply_transverse_field(tensor):
     """Apply the sigma_x field to the tensor."""
@@ -24,7 +24,7 @@ def apply_transverse_field(tensor):
         return np.einsum('ij,ik->jk', sigma_x, tensor)
     # check if we are dealing with a tensor in the middle
     elif len(tensor.shape) == 3:
-        return np.einsum('ij,hjk->hik', sigma_x, tensor)
+        return np.einsum('ij,hjk->kih', sigma_x, tensor)
     # check if we are dealing with the last tensor
     elif len(tensor.shape) == 2 and tensor.shape[1] == 2:
         return np.einsum('ik,jk->ij', sigma_x, tensor)
@@ -37,7 +37,7 @@ def apply_identity(tensor):
         return np.einsum('ij,ik->jk', identity, tensor)
     # check if we are dealing with a tensor in the middle
     elif len(tensor.shape) == 3:
-        return np.einsum('ij,hjk->hik', identity, tensor)
+        return np.einsum('ij,hjk->kih', identity, tensor)
     # check if we are dealing with the last tensor
     elif len(tensor.shape) == 2 and tensor.shape[1] == 2:
         return np.einsum('ik,jk->ij', identity, tensor)
@@ -67,17 +67,18 @@ for k in k_values:
         if j == 0:
             mod_tensor1 = apply_interaction(mps_tensors[j])
             mod_tensor2 = apply_interaction(mps_tensors[j+1])
-            energy_interactions -= np.einsum('ij,ij->', mod_tensor1, bra[j]) * np.einsum('ijk,ijk->', mod_tensor2, bra[j+1])
+            energy_interactions -= np.einsum('ij,ij->', mod_tensor1, bra[j]) * np.einsum('ijk,kji->', mod_tensor2, bra[j+1])
         # make a condition if the j tensor is in the middle
         elif j < len(mps_tensors) - 2:
             mod_tensor1 = apply_interaction(mps_tensors[j])
             mod_tensor2 = apply_interaction(mps_tensors[j+1])
-            energy_interactions -= np.einsum('ijk,ijk->', mod_tensor1, bra[j]) * np.einsum('ijk,ijk->', mod_tensor2, bra[j+1])
+            energy_interactions -= np.einsum('ijk,kji->', mod_tensor1, bra[j]) * np.einsum('ijk,kji->', mod_tensor2, bra[j+1])
         # make a condition if the j tensor is the last tensor
         else:
             mod_tensor1 = apply_interaction(mps_tensors[j])
             mod_tensor2 = apply_interaction(mps_tensors[j+1])
-            energy_interactions -= np.einsum('ijk,ijk->', mod_tensor1, bra[j]) * np.einsum('ij,ij->', mod_tensor2, bra[j+1])
+            energy_interactions -= np.einsum('ijk,kji->', mod_tensor1, bra[j]) * np.einsum('ij,ji->', mod_tensor2, bra[j+1])
+            
     # apply transverse field
     for j in range(len(mps_tensors)):
         # make a condition if the j tensor is the first tensor
@@ -87,11 +88,11 @@ for k in k_values:
         # make a condition if the j tensor is in the middle
         elif j < len(mps_tensors) - 1:
             mod_tensor = apply_transverse_field(mps_tensors[j])
-            energy_field -= h * np.einsum('ijk,ijk->', mod_tensor, bra[j])
+            energy_field -= h * np.einsum('ijk,kji->', mod_tensor, bra[j])
         # make a condition if the j tensor is the last tensor
         else:
             mod_tensor = apply_transverse_field(mps_tensors[j])
-            energy_field -= h * np.einsum('ij,ij->', mod_tensor, bra[j])
+            energy_field -= h * np.einsum('ij,ji->', mod_tensor, bra[j])
         
     # compute the normalization
     normalization = 0
@@ -103,11 +104,11 @@ for k in k_values:
         # make a condition if the j tensor is in the middle
         elif j < len(mps_tensors) - 1:
             mod_tensor = apply_identity(mps_tensors[j])
-            normalization += np.einsum('ijk,ijk->', mod_tensor, bra[j])
+            normalization += np.einsum('ijk,kji->', mod_tensor, bra[j])
         # make a condition if the j tensor is the last tensor
         else:
             mod_tensor = apply_identity(mps_tensors[j])
-            normalization += np.einsum('ij,ij->', mod_tensor, bra[j])
+            normalization += np.einsum('ij,ji->', mod_tensor, bra[j])
         
     total_energy = (energy_interactions + energy_field) / normalization
     print(f"Energy for k={k}: {total_energy}, Exact: {eigenvalues[0]}")

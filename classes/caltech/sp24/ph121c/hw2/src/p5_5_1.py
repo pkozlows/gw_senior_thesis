@@ -50,7 +50,7 @@ h = 1.0
 H = sparse_hamiltonian(L, h, periodic=False)
 eigenvalues, eigenvectors = eigsh(H, k=1, which='SA')
 gs = eigenvectors[:, 0]
-gs /= np.linalg.norm(gs)  # Normalize the ground state
+gs /= np.linalg.norm(gs)  # Normalize the Finished and PSground state
 
 # Iterate over various bond dimensions k
 for k in k_values:

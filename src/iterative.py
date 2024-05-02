@@ -7,31 +7,21 @@ from pyscf import tddft
 import pyscf
 from pyscf.dft import rks
 from pyscf import scf
+from scipy.optimize import newton
 
 
 # implement the iterative procedure to do g0w0
 def g0w0(orbital_number, fock_mo, real_corr_se, corr_mf, tddft):
     '''Calculates the G0W0 correction for a given orbital number, fock matrix in the atomic orbital basis, and real part of the correlation self energy.'''
-    # convert the fock matrix to the molecular orbital basis
-
+    def gw_correction(omega, fock_element, real_corr_se, tddft, corr_mf, orbital_number):
+        sigma = real_corr_se(omega, tddft, corr_mf)[orbital_number]
+        return omega - fock_element - sigma
+    
     # Initial guess
     fock_element = fock_mo[orbital_number, orbital_number]
-    # the initial guess is the fog element
-    initial_guess = fock_element
-    # Initialize the qpe
-    qpe = initial_guess
-    iter = 0
-    tol = 1e-9
-    while True:
-        # Update the self energy using the current guess as the frequency
-        new_qpe = fock_element + real_corr_se(qpe, tddft, corr_mf)[orbital_number]
 
-        # Check if the convergence criterion is met
-        if np.abs(new_qpe - qpe)  <= tol:
-            print(iter)
-            break
+    # Use scipy.optimize.newton to find the root
+    qpe = newton(gw_correction, fock_element, args=(fock_element, real_corr_se, tddft, corr_mf, orbital_number))
 
-        qpe = new_qpe
-        iter += 1
-        
     return qpe
+

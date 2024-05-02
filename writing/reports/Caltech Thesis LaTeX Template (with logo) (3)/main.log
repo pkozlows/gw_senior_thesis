@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  1 MAY 2024 20:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  1 MAY 2024 21:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1294,56 +1294,62 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip278
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip279
+\multirow@cntb=\count522
+\multirow@dima=\skip280
+\bigstrutjot=\dimen331
 )
-LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 80.
+LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 80.
-\@quotelevel=\count522
-\@quotereset=\count523
+(Font)              scaled to size 12.0pt on input line 81.
+\@quotelevel=\count523
+\@quotereset=\count524
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 80.
-LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 80.
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 81.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 80.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 81.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 80.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 81.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 80.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 81.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1381,16 +1387,16 @@ LaTeX Font Info:    ... okay on input line 80.
 
 (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count524
-\scratchdimen=\dimen331
+\scratchcounter=\count525
+\scratchdimen=\dimen332
 \scratchbox=\box117
-\nofMPsegments=\count525
-\nofMParguments=\count526
+\nofMPsegments=\count526
+\nofMParguments=\count527
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count527
-\MPscratchDim=\dimen332
-\MPnumerator=\count528
-\makeMPintoPDFobject=\count529
+\MPscratchCnt=\count528
+\MPscratchDim=\dimen333
+\MPnumerator=\count529
+\makeMPintoPDFobject=\count530
 \everyMPtoPDFconversion=\toks52
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1398,8 +1404,8 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@mv@tabular=\count530
-\c@mv@boldtabular=\count531
+\c@mv@tabular=\count531
+\c@mv@boldtabular=\count532
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/biblatex/lbx/english.lbx
@@ -1413,10 +1419,10 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 80.
-Package biblatex Info: Reference segment=0 on input line 80.
-\c@lstlisting=\count532
-Package hyperref Info: Link coloring OFF on input line 80.
+Package biblatex Info: Reference section=0 on input line 81.
+Package biblatex Info: Reference segment=0 on input line 81.
+\c@lstlisting=\count533
+Package hyperref Info: Link coloring OFF on input line 81.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1424,52 +1430,52 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count533
+\c@section@level=\count534
 )
 Redoing nameref's sectioning
 Redoing nameref's label
-LaTeX Info: Redefining \nameref on input line 80.
-LaTeX Info: Redefining \ref on input line 80.
-LaTeX Info: Redefining \pageref on input line 80.
-LaTeX Info: Redefining \nameref on input line 80.
+LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
 (./main.out) (./main.out)
 \@outlinefile=\write9
 \openout9 = `main.out'.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 101.
-LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 101.
+(Font)              scaled to size 17.28pt on input line 102.
+LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 102.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1minntx.fd
 File: ot1minntx.fd 2022/01/20 v1.0 font definition file for OT1/minntx
 )
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 101.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 102.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 101.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 102.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 101.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 102.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 101.
-<caltech.png, id=99, 183.5658pt x 48.18pt>
+(Font)              scaled to size 14.4pt on input line 102.
+<caltech.png, id=107, 183.5658pt x 48.18pt>
 File: caltech.png Graphic file (type png)
 <use caltech.png>
-Package pdftex.def Info: caltech.png  used on input line 101.
+Package pdftex.def Info: caltech.png  used on input line 102.
 (pdftex.def)             Requested size: 144.54pt x 37.93752pt.
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./caltech.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 101.
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 102.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 101.
+(Font)              scaled to size 12.0pt on input line 102.
  [2
 
 ] [3
@@ -1493,25 +1499,25 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 
 ] (./main.nls)
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 135.
-LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 135.
+(Font)              scaled to size 8.8pt on input line 136.
+LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 136.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 12.0pt on input line 135.
+(Font)              scaled to size 12.0pt on input line 136.
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--136
+Underfull \hbox (badness 10000) in paragraph at lines 124--137
 
  []
 
 
-Overfull \hbox (202.86703pt too wide) in paragraph at lines 123--136
+Overfull \hbox (202.86703pt too wide) in paragraph at lines 124--137
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--136
+Underfull \hbox (badness 10000) in paragraph at lines 124--137
 
  []
 
@@ -1519,7 +1525,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--136
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.136 \chapter
+l.137 \chapter
               {Motivation} [1
 
 
@@ -1529,174 +1535,192 @@ l.136 \chapter
 
 
 ]
-<water_gw.png, id=205, 462.528pt x 346.896pt>
+<water_gw.png, id=220, 462.528pt x 346.896pt>
 File: water_gw.png Graphic file (type png)
 <use water_gw.png>
-Package pdftex.def Info: water_gw.png  used on input line 142.
+Package pdftex.def Info: water_gw.png  used on input line 143.
 (pdftex.def)             Requested size: 397.485pt x 298.12889pt.
  [3 <./water_gw.png>]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 162.
+(Font)              scaled to size 12.0pt on input line 163.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 166.
+(Font)              scaled to size 6.6pt on input line 167.
  [4
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 185.
+(hyperref)                removing `math shift' on input line 186.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 185.
+(hyperref)                removing `subscript' on input line 186.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 185.
+(hyperref)                removing `subscript' on input line 186.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 185.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--193
-
- []
+(hyperref)                removing `math shift' on input line 186.
 
 [6
 
 
 ] [7]
-<correlation_energies.png, id=255, 622.2447pt x 499.3857pt>
+<correlation_energies.png, id=270, 622.2447pt x 499.3857pt>
 File: correlation_energies.png Graphic file (type png)
 <use correlation_energies.png>
-Package pdftex.def Info: correlation_energies.png  used on input line 223.
+Package pdftex.def Info: correlation_energies.png  used on input line 224.
 (pdftex.def)             Requested size: 397.485pt x 319.0114pt.
- [8 <./correlation_energies.png>] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 357--360
+ [8 <./correlation_energies.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 
  []
 
-[10] [11]
+[9] [10]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 380.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 380.
+(hyperref)                removing `math shift' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 380.
+(hyperref)                removing `subscript' on input line 297.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 380.
+(hyperref)                removing `subscript' on input line 297.
 
-[12
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 297.
+
+[11
 
 
 ]
-<h2_occupations.png, id=328, 462.528pt x 346.896pt>
+<h2_occupations.png, id=318, 462.528pt x 346.896pt>
 File: h2_occupations.png Graphic file (type png)
 <use h2_occupations.png>
-Package pdftex.def Info: h2_occupations.png  used on input line 407.
+Package pdftex.def Info: h2_occupations.png  used on input line 324.
 (pdftex.def)             Requested size: 397.485pt x 298.12889pt.
-<h2_mo.png, id=331, 443.6575pt x 305.14pt>
+<h2_mo.png, id=321, 443.6575pt x 305.14pt>
 File: h2_mo.png Graphic file (type png)
 <use h2_mo.png>
-Package pdftex.def Info: h2_mo.png  used on input line 414.
+Package pdftex.def Info: h2_mo.png  used on input line 331.
 (pdftex.def)             Requested size: 397.485pt x 273.38028pt.
- [13 <./h2_occupations.png>] [14 <./h2_mo.png>] [15
+ [12 <./h2_occupations.png>] [13 <./h2_mo.png>] [14
+
+
+] [15
 
 
 ] [16
 
 
-] [17
-
-
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 424.
+(Font)              scaled to size 12.0pt on input line 341.
 
-Overfull \hbox (4.44046pt too wide) in paragraph at lines 424--424
+Overfull \hbox (4.44046pt too wide) in paragraph at lines 341--341
 \T1/ntxtlf/m/n/12 741^^U744. \T1/ntxtlf/m/sc/12 issn\T1/ntxtlf/m/n/12 : 1476-4660. []$\T1/ntxtt/m/n/12 https : / / www . nature . com / articles / nmat2806$[]
  []
 
-[18
+[17
+
+
+] [18
+
+
+] [19]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 434.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 434.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 434.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 434.
+
+[20
 
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 428.
+(hyperref)                removing `math shift' on input line 474.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 428.
+(hyperref)                removing `subscript' on input line 474.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 428.
+(hyperref)                removing `subscript' on input line 474.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 428.
+(hyperref)                removing `math shift' on input line 474.
 
 
-Overfull \hbox (48.08215pt too wide) detected at line 435
+Overfull \hbox (48.08215pt too wide) detected at line 482
 [][][][]
  []
 
 
-Overfull \hbox (82.191pt too wide) detected at line 464
+Overfull \hbox (82.191pt too wide) detected at line 511
 [][]\OML/ntxmi/m/it/12 D[] \U/ntxmia/m/it/12 = [] \OML/ntxmi/m/it/12 ^^M[] [] \LMS/ntxsy/m/n/12 ^^@ [] [] [] [][] \OT1/minntx/m/n/12 d\OML/ntxmi/m/it/12 !\OT1/minntx/m/n/12 e[] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \U/ntxmia/m/it/12 ^^F[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º []
  []
 
-[19
+[21
 
 
 ]
-Overfull \hbox (65.21594pt too wide) detected at line 481
+Overfull \hbox (65.21594pt too wide) detected at line 528
 [][][][]
  []
 
-[20] [21]
-Overfull \hbox (40.44444pt too wide) detected at line 571
+[22] [23]
+Overfull \hbox (40.44444pt too wide) detected at line 618
 [][][][]
  []
 
-[22]
+[24]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (31.10179pt too wide) detected at line 705
+Overfull \hbox (31.10179pt too wide) detected at line 752
 [][][][]
  []
-
-[23] [24]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [25] [26]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[27] [28]
 runsystem(makeindex -s simple_letters main.idx)...executed safely (allowed).
 
  (./main.ind)
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 835.
+(Font)              scaled to size 10.0pt on input line 882.
  (./main.ent)
 \openout6 = `main.ent'.
 
- [27
+ [29
 
 
 ]
@@ -1711,24 +1735,24 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 
  (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B1483BAA6832A606766F3960FB6F4177;3558.
+(rerunfilecheck)             Checksum: B29A570376E4D006D3F9B65835D361A9;4193.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38859 strings out of 478268
- 698673 string characters out of 5846347
- 1528519 words of memory out of 5000000
- 56266 multiletter control sequences out of 15000+600000
+ 38940 strings out of 478268
+ 700121 string characters out of 5846347
+ 1530892 words of memory out of 5000000
+ 56338 multiletter control sequences out of 15000+600000
  558904 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,12n,120p,2022b,1815s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (34 pages, 448491 bytes).
+Output written on main.pdf (36 pages, 453557 bytes).
 PDF statistics:
- 569 PDF objects out of 1000 (max. 8388607)
- 494 compressed objects within 5 object streams
- 171 named destinations out of 1000 (max. 500000)
- 734 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 597 PDF objects out of 1000 (max. 8388607)
+ 519 compressed objects within 6 object streams
+ 176 named destinations out of 1000 (max. 500000)
+ 750 words of extra memory for PDF output out of 10000 (max. 10000000)
 

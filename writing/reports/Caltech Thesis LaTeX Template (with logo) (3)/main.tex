@@ -72,6 +72,7 @@
 % Activate the style
 \lstset{style=mystyle}
 \usepackage{hyperref}
+\usepackage{multirow}
 
 % Name of your .bib file(s)
 \addbibresource{examples.bib}
@@ -189,7 +190,7 @@ The procedure that we used to compute quasiparticle energies, which are interpre
     \delta_{pq}F_{pq}^{HF}[\gamma^{DFT}] + \Sigma^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}.
 \label{eq: Iterative equation}
 \end{equation}
-We explain the notation starting from left to right. The first term corresponds to taking the diagonal of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. The one-electron reduced density matrix is used to express the electron density here. The second term evaluates $\Sigma^{corr}$ for the $\varepsilon_{p}^{QP}$ determined in the previous iteration. The right side of the equality gives the updated $\varepsilon_{p}^{QP}$.\\\\ Equation \ref{eq: Iterative equation} is iterated until self-consistency. We start with an initial guess for $\varepsilon_{p}^{QP}$, which is given by the mean-field orbital energy $\epsilon_p$. This is used in the first iteration to solve for the right-hand side $\varepsilon_{p}^{QP}$ of Equation \ref{eq: Iterative equation}. In the next iteration, we use the previously obtained $\varepsilon_{p}^{QP}$ to determine $\Sigma^{corr}$. This process is repeated until we reach a convergence threshold for $\varepsilon_{p}^{QP}$.
+We explain the notation starting from left to right. The first term corresponds to taking the diagonal of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. The one-electron reduced density matrix is used to express the electron density here. The second term evaluates $\Sigma^{corr}$ for the $\varepsilon_{p}^{QP}$ determined in the previous iteration. The right side of the equality gives the updated $\varepsilon_{p}^{QP}$.\\ Equation \ref{eq: Iterative equation} is iterated until self-consistency. We start with an initial guess for $\varepsilon_{p}^{QP}$, which is given by the mean-field orbital energy $\epsilon_p$. This is used in the first iteration to solve for the right-hand side $\varepsilon_{p}^{QP}$ of Equation \ref{eq: Iterative equation}. In the next iteration, we use the previously obtained $\varepsilon_{p}^{QP}$ to determine $\Sigma^{corr}$. This process is repeated until we reach a convergence threshold for $\varepsilon_{p}^{QP}$. One can also use the Newton-Raphson method to solve the iterative equation for $\varepsilon_{p}^{QP}$.
 \subsection{The Fock Matrix}
 In the basis of atomic orbitals, the HF Fock matrix is
 \begin{equation}
@@ -222,7 +223,7 @@ Essentially, the line at $\omega - \epsilon_{p}^{HF}$ should, and does, intersec
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
 \end{figure}
-Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value, but luckily $-12.18 eV$ is far enough away from this pole at $-40 eV$.
+Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value, but luckily $-12.18 eV$ is far enough away from this pole at $-40 eV$. Additional tests for a range of molecules and MOs with my implementation are reported in \ref{app:tests}.
 
 
 \section{Correlation Self-Energy}
@@ -265,91 +266,7 @@ and $B$ is
 \label{eq: B matrix RPA}
 \end{equation}
 
-We can work to simplify this eigenvalue problem. Since we know that the negative and positive eigenvalues for the RPA are the same in magnitude, we can simplify the matrix equation to:
-\begin{equation}
-\begin{bmatrix}
-A & B \\
--B & -A
-\end{bmatrix}
-\begin{bmatrix}
-X \\
-Y
-\end{bmatrix}
-= \omega
-\begin{bmatrix}
-X \\
-Y
-\end{bmatrix}
-\end{equation}
-This suggests breaking down the problem into a set of linear equations:
-\begin{align}
-    AX + BY &= \omega X\\
-    -BX-AY &= \omega Y
-\end{align}
-which can be simplified by the addition:
-\begin{equation}
-    (A-B)(X-Y)= \omega (X+Y)
-\label{eqn:for_addition}
-\end{equation}
-which means:
-\begin{equation}
-    (X+Y) = \omega^{-1}(A-B)(X-Y)
-\label{eqn:addition}
-\end{equation}
-Doing the subtraction instead gives:
-\begin{equation}
-    (A+B)(X+Y)= \omega (X-Y)
-\label{eqn:for_subtraction}
-\end{equation}
-Similarly, we can isolate:
-\begin{equation}
-    (X-Y) = \omega^{-1}(A+B)(X+Y)
-\label{eqn:subtraction}
-\end{equation}
-Equations \ref{eqn:for_addition} and \ref{eqn:for_subtraction} can be combined men that we should get, respectively:
-\begin{equation}
-    \boxed{\omega = (X-Y)^{\dag} (A-B)(X-Y)}
-\end{equation}
-and
-\begin{equation}
-    \boxed{\omega = (X+Y)^{\dag} (A+B)(X+Y)}
-\end{equation}
-Substituting in for $X+Y$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}:
-\begin{equation}
-    \omega^{-1}(A+B)(A-B)(X-Y) = \omega (X-Y)
-\end{equation}
-Multiplication by $\omega$ gives:
-\begin{equation}
-    (A+B)(A-B)(X-Y) = \omega^2 (X-Y)
-\end{equation}
-Now, we plug the defintion in \ref{eqn:subtraction} for the $(X-Y)$ terms:
-\begin{equation}
-    (A+B)(A-B)\omega^{-1}(A+B)(X+Y) = \omega^2 \omega^{-1}(A+B)(X+Y)
-\end{equation}
-Multiplication through by $\omega$ gives and $(A+B)^{-1}$ gives:
-\begin{equation}
-    (A-B)(A+B)(X+Y) = \omega^{2} (X+Y)
-\end{equation}
-At this point we want to define $T=(A-B)^{-\frac{1}{2}}(X+Y)$, so that we can write:
-\begin{equation}
-    (A-B)(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} (A-B)^{\frac{1}{2}}T
-\end{equation}
-Dividing through by $(A-B)^{\frac{1}{2}}$ gives:
-\begin{equation}
-    (A-B)^{\frac{1}{2}}(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} T
-\end{equation}
-Once the eigenvalue problem is solved, we need to normalize the vectors $T$. We see the relation:
-\begin{equation}
-    (X+Y) = (A-B)^{\frac{1}{2}}T
-\end{equation}
-And then for normalization, we need:
-\begin{equation}
-    (X-Y)^{\dag}(X+Y)=1
-\end{equation}
-So we need:
-\begin{equation}
-    (X-Y)=(A-B)^{-1}(X+Y)\omega 
-\end{equation}
+A symmetric version of the dRPA can also be used and is derived in \ref{app:symm_drpa} as suggested in the paper.
 
 The excitation vectors $\textbf{V}^{\mu}$ are taken by considering a contraction of two tensors. First, we consider the sum of $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a,\mu} = \textbf{X}_{i,a,\mu} + \textbf{Y}_{i,a,\mu}$. Then we contract this with the two-electron integrals:
 \begin{equation}
@@ -379,7 +296,7 @@ And then we follow the same procedure as in the RPA to get $\textbf{V}_{pq}^{\mu
 Everywhere in the code, we consider the direct approximation, which just means that all instances of anti-symmetrized two-electron integrals are replaced by their non-symmetrized counterparts. In Equation \ref{eq: A matrix RPA}, Equation \ref{eq: B matrix RPA}, and Equation \ref{eq: A matrix TDA}, $(ia||jb) \rightarrow (ia|jb)$. In the former case it was called the \emph{direct} Random Phase Approximation (dRPA) and in the latter case it was called the \emph{direct} Tamm-Dancoff Approximation (dTDA).
 \chapter{Linearized $G_0W_0$ Density Matrix}
 \subsection{Implementation}
-These are the working equations for the linearized $G_0W_0$ Density Matrix that I will derive later. \autocite{bruneval_assessment_2019} First, we consider the fully occupied block:
+These are the working equations for the linearized $G_0W_0$ Density Matrix that were first reported in \autocite{bruneval_assessment_2019} and are derived in \ref{app:linearized_gw}.  First, we consider the fully occupied block:
 \begin{equation}
 \gamma_{i j}^{G W}=2\delta_{i j}-2\sum_{a \mu} \frac{\textbf{V}_{i a}^\mu \textbf{V}_{ja}^\mu}{\left(\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}\right)\left(\epsilon_{j}-\epsilon_{a}-\Omega_{\mu}\right)}
 \end{equation}
@@ -425,7 +342,137 @@ When $H_2$ is at its equilibrium distance at a low bond distance, we see in Figu
 
 \appendix
 
+\chapter{Symmetric formulation of the dRPA}
+\label{app:symm_drpa}
+We can work to simplify this eigenvalue problem. Since we know that the negative and positive eigenvalues for the RPA are the same in magnitude, we can simplify the matrix equation to:
+\begin{equation}
+\begin{bmatrix}
+A & B \\
+-B & -A
+\end{bmatrix}
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+= \omega
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+\end{equation}
+This suggests breaking down the problem into a set of linear equations:
+\begin{align}
+    AX + BY &= \omega X\\
+    -BX-AY &= \omega Y
+\end{align}
+which can be simplified by the addition:
+\begin{equation}
+    (A-B)(X-Y)= \omega (X+Y)
+\label{eqn:for_addition}
+\end{equation}
+which means:
+\begin{equation}
+    (X+Y) = \omega^{-1}(A-B)(X-Y)
+\label{eqn:addition}
+\end{equation}
+Doing the subtraction instead gives:
+\begin{equation}
+    (A+B)(X+Y)= \omega (X-Y)
+\label{eqn:for_subtraction}
+\end{equation}
+Similarly, we can isolate:
+\begin{equation}
+    (X-Y) = \omega^{-1}(A+B)(X+Y)
+\label{eqn:subtraction}
+\end{equation}
+Equations \ref{eqn:for_addition} and \ref{eqn:for_subtraction} can be combined to get, respectively:
+\begin{equation}
+    \boxed{\omega = (X-Y)^{\dag} (A-B)(X-Y)}
+\end{equation}
+and
+\begin{equation}
+    \boxed{\omega = (X+Y)^{\dag} (A+B)(X+Y)}
+\end{equation}
+Substituting in for $X+Y$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}:
+\begin{equation}
+    \omega^{-1}(A+B)(A-B)(X-Y) = \omega (X-Y)
+\end{equation}
+Multiplication by $\omega$ gives:
+\begin{equation}
+    (A+B)(A-B)(X-Y) = \omega^2 (X-Y)
+\end{equation}
+Now, we plug the defintion in \ref{eqn:subtraction} for the $(X-Y)$ terms:
+\begin{equation}
+    (A+B)(A-B)\omega^{-1}(A+B)(X+Y) = \omega^2 \omega^{-1}(A+B)(X+Y)
+\end{equation}
+Multiplication through by $\omega$ gives and $(A+B)^{-1}$ gives:
+\begin{equation}
+    (A-B)(A+B)(X+Y) = \omega^{2} (X+Y)
+\end{equation}
+At this point we want to define $T=(A-B)^{-\frac{1}{2}}(X+Y)$, so that we can write:
+\begin{equation}
+    (A-B)(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} (A-B)^{\frac{1}{2}}T
+\end{equation}
+Dividing through by $(A-B)^{\frac{1}{2}}$ gives:
+\begin{equation}
+    (A-B)^{\frac{1}{2}}(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} T
+\end{equation}
+Once the eigenvalue problem is solved, we need to normalize the vectors $T$. We see the relation:
+\begin{equation}
+    (X+Y) = (A-B)^{\frac{1}{2}}T
+\end{equation}
+And then for normalization, we need:
+\begin{equation}
+    (X-Y)^{\dag}(X+Y)=1
+\end{equation}
+So we need:
+\begin{equation}
+    (X-Y)=(A-B)^{-1}(X+Y)\omega 
+\end{equation}
+
+
+\chapter{$G_0W_0$ Tests of my implementations of the dRPA and dTDA against PySCF}
+\label{app:tests}
+\begin{table}[h]
+\centering
+\caption{Energy deviations (in eV) for my implementation of exact $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus the existing implementation in PySCF.}
+\label{tab:energies}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Orbital} & \multicolumn{2}{c|}{$H_2O$} & \multicolumn{2}{c|}{$HCl$} & \multicolumn{2}{c|}{$NH_3$} & \multicolumn{2}{c|}{$LiH$} & \multicolumn{2}{c|}{$CO$} \\
+\cline{2-11}
+                         & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA \\
+\hline
+HOMO - 2 & 1.78e-15 & 5.33e-15 & 1.42e-14 & 2.13e-12 & 5.33e-15 & 1.42e-14 & 4.21e-10 & 3.55e-14 & 1.73e-10 & 0.00477 \\
+\hline
+HOMO - 1 & 2.31e-14 & 1.07e-13 & 1.30e-12 & 5.24e-13& 3.55e-15 & 2.33e-10 & 4.55e-12 & 2.84e-14 & 1.73e-10 & 0.00476 \\
+\hline
+HOMO     & 4.44e-15 & 2.84e-13 & 1.48e-12 & 5.71e-13 & 1.67e-11 & 1.30e-12 & 1.33e-15 & 1.96e-10 & 1.06e-12 & 2.84e-13 \\
+\hline
+LUMO     & 3.43e-14 & 2.65e-14 & 4.44e-16 & 1.24e-12 & 8.60e-14 & 8.78e-14 & 1.11e-15 & 2.66e-15 & 2.22e-15 & 0.00679 \\
+\hline
+LUMO + 1 & 2.14e-13 & 2.71e-14 & 2.22e-13 & 1.04e-10 & 4.40e-13 & 8.78e-14 & 1.12e-12 & 2.43e-14 & 3.11e-15 & 0.00678 \\
+\hline
+LUMO + 2 & 4.07e-11 & 6.92e-10 & 7.11e-15 & 1.18e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.99e-14 & 3.99e-14 \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+The cc-pVDZ basis set was used for all calculations. The HF Fock matrix at $\gamma ^{HF}$ was considered with just the canonical HF MO energies on the diagonal. As can be seen, my deviations from PySCF are very minuscule with the exception of my dRPA calculation for $CO$. It is known that this molecule has a complicated electronic structure because the electron correlation changes the dipole moment in the molecule.
+
+
+
+
+
+
+
+
+
+
 \chapter{Derivation of the linearized $G_0W_0$ density matrix}
+\label{app:linearized_gw}
 We have the equation for the density matrix:
 \begin{equation}
 \begin{aligned}

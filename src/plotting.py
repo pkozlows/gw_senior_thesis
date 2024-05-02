@@ -1,80 +1,55 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from iterative import g0w0
-from tda import real_corr_se, my_drpa, my_dtda
+from tda import real_corr_se, symm_drpa
 from mf import setup_molecule, calculate_mean_field
 from fock import simple_fock
 
-mol = setup_molecule('water')
-mf = calculate_mean_field(mol, 'hf')
-my_fock = simple_fock(mf)
-# find the number of orbitals
-n_orbitals = mol.nao_nr()
-# find the number of occupied orbitals
-n_occupied = mol.nelectron//2
-# find the number of virtual orbitals
-n_virtual = n_orbitals - n_occupied
-homo_index = n_occupied-1
-lumo_index = n_occupied
-conversion_factor = 27.2114
+# Constants
+conversion_factor = 27.2114  # Conversion factor from Hartree to eV
+frequencies_ev = np.linspace(-25, 25, 100)  # Frequency range in eV for the plot
+offsets = [-3, -2, -1, 0, 1, 2, 3]  # Orbital offsets
 
-iterative_solution = g0w0(homo_index, my_fock, real_corr_se, mf, my_dtda) * conversion_factor
+# Set up molecule and calculate mean field
+mol_hcl = setup_molecule('hcl')
+mf_hcl = calculate_mean_field(mol_hcl, 'hf')
+my_fock_hcl = simple_fock(mf_hcl)
+n_orbitals_hcl = mol_hcl.nao_nr()
+n_occupied_hcl = mol_hcl.nelectron // 2
 
-print("Iterative Solution", iterative_solution)
-# Define a range of frequencies in eV and convert them to Hartrees for calculations
-frequencies_ev = np.linspace(-50, 0, 100)
-frequencies = frequencies_ev / conversion_factor  # Convert to Hartrees
+# Loop through each offset to generate and save plots
+for offset in offsets:
+    # Calculate the index of the orbital of interest
+    orbital_index = n_occupied_hcl + offset  # Adjust index for HOMO + offset
 
-# Compute correlation energies for each frequency
-all_correlation_energies = np.zeros((mol.nao, len(frequencies)))
-for idx, freq in enumerate(frequencies):
-    correlation_energies = real_corr_se(freq, my_dtda, mf)
-    all_correlation_energies[:, idx] = correlation_energies
+    # Compute GW correction for the selected orbital
+    iterative_solution = g0w0(orbital_index, my_fock_hcl, real_corr_se, mf_hcl, symm_drpa) * conversion_factor
+    print(f"Iterative GW Solution for HCl (HOMO + {offset}): {iterative_solution}")
 
-# Convert frequencies and energies from Hartrees to electron volts
-frequencies_ev = frequencies * conversion_factor
-all_correlation_energies_ev = all_correlation_energies * conversion_factor
+    # Correlation energies calculation
+    frequencies = frequencies_ev / conversion_factor
+    all_correlation_energies = np.array([real_corr_se(freq, symm_drpa, mf_hcl) for freq in frequencies])
+    all_correlation_energies_ev = all_correlation_energies * conversion_factor  # Convert energies back to eV
 
-# Set global font size
-plt.rcParams.update({'font.size': 14})  # You can adjust the size as needed
+    # Plotting
+    plt.figure(figsize=(12, 8))
+    plt.plot(frequencies_ev, all_correlation_energies_ev[:, orbital_index], label=f'Orbital Index HOMO + {offset}')
 
-# Plotting
-plt.figure(figsize=(12, 8))
+    # Add the line y = x + b, converting b to eV as well for HCl
+    fock_element_ev_hcl = my_fock_hcl[orbital_index, orbital_index] * conversion_factor
+    plt.plot(frequencies_ev, frequencies_ev - fock_element_ev_hcl, label=r'$\omega - \epsilon_p^{HF}$ (HCl)')
 
-# Plot HOMO (and optionally LUMO) in eV
-plt.plot(frequencies_ev, all_correlation_energies_ev[homo_index], label='HOMO')
-# plt.plot(frequencies_ev, all_correlation_energies_ev[lumo_index], label='LUMO')
-
-
-
-plt.xlabel(r'$\omega$ [eV]')
-plt.ylabel(r'$\Sigma_{pp}^{c}$ [eV]')
-
-# Add the line y = x + b, converting b to eV as well
-fock_element_ev = my_fock[homo_index, homo_index] * conversion_factor
-print('Fock element', fock_element_ev)
-plt.plot(frequencies_ev, frequencies_ev - fock_element_ev, label=r'$\omega - \epsilon_p^{HF}$')
-# # find the x value add which the lines intersect
-# # Difference between the HOMO curve and the omega - epsilon_0^HF line
-# difference = all_correlation_energies_ev[homo_index] - (frequencies_ev - fock_element_ev)
-
-# # Find the index where the difference changes sign
-# # np.sign gives -1 for negative values and 1 for positive values, so a difference of signs will give -2 or 2
-# sign_change_index = np.where(np.diff(np.sign(difference)))[0]
-# # Add a gray dashed vertical line at the intersection frequency
-# intersection_freq = frequencies_ev[sign_change_index]
-# intersection_energy = all_correlation_energies_ev[homo_index, sign_change_index]
-# print("Intersection Frequency", intersection_freq)
-
-plt.axvline(x=iterative_solution, color='gray', linestyle='--', label='Solution')
-plt.annotate(rf'$\omega$={iterative_solution:.2f} eV', 
-                 xy=(iterative_solution, 2), 
-                 xytext=(10, 10), 
+    plt.axvline(x=iterative_solution, color='red', linestyle='--', label=f'Solution at {iterative_solution:.2f} eV')
+    plt.annotate(rf'$\omega$={iterative_solution:.2f} eV (HCl)', 
+                 xy=(iterative_solution, 0), 
+                 xytext=(10, 30), 
                  textcoords='offset points', 
                  arrowprops=dict(arrowstyle='->', color='black'))
-plt.xlim(frequencies_ev[0], frequencies_ev[-1])
-plt.ylim(min(all_correlation_energies_ev[homo_index]) - 5, max(all_correlation_energies_ev[homo_index]) + 5)
-plt.legend(loc='upper right', bbox_to_anchor=(1, 1))
-plt.subplots_adjust(right=0.75)
-plt.grid(True)
-plt.savefig('correlation_energies.png', bbox_inches='tight')  # bbox_inches='tight' to ensure the legend is included in the save
+
+    plt.xlabel(r'$\omega$ [eV]')
+    plt.ylabel(r'$\Sigma_{pp}^{c}$ [eV]')
+    plt.title(f'Correlation Energy vs. Frequency for HCl Orbital Index {orbital_index}')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig(f'correlation_energies_hcl_orbital_{orbital_index}.png', bbox_inches='tight')
+    plt.close()  # Close the plot to avoid displaying it in interactive environments

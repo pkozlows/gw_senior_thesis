@@ -37,28 +37,36 @@ Acoustic phonons are purely vibrations and optical phonons are when you have a p
 Features do not need to be exact or to scale. Label the key excitations that are present in each system. Hint: What rotational, vibrational, and electronic excitations are possible for each?
 
 \section{}
-Dephasing refers to the initial scattering processes that cause the electron-hole pair wavefunction to become out of phase with the driving frequency. Before dephasing a superposition state exists between the excitation and exciting field, i.e. no real population is created. For the same following systems, order them from longest coherence time to shortest. (Hint - e-e scattering goes as the free carrier density and is the fastest, after this it is vibrations, etc)
+A superposition state exists between the electron-hole excitation and the laser exciting field on a few femtosecond timescales, which we call coherence. Dephasing is the term we use to describe how scattering processes decohere the electron-hole pair wavefunction to be out of phase with the driving frequency. For the following systems, label what dephasing mechanism is present with the knowledge that electron-electron scattering is faster than electron-phonon scattering, which is faster than electron-spin/nucleus coupling. Like Problem 1, consider the possible excitations for the system.
 \subsection{}
 An atom
 \subsubsection{Answer}
-There are no free electrons here to scatter, so the longest coherence time.
+There are no free electrons here to scatter, so the longest coherence time. We can just have the electron-spin/nucleus coupling here, whic is the slowest scattering mechanism.
 \subsection{}
 A diatomic species
 \subsubsection{Answer}
-We have introduced the potential for vibrations so with respect to the single atom, so this will have a slightly shorter coherence time.
+We have introduced the potential for vibrations so with respect to the single atom, so this will have a slightly shorter coherence time. It should be noted that this cannot be called phonons, as that term is reserved for vibrations in a lattice.
 \subsection{}
 A multiple atom molecule
 \subsubsection{Answer}
-There are more potential vibrations here with respect to the diatomic, so this will have a slightly shorter coherence time.
+There are more potential vibrations here with respect to the diatomic, so this will have a slightly shorter coherence time. We can also consider rotations here, but since the frequency ordering of electronic, vibrational, and rotational, go, respectively, as UV, IR, and then microwave in decreasing frequency, the rotations are the slowest and least energetic scattering mechanism.
 \subsection{}
 A semiconductor
 \subsubsection{Answer}
-We have introduced the potential for free carrier electrons here if we have excited across the band gap, so this will have a slightly shorter coherence time than the multiple atom molecule. Phonons are also a possibility.
+We have introduced the potential for free carrier electrons here if we have excited across the band gap, so this will have a slightly shorter coherence time than the multiple atom molecule. Phonons are also a possibility and we can be having these phonons scatter the electrons.
 \subsection{}
 A metal
 \subsubsection{Answer}
 There is no band gap to consider here, so there will be much more scattering between electrons than for the semiconductor. As in the previous case, phonons are also possible.\\
 So, the order is: Atom, Diatomic, Multiple Atom Molecule, Semiconductor, Metal.
+I have also attached a figure \ref{fig:scattering} that gives some possible scattering mechanisms and their life times after an initial laser pulse:
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{scattering.png}
+\caption{Scattering mechanisms and their life times after an initial laser pulse.}
+\label{fig:scattering}
+\end{figure}
+\newpage
 
 \section{}
 
@@ -66,10 +74,29 @@ We do not have time to talk about semiconductor junctions in class.
 \subsection{}
 Research and draw an n-type Metal-Semiconductor Schottky barrier, a p-n junction, and a p-type Metal-Oxide-Semiconductor junction. 
 \subsubsection{n-type Metal-Semiconductor Schottky barrier}
-So when we excite an electron into the conduction band of the semiconductor, it will relax into the metal. And so holes will move from the metal into the valence band of the semiconductor.
+The mismatch in the metal and semiconductor Fermi levels before the formation of the junction is shown in the diagram labeled as before. The first thing that happens when they come into contact is electron density moves from the semiconductor to the metal (labeled 1). So once a photoexcitation occurs, leaving a hole in the semiconductor valence band and an electron in the conduction band, this hole wants to move towards the electron density that was previously built up in the metal (labeled 2). This process is shown in Figure \ref{fig:schottky}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{schottky.jpg}
+\caption{n-type Metal-Semiconductor Schottky barrier.}
+\label{fig:schottky}
+\end{figure}
 \subsubsection{p-n junction}
-For the second junction, just consider the p-type semiconductor undergoing a photoexcitation. Ordinarily, if we just created an electron-hole pair in the p-type semiconductor, it would be short-lived, i.e., we would be dealing with recombination effects. However, the n-type semiconductor provides us with an efficient avenue to prevent these recombination effects because the electron is moving away from the hole as it relaxes along the conduction band into the n-type semiconductor. The intermediate region in which the bands are bending is called the depletion layer, and we will have a net positive charge on the side of the p-type semiconductor and a net negative charge on the side of the n-type semiconductor.
+For the second junction, just consider the p-type semiconductor undergoing a photoexcitation. Ordinarily, if we just created an electron-hole pair in the p-type semiconductor, it would be short-lived, i.e., we would be dealing with recombination effects. However, the n-type semiconductor provides us with an efficient avenue to prevent these recombination effects because the electron is moving away from the hole as it relaxes along the conduction band into the n-type semiconductor. The intermediate region in which the bands are bending is called the depletion layer, and we will have a net positive charge on the side of the p-type semiconductor and a net negative charge on the side of the n-type semiconductor. This process is shown in Figure \ref{fig:pn}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{pn.jpg}
+\caption{p-n junction. Do I get extra credit for drawing such a good photon lol}
+\label{fig:pn}
+\end{figure}
 \subsubsection{p-type Metal-Oxide-Semiconductor junction}
+We start by equilibrating the metals Fermi level with that of the semiconductor, which brings about an initial transfer of electron density from the metal, which has its Fermi level moving downwards, towards that of the semiconductor (labeled 1). When a photoexcitation occurs (labeled 2), that excited electron wants to move to a lower energy towards the metal, but the oxide barrier prevents it from doing so and in order to surmount this barrier a voltage difference needs to be introduced. This process is shown in figure \ref{fig:mos}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{mos.jpg}
+\caption{p-type Metal-Oxide-Semiconductor junction.}
+\label{fig:mos}
+\end{figure}
 \subsection{}
 For each junction, draw how photoexcited electrons and holes will move assuming only the semiconductor is photoexcited. Again, use the internet for help.\\
 
@@ -77,7 +104,7 @@ For each junction, draw how photoexcited electrons and holes will move assuming 
 
 Extended Resource for Problem 3: If you want to calculate this for real in a paper, the freely available AFORS-HET software will calculate band bendings, alignments, photoexcited changes, etc., if you give it basic parameters like the work function, band gap, and dopants.
 
-\href{https://www.helmholtz-berlin.de/forschung/oe/ee/si-pv/projekte/asicsi/afors-het/index}{https://www.helmholtz-berlin.de/forschung/oe/ee/si-pv/projekte/asicsi/afors-het/index}
+\href{https://www.helmholtz-berlin.de/forschung/oe/ee/si-pv/projekte/asicsi/afors-het/index}{https://www.helmholtz-berlin.de/forschung/oe/ee/si-pv/projekte/asicsi/afors-hhet/index}
 
 
 \end{document}

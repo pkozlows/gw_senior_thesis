@@ -133,4 +133,4 @@ for h in h_values:
 for h in results:
     for k in results[h]:
         pass
-        # print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")

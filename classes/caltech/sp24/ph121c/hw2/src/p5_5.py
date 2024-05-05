@@ -7,7 +7,7 @@ def truncate_svd(matrix, k):
     """
     Truncates the singular value decomposition (SVD) of a matrix.
 
-    Parameters:
+    # Parameters:
     matrix (ndarray): The input matrix.
     k (int): The number of singular values to keep.
 
@@ -133,4 +133,4 @@ for h in h_values:
 for h in results:
     for k in results[h]:
         pass
-        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+        # print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")

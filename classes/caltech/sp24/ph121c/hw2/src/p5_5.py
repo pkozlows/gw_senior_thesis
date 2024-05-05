@@ -7,7 +7,7 @@ def truncate_svd(matrix, k):
     """
     Truncates the singular value decomposition (SVD) of a matrix.
 
-    # Parameters:
+    Parameters:
     matrix (ndarray): The input matrix.
     k (int): The number of singular values to keep.
 
@@ -42,14 +42,14 @@ def compute_mps(state, k):
 
         # for the first iteration
         if i == 1:
-            mps_tensors.append(u.reshape((previous_k, -1)))
+            mps_tensors.append(u.reshape((1, previous_k, -1)))
         # for the middle iterations
         elif i < L:
             # append the rank 3 tensor following the notation of the tensor network diagrams
             mps_tensors.append(u.reshape((previous_k, 2, current_k)))
         # for the last iteration
         else:
-            mps_tensors.append(u.reshape((previous_k, -1)))
+            mps_tensors.append(u.reshape((previous_k, -1, 1)))
             break
         # prepare the state for the next iteration
         state = (s @ vt).reshape((2*current_k, -1))
@@ -133,4 +133,4 @@ for h in h_values:
 for h in results:
     for k in results[h]:
         pass
-        # print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")

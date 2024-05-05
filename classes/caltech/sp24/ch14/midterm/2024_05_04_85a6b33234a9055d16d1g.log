@@ -1,0 +1,562 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  4 MAY 2024 21:13
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/patrykkozlowski/caltech/classes/caltech/sp24/ch14/midterm/2024_05_04_85a6b33234a9055d16d1g
+(/Users/patrykkozlowski/caltech/classes/caltech/sp24/ch14/midterm/2024_05_04_85a6b33234a9055d16d1g.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen139
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count193
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count194
+\leftroot@=\count195
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count196
+\DOTSCASE@=\count197
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count198
+\c@MaxMatrixCols=\count199
+\dotsspace@=\muskip16
+\c@parentequation=\count266
+\dspbrk@lvl=\count267
+\tag@help=\toks19
+\row@=\count268
+\column@=\count269
+\maxfields@=\count270
+\andhelp@=\toks20
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks21
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/mhchem/mhchem.sty
+Package: mhchem 2021/12/31 v4.09 for typesetting chemical formulae
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-02-24 L3 programming layer (loader) 
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box52
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count272
+\calc@Bcount=\count273
+\calc@Adimen=\dimen148
+\calc@Bdimen=\dimen149
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count274
+\calc@Cskip=\skip54
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/chemgreek/chemgreek.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2022-01-12 L3 Experimental document command parser
+)
+Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use in chemistry (CN)
+\l__chemgreek_tmpa_int=\count275
+\g__chemgreek_tmpa_int=\count276
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\l__mhchem_ce_distanceFromLastComma_int=\count277
+\__mhchem_arrow_extPgfLength_skip=\skip55
+\mhchem@minispace@tmp=\skip56
+\mhchem@minibackspace@tmp=\skip57
+\mhchem@bondwidth=\skip58
+\mhchem@bondheight=\skip59
+\mhchem@smallbondwidth@tmpA=\skip60
+\mhchem@smallbondwidth@tmpB=\skip61
+\mhchem@smallbondwidth=\skip62
+\mhchem@bondtmp@minussidebearingleft=\skip63
+\mhchem@bondtmp@minussidebearingright=\skip64
+\l__mhchem_option_version_int=\count278
+\mhchem@option@minusmathsidebearingleft=\dimen150
+\mhchem@option@minusmathsidebearingright=\dimen151
+\mhchem@option@minustextsidebearingleft=\dimen152
+\mhchem@option@minustextsidebearingright=\dimen153
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\Gin@req@height=\dimen154
+\Gin@req@width=\dimen155
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/chemformula/chemformula.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks24
+\pgfutil@tempdima=\dimen156
+\pgfutil@tempdimb=\dimen157
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box53
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+))
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks27
+))
+\pgf@x=\dimen158
+\pgf@y=\dimen159
+\pgf@xa=\dimen160
+\pgf@ya=\dimen161
+\pgf@xb=\dimen162
+\pgf@yb=\dimen163
+\pgf@xc=\dimen164
+\pgf@yc=\dimen165
+\pgf@xd=\dimen166
+\pgf@yd=\dimen167
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count279
+\c@pgf@countb=\count280
+\c@pgf@countc=\count281
+\c@pgf@countd=\count282
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count283
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count284
+\pgfsyssoftpath@bigbuffer@items=\count285
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen168
+\pgfmath@count=\count286
+\pgfmath@box=\box54
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count287
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen169
+\pgf@picmaxx=\dimen170
+\pgf@picminy=\dimen171
+\pgf@picmaxy=\dimen172
+\pgf@pathminx=\dimen173
+\pgf@pathmaxx=\dimen174
+\pgf@pathminy=\dimen175
+\pgf@pathmaxy=\dimen176
+\pgf@xx=\dimen177
+\pgf@xy=\dimen178
+\pgf@yx=\dimen179
+\pgf@yy=\dimen180
+\pgf@zx=\dimen181
+\pgf@zy=\dimen182
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen183
+\pgf@path@lasty=\dimen184
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen185
+\pgf@shorten@start@additional=\dimen186
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count288
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen187
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen188
+\pgf@pt@y=\dimen189
+\pgf@pt@temp=\dimen190
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen191
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen192
+\pgf@sys@shading@range@num=\count289
+\pgf@shadingcount=\count290
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box58
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box59
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen193
+\pgf@nodesepend=\dimen194
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen195
+\pgffor@skip=\dimen196
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count291
+\pgfplotmarksize=\dimen197
+)
+\tikz@lastx=\dimen198
+\tikz@lasty=\dimen199
+\tikz@lastxsaved=\dimen256
+\tikz@lastysaved=\dimen257
+\tikz@lastmovetox=\dimen258
+\tikz@lastmovetoy=\dimen259
+\tikzleveldistance=\dimen260
+\tikzsiblingdistance=\dimen261
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count292
+\tikznumberofchildren=\count293
+\tikznumberofcurrentchild=\count294
+\tikz@fig@count=\count295
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmatrixcurrentrow=\count296
+\pgfmatrixcurrentcolumn=\count297
+\pgf@matrix@numberofcolumns=\count298
+)
+\tikz@expandcount=\count299
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xfrac/xfrac.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+Package: xtemplate 2022-01-12 L3 Experimental prototype document functions
+\l__xtemplate_tmp_dim=\dimen262
+\l__xtemplate_tmp_int=\count300
+\l__xtemplate_tmp_muskip=\muskip17
+\l__xtemplate_tmp_skip=\skip65
+)
+Package: xfrac 2022-01-12 L3 Experimental split-level fractions
+\l__xfrac_slash_box=\box64
+\l__xfrac_tmp_box=\box65
+\l__xfrac_denominator_bot_sep_dim=\dimen263
+\l__xfrac_numerator_bot_sep_dim=\dimen264
+\l__xfrac_numerator_top_sep_dim=\dimen265
+\l__xfrac_slash_left_sep_dim=\dimen266
+\l__xfrac_slash_right_sep_dim=\dimen267
+\l__xfrac_slash_left_muskip=\muskip18
+\l__xfrac_slash_right_muskip=\muskip19
+
+Package xtemplate Info: Declaring object type 'xfrac' taking 3 argument(s) on
+(xtemplate)             line 80.
+
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/units/nicefrac.sty
+Package: nicefrac 1998/08/04 v0.9b Nice fractions
+\L@UnitsRaiseDisplaystyle=\skip66
+\L@UnitsRaiseTextstyle=\skip67
+\L@UnitsRaiseScriptstyle=\skip68
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowinset=\dimen268
+\pgfarrowlength=\dimen269
+\pgfarrowwidth=\dimen270
+\pgfarrowlinewidth=\dimen271
+)
+Package: chemformula 2022/01/23 v4.17 typeset chemical compounds and reactions (CN)
+\l__chemformula_tmpa_dim=\dimen272
+\l__chemformula_tmpb_dim=\dimen273
+\l__chemformula_tmpc_dim=\dimen274
+\l__chemformula_tmpa_int=\count301
+\l__chemformula_tmpb_int=\count302
+\l__chemformula_tmpc_int=\count303
+\l__chemformula_tmpa_box=\box66
+\l__chemformula_tmpb_box=\box67
+\l__chemformula_arrow_length_dim=\dimen275
+\l__chemformula_arrow_label_height_dim=\dimen276
+\l__chemformula_arrow_label_offset_dim=\dimen277
+\l__chemformula_arrow_minimum_length_dim=\dimen278
+\l__chemformula_arrow_shortage_dim=\dimen279
+\l__chemformula_arrow_offset_dim=\dimen280
+\l__chemformula_arrow_yshift_dim=\dimen281
+\l__chemformula_radical_radius_dim=\dimen282
+\l__chemformula_radical_hshift_dim=\dimen283
+\l__chemformula_radical_vshift_dim=\dimen284
+\l__chemformula_radical_space_dim=\dimen285
+\l__chemformula_arrow_head_dim=\dimen286
+\l__chemformula_name_dim=\dimen287
+\l__chemformula_adduct_space_dim=\dimen288
+\l__chemformula_charge_shift_dim=\dimen289
+\l__chemformula_subscript_shift_dim=\dimen290
+\l__chemformula_superscript_shift_dim=\dimen291
+\l__chemformula_subscript_dim=\dimen292
+\l__chemformula_superscript_dim=\dimen293
+\l__chemformula_bond_dim=\dimen294
+\l__chemformula_bond_space_dim=\dimen295
+\l__chemformula_elspec_pair_distance_dim=\dimen296
+\l__chemformula_elspec_pair_line_length_dim=\dimen297
+\l__chemformula_elspec_pair_width_dim=\dimen298
+\l__chemformula_kroegervink_positive_radius_dim=\dimen299
+\l__chemformula_kroegervink_positive_hshift_dim=\dimen300
+\l__chemformula_kroegervink_positive_vshift_dim=\dimen301
+\l__chemformula_kroegervink_positive_space_dim=\dimen302
+\l__chemformula_stoich_space_skip=\skip69
+\l__chemformula_math_space_skip=\skip70
+\l__chemformula_additions_symbol_space_skip=\skip71
+\l__chemformula_count_tokens_int=\count304
+\g__chemformula_lewis_int=\count305
+\l__chemformula_arrow_arg_i_box=\box68
+\l__chemformula_arrow_arg_ii_box=\box69
+\l__chemformula_superscript_box=\box70
+\l__chemformula_subscript_box=\box71
+\l__chemformula_plus_space_skip=\skip72
+\l__chemformula_minus_space_skip=\skip73
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count306
+\lst@gtempboxa=\box72
+\lst@token=\toks36
+\lst@length=\count307
+\lst@currlwidth=\dimen303
+\lst@column=\count308
+\lst@pos=\count309
+\lst@lostspace=\dimen304
+\lst@width=\dimen305
+\lst@newlines=\count310
+\lst@lineno=\count311
+\lst@maxwidth=\dimen306
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count312
+\lst@skipnumbers=\count313
+\lst@framebox=\box73
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+ (./2024_05_04_85a6b33234a9055d16d1g.aux)
+\openout1 = `2024_05_04_85a6b33234a9055d16d1g.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+
+Package chemgreek Info: Activating mapping `default' on line 55.
+
+ (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count314
+\scratchdimen=\dimen307
+\scratchbox=\box74
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen308
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks38
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+\c@lstlisting=\count320
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 56.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+Overfull \hbox (42.6693pt too wide) in paragraph at lines 56--56
+ [][] 
+ []
+
+
+LaTeX Warning: Command \textregistered invalid in math mode on input line 67.
+
+
+LaTeX Warning: Command \textregistered invalid in math mode on input line 67.
+
+Missing character: There is no ® in font cmr12!
+[1
+
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) [4]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 159.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Overfull \hbox (34.23343pt too wide) in paragraph at lines 177--178
+\T1/cmr/m/n/12 present in a so-lu-tion of $[][]$ made to a to-tal con-cen-tra-tion of $\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^B \OT1/cmr/m/n/12 10[]M []$
+ []
+
+[5] [6] [7]
+Overfull \hbox (1.32799pt too wide) in paragraph at lines 274--275
+[]\T1/cmr/m/n/12 Using the Debye-Huckel lim-it-ing law and the Henderson-Hasselbalch equa-
+ []
+
+<./images//smile-lvslvvf9smi5kvdw2w.png, id=46, 242.9075pt x 128.48pt>
+File: ./images//smile-lvslvvf9smi5kvdw2w.png Graphic file (type png)
+<use ./images//smile-lvslvvf9smi5kvdw2w.png>
+Package pdftex.def Info: ./images//smile-lvslvvf9smi5kvdw2w.png  used on input line 278.
+(pdftex.def)             Requested size: 242.90689pt x 128.47968pt.
+[8] [9 <./images//smile-lvslvvf9smi5kvdw2w.png>] (./2024_05_04_85a6b33234a9055d16d1g.aux) ) 
+Here is how much of TeX's memory you used:
+ 18090 strings out of 478268
+ 366679 string characters out of 5846347
+ 935240 words of memory out of 5000000
+ 35984 multiletter control sequences out of 15000+600000
+ 487998 words of font info for 81 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,21n,103p,675b,1685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_05_04_85a6b33234a9055d16d1g.pdf (9 pages, 282430 bytes).
+PDF statistics:
+ 140 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+

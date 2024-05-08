@@ -65,7 +65,7 @@ sigma_x = np.array([[0, 1], [1, 0]])
 
 # Define parameters
 L = 6
-k_values = np.arange(3, 20, 1)
+k_values = np.arange(1, 20, 1)
 h = 1.0
 
 # Obtain the ground state from the Hamiltonian
@@ -77,49 +77,43 @@ gs = eigenvectors[:, 0]
 for k in k_values:
     mps_tensors = compute_mps(gs, k)
     bra = [t.conj().T for t in mps_tensors]  # Prepare the bra state by conjugate transposing every tensor in the lest
-
+    # make a function that takes in a list of mps tensors and its corresponding bra and computes the normalization
+    def compute_contraction(mps_tensors, bra):
+        # contract the physical energy_interactions on every tensor to generate a list of 2-tensors
+        contraction = np.einsum('ijk,lji->kl', mps_tensors[0], bra[0])
+        for j in range(1, len(mps_tensors)):
+            if j == len(mps_tensors) - 1:
+                contraction = np.einsum('kl,kmo,lmo->', contraction, mps_tensors[j], bra[j])
+            else:
+                contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
+                
+        return contraction
     # Compute energy components
     energy_interactions = 0
     energy_field = 0
-    # make a function to compute the interaction terms
-    def compute_interaction_term(mps_tensor, bra):
-        for j in range(len(mps_tensors) - 1):
-            # we have two possible tensors to consider for the interaction term
-            mod_tensor1 = apply_operator(mps_tensors[j], sigma_z)
-            mod_tensor2 = apply_operator(mps_tensors[j + 1], sigma_z)
-            first_contraction = np.einsum('ijk,lji->kl', mod_tensor1, bra[j])
-            second_contraction = np.einsum('ijk,kja->ia', mod_tensor2, bra[j + 1])
-            energy -= np.einsum('ij,ij->', first_contraction, second_contraction)
-        return energy
+    
     # Apply interaction
     for j in range(len(mps_tensors) - 1):
-        # we have two possible tensors to consider for the interaction term
         mod_tensor1 = apply_operator(mps_tensors[j], sigma_z)
         mod_tensor2 = apply_operator(mps_tensors[j + 1], sigma_z)
-        first_contraction = np.einsum('ijk,lji->kl', mod_tensor1, bra[j])
-        second_contraction = np.einsum('ijk,kja->ia', mod_tensor2, bra[j + 1])
-        energy_interactions -= np.einsum('ij,ij->', first_contraction, second_contraction)
+        # make a new MPS lest that replaces the j-th and j+1-th tensors with the modified ones
+        mps_tensors_mod = mps_tensors.copy()
+        mps_tensors_mod[j] = mod_tensor1
+        mps_tensors_mod[j + 1] = mod_tensor2
+        # compute the contraction of the modified tensors
+        energy_interactions -= compute_contraction(mps_tensors_mod, bra)
+
             
     # apply transverse field
     for j in range(len(mps_tensors)):
         # now we only have one tensor to consider for the field term
         mod_tensor = apply_operator(mps_tensors[j], sigma_x)
-        # make a contraction at the index
-        new_tensor = np.einsum('ijk,lji->kl', mod_tensor, bra[j])
-        energy_field -= h * np.einsum('ijk,kji->', mod_tensor, bra[j])
+        # make a new MPS lest that replaces the j-th and j+1-th tensors with the modified ones
+        mps_tensors_mod = mps_tensors.copy()
+        mps_tensors_mod[j] = mod_tensor
+        # compute the contraction of the modified tensors
+        energy_field -= h*compute_contraction(mps_tensors_mod, bra)
         
-    # make a function that takes in a list of mps tensors and its corresponding bra and computes the normalization
-    def compute_normalization(mps_tensors, bra):
-        # contract the physical indices on every tensor to generate a list of 2-tensors
-        normalization = np.einsum('ijk,lji->kl', mps_tensors[0], bra[0])
-        for j in range(1, len(mps_tensors)):
-            if j == len(mps_tensors) - 1:
-                normalization = np.einsum('kl,kmo,lmo->', normalization, mps_tensors[j], bra[j])
-            else:
-                normalization = np.einsum('kl,kmn,oml->no', normalization, mps_tensors[j], bra[j])
-                
-        return normalization
-        
-    normalization = compute_normalization(mps_tensors, bra)
+    normalization = compute_contraction(mps_tensors, bra)
     total_energy = (energy_interactions + energy_field) / normalization
     print(f"Energy for k={k}: {total_energy}, Exact: {eigenvalues[0]}")

@@ -2,7 +2,7 @@ import scipy.sparse.linalg
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from hw1 import sparse_hamiltonian, binary_string
+from hw1.src.hw1 import sparse_hamiltonian, binary_string
 
 
 import scipy.sparse as sp

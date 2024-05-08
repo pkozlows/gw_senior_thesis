@@ -898,7 +898,13 @@ We know that the quantum Ising model has a Hamiltonian given by
 \begin{equation*}
 H=-J \sum_{i=1}^{L-1} \sigma_{i}^{z} \sigma_{i+1}^{z}-h \sum_{i=1}^{L} \sigma_{i}^{x} \tag{1}
 \end{equation*}
-where $\sigma_{i}^{x}, \sigma_{i}^{z}$ are the Pauli matrices acting on site $i$, and $J, h$ are the coupling constants. The ground state energy of the quantum Ising model can be calculated using the MPS representation of the ground state. The energy of the ground state is given by
+where $\sigma_{i}^{x}, \sigma_{i}^{z}$ are the Pauli matrices acting on site $i$, and $J, h$ are the coupling constants. The normalization would be:
+\begin{equation}
+    \sum_{i=1}^{L}I _i
+\end{equation}
+where $I$ is the identity matrix.
+
+The ground state energy of the quantum Ising model can be calculated using the MPS representation of the ground state. The energy of the ground state is given by
 
 \subsection*{5.5.2 Bringing an MPS to a canonical form with an orthogonality center}
 Consider an MPS state of the form Eq. (19) with bond dimension 2 and matrices

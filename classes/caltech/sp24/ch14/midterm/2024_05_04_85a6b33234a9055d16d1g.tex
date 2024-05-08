@@ -181,7 +181,7 @@ We are interested in the expression for the equilibrium of $\ce{NH3}$ in water:
   \ce{NH3 &-> NH4+ + OH-} \\
   \ce{Kb & = \frac{[NH4+][OH-]}{[NH3]}} \\
 \end{align*}
-We know the pKb of $\ce{NH3}$ is 4.75, so the Kb is $10^{-4.75}$. The fervent verbose that we want to set up is the parameter $x$ to be the concentration of $[OH-]$ and $[NH4+]$ which will be present in equal amounts. If we were to set up a charge balance equation for this process, it would reflect this tract. The final concentration of $[NH3]$ will be $1.0 \times 10^{-6} - x$. This suggests the expression:
+We know the pKb of $\ce{NH3}$ is 4.75, so the Kb is $10^{-4.75}$. The relevant variables that we want to set up is the parameter $x$ to be the concentration of $[OH-]$ and $[NH4+]$ which will be present in equal amounts. If we were to set up a charge balance equation for this process, it would reflect this fact. The final concentration of $[NH3]$ will be $1.0 \times 10^{-6} - x$. This suggests the expression:
 \begin{align*}
   10^{-4.75} & = \frac{x^2}{1.0 \times 10^{-6} - x} \\
 \end{align*}
@@ -260,12 +260,94 @@ print(f"Fraction of H2A+ (glycine with 2 protons): {f_H2A_plus:.4f}")
 print(f"Fraction of HA (glycine with 1 proton): {f_HA:.4f}")
 print(f"Fraction of A- (glycine with 0 protons): {f_A_minus:.4f}")
 \end{lstlisting}
+\subsection{}
 
 
-3c. (10 pts) What are the concentrations of $\mathrm{HAc}$ and $\mathrm{Ac}^{-}$in a $0.1 \mathrm{M}$ acetate buffer (ie, $\left.(\mathrm{HAc})+\left(\mathrm{Ac}^{-}\right)=0.1 \mathrm{M}\right)$ at $\mathrm{pH} 4.76$ ? The pKa of HAc is 4.76 . Assume activities equal concentrations.
+What are the concentrations of $\mathrm{HAc}$ and $\mathrm{Ac}^{-}$ in a $0.1 \mathrm{M}$ acetate buffer (i.e., $\left[\mathrm{HAc}\right]+\left[\mathrm{Ac}^{-}\right]=0.1 \mathrm{M}$) at $\mathrm{pH} 4.76$? The $\mathrm{p}K_a$ of $\mathrm{HAc}$ is 4.76. Assume activities equal concentrations.
+\subsubsection{Answer}
+The relevant equation for this equilibrium process is:
+\begin{equation}
+  K_a = \frac{[\mathrm{H}^+][\mathrm{Ac}^-]}{[\mathrm{HAc}]}
+\end{equation}
+We are given the pH, which implies a proton concentration of $[\mathrm{H}^+] = 10^{-4.76}$. This is the same value as the $K_a$. Since the total mass of the buffer must be conserved, we can define $[\mathrm{HAc}] = x \rightarrow [\mathrm{Ac}^-] = 0.1 - x$. We can then substitute these values into the equation and solve for $x$. That script gives a value of 0.05 M for $[\mathrm{HAc}]$ and 0.05 M for $[\mathrm{Ac}^-]$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+from sympy import symbols, Eq, solve
 
-3d. (10 pts) Calculate the volumes of glacial acetic acid (17.4 M) and $2.54 \mathrm{M} \mathrm{NaOH}$ needed to make 2 liters of $0.2 \mathrm{M}$ acetate buffer, pH 5.0 (ie, $\left.(H A c)+\left(A c^{-}\right)=0.2 M\right)$. Assume activities equal concentrations.\\
-3e. (10 pts) A citrate buffer is made up of $0.01 \mathrm{M} \mathrm{Na}_{2} \mathrm{H}$ citrate and $0.01 \mathrm{M} \mathrm{Na}_{3}$ citrate, where the relevant $\mathrm{pK}_{3}=6.40$ for this reaction:
+# Define the variable
+x = symbols('x')
+
+# Given constants
+total_concentration = 0.1  # Total concentration of HAc + Ac-
+pH = 4.76
+Ka = 10**(-pH)  # Ka equals [H+] at pH 4.76
+
+# Set up the equation from the given relationship
+equation = Eq(Ka * x / (total_concentration - x), Ka)
+
+# Solve the equation
+concentration_HAc = solve(equation, x)
+concentration_Ac_minus = total_concentration - concentration_HAc[0]
+
+concentration_HAc, concentration_Ac_minus
+
+\end{lstlisting}
+\subsection{}
+
+Calculate the volumes of glacial acetic acid (17.4 M) and $2.54 \mathrm{M} \mathrm{NaOH}$ needed to make 2 liters of $0.2 \mathrm{M}$ acetate buffer, pH 5.0 (i.e., $(\mathrm{HAc})+(\mathrm{Ac}^{-})=0.2 M$). Assume activities equal concentrations.
+\subsubsection{Answer}
+Let us use the Henderson-Hasselbalch equation to solve this problem. The equation is given by:
+\begin{equation}
+  \mathrm{pH} = \mathrm{p}K_{a}+\log \left(\frac{[\mathrm{Ac}^{-}]}{[\mathrm{HAc}]}\right)
+\end{equation}
+In the previous part of the problem, we are given that the pKa of HAc is 4.76 and then we know that the pH is 5.0. So, the equation simplifies to:
+\begin{equation}
+  0.24 = \log \left(\frac{[\mathrm{Ac}^{-}]}{[\mathrm{HAc}]}\right)
+\end{equation}
+This allows us to compute the ratio $[\mathrm{Ac}^{-}] / [\mathrm{HAc}]$. If we set $x$ to be the number of moles of HAc, the total number of moles is 2 liters * 0.2 M = 0.4 moles. This gives us the relation $[\text{moles}_{\mathrm{Ac}^{-}}] = 0.4 - x$. We can then substitute these values into the equation and solve for $x$. Then it is straightforward to solve for the volumes needed, as we can use the definition of molarity:
+\begin{equation}
+  \text { Molarity }=\frac{\text { moles solute }}{\text { liters solution }}
+\end{equation}
+That script gives a value of 8.40 mL for the volume of glacial acetic acid and 100. mL for the volume of $2.54 M \mathrm{NaOH}$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import math
+from sympy import symbols, Eq, solve
+
+# Define the variable
+x = symbols('x', positive=True, real=True)
+
+# Given data
+pH = 5.0
+pKa = 4.76
+total_concentration = 0.2  # M
+total_volume = 2  # liters of solution
+conc_acetic_acid = 17.4  # M
+conc_NaOH = 2.54  # M
+
+# Calculate the ratio from the Henderson-Hasselbalch equation
+ratio_Ac_minus_to_HAc = 10**(pH - pKa)
+
+# Total moles in solution
+total_moles = total_concentration * total_volume  # 0.4 moles
+
+# Equation for moles of HAc
+equation = Eq(x + ratio_Ac_minus_to_HAc * x, total_moles)
+
+# Solve for x
+moles_HAc = solve(equation, x)[0]
+moles_Ac_minus = ratio_Ac_minus_to_HAc * moles_HAc
+
+# Calculate volumes needed for each component
+volume_HAc = moles_HAc / conc_acetic_acid
+volume_NaOH = moles_Ac_minus / conc_NaOH
+
+volume_HAc, volume_NaOH
+
+\end{lstlisting}
+
+\subsection{}
+A citrate buffer is made up of $0.01 \mathrm{M} \mathrm{Na}_{2} \mathrm{H}$ citrate and $0.01 \mathrm{M} \mathrm{Na}_{3}$ citrate, where the relevant $\mathrm{pK}_{3}=6.40$ for this reaction:
 
 $$
 \text { Hcitrate }^{2-} \stackrel{K_{3}}{\rightleftharpoons} \text { citrate }^{3-}+H^{+}
@@ -279,24 +361,142 @@ Using the Debye-Huckel limiting law and the Henderson-Hasselbalch equation, esti
 
 
 Hcitrate ${ }^{2-}$ and citrate ${ }^{3-}$ have 2 and 3 dissociated protons, respectively.)
+\subsubsection{Answer}
+The Henderson-Hasselbalch equation is given by:
+\begin{equation}
+  \mathrm{pH} = \mathrm{p}K_{a}+\log \left(\frac{[\text { citrate }^{3-}]}{[\text { Hcitrate }^{2-}]}\right)
+\end{equation}
+so since we know that the concentrations what be the same, in the ideal case pH = pKa. However, we are asked to estimate the actual pH of the buffer,which will be mortified by the activities. The Debye-Huckel limiting law is given by:
+\begin{equation}
+  \log \gamma_{\pm}=-0.509\left|z_{+} z_{-}\right| \sqrt{I}
+\end{equation}
+where $I$ is the ionic strength of the solution. The ionic strength is given by:
+\begin{equation}
+  I = \frac{1}{2} \sum_{i} m_{i} z_{i}^{2}
+\end{equation}
+where $m_{i}$ is the molarity of the ion and $z_{i}$ is the charge of the ion. The ionic strength is then given by:
+\begin{equation}
+  I = \frac{1}{2} \left(0.01 \times 2^{2} + 0.01 \times 3^{2}\right) = 0.065
+\end{equation}
+We can then use the Debye-Huckel limiting law to estimate the activity coefficients of the ions as $\gamma_{\text {citrate }}=0.0679$ and $\gamma_{\text {Hcitrate }}= 0.303$.
+This means  that the actual concentrations that enter into the Henderson-Hasselbalch equation are $0.01 \times 0.0679$ and $0.01 \times 0.303$. The actual pH of the buffer is then $6.40 + \log(0.01 \times 0.0679 / 0.01 \times 0.303) = 5.75$.
 
-\section*{Problem 4. Keep your equilibrium - it's a gas.}
+% Inline Python code in the document
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+
+import math
+# Constants and values from the problem statement
+pKa = 6.40
+concentration_Hcitrate = 0.01  # M
+concentration_citrate = 0.01  # M
+ionic_strength = 0.065  # calculated in the problem statement
+
+# Constants for Debye-Huckel equation
+A = 0.509
+z_citrate = 3
+z_Hcitrate = 2
+
+# Calculating activity coefficients using Debye-Huckel limiting law
+gamma_citrate = 10 ** (-A * z_citrate**2 * math.sqrt(ionic_strength))
+gamma_Hcitrate = 10 ** (-A * z_Hcitrate**2 * math.sqrt(ionic_strength))
+
+# Calculating effective concentrations
+effective_concentration_citrate = concentration_citrate * gamma_citrate
+effective_concentration_Hcitrate = concentration_Hcitrate * gamma_Hcitrate
+
+# Calculating the actual pH using the Henderson-Hasselbalch equation
+actual_pH = pKa + math.log10(effective_concentration_citrate / effective_concentration_Hcitrate)
+
+gamma_citrate, gamma_Hcitrate, actual_pH
+
+\end{lstlisting}
+
+\section{Keep your equilibrium - it's a gas.}
 The gases $\mathrm{N}_{2} \mathrm{O}_{4}$ and $\mathrm{NO}_{2}$ interconvert through the following equilibrium
 
 $$
 \mathrm{N}_{2} \mathrm{O}_{4} \stackrel{K_{p}}{\rightleftharpoons} 2 \mathrm{NO}_{2}
 $$
+\subsection{}
 
-4a. (10 pts) The free energies of formation at $298 \mathrm{~K}$ for $\mathrm{N}_{2} \mathrm{O}_{4}$ and $\mathrm{NO}_{2}$ are 99.8 and $51.3 \mathrm{~kJ} \mathrm{~mol}^{-1}$, respectively. Calculate the equilibrium constant $\mathrm{K}_{\mathrm{p}}$ for this reaction at 298
+The free energies of formation at $298 \mathrm{~K}$ for $\mathrm{N}_{2} \mathrm{O}_{4}$ and $\mathrm{NO}_{2}$ are 99.8 and $51.3 \mathrm{~kJ} \mathrm{~mol}^{-1}$, respectively. Calculate the equilibrium constant $\mathrm{K}_{\mathrm{p}}$ for this reaction at 298 K.
+\subsubsection{Answer}
+The equilibrium constant is given by:
+\begin{equation}
+  \Delta G = -RT \ln K
+\end{equation}
+We are given the differences of the free energies of formation, so we have that $\Delta G = 2 \times 51.3 - 99.8 = 2.8 \mathrm{~kJ} \mathrm{~mol}^{-1}$. We can then substitute this value into the equation to get the equilibrium constant $K_p = 0.323$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import math
 
-K.
+# Constants
+R = 8.314  # J/(mol*K), gas constant
+T = 298  # K, temperature
 
-4b. (10 pts) What are the partial pressures of $\mathrm{N}_{2} \mathrm{O}_{4}$ and $\mathrm{NO}_{2}$ (in atm) at equilibrium when the total pressure is $1 \mathrm{~atm}$ ? If you are unsure of your answer to $4 \mathrm{a}$, you may use Keq $=1$ (accurate to within a factor of 100 )
+# Given free energies of formation (in kJ/mol, convert to J/mol)
+delta_G_f_N2O4 = 99.8 * 1000  # J/mol
+delta_G_f_NO2 = 51.3 * 1000   # J/mol
 
-\section*{Problem 5. Getting blasted}
-\begin{enumerate}
-  \setcounter{enumi}{4}
-  \item ( $5 \mathrm{pts}$ ) What is the role of the argon plasma in the inductively coupled plasma mass spectrometry (ICP-MS) instrument we discussed in the Water and Environment Laboratory tour?
-\end{enumerate}
+# Calculate delta G for the reaction
+delta_G_reaction = 2 * delta_G_f_NO2 - delta_G_f_N2O4  # J/mol
+
+# Calculate the equilibrium constant Kp using the formula: Delta G = -RT ln Kp
+Kp = math.exp(-delta_G_reaction / (R * T))
+
+Kp
+\end{lstlisting}
+\subsection{}
+
+What are the partial pressures of $\mathrm{N}_{2} \mathrm{O}_{4}$ and $\mathrm{NO}_{2}$ (in atm) at equilibrium when the total pressure is $1 \mathrm{~atm}$ ? If you are unsure of your answer to $4 \mathrm{a}$, you may use Keq $=1$ (accurate to within a factor of 100 )
+\subsubsection{Answer}
+The equilibrium constant is given by:
+\begin{equation}
+  K_p = \frac{P_{\text {NO } 2}^{2}}{P_{\text {N } 2 \text {O } 4}}
+\end{equation}
+We are given that the total pressure is 1 atm, so if we define $x$ to be the partial pressure of $\mathrm{N}_{2} \mathrm{O}_{4}$, then the partial pressure of $\mathrm{NO}_{2}$ is $2(1-x)$. Now, we can use the equilibrium expression from the previous part:
+\begin{equation}
+  0.323 = \frac{[NO_2]^2}{[N_2O_4]}
+\end{equation}
+Solving gives a value of 0.753 atm for the partial pressure of $\mathrm{N}_{2} \mathrm{O}_{4}$ and 0.493 atm for the partial pressure of $\mathrm{NO}_{2}$.
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Define the unknowns
+x = sp.symbols('x')
+
+# Given equilibrium constant K_p
+K_p = 0.323
+
+# Total pressure
+total_pressure = 1  # atm
+
+# Define the equilibrium relationships
+P_N2O4 = x
+P_NO2 = 2 * (total_pressure - x)
+
+# Set up the equation based on K_p
+equilibrium_equation = sp.Eq(K_p, (P_NO2 ** 2) / P_N2O4)
+
+# Solve for x (the partial pressure of N2O4)
+solution = sp.solve(equilibrium_equation, x)
+
+# Get the partial pressures of N2O4 and NO2 at equilibrium
+P_N2O4_eq = solution[0]
+P_NO2_eq = 2 * (total_pressure - P_N2O4_eq)
+
+# Display the results
+P_N2O4_eq, P_NO2_eq
+
+\end{lstlisting}
+
+
+\section{Getting blasted}
+What is the role of the argon plasma in the inductively coupled plasma mass spectrometry (ICP-MS) instrument we discussed in the Water and Environment Laboratory tour?
+\subsubsection{Answer}
+Argon is the candidate element for this instrument because it is an inert gas and thus will not react with the sample that is being measured. The reason for turning the argon into plasma is to heat up the sample sufficiently so that it ionizes, allowing us to determine masses with mass spectrometry.
 
 \end{document}

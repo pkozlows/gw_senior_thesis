@@ -1,4 +1,6 @@
 {
-    "python.analysis.extraPaths": ["/Users/patrykkozlowski/caltech/classes/caltech/sp24/ph121c"]
-  }
-  
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.analysis.extraPaths": [
+    "/Users/patrykkozlowski/caltech/classes/caltech/sp24/ph121c"
+  ]
+}

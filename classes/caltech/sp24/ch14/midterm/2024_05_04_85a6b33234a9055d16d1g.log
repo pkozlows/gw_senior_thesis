@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  4 MAY 2024 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  5 MAY 2024 21:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -533,30 +533,31 @@ Overfull \hbox (34.23343pt too wide) in paragraph at lines 177--178
 \T1/cmr/m/n/12 present in a so-lu-tion of $[][]$ made to a to-tal con-cen-tra-tion of $\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^B \OT1/cmr/m/n/12 10[]M []$
  []
 
-[5] [6] [7]
-Overfull \hbox (1.32799pt too wide) in paragraph at lines 274--275
+[5] [6] [7] [8] [9]
+Overfull \hbox (1.32799pt too wide) in paragraph at lines 356--357
 []\T1/cmr/m/n/12 Using the Debye-Huckel lim-it-ing law and the Henderson-Hasselbalch equa-
  []
 
-<./images//smile-lvslvvf9smi5kvdw2w.png, id=46, 242.9075pt x 128.48pt>
+[10]
+<./images//smile-lvslvvf9smi5kvdw2w.png, id=57, 242.9075pt x 128.48pt>
 File: ./images//smile-lvslvvf9smi5kvdw2w.png Graphic file (type png)
 <use ./images//smile-lvslvvf9smi5kvdw2w.png>
-Package pdftex.def Info: ./images//smile-lvslvvf9smi5kvdw2w.png  used on input line 278.
+Package pdftex.def Info: ./images//smile-lvslvvf9smi5kvdw2w.png  used on input line 360.
 (pdftex.def)             Requested size: 242.90689pt x 128.47968pt.
-[8] [9 <./images//smile-lvslvvf9smi5kvdw2w.png>] (./2024_05_04_85a6b33234a9055d16d1g.aux) ) 
+ [11 <./images//smile-lvslvvf9smi5kvdw2w.png>] [12] [13] [14] [15] (./2024_05_04_85a6b33234a9055d16d1g.aux) ) 
 Here is how much of TeX's memory you used:
- 18090 strings out of 478268
- 366679 string characters out of 5846347
- 935240 words of memory out of 5000000
- 35984 multiletter control sequences out of 15000+600000
+ 18136 strings out of 478268
+ 367407 string characters out of 5846347
+ 960242 words of memory out of 5000000
+ 36030 multiletter control sequences out of 15000+600000
  487998 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,21n,103p,675b,1685s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 2024_05_04_85a6b33234a9055d16d1g.pdf (9 pages, 282430 bytes).
+ 99i,21n,103p,675b,1687s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_05_04_85a6b33234a9055d16d1g.pdf (15 pages, 328792 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 165 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

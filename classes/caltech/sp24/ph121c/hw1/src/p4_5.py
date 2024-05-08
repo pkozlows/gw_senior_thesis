@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.sparse.linalg
-from hw1 import sparse_hamiltonian, binary_string
+from hw1.src.hw1 import sparse_hamiltonian, binary_string
 
 def calculate_ground_state(H):
     """Calculate the ground state of a Hamiltonian."""

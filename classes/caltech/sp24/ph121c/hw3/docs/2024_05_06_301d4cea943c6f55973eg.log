@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  6 MAY 2024 09:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  9 MAY 2024 19:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -201,22 +201,22 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 ) (./2024_05_06_301d4cea943c6f55973eg.aux)
 \openout1 = `2024_05_06_301d4cea943c6f55973eg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
 
-Package chemgreek Info: Activating mapping `default' on line 53.
+Package chemgreek Info: Activating mapping `default' on line 55.
 
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -238,55 +238,88 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \c@lstlisting=\count293
-LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 54.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 56.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (41.35423pt too wide) in paragraph at lines 83--85
+Overfull \hbox (41.35423pt too wide) in paragraph at lines 85--87
 \T1/cmr/m/n/12 be some ini-tial state along with its de-com-po-si-tion in the eigen-ba-sis of $\OML/cmm/m/it/12 H; \OMS/cmsy/m/n/12 fj\OML/cmm/m/it/12 n\OMS/cmsy/m/n/12 ig[]$\T1/cmr/m/n/12 .
  []
 
 [3] [4] [5] [6]
-Overfull \hbox (7.11055pt too wide) in paragraph at lines 151--151
+Overfull \hbox (7.11055pt too wide) in paragraph at lines 153--153
 []\T1/cmr/bx/n/17.28 4 As-sign-ment: quan-tum sta-tis-ti-cal me-chan-ics and
  []
 
-[7] [8] [9] [10]
-Overfull \hbox (11.28232pt too wide) in paragraph at lines 207--208
+[7] [8] [9]
+<./images//Expectation_values_L_4.png, id=44, 722.7pt x 578.16pt>
+File: ./images//Expectation_values_L_4.png Graphic file (type png)
+<use ./images//Expectation_values_L_4.png>
+Package pdftex.def Info: ./images//Expectation_values_L_4.png  used on input line 180.
+(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
+<./images//Expectation_values_L_6.png, id=46, 722.7pt x 578.16pt>
+File: ./images//Expectation_values_L_6.png Graphic file (type png)
+<use ./images//Expectation_values_L_6.png>
+Package pdftex.def Info: ./images//Expectation_values_L_6.png  used on input line 185.
+(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
+<./images//Expectation_values_L_8.png, id=47, 722.7pt x 578.16pt>
+File: ./images//Expectation_values_L_8.png Graphic file (type png)
+<use ./images//Expectation_values_L_8.png>
+Package pdftex.def Info: ./images//Expectation_values_L_8.png  used on input line 190.
+(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
+<./images//Expectation_values_L_10.png, id=48, 722.7pt x 578.16pt>
+File: ./images//Expectation_values_L_10.png Graphic file (type png)
+<use ./images//Expectation_values_L_10.png>
+Package pdftex.def Info: ./images//Expectation_values_L_10.png  used on input line 195.
+(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 199.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [10 <./images//Expectation_values_L_4.png>] [11 <./images//Expectation_values_L_6.png>] [12 <./images//Expectation_values_L_8.png>] [13 <./images//Expectation_values_L_10.png>] [14] [15] [16]
+<./images//p4_1_2_L8.png, id=77, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_L8.png Graphic file (type png)
+<use ./images//p4_1_2_L8.png>
+Package pdftex.def Info: ./images//p4_1_2_L8.png  used on input line 296.
+(pdftex.def)             Requested size: 390.0pt x 292.5128pt.
+ [17 <./images//p4_1_2_L8.png>] [18] [19] [20] [21] [22] [23]
+Overfull \hbox (11.28232pt too wide) in paragraph at lines 475--476
 []\T1/cmr/m/n/12 which in the canon-i-cal en-sem-ble takes the form $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^L\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 ^^@ [][] \OML/cmm/m/it/12 w[] [] w[]$\T1/cmr/m/n/12 ,
  []
 
-[11] [12]
+[24]
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 234.
+(Font)              using `U/stmry/m/n' instead on input line 502.
 
-[13] [14] (./2024_05_06_301d4cea943c6f55973eg.aux)
+[25] [26] (./2024_05_06_301d4cea943c6f55973eg.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6588 strings out of 478268
- 100185 string characters out of 5846347
- 414377 words of memory out of 5000000
- 24722 multiletter control sequences out of 15000+600000
- 486650 words of font info for 80 fonts, out of 8000000 for 9000
+ 7175 strings out of 478268
+ 107432 string characters out of 5846347
+ 871055 words of memory out of 5000000
+ 25292 multiletter control sequences out of 15000+600000
+ 488039 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,10n,68p,1628b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on 2024_05_06_301d4cea943c6f55973eg.pdf (14 pages, 239381 bytes).
+ 59i,10n,68p,1628b,1820s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_05_06_301d4cea943c6f55973eg.pdf (26 pages, 780654 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 191 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

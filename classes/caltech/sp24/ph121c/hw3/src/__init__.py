@@ -1,2 +1,1 @@
-from .p4_1 import tensor_product, periodic_dense_hamiltonian_explicit, compute_observable_expectation
-from .p4_1_2 import compute_thermal_energy, compute_thermal_observable
+from .p4_1.fns import compute_observable_expectation, periodic_dense_hamiltonian, make_product_state, compute_thermal_energy, compute_thermal_observable

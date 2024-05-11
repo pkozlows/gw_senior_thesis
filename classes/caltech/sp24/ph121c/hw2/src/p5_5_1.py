@@ -77,7 +77,6 @@ gs = eigenvectors[:, 0]
 for k in k_values:
     mps_tensors = compute_mps(gs, k)
     bra = [t.conj().T for t in mps_tensors]  # Prepare the bra state by conjugate transposing every tensor in the lest
-    # make a function that takes in a list of mps tensors and its corresponding bra and computes the normalization
     def compute_contraction(mps_tensors, bra):
         # contract the physical energy_interactions on every tensor to generate a list of 2-tensors
         contraction = np.einsum('ijk,lji->kl', mps_tensors[0], bra[0])

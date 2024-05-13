@@ -273,8 +273,8 @@
       \strng{authorbibnamehash}{82e4bff563c82784b765c7573114c8af}
       \strng{authornamehash}{82e4bff563c82784b765c7573114c8af}
       \strng{authorfullhash}{36a85336f1a18a658e7abd8feca58949}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{PySCF is a Python-based general-purpose electronic structure platform that supports first-principles simulations of molecules and solids as well as accelerates the development of new methodology and complex computational workflows. This paper explains the design and philosophy behind PySCF that enables it to meet these twin objectives. With several case studies, we show how users can easily implement their own methods using PySCF as a development environment. We then summarize the capabilities of PySCF for molecular and solid-state simulations. Finally, we describe the growing ecosystem of projects that use PySCF across the domains of quantum chemistry, materials science, machine learning, and quantum information science.}
@@ -351,8 +351,8 @@
       \strng{authorbibnamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authornamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authorfullhash}{17139930a41e28f10b470363c2cea88a}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Although density functional theory is widely used in surface science, it has a tendency to predict surfaces to be more stable than they actually are experimentally. Using a many-electron approach such as the random-phase approximation enables accurate surface and adsorption energies for carbon monoxide and benzene on metal surfaces to be determined.}
@@ -413,8 +413,8 @@
       \strng{authorbibnamehash}{93e2014668408cba19b81f265ea34e3d}
       \strng{authornamehash}{acf07235291278c7d6c9481d25c3daed}
       \strng{authorfullhash}{93e2014668408cba19b81f265ea34e3d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We present the results of Gaussian-based ground-state and excited-state equation-of-motion coupled-cluster theory with single and double excitations for three-dimensional solids. We focus on diamond and silicon, which are paradigmatic covalent semiconductors. In addition to ground-state properties (the lattice constant, bulk modulus, and cohesive energy), we compute the quasiparticle band structure and band gap. We sample the Brillouin zone with up to 64 k-points using norm-conserving pseudopotentials and polarized double- and triple-ζ basis sets, leading to canonical coupled-cluster calculations with as many as 256 electrons in 2176 orbitals.}
@@ -462,11 +462,11 @@
       \strng{authorbibnamehash}{a094ce6d7c228a072c792c805e22643d}
       \strng{authornamehash}{a094ce6d7c228a072c792c805e22643d}
       \strng{authorfullhash}{a094ce6d7c228a072c792c805e22643d}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Caltech Undergraduate Research Journal}
+      \field{journaltitle}{CURJ}
       \field{month}{6}
       \field{title}{Elucidating {Catalysis} with the “{Gold} {Standard}” of {Quantum} {Chemistry}}
       \field{urlday}{19}
@@ -485,8 +485,8 @@
       \endverb
     \endentry
     \entry{noauthor_frontiers_nodate}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labeltitlesource}{title}
       \field{title}{Frontiers {|} {The} {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
       \field{urlday}{19}
@@ -528,8 +528,8 @@
       \strng{authorbibnamehash}{7e4e963df06b39584349eaf439922455}
       \strng{authornamehash}{7e4e963df06b39584349eaf439922455}
       \strng{authorfullhash}{7e4e963df06b39584349eaf439922455}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{The aim of this graduate-level textbook is to present and explain, at other than a superficial level, modem ab initio approaches to the calculation of the electronic structure and properties of molecules. The first three chapters contain introductory material culminating in a thorough discussion of the Hartree-Fock approximation.The remaining four chapters describe a variety of more sophisticated approaches, which improve upon this approximation.Among the highlights of the seven chapters are (1) a review of the mathematics (mostly matrix algebra) required for the rest of the book, (2) an introduction to the basic techniques, ideas, and notations of quantum chemistry, (3) a thorough discussion of the Hartree-Fock approximation, (4) a treatment of configuration interaction (Cl) and approaches incorporating electron correlation, (5) a description of the independent electron pair approximation and a variety of more sophisticated approaches that incorporate coupling between pairs, (6) a consideration of the perturbative approach to the calculation of the correlation energy of many-electron systems and (7) a brief introduction to the use of the one-particle many-body Green\&\#39;s function in quantum chemistry.Over 150 exercises, designed to help the reader acquire a working knowledge of the material, are embedded in the text. The book is largely self-contained and requires no prerequisite other than a solid undergraduate physical chemistry course; however, some exposure to quantum chemistry will enhance the student\&\#39;s appreciation of the material. Clear and well-written, this text is ideal for the second semester of a two-semester course in quantum chemistry, or for a special topics course.}
@@ -540,6 +540,43 @@
       \field{title}{Modern {Quantum} {Chemistry}: {Introduction} to {Advanced} {Electronic} {Structure} {Theory}}
       \field{year}{2012}
       \keyw{Science / Chemistry / General}
+    \endentry
+    \entry{parr_density-functional_1994}{book}{}
+      \name{author}{2}{}{%
+        {{hash=49143cad713785a0a7c28caba150006c}{%
+           family={Parr},
+           familyi={P\bibinitperiod},
+           given={Robert\bibnamedelima G.},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=89d653424c89caf46c80341a2d46869f}{%
+           family={Weitao},
+           familyi={W\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \strng{fullhash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \strng{bibnamehash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \strng{authorbibnamehash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \strng{authornamehash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \strng{authorfullhash}{2fc9fa293af075f07b0e0bc4d9404d03}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This book is a rigorous, unified account of the fundamental principles of the density-functional theory of the electronic structure of matter and its applications to atoms and molecules. Containing a detailed discussion of the chemical potential and its derivatives, it provides an understanding of the concepts of electronegativity, hardness and softness, and chemical reactivity. Both the Hohenberg-Kohn-Sham and the Levy-Lieb derivations of the basic theorems are presented, and extensive references to the literature are included. Two introductory chapters and several appendices provide all the background material necessary beyond a knowledge of elementary quantum theory. The book is intended for physicists, chemists, and advanced students in chemistry.}
+      \field{isbn}{978-0-19-535773-8}
+      \field{month}{5}
+      \field{note}{Google-Books-ID: mGOpScSIwU4C}
+      \field{title}{Density-{Functional} {Theory} of {Atoms} and {Molecules}}
+      \field{year}{1994}
+      \keyw{Science / Chemistry / Physical \& Theoretical,Science / Physics / Atomic \& Molecular}
     \endentry
     \entry{dreuw_single-reference_2005}{article}{}
       \name{author}{2}{}{%
@@ -560,8 +597,8 @@
       \strng{authorbibnamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authornamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authorfullhash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0009-2665}
@@ -605,8 +642,8 @@
       \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}
@@ -635,253 +672,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1021/acs.jctc.9b00333
-      \endverb
-    \endentry
-  \enddatalist
-\endrefsection
-
-\refsection{1}
-  \datalist[entry]{ydnt/global//global/global}
-    \entry{Cahn:etal:2016}{article}{maxbibnames=99}
-      \name{author}{4}{}{%
-        {{hash=fe8a263603434bb1da8abfa31559c5b5}{%
-           family={Cahn},
-           familyi={C\bibinitperiod},
-           given={J.\bibnamedelimi K.\bibnamedelimi B.},
-           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=e5900a3e2a08ea67882fef55efe86afc}{%
-           family={Baumschlager},
-           familyi={B\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=0652ce1e77896e6c356339fd8a260d2c}{%
-           family={Brinkmann-Chen},
-           familyi={B\bibinithyphendelim C\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=0f6deff29927d2607309f295fc1156d5}{%
-           family={Arnold},
-           familyi={A\bibinitperiod},
-           given={F.\bibnamedelimi H.},
-           giveni={F\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Oxford Univ Press}%
-      }
-      \strng{namehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{fullhash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{bibnamehash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{authorbibnamehash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{authornamehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{authorfullhash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{addendum}{J.K.B.C participated in the conception of the project, solved and analyzed the crystal structures, prepared the data, and participated in the writing of the manuscript.}
-      \field{journaltitle}{Protein Engineering Design and Selection}
-      \field{number}{1}
-      \field{title}{Mutations in adenine-binding pockets enhance catalytic properties of {NAD (P) H}-dependent enzymes}
-      \field{volume}{19}
-      \field{year}{2016}
-      \field{pages}{31\bibrangedash 38}
-      \range{pages}{8}
-      \verb{doi}
-      \verb 10.1093/protein/gzv057
-      \endverb
-    \endentry
-    \entry{Cahn:etal:2015}{article}{maxbibnames=99}
-      \name{author}{9}{}{%
-        {{hash=fe8a263603434bb1da8abfa31559c5b5}{%
-           family={Cahn},
-           familyi={C\bibinitperiod},
-           given={J.\bibnamedelimi K.\bibnamedelimi B.},
-           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=0652ce1e77896e6c356339fd8a260d2c}{%
-           family={Brinkmann-Chen},
-           familyi={B\bibinithyphendelim C\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=1b1f010683eeed21df53bde2b3a7aa8a}{%
-           family={Spatzal},
-           familyi={S\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-        {{hash=b4361545e9958f0d62d36eca1ecee884}{%
-           family={Wiig},
-           familyi={W\bibinitperiod},
-           given={J.\bibnamedelimi A.},
-           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=0495b962244e9f49deb27783b8e6c892}{%
-           family={Buller},
-           familyi={B\bibinitperiod},
-           given={A.\bibnamedelimi R.},
-           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=48ceba8044b33caf4b55b139a43bfce5}{%
-           family={Einsle},
-           familyi={E\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-        {{hash=abca94954939cb7608a6fa0b712c8a57}{%
-           family={Hu},
-           familyi={H\bibinitperiod},
-           given={Y.},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=a0a72baa3d69de885d17b77a06f5b9a2}{%
-           family={Ribbe},
-           familyi={R\bibinitperiod},
-           given={M.\bibnamedelimi W.},
-           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=21983cd122e8e2fffb2d666e5a86398f}{%
-           family={H.},
-           familyi={H\bibinitperiod},
-           given={Arnold\bibnamedelima F.},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \strng{namehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{fullhash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{bibnamehash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{authorbibnamehash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{authornamehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{authorfullhash}{a3a8f618653104b7571fbc36d2266624}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{addendum}{J.K.B.C participated in the conception of the project, solved and analyzed the crystal structures, prepared the data, and participated in the writing of the manuscript.}
-      \field{journaltitle}{Biochemical Journal}
-      \field{number}{3}
-      \field{title}{Cofactor specificity motifs and the induced fit mechanism in class {I} ketol-acid reductoisomerases}
-      \field{volume}{468}
-      \field{year}{2015}
-      \field{pages}{475\bibrangedash 484}
-      \range{pages}{10}
-      \verb{doi}
-      \verb 10.1042/BJ20150183
-      \endverb
-    \endentry
-  \enddatalist
-  \datalist[entry]{none/global//global/global}
-    \entry{Cahn:etal:2015}{article}{maxbibnames=99}
-      \name{author}{9}{}{%
-        {{hash=fe8a263603434bb1da8abfa31559c5b5}{%
-           family={Cahn},
-           familyi={C\bibinitperiod},
-           given={J.\bibnamedelimi K.\bibnamedelimi B.},
-           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=0652ce1e77896e6c356339fd8a260d2c}{%
-           family={Brinkmann-Chen},
-           familyi={B\bibinithyphendelim C\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=1b1f010683eeed21df53bde2b3a7aa8a}{%
-           family={Spatzal},
-           familyi={S\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-        {{hash=b4361545e9958f0d62d36eca1ecee884}{%
-           family={Wiig},
-           familyi={W\bibinitperiod},
-           given={J.\bibnamedelimi A.},
-           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=0495b962244e9f49deb27783b8e6c892}{%
-           family={Buller},
-           familyi={B\bibinitperiod},
-           given={A.\bibnamedelimi R.},
-           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=48ceba8044b33caf4b55b139a43bfce5}{%
-           family={Einsle},
-           familyi={E\bibinitperiod},
-           given={O.},
-           giveni={O\bibinitperiod}}}%
-        {{hash=abca94954939cb7608a6fa0b712c8a57}{%
-           family={Hu},
-           familyi={H\bibinitperiod},
-           given={Y.},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=a0a72baa3d69de885d17b77a06f5b9a2}{%
-           family={Ribbe},
-           familyi={R\bibinitperiod},
-           given={M.\bibnamedelimi W.},
-           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=21983cd122e8e2fffb2d666e5a86398f}{%
-           family={H.},
-           familyi={H\bibinitperiod},
-           given={Arnold\bibnamedelima F.},
-           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \strng{namehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{fullhash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{bibnamehash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{authorbibnamehash}{a3a8f618653104b7571fbc36d2266624}
-      \strng{authornamehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{authorfullhash}{a3a8f618653104b7571fbc36d2266624}
-      \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{addendum}{J.K.B.C participated in the conception of the project, solved and analyzed the crystal structures, prepared the data, and participated in the writing of the manuscript.}
-      \field{journaltitle}{Biochemical Journal}
-      \field{number}{3}
-      \field{title}{Cofactor specificity motifs and the induced fit mechanism in class {I} ketol-acid reductoisomerases}
-      \field{volume}{468}
-      \field{year}{2015}
-      \field{pages}{475\bibrangedash 484}
-      \range{pages}{10}
-      \verb{doi}
-      \verb 10.1042/BJ20150183
-      \endverb
-    \endentry
-    \entry{Cahn:etal:2016}{article}{maxbibnames=99}
-      \name{author}{4}{}{%
-        {{hash=fe8a263603434bb1da8abfa31559c5b5}{%
-           family={Cahn},
-           familyi={C\bibinitperiod},
-           given={J.\bibnamedelimi K.\bibnamedelimi B.},
-           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=e5900a3e2a08ea67882fef55efe86afc}{%
-           family={Baumschlager},
-           familyi={B\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=0652ce1e77896e6c356339fd8a260d2c}{%
-           family={Brinkmann-Chen},
-           familyi={B\bibinithyphendelim C\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=0f6deff29927d2607309f295fc1156d5}{%
-           family={Arnold},
-           familyi={A\bibinitperiod},
-           given={F.\bibnamedelimi H.},
-           giveni={F\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Oxford Univ Press}%
-      }
-      \strng{namehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{fullhash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{bibnamehash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{authorbibnamehash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \strng{authornamehash}{b59b27f5ca7715f2d55c8130347b86c3}
-      \strng{authorfullhash}{8620eb90bc46c07a3774aefdd5b058e6}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{addendum}{J.K.B.C participated in the conception of the project, solved and analyzed the crystal structures, prepared the data, and participated in the writing of the manuscript.}
-      \field{journaltitle}{Protein Engineering Design and Selection}
-      \field{number}{1}
-      \field{title}{Mutations in adenine-binding pockets enhance catalytic properties of {NAD (P) H}-dependent enzymes}
-      \field{volume}{19}
-      \field{year}{2016}
-      \field{pages}{31\bibrangedash 38}
-      \range{pages}{8}
-      \verb{doi}
-      \verb 10.1093/protein/gzv057
       \endverb
     \endentry
   \enddatalist

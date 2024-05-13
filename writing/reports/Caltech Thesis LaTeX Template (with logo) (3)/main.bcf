@@ -2356,8 +2356,8 @@
     <bcf:citekey order="6">kozlowski_elucidating_2021</bcf:citekey>
     <bcf:citekey order="7">noauthor_frontiers_nodate</bcf:citekey>
     <bcf:citekey order="8">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="9">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="10">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="9">parr_density-functional_1994</bcf:citekey>
+    <bcf:citekey order="10">parr_density-functional_1994</bcf:citekey>
     <bcf:citekey order="11">szabo_modern_2012</bcf:citekey>
     <bcf:citekey order="12">dreuw_single-reference_2005</bcf:citekey>
     <bcf:citekey order="13">bruneval_assessment_2019</bcf:citekey>
@@ -2374,8 +2374,9 @@
     <bcf:citekey order="24">kozlowski_elucidating_2021</bcf:citekey>
     <bcf:citekey order="25">noauthor_frontiers_nodate</bcf:citekey>
     <bcf:citekey order="26">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="27">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="27">parr_density-functional_1994</bcf:citekey>
     <bcf:citekey order="28">dreuw_single-reference_2005</bcf:citekey>
+    <bcf:citekey order="29">bruneval_assessment_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

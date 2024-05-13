@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  1 MAY 2024 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  5 MAY 2024 14:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1574,7 +1574,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ] [7]
-<correlation_energies.png, id=270, 622.2447pt x 499.3857pt>
+<correlation_energies.png, id=271, 622.2447pt x 499.3857pt>
 File: correlation_energies.png Graphic file (type png)
 <use correlation_energies.png>
 Package pdftex.def Info: correlation_energies.png  used on input line 224.
@@ -1605,12 +1605,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ]
-<h2_occupations.png, id=318, 462.528pt x 346.896pt>
+<h2_occupations.png, id=319, 462.528pt x 346.896pt>
 File: h2_occupations.png Graphic file (type png)
 <use h2_occupations.png>
 Package pdftex.def Info: h2_occupations.png  used on input line 324.
 (pdftex.def)             Requested size: 397.485pt x 298.12889pt.
-<h2_mo.png, id=321, 443.6575pt x 305.14pt>
+<h2_mo.png, id=322, 443.6575pt x 305.14pt>
 File: h2_mo.png Graphic file (type png)
 <use h2_mo.png>
 Package pdftex.def Info: h2_mo.png  used on input line 331.
@@ -1741,18 +1741,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38940 strings out of 478268
- 700121 string characters out of 5846347
- 1530892 words of memory out of 5000000
- 56338 multiletter control sequences out of 15000+600000
+ 38935 strings out of 478268
+ 700010 string characters out of 5846347
+ 1530978 words of memory out of 5000000
+ 56332 multiletter control sequences out of 15000+600000
  558904 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,12n,120p,2022b,1815s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,12n,120p,2050b,1815s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (36 pages, 453557 bytes).
+Output written on main.pdf (36 pages, 453964 bytes).
 PDF statistics:
- 597 PDF objects out of 1000 (max. 8388607)
- 519 compressed objects within 6 object streams
- 176 named destinations out of 1000 (max. 500000)
+ 598 PDF objects out of 1000 (max. 8388607)
+ 520 compressed objects within 6 object streams
+ 177 named destinations out of 1000 (max. 500000)
  750 words of extra memory for PDF output out of 10000 (max. 10000000)
 

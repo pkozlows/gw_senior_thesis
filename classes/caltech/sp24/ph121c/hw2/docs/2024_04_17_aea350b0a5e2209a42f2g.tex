@@ -525,8 +525,10 @@ plt.savefig('entanglement_entropy_L2.png')
 In the ferromagnetic phase, there are two possible ground states, so the entanglement entropy is near $\log 2 \approx 0.7$. In the paramagnetic phase, there is only one possible ground state, so the entanglement entropy is near $\log 1 \approx 0$. At the critical value for $h$, this is somewhere in the middle.
 \newpage
 
-Now consider the case with periodic boundary conditions and repeat the same calculations (the steps are identical to the open b.c. case). Why is the EE larger in the periodic case and roughly by what factor? \\\\
-The area law tells us that the entanglement entropy will scale with the size of the boundary between the two regions. In the case of periodic boundary conditions, there can be 2 boundaries come as shown in the screenshot, while with open boundary conditions, there is only 1 boundary site in the middle of the chain. This is why the entanglement entropy is larger in the periodic case, roughly by a factor of 2.
+Now consider the case with periodic boundary conditions and repeat the same calculations (the steps are identical to the open b.c. case). Why is the EE larger in the periodic case and roughly by what factor? 
+
+It is difficult to completely describe the area law for this one-dimensional chain, but it says that the entanglement entropy scales with the surface area to volume ratio; in the one dimensional case, this can be thought of in terms of the numbers of boundaries. In the case of periodic boundary conditions, there can be 2 boundaries as shown in the screenshot, while with open boundary conditions, there is only 1 boundary site in the middle of the chain. This is why the entanglement entropy is larger in the periodic case, roughly by a factor of 2.
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{entanglement_entropy_periodic.png}
@@ -599,8 +601,8 @@ print(f"Fitted C: {params[1]}")
 \end{figure}
 \newpage
 
-Have your eigensolver find the highest excited state of the Hamiltonian and perform a similar study; here it is enough to consider just one value of $h / J \neq(h / J)_{c}$ and one choice of boundary conditions. Why do you think the highest-energy state also satisfies the area law?\\\\
-I did the same thing for the highest excited state but with the open boundary conditions. 
+Have your eigensolver find the highest excited state of the Hamiltonian and perform a similar study; here it is enough to consider just one value of $h / J \neq (h / J)_{c}$ and one choice of boundary conditions. Why do you think the highest-energy state also satisfies the area law?\\\\
+I did the same thing for the highest excited state but with the open boundary conditions. We are in the ferromagnetic phase, so the entanglement entropy is near $\log 2 \approx 0.7$. The way one can think about it is that the highest excited state for the ferromagnet is simply like the lowest ground state for the paramagnet; since we know that the ground state for the paramagnet satisfies the area law, then this one should too.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{entanglement_entropy_LA.png}
@@ -744,7 +746,7 @@ to actually sample a random vector with a basis-independent distribution uniform
 \subsection*{5.5 Matrix product state representation for ground states}
 Return to the setup in Sec. 5.2, considering the ground state $\left|\psi_{\text {gs }}\right\rangle$ with open b.c., using a sparse eigensolver to reach larger sizes. You should now consider two points, one fairly close to the phase transition, say $h / J=5 / 4$, and one exactly at $h / J=(h / J)_{c}=1$. Compute MPS approximations of the ED wavefunction, varying the bond dimension $k$. What is the actual reduction in storage space you achieve? Contract the virtual indices of the tensors of the MPS to obtain exponentially large $\left|\tilde{\psi}_{\mathrm{gs}}(k)\right\rangle$ and compute the overlap $\left\langle\tilde{\psi}_{\mathrm{gs}}(k) \mid \psi_{\mathrm{gs}}\right\rangle$ with the original ED wavefunction.
 \subsubsection{Answer}
-My results are shown. The approximation is not that good for k=1, but it is surprisingly good for the ground state as k increases even in small increments. This is likely because we tried to approximate the ground state which does not have much entanglement and can be well approximated as a product state. It also should be noted that the rank 2 approximation is so good because we are dealing with a system of 2 possible spins i.e. no more than 2 singular values are needed for a good approximation to the state.
+My results are shown. The approximation is not that good for k=1, but it is surprisingly good for the ground state as k increases even in small increments. This is likely because we tried to approximate the ground state which does not have much entanglement and can be well approximated  as a product state. It also should be noted that the rank 2 approximation and past is so good because we are dealing with a system of 2 possible spins i.e. no more than 2 singular values are needed for a good approximation to the state.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{overlap.png}

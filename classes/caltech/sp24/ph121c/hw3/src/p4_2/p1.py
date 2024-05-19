@@ -4,7 +4,9 @@ from hw3.src.p4_2.fns import translation_operator, identify_k0_sector, compute_o
 from hw3.src.p4_1.fns import periodic_dense_hamiltonian
 from hw1.src.hw1 import tensor_product
 
-# Define line styles and colors for different system sizes and observables
+# Define scatter styles, line styles, and colors for different system sizes and observables
+scatter_styles = ['o', 's', '^']
+edge_colors = ['black', 'gray', 'white']  # Edge colors for different system sizes
 line_styles = ['-', '--', ':']
 colors = ['blue', 'green', 'red']  # Colors for sigma_x, sigma_y, sigma_z
 observable_labels = ['x', 'y', 'z']
@@ -19,8 +21,8 @@ h_z = 0.5
 # Prepare the plot
 plt.figure(figsize=(10, 6))
 plt.title('Observable Expectation Values vs Normalized Eigenvalues for Different L')
-plt.xlabel(f'Normalized Eigenvalue ($\epsilon_n / L$)')
-plt.ylabel(f'Expectation Value ($\langle\sigma_1^\mu\\rangle_n$)')
+plt.xlabel(r'Energy density ($\epsilon_n / L$)')
+plt.ylabel(r'Expectation Value ($\langle\sigma_1^\mu\rangle_n$)')
 
 # Loop over system sizes
 for i, L in enumerate(L_values):
@@ -45,15 +47,23 @@ for i, L in enumerate(L_values):
     for j, observable in enumerate(full_observables):
         expectation_values = []
         eigenvalues_k0 = []
-        for k0_index in range(len(k0_sector)):
-            observable_k0 = compute_observable_expectation_eigenvalue(k0_index, observable, eigenvalues, eigenvectors)
+        for _, k0_index in enumerate(k0_sector):
+            observable_k0 = compute_observable_expectation_eigenvalue(k0_index, observable, eigenvectors)
             expectation_values.append(observable_k0)
             eigenvalues_k0.append(eigenvalues[k0_index])
         
-        plt.plot(np.array(eigenvalues_k0) / L, expectation_values, label=f'L={L}, $\sigma_{{1}}^{{ {observable_labels[j]} }}$', 
-                 color=colors[j], linestyle=line_styles[i])
+        plt.scatter(
+            np.array(eigenvalues_k0) / L, 
+            expectation_values, 
+            label=f'L={L}, $\sigma_{{1}}^{{ {observable_labels[j]} }}$', 
+            color=colors[j], 
+            marker=scatter_styles[i], 
+            edgecolors=edge_colors[i],
+            linestyle=line_styles[i]
+        )
 
 # Add legend and show plot
 plt.legend()
 plt.grid(True)
-plt.savefig(f"hw3/docs/images/p4_2_1_filtered_expectations.png")
+plt.savefig("hw3/docs/images/p4_2_1_filtered_expectations.png")
+plt.show()

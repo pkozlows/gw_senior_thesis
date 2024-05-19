@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  7 MAY 2024 22:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  11 MAY 2024 16:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -387,25 +387,20 @@ Package pdftex.def Info: ./images//entanglement_entropy_L2.png  used on input li
 <./images//entanglement_entropy_periodic.png, id=114, 722.7pt x 433.62pt>
 File: ./images//entanglement_entropy_periodic.png Graphic file (type png)
 <use ./images//entanglement_entropy_periodic.png>
-Package pdftex.def Info: ./images//entanglement_entropy_periodic.png  used on input line 532.
+Package pdftex.def Info: ./images//entanglement_entropy_periodic.png  used on input line 534.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 528--537
-
- []
-
 <./images//entanglement_entropy_L2_periodic.png, id=115, 722.7pt x 433.62pt>
 File: ./images//entanglement_entropy_L2_periodic.png Graphic file (type png)
 <use ./images//entanglement_entropy_L2_periodic.png>
-Package pdftex.def Info: ./images//entanglement_entropy_L2_periodic.png  used on input line 542.
+Package pdftex.def Info: ./images//entanglement_entropy_L2_periodic.png  used on input line 544.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 <./images//pbc.png, id=116, 705.63625pt x 212.795pt>
 File: ./images//pbc.png Graphic file (type png)
 <use ./images//pbc.png>
-Package pdftex.def Info: ./images//pbc.png  used on input line 547.
+Package pdftex.def Info: ./images//pbc.png  used on input line 549.
 (pdftex.def)             Requested size: 390.0pt x 117.60907pt.
-[25 <./images//entanglement_entropy_periodic.png>] [26 <./images//entanglement_entropy_L2_periodic.png> <./images//pbc.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 559--562
+ [25 <./images//entanglement_entropy_periodic.png>] [26 <./images//entanglement_entropy_L2_periodic.png> <./images//pbc.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 561--564
 
  []
 
@@ -413,48 +408,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 559--562
 <./images//entanglement_entropy_fit.png, id=130, 462.528pt x 346.896pt>
 File: ./images//entanglement_entropy_fit.png Graphic file (type png)
 <use ./images//entanglement_entropy_fit.png>
-Package pdftex.def Info: ./images//entanglement_entropy_fit.png  used on input line 597.
+Package pdftex.def Info: ./images//entanglement_entropy_fit.png  used on input line 599.
 (pdftex.def)             Requested size: 390.0pt x 292.5128pt.
  [28 <./images//entanglement_entropy_fit.png>]
 <./images//entanglement_entropy_LA.png, id=135, 722.7pt x 433.62pt>
 File: ./images//entanglement_entropy_LA.png Graphic file (type png)
 <use ./images//entanglement_entropy_LA.png>
-Package pdftex.def Info: ./images//entanglement_entropy_LA.png  used on input line 606.
+Package pdftex.def Info: ./images//entanglement_entropy_LA.png  used on input line 608.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--609
+Underfull \hbox (badness 10000) in paragraph at lines 604--611
 
  []
 
 <./images//entanglement_entropy_L2_LA.png, id=136, 722.7pt x 433.62pt>
 File: ./images//entanglement_entropy_L2_LA.png Graphic file (type png)
 <use ./images//entanglement_entropy_L2_LA.png>
-Package pdftex.def Info: ./images//entanglement_entropy_L2_LA.png  used on input line 612.
+Package pdftex.def Info: ./images//entanglement_entropy_L2_LA.png  used on input line 614.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 [29 <./images//entanglement_entropy_LA.png>]
 <./images//energy_vs_frobenius.png, id=141, 462.528pt x 346.896pt>
 File: ./images//energy_vs_frobenius.png Graphic file (type png)
 <use ./images//energy_vs_frobenius.png>
-Package pdftex.def Info: ./images//energy_vs_frobenius.png  used on input line 625.
+Package pdftex.def Info: ./images//energy_vs_frobenius.png  used on input line 627.
 (pdftex.def)             Requested size: 390.0pt x 292.5128pt.
  [30 <./images//entanglement_entropy_L2_LA.png>] [31 <./images//energy_vs_frobenius.png>] [32] [33]
 <./images//entanglement_entropy_middle_spectrum.png, id=157, 722.7pt x 433.62pt>
 File: ./images//entanglement_entropy_middle_spectrum.png Graphic file (type png)
 <use ./images//entanglement_entropy_middle_spectrum.png>
-Package pdftex.def Info: ./images//entanglement_entropy_middle_spectrum.png  used on input line 687.
+Package pdftex.def Info: ./images//entanglement_entropy_middle_spectrum.png  used on input line 689.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
  [34 <./images//entanglement_entropy_middle_spectrum.png>] [35] [36] [37]
 <./images//overlap.png, id=172, 377.41pt x 219.82124pt>
 File: ./images//overlap.png Graphic file (type png)
 <use ./images//overlap.png>
-Package pdftex.def Info: ./images//overlap.png  used on input line 750.
+Package pdftex.def Info: ./images//overlap.png  used on input line 752.
 (pdftex.def)             Requested size: 390.0pt x 227.15297pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [38] [39 <./images//overlap.png>] [40] [41] [42]
-Overfull \hbox (115.35498pt too wide) in paragraph at lines 895--896
+Overfull \hbox (115.35498pt too wide) in paragraph at lines 897--898
 \T1/cmr/m/n/12 are de-scribed in Sec. 4.3. Set up such a cal-cu-la-tion for $\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 k\OT1/cmr/m/n/12 ) = [] \OML/cmm/m/it/12 = []$
  []
 
@@ -462,41 +457,41 @@ Overfull \hbox (115.35498pt too wide) in paragraph at lines 895--896
 <./images//mps_h.png, id=194, 378.41376pt x 228.855pt>
 File: ./images//mps_h.png Graphic file (type png)
 <use ./images//mps_h.png>
-Package pdftex.def Info: ./images//mps_h.png  used on input line 909.
+Package pdftex.def Info: ./images//mps_h.png  used on input line 911.
 (pdftex.def)             Requested size: 390.0pt x 235.86295pt.
  [44 <./images//mps_h.png>] [45] [46]
 <./images//5-5_correlation_k1.png, id=205, 722.7pt x 433.62pt>
 File: ./images//5-5_correlation_k1.png Graphic file (type png)
 <use ./images//5-5_correlation_k1.png>
-Package pdftex.def Info: ./images//5-5_correlation_k1.png  used on input line 977.
+Package pdftex.def Info: ./images//5-5_correlation_k1.png  used on input line 979.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 <./images//5-5_correlation_k2.png, id=206, 722.7pt x 433.62pt>
 File: ./images//5-5_correlation_k2.png Graphic file (type png)
 <use ./images//5-5_correlation_k2.png>
-Package pdftex.def Info: ./images//5-5_correlation_k2.png  used on input line 982.
+Package pdftex.def Info: ./images//5-5_correlation_k2.png  used on input line 984.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 <./images//5-5_correlation_k3.png, id=207, 722.7pt x 433.62pt>
 File: ./images//5-5_correlation_k3.png Graphic file (type png)
 <use ./images//5-5_correlation_k3.png>
-Package pdftex.def Info: ./images//5-5_correlation_k3.png  used on input line 987.
+Package pdftex.def Info: ./images//5-5_correlation_k3.png  used on input line 989.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
 <./images//5-5_correlation_k4.png, id=208, 722.7pt x 433.62pt>
 File: ./images//5-5_correlation_k4.png Graphic file (type png)
 <use ./images//5-5_correlation_k4.png>
-Package pdftex.def Info: ./images//5-5_correlation_k4.png  used on input line 992.
+Package pdftex.def Info: ./images//5-5_correlation_k4.png  used on input line 994.
 (pdftex.def)             Requested size: 390.0pt x 233.99913pt.
  [47 <./images//5-5_correlation_k1.png>] [48 <./images//5-5_correlation_k2.png> <./images//5-5_correlation_k3.png>] [49 <./images//5-5_correlation_k4.png>] [50] [51] [52] [53]
-Overfull \hbox (2.29294pt too wide) in paragraph at lines 1250--1254
+Overfull \hbox (2.29294pt too wide) in paragraph at lines 1252--1256
 []\T1/cmr/m/n/12 This shows that the sum is the iden-tity ma-trix, sat-is-fy-ing the left-canonical
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1250--1254
+Underfull \hbox (badness 10000) in paragraph at lines 1252--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1250--1254
+Underfull \hbox (badness 10000) in paragraph at lines 1252--1256
 
  []
 
@@ -504,19 +499,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1250--1254
 <./images//schmidt1.png, id=239, 207.77625pt x 195.73125pt>
 File: ./images//schmidt1.png Graphic file (type png)
 <use ./images//schmidt1.png>
-Package pdftex.def Info: ./images//schmidt1.png  used on input line 1258.
+Package pdftex.def Info: ./images//schmidt1.png  used on input line 1260.
 (pdftex.def)             Requested size: 390.0pt x 367.4342pt.
  [55 <./images//schmidt1.png>] [56] [57]
 <./images//schmidt2.png, id=251, 209.78375pt x 195.73125pt>
 File: ./images//schmidt2.png Graphic file (type png)
 <use ./images//schmidt2.png>
-Package pdftex.def Info: ./images//schmidt2.png  used on input line 1349.
+Package pdftex.def Info: ./images//schmidt2.png  used on input line 1351.
 (pdftex.def)             Requested size: 390.0pt x 363.87714pt.
  [58 <./images//schmidt2.png>] [59] [60] [61]
 <./images//move.png, id=266, 255.95625pt x 185.69376pt>
 File: ./images//move.png Graphic file (type png)
 <use ./images//move.png>
-Package pdftex.def Info: ./images//move.png  used on input line 1421.
+Package pdftex.def Info: ./images//move.png  used on input line 1423.
 (pdftex.def)             Requested size: 390.0pt x 282.96013pt.
  [62 <./images//move.png>] [63] [64] [65] [66] (./2024_04_17_aea350b0a5e2209a42f2g.aux)
 
@@ -532,7 +527,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  59i,18n,74p,2234b,1855s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 2024_04_17_aea350b0a5e2209a42f2g.pdf (66 pages, 2689670 bytes).
+Output written on 2024_04_17_aea350b0a5e2209a42f2g.pdf (66 pages, 2690123 bytes).
 PDF statistics:
  378 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams

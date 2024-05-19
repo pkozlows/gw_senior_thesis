@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 from hw1.src.hw1 import tensor_product
 from hw3.src.p4_1.fns import periodic_dense_hamiltonian, compute_observable_expectation, make_product_state, compute_thermal_energy, compute_thermal_observable
 # Set system parameters
-L_values = [8, 10, 12, 14]
+L_values = [8, 10]
 h_x = -1.05
 h_z = 0.5
-beta_values = np.linspace(0, 1, 20)
+beta_values = np.linspace(0, 1, 40)
 
 # Define simple matrices
 sigma_x = np.array([[0, 1], [1, 0]])
@@ -42,21 +42,21 @@ for l in L_values:
     overlap_coefficients = np.dot(eigenvectors.conj().T, initial_state)
 
     # Compute the initial energy of the initial state
-    initial_energy = compute_observable_expectation(0, H, overlap_coefficients, eigenvalues, eigenvectors)    
+    matrix_aliment = initial_state.conj().T @ H @ initial_state
+    normalization = initial_state.conj().T @ initial_state
+    initial_energy = matrix_aliment / normalization     
 
     # Plot the horizontal dashed red line at the initial energy
-    plt.axhline(y=initial_energy, color='r', linestyle='--', label="Initial Energy")
+    plt.axhline(y=initial_energy, color='r', linestyle='--', label=f"Initial Energy = {initial_energy:.4f}")
 
-    def find_intersection_point(thermal_energies, initial_energy):
-        beta_intersection = None  # Initialize beta_intersection
-        for beta, energy in thermal_energies.items():
-            if abs(energy - initial_energy) < 1e0:
-                plt.annotate(rf"$\beta = {beta:.2f}$", (beta, energy), textcoords="offset points", xytext=(0, 10), ha='center', color='red')
-                beta_intersection = beta
-                break
-        return beta_intersection
+
+    # Find the intersection point with the initial energy by taking the argmin of the absolute difference
+    beta_intersection = min(thermal_energies, key=lambda beta: abs(thermal_energies[beta] - initial_energy))
+
+    # annotate the intersection point
+    plt.annotate(f"Intersection at $\\beta = {beta_intersection:.2f}$", (beta_intersection, initial_energy), textcoords="offset points", xytext=(0, 10), ha='center')
+
     
-    beta_intersection = find_intersection_point(thermal_energies, initial_energy)
 
     # Add legend and save the plot
     plt.legend()
@@ -69,22 +69,18 @@ for l in L_values:
     full_observables = [full_sigma_x, full_sigma_y, full_sigma_z]
 
      # Identify the value of each observable at the beta intersection if it exists
-    if beta_intersection is not None:
-        observables_values = {}
-        for observable, label in zip(full_observables, observables_labels):
-            observables_values[label] = compute_thermal_observable(beta_intersection, eigenvalues, eigenvectors, observable)
-        print(f"Observables at beta intersection ({beta_intersection}): {observables_values}")
-    else:
-        print(f"No intersection found for L={l}")
+    observables_values = {}
+    for observable, label in zip(full_observables, observables_labels):
+        observables_values[label] = compute_thermal_observable(beta_intersection, eigenvalues, eigenvectors, observable)
 
     # Compute time-dependent values for each observable
     observables_values_time = {}
-    t_values = np.linspace(0, 10, 20)
+    t_values = np.linspace(0, 200, 40)
     for label, observable in zip(observables_labels, full_observables):
         expectations = []
         for t in t_values:
             expectation = compute_observable_expectation(t, observable, overlap_coefficients, eigenvalues, eigenvectors)
-            expectations.append(expectation.real if np.isclose(expectation.imag, 0) else np.nan)
+            expectations.append(expectation)
         observables_values_time[label] = expectations
 
     # Plotting section

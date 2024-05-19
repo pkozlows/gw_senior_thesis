@@ -106,13 +106,13 @@ def sparse_hamiltonian(L, h, J=1, periodic=False):
     H = scipy.sparse.coo_matrix((data, (row, col)), shape=(2**L, 2**L))
     return H
 
-def apply_operator(tensor, operator):
-    return np.einsum('jk,ikl->ijl', operator, tensor)
-
-# define the operators
-sigma_z = np.array([[1, 0], [0, -1]])
-sigma_x = np.array([[0, 1], [1, 0]])
 def mps_correlations(mps_tensors):
+    def apply_operator(tensor, operator):
+        return np.einsum('jk,ikl->ijl', operator, tensor)
+
+    # define the operators
+    sigma_z = np.array([[1, 0], [0, -1]])
+    sigma_x = np.array([[0, 1], [1, 0]])
     # Calculate the correlation function of a state.
     contractions = []
     L = len(mps_tensors)
@@ -138,25 +138,25 @@ def compute_contraction(mps_tensors, bra):
             contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
             
     return contraction
-# Define parameters
-L = 8
-k_values = np.arange(1, 5, 1)
-h_values = [0.3, 1.7]
+# # Define parameters
+# L = 8
+# k_values = np.arange(1, 5, 1)
+# h_values = [0.3, 1.7]
 
-for k in k_values:
-    plt.figure(figsize=(10, 6))
-    plt.title(f'Correlation function as a function of site separation for k={k}')
-    plt.xlabel('Site separation r')
-    plt.ylabel('Correlation function')
-    for h in h_values:
-        # Obtain the ground state from the Hamiltonian
-        H = sparse_hamiltonian(L, h, periodic=False)
-        eigenvalues, eigenvectors = eigsh(H, k=1, which='SA')
-        gs = eigenvectors[:, 0]
-        mps_tensors = compute_mps(gs, k)
-        correlations = mps_correlations(mps_tensors)
-        r_values = range(1, L)
-        plt.plot(r_values, correlations, 'o-', label=f'h={h}')
-    plt.legend()
-    plt.grid()
-    plt.savefig(f'5-5_correlation_k{k}.png')
+# for k in k_values:
+#     plt.figure(figsize=(10, 6))
+#     plt.title(f'Correlation function as a function of site separation for k={k}')
+#     plt.xlabel('Site separation r')
+#     plt.ylabel('Correlation function')
+#     for h in h_values:
+#         # Obtain the ground state from the Hamiltonian
+#         H = sparse_hamiltonian(L, h, periodic=False)
+#         eigenvalues, eigenvectors = eigsh(H, k=1, which='SA')
+#         gs = eigenvectors[:, 0]
+#         mps_tensors = compute_mps(gs, k)
+#         correlations = mps_correlations(mps_tensors)
+#         r_values = range(1, L)
+#         plt.plot(r_values, correlations, 'o-', label=f'h={h}')
+#     plt.legend()
+#     plt.grid()
+#     plt.savefig(f'5-5_correlation_k{k}.png')

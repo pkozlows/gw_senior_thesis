@@ -12,7 +12,7 @@ t_values = np.linspace(0, 50, 20)
 for L in L_values:
     # Generate the Hamiltonian
     H = periodic_dense_hamiltonian(L, h_x, h_z)
-    # Diagonalize the Hamiltonian
+    # Diagonalize the Hamiltonian,
     eigenvalues, eigenvectors = np.linalg.eigh(H)
 
     # Initial state: tensor product of single_site across all sites

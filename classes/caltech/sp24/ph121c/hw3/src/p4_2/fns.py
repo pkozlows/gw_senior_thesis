@@ -9,7 +9,7 @@ def translation_operator(L):
         state = format(i, f'0{L}b')  # Binary representation of the state
         new_state = state[-1] + state[:-1]  # Shift by one site to the right
         new_index = int(new_state, 2)  # Convert back to decimal
-        T[new_index, i] = 1
+        T[i, new_index] = 1
 
     return T
 
@@ -31,7 +31,7 @@ def identify_k0_sector(eigenvectors, T):
             k0_indices.append(n)
     return k0_indices
 
-def compute_observable_expectation_eigenvalue(eigenindex, observable, eigenvalues, eigenvectors):
+def compute_observable_expectation_eigenvalue(eigenindex, observable, eigenvectors):
     """
     Compute the expectation value of an observable given the eigenindex.
     
@@ -44,5 +44,5 @@ def compute_observable_expectation_eigenvalue(eigenindex, observable, eigenvalue
     Returns:
     - expectation: The expectation value of the observable.
     """
-    expectation = np.dot(eigenvectors[:, eigenindex].conj().T, np.dot(observable, eigenvectors[:, eigenindex]))
+    expectation = np.dot(eigenvectors[:, eigenindex].T, np.dot(observable, eigenvectors[:, eigenindex]))
     return expectation

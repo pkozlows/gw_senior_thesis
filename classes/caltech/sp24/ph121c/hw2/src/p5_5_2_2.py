@@ -1,5 +1,5 @@
 import numpy as np
-from p5_5 import truncate_svd  # Assuming truncate_svd performs SVD and truncates based on some criterion
+from hw2.src.p5_5 import truncate_svd # Assuming truncate_svd performs SVD and truncates based on some criterion
 
 def initialize_mps(L):
     mps_tensors = []
@@ -38,7 +38,6 @@ def shift_orthogonality_center(mps_tensors, target):
             prev_tensor_matrix = mps_tensors[i-1].reshape(-1, u.shape[0])
             mps_tensors[i-1] = np.dot(prev_tensor_matrix, u @ s).reshape(*mps_tensors[i-1].shape[:-1], vt.shape[0])
 
-<<<<<<< HEAD
 def left_canonicalize(mps_tensors):
     L = len(mps_tensors)
     for i in range(L-1):
@@ -57,11 +56,7 @@ def left_canonicalize(mps_tensors):
     mps_tensors[-1] = np.dot(s @ vt, mps_tensors[-1].reshape(last_shape[0], -1)).reshape(last_shape)
 
 # Call the function
-left_canonicalize(mps_tensors)
 def check_left_canonical(mps_tensors):
-=======
-def check_canonical(mps_tensors):
->>>>>>> mps_construction
     for idx, tensor in enumerate(mps_tensors):
         # Left canonical check
         reshaped_tensor = tensor.reshape(-1, tensor.shape[-1])
@@ -70,15 +65,14 @@ def check_canonical(mps_tensors):
         else:
             print(f"Tensor at site {idx+1} is NOT left-canonical.")
         
-        # Right canonical check
-        reshaped_tensor = tensor.reshape(tensor.shape[0], -1)
-        if np.allclose(reshaped_tensor @ reshaped_tensor.conj().T, np.eye(reshaped_tensor.shape[0])):
-            print(f"Tensor at site {idx+1} is right-canonical.")
-        else:
-            print(f"Tensor at site {idx+1} is NOT right-canonical.")
+        # # Right canonical check
+        # reshaped_tensor = tensor.reshape(tensor.shape[0], -1)
+        # if np.allclose(reshaped_tensor @ reshaped_tensor.conj().T, np.eye(reshaped_tensor.shape[0])):
+        #     print(f"Tensor at site {idx+1} is right-canonical.")
+        # else:
+        #     print(f"Tensor at site {idx+1} is NOT right-canonical.")
 
-<<<<<<< HEAD
-check_left_canonical(mps_tensors)
+
 
 def right_canonicalize(mps_tensors, ortho_center):
     L = len(mps_tensors)
@@ -111,12 +105,5 @@ def check_right_canonical(mps_tensors):
             print(f"Tensor at site {idx+1} is right-canonical.")
         else:
             print(f"Tensor at site {idx+1} is NOT right-canonical.")
-right_canonicalize(mps_tensors, 2)
-check_right_canonical(mps_tensors)
-=======
-# Example usage
-L = 6
-mps_tensors = initialize_mps(L)
-shift_orthogonality_center(mps_tensors, 3)  # Move the orthogonality center to site 3
-check_canonical(mps_tensors)
->>>>>>> mps_construction
+# right_canonicalize(mps_tensors, 2)
+# check_right_canonical(mps_tensors)

@@ -102,6 +102,7 @@ def compute_thermal_observable(beta, eigenvalues, eigenvectors, observable):
     """
     boltzmann_factors = np.exp(-beta * eigenvalues)
     observable_in_basis = eigenvectors.conj().T @ observable @ eigenvectors
+    print(np.diag(observable_in_basis).shape)
     weighted_trace = np.sum(boltzmann_factors * np.diag(observable_in_basis))
     Z = np.sum(boltzmann_factors)
     thermal_observable = weighted_trace / Z

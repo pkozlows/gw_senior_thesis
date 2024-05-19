@@ -8,6 +8,8 @@
 \usepackage{stmaryrd}
 \usepackage{graphicx}
 \usepackage{physics}
+\usepackage{subcaption}
+\usepackage[a4paper, left=0.25in, right=0.25in, top=1in, bottom=1in]{geometry}
 
 \usepackage{listings} % Required for insertion of code
 \usepackage{xcolor} % Required for custom colors
@@ -158,9 +160,55 @@ Set up dense exact diagonalization for the quantum Ising model in a field with b
 \begin{equation*}
 H=-J \sum_{j=1}^{L} \sigma_{j}^{z} \sigma_{j+1}^{z}-h^{x} \sum_{j=1}^{L} \sigma_{j}^{x}-h^{z} \sum_{j=1}^{L} \sigma_{j}^{z} \tag{8}
 \end{equation*}
+I think the $\sigma _z$ should change with time because we have:
+\begin{equation}
+    \frac{d}{dt} \sigma _z = i[H, \sigma _z]
+\end{equation}
+but $\sigma _z$ does not commute with the Hamiltonian because it does not commute with the term that contains $\sigma_x$.
 
 
 For simplicity, set $J=1$. You should use periodic b.c. throughout the assignment to minimize finite-size effects. We are not so concerned with the ground state of the system or its low-energy states; what is important is that any $h^{z} \neq 0$ breaks the integrability of the transverse-field Ising model, thus we expect ETH behavior. We will use the particular values $\left(h^{x}, h^{z}\right)=(-1.05,0.5)$, which specify a sufficiently generic point in the parameter space.
+
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def periodic_dense_hamiltonian(L, h_x, h_z, J=1):
+    # Initialize Hamiltonian to zero matrix
+    H = np.zeros((2 ** L, 2 ** L))
+
+    # Define Pauli matrices
+    sigma_x = np.array([[0, 1], [1, 0]])
+    sigma_z = np.array([[1, 0], [0, -1]])
+    I = np.identity(2)
+
+    # add the tensor product helper function
+    def tensor_product(matrices):
+        """Calculate the tensor product of a list of matrices."""
+        result = matrices[0]
+        for matrix in matrices[1:]:
+            result = np.kron(result, matrix)
+        return result
+    
+    # Interaction term
+    for i in range(L):  # Add periodic term at the end if periodic
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_z  # Apply sigma_z at position i
+        matrices[(i + 1) % L] = sigma_z  # Apply sigma_z at position (i+1) modulo L for periodic
+        H += -J * tensor_product(matrices)
+
+    # Transverse field term for x
+    for i in range(L):
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_x  # Apply sigma_x at position i
+        H += -h_x * tensor_product(matrices)
+
+    # Transverse field term for z
+    for i in range(L):
+        matrices = [I] * L
+        matrices[i] = sigma_z
+        H += -h_z * tensor_product(matrices)
+
+    return H
+\end{lstlisting}
 
 \subsection*{4.1.1 Time evolution of an initial state}
 We wish to choose an initial state with average energy from somewhere near the middle of the energy spectrum. As thermalization is a general feature, this choice should not be too important, but it can affect the early-time behavior, or the time required to reach the thermal state. For simplicity, use a translation-invariant product state:
@@ -174,49 +222,239 @@ We wish to choose an initial state with average energy from somewhere near the m
 First, diagonalize $H$ for the parameter values specified in the previous section using various system sizes $L=8,10,12,14$. Use the eigenstates of $H$ you computed to expand the initial state\\
 $|\psi(t=0)\rangle$ in the energy eigenbasis. That is, calculate the coefficients $c_{n}$ of $|\psi(t=0)\rangle=\sum_{n=1}^{2^{L}} c_{n}|n\rangle$, where $n$ indexes the eigenstates $|n\rangle$ of $H$, with energy eigenvalues $\varepsilon_{n}$. At this point we could compute the time-evolved state according to (2); however, it turns out we do not even need to explicitly perform this calculation. We can instead directly evolve the expectation value itself in time via the expression (3). Use this method, and plot the time dependence of the observables $\left\langle\sigma_{1}^{\mu}(t)\right\rangle$, $\mu=x, y, z$, for each system size $L$ (the choice of site is arbitrary, due to translation invariance). Time-evolve for long enough to observe a qualitative change in the observables' behavior, using a short enough step size $\delta t$ to give a smooth curve. Based on your data, what behavior do you expect as $L \rightarrow \infty$ ? At late times you may observe a seeming return to a state like the initial one. This is not a Poincaré recurrence - which occurs only after doubly-exponentially long times - but rather a finite-size effect arising from "wavefronts" reaching the boundaries of the system and bouncing back and forth, or circling the entire system in the periodic case.
 \newpage
-I was only able to glow several system sizes of 4, 6, 8, and 10. A dampening effect can be seen as we move towards longer times for the larger system sizes, followed by a recurrence in the maturation. The presence of this dampening effect was more prominent for larger system sizes, so I expect that the behavior in the infinite system limit would be to approach the thermal equilibrium value for the given observable at large times.
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Expectation_values_L_4.png}
-    \caption{Expectation values for system size L=4}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Expectation_values_L_6.png}
-    \caption{Expectation values for system size L=6}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Expectation_values_L_8.png}
-    \caption{Expectation values for system size L=8}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{Expectation_values_L_10.png}
-    \caption{Expectation values for system size L=10}
-\end{figure}
 % Inline Python code in the document
+
+\begin{lstlisting}[language=Python]
+def compute_observable_expectation(t, observable, overlap_coefficients, eigenvalues, eigenvectors):
+    """
+    Compute the time-dependent expectation value of an observable.
+    
+    Parameters:
+    - t (float): Time at which to compute the expectation.
+    - observable (np.ndarray): The observable matrix.
+    - overlap_coefficients (np.ndarray): Coefficients of the initial state in the energy eigenbasis.
+    - eigenvalues (np.ndarray): Array of eigenvalues from the Hamiltonian diagonalization.
+    - eigenvectors (np.ndarray): Array of eigenvectors from the Hamiltonian diagonalization.
+    
+    Returns:
+    - expectation (complex): The expectation value of the observable at time t.
+    """
+    # Calculate matrix elements in the eigenbasis
+    matrix_element = eigenvectors.conj().T @ observable @ eigenvectors
+
+    # Calculate phase differences using broadcasting
+    phase = np.exp(-1j * (eigenvalues[:, None] - eigenvalues[None, :]) * t)
+
+    # Reshape overlap coefficients for broadcasting
+    overlap_coefficients = overlap_coefficients[:, None]
+
+    # Calculate expectation value
+    expectation = np.sum(overlap_coefficients.conj() * overlap_coefficients.T * phase * matrix_element)
+
+    return expectation
+\end{lstlisting}
+
+I was only able to do system sizes of 8 and 10. A dampening effect can be seen as we move towards longer times for the larger system sizes. The presence of this dampening effect was more prominent for larger system sizes, so I expect that the behavior in the infinite system limit would be to approach the thermal equilibrium value for the given observable at large times.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+# System size and parameters
+import numpy as np
+import matplotlib.pyplot as plt
+from hw3.src.p4_1.fns import compute_observable_expectation, periodic_dense_hamiltonian, make_product_state
+from hw1.src.hw1 import tensor_product
+
+L_values = [8, 10]
+h_x = -1.05
+h_z = 0.5
+t_values = np.linspace(0, 30, 75)
+
+# Define the observables for the first site
+sigma_x = np.array([[0, 1], [1, 0]])
+sigma_y = np.array([[0, -1j], [1j, 0]])
+sigma_z = np.array([[1, 0], [0, -1]])
+identity = np.identity(2)
+
+observables_labels = ['sigma_x', 'sigma_y', 'sigma_z']
+
+def extend_observables(L):
+    """Extend observables to the full system size."""
+    full_observables = {
+        'sigma_x': tensor_product([sigma_x] + [identity] * (L - 1)),
+        'sigma_y': tensor_product([sigma_y] + [identity] * (L - 1)),
+        'sigma_z': tensor_product([sigma_z] + [identity] * (L - 1))
+    }
+    return full_observables
+
+# Ensure normalization
+
+# Loop over different system sizes
+for L in L_values:
+    # Extend observables to the full system size
+    full_observables = extend_observables(L)
+
+    # Initial state: tensor product of single_site across all sites
+    single_site = np.array([1, -np.sqrt(3)]) / 2
+    initial_state = make_product_state(single_site, L)
+
+    # Prepare to plot
+    plt.figure(figsize=(10, 8))
+    plt.title(f"System size L={L}")
+    plt.xlabel("Time")
+    plt.ylabel("Expectation value")
+
+    # Generate the Hamiltonian
+    H = periodic_dense_hamiltonian(L, h_x, h_z)
+
+    # Diagonalize the Hamiltonian
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Calculate the overlap coefficients
+    overlap_coefficients = np.dot(eigenvectors.conj().T, initial_state)
+
+    for label, observable in full_observables.items():
+        expectations = []
+        for t in t_values:
+            expectation = compute_observable_expectation(t, observable, overlap_coefficients, eigenvalues, eigenvectors)
+            expectations.append(np.real(expectation))  # Using real part; adjust if needed
+
+        plt.plot(t_values, expectations, label=label)
+
+    plt.legend()
+    plt.grid(True)
+    plt.savefig(f"hw3/docs/images/p4_1_1_expectations_L{L}.png")
+
+\end{lstlisting}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.53\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{p4_1_1_expectations_L8.png}
+        \caption{L=8}
+        \label{fig:expectations_L8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.53\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{p4_1_1_expectations_L10.png}
+        \caption{L=10}
+        \label{fig:expectations_L10}
+    \end{subfigure}
+    \caption{Expectation values of the observables $\left\langle\sigma_{1}^{\mu}(t)\right\rangle$ for different values of L}
+    \label{fig:expectations}
+\end{figure}
+\newpage
+
 
 
 \subsection*{4.1.2 Thermal values of observables}
 It is evident from (2) that the energy of the state $E=\langle\psi(0)|H| \psi(0)\rangle$ does not change with time, and in fact energy is the only conserved quantity in the Hamiltonian (8). Thus we should use $E$ to determine the asymptotic temperature of the equilibrium thermal state. To do so, plot the thermal state energy
 
-
 \begin{equation*}
 E_{\beta}=\frac{1}{Z_{\beta}} \operatorname{tr}\left[H e^{-\beta H}\right]=\frac{1}{Z_{\beta}} \sum_{n} e^{-\beta \varepsilon_{n}}\langle n|H| n\rangle=\frac{1}{Z_{\beta}} \sum_{n} e^{-\beta \varepsilon_{n}} \varepsilon_{n} \tag{10}
 \end{equation*}
-
 
 As a function of $\beta$ for each $L$, you can then match these values with the energy $E$ of the initial state in order to determine the corresponding inverse temperature $\beta$ of the equilibrium state.
 \newpage
 I computed the thermal energy as a function of beta and then I computed the initial state energy that is conserved in order to determine the corresponding inverse temperature beta of the equilibrium state.
 
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_thermal_energy_L8.png}
+        \caption{Thermal energy L=8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_thermal_energy_L10.png}
+        \caption{Thermal energy L=10}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_thermal_energy_L12.png}
+        \caption{Thermal energy L=12}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_observables_annotation_L8.png}
+        \caption{Observables annotation L=8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_observables_annotation_L10.png}
+        \caption{Observables annotation L=10}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_1_2_observables_annotation_L12.png}
+        \caption{Observables annotation L=12}
+    \end{subfigure}
+    
+    \caption{Thermal values of observables and their annotations.}
+\end{figure}
 
 % Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from hw3.src.p4_1.fns import compute_observable_expectation, periodic_dense_hamiltonian, make_product_state, time_dependent_state
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
 
-Now measure the same observables $\left\langle\sigma_{1}^{\mu}\right\rangle_{\beta}, \mu=x, y, z$, in the equilibrium state using (6) and compare these to your time-dependent values by marking these values as horizontal lines on your time trace of $\left\langle\sigma_{1}^{\mu}(t)\right\rangle$. Comment on the approach to equilibrium and the dependence on system size. You will notice that one of the $\left\langle\sigma_{1}^{\mu}\right\rangle_{\beta}$ disappears identically. Which one is this, and why?
-\newpage
-Again, as time goes on, there is an approach to the equilibrium value for the observables, which is the same phenomenon as the damping that I mentioned earlier. I notice that the $\left\langle\sigma_{1}^{y}\right\rangle_{\beta}$ observable disappears identically. This can be justified as follows:
+# Set system parameters
+L_values = [8, 10, 12]
+h_x = -1.05
+h_z = 0.5
+t_values = np.linspace(0, 50, 20)
+
+for L in L_values:
+    # Generate the Hamiltonian
+    H = periodic_dense_hamiltonian(L, h_x, h_z)
+    # Diagonalize the Hamiltonian
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Initial state: tensor product of single_site across all sites
+    single_site1 = np.array([1, -np.sqrt(3)]) / 2
+    initial_state1 = make_product_state(single_site1, L)
+    # make a second state
+    single_site2 = np.array([-2, 1]) / np.sqrt(5)
+    initial_state2 = make_product_state(single_site2, L)
+
+    # Prepare to plot
+    plt.figure(figsize=(10, 8))
+    plt.title(f"System size L={L}")
+    plt.xlabel("Time")
+    plt.ylabel("Entanglement entropy")
+
+    # Calculate the overlap coefficients
+    overlap_coefficients1 = np.dot(eigenvectors.conj().T, initial_state1)
+    overlap_coefficients2 = np.dot(eigenvectors.conj().T, initial_state2)
+
+    # initialize a list of entropy values
+    entropy_values1 = []
+    entropy_values2 = []
+
+    for t in t_values:
+        # Compute the time-dependent state
+        state1 = time_dependent_state(t, overlap_coefficients1, eigenvalues, eigenvectors)
+        state2 = time_dependent_state(t, overlap_coefficients2, eigenvalues, eigenvectors)
+
+        # Compute the reduced density matrix
+        reduced_density_matrix1 = calculate_reduced_density_matrix(state1, L, L // 2)
+        reduced_density_matrix2 = calculate_reduced_density_matrix(state2, L,  L // 2)
+
+        # Compute the entanglement entropy
+        entropy1 = entanglement_entropy(reduced_density_matrix1)
+        entropy2 = entanglement_entropy(reduced_density_matrix2)
+        
+        entropy_values1.append(entropy1)
+        entropy_values2.append(entropy2)
+        
+    plt.plot(t_values, entropy_values1, label="Entanglement entropy for state 1")
+    plt.plot(t_values, entropy_values2, label="Entanglement entropy for state 2")
+    plt.legend()
+    plt.grid()
+    plt.savefig(f"hw3/docs/images/p4_1_3_Entanglement_Entropy_L={L}.png")
+
+
+    
+\end{lstlisting}
+
+Now measure the same observables $\left\langle\sigma_{1}^{\mu}\right\rangle_{\beta}, \mu=x, y, z$, in the equilibrium state using (6) and compare these to your time-dependent values by marking these values as horizontal lines on your time trace of $\left\langle\sigma_{1}^{\mu}(t)\right\rangle$. Comment on the approach to equilibrium and the dependence on system size. You will notice that one of the $\left\langle\sigma_{1}^{\mu}\right\rangle_{\beta}$ disappears identically. Which one is this, and why?\\\\
+Again, as time goes on especially with larger system sizes, there is an approach to the equilibrium value for the observables, which is the same phenomenon as the damping that I mentioned earlier. However, this was less pronounced for the smaller system sizes that I was able to reach. I notice that the $\left\langle\sigma_{1}^{y}\right\rangle_{\beta}$ observable disappears identically. This can be justified as follows:
 \begin{equation}
 \bra{\Psi } \sigma_{1}^{y} \ket{\Psi} = i \bra{\Psi } 
 \begin{pmatrix}
@@ -225,10 +463,105 @@ Again, as time goes on, there is an approach to the equilibrium value for the ob
 \end{pmatrix}
 \ket{\Psi} = i \mathbb{R}
 \end{equation}
-so this observable has a purely imaginary expectation value, and so it shows of as a horizontal line with a value of 0 in the plot.
+so this observable has a purely imaginary expectation value, and so it shows up as a horizontal line with a value of 0 in the plot.
+
 \subsection*{4.1.3 Entanglement entropy growth with time}
 The initial state $|\psi(0)\rangle$ has highly excited energy, lying near the middle of the spectrum. However, because it's a product state and therefore very atypical, one may wonder whether under unitary time evolution the property of low entanglement might be preserved in any way. Compute the time-dependent state $|\psi(t)\rangle$ using (2) and measure the half-system entanglement entropy $S_{L / 2}(t)$. Plot the time trace of this quantity, and comment on the behavior at both early and late times. To ensure that we've not accidentally chosen a special excited state, repeat this experiment for some other product state. What are the implications of your measurements with regard to our ability to simulate the time evolution of quantum states using MPS?
+\newpage
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.50\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{p4_1_3_Entanglement_Entropy_L=8.png}
+        \caption{L=8}
+        \label{fig:L8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.50\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{p4_1_3_Entanglement_Entropy_L=10.png}
+        \caption{L=10}
+        \label{fig:L10}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.50\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{p4_1_3_Entanglement_Entropy_L=12.png}
+        \caption{L=12}
+        \label{fig:L12}
+    \end{subfigure}
+    \caption{Entanglement Entropy for different values of L}
+    \label{fig:entanglement_entropy}
+\end{figure}
+Since a product state is qualitatively similar to the MPS list in its ability to be decomposed into a tensor on any given site, and the product state seems to be able to represent time evolution of the entanglement entropy well with large jumps at initial times and converging towards an equilibrium value at later times, I would expect the MPS list to be able to do the same.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def time_dependent_state(t, overlap_coefficients, eigenvalues, eigenvectors):
+    """Computes the time-dependent state |\psi(t)>."""
+    return np.sum(np.exp(-1j * eigenvalues * t) * overlap_coefficients * eigenvectors, axis=1)
 
+import numpy as np
+import matplotlib.pyplot as plt
+from hw3.src.p4_1.fns import compute_observable_expectation, periodic_dense_hamiltonian, make_product_state, time_dependent_state
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
+
+# Set system parameters
+L_values = [8, 10, 12]
+h_x = -1.05
+h_z = 0.5
+t_values = np.linspace(0, 50, 20)
+
+for L in L_values:
+    # Generate the Hamiltonian
+    H = periodic_dense_hamiltonian(L, h_x, h_z)
+    # Diagonalize the Hamiltonian
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Initial state: tensor product of single_site across all sites
+    single_site1 = np.array([1, -np.sqrt(3)]) / 2
+    initial_state1 = make_product_state(single_site1, L)
+    # make a second state
+    single_site2 = np.array([-2, 1]) / np.sqrt(5)
+    initial_state2 = make_product_state(single_site2, L)
+
+    # Prepare to plot
+    plt.figure(figsize=(10, 8))
+    plt.title(f"System size L={L}")
+    plt.xlabel("Time")
+    plt.ylabel("Entanglement entropy")
+
+    # Calculate the overlap coefficients
+    overlap_coefficients1 = np.dot(eigenvectors.conj().T, initial_state1)
+    overlap_coefficients2 = np.dot(eigenvectors.conj().T, initial_state2)
+
+    # initialize a list of entropy values
+    entropy_values1 = []
+    entropy_values2 = []
+
+    for t in t_values:
+        # Compute the time-dependent state
+        state1 = time_dependent_state(t, overlap_coefficients1, eigenvalues, eigenvectors)
+        state2 = time_dependent_state(t, overlap_coefficients2, eigenvalues, eigenvectors)
+
+        # Compute the reduced density matrix
+        reduced_density_matrix1 = calculate_reduced_density_matrix(state1, L, L // 2)
+        reduced_density_matrix2 = calculate_reduced_density_matrix(state2, L,  L // 2)
+
+        # Compute the entanglement entropy
+        entropy1 = entanglement_entropy(reduced_density_matrix1)
+        entropy2 = entanglement_entropy(reduced_density_matrix2)
+        
+        entropy_values1.append(entropy1)
+        entropy_values2.append(entropy2)
+        
+    plt.plot(t_values, entropy_values1, label="Entanglement entropy for state 1")
+    plt.plot(t_values, entropy_values2, label="Entanglement entropy for state 2")
+    plt.legend()
+    plt.grid()
+    plt.savefig(f"hw3/docs/images/p4_1_3_Entanglement_Entropy_L={L}.png")
+
+
+    
+\end{lstlisting}
+\newpage
 \subsection*{4.2 Eigenstate ETH}
 \subsection*{4.2.1 Observables in excited states}
 In Sec. 4.1 .1 you computed the expectation values $\left\langle\sigma_{1}^{\mu}\right\rangle_{n}, \mu=x, y, z$, in each eigenstate $n$ of the Hamiltonian. ETH predicts that the value of each observable depends only on the energy of the eigenstate, indirectly through the temperature of the Gibbs ensemble. To confirm this we can plot the expectation values of the observables directly as a function of the energy eigenvalue $\varepsilon_{n}$.\\
@@ -242,6 +575,132 @@ First however, recall that the initial state $|\psi(0)\rangle$ is translation in
 $k=0$ momentum sector. You may have noticed that many of the $c_{n}$ in the expansion of $|\psi(0)\rangle$ in the eigenbasis were exactly 0 ; these correspond to eigenstates in other momentum sectors, which are orthogonal to this state. Hence we want to consider only eigenstates with $k=0$; to identify these we could in principle observe the overlaps $c_{n}$, but this depends on specific details of the initial state and is difficult for larger $L$. A better method is use the translation operator $T$, which shifts the entire system by 1 site: $T\left|\sigma_{1}, \sigma_{2}, \sigma_{3} \ldots, \sigma_{L}\right\rangle=\left|\sigma_{L}, \sigma_{1}, \sigma_{2}, \ldots, \sigma_{L-1}\right\rangle$. The $k=0$ sector can be identified by $\langle n|T| n\rangle=+1$; a matrix element that is any other phase, including -1 , indicates a state from another sector.
 
 Using $T$ to filter the eigenstates, plot the expectation values $\left\langle\sigma_{1}^{\mu}\right\rangle_{n}$ for all $|n\rangle$ in the $k=0$ momentum sector as a function of $\varepsilon_{n} / L$. Plot the data on top of each other for the various system sizes $L$. How does the behavior depend on $\varepsilon_{n} / L$, and how does this change with increasing $L$ ?
+\newpage
+As we increase the energy density, we can observe 3 trends. As noted earlier, the $\sigma_y$ Pauli matrix is purely imaginary, so its expectation value is constant at 0. Next, we can consider $\sigma_x$; since we set $h^x$ to -1.05. At the band edge with the lowest energy density (this can be thought of as the "ground state of the phase"), we observe that the value of this expectation is the most negative, while at the right-hand band edge with the highest energy density, the expectation value is the most positive since now we are going against the negative value of the field strength in the x direction. The situation is opposite for the $\sigma_z$ observable, where the expectation value is the most positive at the lowest energy density and the most negative at the highest energy density; by a similar reasoning to the one that was given before, this is because the $h^z$ was set to 0.5. These trends seem to be consistent across system sizes, but we note that for the larger system sizes there are more eigenvalues in the $k=0$ sector and so we see more data points. 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{p4_2_1_filtered_expectations.png}
+\end{figure}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def translation_operator(L):
+    """Construct the translation operator T for a system of size L."""
+    T = np.zeros((2 ** L, 2 ** L))
+
+    for i in range(2 ** L):
+        state = format(i, f'0{L}b')  # Binary representation of the state
+        new_state = state[-1] + state[:-1]  # Shift by one site to the right
+        new_index = int(new_state, 2)  # Convert back to decimal
+        T[i, new_index] = 1
+
+    return T
+
+def identify_k0_sector(eigenvectors, T):
+    """
+    Identify eigenstates in the k=0 sector using the translation operator T.
+    
+    Parameters:
+    - eigenvectors: Array of eigenvectors of the Hamiltonian.
+    - T: Translation operator.
+    
+    Returns:
+    - k0_indices: Indices of the k=0 sector eigenstates.
+    """
+    k0_indices = []
+    for n, eigenvector in enumerate(eigenvectors.T):
+        overlap = np.dot(eigenvector.conj().T, np.dot(T, eigenvector))
+        if np.isclose(overlap, 1.0, atol=1e-8):
+            k0_indices.append(n)
+    return k0_indices
+def compute_observable_expectation_eigenvalue(eigenindex, observable, eigenvectors):
+    """
+    Compute the expectation value of an observable given the eigenindex.
+    
+    Parameters:
+    - eigenindex: The index of the eigenvalue.
+    - observable: The observable matrix.
+    - eigenvalues: Eigenvalues from the Hamiltonian diagonalization.
+    - eigenvectors: Eigenvectors from the Hamiltonian diagonalization.
+    
+    Returns:
+    - expectation: The expectation value of the observable.
+    """
+    expectation = np.dot(eigenvectors[:, eigenindex].T, np.dot(observable, eigenvectors[:, eigenindex]))
+    return expectation
+import matplotlib.pyplot as plt
+import numpy as np
+from hw3.src.p4_2.fns import translation_operator, identify_k0_sector, compute_observable_expectation_eigenvalue
+from hw3.src.p4_1.fns import periodic_dense_hamiltonian
+from hw1.src.hw1 import tensor_product
+
+# Define scatter styles, line styles, and colors for different system sizes and observables
+scatter_styles = ['o', 's', '^']
+edge_colors = ['black', 'gray', 'white']  # Edge colors for different system sizes
+line_styles = ['-', '--', ':']
+colors = ['blue', 'green', 'red']  # Colors for sigma_x, sigma_y, sigma_z
+observable_labels = ['x', 'y', 'z']
+
+# System sizes
+L_values = [6, 8, 10]
+
+# Constants
+h_x = -1.05
+h_z = 0.5
+
+# Prepare the plot
+plt.figure(figsize=(10, 6))
+plt.title('Observable Expectation Values vs Normalized Eigenvalues for Different L')
+plt.xlabel(r'Energy density ($\epsilon_n / L$)')
+plt.ylabel(r'Expectation Value ($\langle\sigma_1^\mu\rangle_n$)')
+
+# Loop over system sizes
+for i, L in enumerate(L_values):
+    # Generate and diagonalize the Hamiltonian
+    H = periodic_dense_hamiltonian(L, h_x, h_z)
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Define the translation operator for the system
+    translation_op = translation_operator(L)
+
+    # Identify the k=0 sector
+    k0_sector = identify_k0_sector(eigenvectors, translation_op)
+
+    # Define observables
+    sigma_x = np.array([[0, 1], [1, 0]])
+    sigma_y = np.array([[0, -1j], [1j, 0]])
+    sigma_z = np.array([[1, 0], [0, -1]])
+    identity = np.identity(2)
+    full_observables = [tensor_product([sigma] + [identity] * (L - 1)) for sigma in [sigma_x, sigma_y, sigma_z]]
+
+    # Compute and plot expectation values for each observable
+    for j, observable in enumerate(full_observables):
+        expectation_values = []
+        eigenvalues_k0 = []
+        for _, k0_index in enumerate(k0_sector):
+            observable_k0 = compute_observable_expectation_eigenvalue(k0_index, observable, eigenvectors)
+            expectation_values.append(observable_k0)
+            eigenvalues_k0.append(eigenvalues[k0_index])
+        
+        plt.scatter(
+            np.array(eigenvalues_k0) / L, 
+            expectation_values, 
+            label=f'L={L}, $\sigma_{{1}}^{{ {observable_labels[j]} }}$', 
+            color=colors[j], 
+            marker=scatter_styles[i], 
+            edgecolors=edge_colors[i],
+            linestyle=line_styles[i]
+        )
+
+# Add legend and show plot
+plt.legend()
+plt.grid(True)
+plt.savefig("hw3/docs/images/p4_2_1_filtered_expectations.png")
+plt.show()
+
+\end{lstlisting}
+
+\newpage
+
 
 [ADDED: A couple of technical remarks on using T: First, you might wonder why you are finding normalized Hamiltonian eigenstates $|n\rangle$ with $|\langle n|T| n\rangle|<1$, which means that they are not eigenstates of the translation operator and seems to be contradiction. These can arise here because states with $k$ and $-k$ are degenerate, and without resolving the momentum explicitly, your black-box diagonalizer will likely find superpositions of these; observing $|\langle n|T| n\rangle|<1$ is thus also a signature that these are not states with zero momentum. Second, to be precise in the ETH analysis, one needs to resolve also the inversion symmetry of the Hamiltonian, e.g., inversion in the middle point of the system, $I\left|\sigma_{1}, \sigma_{2}, \ldots, \sigma_{L-1}, \sigma_{L}\right\rangle=\left|\sigma_{L}, \sigma_{L-1}, \ldots, \sigma_{2}, \sigma_{1}\right\rangle$ (all other inversions can be generated by combining this with translations) and restrict to specific inversion quantum number sector, here $I=+1$ since this is the quantum number of $|\psi(0)\rangle$. Since this is expected to have a smaller effect than resolving the momentum, it is ok not to worry about the inversion symmetry in this assignment, or you can do a more brute-force treatment by filtering the energy eigenstates by their non-zero vs zero overlap with $|\psi(0)\rangle$ (remembering that the computer is unlikely to return exact zero, but a number close to machine precision is likely an exact zero).]
 
@@ -249,6 +708,72 @@ Optional. Also compare these results (for $L=14$ ) with $\left\langle\sigma_{1}^
 
 \subsection*{4.2.2 Entropic signature of thermalization}
 In addition to the measurements of local observables in eigenstates, compute the half-system entanglement entropy for all $k=0$ sector eigenstates and plot the quantity $S_{L / 2} / L$ as a function of $\varepsilon_{n} / L$ for all system sizes $L$. What dependence on the energy density do you observe, and how does this depend on system size?
+\newpage
+The entanglement entropy shows a symmetric trend; it has its lowest values at the band edges and its highest values in the middle of the energy spectrum. This statement is not entirely analogous to this situation, but if we can interpret the extrema of the energy density as the ground states of the ferromagnetic and paramagnetic phases, then the entanglement entropy is at its lowest in the ground states and at its highest in the middle of the energy spectrum. I see a similar trend across system sizes, but the larger system sizes have more eigenstates in the $k=0$ sector, so we see more data points.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{p4_2_2_entropic_signature.png}
+\end{figure}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+import numpy as np
+from hw3.src.p4_2.fns import translation_operator, identify_k0_sector
+from hw3.src.p4_1.fns import periodic_dense_hamiltonian
+from hw1.src.hw1 import tensor_product
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
+# Define line styles and colors for different system sizes and observables
+line_styles = ['-', '--', ':']
+colors = ['blue', 'green', 'red']  # Colors for sigma_x, sigma_y, sigma_z
+observable_labels = ['x', 'y', 'z']
+
+# System sizes
+L_values = [6, 8, 10]
+
+# Constants
+h_x = -1.05
+h_z = 0.5
+
+# Prepare the plot
+plt.figure(figsize=(10, 6))
+plt.title('Entropic Signature of Thermalization')
+plt.xlabel(f'Normalized Eigenvalue ($\epsilon_n / L$)')
+plt.ylabel(f'Normalized Entanglement Entropy ($S_n / L$)')
+
+# Loop over system sizes
+for i, L in enumerate(L_values):
+    # Generate and diagonalize the Hamiltonian
+    H = periodic_dense_hamiltonian(L, h_x, h_z)
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Define the translation operator for the system
+    translation_op = translation_operator(L)
+
+    # Identify the k=0 sector
+    k0_sector = identify_k0_sector(eigenvectors, translation_op)
+
+    expectation_values = []
+    eigenvalues_k0 = []
+    for _, k0_index in enumerate(k0_sector):
+        # Compute the reduced density matrix
+        reduced_density_matrix = calculate_reduced_density_matrix(eigenvectors[:, k0_index], L, L // 2)
+        # Compute the entanglement entropy
+        entropy = entanglement_entropy(reduced_density_matrix)
+        expectation_values.append(entropy)
+        eigenvalue_k0 = eigenvalues[k0_index]
+        eigenvalues_k0.append(eigenvalue_k0)
+        
+    plt.plot(np.array(eigenvalues_k0) / L, np.array(expectation_values) / L, color=colors[i])
+    # add a label for the color of the curve
+    plt.plot([], [], color=colors[i], label=f'L={L}')
+
+# Add legend and show plot
+plt.legend()
+plt.grid()
+plt.savefig(f"hw3/docs/images/p4_2_2_entropic_signature.png")
+
+\end{lstlisting}
+\newpage
 
 Optional. We have been borrowing intuition throughout this assignment from equilibrium statistical mechanics to describe quantum systems. We can test the wisdom of this approach by comparing quantum entanglement entropy with entropy in its original sense: thermodynamic entropy,
 
@@ -258,17 +783,400 @@ which in the canonical ensemble takes the form $S_{\text {th }}(\beta)=-\sum_{n}
 \subsection*{4.3.1 Many-body localized model}
 We now introduce quenched disorder to the magnetic field terms in the Hamiltonian (8), resulting in an MBL phase. That is, consider
 
-
 \begin{equation*}
 H=-J \sum_{j=1}^{L} \sigma_{j}^{z} \sigma_{j+1}^{z}-\sum_{j=1}^{L} h_{j}^{x} \sigma_{j}^{x}-\sum_{j=1}^{L} h_{j}^{z} \sigma_{j}^{z} \tag{11}
 \end{equation*}
-
 
 Again set $J=1$, but now sample $h_{j}^{x}$ and $h_{j}^{z}$ independently from the uniform distribution over $[-W, W]$. For strong enough $W$ the model is MBL; for a start, you can try $W=3$. Repeat the dynamics experiments you performed above for the ETH system, including the time evolution of observables with reference to the proper thermal state value. Note that the temperature of the "equilibrium" thermal state will be different from the previous case, and depends on your disorder realization.
 
 You should again measure local observables in the eigenstates as well as entanglement entropy, as you did for ETH (however, now there is no translation invariance, so no momentum sectors). You may wish to perform some averaging over disorder realizations for these eigenstate properties, in order to obtain a clearer picture of the behavior. Comment on the measurable difference between ETH and MBL physics.
 
+\newpage
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_thermal_energy_intersection_L6.png}
+        \caption{Thermal energy L=6}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_thermal_energy_intersection_L8.png}
+        \caption{Thermal energy L=8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_thermal_energy_intersection_L10.png}
+        \caption{Thermal energy L=10}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_expectation_L6.png}
+        \caption{Expectations L=6}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_expectation_L8.png}
+        \caption{Expectations L=8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_expectation_L10.png}
+        \caption{Expectations L=10}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_1_filtered_expectations_average.png}
+        \caption{Filtered Expectations Average}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{p4_3_entropic_signature_average.png}
+        \caption{Entropic Signature Average}
+    \end{subfigure}
+
+    \caption{Many-body localized model results.}
+\end{figure}
+I do observe the similar thermalization with time evolution, but only after I perform an average over multiple disorder realizations. However, we do see a chaotic observable expectation values as a function of energy density, even after performing multiple realizations for this calculation. This was not seen for the ETH model. The entanglement entropy also shows a similar trend to the ETH model, with lower values at the band edges.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def periodic_dense_hamiltonian_mbl(L, W, J=1):
+    # Initialize Hamiltonian to zero matrix
+    H = np.zeros((2 ** L, 2 ** L))
+
+    # Define Pauli matrices
+    sigma_x = np.array([[0, 1], [1, 0]])
+    sigma_z = np.array([[1, 0], [0, -1]])
+    I = np.identity(2)
+
+    # add the tensor product helper function
+    def tensor_product(matrices):
+        """Calculate the tensor product of a list of matrices."""
+        result = matrices[0]
+        for matrix in matrices[1:]:
+            result = np.kron(result, matrix)
+        return result
+    
+    # Interaction term
+    for i in range(L):  # Add periodic term at the end if periodic
+        matrices = [I] * L  # Start with identity matrices
+        matrices[i] = sigma_z  # Apply sigma_z at position i
+        matrices[(i + 1) % L] = sigma_z  # Apply sigma_z at position (i+1) modulo L for periodic
+        H += -J * tensor_product(matrices)
+
+    # transverse field term for x
+    for i in range(L):
+        # sample from the uniform distribution defined by (-W, W) to get an h_x value
+        h_x = np.random.uniform(-W, W)
+        matrices = [I] * L
+        matrices[i] = sigma_x
+        H += -h_x * tensor_product(matrices)
+
+    # transverse field term for z
+    for i in range(L):
+        # sample from the uniform distribution defined by (-W, W) to get an h_z value
+        h_z = np.random.uniform(-W, W)
+        matrices = [I] * L
+        matrices[i] = sigma_z
+        H += -h_z * tensor_product(matrices)
+
+    return H
+import numpy as np
+import matplotlib.pyplot as plt
+from hw1.src.hw1 import tensor_product
+from hw3.src.p4_1.fns import compute_observable_expectation, make_product_state, compute_thermal_energy, compute_thermal_observable
+from hw3.src.p4_3.fns import periodic_dense_hamiltonian_mbl
+
+# Set system parameters
+L_values = [4, 6, 8]
+W = 3
+beta_values = np.linspace(-0.5, 0.5, 20)
+number_realizations = 20
+
+# Define simple matrices
+sigma_x = np.array([[0, 1], [1, 0]])
+sigma_y = np.array([[0, -1j], [1j, 0]])
+sigma_z = np.array([[1, 0], [0, -1]])
+identity = np.identity(2)
+observables_labels = [rf"$\sigma_{label}$" for label in ['x', 'y', 'z']]
+observables_colors = ['blue', 'green', 'orange']
+
+# Define time values once
+t_values = np.linspace(0, 10, 20)
+
+# Loop over different system sizes
+for L in L_values:
+    # Initialize arrays to store thermal energies and overlaps
+    thermal_energies = np.zeros((number_realizations, len(beta_values)))
+    initial_energies = np.zeros(number_realizations)
+    observables_values_time = {label: np.zeros((number_realizations, len(t_values))) for label in observables_labels}
+    
+    # Generate the initial state
+    single_site = np.array([1, -np.sqrt(3)]) / 2
+    initial_state = make_product_state(single_site, L)
+    
+    # Extend observables to the full system size once
+    full_sigma_x = tensor_product([sigma_x] + [identity] * (L - 1))
+    full_sigma_y = tensor_product([sigma_y] + [identity] * (L - 1))
+    full_sigma_z = tensor_product([sigma_z] + [identity] * (L - 1))
+    full_observables = [full_sigma_x, full_sigma_y, full_sigma_z]
+
+    for realization in range(number_realizations):
+        # Generate the Hamiltonian
+        H = periodic_dense_hamiltonian_mbl(L, W)
+        # Diagonalize the Hamiltonian
+        eigenvalues, eigenvectors = np.linalg.eigh(H)
+        
+        # Compute thermal energies for each beta using vectorized operations
+        thermal_energies[realization, :] = np.array([compute_thermal_energy(beta, eigenvalues) for beta in beta_values])
+        
+        # Compute the initial energy of the initial state
+        matrix_element = initial_state.conj().T @ H @ initial_state
+        normalization = initial_state.conj().T @ initial_state
+        initial_energy = matrix_element / normalization
+        initial_energies[realization] = initial_energy.real
+        
+        # Calculate the overlap coefficients
+        overlap_coefficients = np.dot(eigenvectors.conj().T, initial_state)
+        
+        # Compute time-dependent values for each observable
+        for label, observable in zip(observables_labels, full_observables):
+            expectations = np.array([
+                compute_observable_expectation(t, observable, overlap_coefficients, eigenvalues, eigenvectors).real
+                for t in t_values
+            ])
+            observables_values_time[label][realization, :] = expectations
+
+    # Average thermal energies and initial energies over realizations
+    avg_thermal_energies = np.mean(thermal_energies, axis=0)
+    avg_initial_energy = np.mean(initial_energies)
+    
+    # Average time-dependent observable values over realizations
+    avg_observables_values_time = {label: np.mean(observables_values_time[label], axis=0) for label in observables_labels}
+    
+    # Plot the horizontal dashed red line at the initial energy
+    plt.figure()
+    plt.axhline(y=avg_initial_energy, color='red', linestyle='--', label=rf"Initial Energy at {avg_initial_energy:.2f}")
+
+    # Plot the results
+    plt.title(f"Thermal Energy vs $\\beta$ for L={L}")
+    plt.xlabel(r"$\beta$")
+    plt.ylabel("Thermal Energy")
+    plt.plot(beta_values, avg_thermal_energies)
+    
+    # Prepare data for interpolation
+    sorted_indices = np.argsort(avg_thermal_energies)
+    sorted_energies = avg_thermal_energies[sorted_indices]
+    sorted_betas = beta_values[sorted_indices]
+
+    # Interpolating to find intersection point
+    beta_intersection = np.interp(avg_initial_energy, sorted_energies, sorted_betas)
+    
+    # Plot and annotate intersection point
+    plt.plot(beta_intersection, avg_initial_energy, 'ro')
+    plt.annotate(rf"$\beta = {beta_intersection:.2f}$", (beta_intersection, avg_initial_energy), textcoords="offset points", xytext=(0, 10), ha='center', color='red')
+    plt.legend()
+    plt.grid()
+    plt.savefig(f"hw3/docs/images/p4_3_1_thermal_energy_intersection_L{L}.png")
+
+    # Plotting section for observables
+    plt.figure()
+    plt.title(f"Observable with Equilibrium Value Annotated for L={L}")
+    plt.xlabel("Time")
+    plt.ylabel("Expectation Value")
+
+    # Plot each observable as a line plot
+    for label, color in zip(observables_labels, observables_colors):
+        plt.plot(t_values, avg_observables_values_time[label], label=label, color=color)
+
+    # Add a horizontal line for each observable
+    for label, color in zip(observables_labels, observables_colors):
+        thermal_observable = compute_thermal_observable(beta_intersection, eigenvalues, eigenvectors, full_observables[observables_labels.index(label)])
+        plt.axhline(y=thermal_observable, color=color, linestyle='--', label=rf"{label} at $\beta_{{eq}} = {beta_intersection:.2f}$")
+
+    plt.legend()
+    plt.grid()
+    plt.savefig(f"hw3/docs/images/p4_3_1_expectation_L{L}.png")
+
+import numpy as np
+import matplotlib.pyplot as plt
+from hw3.src.p4_1.fns import make_product_state, time_dependent_state
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
+from hw3.src.p4_3.fns import periodic_dense_hamiltonian_mbl
+
+# Set system parameters
+L_values = [6, 8, 10]
+W = 3
+t_values = np.linspace(0, 50, 20)
+number_realizations = 10
+
+for L in L_values:
+    average_entropy_values1 = np.zeros(len(t_values))
+    average_entropy_values2 = np.zeros(len(t_values))
+    for realization in range(number_realizations):
+        # Generate the Hamiltonian
+        H = periodic_dense_hamiltonian_mbl(L, W)
+        # Diagonalize the Hamiltonian
+        eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+        # Initial state: tensor product of single_site across all sites
+        single_site1 = np.array([1, -np.sqrt(3)]) / 2
+        initial_state1 = make_product_state(single_site1, L)
+        # make a second state
+        single_site2 = np.array([-2, 1]) / np.sqrt(5)
+        initial_state2 = make_product_state(single_site2, L)
+
+        # Calculate the overlap coefficients
+        overlap_coefficients1 = np.dot(eigenvectors.conj().T, initial_state1)
+        overlap_coefficients2 = np.dot(eigenvectors.conj().T, initial_state2)
+
+        # initialize a list of entropy values
+        entropy_values1 = []
+        entropy_values2 = []
+
+        for t in t_values:
+            # Compute the time-dependent state
+            state1 = time_dependent_state(t, overlap_coefficients1, eigenvalues, eigenvectors)
+            state2 = time_dependent_state(t, overlap_coefficients2, eigenvalues, eigenvectors)
+
+            # Compute the reduced density matrix
+            reduced_density_matrix1 = calculate_reduced_density_matrix(state1, L, L // 2)
+            reduced_density_matrix2 = calculate_reduced_density_matrix(state2, L, L // 2)
+
+            # Compute the entanglement entropy
+            entropy1 = entanglement_entropy(reduced_density_matrix1)
+            entropy2 = entanglement_entropy(reduced_density_matrix2)
+            
+            entropy_values1.append(entropy1)
+            entropy_values2.append(entropy2)
+
+        average_entropy_values1 += np.array(entropy_values1)
+        average_entropy_values2 += np.array(entropy_values2)
+
+    average_entropy_values1 /= number_realizations
+    average_entropy_values2 /= number_realizations
+
+    # Prepare to plot
+    plt.figure(figsize=(10, 8))
+    plt.title(f"System size L={L}")
+    plt.xlabel("Time")
+    plt.ylabel("Avg. Entanglement entropy")
+    
+    plt.plot(t_values, average_entropy_values1, label="Entanglement entropy for state 1")
+    plt.plot(t_values, average_entropy_values2, label="Entanglement entropy for state 2")
+    plt.legend()
+    plt.grid()
+    plt.savefig(f"hw3/docs/images/p4_3_1_avg_tdee_L={L}.png")
+    plt.close()
+
+import matplotlib.pyplot as plt
+import numpy as np
+from hw3.src.p4_2.fns import compute_observable_expectation_eigenvalue
+from hw1.src.hw1 import tensor_product
+from hw3.src.p4_3.fns import periodic_dense_hamiltonian_mbl
+
+# Define line styles and colors for different system sizes and observables
+line_styles = ['-', '--', ':']
+colors = ['blue', 'green', 'red']  # Colors for sigma_x, sigma_y, sigma_z
+observable_labels = ['x', 'y', 'z']
+
+# System sizes
+L_values = [6, 8, 10]
+
+# Constants
+W = 3  # Disorder strength
+num_realizations = 20  # Number of disorder realizations
+
+# Prepare the plot
+plt.figure(figsize=(10, 6))
+plt.title('Averaged Observable Expectation Values vs. Energy Density')
+plt.xlabel('Energy density ($\\epsilon_n / L$)')
+plt.ylabel(f'Expectation Value ($\\langle\\sigma_1^\\mu\\rangle_n$) with {num_realizations} realizations')
+
+# Define observables
+sigma_x = np.array([[0, 1], [1, 0]])
+sigma_y = np.array([[0, -1j], [1j, 0]])
+sigma_z = np.array([[1, 0], [0, -1]])
+identity = np.identity(2)
+
+# Loop over system sizes
+for i, L in enumerate(L_values):
+    # Initialize arrays to store averaged expectation values for each observable
+    averaged_expectations = [np.zeros((2**L,)) for _ in range(3)]  # For sigma_x, sigma_y, sigma_z
+
+    # Loop over disorder realizations
+    for _ in range(num_realizations):
+        H = periodic_dense_hamiltonian_mbl(L, W)
+        eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+        full_observables = [tensor_product([sigma] + [identity] * (L - 1)) for sigma in [sigma_x, sigma_y, sigma_z]]
+
+        # Compute expectation values for each observable
+        for j, observable in enumerate(full_observables):
+            expectation_values = []
+            for index in range(len(eigenvalues)):
+                result = compute_observable_expectation_eigenvalue(index, observable, eigenvectors)
+                expectation_values.append(result)
+
+            # Accumulate the results for averaging
+            averaged_expectations[j] += np.array(expectation_values, dtype=np.float64) / num_realizations
+
+    # Plotting the averaged expectation values
+    for j in range(3):
+        plt.plot(np.array(eigenvalues) / L, averaged_expectations[j], label=f'L={L}, $\\sigma_{{1}}^{{{observable_labels[j]}}}$', color=colors[j], linestyle=line_styles[i])
+
+# Add legend, grid, and save the plot
+plt.legend()
+plt.grid(True)
+plt.savefig("hw3/docs/images/p4_3_1_filtered_expectations_average.png")
+
+import matplotlib.pyplot as plt
+import numpy as np
+from hw3.src.p4_3.fns import periodic_dense_hamiltonian_mbl
+from hw1.src.hw1 import tensor_product
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
+
+# Define line styles and colors for different system sizes and observables
+colors = ['blue', 'green', 'red']  # Colors for L=6, L=8, L=10
+
+# System sizes and disorder realizations
+L_values = [6, 8, 10]
+num_realizations = 30  # Number of disorder realizations
+W = 3  # Disorder strength
+
+# Prepare the plot
+plt.figure(figsize=(10, 6))
+plt.title('Averaged Entropic Signature of Thermalization for MBL Hamiltonian')
+plt.xlabel('Normalized Eigenvalue (\epsilon_n / L)')
+plt.ylabel('Averaged Normalized Entanglement Entropy (S_n / L)')
+
+# Loop over system sizes
+for i, L in enumerate(L_values):
+    averaged_entropies = np.zeros((2**L,))  # Initialize array to store averaged entropies
+
+    # Loop over disorder realizations
+    for _ in range(num_realizations):
+        H = periodic_dense_hamiltonian_mbl(L, W)
+        eigenvalues, eigenvectors = np.linalg.eigh(H)
+        entropies = []
+
+        # Compute entropies for each eigenstate
+        for eigenvector in eigenvectors.T:
+            rho = calculate_reduced_density_matrix(eigenvector, L, L // 2)
+            entropy = entanglement_entropy(rho)
+            entropies.append(entropy)
+
+        averaged_entropies += np.array(entropies) / num_realizations
+
+    # Plotting the averaged entropies
+    plt.plot(np.array(eigenvalues) / L, averaged_entropies / L, color=colors[i], label=f'L={L}')
+
+# Add legend, grid, and save the plot
+plt.legend()
+plt.grid(True)
+plt.savefig("hw3/docs/images/p4_3_entropic_signature_average.png")
+
+\end{lstlisting}
+\newpage
+
+
 \subsection*{4.3.2 Quantum many-body scar states}
+
 This topic was first described only very recently and has attracted much interest due to its implications for our understanding of quantum chaos. The concept of a (single-particle) quantum scar state has been known for some time, and is based on the phenomenon of periodic orbits in classical chaotic systems, which can exist in principle but are unstable to small perturbations. By passing to the quantum analog of a classical chaotic system, one finds that certain eigenstates display a "scar," a nonergodic signature similar to the classical case. However, such a pattern was not expected beyond single-particle dynamics; in many-body systems at high energy, a quantum scar state would provide a sharp contrast between the validities of strong and weak ETH.
 
 Therefore, it was surprising when such states were apparently observed in experiments with cold Rydberg atoms. While the Hamiltonian for these systems is tricky due to a complicated structure in the Hilbert space, we can instead study a toy model, the following spin-1/2 Hamiltonian [1):
@@ -285,6 +1193,94 @@ In order to fully break the internal spin-rotation symmetry, $H$ contains a thre
 
 In order to observe the scar states, you should compute the half-system entanglement entropy for the entire spectrum as in Sec. 4.2.2, however now you will observe several states which are\\
 evidently far less entangled than the typical eigenstate. For this simple model, the number and exact energies of the scar states are known, indexed by $m=\{-L / 2,-L / 2+1, \ldots, L / 2-1, L / 2\}$ (that is, the $S^{z}$ spin states of an overall spin $s=L / 2$ system), with harmonically spaced energies $E_{m}=\Omega m$. Indicate these energy values on your plot.
+\newpage
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{p4_3_scars_entropic_signature.png}
+\end{figure}
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+def periodic_dense_hamiltonian_scars(L, omega):
+    # Initialize Hamiltonian to zero matrix
+    H = np.zeros((2 ** L, 2 ** L), dtype=np.complex128)
+
+    # Define Pauli matrices
+    sigma_x = np.array([[0, 1], [1, 0]])
+    sigma_y = np.array([[0, -1j], [1j, 0]])
+    sigma_z = np.array([[1, 0], [0, -1]])
+    I = np.identity(2)
+
+    # Tensor product helper function
+    def tensor_product(matrices):
+        """Calculate the tensor product of a list of matrices."""
+        result = matrices[0]
+        for matrix in matrices[1:]:
+            result = np.kron(result, matrix)
+        return result
+
+    # Transverse field term
+    for j in range(L):
+        matrices = [I] * L
+        matrices[j] = sigma_x
+        H += omega / 2 * tensor_product(matrices)
+
+    # Interaction term with periodic boundary conditions
+    for j in range(L):
+        # Ensure periodic boundary conditions
+        jp1 = (j + 1) % L  # j+1 with periodic boundary
+        jp2 = (j + 2) % L  # j+2 with periodic boundary
+
+        # Projector onto the singlet state for spins j and j+1
+        P = 0.25 * (np.kron(I, I) - np.kron(sigma_x, sigma_x) - np.kron(sigma_y, sigma_y) - np.kron(sigma_z, sigma_z))
+
+        # Full interaction term, P_{j, j+1} \sigma_{j+2}^z
+        matrices = [I] * L
+        matrices[j] = P[0:2, 0:2]   # Top left block of P
+        matrices[jp1] = P[2:4, 2:4] # Bottom right block of P
+        matrices[jp2] = sigma_z
+        H += tensor_product(matrices)
+
+    return H
+
+import numpy as np
+import matplotlib.pyplot as plt
+from hw3.src.p4_3.fns import periodic_dense_hamiltonian_scars
+from hw2.src.p5_2 import entanglement_entropy, calculate_reduced_density_matrix
+
+# Define system parameters
+L_values = [6, 8, 10]
+omega = 5
+
+# Initialize the plotting environment outside the loop
+plt.figure(figsize=(10, 6))
+plt.title("Entropic Signature of Thermalization for Scar Hamiltonian")
+plt.xlabel(f'Eigenvalue ($\epsilon_n$)')
+plt.ylabel(f'Half-System Entanglement Entropy ($S_n$)')
+
+# Generate and analyze Hamiltonians for each system size
+for L in L_values:
+    # Generate the Hamiltonian
+    H = periodic_dense_hamiltonian_scars(L, omega)
+    # Diagonalize the Hamiltonian
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+
+    # Compute entanglement entropy for each eigenstate
+    entropies = [entanglement_entropy(calculate_reduced_density_matrix(vec, L, L // 2)) for vec in eigenvectors]
+
+    # Plot entanglement entropy
+    plt.plot(np.array(eigenvalues), np.array(entropies), label=f'L={L}')
+
+    # annotate the energy valdes of the scars on the plot; that is mark evidently far less entangled than the typical eigenstate. For this simple model, the number and exact energies of the scar states are known, indexed by $m=\{-L / 2,-L / 2+1, \ldots, L / 2-1, L / 2\}$ (that is, the $S^{z}$ spin states of an overall spin $s=L / 2$ system), with harmonically spaced energies $E_{m}=\Omega m$. Indicate these energy values on your plot.
+    for m in range(-L // 2, L // 2 + 1):
+        plt.axvline(x=m * omega, color='black', linestyle='--', alpha=0.5)
+
+# Add legend and grid to the plot
+plt.legend()
+plt.grid(True)
+plt.savefig("hw3/docs/images/p4_3_scars_entropic_signature.png")
+
+\end{lstlisting}
+
 
 Optional. Though the scar states are relatively unentangled, they still may display volume-law scaling with a smaller prefactor. Using several system sizes, try to determine the scaling with $L$ of the scar state entanglement entropy. Do you find evidence for an area law, volume law, or logarithmic scaling?
 

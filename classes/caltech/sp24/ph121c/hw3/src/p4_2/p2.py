@@ -36,19 +36,20 @@ for i, L in enumerate(L_values):
 
     expectation_values = []
     eigenvalues_k0 = []
-    for k0_index in range(len(k0_sector)):
+    for _, k0_index in enumerate(k0_sector):
         # Compute the reduced density matrix
         reduced_density_matrix = calculate_reduced_density_matrix(eigenvectors[:, k0_index], L, L // 2)
         # Compute the entanglement entropy
         entropy = entanglement_entropy(reduced_density_matrix)
         expectation_values.append(entropy)
-        eigenvalues_k0.append(eigenvalues[k0_index])
+        eigenvalue_k0 = eigenvalues[k0_index]
+        eigenvalues_k0.append(eigenvalue_k0)
         
-        plt.plot(np.array(eigenvalues_k0) / L, np.array(expectation_values) / L, color=colors[i])
+    plt.plot(np.array(eigenvalues_k0) / L, np.array(expectation_values) / L, color=colors[i])
     # add a label for the color of the curve
     plt.plot([], [], color=colors[i], label=f'L={L}')
 
 # Add legend and show plot
 plt.legend()
-plt.grid(True)
+plt.grid()
 plt.savefig(f"hw3/docs/images/p4_2_2_entropic_signature.png")

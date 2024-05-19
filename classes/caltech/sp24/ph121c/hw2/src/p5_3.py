@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def schmidt_decomposition(psi, L):
     """Performs Schmidt decomposition at the middle of the chain."""
-    cut_psi = psi.reshape(+2**(L//2), -1)
+    cut_psi = psi.reshape(2**(L//2), -1)
     U, s, Vt = np.linalg.svd(cut_psi, full_matrices=False)
     return cut_psi, U, s, Vt
 
@@ -37,7 +37,7 @@ for hi in h_values:
         energy_error = np.abs(psi_k_energy - eigenvalues[0])
         errors[hi].append((norm_error, energy_error))
 
-# Plotting the results
+# Plotting the results in log-log scale
 for hi, error_list in errors.items():
     norm_errors, energy_errors = zip(*error_list)
     plt.plot(norm_errors, energy_errors, label=f'h/J = {hi:.1f}')
@@ -45,6 +45,8 @@ for hi, error_list in errors.items():
 plt.xlabel('Frobenius Norm Error')
 plt.ylabel('Energy Error')
 plt.title('Energy Error vs Frobenius Norm Error')
+plt.xscale('log')
+plt.yscale('log')
 plt.legend()
 plt.grid()
-plt.savefig('energy_vs_frobenius.png')
+plt.savefig('hw2/docs/images/energy_vs_frobenius_log_log.png')

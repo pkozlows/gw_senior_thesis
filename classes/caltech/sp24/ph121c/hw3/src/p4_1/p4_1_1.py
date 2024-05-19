@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from hw3.src.p4_1.fns import compute_observable_expectation, periodic_dense_hamiltonian, make_product_state
 from hw1.src.hw1 import tensor_product
 
-L_values = [8, 10, 12]
+L_values = [8, 10]
 h_x = -1.05
 h_z = 0.5
 t_values = np.linspace(0, 30, 75)

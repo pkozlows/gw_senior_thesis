@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  11 MAY 2024 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  16 MAY 2024 20:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -161,23 +161,63 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \Gin@req@width=\dimen155
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/physics/physics.sty
 Package: physics 
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen156
+\captionmargin=\dimen157
+\caption@leftmargin=\dimen158
+\caption@rightmargin=\dimen159
+\caption@width=\dimen160
+\caption@indent=\dimen161
+\caption@parindent=\dimen162
+\caption@hangindent=\dimen163
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count279
+\c@continuedfloat=\count280
+)
+\c@subfigure=\count281
+\c@subtable=\count282
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count283
+\Gm@cntv=\count284
+\c@Gm@tempcnt=\count285
+\Gm@bindingoffset=\dimen164
+\Gm@wd@mp=\dimen165
+\Gm@odd@mp=\dimen166
+\Gm@even@mp=\dimen167
+\Gm@layoutwidth=\dimen168
+\Gm@layoutheight=\dimen169
+\Gm@layouthoffset=\dimen170
+\Gm@layoutvoffset=\dimen171
+\Gm@dimlist=\toks24
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count279
+\lst@mode=\count286
 \lst@gtempboxa=\box53
-\lst@token=\toks24
-\lst@length=\count280
-\lst@currlwidth=\dimen156
-\lst@column=\count281
-\lst@pos=\count282
-\lst@lostspace=\dimen157
-\lst@width=\dimen158
-\lst@newlines=\count283
-\lst@lineno=\count284
-\lst@maxwidth=\dimen159
+\lst@token=\toks25
+\lst@length=\count287
+\lst@currlwidth=\dimen172
+\lst@column=\count288
+\lst@pos=\count289
+\lst@lostspace=\dimen173
+\lst@width=\dimen174
+\lst@newlines=\count290
+\lst@lineno=\count291
+\lst@maxwidth=\dimen175
  (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count285
-\lst@skipnumbers=\count286
+\c@lstnumber=\count292
+\lst@skipnumbers=\count293
 \lst@framebox=\box54
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -201,113 +241,247 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 ) (./2024_05_06_301d4cea943c6f55973eg.aux)
 \openout1 = `2024_05_06_301d4cea943c6f55973eg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
-Package chemgreek Info: Activating mapping `default' on line 55.
+Package chemgreek Info: Activating mapping `default' on line 57.
 
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count287
-\scratchdimen=\dimen160
+\scratchcounter=\count294
+\scratchdimen=\dimen176
 \scratchbox=\box55
-\nofMPsegments=\count288
-\nofMParguments=\count289
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count290
-\MPscratchDim=\dimen161
-\MPnumerator=\count291
-\makeMPintoPDFobject=\count292
-\everyMPtoPDFconversion=\toks26
+\nofMPsegments=\count295
+\nofMParguments=\count296
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen177
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
+\everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count293
-LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(18.06749pt, 561.3729pt, 18.06749pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=561.3729pt
+* \textheight=700.50687pt
+* \oddsidemargin=-54.2025pt
+* \evensidemargin=-54.2025pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count300
+LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 56.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 58.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
-{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (41.35423pt too wide) in paragraph at lines 85--87
-\T1/cmr/m/n/12 be some ini-tial state along with its de-com-po-si-tion in the eigen-ba-sis of $\OML/cmm/m/it/12 H; \OMS/cmsy/m/n/12 fj\OML/cmm/m/it/12 n\OMS/cmsy/m/n/12 ig[]$\T1/cmr/m/n/12 .
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 173.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [5] [6] [7]
+<./images//p4_1_1_expectations_L8.png, id=40, 722.7pt x 578.16pt>
+File: ./images//p4_1_1_expectations_L8.png Graphic file (type png)
+<use ./images//p4_1_1_expectations_L8.png>
+Package pdftex.def Info: ./images//p4_1_1_expectations_L8.png  used on input line 331.
+(pdftex.def)             Requested size: 297.52695pt x 238.01755pt.
+<./images//p4_1_1_expectations_L10.png, id=42, 722.7pt x 578.16pt>
+File: ./images//p4_1_1_expectations_L10.png Graphic file (type png)
+<use ./images//p4_1_1_expectations_L10.png>
+Package pdftex.def Info: ./images//p4_1_1_expectations_L10.png  used on input line 337.
+(pdftex.def)             Requested size: 297.52695pt x 238.01755pt.
+ [8] [9 <./images//p4_1_1_expectations_L8.png> <./images//p4_1_1_expectations_L10.png>] [10]
+<./images//p4_1_2_thermal_energy_L8.png, id=55, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_thermal_energy_L8.png Graphic file (type png)
+<use ./images//p4_1_2_thermal_energy_L8.png>
+Package pdftex.def Info: ./images//p4_1_2_thermal_energy_L8.png  used on input line 362.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_1_2_thermal_energy_L10.png, id=56, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_thermal_energy_L10.png Graphic file (type png)
+<use ./images//p4_1_2_thermal_energy_L10.png>
+Package pdftex.def Info: ./images//p4_1_2_thermal_energy_L10.png  used on input line 366.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_1_2_thermal_energy_L12.png, id=57, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_thermal_energy_L12.png Graphic file (type png)
+<use ./images//p4_1_2_thermal_energy_L12.png>
+Package pdftex.def Info: ./images//p4_1_2_thermal_energy_L12.png  used on input line 370.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_1_2_observables_annotation_L8.png, id=58, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_observables_annotation_L8.png Graphic file (type png)
+<use ./images//p4_1_2_observables_annotation_L8.png>
+Package pdftex.def Info: ./images//p4_1_2_observables_annotation_L8.png  used on input line 375.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_1_2_observables_annotation_L10.png, id=59, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_observables_annotation_L10.png Graphic file (type png)
+<use ./images//p4_1_2_observables_annotation_L10.png>
+Package pdftex.def Info: ./images//p4_1_2_observables_annotation_L10.png  used on input line 379.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_1_2_observables_annotation_L12.png, id=60, 462.528pt x 346.896pt>
+File: ./images//p4_1_2_observables_annotation_L12.png Graphic file (type png)
+<use ./images//p4_1_2_observables_annotation_L12.png>
+Package pdftex.def Info: ./images//p4_1_2_observables_annotation_L12.png  used on input line 383.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+ [11 <./images//p4_1_2_thermal_energy_L8.png> <./images//p4_1_2_thermal_energy_L10.png> <./images//p4_1_2_thermal_energy_L12.png> <./images//p4_1_2_observables_annotation_L8.png> <./images//p4_1_2_observables_annotation_L10.png> <./images//p4_1_2_observables_annotation_L12.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 456--458
+
  []
 
-[3] [4] [5] [6]
-Overfull \hbox (7.11055pt too wide) in paragraph at lines 153--153
-[]\T1/cmr/bx/n/17.28 4 As-sign-ment: quan-tum sta-tis-ti-cal me-chan-ics and
- []
+[12] [13]
+<./images//p4_1_3_Entanglement_Entropy_L=8.png, id=78, 722.7pt x 578.16pt>
+File: ./images//p4_1_3_Entanglement_Entropy_L=8.png Graphic file (type png)
+<use ./images//p4_1_3_Entanglement_Entropy_L=8.png>
+Package pdftex.def Info: ./images//p4_1_3_Entanglement_Entropy_L=8.png  used on input line 475.
+(pdftex.def)             Requested size: 280.68645pt x 224.54636pt.
+<./images//p4_1_3_Entanglement_Entropy_L=10.png, id=79, 722.7pt x 578.16pt>
+File: ./images//p4_1_3_Entanglement_Entropy_L=10.png Graphic file (type png)
+<use ./images//p4_1_3_Entanglement_Entropy_L=10.png>
+Package pdftex.def Info: ./images//p4_1_3_Entanglement_Entropy_L=10.png  used on input line 481.
+(pdftex.def)             Requested size: 280.68645pt x 224.54636pt.
+<./images//p4_1_3_Entanglement_Entropy_L=12.png, id=80, 722.7pt x 578.16pt>
+File: ./images//p4_1_3_Entanglement_Entropy_L=12.png Graphic file (type png)
+<use ./images//p4_1_3_Entanglement_Entropy_L=12.png>
+Package pdftex.def Info: ./images//p4_1_3_Entanglement_Entropy_L=12.png  used on input line 487.
+(pdftex.def)             Requested size: 280.68645pt x 224.54636pt.
 
-[7] [8] [9]
-<./images//Expectation_values_L_4.png, id=44, 722.7pt x 578.16pt>
-File: ./images//Expectation_values_L_4.png Graphic file (type png)
-<use ./images//Expectation_values_L_4.png>
-Package pdftex.def Info: ./images//Expectation_values_L_4.png  used on input line 180.
-(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
-<./images//Expectation_values_L_6.png, id=46, 722.7pt x 578.16pt>
-File: ./images//Expectation_values_L_6.png Graphic file (type png)
-<use ./images//Expectation_values_L_6.png>
-Package pdftex.def Info: ./images//Expectation_values_L_6.png  used on input line 185.
-(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
-<./images//Expectation_values_L_8.png, id=47, 722.7pt x 578.16pt>
-File: ./images//Expectation_values_L_8.png Graphic file (type png)
-<use ./images//Expectation_values_L_8.png>
-Package pdftex.def Info: ./images//Expectation_values_L_8.png  used on input line 190.
-(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
-<./images//Expectation_values_L_10.png, id=48, 722.7pt x 578.16pt>
-File: ./images//Expectation_values_L_10.png Graphic file (type png)
-<use ./images//Expectation_values_L_10.png>
-Package pdftex.def Info: ./images//Expectation_values_L_10.png  used on input line 195.
-(pdftex.def)             Requested size: 390.0pt x 311.99884pt.
- [10 <./images//Expectation_values_L_4.png>] [11 <./images//Expectation_values_L_6.png>] [12 <./images//Expectation_values_L_8.png>] [13 <./images//Expectation_values_L_10.png>] [14] [15] [16] [17]
-Overfull \hbox (11.28232pt too wide) in paragraph at lines 255--256
-[]\T1/cmr/m/n/12 which in the canon-i-cal en-sem-ble takes the form $\OML/cmm/m/it/12 S[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^L\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 ^^@ [][] \OML/cmm/m/it/12 w[] [] w[]$\T1/cmr/m/n/12 ,
- []
 
-[18]
+LaTeX Warning: Float too large for page by 58.43216pt on input line 493.
+
+[14] [15 <./images//p4_1_3_Entanglement_Entropy_L=8.png> <./images//p4_1_3_Entanglement_Entropy_L=10.png> <./images//p4_1_3_Entanglement_Entropy_L=12.png>] [16] [17]
+<./images//p4_2_1_filtered_expectations.png, id=96, 722.7pt x 433.62pt>
+File: ./images//p4_2_1_filtered_expectations.png Graphic file (type png)
+<use ./images//p4_2_1_filtered_expectations.png>
+Package pdftex.def Info: ./images//p4_2_1_filtered_expectations.png  used on input line 582.
+(pdftex.def)             Requested size: 561.3729pt x 336.82616pt.
+ [18 <./images//p4_2_1_filtered_expectations.png>] [19] [20] [21]
+<./images//p4_2_2_entropic_signature.png, id=111, 722.7pt x 433.62pt>
+File: ./images//p4_2_2_entropic_signature.png Graphic file (type png)
+<use ./images//p4_2_2_entropic_signature.png>
+Package pdftex.def Info: ./images//p4_2_2_entropic_signature.png  used on input line 715.
+(pdftex.def)             Requested size: 561.3729pt x 336.82616pt.
+ [22 <./images//p4_2_2_entropic_signature.png>] [23] [24]
+<./images//p4_3_1_thermal_energy_intersection_L6.png, id=123, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_thermal_energy_intersection_L6.png Graphic file (type png)
+<use ./images//p4_3_1_thermal_energy_intersection_L6.png>
+Package pdftex.def Info: ./images//p4_3_1_thermal_energy_intersection_L6.png  used on input line 799.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_thermal_energy_intersection_L8.png, id=124, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_thermal_energy_intersection_L8.png Graphic file (type png)
+<use ./images//p4_3_1_thermal_energy_intersection_L8.png>
+Package pdftex.def Info: ./images//p4_3_1_thermal_energy_intersection_L8.png  used on input line 803.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_thermal_energy_intersection_L10.png, id=125, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_thermal_energy_intersection_L10.png Graphic file (type png)
+<use ./images//p4_3_1_thermal_energy_intersection_L10.png>
+Package pdftex.def Info: ./images//p4_3_1_thermal_energy_intersection_L10.png  used on input line 807.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_expectation_L6.png, id=126, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_expectation_L6.png Graphic file (type png)
+<use ./images//p4_3_1_expectation_L6.png>
+Package pdftex.def Info: ./images//p4_3_1_expectation_L6.png  used on input line 812.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_expectation_L8.png, id=127, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_expectation_L8.png Graphic file (type png)
+<use ./images//p4_3_1_expectation_L8.png>
+Package pdftex.def Info: ./images//p4_3_1_expectation_L8.png  used on input line 816.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_expectation_L10.png, id=128, 462.528pt x 346.896pt>
+File: ./images//p4_3_1_expectation_L10.png Graphic file (type png)
+<use ./images//p4_3_1_expectation_L10.png>
+Package pdftex.def Info: ./images//p4_3_1_expectation_L10.png  used on input line 820.
+(pdftex.def)             Requested size: 179.64343pt x 134.7331pt.
+<./images//p4_3_1_filtered_expectations_average.png, id=129, 722.7pt x 433.62pt>
+File: ./images//p4_3_1_filtered_expectations_average.png Graphic file (type png)
+<use ./images//p4_3_1_filtered_expectations_average.png>
+Package pdftex.def Info: ./images//p4_3_1_filtered_expectations_average.png  used on input line 825.
+(pdftex.def)             Requested size: 252.61609pt x 151.57077pt.
+<./images//p4_3_entropic_signature_average.png, id=130, 722.7pt x 433.62pt>
+File: ./images//p4_3_entropic_signature_average.png Graphic file (type png)
+<use ./images//p4_3_entropic_signature_average.png>
+Package pdftex.def Info: ./images//p4_3_entropic_signature_average.png  used on input line 829.
+(pdftex.def)             Requested size: 252.61609pt x 151.57077pt.
+ [25 <./images//p4_3_1_thermal_energy_intersection_L6.png> <./images//p4_3_1_thermal_energy_intersection_L8.png> <./images//p4_3_1_thermal_energy_intersection_L10.png> <./images//p4_3_1_expectation_L6.png> <./images//p4_3_1_expectation_L8.png> <./images//p4_3_1_expectation_L10.png> <./images//p4_3_1_filtered_expectations_average.png> <./images//p4_3_entropic_signature_average.png>] [26] [27] [28] [29] [30] [31]
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 282.
+(Font)              using `U/stmry/m/n' instead on input line 1190.
 
-[19] [20] (./2024_05_06_301d4cea943c6f55973eg.aux)
+[32]
+<./images//p4_3_scars_entropic_signature.png, id=166, 722.7pt x 433.62pt>
+File: ./images//p4_3_scars_entropic_signature.png Graphic file (type png)
+<use ./images//p4_3_scars_entropic_signature.png>
+Package pdftex.def Info: ./images//p4_3_scars_entropic_signature.png  used on input line 1199.
+(pdftex.def)             Requested size: 561.3729pt x 336.82616pt.
+ [33 <./images//p4_3_scars_entropic_signature.png>] [34] [35] (./2024_05_06_301d4cea943c6f55973eg.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6622 strings out of 478268
- 101451 string characters out of 5846347
- 415390 words of memory out of 5000000
- 24750 multiletter control sequences out of 15000+600000
- 486650 words of font info for 80 fonts, out of 8000000 for 9000
+ 9407 strings out of 478268
+ 152389 string characters out of 5846347
+ 1079135 words of memory out of 5000000
+ 27486 multiletter control sequences out of 15000+600000
+ 488808 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,10n,68p,1628b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on 2024_05_06_301d4cea943c6f55973eg.pdf (20 pages, 679560 bytes).
+ 67i,10n,77p,1628b,1816s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on 2024_05_06_301d4cea943c6f55973eg.pdf (35 pages, 1651347 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 258 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

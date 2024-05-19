@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.sparse.linalg import eigsh  # Sparse matrix eigensolver
-from hw1 import sparse_hamiltonian  # Assuming this function generates your Hamiltonian
+from hw2.src.hw1 import sparse_hamiltonian  # Assuming this function generates your Hamiltonian
 from numpy.linalg import norm
 
 def truncate_svd(matrix, k):
@@ -133,4 +133,4 @@ for h in h_values:
 for h in results:
     for k in results[h]:
         pass
-        print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")
+        # print(f"h={h}, k={k}, Overlap: {results[h][k]['overlap']:.3f}, Storage Reduction: {results[h][k]['storage_reduction']:.3f}")

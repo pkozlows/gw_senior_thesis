@@ -198,7 +198,7 @@ $$
   \item Will the dissociation constant increase or decrease with increasing I at $\mathrm{pH} 9$ ?
 \end{itemize}
 
-\section*{Problem 4 (20 points total)}
+\section{Problem 4 (20 points total)}
 $\mathrm{M}$ and $\mathrm{L}$ interact to form a complex $\mathrm{ML}$ with association constant $\mathrm{K}$.
 
 $$
@@ -239,13 +239,106 @@ K=\frac{(M L)}{(M)(L)}=\frac{(M L)}{\left[\left(M_{t o t}\right)-(M L)\right]\le
 $$
 
 Explain briefly why $\bar{n}$ for the tight binding case when $(L)=\frac{1}{K}$ is less than that observed when $(L)=\frac{1}{K}$ for the weak binding case of Eq. A.
+\subsubsection{Answer}
+We start with the expression for the association constant $K$:
+\begin{equation}
+K=\frac{(M L)}{(M)(L)}
+\end{equation}
+But now in the denominator, we can use the conservation of mass relations that were given:
+\begin{equation}
+K=\frac{(M L)}{\left[\left(M_{\text{tot}}\right)-(M L)\right]\left[\left(L_{\text{tot}}\right)-(M L)\right]}
+\end{equation}
+Now we can substitute the given values of $\left(M_{\text{tot}}\right)=\left(L_{\text{tot}}\right)=\frac{1}{K}$ into this equation:
+\begin{equation}
+K=\frac{(M L)}{\left[\frac{1}{K}-(M L)\right]\left[\frac{1}{K}-(M L)\right]}
+\end{equation}
+Solving for $(M L)$, we get $(M L)=\frac{3\pm\sqrt{5}}{2K}$. The definition of $\bar{n}$ is given by:
+\begin{equation}
+\bar{n}=\frac{(M L)}{(M)+(M L)}
+\end{equation}
+But we know that $(M) = (M_{\text{tot}}) - (M L)$, so we can substitute this into the equation for $\bar{n}$:
+\begin{equation}
+\bar{n}=\frac{(M L)}{(M_{\text{tot}} - (M L)) + (M L)}=\frac{(M L)}{(M_{\text{tot}})}=\frac{\frac{3\pm\sqrt{5}}{2K}}{\frac{1}{K}}=\frac{3\pm\sqrt{5}}{2}= 0.382
+\end{equation}
+Note that we have only used the $-$ of the $\pm$ because we need for the fraction of $\frac{(M L)}{(M+(M L))}$ to be less than 1 since the $(M)$ must be positive.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
 
-\section*{Problem 5 (20 points total)}
+# Define the symbols
+ml, k = sp.symbols('ml k')
+
+# Define the equation
+eq = sp.Eq(k, ml / ((1 / k - ml)**2))
+
+# Solve the equation for ml
+ml_solution = sp.solve(eq, ml)
+
+# Select the physically meaningful solution
+ml_solution = ml_solution[0]  # typically the positive root
+
+# Define the total metal concentration
+M_tot = 1 / k
+
+# Calculate the value of bar_n
+n_bar = ml_solution / M_tot
+
+# Simplify the expression for n_bar
+n_bar = sp.simplify(n_bar)
+
+# Display the simplified n_bar
+n_bar.evalf()
+
+\end{lstlisting}
+For the tight binding case, the formation of the complex ML significantly reduces the free ligand concentration, unlike in the weak binding case where the ligand concentration remains largely unaffected. This results in a lower 
+$\bar{n}$
+ value because fewer complexes can form when the ligand concentration is appreciably reduced.
+\section{Problem 5 (20 points total)}
 Balance the following reaction,
 
 $$
 \mathrm{As}_{2} \mathrm{~S}_{3}(s)+\mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{AsO}_{4}^{3-}(a q)+\mathrm{SO}_{4}^{2-}(a q)+\mathrm{Cl}^{-}(a q)
 $$
+\subsubsection{Answer}
+For the given redox reaction, we can break it down into half-reactions to balance the charges and atoms. The half-reactions are as follows:
+\begin{equation}
+\begin{array}{l}
+\text { Reduction: } \mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) \\
+\text { Oxidation: } \mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
+\end{array}
+\end{equation}
+We start by balancing the reduction have reaction, but only for the elements other than oxygen:
+\begin{equation}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q)
+\end{equation}
+Next, we continue by adding water:
+\begin{equation}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q)
+\end{equation}
+Then we add photons to match the number of hydrogens:
+\begin{equation}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) + \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 40 \mathrm{H}^{+}
+\end{equation}
+Next, we add electrons to balance the charge:
+\begin{equation}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 40 \mathrm{H}^{+} + 28 \mathrm{e}^{-}
+\end{equation}
+Now we balance the oxidation half-reaction, starting with the elements other than oxygen:
+\begin{equation}
+\mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
+\end{equation}
+Next, we add water:
+\begin{equation}
+\mathrm{ClO}_{3}^{-}(a q) + \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\end{equation}
+Then we add photons to match the number of hydrogens:
+\begin{equation}
+\mathrm{ClO}_{3}^{-}(a q) + 6 \mathrm{H}^{+} \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\end{equation}
+Finally, we add electrons to balance the charge:
+\begin{equation}
+\mathrm{ClO}_{3}^{-}(a q) + 6 \mathrm{H}^{+} + 6 \mathrm{e}^{-} \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\end{equation}
 
 
 \end{document}

@@ -59,12 +59,12 @@ def create_trotter_gates(t, h_x=-1.05, h_z=0.5, J=1):
     omega = np.array([[-h_z, -h_x], [-h_x, h_z]])
     
     # Interaction term
-    interaction = J * np.kron(sigma_z, sigma_z)
+    interaction = -J * np.kron(sigma_z, sigma_z)
     
     # Create the Trotter gates
-    gate_field = np.exp(-1j * t * omega)
-    gate_odd = np.exp(-1j * t * interaction).reshape(2, 2, 2, 2)
-    gate_even = np.exp(-1j * t * interaction).reshape(2, 2, 2, 2)
+    gate_field = np.exp(-1 * t * omega)
+    gate_odd = np.exp(-1 * t * interaction).reshape(2, 2, 2, 2)
+    gate_even = np.exp(-1 * t * interaction).reshape(2, 2, 2, 2)
     
     return gate_field, gate_odd, gate_even
 
@@ -76,7 +76,7 @@ def trotter_gate_field(mps, gate, site):
 
 def trotter_gate_interaction(mps, gate, site1, site2):
     """Apply a two-site Trotter gate to the MPS tensors at the given sites."""
-    w = np.einsum('abc,bdef,cdg->aefg', mps[site1], gate, mps[site2])
+    w = np.einsum('abc,befd,cdg->aefg', mps[site1], gate, mps[site2])
     w = w.reshape(w.shape[0]*w.shape[1], w.shape[2]*w.shape[3])
     # compute the SVD
     U, S, V = np.linalg.svd(w)
@@ -84,7 +84,7 @@ def trotter_gate_interaction(mps, gate, site1, site2):
     mps_new = mps.copy()
     # Update the MPS tensors
     mps_new[site1] = U.reshape(mps[site1].shape[0], 2, -1)
-    mps_new[site2] = np.dot(np.diag(S), V.conj().T).reshape(-1, 2, mps[site2].shape[2])
+    # mps_new[site2] = (np.diag(S) @ V).reshape(-1, 2, mps[site2].shape[2])
     return mps_new
 
 def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
@@ -95,12 +95,12 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
         mps = trotter_gate_field(mps, gate_field, i)
     
     # Apply odd interaction gates
-    for i in range(0, L-1, 2):
-        mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
-    
-    # Apply even interaction gates
     for i in range(1, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_even, i, i+1)
+    
+    # Apply even interaction gates
+    for i in range(0, L-1, 2):
+        mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
     
     return mps
 
@@ -118,7 +118,9 @@ def enforce_bond_dimension(mps, chi):
         U, S, V = np.linalg.svd(w, full_matrices=False)
         # Update the MPS tensors
         mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], U.shape[-1])
-        mps_new[i+1] = np.dot(np.diag(S), V).reshape(U.shape[-1], mps_new[i+1].shape[1], mps_new[i+1].shape[2])
+        mps_new[i+1] = (np.diag(S)@V).reshape(U.shape[-1], mps_new[i+1].shape[1], mps_new[i+1].shape[2])
+
+    # check_left_canonical(mps_new)
 
     mps = mps_new.copy()
     mps_new = mps.copy()
@@ -131,9 +133,22 @@ def enforce_bond_dimension(mps, chi):
         # Compute the SVD, now enforcing the truncation
         u, s_diag, v_t = truncate_svd(w, chi)
         # Update the MPS tensors
-        mps_new[i-1] = np.dot(u, s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], u.shape[-1])
+        mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], u.shape[-1])
         mps_new[i] = v_t.reshape(u.shape[-1], mps_new[i].shape[1], mps_new[i].shape[2])
+
+    # check_right_canonical(mps_new)
     return mps_new
+
+def compute_contraction(mps_tensors, bra):
+    # contract the physical energy_interactions on every tensor to generate a list of 2-tensors
+    contraction = np.einsum('ijk,ijl->kl', mps_tensors[0], bra[0])
+    for j in range(1, len(mps_tensors)):
+        if j == len(mps_tensors) - 1:
+            contraction = np.einsum('kl,kmo,oml->', contraction, mps_tensors[j], bra[j])
+        else:
+            contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
+            
+    return contraction
 
         
     

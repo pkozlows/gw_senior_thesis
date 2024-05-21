@@ -130,12 +130,12 @@ def mps_correlations(mps_tensors):
     return contractions
 def compute_contraction(mps_tensors, bra):
     # contract the physical energy_interactions on every tensor to generate a list of 2-tensors
-    contraction = np.einsum('ijk,lji->kl', mps_tensors[0], bra[0])
+    contraction = np.einsum('ijk,ijl->kl', mps_tensors[0], bra[0])
     for j in range(1, len(mps_tensors)):
         if j == len(mps_tensors) - 1:
             contraction = np.einsum('kl,kmo,lmo->', contraction, mps_tensors[j], bra[j])
         else:
-            contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
+            contraction = np.einsum('kl,kmn,lmo->no', contraction, mps_tensors[j], bra[j])
             
     return contraction
 # # Define parameters

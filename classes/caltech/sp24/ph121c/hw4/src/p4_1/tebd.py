@@ -42,7 +42,7 @@ for l in L:
         mps_enforced = enforce_bond_dimension(trotterized, chi)
         # now compute the energy of this mps
         bra_mps = [t.conj().T for t in mps_list]
-        energy = compute_contraction(mps_enforced, bra_mps)
+        energy = compute_contraction(mps_enforced, mps_list)
         # normalization = compute_contraction(mps_enforced, mps_enforced)
         # print(normalization)
         # assert np.isclose(normalization, 1)

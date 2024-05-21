@@ -84,7 +84,7 @@ def trotter_gate_interaction(mps, gate, site1, site2):
     mps_new = mps.copy()
     # Update the MPS tensors
     mps_new[site1] = U.reshape(mps[site1].shape[0], 2, -1)
-    # mps_new[site2] = (np.diag(S) @ V).reshape(-1, 2, mps[site2].shape[2])
+    mps_new[site2] = (np.diag(S) @ V).reshape(-1, 2, mps[site2].shape[2])
     return mps_new
 
 def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
@@ -95,11 +95,11 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
         mps = trotter_gate_field(mps, gate_field, i)
     
     # Apply odd interaction gates
-    for i in range(1, L-1, 2):
+    for i in range(0, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_even, i, i+1)
     
     # Apply even interaction gates
-    for i in range(0, L-1, 2):
+    for i in range(1, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
     
     return mps

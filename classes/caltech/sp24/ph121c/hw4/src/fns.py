@@ -79,7 +79,7 @@ def trotter_gate_interaction(mps, gate, site1, site2):
     w = np.einsum('abc,befd,cdg->aefg', mps[site1], gate, mps[site2])
     w = w.reshape(w.shape[0]*w.shape[1], w.shape[2]*w.shape[3])
     # compute the SVD
-    U, S, V = np.linalg.svd(w)
+    U, S, V = np.linalg.svd(w, full_matrices=False)
     # make a copy of the mps tensors for modification
     mps_new = mps.copy()
     # Update the MPS tensors
@@ -96,11 +96,11 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
     
     # Apply odd interaction gates
     for i in range(0, L-1, 2):
-        mps = trotter_gate_interaction(mps, gate_even, i, i+1)
+        mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
     
     # Apply even interaction gates
     for i in range(1, L-1, 2):
-        mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
+        mps = trotter_gate_interaction(mps, gate_even, i, i+1)
     
     return mps
 
@@ -144,9 +144,9 @@ def compute_contraction(mps_tensors, bra):
     contraction = np.einsum('ijk,ijl->kl', mps_tensors[0], bra[0])
     for j in range(1, len(mps_tensors)):
         if j == len(mps_tensors) - 1:
-            contraction = np.einsum('kl,kmo,oml->', contraction, mps_tensors[j], bra[j])
+            contraction = np.einsum('kl,kmo,lmo->', contraction, mps_tensors[j], bra[j])
         else:
-            contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
+            contraction = np.einsum('kl,lmn,kmo->no', contraction, mps_tensors[j], bra[j])
             
     return contraction
 

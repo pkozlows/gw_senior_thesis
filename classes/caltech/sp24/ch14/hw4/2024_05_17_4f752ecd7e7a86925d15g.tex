@@ -114,6 +114,7 @@ Then the equilibrium expression for this hydrolysis is:
 \begin{equation}
 K_{b}=\frac{[\mathrm{HCO}_{3}^{-}][\mathrm{OH}^{-}]}{[\mathrm{CO}_{3}^{2-}]}
 \end{equation}
+We can then use the concentration of hydroxide to calculate the pH.
 This gives a pH of 11.3.
 % Inline Python code in the document
 \begin{lstlisting}[language=Python]
@@ -144,12 +145,61 @@ pH.evalf()
 This problem is modified from the 2022 midterm, problem 6B "Is this a soluble problem?", which, ironically, was not soluble as it was written...
 
 \subsection{}
-What partial pressure (in atm) of gas phase $\mathrm{CO}_{2}$ exists in equilibrium with a solution saturated with $\mathrm{CaCO}_{3}$ at $\mathrm{pH}=7.5$ ? The problem originally specified that the free $\mathrm{Ca}^{2+}$ concentration $=0.001$ $\mathrm{M}$, but this constraint is inconsistent with the relevant equilibrium constants.
+What partial pressure (in atm) of gas phase $\mathrm{CO}_{2}$ exists in equilibrium with a solution saturated with $\mathrm{CaCO}_{3}$ at $\mathrm{pH}=7.5$? The problem originally specified that the free $\mathrm{Ca}^{2+}$ concentration $=0.001$ $\mathrm{M}$, but this constraint is inconsistent with the relevant equilibrium constants.
 \subsubsection{Answer}
+Since we are given the $\mathrm{pH}$ of the solution, we can calculate the concentration of $\mathrm{H}^{+}$ ions in the solution. 
 The solubility product constant for $\mathrm{CaCO}_{3}$ is given by:
 \begin{equation}
 K_{sp}=[\mathrm{Ca}^{2+}][\mathrm{CO}_{3}^{2-}]
 \end{equation}
+The relevant equilibrium expression for this reaction would be:
+\begin{equation}
+\mathrm{CaCO}_{3}(s) \rightleftharpoons \mathrm{Ca}^{2+}+\mathrm{CO}_{3}^{2-}
+\end{equation}
+So due to stoichiometry, we know that the concentration of $\mathrm{Ca}^{2+}$ should be approximately equal to the concentration of $\mathrm{CO}_{3}^{2-}$. We can use this fact to substitute into the solubility product expression and then solve for the concentration of $\mathrm{CO}_{3}^{2-}$:
+\begin{equation}
+4.5 \times 10^{-9}=[\mathrm{Ca}^{2+}][\mathrm{CO}_{3}^{2-}]=x^{2}
+\end{equation}
+Now that we have the concentration of $\mathrm{CO}_{3}^{2-}$, we can calculate the concentration of $\mathrm{HCO}_{3}^{-}$ using the dissociation expression:
+\begin{equation}
+K_{a2}=\frac{[\mathrm{H}^{+}][\mathrm{CO}_{3}^{2-}]}{[\mathrm{HCO}_{3}^{-}]}
+\end{equation}
+Now that we have solved for the concentration of $\mathrm{HCO}_{3}^{-}$, we can now use this information to solve for the concentration of $\mathrm{H}_{2} \mathrm{CO}_{3}$ using the equilibrium expression:
+\begin{equation}
+K_{a1}=\frac{[\mathrm{H}^{+}][\mathrm{HCO}_{3}^{-}]}{[\mathrm{H}_{2} \mathrm{CO}_{3}]}
+\end{equation}
+Then, we know that there exists a rapid equilibrium between $\mathrm{H}_{2} \mathrm{CO}_{3}$ and $\mathrm{CO}_{2}$, so we can say that their concentrations will be roughly equal. Now we can solve for the partial pressure of $\mathrm{CO}_{2}$ using the Henry's law constant:
+\begin{equation}
+k_{H}=\frac{[\mathrm{CO}_{2}]}{P_{\mathrm{CO}_{2}}}
+\end{equation}
+This gives a partial pressure of $\mathrm{CO}_{2}$ of $0.0900$ atm.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+import numpy as np
+
+# defined the symbols
+h_plus, co3_2_minus, hco3_minus, h2co3, co2 = sp.symbols('h_plus co3_2_minus hco3_minus h2co3 co2')
+
+# Given equilibrium constants
+pH = 7.5
+# use this to compute the futon concentration
+h_plus = 10**-pH
+ksp = 4.5e-9
+co3_2_minus = np.sqrt(ksp)
+# now we have all of the ingredients to compute hco3_minus
+ka1 = 4.25e-7
+hco3_minus = (h_plus * co3_2_minus) / ka1
+# now we can compute h2co3
+ka2 = 5.01e-11
+h2co3 = (h_plus * hco3_minus) / ka2
+# this will be equal to the concentration of carbon dioxide
+co2 = h2co3
+# now come we want to solve for the partial pressure of carbon dioxide using henry's law
+kh = 0.035
+p_co2 = co2 / kh
+p_co2
+\end{lstlisting}
 
 
 \section{}
@@ -300,45 +350,58 @@ $$
 \mathrm{As}_{2} \mathrm{~S}_{3}(s)+\mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{AsO}_{4}^{3-}(a q)+\mathrm{SO}_{4}^{2-}(a q)+\mathrm{Cl}^{-}(a q)
 $$
 \subsubsection{Answer}
-For the given redox reaction, we can break it down into half-reactions to balance the charges and atoms. The half-reactions are as follows:
+We start by assigning oxidation states to the compounds in the unbalanced reaction:
+\begin{equation}
+  \underset{(+3, -2)}{\mathrm{As}_{2} \mathrm{~S}_{3}(s)} + \underset{(+5, -2)}{\mathrm{ClO}_{3}^{-}(a q)} \rightarrow \underset{(+5, -2)}{\mathrm{AsO}_{4}^{3-}(a q)} + \underset{(+6, -2)}{\mathrm{SO}_{4}^{2-}(a q)} + \underset{(-1)}{\mathrm{Cl}^{-}(a q)}
+\end{equation}
 \begin{equation}
 \begin{array}{l}
-\text { Reduction: } \mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) \\
-\text { Oxidation: } \mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
+\text { Oxidation: } \mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) \\
+\text { Reduction: } \mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
 \end{array}
 \end{equation}
-We start by balancing the reduction have reaction, but only for the elements other than oxygen:
+For the oxidation reaction, we need to add 10 electrons to the right side to balance the charge. For the reduction reaction, we need to add 6 electrons to the left side to balance the charge:
 \begin{equation}
-\mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q)
+\begin{array}{l}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) + 10 e^{-} \\
+\end{array}
 \end{equation}
-Next, we continue by adding water:
+and
 \begin{equation}
-\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q)
+\begin{array}{l}
+6 e^{-} + \mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
+\end{array}
 \end{equation}
-Then we add photons to match the number of hydrogens:
+Next, we want to balance the number of oxygens by adding water:
 \begin{equation}
-\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) + \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 40 \mathrm{H}^{+}
+\begin{array}{l}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) + 8 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) + 10 e^{-}\\
+6 e^{-} + \mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\end{array}
 \end{equation}
-Next, we add electrons to balance the charge:
+Finally, we balance the hydrogens by adding protons:
 \begin{equation}
-\mathrm{As}_{2} \mathrm{S}_{3}(s) + 20 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow 2 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 40 \mathrm{H}^{+} + 28 \mathrm{e}^{-}
+\begin{array}{l}
+\mathrm{As}_{2} \mathrm{S}_{3}(s) + 8 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow \mathrm{AsO}_{4}^{3-}(a q) + \mathrm{SO}_{4}^{2-}(a q) + 10 e^{-} + 16 \mathrm{H}^{+}\\
+6 e^{-} + \mathrm{ClO}_{3}^{-}(a q) + 6 \mathrm{H}^{+} \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\end{array}
 \end{equation}
-Now we balance the oxidation half-reaction, starting with the elements other than oxygen:
+ Now, we can multiply the oxidation reaction by 3 and the reduction reaction by 5 to balance the electrons:
 \begin{equation}
-\mathrm{ClO}_{3}^{-}(a q) \rightarrow \mathrm{Cl}^{-}(a q)
+\begin{array}{l}
+3 \mathrm{As}_{2} \mathrm{S}_{3}(s) + 24 \mathrm{H}_{2} \mathrm{O}(l) \rightarrow 3 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 30 e^{-} + 48 \mathrm{H}^{+}\\
+30 e^{-} + 5 \mathrm{ClO}_{3}^{-}(a q) + 30 \mathrm{H}^{+} \rightarrow 5 \mathrm{Cl}^{-}(a q) + 15 \mathrm{H}_{2} \mathrm{O}(l)
+\end{array}
 \end{equation}
-Next, we add water:
+Finally, we can add the two reactions together to get the balanced reaction and cancel common factors:
 \begin{equation}
-\mathrm{ClO}_{3}^{-}(a q) + \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
+\begin{array}{l}
+3 \mathrm{As}_{2} \mathrm{S}_{3}(s) + 9 \mathrm{H}_{2} \mathrm{O}(l) + 5 \mathrm{ClO}_{3}^{-}(a q) \rightarrow 3 \mathrm{AsO}_{4}^{3-}(a q) + 3 \mathrm{SO}_{4}^{2-}(a q) + 5 \mathrm{Cl}^{-}(a q) + 18 \mathrm{H}^{+}
+\end{array}
 \end{equation}
-Then we add photons to match the number of hydrogens:
-\begin{equation}
-\mathrm{ClO}_{3}^{-}(a q) + 6 \mathrm{H}^{+} \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
-\end{equation}
-Finally, we add electrons to balance the charge:
-\begin{equation}
-\mathrm{ClO}_{3}^{-}(a q) + 6 \mathrm{H}^{+} + 6 \mathrm{e}^{-} \rightarrow \mathrm{Cl}^{-}(a q) + 3 \mathrm{H}_{2} \mathrm{O}(l)
-\end{equation}
+
+
+
 
 
 \end{document}

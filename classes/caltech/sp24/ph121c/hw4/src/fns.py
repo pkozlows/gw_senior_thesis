@@ -85,8 +85,8 @@ def trotter_gate_interaction(mps, gate, site1, site2):
     mps_new = mps.copy()
     if site1 == 0:
         # Contract the first site with the gate
-        w = np.einsum('ab,acdf,bdg->cfg', mps[site1], gate, mps[site2])
-        w = w.reshape(w.shape[0], w.shape[1]*w.shape[2])
+        w = np.einsum('ab,acdf,bfg->cdg', mps[site1], gate, mps[site2])
+        w = w.reshape(gate.shape[1], gate.shape[3]*mps[site2].shape[2])
         # compute the SVD
         U, S, V = np.linalg.svd(w, full_matrices=False)
         # Update the MPS tensors
@@ -94,16 +94,16 @@ def trotter_gate_interaction(mps, gate, site1, site2):
         mps_new[site2] = (np.diag(S) @ V).reshape(-1, 2, mps[site2].shape[2])
     elif site2 == len(mps) - 1:
         # Contract the last site with the gate
-        w = np.einsum('abc,bdfg,cf->adg', mps[site1], gate, mps[site2])
-        w = w.reshape(w.shape[0]*w.shape[1], w.shape[2])
+        w = np.einsum('abc,bdfg,cg->adf', mps[site1], gate, mps[site2])
+        w = w.reshape(mps[site1].shape[0]*gate.shape[1], gate.shape[3])
         # compute the SVD
         U, S, V = np.linalg.svd(w, full_matrices=False)
         # Update the MPS tensors
-        mps_new[site1] = U.reshape(-1, 2, mps[site1].shape[2])
+        mps_new[site1] = U.reshape(mps[site1].shape[0], 2, -1)
         mps_new[site2] = (np.diag(S) @ V).reshape(-1, 2)
     else:
         w = np.einsum('abc,befd,cdg->aefg', mps[site1], gate, mps[site2])
-        w = w.reshape(w.shape[0]*w.shape[1], w.shape[2]*w.shape[3])
+        w = w.reshape(mps[site1].shape[0]*gate.shape[1], gate.shape[2]*mps[site2].shape[2])
         # compute the SVD
         U, S, V = np.linalg.svd(w, full_matrices=False)
         # Update the MPS tensors
@@ -120,11 +120,10 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
     
     # Apply odd interaction gates
     for i in range(0, L-1, 2):
-        print(i)
         mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
     
     # Apply even interaction gates
-    for i in range(0, L-1, 2):
+    for i in range(1, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_even, i, i+1)
     
     return mps
@@ -137,46 +136,64 @@ def enforce_bond_dimension(mps, chi):
     for i in range(L-1):
         # Contract the i and i+1 tensors to prepare for SVD
         if i == 0:
-            contraction = np.einsum('ij,abj->iab', mps_new[i], mps_new[i+1])
-            w = contraction.reshape(mps_new[i].shape[0], mps_new[i+1].shape[0]*mps_new[i+1].shape[1])
+            contraction = np.einsum('ij,jab->iab', mps[i], mps[i+1])
+            w = contraction.reshape(mps[i].shape[0], mps[i+1].shape[1]*mps[i+1].shape[2])
+            # Compute the SVD
+            U, S, V = np.linalg.svd(w, full_matrices=False)
+            # Update the MPS tensors
+            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1])
+            mps_new[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1], mps[i+1].shape[2])
         elif i == L-2:
-            contraction = np.einsum('ijk,kl->ijl', mps_new[i], mps_new[i+1])
+            contraction = np.einsum('ijk,kl->ijl', mps[i], mps[i+1])
             0
+            w = contraction.reshape(mps[i].shape[0]*mps[i].shape[1], mps[i+1].shape[1])
+            # Compute the SVD
+            U, S, V = np.linalg.svd(w, full_matrices=False)
+            # Update the MPS tensors
+            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1])
         else:
-            contraction = np.einsum('ijk,klm->ijlm', mps_new[i], mps_new[i+1])
-            # Reshape the contraction to a matrix
-            w = contraction.reshape(mps_new[i].shape[0] * mps_new[i].shape[1], mps_new[i+1].shape[1] * mps_new[i+1].shape[2])
-        # Compute the SVD
-        U, S, V = np.linalg.svd(w, full_matrices=False)
-        # Update the MPS tensors
-        if i == 0:
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1])
-            mps_new[i+1] = (np.diag(S)@V).reshape(mps_new[i+1].shape[0], mps_new[i+1].shape[1], mps_new[i+1].shape[2])
-        elif i == L-2:
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
-            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps_new[i+1].shape[1])
-        else:
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
-            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps_new[i+1].shape[1], mps_new[i+1].shape[2])
-
-    # check_left_canonical(mps_new)
+            contraction = np.einsum('ijk,klm->ijlm', mps[i], mps[i+1])
+            w = contraction.reshape(mps[i].shape[0] * mps[i].shape[1], mps[i+1].shape[1] * mps[i+1].shape[2])
+            # Compute the SVD
+            U, S, V = np.linalg.svd(w, full_matrices=False)
+            # Update the MPS tensors
+            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2]) 
 
     mps = mps_new.copy()
+    check_left_canonical(mps)
+
     mps_new = mps.copy()
     # now throw it in reverse while enforcing the bond dimension
     for i in range(L-1, 0, -1):
-        # Contract the i and i-1 tensors to prepare for SVD
-        contraction = np.einsum('ijk,klm->ijlm', mps_new[i-1], mps_new[i])
-        # Reshape the contraction to a matrix
-        w = contraction.reshape(mps_new[i-1].shape[0] * mps_new[i-1].shape[1], mps_new[i].shape[1] * mps_new[i].shape[2])
-        # Compute the SVD, now enforcing the truncation
-        u, s_diag, v_t = truncate_svd(w, chi)
-        # Update the MPS tensors
-        mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], u.shape[-1])
-        mps_new[i] = v_t.reshape(u.shape[-1], mps_new[i].shape[1], mps_new[i].shape[2])
+        if i == L-1:
+            contraction = np.einsum('ijk,kl->ijl', mps[i-1], mps[i])
+            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1])
+            # Compute the SVD
+            u, s_diag, vt = truncate_svd(w, chi)
+            # Update the MPS tensors
+            mps_new[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
+            mps_new[i] = vt.reshape(-1, mps[i].shape[1])
+        elif i == 1:
+            contraction = np.einsum('ai,ijk->ajk', mps[i-1], mps[i])
+            # Compute the SVD
+            u, s_diag, vt = truncate_svd(w, chi)
+            # Update the MPS tensors
+            mps_new[i-1] = (u @ s_diag).reshape(-1, mps[i].shape[0])
+            mps_new[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+        else:
+            contraction = np.einsum('ijk,klm->ijlm', mps[i-1], mps[i])
+            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1]*mps[i].shape[2])
+            # Compute the SVD
+            u, s_diag, vt = truncate_svd(w, chi)
+            # Update the MPS tensors
+            mps_new[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
+            mps_new[i] = vt.reshape(-1, mps[i].shape[1], mps[i].shape[2])
+    mps = mps_new.copy()
 
-    # check_right_canonical(mps_new)
-    return mps_new
+    check_right_canonical(mps)
+    return mps
 
 def compute_contraction(mps_tensors, bra):
     # contract the physical energy_interactions on every tensor to generate a list of 2-tensors

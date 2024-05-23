@@ -117,7 +117,9 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
     # Apply field gates
     for i in range(L):
         mps = trotter_gate_field(mps, gate_field, i)
-    
+    print(f'After field gates for L={L}')
+    for i in range(L):
+        print(mps[i].shape)
     # Apply odd interaction gates
     for i in range(0, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
@@ -132,6 +134,10 @@ def enforce_bond_dimension(mps, chi):
     """Enforce left canonical form on the MPS without truncating."""
     L = len(mps)
     mps_new = mps.copy()
+    # print the shapes of the mps tensors
+    print(f'After all gates and Before left to right sweep for L={L}')
+    for i in range(L):
+        print(mps[i].shape)
     
     for i in range(L-1):
         # Contract the i and i+1 tensors to prepare for SVD
@@ -163,7 +169,10 @@ def enforce_bond_dimension(mps, chi):
 
     mps = mps_new.copy()
     check_left_canonical(mps)
-
+    # print the shapes of the mps tensors
+    print(f'After left to right sweep for L={L}')
+    for i in range(L):
+        print(mps[i].shape)
     mps_new = mps.copy()
     # now throw it in reverse while enforcing the bond dimension
     for i in range(L-1, 0, -1):

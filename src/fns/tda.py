@@ -3,7 +3,7 @@ from pyscf.dft import rks
 from pyscf.tdscf.rks import dTDA, dRPA
 from pyscf import tddft
 import numpy as np
-from mf import setup_molecule, calculate_mean_field
+from src.fns.mf import setup_molecule, calculate_mean_field
 import numpy as np
 
 def my_dtda(mf):  
@@ -45,7 +45,7 @@ def my_dtda(mf):
 
     # print(np.diag(normalization))
 
-    # now that us compute the V matrix
+    # now that us compute the V matrix transition densities
     W_pqia = np.sqrt(2)*eri_mo[:, :, :n_occupied, n_occupied:]
     # now that us reshape it into a form we want
     W_pqu = W_pqia.reshape(n_orbitals, n_orbitals, n_occupied*n_virtual)

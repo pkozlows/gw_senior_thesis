@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{hyperref}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
+
+\title{Total energy functionals}
+\author{Patryk Kozlowski}
+\date{\today}
+\begin{document}
+\maketitle
+We have the MO coefficients from a prior mean field calculation $C_{\mu p}$. I computed a form for a linearized GW density matrix in MO basis $\gamma _{pq}$. Now I want to alter the $C_{\mu p}$ to take into account this new density matrix. We can diagonalize the $\gamma _{pq}$ to get the wave function rotations and orbital energies:
+\begin{equation}
+    \boldsymbol{\gamma }\boldsymbol{\psi } = \epsilon \boldsymbol{\psi }
+\end{equation}
+Then we can get the new $C_{\mu p'}$ by:
+\begin{equation}
+    C_{\mu p'} = \sum_{p} C_{\mu p} \psi _{pp'}
+\end{equation}
+Then, I need to orthonormalize the new $C_{\mu p'}$ using the overlap matrix $S_{pp'}$ with
+\begin{equation}
+    C_{\mu p} = C_{\mu p'} (S^{-1/2})_{pp'} C _{p' \nu}
+\end{equation}
+
+Now that we have the density matrix at our disposition we want to use it to evaluate total energies. Any expression for the total energy will have the following form:
+\begin{equation}
+    E_{\text{tot}}=T_s [? ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}}+ E_{\text{corr}} [? ]
+\end{equation}
+where $V_H[\gamma ]$ is the Hartree energy, $V_x [\gamma ]$ is the exchange energy, $V_{\text{nuc, elec}} [\gamma ]$ is the nuclear-electron attraction energy, and $V_{\text{nuc, nuc}}$ is the nuclear-nuclear repulsion energy. These terms remain constant to different total energy functions. $T_s$, which is defined as the kinetic energy, and $E_{\text{corr}}$, which is the correlation energy, are the terms that will change across different definitions of total energy functionals since either can contain a portion of correlation. $E_{\text{corr}}$ can either be evaluated using the Klein or Galitskii-Migdal formula. The Klein formula is given by:
+\begin{equation}
+    E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
+    = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (A^{\text{TDA}})
+\end{equation}
+where $\Omega ^{\text{RPA}}$ are the RPA excitation energies and $A^{\text{TDA}}$ is from the Tamm-Dancoff approximation. This is also known as the plasmon-pole form.
+
+However, we know that the trace is invariant to unitary transformations and also cyclic permutations, so:
+\begin{equation}
+    \text{Tr} (A^{\text{TDA}}) = \text{Tr} (A^{\text{TDA}} UU^{\dagger}) = \text{Tr} (U^{\dagger} A^{\text{TDA}} U) = \text{Tr} (\Omega ^{\text{TDA}})
+\end{equation}
+So with $E_{\text{corr}}^{\text{Klein}}$ we are quantifying the correlation energy by considering the difference between the RPA and TDA excitation energies for a given system. Since we found earlier that the TDA captures more correlation than the RPA, we can expect that $E_{\text{corr}}^{\text{Klein}}$ will be negative, or stabilizing, as we would expect.
+The Galitskii-Migdal formula is given by:
+\begin{equation}
+    E_{\text{corr}} ^{\text{GM}} =-\frac{1}{2} \sum_{m i a} \frac{M_{a i, m}^* M_{a i, m}}{\epsilon_a-\epsilon_i+\Omega_m-2 \mathrm{i} \eta}-\frac{1}{2} \sum_{m a i} \frac{M_{i a, m} M_{i a, m}^*}{\epsilon_a-\epsilon_i+\Omega_m+2 \mathrm{i} \eta}
+\end{equation}
+where we have our transition densities:
+\begin{equation}
+    M_{pq,u} = \sum_{ia} (pq|ia) X_{ia}^u
+\end{equation}
+where $X_{ia}^u$ are the excitation vectors. In the restricted Hartree-Fock case, this simplified to:
+\begin{equation}
+    M_{pq,u} = \sqrt{2} \sum_{ia} (pq|ia) X_{ia}^u
+\end{equation}
+We want to test 3 different total energy functionals:
+\begin{equation}
+    E_{\text{tot}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+\label{eq:klein1}
+\end{equation}
+\begin{equation}
+    E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[G_0/\gamma _0]
+\end{equation}
+\begin{equation}
+    E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0]
+\label{eq:klein2}
+\end{equation}
+Specifically, we will want to see the difference between \ref{eq:klein1} and \ref{eq:klein2}. 
+\end{document}

@@ -1,0 +1,6 @@
+{
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.extraPaths": [
+      "/Users/patrykkozlowski/caltech/classes/caltech/f23/senior_thesis"
+    ]
+  }

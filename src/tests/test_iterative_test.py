@@ -1,15 +1,12 @@
 import numpy as np
 import pyscf.gw
-from tda import real_corr_se, my_drpa, my_dtda, symm_drpa
-from mf import setup_molecule, calculate_mean_field
-from fock import simple_fock, fock_dft
-from iterative import g0w0
+from src.fns.tda import real_corr_se, my_drpa, my_dtda, symm_drpa
+from src.fns.mf import setup_molecule, calculate_mean_field
+from src.fns.fock import simple_fock, fock_dft
+from src.fns.iterative import g0w0
 from pyscf import gw
 from pyscf import tddft
 import pyscf
-import numpy as np
-from tda import real_corr_se, my_drpa, my_dtda, symm_drpa
-from mf import setup_molecule, calculate_mean_field
 import unittest
 
 class G0W0TestBase(unittest.TestCase):
@@ -20,7 +17,7 @@ class G0W0TestBase(unittest.TestCase):
         molecule = setup_molecule(species)
         fock_mf = calculate_mean_field(molecule, 'hf')
         n_orbitals = fock_mf.mol.nao_nr()
-        n_occupied = fock_mf.mol.nelectron // 2
+        n_occupied = .mol.nelectron // 2
         n_virtual = n_orbitals - n_occupied
 
         def extract_and_reshape_excitation_vectors(xy):

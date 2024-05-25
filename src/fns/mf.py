@@ -66,7 +66,7 @@ def calculate_mean_field(molecule, method):
         mf.verbose = 0
         mf.kernel()
     elif method == 'hf':
-        mf = rks.RKS(molecule).newton()
+        mf = rks.RKS(molecule)
         mf.xc = 'hf'
         mf.conv_tol = 1e-12
         mf.verbose = 0

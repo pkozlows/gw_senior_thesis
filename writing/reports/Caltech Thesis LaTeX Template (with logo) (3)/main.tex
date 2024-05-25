@@ -11,7 +11,7 @@
 \usepackage[hyphens]{url}
 \usepackage{lipsum}
 \usepackage{graphicx}
-
+\usepackage{subcaption}
 \usepackage{todonotes}
 \usepackage{physics}
 
@@ -121,7 +121,7 @@
 \mainmatter
 
 \chapter{Nomenclature}
-This uses the restricted Hartree-Fock formalism, meaning that two electrons with opposite spin occupy each spatial orbital.\\\\
+\label{chap:nomenclature}
 \begin{tabular}{p{0.65\textwidth} p{0.8\textwidth}}
 Symbol & Description \\
 \hline
@@ -129,108 +129,190 @@ Symbol & Description \\
 \(a,b,c,d\) & Virtual orbital indices \\
 \(p,q,r,s\) & General MO indices \\
 \(\mu,\nu,\lambda,\sigma\) & AO indices \\
-\((pq|rs) = \int \int \psi_p^*(\mathbf{r}_1)\psi_q(\mathbf{r}_1)\frac{1}{r_{12}}\psi_r^*(\mathbf{r}_2)\psi_s(\mathbf{r}_2)d\mathbf{r}_1d\mathbf{r}_2\) & Two-electron integrals \\
+\((pq|rs) = \int \int \psi_p^*(\mathbf{r}_1)\psi_q(\mathbf{r}_1)\frac{1}{r_{12}}\psi_r^*(\mathbf{r}_2)\psi_s(\mathbf{r}_2)d\mathbf{r}_1d\mathbf{r}_2\) & Two-electron spatial integrals\\
 \((pq||rs) = (pq|rs) - (ps|rq)\) & Antisymmetrized two-electron integrals \\
+\(\chi _p (\mathbf{x}) = \psi _p (\mathbf{r})\sigma (\mathbf{\omega })\) & Spin-orbital \\
+\([pq|rs] = \int \int \chi_p^*(\mathbf{x}_1)\chi_q(\mathbf{x}_1)\frac{1}{r_{12}}\chi_r^*(\mathbf{x}_2)\chi_s(\mathbf{x}_2)d\mathbf{x}_1d\mathbf{x}_2\) & Two-electron spin integrals \\
 
 \end{tabular}\\\\
 All calculations have been done using the PySCF package.\autocite{sun_recent_2020} The code for this project can be found at \url{https://github.com/pkozlows/gw_senior_thesis/tree/master}.
 \chapter{Motivation}
-The formalism of many-body perturbation theory (MBPT) provides corrections to a mean-field description such as that given by Hartree-Fock or density functional theory (DFT). The former method fails to treat the correlation between electrons with opposite spin, and the latter one treats it in an average way. DFT is often used for systems of large size, as it is fairly accurate and computationally cheap. However, DFT's reliance on empirically based functionals in some cases gives rise to the notorious self-interaction error; because one is considering an electron in the average field of the electrons in the system, you can have an electron interacting with itself. In practice, this can potentially lead to a variety of issues, including the underestimation of surface stability (overestimation of surface energies) relevant in surface science studies. \autocite{schimka_accurate_2010} To remedy this problem, normally one would fall back onto the wave function-based MBPT methods, such as coupled cluster theory (CC) and Moller-Plesset perturbation theory to 2nd order (MP2). However, their computational scaling is steep for larger systems, such as periodic ones.\autocite{mcclain_gaussian-based_2017} Because of this issue, such perturbative methods often are not a better option than the field-standard DFT in predicting the properties of materials, as I have learned in a previous study.\autocite{kozlowski_elucidating_2021} Therefore, in the quantum chemistry community, there has been an interest in applying Green's function MBPT methods, within the $GW$ approximation, to such systems, which has shown to give accurate corrections to, for example, band gaps, on top of a prior (DFT) mean-field calculation, at a cheap computational cost.\autocite{noauthor_frontiers_nodate} This is the motivation for my study of the $G_0W_0$ method.
-\newpage
-Figure \ref{fig:water_homo} quantifies the potential of Green's function methods, such as $G_0W_0$. As can be seen, $G_0W_0$ lowers the orbital energy and, thus, captures more of the electronic correlation, as desired.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{water_gw.png}
-    \caption{Difference in the HOMO energy for the water molecule with different bases (cc-pVDZ, etc.) for $G_0W_0$, and DFT, both starting from the PBE functional}
-    \label{fig:water_homo}
-\end{figure}
+The formalism of many-body perturbation theory (MBPT) provides corrections to a mean-field description such as that given by Hartree-Fock or density functional theory (DFT). Hartree-Fock is not used much in practice because it is known to provide a weak treatment of electron correlation chiefly due to the fact that it only considers a single Slater determinant. DFT is often used for systems of large size, as it is fairly accurate and computationally cheap, scaling like $O(N^3)$, where $N$ is the system size. However, it treats electron correlation in an approximate way that is difficult to systematically improve. Specifically, its reliance on approximate functionals gives rise to the notorious self-interaction error; because one is using the electron density to determine the Coulomb repulsion between electrons, this means that one can have the electron interacting with its own contribution to the electron density. In practice, this can potentially lead to a variety of issues, including the underestimation of surface stability (overestimation of surface energies) relevant in surface science studies. \autocite{schimka_accurate_2010} \autocite{kozlowski_elucidating_2021} To remedy the problems with the mean field approximations, normally one would fall back onto the wave function-based MBPT, such as Moller-Plesset perturbation theory to 2nd order (MP2) and coupled cluster theory (CC). However, their computational scaling is steep, scaling like $O(N^5)$ and $O(N^6)$ or greater, respectively, which can make it difficult to simulate larger systems. \autocite{mcclain_gaussian-based_2017} To bridge the gap between the cheap mean-field methods and the expensive wave function-based MBPT, there has been an interest in applying Green's function MBPT methods, within the $GW$ approximation, to such systems, which has shown to give accurate corrections to various properties, such as band gaps, on top of a prior (DFT) mean-field calculation, at a moderate computational cost. \autocite{noauthor_frontiers_nodate} This is the motivation for my study of the $G_0W_0$ method, which traditionally scales like $O(N^4)$, within the framework of the $GW$ approximation.
 
 
-\chapter{Theoretical Background}
-We begin by writing out the Schrödinger equation for the $N$-electron system in a molecular field. 
+
+\chapter{Theory}
+We begin by writing out the time independent Schrödinger equation for the $N$-electron system
 \begin{equation}
     \hat{H}\Psi =E\Psi 
+\label{eqn:tise}
 \end{equation}
 with
 \begin{equation}
-\hat{H}=\sum_{i=1}^N\left(-\frac{1}{2} \nabla_i^2\right)-\sum_{i=1}^N \sum_{\alpha }\frac{Z_{\alpha }}{r_{i\alpha }}+\sum_{i<j}^N \frac{1}{r_{i j}}
+\hat{H}=\sum_{i=1}^N\left(-\frac{1}{2} \nabla_i^2\right)-\sum_{i=1}^N \sum_{\alpha }\frac{Z_{\alpha }}{r_{i\alpha }}+\sum_{i<j}^N \frac{1}{r_{i j}} + C_{nn}.
+\label{eqn:hamiltonian}
 \end{equation}
-We note that we do not include the potential energy term associated with the nuclear-nuclear repulsion, as we are working in the Born-Oppenheimer approximation. This can be succinctly written as the sum of a kinetic energy term with a nuclear-electronic attraction term and an electron-electron repulsion term  
-\begin{equation}
-    \hat{H}= \hat{T}+ \hat{V}_{ne}+\hat{V}_{ee}
-\end{equation}
-The objective of many years of research in quantum chemistry has been solving for the $V_{ee}$ term. Now, I will introduce some of the mean field methods that have been classically used to tackle this problem at a cheap computational cost.
+An equation \ref{eqn:tise}, $\hat{H}$ is the Hamiltonian operator, $\Psi$ is the wave function, and $E$ is the energy of the system. As shown in equation \ref{eqn:hamiltonian}, the Hamiltonian operator consists of four terms: a kinetic energy term, in which a sum of the kinetic energy $-\frac{1}{2} \nabla_i^2$ of each electron is taken; a nuclear-electron attraction term, in which we have sums running over all of the electrons $i$ and all of the nuclei $\alpha$ with their separation denoted by $r_{i\alpha}$ and the nuclear charge denoted by $Z_{\alpha}$; an electron-electron repulsion term, in which we have a sum running over all pairs of electrons $i$ and $j$ with their separation denoted by $r_{ij}$; and a nuclear-nuclear repulsion term $C_{nn}$, which we have denoted as a constant since we are working in the Born-Oppenheimer approximation of all electrons moving in a fixed nuclear framework.
+ The objective of many years of research in quantum chemistry has been solving for the electron-electron repulsion term, will we will call $V_{ee}$.
+Now, I will introduce some of the mean field methods that have been classically used to tackle this problem at a cheap computational cost.
 \section{Mean Field Methods}
-\subsection{Hartree-Fock}
-In the restricted Hartree-Fock formalism, the $V_{ee}$ is given by
+\subsection{Hartree-Fock\autocite{szabo_modern_2012}}
+\label{sec:hf}
+The concept behind Hartree-Fock (HF) is that we can assign each electron a given orbital $\chi (\mathbf{r}, \sigma)$, where $\mathbf{r}$ is the spatial coordinate and $\sigma$ is the spin. Then, we take a Hartree product of these orbitals
 \begin{equation}
-    V_{ee} = \frac{1}{2} \sum_i^{\text {occ }} \sum_j^{\text {occ }} 2(ii|jj) - (ij|ji)
+    \Phi _{Hartree} = \chi _1(\mathbf{r}_1, \sigma_1) \chi _2(\mathbf{r}_2, \sigma_2) \cdots \chi _N(\mathbf{r}_N, \sigma_N).
 \end{equation}
-The first term is the Coulomb term and the second term is an exchange term. We choose to make the following presentation in the restricted Hartree-Fock formalism, but considering spin here is important. In the unrestricted Hartree-Fock formalism, this would be given by
+However, this is not antisymmetric with respect to the exchange of two electrons, so we need to enforce antisymmetry by taking a Slater determinant of these orbitals, denoting the antisymmetrization operator as $\hat{A}$,
 \begin{equation}
-    V_{ee} = \frac{1}{2} \sum_{\underline{i}}^{\text{occ}} \sum_{\underline{j}}^{\text{occ}} \left( (\underline{i}\underline{i}|\underline{j}\underline{j}) - (\underline{i}\underline{j}|\underline{j}\underline{i}) \right)
+    \Psi _{HF} = \hat{A} \prod_{i=1}^{N} \chi _i(\mathbf{r}_i, \sigma_i) .
 \end{equation}
-Where the underline denotes that these are spin orbitals; we have not performed the summation over all possible spins yet. The Hartree-Fock method fails to take into account the exchange term in the unrestricted case; the integral vanishes when the spins of $i$ and $j$ are different. Physically, this means that there is no energetic stabilization for two electrons with different spins to occupy the same spatial index, whereas there is one when the spins are parallel. This was what was meant earlier by the statement that Hartree-Fock does not treat electron correlation.\autocite{szabo_modern_2012}
+So we have arrived at the Hartree-Fock energy, which is defined as
+\begin{equation}
+    E_{HF} = \langle \Psi _{HF} | \hat{H} | \Psi _{HF} \rangle,
+\end{equation}
+where we have assumed the normalization $\langle \Psi _{HF} | \Psi _{HF} \rangle = 1$.
+Now we seek to minimize this energy with respect to the constituent orbitals. This may be done by defining the Lagrangian
+\begin{equation}
+    \mathcal{L} = E_{HF} - \lambda \left( \langle \Psi _{HF} | \Psi _{HF} \rangle - 1 \right),
+\end{equation}
+where $\lambda$ is a Lagrange multiplier that enforces the normalization condition. We then take the functional derivative of the Lagrangian with respect to the orbitals and set it to zero to find the minimum of the energy
+\begin{equation}
+    \frac{\delta \mathcal{L}}{\delta \chi _i} = 0.
+\end{equation}
+Carrying out this minimization leads to the eigenvalue equation known as the Hartree-Fock equations
+\begin{equation}
+    F\chi _i = \epsilon _i \chi _i,
+\end{equation}
+where $F$ is the Fock operator, which is defined as
+\begin{equation}
+    F = h + V_{HF},
+\end{equation}
+with $h$ being the one-electron part of the Hamiltonian and $V_{HF}$ being the Hartree-Fock potential. It should be noted that $h$ corresponds to the first and second terms, whereas $V_{HF}$ corresponds to the third term, respectively, of equation \ref{eqn:hamiltonian}. The Hartree-Fock potential is defined as
+\begin{equation}
+    V_{HF} = \sum_{j=1}^{N} \left( J_j - K_j \right),
+\label{eqn:vhf}
+\end{equation}
+Where $J_j$ is the local Coulomb operator
+\begin{equation}
+    \bra{\chi_i(\mathbf{r}_1)} J_j(\mathbf{r}_1) \ket{\chi_i(\mathbf{r}_1)} = \int \int d\mathbf{r}_1 d\mathbf{r}_2 \frac{\chi_i^*(\mathbf{r}_1) \chi_i(\mathbf{r}_1) \chi_j^*(\mathbf{r}_2) \chi_j(\mathbf{r}_2)}{r_{12}}=[ii|jj],
+\end{equation}
+ and $K_j$ is the nonlocal exchange operator
+\begin{equation}
+    \bra{\chi_i(\mathbf{r}_1)} K_j(\mathbf{r}_1) \ket{\chi_i(\mathbf{r}_1)} = \int \int d\mathbf{r}_1 d\mathbf{r}_2 \frac{\chi_i^*(\mathbf{r}_1) \chi_j(\mathbf{r}_1) \chi_j^*(\mathbf{r}_2) \chi_i(\mathbf{r}_2)}{r_{12}}=[ij|ji].
+\end{equation}
+We have used the notation for the spin integrals as given in Chapter \ref{chap:nomenclature}. So when we consider equation \ref{eqn:vhf}, now performing an additional sum over the spins orbitals being operated on (defined previously, for the general case, as $i$) in order to treat all unique pairs of occupied spin orbitals, we arrive at the $V_{ee}$
+
+
+\begin{equation}
+    V_{ee} = \frac{1}{2} \sum_{{i}}^{\text{occ}} \sum_{{j}}^{\text{occ}} \left( [{i}{i}|{j}{j}] - [{i}{j}|{j}{i}] \right).
+\end{equation}
+ We simplify by performing a spin integration to convert to spatial integrals, as defined in Chapter \ref{chap:nomenclature}
+\begin{equation}
+    V_{ee} = \frac{1}{2} \sum_{{i}}^{\text{occ}} \sum_{{j}}^{\text{occ}} \sum_{\sigma = \alpha, \beta} \left( (ii|jj) - (ij|ji) \right) = \frac{1}{2} \sum_i^{\text {occ }} \sum_j^{\text {occ }} 2(ii|jj) - (ij|ji).
+\end{equation}
+Notice that the Coulomb term will obtain a factor of 2 after the spin integration, whereas the exchange term will only survive if the spins for $i$ and $j$ are the same. So Hartree-Fock fails to correlate electrons of opposite spin.
 \subsection{Density Functional Theory (DFT)}
-The central quantity in DFT is the electron density, as represented by a density matrix. The method is fairly black box, and its intricate details will not be covered here (for further reading see \textcite{parr_density-functional_1994}), but it is important to understand that it treats the electron correlation through an exchange-correlation functional, which in principle has an exact form, but in practice is approximated as semi-empirical, which leads to issues in accurately describing the electron correlation from an ab-initio perspective.\\\\
-What is important to understand is that both of these mean field methods yield a reasonable first guess at molecular orbital energies $\epsilon_{p}$ and coefficients $C_{\mu p}$, which we correct with MBPT methods.
-\section{Many-body perturbation theory}
-There are many different MBPT methods, but they all have the same purpose of recovering a portion of the electron correlation missed by these mean field methods. For example, Hartree-Fock is variational, meaning that its energy $E_{HF}$ will always be greater or equal to the true energy of the system $E_0$. For HF, we define the difference between these two quantities as the correlation energy
+The central quantity in DFT is the electron density $\rho $. The motivation for DFT can be seen by considering that the wave function depends on the whereabouts of $N$ electrons, each defined by their own orbital, which in turn has 3 directions within its spatial coordinate $\textbf{r}$. The electron density, on the other hand, is a function of just 3 variables, $x$, $y$, and $z$. Hohenberg and Kohn were able to take advantage of this fact when they proved that the ground state energy of a system is a unique functional of the electron density. 
 \begin{equation}
-    E_{\text{corr}} \equiv E_0 - E_{HF}
+    E[\rho ] = T[\rho ] + V_{ne}[\rho ] + V_H[\rho ] + V_{xc}[\rho ] + V_{nn}
 \end{equation}
-The other mean field method that is often used is DFT, but it is not variational, so there is not such a simple interpretation of $E_{\text{corr}}$ in this case, but the principle is similar. We will be focusing on recovering electron correlation with the $G_0W_0$ method, which is a Green's function-based MBPT method.
+Where $T$ and $V_{ne}$ are the kinetic and nuclear-electron attraction energies for the first and second terms of equation \ref{eqn:hamiltonian}, respectively. $V_H$ is the Hartree potential, which is just an alternate name for the Coulomb term of section \ref{sec:hf}, and $V_{xc}$ is the exchange-correlation potential. These two terms cover the $V_{HF}$ from equation \ref{eqn:vhf}. In addition, the correlation portion of $V_{xc}$ takes into account the electron correlation in an approximate way. Many levels of designing the $V_{xc}$ have been made, as described by Jacob's Ladder. \autocite{milman_jacobs_2021} Finally, $V_{nn}$ is the nuclear-nuclear repulsion term.\\\\ What is important to understand is that both the HF and DFT mean field methods yield a reasonable first guess \autocite{bruneval_gw_2021} at molecular orbital energies $\epsilon_{p}$ and coefficients $C_{\mu p}$; these molecular orbital coefficients enable one to transform from the basis of atomic $\mu$ to molecular orbitals $p$ (via considering the molecular ones as a linear combination of atomic orbitals (LCAO)). We later correct both quantities with MBPT.
+\section{Green's functions}
+\subsection{Definitions}
+One can define the single-particle Green's function $G$ as
+\begin{equation}
+G\left(\mathbf{r}_1, t_1 ; \mathbf{r}_2, t_2\right)=-i\left\langle\Psi_0\left|T\left[\psi\left(\mathbf{r}_1, t_1\right) \psi^{\dagger}\left(\mathbf{r}_2, t_2\right)\right]\right| \Psi_0\right\rangle,
+\end{equation}
+where $\psi$ is the field operator for creating or destroying a particle at spacetime coordinates $\mathbf{r}$ and $t$, $T$ is the time-ordering operator that ensures that the $\psi$ at the earlier time is acting on the ket before the $\psi$ at the later time, and $\Psi_0$ is the ground state wave function. In the same vein, we can define the noninteracting Green's function as
+\begin{equation}
+G_0\left(\mathbf{r}_1, t_1 ; \mathbf{r}_2, t_2\right)=-i\left\langle\Phi_0\left|T\left[\psi\left(\mathbf{r}_1, t_1\right) \psi^{\dagger}\left(\mathbf{r}_2, t_2\right)\right]\right| \Phi_0\right\rangle,
+\end{equation}
+where now $\Phi_0$ is the ground state wave function of the noninteracting system. The wave function for the noninteracting system can be determined through one of the mean-field methods, which we described earlier. The Dyson equation relating these two quantities is
+\begin{equation}
+G=G_0+G_0\Sigma G,
+\label{eqn:dyson}
+\end{equation}
+where $\Sigma$ is the self-energy. The self-energy is a quantity that accounts for the electron correlation that is not captured by the mean-field methods. An intuitive physical picture can be gained from this by considering the example of an electron shot into a gas of electrons, as shown in Figure \ref{fig:shot}.
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{shot.png}
+  \caption{The electron is shot into the gas}
+  \label{fig:shot}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{clothing.png}
+  \caption{The electron creates holes as it moves along}
+  \label{fig:clothing}
+\end{subfigure}
+\caption{Electron gas propagation taken from \textcite{mattuck_guide_1992}}
+\label{fig:propagates}
+\end{figure}
+As it propagates through this medium, it will have an electrostatic repulsion with the electrons in the gas, so it will create holes (depicted in white) as it moves along (pictured in Figure \ref{fig:clothing}). Therefore, it no longer makes sense to think of the bare electron, but rather the quasi-electron along with its "clothing" of holes. To make this more rigorous, we have the equation
+\begin{equation}
+    \epsilon_{\text{quasi}} - \epsilon_{\text{bare}} = \epsilon_{\text{self}},
+\end{equation}
+which is saying that the difference between the quasi-electron energy and the bare electron energy can be thought of as the electron's self-energy, or just the energy of its "clothing". So we can think of $\epsilon_{\text{bare}}$ and $\epsilon_{\text{quasi}}$ as originating from the noninteracting and interacting Green's functions $G_0$ and $G$, respectively. The self-energy $\Sigma$ then captures the difference between these two quantities. Typically, $\Sigma $ is designed to capture all of the quantum mechanical effects of the many body system, including the exchange (partially captured by HF as noted in section \ref{sec:hf}) and correlation effects, so it is often denoted as $\Sigma_{xc}$.
+\subsection{The $GW$ Approximation}
+In order to solve the Dyson equation \ref{eqn:dyson}, we need to make approximations to the self-energy $\Sigma$. By introducing the screened Coulomb potential $W$, which represents the effective electrostatic interaction between electrons (as described above through the concept of the quasi-electron), the polarization function $P$, which describes the response of the system to the introduction of an electron, and the vertex function $\Gamma$, which describes the interaction between the electrons and holes, we can write down the five Hedin's equations
+\begin{equation}
+\begin{aligned}
+& G(1,2)=G_0(1,2)+\int d(3,4) G_0(1,3) \Sigma(3,4) G(4,2) \\
+& P(1,2)=\int d(3,4) G(1,3) G(4,1) \Gamma(3,4 ; 2) \\
+& W(1,2)=V(1,2)+\int d(3,4) V(1,3) P(3,4) W(4,2) \\
+& \Sigma(1,2)=\int d(3,4) G(1,3) \Gamma(3,2 ; 4) W(4,1) \\
+& \Gamma(1,2 ; 3)=\delta(1,2) \delta(1,3)+\int d(4,5,6,7) \frac{\delta \Sigma(1,2)}{\delta G(4,5)} G(4,6) G(7,5) \Gamma(6,7 ; 3)
+\end{aligned}
+\end{equation}
+where we have made use of the shorthand notation $1=(\mathbf{r}_1, t_1)$ and $V$ is the bare Coulomb potential. The $GW$ approximation is a simplification of these equations, where we neglect the vertex function $\Gamma$ by setting $\Gamma (1,2,3)= \delta (1,2) \delta (1,3)$. This simplifies the equations for the self-energy and polarization function to
+\begin{equation}
+\begin{aligned}
+& \Sigma(1,2)=\int d(1,2) G(1,2) W(1,2) \\
+& P(1,2)=\int d(1,2) G(1,2) G(2,1). \\
+\end{aligned}
+\end{equation}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg}
+    \caption{Graphical representation of Hedin's equations taken from \textcite{noauthor_frontiers_nodate}. The left panel shows the full set of equations, whereas the right panel shows the $GW$ approximation.}
+    \label{fig:hedin}
+\end{figure}
+The figure \ref{fig:hedin} shows the self-consistency between these equations, with the polarization $P$ represented by $\tilde{\chi}$. Full self-consistency, including the vertex function $\Gamma$, is shown in the left panel, whereas the $GW$ approximation, which neglects the vertex function, is shown in the right panel. The $G_0W_0$ method, which I have studied, only performs one loop of the $GW$ approximation cycle. This is why it is often termed a "one-shot" procedure.
+\subsection{Application in MBPT}
+Now that we have the recipe to solve for its interacting version, the single-particle Green's function $G$ contains a lot of information that we would be interested in to provide an MBPT correction. In this work, we use it to update mean-field molecular orbital energies $\epsilon_{p}^0$ to quasiparticle energies $\epsilon_{p}^{QP}$, which are interpreted as effective molecular orbital energies. We also use it to update the electron density via the linearized $G_0W_0$ density matrix derived in chapter \ref{chap:linearized_gw}. Finally, we use it to determine the total energy of the molecule with different total energy functionals. It can also be used, among other things, to compute the spectral function, which gives access to ionization potentials and electron affinities. \autocite{noauthor_frontiers_nodate}
+
+
+
 
 
 
 \chapter{$G_0W_0$ Procedure}
 \section{Iterative equation}
-The procedure that we used to compute quasiparticle energies, which are interpreted as effective molecular orbital energies, is given by 
+The linearized procedure that was used in this work to compute quasiparticle energies, is given by
 \begin{equation}
-    \delta_{pq}F_{pq}^{HF}[\gamma^{DFT}] + \Sigma^{corr}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}.
+    \delta_{pq}F_{pq}^{HF}[\gamma^{MF}] + \Sigma _{c}(\varepsilon_{p}^{QP}) = \varepsilon_{p}^{QP}.
 \label{eq: Iterative equation}
 \end{equation}
-We explain the notation starting from left to right. The first term corresponds to taking the diagonal of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma$. These electron densities are obtained from a previous mean-field calculation, either $\gamma_{DFT}$ or $\gamma_{HF}$. The one-electron reduced density matrix is used to express the electron density here. The second term evaluates $\Sigma^{corr}$ for the $\varepsilon_{p}^{QP}$ determined in the previous iteration. The right side of the equality gives the updated $\varepsilon_{p}^{QP}$.\\ Equation \ref{eq: Iterative equation} is iterated until self-consistency. We start with an initial guess for $\varepsilon_{p}^{QP}$, which is given by the mean-field orbital energy $\epsilon_p$. This is used in the first iteration to solve for the right-hand side $\varepsilon_{p}^{QP}$ of Equation \ref{eq: Iterative equation}. In the next iteration, we use the previously obtained $\varepsilon_{p}^{QP}$ to determine $\Sigma^{corr}$. This process is repeated until we reach a convergence threshold for $\varepsilon_{p}^{QP}$. One can also use the Newton-Raphson method to solve the iterative equation for $\varepsilon_{p}^{QP}$.
+The first term corresponds to taking the diagonal of the Hartree-Fock matrix $F_{pq}^{HF}$ evaluated at a given electron density $\gamma_{MF}$ These electron densities are obtained from a previous mean-field calculation, so $\gamma_{MF}$ means either $\gamma_{DFT}$ or $\gamma_{HF}$. The second term evaluates $\Sigma _{c}$ for the $\varepsilon_{p}^{QP}$ determined in the previous iteration. The right side of the equality gives the updated $\varepsilon_{p}^{QP}$.\\\\ Equation \ref{eq: Iterative equation} is iterated until self-consistency. We start with an initial guess for $\varepsilon_{p}^{QP}$, which is given by the mean-field orbital energy $\epsilon_p$. This is used in the first iteration to solve for the right-hand side $\varepsilon_{p}^{QP}$ of Equation \ref{eq: Iterative equation}. In the next iteration, we use the previously obtained $\varepsilon_{p}^{QP}$ to determine $\Sigma _{c}$. This process is repeated until we reach a convergence threshold for $\varepsilon_{p}^{QP}$. One can also use the Newton-Raphson method to solve the iterative equation for $\varepsilon_{p}^{QP}$.
 \subsection{The Fock Matrix}
-In the basis of atomic orbitals, the HF Fock matrix is
+In section \ref{sec:hf}, we defined the Fock matrix. In the basis of molecular orbitals, it can be written by
 \begin{equation}
-F_{\mu\nu}^{HF} = h_{\mu\nu} + \sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\nu|\lambda\sigma) - \frac{1}{2}\sum_{\lambda\sigma}P_{\lambda\sigma}(\mu\lambda|\nu\sigma)
-\label{eq: Fock matrix}
+    F_{ij}^{HF} = h_{ij} + \sum_{kl}^{occ} P_{kl} \left( (ij|kl) - \frac{1}{2} (ik|jl) \right),
 \end{equation}
-where $h_{\mu\nu}$ is the one-electron part of the Hamiltonian, $P_{\lambda\sigma}$ is the one-electron reduced density matrix, and $(\mu\nu|\lambda\sigma)$ is a two-electron integral. \autocite{szabo_modern_2012} A useful identity for $P_{\lambda\sigma}$ in terms of the MO coefficients from the mean-field calculation is: 
-\begin{equation}
-P_{\mu\nu} = 2\sum_{i=1}^{N/2}C_{\mu i}C_{\nu i}^{*}
-\end{equation}
-We note that the sum runs only over the $N/2$ occupied \emph{spatial} orbitals. Equation \ref{eq: Fock matrix} is the form for the HF Fock matrix, and not the DFT Fock matrix. In the canonical HF MO basis, $F_{\mu\nu}^{HF}$ merely has the HF MO energies placed on the diagonal. We transform the Fock matrix into the MO basis with
-\begin{equation}
-   F_{pq} = \sum_{\mu} \sum_{\nu} C_{\mu p}^{*}F_{\mu\nu}C_{\nu q}
-\end{equation}
-where $C$ is the matrix of MO coefficients.
-\subsection{Correlation-Self Energy}
-$\Sigma^{corr}$ is the second term in Equation \ref{eq: Iterative equation} and is the central quantity in the $GW$ method. It is formed from the inputted Green's function $G$ and the screened Coulomb potential $W$ and recovers a portion of the $E_{corr}$ mentioned earlier. $\Sigma^{corr}$ is dynamic, as opposed to the previous Fock term that was discussed, as is updated with a new $\varepsilon_{p}^{QP}$ in each iteration. In the case of the $G_0W_0$ approximation, we use the common approximation, considering only the diagonal element of $\Sigma^{corr}$ corresponding to the orbital with index $p$. This function is evaluated at the $\varepsilon_{p}^{QP}$ just obtained in the previous iteration. To summarize, we are actually interested in $\Sigma_{pp}^{corr}(\varepsilon_{p}^{QP})$. We will go into greater detail about the form of $\Sigma^{corr}$ in the next chapter.
+where $h_{ij}$ is the one-electron part of the Hamiltonian, $P_{kl}$ is the density matrix, and $(ij|kl)$ are the two-electron integrals.
+\subsection{Correlation-Self Energy: Use}
+$\Sigma _{c}$, tasked with capturing the electron correlation effects, is dynamic, as opposed to the previous Fock term that was discussed, as is updated with a new $\varepsilon_{p}^{QP}$ in each iteration. In the case of the $G_0W_0$ approximation, we use the common approximation, considering only the diagonal element of $\Sigma _{c}$ corresponding to the orbital with index $p$. This function is evaluated at the $\varepsilon_{p}^{QP}$ just obtained in the previous iteration. To summarize, we are actually interested in $\Sigma_{pp}^{corr}(\varepsilon_{p}^{QP})$. 
 \subsection{Updated $\varepsilon_{p}^{QP}$}
 This is the right side, or the solution, of Equation \ref{eq: Iterative equation}.
-\newpage
-\subsection{Graphical solution}
-We are able to check Equation \ref{eq: Iterative equation} in the HF case by plotting $\Sigma^{corr}$ as a function of the input frequency, which takes on  the possible values for $\varepsilon_{p}^{QP}$. Since $F_{pq}^{HF}$ is diagonal in the canonical HF MO basis, Equation \ref{eq: Iterative equation} can be reformulated as
-\begin{equation}
-    \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}
-\end{equation}
-Essentially, the line at $\omega - \epsilon_{p}^{HF}$ should, and does, intersect with $\Sigma^{corr}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
- This is a useful check to see if the self-energy, which we will derive in the next chapter, is being computed correctly.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{correlation_energies.png}
-\end{figure}
-Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value, but luckily $-12.18 eV$ is far enough away from this pole at $-40 eV$. Additional tests for a range of molecules and MOs with my implementation are reported in \ref{app:tests}.
 
 
 \section{Correlation Self-Energy}
 \begin{equation}
     \Sigma_{pp}^{\text{corr}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{i}^{\text{occupied}} \frac{\textbf{V}_{pi}^{\mu }\textbf{V}_{ip}^{\mu }}{\omega -(\epsilon _{i}-\Omega  _{\mu })}+ \sum_{a}^{\text{virtual}} \frac{\textbf{V}_{pa}^{\mu }\textbf{V}_{ap}^{\mu }}{\omega -(\epsilon _{a}+\Omega  _{\mu })}\right)
 \end{equation}
-This is the working equation for the diagonal of the correlation self-energy for a given MO. The $\textbf{V}^{\mu}$ and $\Omega_{\mu}$ are the excitation vectors and energies, respectively, from a previous RPA calculation. $\omega$ is my input frequency and the $\epsilon$ are the orbital energies from my previous mean-field calculation.
+This is the working equation for the diagonal of the correlation self-energy for a given MO. The $\textbf{V}^{\mu}$ and $\Omega_{\mu}$ are the transition vectors and excitation energies, respectively, from a previous RPA calculation. $\omega$ is my input frequency and the $\epsilon$ are the orbital energies from my previous mean-field calculation.
 
 
 
@@ -268,7 +350,7 @@ and $B$ is
 
 A symmetric version of the dRPA can also be used and is derived in \ref{app:symm_drpa} as suggested in the paper.
 
-The excitation vectors $\textbf{V}^{\mu}$ are taken by considering a contraction of two tensors. First, we consider the sum of $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a,\mu} = \textbf{X}_{i,a,\mu} + \textbf{Y}_{i,a,\mu}$. Then we contract this with the two-electron integrals:
+The transition vectors $\textbf{V}^{\mu}$ are taken by considering a contraction of two tensors. First, we consider the sum of the excitation vectors $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a,\mu} = \textbf{X}_{i,a,\mu} + \textbf{Y}_{i,a,\mu}$. Then we contract this with the two-electron integrals:
 \begin{equation}
     \textbf{W}_{p,q,i,a} = \sqrt{2} \sum_{p,q,i,a} (pq|ia)
 \end{equation}
@@ -295,12 +377,13 @@ And then we follow the same procedure as in the RPA to get $\textbf{V}_{pq}^{\mu
 \subsection{Direct approximation}
 Everywhere in the code, we consider the direct approximation, which just means that all instances of anti-symmetrized two-electron integrals are replaced by their non-symmetrized counterparts. In Equation \ref{eq: A matrix RPA}, Equation \ref{eq: B matrix RPA}, and Equation \ref{eq: A matrix TDA}, $(ia||jb) \rightarrow (ia|jb)$. In the former case it was called the \emph{direct} Random Phase Approximation (dRPA) and in the latter case it was called the \emph{direct} Tamm-Dancoff Approximation (dTDA).
 \chapter{Linearized $G_0W_0$ Density Matrix}
+\label{chap:linearized_gw}
 \subsection{Implementation}
-These are the working equations for the linearized $G_0W_0$ Density Matrix that were first reported in \autocite{bruneval_assessment_2019} and are derived in \ref{app:linearized_gw}.  First, we consider the fully occupied block:
+These are the working equations for the linearized $G_0W_0$ density matrix were first reported in \textcite{bruneval_assessment_2019} and are derived in \ref{app:linearized_gw}. We note that these are the working equations in the spin-restricted formalism. First, we consider the fully occupied block:
 \begin{equation}
 \gamma_{i j}^{G W}=2\delta_{i j}-2\sum_{a \mu} \frac{\textbf{V}_{i a}^\mu \textbf{V}_{ja}^\mu}{\left(\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}\right)\left(\epsilon_{j}-\epsilon_{a}-\Omega_{\mu}\right)}
 \end{equation}
-where the $\Omega_{\mu}$ are the excitation energies and the $\textbf{V}^{\mu}$ are the excitation vectors. The sum runs over all virtual orbitals and excitation energies. The $\epsilon$ are the orbital energies from the prior mean-field calculation. Next, we have the virtual-virtual block:
+where the $\Omega_{\mu}$ are the excitation energies and the $\textbf{V}^{\mu}$ are the transition vectors. The sum runs over all virtual orbitals and excitation energies. The $\epsilon$ are the orbital energies from the prior mean-field calculation. Next, we have the virtual-virtual block:
 \begin{equation}
 \gamma_{a b}^{G W}=-2\sum_{i \mu } \frac{\textbf{V}_{a i}^{\mu} \textbf{V}_{b i}^{\mu}}{\left(\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}\right)\left(\epsilon_{i}-\epsilon_{b}-\Omega_{\mu}\right)}
 \end{equation}
@@ -318,7 +401,7 @@ This all contributes to the form of the density matrix as:
 Where $\gamma _{bi}^{G W }$ is simply the transpose of $\gamma _{ib}^{\text{GW}}$, since all elements of this matrix are real. Therefore, this density matrix is Hermitian. The factor of 2 comes from the fact that we sum over both spins in the restricted Hartree-Fock formalism.
 \newpage
 \subsection{Plotting natural occupations}
-The natural occupations is found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: We considered restricted Hartree-Fock, which contains no correlation, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation. It is interesting to see that the dTDA contains more correlation than the dRPA, as the former is a subset of the latter, and so the latter should recover more correlation.
+The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: We considered restricted Hartree-Fock, which contains no correlation, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_occupations.png}
@@ -334,7 +417,20 @@ When $H_2$ is at its equilibrium distance at a low bond distance, we see in Figu
 \end{figure}
 
 
-\chapter{This is the Sixth Chapter}
+\chapter{Results}
+\subsection{Graphical solution}
+Equation \ref{eq: Iterative equation} can be solved iteratively, but also graphically in the HF case by plotting $\Sigma _{c}$ as a function of the input frequency, which takes on  the possible values for $\varepsilon_{p}^{QP}$. Since $F_{pq}^{HF}$ is diagonal in the canonical HF MO basis, Equation \ref{eq: Iterative equation} can be reformulated as
+\begin{equation}
+    \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}
+\end{equation}
+Essentially, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
+ This is a useful check to see if the self-energy, which we will derive in the next chapter, is being computed correctly.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{correlation_energies.png}
+\end{figure}
+Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value, but luckily $-12.18 eV$ is far enough away from this pole at $-40 eV$. Additional tests for a range of molecules and MOs with my implementation are reported in \ref{app:tests}.
 \chapter{This is the Seventh Chapter}
 \chapter{This is the Eighth Chapter}
 

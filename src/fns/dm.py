@@ -2,9 +2,9 @@ import pyscf
 from pyscf.dft import rks
 from pyscf.tdscf.rks import dTDA, dRPA
 import numpy as np
-from mf import setup_molecule, calculate_mean_field
+from src.fns.mf import setup_molecule, calculate_mean_field
 import numpy as np
-from tda import my_dtda, my_drpa
+from src.fns.tda import my_dtda, my_drpa
 
 def lin_gw_dm(td, mf):
     '''Calculates the linearized GW self energy for a given molecule and frequency. Returns a matrix of correlation energies for each orbital at the given frequency. All elements are considered.'''
@@ -14,7 +14,7 @@ def lin_gw_dm(td, mf):
     n_occupied = mf.mol.nelectron//2
     n_virtual = n_orbitals - n_occupied
 
-    omega, V_pqn = td
+    omega, V_pqn = td(mf)
 
     dm = np.zeros((n_orbitals, n_orbitals))
 

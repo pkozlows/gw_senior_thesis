@@ -1,5 +1,5 @@
 {\itshape Number}\hfill {\itshape Page}\par 
-\contentsline {table}{\numberline {B.1}{\ignorespaces Energy deviations (in eV) for my implementation of exact $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus the existing implementation in PySCF.}}{20}{table.B.1}%
-\contentsline {table}{\numberline {C.1}{\ignorespaces Summary of Poles and their Residues}}{24}{table.C.1}%
-\contentsline {table}{\numberline {C.2}{\ignorespaces Summary of Poles and their Residues}}{26}{table.C.2}%
-\contentsline {table}{\numberline {C.3}{\ignorespaces Summary of Poles and their Residues}}{28}{table.C.3}%
+\contentsline {table}{\numberline {B.1}{\ignorespaces Energy deviations (in eV) for my implementation of exact $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus the existing implementation in PySCF.\relax }}{24}{table.caption.26}%
+\contentsline {table}{\numberline {C.1}{\ignorespaces Summary of Poles and their Residues\relax }}{28}{table.caption.27}%
+\contentsline {table}{\numberline {C.2}{\ignorespaces Summary of Poles and their Residues\relax }}{30}{table.caption.28}%
+\contentsline {table}{\numberline {C.3}{\ignorespaces Summary of Poles and their Residues\relax }}{32}{table.caption.29}%

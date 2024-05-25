@@ -7,32 +7,35 @@
 \contentsline {chapter}{List of Tables}{vii}{section*.5}%
 \contentsline {chapter}{\chapternumberline {1}Nomenclature}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Motivation}{2}{chapter.2}%
-\contentsline {chapter}{\chapternumberline {3}Theoretical Background}{4}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Mean Field Methods}{4}{section.3.1}%
-\contentsline {subsection}{Hartree-Fock}{4}{section*.6}%
+\contentsline {chapter}{\chapternumberline {3}Theory}{3}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Mean Field Methods}{3}{section.3.1}%
+\contentsline {subsection}{Hartree-Fock\blx@tocontentsinit {0}\autocite {szabo_modern_2012}}{3}{section*.6}%
 \contentsline {subsection}{Density Functional Theory (DFT)}{5}{section*.7}%
-\contentsline {section}{\numberline {3.2}Many-body perturbation theory}{5}{section.3.2}%
-\contentsline {chapter}{\chapternumberline {4}$G_0W_0$ Procedure}{6}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Iterative equation}{6}{section.4.1}%
-\contentsline {subsection}{The Fock Matrix}{6}{section*.8}%
-\contentsline {subsection}{Correlation-Self Energy}{7}{section*.9}%
-\contentsline {subsection}{Updated $\varepsilon _{p}^{QP}$}{7}{section*.10}%
-\contentsline {subsection}{Graphical solution}{8}{section*.11}%
-\contentsline {section}{\numberline {4.2}Correlation Self-Energy}{9}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Random Phase Approximation}{9}{section.4.3}%
-\contentsline {subsection}{Tamm-Dancoff Approximation}{10}{section*.12}%
-\contentsline {subsection}{Direct approximation}{10}{section*.13}%
-\contentsline {chapter}{\chapternumberline {5}Linearized $G_0W_0$ Density Matrix}{11}{chapter.5}%
-\contentsline {subsection}{Implementation}{11}{section*.14}%
-\contentsline {subsection}{Plotting natural occupations}{12}{section*.15}%
-\contentsline {chapter}{\chapternumberline {6}This is the Sixth Chapter}{14}{chapter.6}%
-\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{15}{chapter.7}%
-\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{16}{chapter.8}%
-\contentsline {chapter}{Bibliography}{17}{section*.17}%
+\contentsline {section}{\numberline {3.2}Green's functions}{6}{section.3.2}%
+\contentsline {subsection}{Definitions}{6}{section*.8}%
+\contentsline {subsection}{The $GW$ Approximation}{7}{section*.10}%
+\contentsline {subsection}{Application in MBPT}{9}{section*.12}%
+\contentsline {chapter}{\chapternumberline {4}$G_0W_0$ Procedure}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Iterative equation}{10}{section.4.1}%
+\contentsline {subsection}{The Fock Matrix}{10}{section*.13}%
+\contentsline {subsection}{Correlation-Self Energy: Use}{10}{section*.14}%
+\contentsline {subsection}{Updated $\varepsilon _{p}^{QP}$}{11}{section*.15}%
+\contentsline {section}{\numberline {4.2}Correlation Self-Energy}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Random Phase Approximation}{11}{section.4.3}%
+\contentsline {subsection}{Tamm-Dancoff Approximation}{12}{section*.16}%
+\contentsline {subsection}{Direct approximation}{12}{section*.17}%
+\contentsline {chapter}{\chapternumberline {5}Linearized $G_0W_0$ Density Matrix}{13}{chapter.5}%
+\contentsline {subsection}{Implementation}{13}{section*.18}%
+\contentsline {subsection}{Plotting natural occupations}{14}{section*.19}%
+\contentsline {chapter}{\chapternumberline {6}Results}{16}{chapter.6}%
+\contentsline {subsection}{Graphical solution}{16}{section*.22}%
+\contentsline {chapter}{\chapternumberline {7}This is the Seventh Chapter}{18}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {8}This is the Eighth Chapter}{19}{chapter.8}%
+\contentsline {chapter}{Bibliography}{20}{section*.25}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Symmetric formulation of the dRPA}{18}{appendix.A}%
-\contentsline {appendix}{\chapternumberline {B}$G_0W_0$ Tests of my implementations of the dRPA and dTDA against PySCF}{20}{appendix.B}%
-\contentsline {appendix}{\chapternumberline {C}Derivation of the linearized $G_0W_0$ density matrix}{21}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Fully occupied block}{23}{section.C.1}%
-\contentsline {section}{\numberline {C.2}Fully Virtual Block}{25}{section.C.2}%
-\contentsline {section}{\numberline {C.3}Mixed Block}{27}{section.C.3}%
+\contentsline {appendix}{\chapternumberline {A}Symmetric formulation of the dRPA}{22}{appendix.A}%
+\contentsline {appendix}{\chapternumberline {B}$G_0W_0$ Tests of my implementations of the dRPA and dTDA against PySCF}{24}{appendix.B}%
+\contentsline {appendix}{\chapternumberline {C}Derivation of the linearized $G_0W_0$ density matrix}{25}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Fully occupied block}{27}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Fully Virtual Block}{29}{section.C.2}%
+\contentsline {section}{\numberline {C.3}Mixed Block}{31}{section.C.3}%

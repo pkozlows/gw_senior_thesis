@@ -53,6 +53,27 @@ def setup_molecule(name):
             basis = 'ccpvdz',
             symmetry = True,
         )
+    elif name == 'he':
+        molecule = gto.Mole()
+        molecule.build(
+            atom = 'He  0 0 0',
+            basis = 'ccpvdz',
+            symmetry = True,
+        )
+    elif name == 'ne':
+        molecule = gto.Mole()
+        molecule.build(
+            atom = 'Ne  0 0 0',
+            basis = 'ccpvdz',
+            symmetry = True,
+        )
+    elif name == 'c2h4':
+        molecule = gto.Mole()
+        molecule.build(
+            atom = 'C  0 0 0; C  0 0 1.2; H  0 1.1 -0.3; H  0 -1.1 -0.3; H  1.1 0 0.3; H  -1.1 0 0.3',
+            basis = 'ccpvdz',
+            symmetry = True,
+        )
     return molecule
 
 

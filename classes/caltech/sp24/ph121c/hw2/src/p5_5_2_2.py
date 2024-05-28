@@ -58,9 +58,18 @@ def left_canonicalize(mps_tensors):
 # Call the function
 def check_left_canonical(mps_tensors):
     for idx, tensor in enumerate(mps_tensors):
+        if idx == 0:
+            assert len(tensor.shape) == 2
+            tensor = tensor.reshape(1, *tensor.shape)
+        elif idx == len(mps_tensors) - 1:
+            assert len(tensor.shape) == 2
+            tensor = tensor.reshape(*tensor.shape, 1)
         # Left canonical check
-        reshaped_tensor = tensor.reshape(-1, tensor.shape[-1])
-        if np.allclose(reshaped_tensor.conj().T @ reshaped_tensor, np.eye(reshaped_tensor.shape[-1])):
+        # reshaped_tensor = tensor.reshape(-1, tensor.shape[-1])
+        print(tensor.conj().T.shape)
+        print(tensor.shape)
+        print(np.einsum('ijk,kli->il' , tensor.conj().T, tensor))
+        if np.allclose(np.einsum('ijk,kji->' , tensor, tensor.conj().T), 1):
             print(f"Tensor at site {idx+1} is left-canonical.")
         else:
             print(f"Tensor at site {idx+1} is NOT left-canonical.")

@@ -1,6 +1,7 @@
 import numpy as np
-from hw2.src.p5_5_2_2 import check_left_canonical, check_right_canonical
 from hw2.src.p5_5 import truncate_svd
+
+
 
 def tensor_product(matrices):
         """Calculate the tensor product of a list of matrices."""
@@ -62,9 +63,9 @@ def create_trotter_gates(t, h_x=-1.05, h_z=0.5, J=1):
     interaction = -J * np.kron(sigma_z, sigma_z)
     
     # Create the Trotter gates
-    gate_field = np.exp(-1 * t * omega)
-    gate_odd = np.exp(-1 * t * interaction).reshape(2, 2, 2, 2)
-    gate_even = np.exp(-1 * t * interaction).reshape(2, 2, 2, 2)
+    gate_field = np.exp(-1j * t * omega)
+    gate_odd = np.exp(-1j * t * interaction).reshape(2, 2, 2, 2)
+    gate_even = np.exp(-1j * t * interaction).reshape(2, 2, 2, 2)
     
     return gate_field, gate_odd, gate_even
 
@@ -86,7 +87,7 @@ def trotter_gate_interaction(mps, gate, site1, site2):
     if site1 == 0:
         # Contract the first site with the gate
         w = np.einsum('ab,acdf,bfg->cdg', mps[site1], gate, mps[site2])
-        w = w.reshape(gate.shape[1], gate.shape[3]*mps[site2].shape[2])
+        w = w.reshape(gate.shape[1], gate.shape[2]*mps[site2].shape[2])
         # compute the SVD
         U, S, V = np.linalg.svd(w, full_matrices=False)
         # Update the MPS tensors
@@ -123,97 +124,134 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
     # Apply odd interaction gates
     for i in range(0, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_odd, i, i+1)
+    print(f'After odd interaction gates for L={L}')
+    for i in range(L):
+        print(mps[i].shape)
     
     # Apply even interaction gates
     for i in range(1, L-1, 2):
         mps = trotter_gate_interaction(mps, gate_even, i, i+1)
+    print(f'After even interaction gates for L={L}')
+    for i in range(L):
+        print(mps[i].shape)
     
     return mps
 
+def check_left_canonical(tensor):
+        if len(tensor.shape) == 2:
+            tensor = tensor.reshape(1, *tensor.shape)
+        if np.allclose(np.einsum('ijk,kjm->im' , tensor.conj().T, tensor), np.eye(tensor.shape[2])):
+            print(f"Tensor is left-canonical.")
+        else:
+            print(f"Tensor is NOT left-canonical.")
+
+def check_right_canonical(mps_tensors):
+    L = len(mps_tensors)
+    # iterate through the list again
+    for idx, tensor in enumerate(reversed(mps_tensors)):
+        if idx == 0:
+            assert len(tensor.shape) == 2
+            tensor = tensor.reshape(*tensor.shape, 1)
+        elif idx == len(mps_tensors) - 1:
+            assert len(tensor.shape) == 2
+            tensor = tensor.reshape(1, *tensor.shape)
+        # Right canonical check
+        if np.allclose(np.einsum('ijk,kjm->im' , tensor, tensor.conj().T), np.eye(tensor.shape[0])):
+            print(f"Tensor at site {idx-L} is right-canonical.")
+        else:
+            print(f"Tensor at site {idx-L} is NOT right-canonical.")
+            
 def enforce_bond_dimension(mps, chi):
     """Enforce left canonical form on the MPS without truncating."""
     L = len(mps)
     mps_new = mps.copy()
-    # print the shapes of the mps tensors
-    print(f'After all gates and Before left to right sweep for L={L}')
-    for i in range(L):
-        print(mps[i].shape)
     
     for i in range(L-1):
         # Contract the i and i+1 tensors to prepare for SVD
         if i == 0:
-            contraction = np.einsum('ij,jab->iab', mps[i], mps[i+1])
-            w = contraction.reshape(mps[i].shape[0], mps[i+1].shape[1]*mps[i+1].shape[2])
+            contraction = np.einsum('ij,jab->iab', mps_new[i], mps_new[i+1])
+            w = contraction.reshape(mps_new[i].shape[0], mps_new[i+1].shape[1]*mps_new[i+1].shape[2])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1])
-            mps_new[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1], mps[i+1].shape[2])
+            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1])
+            print(i)
+            check_left_canonical(mps_new[i])
+            mps_new[i+1] = (np.diag(S)@V).reshape(mps_new[i+1].shape[0], mps_new[i+1].shape[1], mps_new[i+1].shape[2])
         elif i == L-2:
-            contraction = np.einsum('ijk,kl->ijl', mps[i], mps[i+1])
+            contraction = np.einsum('ijk,kl->ijl', mps_new[i], mps_new[i+1])
             0
-            w = contraction.reshape(mps[i].shape[0]*mps[i].shape[1], mps[i+1].shape[1])
+            w = contraction.reshape(mps_new[i].shape[0]*mps_new[i].shape[1], mps_new[i+1].shape[1])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
-            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1])
+            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], mps_new[i].shape[2])
+            print(i)
+            check_left_canonical(mps_new[i])
+            mps_new[i+1] = (np.diag(S)@V).reshape(mps_new[i+1].shape[0], mps_new[i+1].shape[1])
+            check_left_canonical(mps_new[i+1])
         else:
-            contraction = np.einsum('ijk,klm->ijlm', mps[i], mps[i+1])
-            w = contraction.reshape(mps[i].shape[0] * mps[i].shape[1], mps[i+1].shape[1] * mps[i+1].shape[2])
+            contraction = np.einsum('ijk,klm->ijlm', mps_new[i], mps_new[i+1])
+            w = contraction.reshape(mps_new[i].shape[0] * mps_new[i].shape[1], mps_new[i+1].shape[1] * mps_new[i+1].shape[2])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
-            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2]) 
+            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
+            print(i)
+            check_left_canonical(mps_new[i])
+            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps_new[i+1].shape[1], mps_new[i+1].shape[2]) 
 
     mps = mps_new.copy()
-    check_left_canonical(mps)
+    # check_left_canonical(mps)
     # print the shapes of the mps tensors
-    print(f'After left to right sweep for L={L}')
     for i in range(L):
         print(mps[i].shape)
     mps_new = mps.copy()
     # now throw it in reverse while enforcing the bond dimension
     for i in range(L-1, 0, -1):
         if i == L-1:
-            contraction = np.einsum('ijk,kl->ijl', mps[i-1], mps[i])
-            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1])
+            contraction = np.einsum('ijk,kl->ijl', mps_new[i-1], mps_new[i])
+            w = contraction.reshape(mps_new[i-1].shape[0]*mps_new[i-1].shape[1], mps_new[i].shape[1])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
-            mps_new[i] = vt.reshape(-1, mps[i].shape[1])
+            mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], mps_new[i-1].shape[2])
+            mps_new[i] = vt.reshape(mps_new[i].shape[0], mps_new[i].shape[1])
         elif i == 1:
-            contraction = np.einsum('ai,ijk->ajk', mps[i-1], mps[i])
+            contraction = np.einsum('ai,ijk->ajk', mps_new[i-1], mps_new[i])
+            w = contraction.reshape(mps_new[i-1].shape[0], mps_new[i].shape[1]*mps_new[i].shape[2])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(-1, mps[i].shape[0])
-            mps_new[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+            mps_new[i-1] = (u @ s_diag).reshape(-1, mps_new[i].shape[0])
+            mps_new[i] = vt.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
         else:
-            contraction = np.einsum('ijk,klm->ijlm', mps[i-1], mps[i])
-            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1]*mps[i].shape[2])
+            contraction = np.einsum('ijk,klm->ijlm', mps_new[i-1], mps_new[i])
+            w = contraction.reshape(mps_new[i-1].shape[0]*mps_new[i-1].shape[1], mps_new[i].shape[1]*mps_new[i].shape[2])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
-            mps_new[i] = vt.reshape(-1, mps[i].shape[1], mps[i].shape[2])
+            mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], -1)
+            mps_new[i] = vt.reshape(-1, mps_new[i].shape[1], mps_new[i].shape[2])
     mps = mps_new.copy()
 
     check_right_canonical(mps)
     return mps
 
-def compute_contraction(mps_tensors, bra):
+def compute_contraction(mod_ket, bra):
     # contract the physical energy_interactions on every tensor to generate a list of 2-tensors
-    contraction = np.einsum('ijk,ijl->kl', mps_tensors[0], bra[0])
-    for j in range(1, len(mps_tensors)):
-        if j == len(mps_tensors) - 1:
-            contraction = np.einsum('kl,kmo,oml->', contraction, mps_tensors[j], bra[j])
-        else:
-            contraction = np.einsum('kl,kmn,oml->no', contraction, mps_tensors[j], bra[j])
-            
+    # travel from site to site and compute the terpene contractions along the way; we will construct the virtual indices along a give list and contract the physical indices between the cat and bra
+    L = len(mod_ket)
+    # initialize the contraction to the last tensor
+    contraction = np.einsum('ij,ki->jk', bra[0], mod_ket[0])
+    # loop through the rest of the tensors 
+    for i in range(1, L-1):
+        # contract the physical indices
+        contraction = np.einsum('jk,jpq,kpt->qt', contraction, bra[i], mod_ket[i])
+    # we need to treat the last site differentially because it has no right tensor to contract with
+    contraction = np.einsum('qt,qp,tp->', contraction, bra[L-1], mod_ket[L-1])
     return contraction
+    
 
         
     

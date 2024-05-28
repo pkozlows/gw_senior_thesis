@@ -5,7 +5,7 @@ from pyscf import tddft
 # Custom imports for setting up and calculating molecular properties
 from src.fns.mf import setup_molecule, calculate_mean_field
 from src.fns.dm import lin_gw_dm
-from src.fns.tda import my_dtda, my_drpa
+from src.fns.tda import my_dtda, my_drpa, symm_drpa
 from src.fns.pyscf_tddft_fn import pyscf_td
 
 
@@ -16,13 +16,13 @@ class Correlation:
         self.interacting = interacting
 
     def gm(self):
-        excitation_energies, transition_vectors = my_dtda(self.noninteracting)
+        excitation_energies, transition_densities = symm_drpa(self.noninteracting)
         orbital_energies = self.noninteracting.mo_energy
         n_occ = self.noninteracting.mol.nelectron // 2
 
         denominator = orbital_energies[n_occ:, None, None] - orbital_energies[None, :n_occ, None] + excitation_energies[None, None, :]
-        ov_num = np.square(transition_vectors[n_occ:, :n_occ, :])
-        vo_num = np.swapaxes(np.square(transition_vectors[:n_occ, n_occ:, :]), 0, 1)
+        ov_num = np.square(transition_densities[n_occ:, :n_occ, :])
+        vo_num = np.swapaxes(np.square(transition_densities[:n_occ, n_occ:, :]), 0, 1)
 
         e_corr = -0.5 * (np.sum(ov_num / denominator) + np.sum(vo_num / denominator))
         return e_corr
@@ -55,14 +55,14 @@ def total_energy(noninteracting, interacting, correlation_name, mf=False):
         return e_elec + interacting.energy_nuc()
     else:
         e_tot = e_elec + interacting.energy_nuc() + e_corr
+        return e_tot, e_corr 
     
-    return e_tot
 
 
 # Define the input variables that we will iterate over
-species = ['water', 'hcl', 'nh3', 'lih', 'co']
-methods = ['hf', 'dft']
-correlation_funcs = ['klein_interacting', 'klein_noninteracting', 'gm']
+species = ['he', 'ne']
+methods = ['hf']
+correlation_funcs = ['gm']
 
 for molecule_name in species:
     for method in methods:
@@ -82,13 +82,15 @@ for molecule_name in species:
         gw_energy_dict = {}
         for correlation_name in correlation_funcs:
             mf_energy = total_energy(noninteracting_mf, noninteracting_mf, correlation_name, mf=True)
-            gw_energy = total_energy(noninteracting_mf, interacting_mf, correlation_name)
-            gw_energy_dict[correlation_name] = gw_energy
-            print(f'{molecule_name} with {method} and {correlation_name}: ΔE = {gw_energy - mf_energy} eV.')
+            gw_total_energy, gw_correlation_energy = total_energy(noninteracting_mf, interacting_mf, correlation_name)
+            gw_energy_dict[correlation_name] = gw_total_energy
+            print(f'hf energy for {molecule_name} with {correlation_name}: {mf_energy}')
+            print(f'GW energy for {molecule_name} with {correlation_name}: {gw_total_energy}')
+            print(f'GW correlation energy for {molecule_name} with {correlation_name}: {gw_correlation_energy}')
         
-        # Print out the difference between the two Klein functionals
-        if "klein_interacting" in gw_energy_dict and "klein_noninteracting" in gw_energy_dict:
-            pass
-            # print(f'{molecule_name} with {method}: ΔE (klein_interacting - klein_noninteracting) = {gw_energy_dict["klein_interacting"] - gw_energy_dict["klein_noninteracting"]} eV.')
-        else:
-            print(f'Error: Missing klein_interacting or klein_noninteracting energy values for {molecule_name} with {method}')
+        # # Print out the difference between the two Klein functionals
+        # if "klein_interacting" in gw_energy_dict and "klein_noninteracting" in gw_energy_dict:
+        #     pass
+        #     # print(f'{molecule_name} with {method}: ΔE (klein_interacting - klein_noninteracting) = {gw_energy_dict["klein_interacting"] - gw_energy_dict["klein_noninteracting"]} eV.')
+        # else:
+        #     print(f'Error: Missing klein_interacting or klein_noninteracting energy values for {molecule_name} with {method}')

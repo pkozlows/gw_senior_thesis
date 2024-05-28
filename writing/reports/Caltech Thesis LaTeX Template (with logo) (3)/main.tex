@@ -14,6 +14,8 @@
 \usepackage{subcaption}
 \usepackage{todonotes}
 \usepackage{physics}
+\usepackage{tikz}
+\usepackage{pgf}
 
 %% Tentative: newtx for better-looking Times
 \usepackage[utf8]{inputenc}
@@ -309,88 +311,95 @@ This is the right side, or the solution, of Equation \ref{eq: Iterative equation
 
 
 \section{Correlation Self-Energy}
+\label{sec:correlation_self_energy}
 \begin{equation}
     \Sigma_{pp}^{\text{corr}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{i}^{\text{occupied}} \frac{\textbf{V}_{pi}^{\mu }\textbf{V}_{ip}^{\mu }}{\omega -(\epsilon _{i}-\Omega  _{\mu })}+ \sum_{a}^{\text{virtual}} \frac{\textbf{V}_{pa}^{\mu }\textbf{V}_{ap}^{\mu }}{\omega -(\epsilon _{a}+\Omega  _{\mu })}\right)
 \end{equation}
-This is the working equation for the diagonal of the correlation self-energy for a given MO. The $\textbf{V}^{\mu}$ and $\Omega_{\mu}$ are the transition vectors and excitation energies, respectively, from a previous RPA calculation. $\omega$ is my input frequency and the $\epsilon$ are the orbital energies from my previous mean-field calculation.
+This is the working equation for the diagonal $pp$ of the correlation self-energy for a given MO. First, we have a sum running over all of the excitations obtained from the previous RPA calculation. Then, we have two terms: one sum running over all of the occupied orbitals and the other sum running over all virtual orbitals. The $\textbf{V}^{\mu}_{pq}$ and $\boldsymbol{\Omega ^{\mu}}$ are the residues and excitation energies, respectively, from the previous RPA calculation. $\omega$ is my input frequency and the $\epsilon_p$ are the orbital energies from my previous mean-field calculation.
 
 
 
 \section{Random Phase Approximation}
-The RPA is a linear response theory that is used to compute the excitation energies and vectors. The working matrix equation is given by \autocite{dreuw_single-reference_2005}:
+The RPA is a linear response theory that is used to compute the excitation energies and vectors. The working matrix equation is given by \autocite{dreuw_single-reference_2005}
 \begin{equation}
 \begin{bmatrix}
-A & B \\
--B & -A
+\textbf{A} & \textbf{B} \\
+-\textbf{B} & -\textbf{A}
 \end{bmatrix}
 \begin{bmatrix}
-X \\
-Y
+\textbf{X} \\
+\textbf{Y}
 \end{bmatrix}
-= \omega
+= \boldsymbol{\Omega ^{(-\mu + \mu)}}
 \begin{bmatrix}
-1 & 0 \\
-0 & -1
+\textbf{X} \\
+\textbf{Y}
 \end{bmatrix}
-\begin{bmatrix}
-X \\
-Y
-\end{bmatrix}
+,
+\label{eq: RPA matrix equation}
 \end{equation}
-where $A$ is
+where we define $\boldsymbol{\Omega} ^{(-\mu + \mu)}$ as a diagonal matrix containing the excitation and de-excitation energies, which have the same magnitude $\boldsymbol{\Omega}^{|\mu|}$. Accordingly, we just use the excitation energies in what follows which we simply denote as $\boldsymbol{\Omega ^{\mu}}$. The matrix
+$\textbf{A}$ is defined as
 \begin{equation}
-    \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\varepsilon _{a}- \varepsilon _{i}) + 2(ia||jb)
+    \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\epsilon _{a}- \epsilon _{i}) + 2(ia||jb)
 \label{eq: A matrix RPA}
 \end{equation}
-and $B$ is
+and $\textbf{B}$ is
 \begin{equation}
     \textbf{B}_{ia,jb} = 2(ia||jb)
 \label{eq: B matrix RPA}
 \end{equation}
+where the anti-symmetrized two-electron integrals are defined in Chapter \ref{chap:nomenclature}.
 
-A symmetric version of the dRPA can also be used and is derived in \ref{app:symm_drpa} as suggested in the paper.
+$\textbf{X}$ and $\textbf{Y}$ correspond to excitations and the de-excitations, respectively.
+\subsection{Direct approximation}
+Everywhere in this work, we consider the direct approximation, which just means that all instances of anti-symmetrized two-electron integrals are replaced by their direct counterparts, i.e., in Equation \ref{eq: A matrix RPA}, and Equation \ref{eq: B matrix RPA}, $(ia||jb) \rightarrow (ia|jb)$.
 
-The transition vectors $\textbf{V}^{\mu}$ are taken by considering a contraction of two tensors. First, we consider the sum of the excitation vectors $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a,\mu} = \textbf{X}_{i,a,\mu} + \textbf{Y}_{i,a,\mu}$. Then we contract this with the two-electron integrals:
+An alternative formulation that takes advantage of the symmetry obtained through neglect of the deexcitation energies and the direct formulation of the RPA (dRPA) can also be used and is derived in Appendix \ref{app:symm_drpa} as suggested by \textcite{furche_density_2001}.
+\subsection{Residues}
+
+The residue $\textbf{V}^{\mu}_{pq}$ is obtained by considering a contraction of two tensors. First, we consider the sum of the excitation vectors $\textbf{X}$ and $\textbf{Y}$ at the same excitation energy $\mu$: $\textbf{Z}_{i,a}^{\mu} = \textbf{X}_{i,a}^{\mu} + \textbf{Y}_{i,a}^{\mu}$. Then, we define the appropriate integrals for this excitation
 \begin{equation}
-    \textbf{W}_{p,q,i,a} = \sqrt{2} \sum_{p,q,i,a} (pq|ia)
+    \textbf{W}_{p,q,i,a} = \sqrt{2} \sum_{p,q,i,a} (pq|ia).
 \end{equation}
-This factor of $\sqrt{2}$ comes from the spin integration of the restricted Hartree-Fock formalism.
-We defined a combined occupied-virtual index $\nu$, so: $\textbf{Z}_{i,a,\mu} \rightarrow \textbf{Z}_{\nu, \mu}$ and $\textbf{W}_{p,q,i,a}\rightarrow \textbf{W}_{p,q,\nu}$.\\
+This factor of $\sqrt{2}$ comes from the spin integration of the restricted formalism that we use.
+We define a combined occupied-virtual index $\nu$, so: $\textbf{Z}_{i,a}^{\mu} = \textbf{Z}_{\nu}^{\mu}$ and $\textbf{W}_{p,q,i,a} = \textbf{W}_{p,q,\nu}$.
 
-% Inline Python code in the document
-And then we form the excitation vector from:
+And then we form the residue from
 \begin{equation}
-    \textbf{V}_{pq}^{\mu} = \sum_{\nu} \textbf{W}_{p,q,\nu}\textbf{Z}_{\nu, \mu}
+    \textbf{V}_{pq}^{\mu} = \sum_{\nu} \textbf{W}_{p,q,\nu} \textbf{Z}_{\nu}^{\mu}.
 \end{equation}
 
 \subsection{Tamm-Dancoff Approximation}
 In this method, we neglect the $\textbf{B}$ matrix of the RPA equation. So the eigenvalue equation becomes
 \begin{equation}
-    \textbf{A}\textbf{X} = \omega \textbf{X}
+    \textbf{A}\textbf{X} = \boldsymbol{\Omega ^{\mu}} \textbf{X}
 \end{equation}
 where we still have:
 \begin{equation}
     \textbf{A}_{ia,jb} = \delta _{ij}\delta _{ab}(\varepsilon _{a}- \varepsilon _{i}) + 2(ia||jb)
 \label{eq: A matrix TDA}
 \end{equation}
-And then we follow the same procedure as in the RPA to get $\textbf{V}_{pq}^{\mu}$, where now we have $\textbf{Z}_{\nu, \mu} = \textbf{X}_{\nu, \mu}$.
-\subsection{Direct approximation}
-Everywhere in the code, we consider the direct approximation, which just means that all instances of anti-symmetrized two-electron integrals are replaced by their non-symmetrized counterparts. In Equation \ref{eq: A matrix RPA}, Equation \ref{eq: B matrix RPA}, and Equation \ref{eq: A matrix TDA}, $(ia||jb) \rightarrow (ia|jb)$. In the former case it was called the \emph{direct} Random Phase Approximation (dRPA) and in the latter case it was called the \emph{direct} Tamm-Dancoff Approximation (dTDA).
+And then we follow the same procedure as in the RPA to get the residues $\textbf{V}_{pq}^{\mu}$, where now we have $\textbf{Z}_{\nu, \mu} = \textbf{X}_{\nu, \mu}$.
+
 \chapter{Linearized $G_0W_0$ Density Matrix}
+As noted earlier, we can get a density matrix out of the interacting Green's function. Then this allows us to obtain new MO coefficients through a rotation of those from the noninteracting Green's function. The form of this density matrix is shown below, and the derivation of it is given in Appendix \ref{app:linearized_gw}.
 \label{chap:linearized_gw}
 \subsection{Implementation}
-These are the working equations for the linearized $G_0W_0$ density matrix were first reported in \textcite{bruneval_assessment_2019} and are derived in \ref{app:linearized_gw}. We note that these are the working equations in the spin-restricted formalism. First, we consider the fully occupied block:
+These are the working equations in the spin-restricted formalism, which explains why we tack on the factor of 2. First, we consider the fully occupied block
 \begin{equation}
-\gamma_{i j}^{G W}=2\delta_{i j}-2\sum_{a \mu} \frac{\textbf{V}_{i a}^\mu \textbf{V}_{ja}^\mu}{\left(\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}\right)\left(\epsilon_{j}-\epsilon_{a}-\Omega_{\mu}\right)}
+\gamma_{ij}^{GW}=2\delta_{ij}-2\sum_{a\mu} \frac{\textbf{V}_{ia}^\mu \textbf{V}_{ja}^\mu}{\left(\epsilon_{i}-\epsilon_{a}-\boldsymbol{\Omega ^{\mu}}\right)\left(\epsilon_{j}-\epsilon_{a}-\boldsymbol{\Omega ^{\mu}}\right)},
 \end{equation}
-where the $\Omega_{\mu}$ are the excitation energies and the $\textbf{V}^{\mu}$ are the transition vectors. The sum runs over all virtual orbitals and excitation energies. The $\epsilon$ are the orbital energies from the prior mean-field calculation. Next, we have the virtual-virtual block:
+where the $\boldsymbol{\Omega ^{\mu}}$ are the excitation energies and the $\textbf{V}_{pq}^{\mu}$ are the transition vectors. The sum runs over all virtual orbitals and excitation energies. Next, we have the virtual-virtual block
 \begin{equation}
-\gamma_{a b}^{G W}=-2\sum_{i \mu } \frac{\textbf{V}_{a i}^{\mu} \textbf{V}_{b i}^{\mu}}{\left(\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}\right)\left(\epsilon_{i}-\epsilon_{b}-\Omega_{\mu}\right)}
+\gamma_{ab}^{GW}=-2\sum_{i\mu} \frac{\textbf{V}_{ai}^{\mu} \textbf{V}_{bi}^{\mu}}{\left(\epsilon_{i}-\epsilon_{a}-\boldsymbol{\Omega ^{\mu}}\right)\left(\epsilon_{i}-\epsilon_{b}-\boldsymbol{\Omega ^{\mu}}\right)},
 \end{equation}
-Finally, we have the mixed block:
+where the sum runs over all occupied orbitals and excitation energies.
+Finally, we have the mixed block
 \begin{equation}
-    \gamma_{i b}^{G W}=\frac{2}{\epsilon_{i}-\epsilon_{b}}\left[ \sum_{a \mu} \frac{\textbf{V}_{i a}^{\mu} \textbf{V}_{b a}^{\mu}}{\epsilon_{i}-\epsilon_{a}-\Omega_{\mu}} - \sum_{j \mu} \frac{\textbf{V}_{i j}^{\mu} \textbf{V}_{bj}^{\mu}}{\epsilon_{j}-\epsilon_{b}-\Omega_{\mu}} \right]
+    \gamma_{i b}^{G W}=\frac{2}{\epsilon_{i}-\epsilon_{b}}\left[ \sum_{a \mu} \frac{\textbf{V}_{i a}^{\mu} \textbf{V}_{b a}^{\mu}}{\epsilon_{i}-\epsilon_{a}-\boldsymbol{\Omega ^{\mu}}} - \sum_{j \mu} \frac{\textbf{V}_{i j}^{\mu} \textbf{V}_{bj}^{\mu}}{\epsilon_{j}-\epsilon_{b}-\boldsymbol{\Omega ^{\mu}}} \right],
 \end{equation}
+where we have two sums; one over occupied orbitals and excitation energies and the other over virtual orbitals and excitation energies.
 This all contributes to the form of the density matrix as:
 \begin{equation}
     2\begin{pmatrix}
@@ -398,140 +407,31 @@ This all contributes to the form of the density matrix as:
         \gamma _{bi}^{G W } & \gamma _{a b}^{G W}
     \end{pmatrix}
 \end{equation}
-Where $\gamma _{bi}^{G W }$ is simply the transpose of $\gamma _{ib}^{\text{GW}}$, since all elements of this matrix are real. Therefore, this density matrix is Hermitian. The factor of 2 comes from the fact that we sum over both spins in the restricted Hartree-Fock formalism.
-\newpage
-\subsection{Plotting natural occupations}
-The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: We considered restricted Hartree-Fock, which contains no correlation, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{h2_occupations.png}
-\caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $H_2$ along the dissociation coordinate}
-\label{fig:h2_dissociation}
-\end{figure}
-When $H_2$ is at its equilibrium distance at a low bond distance, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the occupations for the restricted Hartree-Fock method do not change at all, while FCI, containing the exact correlation, gives the expected result of the HOMO and LUMO both having occupations of 1 electron. The dRPA and dTDA fall somewhere in between these two extremes.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{h2_mo.png}
-\caption{MO diagram of $H_2$ at the equilibrium bond distance. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Figure from \textcite{bruneval_assessment_2019}}
-\label{fig:h2_mo_diagram}
-\end{figure}
+Where $\gamma _{bi}^{G W }$ is simply the transpose of $\gamma _{ib}^{\text{GW}}$, since all elements of this matrix are real. Therefore, this density matrix is Hermitian.
+
 
 
 \chapter{Results}
-\subsection{Graphical solution}
+\subsection{Graphical vs. Iterative}
 Equation \ref{eq: Iterative equation} can be solved iteratively, but also graphically in the HF case by plotting $\Sigma _{c}$ as a function of the input frequency, which takes on  the possible values for $\varepsilon_{p}^{QP}$. Since $F_{pq}^{HF}$ is diagonal in the canonical HF MO basis, Equation \ref{eq: Iterative equation} can be reformulated as
 \begin{equation}
-    \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}
+    \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}.
 \end{equation}
-Essentially, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
- This is a useful check to see if the self-energy, which we will derive in the next chapter, is being computed correctly.
+As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
+ This is a useful check to see if the self-energy, which we defined in section \ref{sec:correlation_self_energy}, has been computed correctly.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
+\caption{Graphical solution of the correlation self-energy for the HOMO of $H_2O$}
+\label{fig:graphic}
 \end{figure}
-Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value, but luckily $-12.18 eV$ is far enough away from this pole at $-40 eV$. Additional tests for a range of molecules and MOs with my implementation are reported in \ref{app:tests}.
-\chapter{This is the Seventh Chapter}
-\chapter{This is the Eighth Chapter}
-
-\printbibliography[heading=bibintoc]
-
-\appendix
-
-\chapter{Symmetric formulation of the dRPA}
-\label{app:symm_drpa}
-We can work to simplify this eigenvalue problem. Since we know that the negative and positive eigenvalues for the RPA are the same in magnitude, we can simplify the matrix equation to:
-\begin{equation}
-\begin{bmatrix}
-A & B \\
--B & -A
-\end{bmatrix}
-\begin{bmatrix}
-X \\
-Y
-\end{bmatrix}
-= \omega
-\begin{bmatrix}
-X \\
-Y
-\end{bmatrix}
-\end{equation}
-This suggests breaking down the problem into a set of linear equations:
-\begin{align}
-    AX + BY &= \omega X\\
-    -BX-AY &= \omega Y
-\end{align}
-which can be simplified by the addition:
-\begin{equation}
-    (A-B)(X-Y)= \omega (X+Y)
-\label{eqn:for_addition}
-\end{equation}
-which means:
-\begin{equation}
-    (X+Y) = \omega^{-1}(A-B)(X-Y)
-\label{eqn:addition}
-\end{equation}
-Doing the subtraction instead gives:
-\begin{equation}
-    (A+B)(X+Y)= \omega (X-Y)
-\label{eqn:for_subtraction}
-\end{equation}
-Similarly, we can isolate:
-\begin{equation}
-    (X-Y) = \omega^{-1}(A+B)(X+Y)
-\label{eqn:subtraction}
-\end{equation}
-Equations \ref{eqn:for_addition} and \ref{eqn:for_subtraction} can be combined to get, respectively:
-\begin{equation}
-    \boxed{\omega = (X-Y)^{\dag} (A-B)(X-Y)}
-\end{equation}
-and
-\begin{equation}
-    \boxed{\omega = (X+Y)^{\dag} (A+B)(X+Y)}
-\end{equation}
-Substituting in for $X+Y$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}:
-\begin{equation}
-    \omega^{-1}(A+B)(A-B)(X-Y) = \omega (X-Y)
-\end{equation}
-Multiplication by $\omega$ gives:
-\begin{equation}
-    (A+B)(A-B)(X-Y) = \omega^2 (X-Y)
-\end{equation}
-Now, we plug the defintion in \ref{eqn:subtraction} for the $(X-Y)$ terms:
-\begin{equation}
-    (A+B)(A-B)\omega^{-1}(A+B)(X+Y) = \omega^2 \omega^{-1}(A+B)(X+Y)
-\end{equation}
-Multiplication through by $\omega$ gives and $(A+B)^{-1}$ gives:
-\begin{equation}
-    (A-B)(A+B)(X+Y) = \omega^{2} (X+Y)
-\end{equation}
-At this point we want to define $T=(A-B)^{-\frac{1}{2}}(X+Y)$, so that we can write:
-\begin{equation}
-    (A-B)(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} (A-B)^{\frac{1}{2}}T
-\end{equation}
-Dividing through by $(A-B)^{\frac{1}{2}}$ gives:
-\begin{equation}
-    (A-B)^{\frac{1}{2}}(A+B)(A-B)^{\frac{1}{2}}T = \omega^{2} T
-\end{equation}
-Once the eigenvalue problem is solved, we need to normalize the vectors $T$. We see the relation:
-\begin{equation}
-    (X+Y) = (A-B)^{\frac{1}{2}}T
-\end{equation}
-And then for normalization, we need:
-\begin{equation}
-    (X-Y)^{\dag}(X+Y)=1
-\end{equation}
-So we need:
-\begin{equation}
-    (X-Y)=(A-B)^{-1}(X+Y)\omega 
-\end{equation}
-
-
-\chapter{$G_0W_0$ Tests of my implementations of the dRPA and dTDA against PySCF}
-\label{app:tests}
+Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value. 
+\subsection{Testing of equation \ref{eq: Iterative equation}}
+Additional tests for a range of molecules and MOs with my implementation are reported in table \ref{tab:tests}.
 \begin{table}[h]
 \centering
-\caption{Energy deviations (in eV) for my implementation of exact $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus the existing implementation in PySCF.}
+\caption{Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of the exact analytic $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus that of PySCF.}
 \label{tab:energies}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
@@ -554,9 +454,126 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 7.11e-15 & 1.18e-10 & 3.15e-14 & 4.97e-14 & 1.1
 \hline
 \end{tabular}
 }
+\label{tab:tests}
 \end{table}
 
-The cc-pVDZ basis set was used for all calculations. The HF Fock matrix at $\gamma ^{HF}$ was considered with just the canonical HF MO energies on the diagonal. As can be seen, my deviations from PySCF are very minuscule with the exception of my dRPA calculation for $CO$. It is known that this molecule has a complicated electronic structure because the electron correlation changes the dipole moment in the molecule.
+The cc-pVDZ basis set was used for all calculations. As can be seen, my deviations from PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
+\subsection{Plotting natural occupations}
+The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: restricted Hartree-Fock, which contains no correlation for the single particles, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{h2_occupations.png}
+\caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $H_2$ along the dissociation coordinate}
+\label{fig:h2_dissociation}
+\end{figure}
+When $H_2$ is at the though bond distance near equate bum, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all, while FCI, containing the exact correlation, gives the expected result of the HOMO and LUMO both having occupations of 1 electron. The dRPA and dTDA fall somewhere in between these two extremes.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{h2_mo.png}
+\caption{MO diagram of $H_2$ at the equilibrium bond distance. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
+\label{fig:h2_mo_diagram}
+\end{figure}
+
+\printbibliography[heading=bibintoc]
+
+\appendix
+
+\chapter{Symmetric formulation of the dRPA}
+\label{app:symm_drpa}
+Since we know that the excitation and de-excitation energies for the RPA are the same in magnitude, we can simplify the matrix equation to:
+\begin{equation}
+\begin{bmatrix}
+\textbf{A} & \textbf{B} \\
+-\textbf{B} & -\textbf{A}
+\end{bmatrix}
+\begin{bmatrix}
+\textbf{X} \\
+\textbf{Y}
+\end{bmatrix}
+= \boldsymbol{\Omega^{|\mu|} }
+\begin{bmatrix}
+\textbf{X} \\
+\textbf{Y}
+\end{bmatrix}
+.
+\end{equation}
+In what follows, we will take $\boldsymbol{\Omega }$ to mean $\boldsymbol{\Omega^{|\mu|} }$.
+The linearity suggests breaking down the problem into a set of linear equations
+\begin{align}
+    \textbf{AX} + \textbf{BY} &= \boldsymbol{\Omega } \textbf{X}\\
+    -\textbf{BX}-\textbf{AY} &= \boldsymbol{\Omega } \textbf{Y},
+\label{eqn:linearity}
+\end{align}
+which can be simplified by the addition of these two equations in \ref{eqn:linearity}
+\begin{equation}
+    (\textbf{A}-\textbf{B})(\textbf{X}-\textbf{Y})= \boldsymbol{\Omega } (\textbf{X}+\textbf{Y})
+\label{eqn:for_addition}
+\end{equation}
+which can be rearranged to give
+\begin{equation}
+    (\textbf{X}+\textbf{Y}) = \boldsymbol{\Omega }^{-1}(\textbf{A}-\textbf{B})(\textbf{X}-\textbf{Y}).
+\label{eqn:addition}
+\end{equation}
+Doing a pairwise subtraction of the equations in \ref{eqn:linearity} instead gives
+\begin{equation}
+    (\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y})= \boldsymbol{\Omega } (\textbf{X}-\textbf{Y}). 
+\label{eqn:for_subtraction}
+\end{equation}
+Similarly, we can isolate
+\begin{equation}
+    (\textbf{X}-\textbf{Y}) = \boldsymbol{\Omega }^{-1}(\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y}).
+\label{eqn:subtraction}
+\end{equation}
+Equations \ref{eqn:for_addition} and \ref{eqn:for_subtraction} can be combined to get
+\begin{equation}
+    \boldsymbol{\Omega } = (\textbf{X}-\textbf{Y})^{\dag} (\textbf{A}-\textbf{B})(\textbf{X}-\textbf{Y})
+\end{equation}
+and
+\begin{equation}
+    \boldsymbol{\Omega } = (\textbf{X}+\textbf{Y})^{\dag} (\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y}).
+\end{equation}
+Substituting in for $\textbf{X}+\textbf{Y}$ from \ref{eqn:addition} into equation \ref{eqn:for_subtraction}
+\begin{equation}
+    \boldsymbol{\Omega }^{-1}(\textbf{A}+\textbf{B})(\textbf{A}-\textbf{B})(\textbf{X}-\textbf{Y}) = \boldsymbol{\Omega } (\textbf{X}-\textbf{Y}).
+\end{equation}
+Multiplication by $\boldsymbol{\Omega }$ gives
+\begin{equation}
+    (\textbf{A}+\textbf{B})(\textbf{A}-\textbf{B})(\textbf{X}-\textbf{Y}) = \boldsymbol{\Omega }^2 (\textbf{X}-\textbf{Y}).
+\end{equation}
+Now, we plug the definition in equation \ref{eqn:subtraction} for the $(\textbf{X}-\textbf{Y})$ terms
+\begin{equation}
+    (\textbf{A}+\textbf{B})(\textbf{A}-\textbf{B})\boldsymbol{\Omega }^{-1}(\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y}) = \boldsymbol{\Omega }^2 \boldsymbol{\Omega }^{-1}(\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y}).
+\end{equation}
+Multiplication through by $\boldsymbol{\Omega }$ gives and $(\textbf{A}+\textbf{B})^{-1}$ gives
+\begin{equation}
+    (\textbf{A}-\textbf{B})(\textbf{A}+\textbf{B})(\textbf{X}+\textbf{Y}) = \boldsymbol{\Omega }^{2} (\textbf{X}+\textbf{Y}).
+\end{equation}
+At this point we want to define $\textbf{T}=(\textbf{A}-\textbf{B})^{-\frac{1}{2}}(\textbf{X}+\textbf{Y})$, so that we can write
+\begin{equation}
+    (\textbf{A}-\textbf{B})(\textbf{A}+\textbf{B})(\textbf{A}-\textbf{B})^{\frac{1}{2}}\textbf{T} = \boldsymbol{\Omega }^{2} (\textbf{A}-\textbf{B})^{\frac{1}{2}}\textbf{T}.
+\end{equation}
+Dividing through by $(\textbf{A}-\textbf{B})^{\frac{1}{2}}$ gives:
+\begin{equation}
+    (\textbf{A}-\textbf{B})^{\frac{1}{2}}(\textbf{A}+\textbf{B})(\textbf{A}-\textbf{B})^{\frac{1}{2}}\textbf{T} = \boldsymbol{\Omega }^{2} \textbf{T}.
+\label{eqn:final}
+\end{equation}
+We can solve this matrix equation now. We can use this definition for $\textbf{T}$ to redefine equation \ref{eqn:addition} 
+\begin{equation}
+    (\textbf{X}+\textbf{Y}) = (\textbf{A}-\textbf{B})^{\frac{1}{2}}\textbf{T}.
+\end{equation}
+And then for normalization, we need
+\begin{equation}
+    (\textbf{X}-\textbf{Y})^{\dag}(\textbf{X}+\textbf{Y})=1.
+\end{equation}
+So we need
+\begin{equation}
+    (\textbf{X}-\textbf{Y})=(\textbf{A}-\textbf{B})^{-1}(\textbf{X}+\textbf{Y})\boldsymbol{\Omega } .
+\end{equation}
+So we can instead use the solution of equation \ref{eqn:final} to obtain the excitation energies $\boldsymbol{\Omega }^{\mu}$ and the excitation vectors $\textbf{X}^{\mu}$ and $\textbf{Y}^{\mu}$, the latter of which we will then use to construct our residues $\textbf{V}^{\mu}_{pq}$.
+
+
+
+
 
 
 
@@ -568,46 +585,48 @@ The cc-pVDZ basis set was used for all calculations. The HF Fock matrix at $\gam
 
 
 \chapter{Derivation of the linearized $G_0W_0$ density matrix}
-\label{app:linearized_gw}
-We have the equation for the density matrix:
+This derivation will be carried out in the spin-unrestricted formalism.
+\label{applinearized_gw}
+We have the equation for the density matrix
 \begin{equation}
 \begin{aligned}
 \gamma^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right)= & \gamma_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_2\right) -\frac{\mathrm{i}}{2 \pi} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \mathrm{~d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} G_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_3, \omega\right) \Sigma_c^\sigma\left(\mathbf{r}_3, \mathbf{r}_4, \omega\right) G_0^\sigma\left(\mathbf{r}_4, \mathbf{r}_2, \omega\right)
-\label{eqn:init_dm}
+\label{eqninit_dm}
 \end{aligned}
 \end{equation}
-In order to simplify the integral, Let us consider
+where $\gamma^\sigma$ is our new density matrix from the interacting Green's function, and $\gamma_0^\sigma$ is the density matrix from the noninteracting Green's function. $\omega$ is the frequency and $\eta$ is a small infinitesimal positive number, which we will later take to be zero. $G_0^\sigma(\omega)$ and $\Sigma_c^\sigma(\omega)$ are the noninteracting Green's function and the correlation self-energy, respectively, now Fourier transformed to the frequency domain.
+In order to simplify the integral, let us consider
 \begin{equation}
 I = \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4  G_0^\sigma\left(\mathbf{r}_1, \mathbf{r}_3\right) \Sigma_c^\sigma\left(\mathbf{r}_3, \mathbf{r}_4\right) G_0^\sigma\left(\mathbf{r}_4, \mathbf{r}_2\right)
 \end{equation}
-The noninteracting Green's function is defined as:
+The noninteracting Green's function in the MO basis is defined as
 \begin{equation}
 G_0\left(\mathbf{r}_1, \mathbf{r}_2, \right) = \sum_{pq} \phi_p^*(\mathbf{r}_1) G_{p q} \phi_q(\mathbf{r}_2)
 \end{equation}
-and likewise for the self-energy:
+and likewise for the self-energy
 \begin{equation}
 \Sigma_c\left(\mathbf{r}_1, \mathbf{r}_2, \right) = \sum_{pq} \phi_p^*(\mathbf{r}_1) \Sigma_{c pq} \phi_q(\mathbf{r}_2)
 \end{equation}
-where $G_{p q}$ and $\Sigma_{p q}$ are the matrix elements of the noninteracting Green's function and the self-energy, respectively. We can rewrite the integral as:
+where $G_{p q}$ and $\Sigma_{p q}$ are the matrix elements of the noninteracting Green's function and the self-energy, respectively. We can rewrite the integral as
 \begin{equation}
-I = \sum_{pq} \sum_{rs} \sum_{tu} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \phi_p^*(\mathbf{r}_1) G_{p q} \phi_q(\mathbf{r}_3) \phi_r^*(\mathbf{r}_3) \Sigma_{r s} \phi_s(\mathbf{r}_4) \phi_t^*(\mathbf{r}_4) G_{t u} \phi_u(\mathbf{r}_2)
+I_1 = \sum_{pq} \sum_{rs} \sum_{tu} \int \mathrm{d} \mathbf{r}_3 \mathrm{~d} \mathbf{r}_4 \phi_p^*(\mathbf{r}_1) G_{p q} \phi_q(\mathbf{r}_3) \phi_r^*(\mathbf{r}_3) \Sigma_{r s} \phi_s(\mathbf{r}_4) \phi_t^*(\mathbf{r}_4) G_{t u} \phi_u(\mathbf{r}_2)
 \end{equation}
-We can simplify this expression by using the orthonormality of the basis functions:
+We can get rid of the integral over spatial indices by using the orthonormality of the basis functions.
 \begin{equation}
-I = \sum_{pq} \sum_{r} \sum_{t} \phi_p^*(\mathbf{r}_1) G_{p r} \phi_r(\mathbf{r}) \phi_r^*(\mathbf{r}) \Sigma_{r t} \phi_t(\mathbf{r}^\prime) \phi_t^*(\mathbf{r}^\prime) G_{t q} \phi_q(\mathbf{r}_2)
+I_1 = \sum_{pq} \sum_{r} \sum_{t} \phi_p^*(\mathbf{r}_1) G_{p r} \phi_r(\mathbf{r}) \phi_r^*(\mathbf{r}) \Sigma_{r t} \phi_t(\mathbf{r}^\prime) \phi_t^*(\mathbf{r}^\prime) G_{t q} \phi_q(\mathbf{r}_2)
 \end{equation}
-We use this and then also rewrite equation \ref{eqn:init_dm} in terms of the matrix elements of the density matrix using the following definition:
+We use this and then also rewrite equation \ref{eqninit_dm} in terms of elements of the density matrix with
 \begin{equation}
 D_{p q \sigma}=\left\langle p \sigma\left|\gamma^\sigma\right| q \sigma\right\rangle
 \end{equation}
-By the derivation above, we can rewrite equation \ref{eqn:init_dm} as:
+to get
 \begin{equation}
-    D_{p q \sigma}=\bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int_{-\infty }^{\infty } \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \bra{p\sigma } G_0^\sigma (\omega) \ket{r\sigma } \bra{r\sigma } \Sigma_c^\sigma (\omega) \ket{t\sigma } \bra{t\sigma } G_0^\sigma (\omega) \ket{q\sigma }
-\label{eqn:mo_dm}
+    D_{p q \sigma}=\bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int_{-\infty }^{\infty } \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \bra{p\sigma } G_0^\sigma (\omega) \ket{r\sigma } \bra{r\sigma } \Sigma_c^\sigma (\omega) \ket{t\sigma } \bra{t\sigma } G_0^\sigma (\omega) \ket{q\sigma }.
+\label{eqnmo_dm}
 \end{equation}
-Next, we plug in the following definitions into equation \ref{eqn:mo_dm}:
+Next, we plug in the following definitions for the two different time orderings for the noninteracting Green's function and correlation piece of the self energy
 \begin{equation}
-G_{0 p q}^\sigma=\sum_i \frac{\delta_{p q} \delta_{p i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p q} \delta_{p a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta}
+G_{0 pq}^\sigma=\sum_i \frac{\delta_{pq} \delta_{pi}}{\omega-\epsilon_{i\sigma}-\mathrm{i}\eta}+\sum_a \frac{\delta_{pq} \delta_{pa}}{\omega-\epsilon_{a\sigma}+\mathrm{i}\eta}
 \end{equation}
 and
 \begin{equation}
@@ -615,17 +634,17 @@ and
 \Sigma_{c p q}^\sigma(\omega)= & \sum_{i s} \frac{w_{p i \sigma}^s w_{q i \sigma}^s}{\omega-\epsilon_{i \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{a s} \frac{w_{p a \sigma}^s w_{q a \sigma}^s}{\omega-\epsilon_{a \sigma}-\Omega_s+\mathrm{i} \eta}
 \end{aligned}
 \end{equation}
-to get:
+into equation \ref{eqnmo_dm} to get
 \begin{equation}
 \begin{aligned}
 D_{p q \sigma}= & \bra{p\sigma } \gamma _0^\sigma \ket{q\sigma } -\frac{\mathrm{i }}{2 \pi} \sum_{r} \sum_{t} \int_{-\infty }^{\infty } \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \left( \sum_i \frac{\delta_{p r} \delta_{p i}}{\omega-\epsilon_{i \sigma}-\mathrm{i} \eta}+\sum_a \frac{\delta_{p r} \delta_{p a}}{\omega-\epsilon_{a \sigma}+\mathrm{i} \eta} \right)\\
-& \left( \sum_{k s} \frac{w_{r k \sigma}^s w_{t k \sigma}^s}{\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{c s} \frac{w_{r c \sigma}^s w_{t c \sigma}^s}{\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_j \frac{\delta_{t q} \delta_{t j}}{\omega-\epsilon_{j \sigma}-\mathrm{i} \eta}+\sum_b \frac{\delta_{t q} \delta_{t b}}{\omega-\epsilon_{b \sigma}+\mathrm{i} \eta} \right)
+& \left( \sum_{k s} \frac{w_{r k \sigma}^s w_{t k \sigma}^s}{\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta} +\sum_{c s} \frac{w_{r c \sigma}^s w_{t c \sigma}^s}{\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta} \right) \left( \sum_j \frac{\delta_{t q} \delta_{t j}}{\omega-\epsilon_{j \sigma}-\mathrm{i} \eta}+\sum_b \frac{\delta_{t q} \delta_{t b}}{\omega-\epsilon_{b \sigma}+\mathrm{i} \eta} \right).
 \end{aligned}
 \end{equation}
-Let us just distribute the integral, which technically spawns 8 terms. Also note that the delta functions will get rid of the sums over r and t:
+Let us distribute the integral, which spawns 8 terms. Also note that the delta functions will get rid of the sums over r and t
 \begin{equation}
 \begin{aligned}
-I = \int_{-\infty }^{\infty }\mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} 
+I_2 = \int_{-\infty }^{\infty }\mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} 
 & \left( \sum_{ijks} \left( \frac{w_{i k \sigma}^s w_{j k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
 & \left. + \sum_{ibks} \left( \frac{w_{i k \sigma}^s w_{b k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right.\\
 & \left. + \sum_{ijcs} \left( \frac{w_{i c \sigma}^s w_{j c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
@@ -634,55 +653,102 @@ I = \int_{-\infty }^{\infty }\mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta
 & \left. + \sum_{abks} \left( \frac{w_{a k \sigma}^s w_{b k \sigma}^s}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right.\\
 & \left. + \sum_{ajcs} \left( \frac{w_{a c \sigma}^s w_{j c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)} \right) \right.\\
 & \left. + \sum_{abcs} \left( \frac{w_{a c \sigma}^s w_{b c \sigma}^s}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)} \right) \right)
-\label{eqn:expanded_integral}
+\label{eqnexpanded_integral}
 \end{aligned}
 \end{equation}
 At this point, we note the following relation between integrals $\oint_{D_{\pm}} f(z) = \int_{-R}^R f(z) + \int_{{C_R}_{\pm}} f(z)$. $D_{\pm}$ is a semicircular domain in either half of the complex plane, ${C_R}_{\pm}$ is the semicircle in the upper or lower part of the complex plane, and $R$ is the radius of the semicircle. We are able to take $R\rightarrow \infty$ and since $f(z)=e^{i\omega \eta}g(z)$, where $g(z)$ is analytic on $D$ except for a finite number of poles, the integral over the semicircle will vanish by Jordan's lemma, leaving us with $\int_{-R=-\infty}^{R=\infty} f(z)= \oint_{D_{\pm}} f(z)$. 
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    % Draw the axes
+    \draw[->] (-4, 0) -- (4, 0) node[right] {Re($\omega$)};
+    \draw[->] (0, -4) -- (0, 4) node[above] {Im($\omega$)};
+    
+    % Draw the positive real axis label and tick mark for \varepsilon_{F}
+    \draw[thick] (0.5, 0.2) -- (0.5, -0.2);
+    \node at (0.5, -0.4) {$\varepsilon_{F}$};
+
+
+    % Draw the semicircle contours
+    % fill in its under side
+    \fill[blue, opacity=0.3] (4, 0.1) arc[start angle=0, end angle=180, radius=4];
+    \fill[red, opacity=0.3] (4, -0.1) arc[start angle=0, end angle=-180, radius=4];
+    
+    % Draw the poles above the real axis
+    \foreach \x in {-3,-2,-1,0} {
+        \draw[fill=black] (\x, 0.5) circle (2pt);
+    }
+    \node at (-3, 0.7) {$\omega_{}$};
+    \node at (-2, 0.7) {$\omega_{}$};
+    \node at (-1, 0.7) {$\omega_{}$};
+    \node at (0, 0.7) {$\omega_{}$};    
+
+    % Draw the poles below the real axis
+    \foreach \x in {1,2,3,4} {
+        \draw[fill=black] (\x, -0.5) -- ++(0.1, 0.1) -- ++(-0.2, 0) -- cycle;
+    }
+    \node at (1, -0.7) {$\omega_{}$};
+    \node at (2, -0.7) {$\omega_{}$};
+    \node at (3, -0.7) {$\omega_{}$};
+    \node at (4, -0.7) {$\omega_{}$};
+
+    
+    % Label the contours
+    \node at (2, 2) {$D_+$};
+    \node at (-2, -2) {$D_-$};
+\end{tikzpicture}
+\caption{Contour for the complex frequency integral. The poles are denoted by the various $\omega$. The Fermi energy is denoted by $\varepsilon_F$. The integration contour $D_+$ is the semicircle in the upper complex plane, while $D_-$ is the semicircle in the lower complex plane.}
+\end{figure}
+
+
 \section{Fully occupied block}
-The contribution over the fully occupied block of the density matrix will be given by the following two terms in equation \ref{eqn:expanded_integral}:
+The contribution over the fully occupied block of the density matrix will be given by the following two terms in equation \ref{eqnexpanded_integral}
 \begin{equation}
 \begin{aligned}
 I_{ij} =& \sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s \oint_{D+} \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}\\
 & + \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \oint_{D+} \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 \end{aligned}
+.
 \end{equation}
-Due to the contour $D_+$ chosen for this case, we have poles for the first term at $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, $\omega_{12} = \epsilon _{i\sigma } + \mathrm{i} \eta$, and $\omega_{13} = \epsilon _{j\sigma } + \mathrm{i} \eta$. For such simple poles, the Cauchy residue theorem simplifies to:
+Due to the contour $D_+$ chosen for this case, we have poles for the first term at $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, $\omega_{12} = \epsilon _{i\sigma } + \mathrm{i} \eta$, and $\omega_{13} = \epsilon _{j\sigma } + \mathrm{i} \eta$. For such simple poles, the Cauchy residue theorem simplifies to
 \begin{equation}
 \operatorname{Res}_{\omega =\omega _0} f(\omega )= \phi^{}\left(\omega _0\right)
-\label{eqn:cauchy_residue}
+\label{eqncauchy_residue}
 \end{equation}
-where $\phi_{\omega _0}(\omega ) = (\omega - \omega_0) f(\omega )$. For the first of these integrals in the occupied block, we have:
+where $\phi_{\omega _0}(\omega ) = (\omega - \omega_0) f(\omega )$. For the first of these integrals in the occupied block, we have
 \begin{equation}
-f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}.
 \end{equation}
-% Plugging in $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, we get:
+% Plugging in $\omega_{11} = \epsilon _{k\sigma } - \Omega _s + \mathrm{i} \eta$, we get
 % \begin{equation}
 % \phi_{\omega_{11}}(\omega) = (\omega - \epsilon_{k \sigma} + \Omega_s - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
 % \end{equation}
-So at the first pole, in the limit $\eta \to 0$, we get:
+So at the first pole, in the limit $\eta \to 0$, we get
 \begin{equation}
 \phi_{\omega_{11}}(\epsilon_{k \sigma} - \Omega_s + \mathrm{i} \eta) = \frac{1}{(\epsilon_{k \sigma} - \Omega_s -\epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s -\epsilon_{j \sigma})}
 \end{equation}
-For the other poles, the procedure is similar:
+For the other poles, the procedure is similar with
 \begin{equation}
 \phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}
 \end{equation}
+and
 \begin{equation}
-\phi_{\omega_{13}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}
+\phi_{\omega_{13}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}.
 \end{equation}
-We move on to the second integral in the occupied block. It only has two poles in the fully occupied contour: $\omega_{21} = \epsilon _{i\sigma } + \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{j\sigma } + \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+We move on to the second integral in the occupied block. It only has two poles in the fully occupied contour $\omega_{21} = \epsilon _{i\sigma } + \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{j\sigma } + \mathrm{i} \eta$. We have $f_2(\omega)$ as
 \begin{equation}
-f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{j \sigma}-\mathrm{i} \eta)}.
 \end{equation}
-So $\phi_{\omega_{21}}(\omega _{21})$ is:
+So $\phi_{\omega_{21}}(\omega _{21})$ is
 \begin{equation}
-\phi_{\omega_{21}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}
+\phi_{\omega_{21}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}.
 \end{equation}
 Now we consider the second pole at $\omega_{22} = \epsilon _{j\sigma } + \mathrm{i} \eta$
 \begin{equation}
-\phi_{\omega_{22}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}
+\phi_{\omega_{22}}(\epsilon_{j \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}.
 \end{equation}
-We summarize the results in a table \ref{tab:poles_residues_occupied}:\\
+We summarize the results in a table \ref{tabpoles_residues_occupied}.\\
 \begin{table}[h]
 \centering
 \caption{Summary of Poles and their Residues}
@@ -701,121 +767,66 @@ $\omega_{13}$ & $\epsilon_{j \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{j
 $\omega_{21}$ & $\epsilon_{i \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{j \sigma})}$ \\
 $\omega_{22}$ & $\epsilon_{j \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{j \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{j \sigma} -\epsilon_{i \sigma})}$ \\
 \hline
-\label{tab:poles_residues_occupied}
+\label{tabpoles_residues_occupied}
 \end{tabular}
 \end{table}
-Adding the two terms together, we get:
+Adding the two terms together, we get
 \begin{equation}
 \begin{aligned}
 I_{ij} = 2\pi i \Bigg( & \sum_{ks} w_{i k \sigma}^s w_{j k \sigma}^s \left( \frac{1}{(\epsilon_{k \sigma} - \Omega_s - \epsilon_{i \sigma})(\epsilon_{k \sigma} - \Omega_s - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{i \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} \right. \\
 & \left. + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{k \sigma} + \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right) \\
-& + \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \left( \frac{1}{(\epsilon_{i \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right) \Bigg)
+& + \sum_{cs} w_{i c \sigma}^s w_{j c \sigma}^s \left( \frac{1}{(\epsilon_{i \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{i \sigma} - \epsilon_{j \sigma})} + \frac{1}{(\epsilon_{j \sigma} - \epsilon_{c \sigma} - \Omega_s)(\epsilon_{j \sigma} - \epsilon_{i \sigma})} \right) \Bigg).
 \end{aligned}
 \end{equation}
-Getting a common denominator for all of the terms means that the first term simplifies to 0, and the second term gives:
+Getting a common denominator for all of the terms means that the first term simplifies to 0, and the second term gives
 \begin{equation}
-I_{ij} = -2\pi i \sum_{cs}\frac{w_{i c \sigma}^s w_{j c \sigma}^s}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}
+I_{ij} = -2\pi i \sum_{cs}\frac{w_{i c \sigma}^s w_{j c \sigma}^s}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}.
 \end{equation}
-So, the expression for $D_{ij}$ is:
+So, the expression for the fully occupied block of the density matrix is
 \begin{equation}
-D_{ij} = \bra{i\sigma } \gamma _0^\sigma \ket{j\sigma } + \frac{2\pi i^2}{2\pi} \sum_{cs}\frac{w_{ic} w_{jc}}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}
+D_{ij} = \bra{i\sigma } \gamma _0^\sigma \ket{j\sigma } + \frac{2\pi i^2}{2\pi} \sum_{cs}\frac{w_{ic} w_{jc}}{(\Omega_s + \epsilon_{c \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{c \sigma} - \epsilon_{j \sigma})}.
 \end{equation}
-The first term is the matrix element of the noninteracting part of the density matrix, so this just simplifies to $\delta _{ij}$ and then we relabel the virtual index $c\rightarrow a$:
+The first term is the fully occupied element of the noninteracting density matrix, so this just reduces to $\delta _{ij}$ since for this reference system, the occupied occupations are just unity and then we relabel the virtual index $c\rightarrow a$.
 \begin{equation}
-D_{ij} = \delta _{ij} - \sum_{as}\frac{w_{ia} w_{ja}}{(\Omega_s + \epsilon_{a \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{a \sigma} - \epsilon_{j \sigma})}
+D_{ij} = \delta _{ij} - \sum_{as}\frac{w_{ia} w_{ja}}{(\Omega_s + \epsilon_{a \sigma} - \epsilon_{i \sigma})(\Omega_s + \epsilon_{a \sigma} - \epsilon_{j \sigma})}.
 \end{equation}
 \section{Fully Virtual Block}
-For the fully virtual block, we need to consider third to last and last terms of the integral in equation \ref{eqn:expanded_integral}:
+For the fully virtual block, we need to consider third to last and last terms of the integral in equation \ref{eqnexpanded_integral}
 \begin{equation}
 \begin{aligned}
 I_{ab} =& \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}\\
 & + \sum_{cs} w_{a c \sigma}^s w_{b c \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
 \end{aligned}
 \end{equation}
-Due to the contour $D_-$ chosen for this case, we have poles for the first term at just $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$ and $\omega_{12} = \epsilon _{b \sigma } - \mathrm{i} \eta$. Using the Cauchy residue theorem from equation \ref{eqn:cauchy_residue}:
+Due to the contour $D_-$ chosen for this case, we have poles for the first term at just $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$ and $\omega_{12} = \epsilon _{b \sigma } - \mathrm{i} \eta$. Using the Cauchy residue theorem from equation \ref{eqncauchy_residue}
 \begin{equation}
-f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}.    
 \end{equation}
-Plugging in $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$, we get:
-% \begin{equation}
-% \phi_{\omega_{11}}(\omega) = (\omega - \epsilon_{a \sigma} + \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% Evaluating this at the pole, we get:
-% \begin{equation}
-% \phi_{\omega_{11}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{a \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% In the limit $\eta \to 0$, we get:
+Plugging in $\omega_{11} = \epsilon _{a \sigma } - \mathrm{i} \eta$, we get
 \begin{equation}
-\phi_{\omega_{11}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}
+\phi_{\omega_{11}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}.    
 \end{equation}
-% Now we consider the second pole at $\omega_{12} = \epsilon _{b\sigma } - \mathrm{i} \eta$. We consider:
-% \begin{equation}
-% \phi_{\omega_{12}}(\omega) = (\omega - \epsilon_{b \sigma} - \mathrm{i} \eta) f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% Plugging in $\omega_{12} = \epsilon _{b\sigma } - \mathrm{i} \eta$, we get:
-% \begin{equation}
-% \phi_{\omega_{12}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{b \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% In the limit $\eta \to 0$, we get:
 and
 \begin{equation}
-\phi_{\omega_{12}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}
+\phi_{\omega_{12}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}.    
 \end{equation}
-% So the first term of the integral will be given by:
-% \begin{equation}
-% \begin{aligned}
-% 2\pi i \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s & \left( \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right)
-% \end{aligned}
-% \end{equation}
-We move on to the second integral in the virtual block. It has now three poles in $D_-$: $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$, $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$, and $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+We move on to the second integral in the virtual block. It has now three poles in $D_-$ $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$, $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$, and $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as
 \begin{equation}
-f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}.
 \end{equation}
-So $\phi_{\omega_{21}}(\omega _{21})$ is:
-% \begin{equation}
-% \phi_{\omega_{21}}(\omega) = (\omega - \epsilon_{c \sigma} - \Omega_s + \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% Plugging in $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$, we get:
-% \begin{equation}
-% \phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) \eta }}{(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% In the limit $\eta \to 0$, we get:
+So $\phi_{\omega_{21}}(\omega _{21})$ is
 \begin{equation}
-\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}
+\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}.
 \end{equation}
-Now we consider the second pole at $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$.
-% \begin{equation}
-% \phi_{\omega_{22}}(\omega) = (\omega - \epsilon_{a \sigma} - \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% Plugging in $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$, we get:
-% \begin{equation}
-% \phi_{\omega_{22}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{a \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\epsilon_{a \sigma} - \mathrm{i} \eta-\epsilon_{b \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% In the limit $\eta \to 0$, we get:
+Now we consider the second pole at $\omega_{22} = \epsilon _{a\sigma } - \mathrm{i} \eta$
 \begin{equation}
-\phi_{\omega_{22}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}
+\phi_{\omega_{22}}(\epsilon_{a \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}.
 \end{equation}
-Finally, we consider the third pole at $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$.
-% \begin{equation}
-% \phi_{\omega_{23}}(\omega) = (\omega - \epsilon_{b \sigma} - \mathrm{i} \eta) f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{a \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% Plugging in $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$, we get:
-% \begin{equation}
-% \phi_{\omega_{23}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{e^{i(\epsilon_{b \sigma} - \mathrm{i} \eta) \eta }}{(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\epsilon_{b \sigma} - \mathrm{i} \eta-\epsilon_{a \sigma}+\mathrm{i} \eta)}
-% \end{equation}
-% In the limit $\eta \to 0$, we get:
+Finally, we consider the third pole at $\omega_{23} = \epsilon _{b\sigma } - \mathrm{i} \eta$
 \begin{equation}
-\phi_{\omega_{23}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}
+\phi_{\omega_{23}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}.
 \end{equation}
-% So the second term of the integral will be given by:
-% \begin{equation}
-% \begin{aligned}
-% 2\pi i \sum_{cs} w_{a c \sigma}^s w_{b c \sigma}^s & \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{a \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
-% & \left. + \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} \right. \\
-% & \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right)
-% \end{aligned}
-% \end{equation}
-The results we got are summarized in the table \ref{tab:poles_residues_virtual}:\\
+The results we got are summarized in the table \ref{tabpoles_residues_virtual}.\\
 \begin{table}[h]
 \centering
 \caption{Summary of Poles and their Residues}
@@ -834,10 +845,10 @@ $\omega_{21}$ & $\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta$ & $\frac{1}{(
 $\omega_{22}$ & $\epsilon_{a \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})}$ \\
 $\omega_{23}$ & $\epsilon_{b \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})}$ \\
 \hline
-\label{tab:poles_residues_virtual}
+\label{tabpoles_residues_virtual}
 \end{tabular}
 \end{table}
-Adding the two terms together, we get:
+Adding the two terms together, we get
 \begin{equation}
 \begin{aligned}
 I_{ab} = 2\pi i \Bigg( & \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s \left( \frac{1}{(\epsilon_{a \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right) \\
@@ -845,67 +856,55 @@ I_{ab} = 2\pi i \Bigg( & \sum_{ks} w_{a k \sigma}^s w_{b k \sigma}^s \left( \fra
 & \left. + \frac{1}{(\epsilon_{a \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{a \sigma} -\epsilon_{b \sigma})} \right. \\
 & \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{a \sigma})} \right) \Bigg)
 \end{aligned}
+.
 \end{equation}
-A similar simplification as the one done before gives:
+A similar simplification as the one done before, which involves getting a common denominator, gives
 \begin{equation}
-I_{ab} = -2\pi i \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}
+I_{ab} = -2\pi i \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}.
 \end{equation}
-So, the expression for $D_{ab}$ is:
+So, the expression for $D_{ab}$ is
 \begin{equation}
-D_{ab} = \bra{a\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi} \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}
+D_{ab} = \bra{a\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi} \sum_{ks}\frac{w_{ak} w_{bk}}{(\Omega_s + \epsilon_{k \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{k \sigma} - \epsilon_{b \sigma})}.
 \end{equation}
-The matrix element of the noninteracting density matrix does not mix virtual states and we relabel the occupied index $k\rightarrow i$:
+The noninteracting density matrix does not mix virtual states and we relabel the occupied index $k\rightarrow i$, to get
 \begin{equation}
-D_{ab} = - \sum_{is}\frac{w_{ai} w_{bi}}{(\Omega_s + \epsilon_{i \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{i \sigma} - \epsilon_{b \sigma})}
+D_{ab} = - \sum_{is}\frac{w_{ai} w_{bi}}{(\Omega_s + \epsilon_{i \sigma} - \epsilon_{a \sigma})(\Omega_s + \epsilon_{i \sigma} - \epsilon_{b \sigma})}.
 \end{equation}
 \section{Mixed Block}
-Now, we want to consider the mixed block i.e. the second and fourth terms of the integral in equation \ref{eqn:expanded_integral}:
+Now, we want to consider one instance of the mixed block i.e. the second and fourth terms of the integral in equation \ref{eqnexpanded_integral}
 \begin{equation}
 \begin{aligned}
 I_{ib} =& \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}\\
 & + \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s \int \mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \eta}} \frac{1}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
 \end{aligned}
+.
 \end{equation}
 Due to the contour $D_+$ chosen for this case, we have poles for the first term which lies in the upper half of the complex plane at $\omega_{11} = \epsilon _{k \sigma } - \Omega_s + \mathrm{i} \eta$ and $\omega_{12} = \epsilon _{i \sigma } + \mathrm{i} \eta$.
-Using the Cauchy residue theorem from equation \ref{eqn:cauchy_residue}:
+Using the Cauchy residue theorem from equation \ref{eqncauchy_residue}
 \begin{equation}
-f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+f_1(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{k \sigma}+\Omega_s-\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}+\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}.
 \end{equation}
-Plugging in $\omega_{11} = \epsilon _{k \sigma } - \Omega_s + \mathrm{i} \eta$, we get:
+Plugging in $\omega_{11} = \epsilon _{k \sigma } - \Omega_s + \mathrm{i} \eta$, we get
 \begin{equation}
-\phi_{\omega_{11}}(\epsilon_{k \sigma } - \Omega_s + \mathrm{i} \eta) = \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)}
+\phi_{\omega_{11}}(\epsilon_{k \sigma } - \Omega_s + \mathrm{i} \eta) = \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)}.
 \end{equation}
-Now we consider the second pole at $\omega_{12} = \epsilon _{i \sigma } + \mathrm{i} \eta$.
+Now we consider the second pole at $\omega_{12} = \epsilon _{i \sigma } + \mathrm{i} \eta$
 \begin{equation}
-\phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}
+\phi_{\omega_{12}}(\epsilon_{i \sigma} + \mathrm{i} \eta) = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}.
 \end{equation}
-% So the first term of the integral will be given by:
-% \begin{equation}
-% \begin{aligned}
-% 2\pi i \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s & \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
-% & \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})} \right)
-% \end{aligned}
-% \end{equation}
-We move on to the second integral in the mixed block. It has two poles in $D_-$: $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as:
+We move on to the second integral in the mixed block. It has two poles in $D_-$ $\omega_{21} = \epsilon _{c\sigma } + \Omega_s - \mathrm{i} \eta$ and $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$. We have $f_2(\omega)$ as
 \begin{equation}
-f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}
+f_2(\omega) = \frac{e^{i\omega \eta }}{(\omega-\epsilon_{c \sigma}-\Omega_s+\mathrm{i} \eta)(\omega-\epsilon_{i \sigma}-\mathrm{i} \eta)(\omega-\epsilon_{b \sigma}+\mathrm{i} \eta)}.
 \end{equation}
-So $\phi_{\omega_{21}}(\omega _{21})$ is:
+So $\phi_{\omega_{21}}(\omega _{21})$ is
 \begin{equation}
-{\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}}
+{\phi_{\omega_{21}}(\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta) = \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}}.
 \end{equation}
-Now we consider the second pole at $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$.
+Now we consider the second pole at $\omega_{22} = \epsilon _{b \sigma } - \mathrm{i} \eta$
 \begin{equation}
-{\phi_{\omega_{22}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})}}
+{\phi_{\omega_{22}}(\epsilon_{b \sigma} - \mathrm{i} \eta) = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})}}.
 \end{equation}
-% So the second term of the integral will be given by:
-% \begin{equation}
-% \begin{aligned}
-% 2\pi i \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s & \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
-% & \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right)
-% \end{aligned}
-% \end{equation}
-The results we got are summarized in the table \ref{tab:poles_residues_mixed}:\\
+The results we got are summarized in the table \ref{tabpoles_residues_mixed}.\\
 \begin{table}[h]
 \centering
 \caption{Summary of Poles and their Residues}
@@ -923,10 +922,10 @@ $\omega_{12}$ & $\epsilon_{i \sigma} + \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{i
 $\omega_{21}$ & $\epsilon_{c \sigma} + \Omega_s - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})}$ \\
 $\omega_{22}$ & $\epsilon_{b \sigma} - \mathrm{i} \eta$ & $\frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})}$ \\
 \hline
-\label{tab:poles_residues_mixed}
+\label{tabpoles_residues_mixed}
 \end{tabular}
 \end{table}
-Adding the two terms together, we get:
+Adding the two terms together, we get
 \begin{equation}
 \begin{aligned}
 I_{ib} = 2\pi i \Bigg( & \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
@@ -934,48 +933,23 @@ I_{ib} = 2\pi i \Bigg( & \sum_{ks} w_{i k \sigma}^s w_{b k \sigma}^s \left( \fra
 & + \sum_{cs} w_{i c \sigma}^s w_{b c \sigma}^s \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
 & \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right) \Bigg)
 \end{aligned}
+.
 \end{equation}
-By getting a common denominator and simplifying terms, we get:
-% Let us make some simplifications on the first term:
-% \begin{equation}
-% \begin{aligned}
-% & \left( \frac{1}{(\epsilon_{k \sigma} -\epsilon_{i \sigma}-\Omega_s)(\epsilon_{k \sigma} -\epsilon_{b \sigma}-\Omega_s)} \right. \\
-% & \left. + \frac{1}{(\epsilon_{i \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})} \right) \\
-% & = \frac{\left( \epsilon_{i\sigma } - \epsilon_{b\sigma } \right)}{\left(\epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s\right)\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{b\sigma }\right)} - \frac{\left(\epsilon _{k\sigma } - \epsilon _{b\sigma} + \Omega _s \right)}{\left(\epsilon _{k\sigma } - \epsilon _{i\sigma} + \Omega _s\right)\left(\epsilon _{k\sigma } - \epsilon _{b\sigma} - \Omega _s\right)\left(\epsilon _{i\sigma } - \epsilon _{b\sigma}\right)}\\
-% & = - \frac{\left( \epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s \right)}{\left(\epsilon_{k\sigma } - \epsilon_{i\sigma } - \Omega _s\right)\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i\sigma } - \epsilon_{b\sigma }\right)} = -\frac{1}{\left(\epsilon_{k\sigma } - \epsilon_{b\sigma } - \Omega _s\right)\left(\epsilon_{i \sigma } - \epsilon_{b \sigma }\right)}
-% \end{aligned}
-% \end{equation}
-% Doing the same for the second term will give:
-% \begin{equation}
-% \begin{aligned}
-% & \left( \frac{1}{(\epsilon_{c \sigma} + \Omega_s -\epsilon_{i \sigma})(\epsilon_{c \sigma} + \Omega_s -\epsilon_{b \sigma})} \right. \\
-% & \left. + \frac{1}{(\epsilon_{b \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \right) \\
-% & = \frac{\left( \epsilon_{b\sigma } - \epsilon_{i\sigma } \right)}{\left(\epsilon_{c\sigma } + \Omega _s - \epsilon_{i\sigma}\right)\left(\epsilon_{c\sigma } + \Omega _s - \epsilon_{b\sigma}\right)\left(\epsilon_{b\sigma } - \epsilon_{i\sigma}\right)} - \frac{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma } \right)}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{b\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)}\\
-% & = \frac{\epsilon _{b\sigma } - \epsilon _{c \sigma} - \Omega _s}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{b\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)} = - \frac{1}{\left(\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}\right)\left(\epsilon _{b \sigma} - \epsilon _{i\sigma}\right)}
-% \end{aligned}
-% \end{equation}
+By getting a common denominator and simplifying terms, we get
 \begin{equation}
-D_{ib} = \bra{i\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi\left( \epsilon _{i\sigma } - \epsilon _{b\sigma } \right)} \left[ \sum_{ks} \frac{w_{ik}^s w_{bk}^s}{\epsilon _{k\sigma } - \epsilon _{b\sigma } - \Omega _s} - \sum_{cs} \frac{w_{ic}^s w_{bc}^s}{\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}} \right]
+D_{ib} = \bra{i\sigma } \gamma _0^\sigma \ket{b\sigma } + \frac{2\pi i^2}{2\pi\left( \epsilon _{i\sigma } - \epsilon _{b\sigma } \right)} \left[ \sum_{ks} \frac{w_{ik}^s w_{bk}^s}{\epsilon _{k\sigma } - \epsilon _{b\sigma } - \Omega _s} - \sum_{cs} \frac{w_{ic}^s w_{bc}^s}{\epsilon _{c \sigma} + \Omega _s - \epsilon _{i\sigma}} \right].
 \end{equation}
-The matrix element of the noninteracting density matrix does not mix occupied with virtual states and we relabel the occupied index $k\rightarrow j$ and the virtual index $c\rightarrow a$:
+The noninteracting density matrix does not mix occupied with virtual states and we relabel the occupied index $k\rightarrow j$ and the virtual index $c\rightarrow a$
 \begin{equation}
-D_{ib} = \frac{1}{\epsilon _{i\sigma } - \epsilon _{b\sigma }} \left[ \sum_{as} \frac{w_{ia}^s w_{ba}^s}{\epsilon _{i\sigma } - \epsilon _{a\sigma } - \Omega _s} - \sum_{js} \frac{w_{ij}^s w_{bj}^s}{\epsilon _{j\sigma } - \epsilon _{b\sigma } - \Omega _s} \right]
+D_{ib} = \frac{1}{\epsilon _{i\sigma } - \epsilon _{b\sigma }} \left[ \sum_{as} \frac{w_{ia}^s w_{ba}^s}{\epsilon _{i\sigma } - \epsilon _{a\sigma } - \Omega _s} - \sum_{js} \frac{w_{ij}^s w_{bj}^s}{\epsilon _{j\sigma } - \epsilon _{b\sigma } - \Omega _s} \right].
 \end{equation}
-These are the same results reported by \textcite{bruneval_assessment_2019}. Interestingly, for the mixed block, the result you get is exactly the same if you choose the opposite contour $D_-$ for the full frequency integral of \ref{eqn:expanded_integral}. Since both $D_-$ and $D_+$ contain a finite number of poles, we are able to disregard the integral over the arc of the semicircular contour $C_R$ in the limit $R \to \infty$. This is what one would expect from an interpretation of Jordan's Lemma. 
-% I am just curious what would happen if we chose the opposite contour for the previous integrations. We would just have one pole in $D_-$ at $\omega_{11} = \epsilon _{b \sigma } - \mathrm{i} \eta$ for the first term and $\omega_{21} = \epsilon _{i \sigma } + \mathrm{i} \eta$ for the second term. The residues would be:
-% \begin{equation}
-% \begin{aligned}
-% \phi_{\omega_{11}}(\epsilon_{b \sigma } - \mathrm{i} \eta) & = \frac{1}{(\epsilon_{b \sigma} -\epsilon_{k \sigma}+\Omega_s)(\epsilon_{b \sigma} -\epsilon_{i \sigma})} \\
-% \phi_{\omega_{21}}(\epsilon_{i \sigma} + \mathrm{i} \eta) & = \frac{1}{(\epsilon_{i \sigma} -\epsilon_{c \sigma}-\Omega_s)(\epsilon_{i \sigma} -\epsilon_{b \sigma})}
-% \end{aligned}
-% \end{equation}
+Interestingly, for the mixed block, the result you get is exactly the same if you choose the opposite contour $D_-$ for the full frequency integral of \ref{eqnexpanded_integral}. This is what one would expect from an interpretation of Jordan's Lemma. 
 
 
 
 
 \printindex
 
-\theendnotes
 
 %% Pocket materials at the VERY END of thesis
 

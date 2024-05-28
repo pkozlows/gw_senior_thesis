@@ -273,8 +273,8 @@
       \strng{authorbibnamehash}{82e4bff563c82784b765c7573114c8af}
       \strng{authornamehash}{82e4bff563c82784b765c7573114c8af}
       \strng{authorfullhash}{36a85336f1a18a658e7abd8feca58949}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{PySCF is a Python-based general-purpose electronic structure platform that supports first-principles simulations of molecules and solids as well as accelerates the development of new methodology and complex computational workflows. This paper explains the design and philosophy behind PySCF that enables it to meet these twin objectives. With several case studies, we show how users can easily implement their own methods using PySCF as a development environment. We then summarize the capabilities of PySCF for molecular and solid-state simulations. Finally, we describe the growing ecosystem of projects that use PySCF across the domains of quantum chemistry, materials science, machine learning, and quantum information science.}
@@ -351,8 +351,8 @@
       \strng{authorbibnamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authornamehash}{3edf8108879cdc3275b5143319019cda}
       \strng{authorfullhash}{17139930a41e28f10b470363c2cea88a}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Although density functional theory is widely used in surface science, it has a tendency to predict surfaces to be more stable than they actually are experimentally. Using a many-electron approach such as the random-phase approximation enables accurate surface and adsorption energies for carbon monoxide and benzene on metal surfaces to be determined.}
@@ -401,8 +401,8 @@
       \strng{authorbibnamehash}{a094ce6d7c228a072c792c805e22643d}
       \strng{authornamehash}{a094ce6d7c228a072c792c805e22643d}
       \strng{authorfullhash}{a094ce6d7c228a072c792c805e22643d}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CURJ}
@@ -452,8 +452,8 @@
       \strng{authorbibnamehash}{93e2014668408cba19b81f265ea34e3d}
       \strng{authornamehash}{acf07235291278c7d6c9481d25c3daed}
       \strng{authorfullhash}{93e2014668408cba19b81f265ea34e3d}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{We present the results of Gaussian-based ground-state and excited-state equation-of-motion coupled-cluster theory with single and double excitations for three-dimensional solids. We focus on diamond and silicon, which are paradigmatic covalent semiconductors. In addition to ground-state properties (the lattice constant, bulk modulus, and cohesive energy), we compute the quasiparticle band structure and band gap. We sample the Brillouin zone with up to 64 k-points using norm-conserving pseudopotentials and polarized double- and triple-ζ basis sets, leading to canonical coupled-cluster calculations with as many as 256 electrons in 2176 orbitals.}
@@ -485,8 +485,8 @@
       \endverb
     \endentry
     \entry{noauthor_frontiers_nodate}{misc}{}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{Frontiers {|} {The} {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
       \field{urlday}{19}
@@ -692,8 +692,8 @@
       \strng{authorbibnamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authornamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
       \strng{authorfullhash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0009-2665}
@@ -723,6 +723,75 @@
       \verb https://doi.org/10.1021/cr0505627
       \endverb
     \endentry
+    \entry{furche_density_2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7b43fcac9e5264f875801fb40eaa2aaa}{%
+           family={Furche},
+           familyi={F\bibinitperiod},
+           given={Filipp},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \strng{fullhash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \strng{bibnamehash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \strng{authorbibnamehash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \strng{authornamehash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \strng{authorfullhash}{7b43fcac9e5264f875801fb40eaa2aaa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The formulation of time-dependent Kohn–Sham (TDKS) response theory based on the noninteracting one-particle density matrix is reanalyzed in detail. A transparent derivation starting from a von-Neumann-type equation of motion for the TDKS one-particle density matrix is presented. The resulting scheme has a simple structure and leads to compact expressions for frequency-dependent response properties. A systematic treatment of excited states is inferred from a pole analysis of the frequency-dependent density matrix response. A variational principle for excitation energies is established. Excited state properties are straightforward by analytical derivative techniques. The theory provides a particularly suitable starting point for linear scaling implementations. Magneto-optic properties such as rotatory strengths and the rotatory dispersion are accessible from the TDKS current-density response. The formalism is gauge-invariant. Various new sum rules within the adiabatic approximation (AA) are derived. It is shown that there is no “assignment problem” for excited states in the density matrix based formulation; the common density based approach is included as a special case. Merits and limitations of the AA are discussed.}
+      \field{issn}{0021-9606}
+      \field{journaltitle}{The Journal of Chemical Physics}
+      \field{month}{4}
+      \field{number}{14}
+      \field{title}{On the density matrix based approach to time-dependent density functional response theory}
+      \field{urlday}{1}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{volume}{114}
+      \field{year}{2001}
+      \field{urldateera}{ce}
+      \field{pages}{5982\bibrangedash 5992}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1063/1.1353585
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/C68D8KE2/Furche - 2001 - On the density matrix based approach to time-depen.pdf:application/pdf;Snapshot:/Users/patrykkozlowski/Zotero/storage/6WTB9L6Z/On-the-density-matrix-based-approach-to-time.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1063/1.1353585
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1063/1.1353585
+      \endverb
+    \endentry
+    \entry{noauthor_molecular_nodate}{misc}{}
+      \list{language}{1}{%
+        {en}%
+      }
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Answer to: In molecular orbital theory, the 1s orbital in the H2 molecule is? By signing up, you\&\#039;ll get thousands of step-by-step solutions to...}
+      \field{journaltitle}{homework.study.com}
+      \field{title}{In molecular orbital theory, the 1s orbital in the {H2} molecule is?}
+      \field{urlday}{28}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/5IMY6G5M/in-molecular-orbital-theory-the-1s-orbital-in-the-h2-molecule-is.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://homework.study.com/explanation/in-molecular-orbital-theory-the-1s-orbital-in-the-h2-molecule-is.html
+      \endverb
+      \verb{url}
+      \verb https://homework.study.com/explanation/in-molecular-orbital-theory-the-1s-orbital-in-the-h2-molecule-is.html
+      \endverb
+    \endentry
     \entry{bruneval_assessment_2019}{article}{}
       \name{author}{1}{}{%
         {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
@@ -737,8 +806,8 @@
       \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
       \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}

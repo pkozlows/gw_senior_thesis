@@ -138,104 +138,91 @@ def apply_trotter_gates(mps, gate_field, gate_odd, gate_even):
     return mps
 
 def check_left_canonical(tensor):
+        left_canonical = False 
         if len(tensor.shape) == 2:
             tensor = tensor.reshape(1, *tensor.shape)
         if np.allclose(np.einsum('ijk,kjm->im' , tensor.conj().T, tensor), np.eye(tensor.shape[2])):
-            print(f"Tensor is left-canonical.")
-        else:
-            print(f"Tensor is NOT left-canonical.")
+            left_canonical = True
+        return left_canonical
 
-def check_right_canonical(mps_tensors):
-    L = len(mps_tensors)
-    # iterate through the list again
-    for idx, tensor in enumerate(reversed(mps_tensors)):
-        if idx == 0:
-            assert len(tensor.shape) == 2
-            tensor = tensor.reshape(*tensor.shape, 1)
-        elif idx == len(mps_tensors) - 1:
-            assert len(tensor.shape) == 2
-            tensor = tensor.reshape(1, *tensor.shape)
-        # Right canonical check
-        if np.allclose(np.einsum('ijk,kjm->im' , tensor, tensor.conj().T), np.eye(tensor.shape[0])):
-            print(f"Tensor at site {idx-L} is right-canonical.")
-        else:
-            print(f"Tensor at site {idx-L} is NOT right-canonical.")
+def check_right_canonical(tensor):
+    right_canonical = False
+    if len(tensor.shape) == 2:
+        tensor = tensor.reshape(*tensor.shape, 1)
+    if np.allclose(np.einsum('ijk,kjm->im' , tensor, tensor.conj().T), np.eye(tensor.shape[0])):
+        right_canonical = True
+    return right_canonical
             
 def enforce_bond_dimension(mps, chi):
     """Enforce left canonical form on the MPS without truncating."""
     L = len(mps)
-    mps_new = mps.copy()
     
     for i in range(L-1):
         # Contract the i and i+1 tensors to prepare for SVD
         if i == 0:
-            contraction = np.einsum('ij,jab->iab', mps_new[i], mps_new[i+1])
-            w = contraction.reshape(mps_new[i].shape[0], mps_new[i+1].shape[1]*mps_new[i+1].shape[2])
+            contraction = np.einsum('ij,jab->iab', mps[i], mps[i+1])
+            w = contraction.reshape(mps[i].shape[0], mps[i+1].shape[1]*mps[i+1].shape[2])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1])
-            print(i)
-            check_left_canonical(mps_new[i])
-            mps_new[i+1] = (np.diag(S)@V).reshape(mps_new[i+1].shape[0], mps_new[i+1].shape[1], mps_new[i+1].shape[2])
+            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1])
+            assert check_left_canonical(mps[i])
+            mps[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1], mps[i+1].shape[2])
         elif i == L-2:
-            contraction = np.einsum('ijk,kl->ijl', mps_new[i], mps_new[i+1])
+            contraction = np.einsum('ijk,kl->ijl', mps[i], mps[i+1])
             0
-            w = contraction.reshape(mps_new[i].shape[0]*mps_new[i].shape[1], mps_new[i+1].shape[1])
+            w = contraction.reshape(mps[i].shape[0]*mps[i].shape[1], mps[i+1].shape[1])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], mps_new[i].shape[2])
-            print(i)
-            check_left_canonical(mps_new[i])
-            mps_new[i+1] = (np.diag(S)@V).reshape(mps_new[i+1].shape[0], mps_new[i+1].shape[1])
-            check_left_canonical(mps_new[i+1])
+            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], mps[i].shape[2])
+            assert check_left_canonical(mps[i])
+            mps[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1])
+            assert not check_left_canonical(mps[i+1])
         else:
-            contraction = np.einsum('ijk,klm->ijlm', mps_new[i], mps_new[i+1])
-            w = contraction.reshape(mps_new[i].shape[0] * mps_new[i].shape[1], mps_new[i+1].shape[1] * mps_new[i+1].shape[2])
+            contraction = np.einsum('ijk,klm->ijlm', mps[i], mps[i+1])
+            w = contraction.reshape(mps[i].shape[0] * mps[i].shape[1], mps[i+1].shape[1] * mps[i+1].shape[2])
             # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
             # Update the MPS tensors
-            mps_new[i] = U.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
-            print(i)
-            check_left_canonical(mps_new[i])
-            mps_new[i+1] = (np.diag(S)@V).reshape(-1, mps_new[i+1].shape[1], mps_new[i+1].shape[2]) 
+            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+            assert check_left_canonical(mps[i])
+            mps[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2]) 
 
-    mps = mps_new.copy()
-    # check_left_canonical(mps)
     # print the shapes of the mps tensors
     for i in range(L):
         print(mps[i].shape)
-    mps_new = mps.copy()
+        
     # now throw it in reverse while enforcing the bond dimension
     for i in range(L-1, 0, -1):
         if i == L-1:
-            contraction = np.einsum('ijk,kl->ijl', mps_new[i-1], mps_new[i])
-            w = contraction.reshape(mps_new[i-1].shape[0]*mps_new[i-1].shape[1], mps_new[i].shape[1])
+            contraction = np.einsum('ijk,kl->ijl', mps[i-1], mps[i])
+            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], mps_new[i-1].shape[2])
-            mps_new[i] = vt.reshape(mps_new[i].shape[0], mps_new[i].shape[1])
+            mps[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], mps[i-1].shape[2])
+            mps[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1])
+            assert check_right_canonical(mps[i])
         elif i == 1:
-            contraction = np.einsum('ai,ijk->ajk', mps_new[i-1], mps_new[i])
-            w = contraction.reshape(mps_new[i-1].shape[0], mps_new[i].shape[1]*mps_new[i].shape[2])
+            contraction = np.einsum('ai,ijk->ajk', mps[i-1], mps[i])
+            w = contraction.reshape(mps[i-1].shape[0], mps[i].shape[1]*mps[i].shape[2])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(-1, mps_new[i].shape[0])
-            mps_new[i] = vt.reshape(mps_new[i].shape[0], mps_new[i].shape[1], -1)
+            mps[i-1] = (u @ s_diag).reshape(-1, mps[i].shape[0])
+            mps[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1], -1)
+            assert check_right_canonical(mps[i])
         else:
-            contraction = np.einsum('ijk,klm->ijlm', mps_new[i-1], mps_new[i])
-            w = contraction.reshape(mps_new[i-1].shape[0]*mps_new[i-1].shape[1], mps_new[i].shape[1]*mps_new[i].shape[2])
+            contraction = np.einsum('ijk,klm->ijlm', mps[i-1], mps[i])
+            w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1]*mps[i].shape[2])
             # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
             # Update the MPS tensors
-            mps_new[i-1] = (u @ s_diag).reshape(mps_new[i-1].shape[0], mps_new[i-1].shape[1], -1)
-            mps_new[i] = vt.reshape(-1, mps_new[i].shape[1], mps_new[i].shape[2])
-    mps = mps_new.copy()
+            mps[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
+            mps[i] = vt.reshape(-1, mps[i].shape[1], mps[i].shape[2])
+            assert check_right_canonical(mps[i])
 
-    check_right_canonical(mps)
     return mps
 
 def compute_contraction(mod_ket, bra):

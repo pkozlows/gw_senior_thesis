@@ -14,6 +14,7 @@
 \usepackage{subcaption}
 \usepackage{todonotes}
 \usepackage{physics}
+\usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pgf}
 
@@ -419,7 +420,6 @@ Equation \ref{eq: Iterative equation} can be solved iteratively, but also graphi
 \end{equation}
 As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
  This is a useful check to see if the self-energy, which we defined in section \ref{sec:correlation_self_energy}, has been computed correctly.
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
@@ -458,6 +458,64 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 7.11e-15 & 1.18e-10 & 3.15e-14 & 4.97e-14 & 1.1
 \end{table}
 
 The cc-pVDZ basis set was used for all calculations. As can be seen, my deviations from PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
+\subsection{Total energy functionals}
+
+\begin{equation}
+    E_{\text{tot}}^{GM} = T_s [\gamma  ] + V_H [\gamma  ] + V_x [\gamma  ] + V_{\text{nuc, elec}} [\gamma  ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma_0 ]
+\label{eq:GM}
+\end{equation}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        & \textbf{MOLGW} & \textbf{FHI-AIMS} & \textbf{Mine from eqn. \ref{eq:GM}} & \textbf{Deviation} \\
+        \midrule
+        \textbf{He} & -0.759780 & -0.759737 & -0.759781 & -0.000043 \\
+        \textbf{Ne} & -0.120554 & -0.120551 & -0.120553 & -0.000002 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Galitskii-Migdal correlation energies (in Hartrees) using HF as the mean field object. Deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
+\end{table}
+
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lccc}
+        \toprule
+        & \textbf{PySCF} & \textbf{Mine from eqn. \ref{eq:klein1}} & \textbf{Mine from eqn. \ref{eq:klein2}} \\
+        \midrule
+        \textbf{H$_2$O} & -76.2059 & -76.0673 & -75.9822 \\
+        \textbf{NH$_3$} & -56.3946 & -56.2540 & -56.1794 \\
+        \textbf{LiH} & -8.02132 & -8.04017 & -7.98422 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparison of Klein total energies (in Hartrees) between PySCF and my implementation.}
+\end{table}
+\begin{equation}
+    E_{\text{tot}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+\label{eq:klein1}
+\end{equation}
+\begin{equation}
+    E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0]
+\label{eq:klein2}
+\end{equation}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lccc}
+        \toprule
+        & \textbf{Mine from eqn. \ref{eq:klein1}} & \textbf{Mine from eqn. \ref{eq:klein2}} & \textbf{Difference} \\
+        \midrule
+        \textbf{H$_2$O} & -0.317604 & -0.232507 & -0.085097 \\
+        \textbf{NH$_3$} & -0.297227 & -0.222575 & -0.074652 \\
+        \textbf{LiH} & -0.093758 & -0.037806 & -0.055952 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Difference in correlation energies (in Hartrees) between my two implementations of the Klein functional.}
+\end{table}
+
+
 \subsection{Plotting natural occupations}
 The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: restricted Hartree-Fock, which contains no correlation for the single particles, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
 \begin{figure}[h]

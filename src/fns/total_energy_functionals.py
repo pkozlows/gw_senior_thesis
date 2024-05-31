@@ -1,6 +1,7 @@
 import numpy as np
 import pyscf
 from pyscf import tddft
+import pyscf.gw.rpa
 
 # Custom imports for setting up and calculating molecular properties
 from src.fns.mf import setup_molecule, calculate_mean_field
@@ -23,8 +24,9 @@ class Correlation:
         denominator = orbital_energies[n_occ:, None, None] - orbital_energies[None, :n_occ, None] + excitation_energies[None, None, :]
         ov_num = np.square(transition_densities[n_occ:, :n_occ, :])
         vo_num = np.swapaxes(np.square(transition_densities[:n_occ, n_occ:, :]), 0, 1)
+        numerator = -2 * np.square(transition_densities[n_occ:, :n_occ, :])
 
-        e_corr = -0.5 * (np.sum(ov_num / denominator) + np.sum(vo_num / denominator))
+        e_corr = (np.sum(numerator / denominator))
         return e_corr
 
     def klein_interacting(self):
@@ -52,17 +54,20 @@ def total_energy(noninteracting, interacting, correlation_name, mf=False):
     correlation_functional = Correlation(correlation_name, noninteracting, interacting)
     e_corr = getattr(correlation_functional, correlation_name)()
     if mf:
-        return e_elec + interacting.energy_nuc()
+        return e_elec + noninteracting.energy_nuc()
     else:
-        e_tot = e_elec + interacting.energy_nuc() + e_corr
+        e_tot = e_elec + noninteracting.energy_nuc() + e_corr
         return e_tot, e_corr 
     
 
 
+    
+
+
 # Define the input variables that we will iterate over
-species = ['he', 'ne']
+species = ['water', 'nh3', 'lih']
 methods = ['hf']
-correlation_funcs = ['gm']
+correlation_funcs = ['klein_interacting', 'klein_noninteracting']
 
 for molecule_name in species:
     for method in methods:
@@ -87,10 +92,12 @@ for molecule_name in species:
             print(f'hf energy for {molecule_name} with {correlation_name}: {mf_energy}')
             print(f'GW energy for {molecule_name} with {correlation_name}: {gw_total_energy}')
             print(f'GW correlation energy for {molecule_name} with {correlation_name}: {gw_correlation_energy}')
+            # define the total and correlation energy from the pyscf rpa function
+            rpa = pyscf.gw.rpa.RPA(noninteracting_mf)
+            rpa.kernel()
+            tot_e = rpa.e_tot
+            cor_e = rpa.e_corr
+            print(f'Pyscf RPA total energy for {molecule_name} with {method}: {tot_e}')
+            print(f'Pyscf RPA correlation energy for {molecule_name} with {method}: {cor_e}')
         
-        # # Print out the difference between the two Klein functionals
-        # if "klein_interacting" in gw_energy_dict and "klein_noninteracting" in gw_energy_dict:
-        #     pass
-        #     # print(f'{molecule_name} with {method}: ΔE (klein_interacting - klein_noninteracting) = {gw_energy_dict["klein_interacting"] - gw_energy_dict["klein_noninteracting"]} eV.')
-        # else:
-        #     print(f'Error: Missing klein_interacting or klein_noninteracting energy values for {molecule_name} with {method}')
+

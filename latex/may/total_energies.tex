@@ -73,9 +73,12 @@ However, we know that the trace is invariant to unitary transformations and also
     \text{Tr} (A^{\text{TDA}}) = \text{Tr} (A^{\text{TDA}} UU^{\dagger}) = \text{Tr} (U^{\dagger} A^{\text{TDA}} U) = \text{Tr} (\Omega ^{\text{TDA}})
 \end{equation}
 So with $E_{\text{corr}}^{\text{Klein}}$ we are quantifying the correlation energy by considering the difference between the RPA and TDA excitation energies for a given system. Since we found earlier that the TDA captures more correlation than the RPA, we can expect that $E_{\text{corr}}^{\text{Klein}}$ will be negative, or stabilizing, as we would expect.
-The Galitskii-Migdal formula is given by:
 \begin{equation}
-    E_{\text{corr}} ^{\text{GM}} =-\frac{1}{2} \sum_{m i a} \frac{M_{a i, m}^* M_{a i, m}}{\epsilon_a-\epsilon_i+\Omega_m-2 \mathrm{i} \eta}-\frac{1}{2} \sum_{m a i} \frac{M_{i a, m} M_{i a, m}^*}{\epsilon_a-\epsilon_i+\Omega_m+2 \mathrm{i} \eta}
+E_{\mathrm{c}}^{\mathrm{GM}}=-\sum_{i a m} \frac{M_{i a, m}^2}{\epsilon_a-\epsilon_i+\Omega_m}
+\end{equation}
+but this expression is given in terms of spin orbits, so after the integration we gain a factor of 2
+\begin{equation}
+E_{\mathrm{c}}^{\mathrm{GM}}=-2 \sum_{i a m} \frac{M_{i a, m}^2}{\epsilon_a-\epsilon_i+\Omega_m}
 \end{equation}
 where we have our transition densities:
 \begin{equation}
@@ -91,11 +94,13 @@ We want to test 3 different total energy functionals:
 \label{eq:klein1}
 \end{equation}
 \begin{equation}
-    E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[G_0/\gamma _0]
+    E_{\text{tot}}^{GM} = T_s [\gamma _{0} ] + V_H [\gamma _{0} ] + V_x [\gamma _{0} ] + V_{\text{nuc, elec}} [\gamma _{0} ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma _{0}]
 \end{equation}
 \begin{equation}
     E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0]
 \label{eq:klein2}
 \end{equation}
 Specifically, we will want to see the difference between \ref{eq:klein1} and \ref{eq:klein2}. 
+We are interested in formulating a table, which will corroborate vitals putin MOLGW, FHI-AIMS, and my implementation for the Galitskii-Migdal correlation energies. Then, I want to show how my energy for the Galitskii-Migdal deviates from that reported in the paper using HF, since mine uses the $G_0W_0$ density matrix that we investigated and the paper just uses the HF density matrix.
+Then I want to make a separate table, which compares the results of my Klein implemtation, for both of the interacting and noninteracting cases, with the responding result from PySCF. I will comment about how the discrepancy originates from the fact that the PySCF implementation uses and axillary bases, wail I didn't. Lastly, I want to make a table which documents the deviations between my Klein folly interacting and noninteracting cases cover for the total energies and the correlation energies. For the first table, I will just consider the two atoms Ne and He. For the second two tables, I will consider the water molecule, mating, and licl, to show more versatility.
 \end{document}

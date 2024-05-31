@@ -459,9 +459,29 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 7.11e-15 & 1.18e-10 & 3.15e-14 & 4.97e-14 & 1.1
 
 The cc-pVDZ basis set was used for all calculations. As can be seen, my deviations from PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
 \subsection{Total energy functionals}
+One can also get energies of the system with the linearized $G_0W_0$ density matrix. First, let us two variance of a total and energy functional that can be obtained, called the Klein energy functionals. They are defined as
+\begin{equation}
+    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+\label{eq:klein1}
+\end{equation}
+and
+\begin{equation}
+    E_{\text{tot}}^2 = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0],
+\label{eq:klein2}
+\end{equation}
+Where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential, $V_x$ is the exchange potential, $V_{\text{nuc, elec}}$ is the nuclear-electron potential, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. $E_{\text{corr}} ^{\text{Klein}}$ is defined as
+\begin{equation}
+    E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
+    = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (\Omega ^{\text{TDA}}),
+\end{equation}
+where we have used the invariance of the trace to unitary transformations and cyclic permutations to derive this.
+Each term in eqns. \ref{eq:klein1} or \ref{eq:klein2} is either evaluated at the noninteracting $\gamma _{0}$ or interacting $\gamma $ electron density. Note that the only difference between these two definitions is that the correlation of the interacting and noninteracting systems is 'housed' in the correlation and kinetic functional, respectively. As table \ref{tab:klein} shows, recognition of this fact shows that 
+\begin{equation}
+E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) G\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right)
+\end{equation}
 
 \begin{equation}
-    E_{\text{tot}}^{GM} = T_s [\gamma  ] + V_H [\gamma  ] + V_x [\gamma  ] + V_{\text{nuc, elec}} [\gamma  ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma_0 ]
+E_{\mathrm{corr}}^{\mathrm{GM}}=-\sum_{i a m} \frac{M_{i a, m}^2}{\epsilon_a-\epsilon_i+\Omega_m}
 \label{eq:GM}
 \end{equation}
 
@@ -475,44 +495,25 @@ The cc-pVDZ basis set was used for all calculations. As can be seen, my deviatio
         \textbf{Ne} & -0.120554 & -0.120551 & -0.120553 & -0.000002 \\
         \bottomrule
     \end{tabular}
-    \caption{Galitskii-Migdal correlation energies (in Hartrees) using HF as the mean field object. Deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
+    \caption{Galitskii-Migdal correlation energies as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
+    \label{tab:galitskii}
 \end{table}
 
 
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{lccc}
-        \toprule
-        & \textbf{PySCF} & \textbf{Mine from eqn. \ref{eq:klein1}} & \textbf{Mine from eqn. \ref{eq:klein2}} \\
-        \midrule
-        \textbf{H$_2$O} & -76.2059 & -76.0673 & -75.9822 \\
-        \textbf{NH$_3$} & -56.3946 & -56.2540 & -56.1794 \\
-        \textbf{LiH} & -8.02132 & -8.04017 & -7.98422 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Comparison of Klein total energies (in Hartrees) between PySCF and my implementation.}
-\end{table}
-\begin{equation}
-    E_{\text{tot}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
-\label{eq:klein1}
-\end{equation}
-\begin{equation}
-    E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0]
-\label{eq:klein2}
-\end{equation}
 
 \begin{table}[h!]
-    \centering
-    \begin{tabular}{lccc}
-        \toprule
-        & \textbf{Mine from eqn. \ref{eq:klein1}} & \textbf{Mine from eqn. \ref{eq:klein2}} & \textbf{Difference} \\
-        \midrule
-        \textbf{H$_2$O} & -0.317604 & -0.232507 & -0.085097 \\
-        \textbf{NH$_3$} & -0.297227 & -0.222575 & -0.074652 \\
-        \textbf{LiH} & -0.093758 & -0.037806 & -0.055952 \\
-        \bottomrule
-    \end{tabular}
-    \caption{Difference in correlation energies (in Hartrees) between my two implementations of the Klein functional.}
+\centering
+\begin{tabular}{lccc}
+\toprule
+& \textbf{Total Energy Diff.} & \textbf{Correlation Energy Diff.} & \textbf{Correlation Contributions Discrepancy} \\
+\midrule
+\textbf{H$_2$O} & -0.085109 & -0.085097 & 0.000012 \\
+\textbf{NH$_3$} & -0.074617 & -0.074652 & 0.000035 \\
+\textbf{LiH} & -0.055925 & -0.055952 & 0.000027 \\
+\bottomrule
+\end{tabular}
+\caption{Differences in total energy, correlation energy, and discrepancy between the former supposed correlation contributions between the Klein functionals of equations \ref{eq:klein1} $-$ \ref{eq:klein2}.}
+\label{tab:klein}
 \end{table}
 
 

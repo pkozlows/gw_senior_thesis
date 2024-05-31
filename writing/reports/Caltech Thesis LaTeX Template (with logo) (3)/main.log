@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  30 MAY 2024 22:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  31 MAY 2024 13:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1448,7 +1448,15 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (./main.bbl)
+ (./main.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                BRUNEVAL_ASSESSMENT_2019
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 84.
 Package biblatex Info: Reference segment=0 on input line 84.
 \c@lstlisting=\count537
@@ -1556,70 +1564,66 @@ l.142 \chapter
 
 
 
-] [2
-
-
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 161.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.8pt on input line 162.
- [3
+(Font)              scaled to size 12.0pt on input line 143.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.6pt on input line 143.
+ [2
+
+
+] [3
 
 
 ] [4]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 210.
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--223
+Underfull \hbox (badness 10000) in paragraph at lines 226--230
 
  []
 
 [5]
-<shot.png, id=276, 276.03125pt x 145.54375pt>
+<shot.png, id=280, 276.03125pt x 145.54375pt>
 File: shot.png Graphic file (type png)
 <use shot.png>
-Package pdftex.def Info: shot.png  used on input line 242.
+Package pdftex.def Info: shot.png  used on input line 254.
 (pdftex.def)             Requested size: 158.9946pt x 83.83801pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 243.
-<clothing.png, id=277, 200.75pt x 144.54pt>
+(Font)              scaled to size 10.95pt on input line 255.
+<clothing.png, id=281, 200.75pt x 144.54pt>
 File: clothing.png Graphic file (type png)
 <use clothing.png>
-Package pdftex.def Info: clothing.png  used on input line 248.
+Package pdftex.def Info: clothing.png  used on input line 260.
 (pdftex.def)             Requested size: 158.9946pt x 114.48306pt.
 
-Overfull \hbox (1.79991pt too wide) in paragraph at lines 240--252
+Overfull \hbox (1.79991pt too wide) in paragraph at lines 252--264
 [][] [] 
  []
 
 [6] [7 <./shot.png> <./clothing.png>]
-<Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg, id=303, 779.91376pt x 358.33875pt>
+<Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg, id=311, 779.91376pt x 358.33875pt>
 File: Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg Graphic file (type jpg)
 <use Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg>
-Package pdftex.def Info: Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg  used on input line 280.
+Package pdftex.def Info: Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg  used on input line 293.
 (pdftex.def)             Requested size: 397.485pt x 182.62459pt.
- [8 <./Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg>] [9]
+
+
+LaTeX Warning: Reference `chap:total_energy' on page 8 undefined on input line 299.
+
+[8] [9 <./Left-panel-Graphical-representation-of-Hedins-equations-Right-panel-The-four-coupled.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 293.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 293.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 293.
+(hyperref)                removing `math shift' on input line 306.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 293.
+(hyperref)                removing `subscript' on input line 306.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--301
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 306.
 
- []
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 306.
 
 [10
 
@@ -1627,49 +1631,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--301
 ] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 386.
+(hyperref)                removing `math shift' on input line 396.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 386.
+(hyperref)                removing `subscript' on input line 396.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 386.
+(hyperref)                removing `subscript' on input line 396.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 386.
-
-
-LaTeX Warning: Reference `app:linearized_gw' on page 13 undefined on input line 387.
+(hyperref)                removing `math shift' on input line 396.
 
 [13
 
 
 ]
-<correlation_energies.png, id=377, 622.2447pt x 499.3857pt>
+<correlation_energies.png, id=380, 622.2447pt x 499.3857pt>
 File: correlation_energies.png Graphic file (type png)
 <use correlation_energies.png>
-Package pdftex.def Info: correlation_energies.png  used on input line 425.
+Package pdftex.def Info: correlation_energies.png  used on input line 435.
 (pdftex.def)             Requested size: 397.485pt x 319.0114pt.
  [14
 
 
  <./correlation_energies.png>] [15]
-Overfull \hbox (92.599pt too wide) in paragraph at lines 506--515
+Overfull \hbox (92.599pt too wide) in paragraph at lines 519--528
  [][] 
  []
 
-<h2_occupations.png, id=407, 462.528pt x 346.896pt>
+<h2_occupations.png, id=411, 462.528pt x 346.896pt>
 File: h2_occupations.png Graphic file (type png)
 <use h2_occupations.png>
-Package pdftex.def Info: h2_occupations.png  used on input line 524.
+Package pdftex.def Info: h2_occupations.png  used on input line 537.
 (pdftex.def)             Requested size: 397.485pt x 298.12889pt.
-<h2_mo.png, id=410, 443.6575pt x 305.14pt>
+<h2_mo.png, id=414, 443.6575pt x 305.14pt>
 File: h2_mo.png Graphic file (type png)
 <use h2_mo.png>
-Package pdftex.def Info: h2_mo.png  used on input line 531.
+Package pdftex.def Info: h2_mo.png  used on input line 544.
 (pdftex.def)             Requested size: 397.485pt x 273.38028pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1680,9 +1681,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17 <./h2_occupations.png>] [18 <./h2_mo.png>]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 536.
+(Font)              scaled to size 12.0pt on input line 549.
 
-Overfull \hbox (1.02428pt too wide) in paragraph at lines 536--536
+Overfull \hbox (1.02428pt too wide) in paragraph at lines 549--549
 \T1/ntxtlf/m/it/12 vanced Elec-tronic Struc-ture The-ory \T1/ntxtlf/m/n/12 en. Google-Books-ID: KQ3DAgAAQBAJ.
  []
 
@@ -1695,27 +1696,27 @@ Overfull \hbox (1.02428pt too wide) in paragraph at lines 536--536
 ] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 646.
+(hyperref)                removing `math shift' on input line 659.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 646.
+(hyperref)                removing `subscript' on input line 659.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 646.
+(hyperref)                removing `subscript' on input line 659.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 646.
+(hyperref)                removing `math shift' on input line 659.
 
 
-Overfull \hbox (48.08215pt too wide) detected at line 655
+Overfull \hbox (48.08215pt too wide) detected at line 668
 [][][][]
  []
 
 
-Overfull \hbox (87.58696pt too wide) detected at line 685
+Overfull \hbox (87.58696pt too wide) detected at line 698
 [][]\OML/ntxmi/m/it/12 D[] \U/ntxmia/m/it/12 = [] \OML/ntxmi/m/it/12 ^^M[] [] \LMS/ntxsy/m/n/12 ^^@ [] [] [] [][] \OT1/minntx/m/n/12 d\OML/ntxmi/m/it/12 !\OT1/minntx/m/n/12 e[] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \U/ntxmia/m/it/12 ^^F[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] [] \OML/ntxmi/m/it/12 G[]\LMS/ntxsy/m/n/12 ¹\OML/ntxmi/m/it/12 !\LMS/ntxsy/m/n/12 º [] \OML/ntxmi/m/it/12 :
  []
 
@@ -1723,17 +1724,17 @@ Overfull \hbox (87.58696pt too wide) detected at line 685
 
 
 ]
-Overfull \hbox (70.61191pt too wide) detected at line 702
+Overfull \hbox (70.61191pt too wide) detected at line 715
 [][][][]
  []
 
 [24] [25] [26]
-Overfull \hbox (40.44444pt too wide) detected at line 839
+Overfull \hbox (40.44444pt too wide) detected at line 852
 [][][][]
  []
 
 [27] [28]
-Overfull \hbox (34.49779pt too wide) detected at line 919
+Overfull \hbox (34.49779pt too wide) detected at line 932
 [][][][]\OML/ntxmi/m/it/12 :
  []
 
@@ -1761,24 +1762,24 @@ runsystem(makeindex -s simple_letters main.idx)...executed safely (allowed).
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E14127AD005F32F1311F1A6A781DEB86;3155.
+(rerunfilecheck)             Checksum: 8F389591225FEF4FC07637CDFEB05FCA;3155.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40538 strings out of 478268
- 732937 string characters out of 5846347
- 1554573 words of memory out of 5000000
- 57878 multiletter control sequences out of 15000+600000
+ 40548 strings out of 478268
+ 733392 string characters out of 5846347
+ 1555886 words of memory out of 5000000
+ 57889 multiletter control sequences out of 15000+600000
  570151 words of font info for 181 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,12n,131p,2382b,2187s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,12n,131p,2286b,2191s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (38 pages, 713699 bytes).
+Output written on main.pdf (38 pages, 715194 bytes).
 PDF statistics:
- 713 PDF objects out of 1000 (max. 8388607)
- 618 compressed objects within 7 object streams
- 208 named destinations out of 1000 (max. 500000)
+ 722 PDF objects out of 1000 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 207 named destinations out of 1000 (max. 500000)
  736 words of extra memory for PDF output out of 10000 (max. 10000000)
 

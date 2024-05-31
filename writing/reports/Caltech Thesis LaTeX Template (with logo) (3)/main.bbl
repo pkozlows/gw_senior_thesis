@@ -541,6 +541,44 @@
       \field{year}{2012}
       \keyw{Science / Chemistry / General}
     \endentry
+    \entry{Hohenberg1964}{article}{}
+      \name{author}{2}{}{%
+        {{hash=40ea553b503fe0418f7f07689980cd95}{%
+           family={Hohenberg},
+           familyi={H\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5d41414fe0631332e20a859e66a25627}{%
+           family={Kohn},
+           familyi={K\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{7d5f8c830aae8dc4c996b32459939beb}
+      \strng{fullhash}{7d5f8c830aae8dc4c996b32459939beb}
+      \strng{bibnamehash}{7d5f8c830aae8dc4c996b32459939beb}
+      \strng{authorbibnamehash}{7d5f8c830aae8dc4c996b32459939beb}
+      \strng{authornamehash}{7d5f8c830aae8dc4c996b32459939beb}
+      \strng{authorfullhash}{7d5f8c830aae8dc4c996b32459939beb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{month}{11}
+      \field{number}{3B}
+      \field{title}{Inhomogeneous Electron Gas}
+      \field{volume}{136}
+      \field{year}{1964}
+      \field{pages}{B864\bibrangedash B871}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRev.136.B864
+      \endverb
+    \endentry
     \entry{milman_jacobs_2021}{misc}{}
       \name{author}{1}{}{%
         {{hash=698600862cf64c093bce445fd66a02a7}{%
@@ -580,6 +618,50 @@
       \endverb
       \verb{url}
       \verb https://blog.3ds.com/brands/biovia/dft/
+      \endverb
+    \endentry
+    \entry{PhysRev.140.A1133}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5d41414fe0631332e20a859e66a25627}{%
+           family={Kohn},
+           familyi={K\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=408fdc9dce7e09d891fdc02bb87d27d9}{%
+           family={Sham},
+           familyi={S\bibinitperiod},
+           given={L.\bibnamedelimi J.},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{52da45566c0310e12ed857c5012d1622}
+      \strng{fullhash}{52da45566c0310e12ed857c5012d1622}
+      \strng{bibnamehash}{52da45566c0310e12ed857c5012d1622}
+      \strng{authorbibnamehash}{52da45566c0310e12ed857c5012d1622}
+      \strng{authornamehash}{52da45566c0310e12ed857c5012d1622}
+      \strng{authorfullhash}{52da45566c0310e12ed857c5012d1622}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{4A}
+      \field{journaltitle}{Phys. Rev.}
+      \field{month}{11}
+      \field{title}{Self-Consistent Equations Including Exchange and Correlation Effects}
+      \field{volume}{140}
+      \field{year}{1965}
+      \field{pages}{A1133\bibrangedash A1138}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRev.140.A1133
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.140.A1133
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.140.A1133
       \endverb
     \endentry
     \entry{bruneval_gw_2021}{article}{}
@@ -641,6 +723,52 @@
       \endverb
       \keyw{Density-functional theory (DFT),Electronic structure ab-initio calculations,Feynman diagram expansion,Green's function (GF),Ionization potential (IP),Many-body ab initio structure}
     \endentry
+    \entry{bruneval_assessment_2019}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
+           family={Bruneval},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{fullhash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{bibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}
+      \field{issn}{1549-9618}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{month}{7}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{7}
+      \field{title}{Assessment of the {Linearized} {GW} {Density} {Matrix} for {Molecules}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{15}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{4069\bibrangedash 4078}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1021/acs.jctc.9b00333
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/SD7MJHGK/Bruneval - 2019 - Assessment of the Linearized GW Density Matrix for.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/acs.jctc.9b00333
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/acs.jctc.9b00333
+      \endverb
+    \endentry
     \entry{mattuck_guide_1992}{book}{}
       \name{author}{1}{}{%
         {{hash=606a0c8de09a6adc0505eb9a67ebbfc5}{%
@@ -671,6 +799,41 @@
       \endverb
       \verb{url}
       \verb https://books.google.com/books?id=pe-v8zfxE68C
+      \endverb
+    \endentry
+    \entry{Hedin1965}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9134706f2e736350257c0e1b72a6e624}{%
+           family={Hedin},
+           familyi={H\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{fullhash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{bibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorbibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authornamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorfullhash}{9134706f2e736350257c0e1b72a6e624}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{3A}
+      \field{title}{New Method for Calculating the One-Particle Green's Function with Application to the Electron-Gas Problem}
+      \field{volume}{139}
+      \field{year}{1965}
+      \field{pages}{A796\bibrangedash A823}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRev.139.A796
+      \endverb
+      \verb{urlraw}
+      \verb https://journals.aps.org/pr/abstract/10.1103/PhysRev.139.A796
+      \endverb
+      \verb{url}
+      \verb https://journals.aps.org/pr/abstract/10.1103/PhysRev.139.A796
       \endverb
     \endentry
     \entry{dreuw_single-reference_2005}{article}{}
@@ -737,8 +900,8 @@
       \strng{authorbibnamehash}{7b43fcac9e5264f875801fb40eaa2aaa}
       \strng{authornamehash}{7b43fcac9e5264f875801fb40eaa2aaa}
       \strng{authorfullhash}{7b43fcac9e5264f875801fb40eaa2aaa}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The formulation of time-dependent Kohn–Sham (TDKS) response theory based on the noninteracting one-particle density matrix is reanalyzed in detail. A transparent derivation starting from a von-Neumann-type equation of motion for the TDKS one-particle density matrix is presented. The resulting scheme has a simple structure and leads to compact expressions for frequency-dependent response properties. A systematic treatment of excited states is inferred from a pole analysis of the frequency-dependent density matrix response. A variational principle for excitation energies is established. Excited state properties are straightforward by analytical derivative techniques. The theory provides a particularly suitable starting point for linear scaling implementations. Magneto-optic properties such as rotatory strengths and the rotatory dispersion are accessible from the TDKS current-density response. The formalism is gauge-invariant. Various new sum rules within the adiabatic approximation (AA) are derived. It is shown that there is no “assignment problem” for excited states in the density matrix based formulation; the common density based approach is included as a special case. Merits and limitations of the AA are discussed.}
@@ -772,8 +935,8 @@
       \list{language}{1}{%
         {en}%
       }
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{Answer to: In molecular orbital theory, the 1s orbital in the H2 molecule is? By signing up, you\&\#039;ll get thousands of step-by-step solutions to...}
       \field{journaltitle}{homework.study.com}
@@ -792,53 +955,8 @@
       \verb https://homework.study.com/explanation/in-molecular-orbital-theory-the-1s-orbital-in-the-h2-molecule-is.html
       \endverb
     \endentry
-    \entry{bruneval_assessment_2019}{article}{}
-      \name{author}{1}{}{%
-        {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
-           family={Bruneval},
-           familyi={B\bibinitperiod},
-           given={Fabien},
-           giveni={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c4151f99b76b3b5730a3773eb38f284}
-      \strng{fullhash}{9c4151f99b76b3b5730a3773eb38f284}
-      \strng{bibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
-      \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
-      \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
-      \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}
-      \field{issn}{1549-9618}
-      \field{journaltitle}{Journal of Chemical Theory and Computation}
-      \field{month}{7}
-      \field{note}{Publisher: American Chemical Society}
-      \field{number}{7}
-      \field{title}{Assessment of the {Linearized} {GW} {Density} {Matrix} for {Molecules}}
-      \field{urlday}{19}
-      \field{urlmonth}{3}
-      \field{urlyear}{2024}
-      \field{volume}{15}
-      \field{year}{2019}
-      \field{urldateera}{ce}
-      \field{pages}{4069\bibrangedash 4078}
-      \range{pages}{10}
-      \verb{doi}
-      \verb 10.1021/acs.jctc.9b00333
-      \endverb
-      \verb{file}
-      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/SD7MJHGK/Bruneval - 2019 - Assessment of the Linearized GW Density Matrix for.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1021/acs.jctc.9b00333
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1021/acs.jctc.9b00333
-      \endverb
-    \endentry
   \enddatalist
+  \missing{BRUNEVAL_ASSESSMENT_2019}
 \endrefsection
 \endinput
 

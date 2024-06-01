@@ -106,12 +106,10 @@
 %\maketitle
 
 \begin{acknowledgements} 	 
-   [Add acknowledgements here. If you do not wish to add any to your thesis, you may simply add a blank titled Acknowledgements page.]
+%    I am indebted to all the medical professionals who have made my return to academics possible. I could not have done this without the help of dictation software Talon with it related Slack community and, particularly, the guys at Cursorless, who have taught me to code by voice. I would like to thank my advisor, Professor Garnet Chan, for offering me a path to return to academics after my medical leave. Many thanks to Doctor Johannes Tolle, who has struck the balance of being a patient, yet demanding, mentor and has pushed me to become an improved electronic structural theorist. Last, but not least, I would like to thank my family and, particularly, my mom for being my biggest supporters in my rehabilitation and academic journey.
 \end{acknowledgements}
 
-\begin{abstract}
-   [This abstract must provide a succinct and informative condensation of your work. Candidates are welcome to prepare a lengthier abstract for inclusion in the dissertation, and provide a shorter one in the CaltechTHESIS record.]
-\end{abstract}
+
 
 %% Uncomment the `iknowhattodo' option to dismiss the instruction in the PDF.
 
@@ -140,7 +138,7 @@ Symbol & Description \\
 \end{tabular}\\\\
 All calculations have been done using the PySCF package.\autocite{sun_recent_2020} The code for this project can be found at \url{https://github.com/pkozlows/gw_senior_thesis/tree/master}.
 \chapter{Motivation}
-The formalism of many-body perturbation theory (MBPT) provides corrections to a mean-field description such as that given by Hartree-Fock or density functional theory (DFT). Hartree-Fock is not used much in practice because it is known to provide a weak treatment of electron correlation due to the fact that it only considers the average interaction between electrons and not the explicit one. DFT has a similar computational scaling to Hartree-Fock, but it can deliver accurate results for larger systems. $\textbf{Site}$ However, it treats electron correlation in an approximate way that is difficult to systematically improve. Specifically, its reliance on approximate functionals gives rise to the notorious self-interaction error; this means that one can have the electron interacting with its own contribution to the electron density. In practice, this can potentially lead to a variety of issues, including the underestimation of surface stability (overestimation of surface energies) relevant in surface science studies. \autocite{schimka_accurate_2010} \autocite{kozlowski_elucidating_2021} To remedy the problems with the mean field approximations, normally one would fall back onto the wave function-based MBPT, such as Moller-Plesset perturbation theory to 2nd order (MP2) and coupled cluster theory (CC). However, their computational scaling is steep, scaling like $O(N^5)$ and $O(N^6)$ or greater, respectively, which can make it difficult to simulate larger systems. \autocite{mcclain_gaussian-based_2017} To bridge the gap between the cheap mean-field methods and the expensive wave function-based MBPT, there has been an interest in applying Green's function MBPT methods, within the $GW$ approximation, to such systems, which has shown to give accurate corrections to various properties, such as band gaps, on top of a prior (DFT) mean-field calculation, at a moderate computational cost. \autocite{noauthor_frontiers_nodate} This is the motivation for my study of the $GW$ approximation within its one-shot variant $G_0W_0$, which practically scales like $O(N^4)$.
+The formalism of many-body perturbation theory (MBPT) provides corrections to a mean-field description such as that given by Hartree-Fock or density functional theory (DFT). Hartree-Fock is not used much in practice because it is known to provide a weak treatment of electron correlation due to the fact that it only considers the average interaction between electrons and not the explicit one. DFT has a similar computational scaling to Hartree-Fock, but it can deliver accurate results for larger systems. \autocite{amusia_density_2003} However, it treats electron correlation in an approximate way that is difficult to systematically improve. Specifically, its reliance on approximate functionals gives rise to the notorious self-interaction error; this means that one can have the electron interacting with its own contribution to the electron density. In practice, this can potentially lead to a variety of issues, including the underestimation of surface stability (overestimation of surface energies) relevant in surface science studies. \autocite{schimka_accurate_2010} \autocite{kozlowski_elucidating_2021} To remedy the problems with the mean field approximations, normally one would fall back onto the wave function-based MBPT, such as Moller-Plesset perturbation theory to 2nd order (MP2) and coupled cluster theory (CC). However, their computational scaling is steep, scaling like $O(N^5)$ and $O(N^6)$ or greater, respectively, which can make it difficult to simulate larger systems. \autocite{mcclain_gaussian-based_2017} To bridge the gap between the cheap mean-field methods and the expensive wave function-based MBPT, there has been an interest in applying Green's function MBPT methods, within the $GW$ approximation, to such systems, which has shown to give accurate corrections to various properties, such as band gaps, on top of a prior (DFT) mean-field calculation, at a moderate computational cost. \autocite{noauthor_frontiers_nodate} This is the motivation for my study of the $GW$ approximation within its one-shot variant $G_0W_0$, which practically scales like $O(N^4)$.
 
 
 
@@ -433,10 +431,11 @@ As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
-\caption{Graphical solution of the correlation self-energy for the HOMO of $H_2O$ at a HF starting point with the cc-pVDZ basis}
+\caption{Graphical solution of the correlation self-energy for the HOMO of $\mathrm{H_2O}$ at a HF starting point with the cc-pVDZ basis}
 \label{fig:graphic}
 \end{figure}
 Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value. 
+\newpage
 \subsection{Testing of equation \ref{eq: Iterative equation}}
 The correctness of my implementation has been verified for a range of molecules and molecular orbitals by comparing the results with the data from PySCF in Table \ref{tab:energies}.
 \begin{table}[h]
@@ -469,35 +468,17 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.9
 
 The cc-pVDZ basis set was used for all calculations. As can be seen, deviations in the QP energies of my $G_0W_0$ implementation with respect to the corresponding in PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
 \subsection{Total energy functionals}
-One can also get energies of the system with the linearized $G_0W_0$ density matrix. First, let us two variance of a total and energy functional that can be obtained, called the Klein energy functionals. They are defined as
+\label{chap:total_energy}
+One can also get energies of the system with the linearized $G_0W_0$ density matrix. We first tested our implementation against that of \textcite{bruneval_improved_2021} and specifically the correlation energies predicted by the Galitskii-Migdal functional at the noninteracting HF reference system, which are given by the convolution of the correlation self-energy with the (here noninteracting) Green's function, as 
 \begin{equation}
-    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
-\label{eq:klein1}
-\end{equation}
-and
-\begin{equation}
-    E_{\text{tot}}^2 = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0],
-\label{eq:klein2}
-\end{equation}
-Where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential, $V_x$ is the exchange potential, $V_{\text{nuc, elec}}$ is the nuclear-electron potential, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. $E_{\text{corr}} ^{\text{Klein}}$ is defined as
-\begin{equation}
-    E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
-    = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (\Omega ^{\text{TDA}}),
-\end{equation}
-where we have used the invariance of the trace to unitary transformations and cyclic permutations to derive this.
-Each term in eqns. \ref{eq:klein1} or \ref{eq:klein2} is either evaluated at the noninteracting $\gamma _{0}$ or interacting $\gamma $ electron density. Note that the only difference between these two definitions is that the correlation of the interacting and noninteracting systems is 'housed' in the correlation and kinetic functional, respectively. As table \ref{tab:klein} shows, recognition of this fact shows that
-Meal, the correlation energy functional defined by Galitskii and Migdal is given by the convolution of the correlations energy with the greens function, as 
-\begin{equation}
-E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) G\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right).
+E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) \mathcal{D}\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right).
 \end{equation}
 This can be simplified to
 \begin{equation}
-E_{\mathrm{corr}}^{\mathrm{GM}}=-2\sum_{\mu}^\mathrm{RPA} \sum_{i a} \frac{(V_{ia}^{\mu})^2}{\epsilon_a-\epsilon_i+\Omega_m}
+E_{\mathrm{corr}}^{\mathrm{GM}}=-2\sum_{\mu}^{\mathrm{RPA}} \sum_{i a} \frac{(V_{ia}^{\mu})^2}{\epsilon_a-\epsilon_i+\Omega_m}
 \label{eq:GM}
 \end{equation}
-As can be seen in table \ref{tab:galitskii}, my implementation of this correlation energy functional is in good agreement with those from MOLGW and FHI-AIMS.
-
-
+There was a good agreement between my implementation of equation \ref{eq:GM} and that from MOLGW and FHI-AIMS, as shown by the small deviations in Table \ref{tab:galitskii}.\\\\
 \begin{table}[h!]
     \centering
     \begin{tabular}{lcccc}
@@ -511,23 +492,44 @@ As can be seen in table \ref{tab:galitskii}, my implementation of this correlati
     \caption{Galitskii-Migdal correlation energies as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
     \label{tab:galitskii}
 \end{table}
-
-
-
+Now, let us consider two variants of a Klein total energy functional that can be obtained. They are defined as
+\begin{equation}
+    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+\label{eq:klein1}
+\end{equation}
+and
+\begin{equation}
+    E_{\text{tot}}^{\mathrm{2}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0],
+\label{eq:klein2}
+\end{equation}
+Where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. Note that the only difference between these two definitions is that we are alternating between using the noninteracting electron density within the correlation and kinetic functionals. $E_{\text{corr}} ^{\text{Klein}}$ is defined as
+\begin{equation}
+    E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
+    = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (\Omega ^{\text{TDA}}),
+\end{equation}
+where we have used the invariance of the trace to unitary transformations and cyclic permutations to derive this.
+As table \ref{tab:klein} shows, the difference in total energy between these functionals is captured in large part by their difference in correlation energy which suggests that the $E_{\text{corr}} ^{\text{Klein}}$ is more capable at describing the electronic correlation of the interacting system than $T_s$.
 \begin{table}[h!]
 \centering
 \begin{tabular}{lccc}
 \toprule
-& \textbf{Total Energy Diff.} & \textbf{Correlation Energy Diff.} & \textbf{Correlation Contributions Discrepancy} \\
+& \textbf{Total Energy Diff.} & \textbf{Correlation Energy Diff.} & \textbf{Correlation not from $E_{\mathrm{corr}}^{\mathrm{Klein}}$} \\
 \midrule
 \textbf{H$_2$O} & -0.085109 & -0.085097 & 0.000012 \\
 \textbf{NH$_3$} & -0.074617 & -0.074652 & 0.000035 \\
 \textbf{LiH} & -0.055925 & -0.055952 & 0.000027 \\
 \bottomrule
 \end{tabular}
-\caption{Differences in total energy, correlation energy, and discrepancy between the former supposed correlation contributions between the Klein functionals of equations \ref{eq:klein1} $-$ \ref{eq:klein2}.}
+\caption{Differences in total energy, correlation energy, and the correlation energy outside of $E_{\mathrm{corr}}^{\mathrm{Klein}}$ between the Klein functionals of equations \ref{eq:klein1} $-$ \ref{eq:klein2}.}
 \label{tab:klein}
 \end{table}
+
+
+
+
+
+
+
 
 
 \subsection{Plotting natural occupations}
@@ -538,16 +540,25 @@ The natural occupations are found by diagonalizing the density matrix. They are 
 \caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $H_2$ along the dissociation coordinate}
 \label{fig:h2_dissociation}
 \end{figure}
-When \(H_2\) is at the equilibrium bond distance near equilibrium, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all, while the exact reference of FCI gives the expected result of the HOMO and LUMO both having occupations of 1 electron. The dRPA and dTDA are clearly capable of capturing some of the correct physics, but fall short of the FCI reference.
+When \(H_2\) is at the equilibrium bond distance near equilibrium, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all and so it predicts that the hydrogen molecule will become two ions, while the exact reference of FCI gives the expected result of the HOMO and LUMO both having occupations of 1 electron characteristic of the hydrogen atom. The dRPA and dTDA are clearly capable of capturing some of the correct physics by changing the occupations along the dissociation coordinate, but fall short of the FCI reference.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_mo.png}
-\caption{MO diagram of \(H_2\) at the equilibrium bond distance. Note that this diagram is assuming a minimal bases set. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
+\caption{MO diagram of \(H_2\) at the equilibrium bond distance. Note that this diagram is assuming a minimal basis set. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
 \label{fig:h2_mo_diagram}
 \end{figure}
 \chapter{Conclusion}
-To start with, we considered the foundational mean-field theories via which we are able to carry out many-body perturbation theory. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We gave an explanation as to the technicalities one has to take into consideration when implementing $G_0W_0$, including RPA calculation necessary for forming the self-energy. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including access to energy functionals and improved natural occupations throughout a bond dissociation process.
+To start with, we considered the foundational mean-field theories via which we are able to carry out many-body perturbation theory. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We gave an explanation as to the technicalities one has to take into consideration when implementing $G_0W_0$, including RPA calculations necessary for forming the self-energy. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including access to energy functionals and improved natural occupations throughout a bond dissociation process.
 \chapter{Outlook}
+The linearized $G_0W_0$ density matrix has only recently been proposed, and there are multiple avenues for using it in further work. One could imagine a scheme where
+\begin{enumerate}
+    \item we use a set of (mean field) orbitals to compute the self-energy,
+    \item use this to construct the linearized $G_0W_0$ density matrix,
+    \item compute a total energy functional,
+    \item generate new QPs from the updated density matrix, and
+    \item iterate 1-4 until self-consistency in the total energy.
+\end{enumerate}
+ An alternative formulation of Hedin's equations that gives rise to different forms for the self-energy, as described by the T-matrix, has been introduced by \textcite{Orlando_2023}. It would be interesting to derive a density matrix similar to the linearized $G_0W_0$ density matrix we have studied, but for this T-matrix self-energy. As described in the review by \textcite{marie_gw_2024}, a large percentage of RPA excitations must be taken into account to construct accurate QPs from the $G_0W_0$ procedure. As one moves from a smaller to larger amount of RPA excitations included, the convergence of the QP energies is, in general, non-monotonic. Since the diagonalization of the RPA matrix is the bottleneck of the $GW$ calculation, it would be interesting to see how matrix product state ideas could be applied to this problem, potentially taking advantage of knowledge of the local structure of the RPA operator. 
 
 \printbibliography[heading=bibintoc]
 
@@ -565,11 +576,12 @@ Since we know that the excitation and de-excitation energies for the RPA are the
 \textbf{X} \\
 \textbf{Y}
 \end{bmatrix}
-= \boldsymbol{\Omega^{|\mu|} }
+= 
 \begin{bmatrix}
 \textbf{X} \\
 \textbf{Y}
 \end{bmatrix}
+\boldsymbol{\Omega^{|\mu|} }
 .
 \end{equation}
 In what follows, we will take $\boldsymbol{\Omega }$ to mean $\boldsymbol{\Omega^{|\mu|} }$.
@@ -644,7 +656,7 @@ So we need
 \begin{equation}
     (\textbf{X}-\textbf{Y})=(\textbf{A}-\textbf{B})^{-1}(\textbf{X}+\textbf{Y})\boldsymbol{\Omega } .
 \end{equation}
-So we can instead use the solution of equation \ref{eqn:final} to obtain the excitation energies $\boldsymbol{\Omega }^{\mu}$ and the excitation vectors $\textbf{X}^{\mu}$ and $\textbf{Y}^{\mu}$, the latter of which we will then use to construct our residues $\textbf{V}^{\mu}_{pq}$.
+So we can instead use the solution of equation \ref{eqn:final} to obtain the excitation energies $\boldsymbol{\Omega }$ and the excitation vectors $\textbf{X}$ and $\textbf{Y}$, the latter of which we will then use to construct our cou excitation vectors ${V}^{\mu}_{pq}$.
 
 
 
@@ -660,7 +672,7 @@ So we can instead use the solution of equation \ref{eqn:final} to obtain the exc
 
 
 \chapter{Derivation of the linearized $G_0W_0$ density matrix}
-This derivation will be carried out in the spin-unrestricted formalism.
+This derivation will be carried out in the spin-unrestricted formalism, with the spin represented by $\sigma $.
 \label{applinearized_gw}
 We have the equation for the density matrix
 \begin{equation}
@@ -826,7 +838,7 @@ Now we consider the second pole at $\omega_{22} = \epsilon _{j\sigma } + \mathrm
 We summarize the results in a table \ref{tabpoles_residues_occupied}.\\
 \begin{table}[h]
 \centering
-\caption{Summary of Poles and their Residues}
+\caption{Occupied block Poles and their Residues}
 \begin{tabular}{|c|c|c|}
 \hline
 Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\
@@ -904,7 +916,7 @@ Finally, we consider the third pole at $\omega_{23} = \epsilon _{b\sigma } - \ma
 The results we got are summarized in the table \ref{tabpoles_residues_virtual}.\\
 \begin{table}[h]
 \centering
-\caption{Summary of Poles and their Residues}
+\caption{Virtual block Poles and their Residues}
 \begin{tabular}{|c|c|c|}
 \hline
 Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\
@@ -982,7 +994,7 @@ Now we consider the second pole at $\omega_{22} = \epsilon _{b \sigma } - \mathr
 The results we got are summarized in the table \ref{tabpoles_residues_mixed}.\\
 \begin{table}[h]
 \centering
-\caption{Summary of Poles and their Residues}
+\caption{Mixed block Poles and their Residues}
 \begin{tabular}{|c|c|c|}
 \hline
 Pole Notation & Position $\omega_0$ & Residue $\phi_{\omega_0}(\omega_0)$ \\

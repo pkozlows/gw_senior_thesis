@@ -1,0 +1,532 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\usepackage{listings} % Required for insertion of code
+\usepackage{xcolor} % Required for custom colors
+
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Setup the style for code listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Activate the style
+\lstset{style=mystyle}
+
+
+\title{Chemistry 14 (Spring term 2024) }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Final Examination for Seniors
+
+Distributed Thursday, May 30, 2024
+
+Due $\quad$ Thursday, June 6, 2024 by 11:59 pm uploaded through Canvas
+
+\section*{Conditions}
+\begin{itemize}
+  \item Open the midterm examination pdf when you are ready to take it.
+
+  \item You have 4 hours to complete this examination (excluding a short break).
+
+  \item You may use the Ch14 online lecture notes, problem sets and solutions, the course web site and a calculator. You may also use the Harris \& Lucy text (or earlier editions). You may also use handwritten notes you have made from other books. You may not discuss the exam with others, use any other books (including those on Reserve), or other web sites.
+
+  \item You may use Mathematica $®$, Matlab $®$, Excel® or equivalent program to get numerical solutions.
+
+  \item Write your answers in the same sequential order as in the exam.
+
+  \item After you have finished the exam, upload your answers through Canvas, just as you do for the problem sets.
+
+  \item Show your work! Getting the right answer is not enough - the intermediate steps are needed for credit. If you use Mathematica ${ }^{\circledR}$ or related program to get numerical solutions, be sure to clearly write out in the exam the specific equation being solved. Note: you do not need to derive equations that were derived in class.
+
+  \item Unless otherwise instructed, you should report answers to 3 significant figures and assume that activities can be approximated by concentrations. You may use approximate formulas as long as you justify the particular approximation (ie in a sufficiently acidic solution, $\left(\mathrm{OH}^{-}\right)$may be neglected relative to $\left(\mathrm{H}^{+}\right)$, etc).
+
+\end{itemize}
+
+unless otherwise stated, you may assume:
+
+aqueous solutions
+
+$\mathrm{T}=298.15 \mathrm{~K}=25^{\circ} \mathrm{C} ; \mathrm{P}=1 \mathrm{~atm}, \mathrm{pH}=7 ; \mathrm{K}_{\mathrm{w}}=10^{-14}$
+
+$\mathrm{R}=8.3144 \mathrm{~J} \mathrm{~mol}^{-1} \mathrm{~K}^{-1}=0.08206$ liter atm mol-1 $\mathrm{K}^{-1}$
+
+$\mathrm{F}=96.485 \mathrm{~kJ} \mathrm{~mol}^{-1} \mathrm{~V}^{-1}$
+
+
+
+
+
+
+
+\section{}
+The $\mathrm{pH}$ of blood is regulated in part by the $\mathrm{CO}_{2} /$ bicarbonate buffer system.
+\subsection{}
+
+Calculate the expected $\mathrm{pH}$ if $\left[\mathrm{HCO}_{3}^{-}\right]=25 \mathrm{mM}$ and the concentration of $\mathrm{CO}_{2}$ in the lungs $=0.038 \mathrm{~atm}$. At $37^{\circ} \mathrm{C}$, $\mathrm{K}_{\mathrm{a} 1}=7.94 \times 10^{-7}$ and $\mathrm{K}_{\mathrm{H}}=0.030$. Assume that the $\mathrm{CO}_{2}$ levels in the blood and in the lung are in equilibrium. The minor contribution of $\left(\mathrm{CO}_{3}^{2-}\right)$ may be neglected.
+\subsubsection{Answer}
+Using what we know about the first dissociation constant, we can use the concentration from the first dissociation product to relate to the bicarbonate and $\mathrm{H}^{+}$ concentrations via
+\begin{equation}
+K_{a 1}=\frac{\left[\mathrm{H}^{+}\right]\left[\mathrm{HCO}_{3}^{-}\right]}{\left[\mathrm{H}_{2} \mathrm{CO}_{3}\right]} \rightarrow \left[\mathrm{H}^{+}\right]=\frac{K_{a 1} \times\left[\mathrm{H_2CO_3}\right]}{\left[\mathrm{HCO}_{3}^{-}\right]}
+\end{equation}
+We know that Henry's law tells us that 
+\begin{equation}
+\left[\mathrm{CO}_{2}\right]=\mathrm{K}_{\mathrm{H}} \times \mathrm{P}_{\mathrm{CO}_{2}}
+\end{equation}
+We know that there exists a rapid equilibrium between carbon dioxide and bicarbonate via hydration with water, so
+\begin{equation}
+\mathrm{CO}_{2}+\mathrm{H}_{2} \mathrm{O} \rightleftharpoons \mathrm{H}_{2} \mathrm{CO}_{3}
+\end{equation}
+and therefore
+\begin{equation}
+\left[\mathrm{H}_{2} \mathrm{CO}_{3}\right]=\left[\mathrm{CO}_{2}\right]
+\end{equation}
+Putting all of these ingredients together, we get that the $\mathrm{pH}$ is given by $7.44$.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Constants
+k_a1 = 7.94e-7  # Acid dissociation constant
+k_h = 0.03      # Henry's law constant at 37 degrees Celsius (M/atm)
+p_co2 = 0.038   # Partial pressure of CO2 in the lungs (atm)
+conc_hco3 = 0.025  # Concentration of bicarbonate in blood (M)
+
+# Define symbols
+H = sp.symbols('H')
+
+# Calculation of [CO2] using Henry's law
+conc_co2 = p_co2 * k_h
+
+# Using the approximation that [H2CO3] \approx [CO2]
+conc_h2co3 = conc_co2
+
+# Ka expression for the first dissociation of carbonic acid
+# H2CO3 -> H+ + HCO3-
+equation = sp.Eq(H * conc_hco3, k_a1 * conc_h2co3)
+
+# Solve for [H+]
+H_concentration = sp.solve(equation, H)[0]
+
+# Calculate pH
+pH = -sp.log(H_concentration, 10)
+
+# Simplify the expression for pH
+pH_simplified = sp.simplify(pH)
+
+# Displaying the pH expression and calculated value
+pH_simplified.evalf()
+
+
+\end{lstlisting}
+\subsection{}
+By holding your breath for an extended period of time, the $\mathrm{CO}_{2}$ levels in the lungs and blood will increase. How will this qualitatively change the $\mathrm{pH}$ of the $\mathrm{CO}_{2} /$ bicarbonate buffer system if the bicarbonate concentration remains unchanged?
+\subsubsection{Answer}
+When the levels of carbon dioxide in your blood stream increase, this increases the concentration of bicarbonate, which therefore increases the concentration of protons and thus decreases the $\mathrm{pH}$. This is why you can get as an athlete a lot of lactic acid buildup after exercise because the carbon dioxide levels in your body are increasing, and thus there is a more acidic environment.
+
+\section{}
+
+
+Ethylenediamine $\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)$ is a bidentate chelating ligand that displays the following acid dissociation equilibria:
+
+$+\mathrm{H}_{3} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}{ }^{+} \leftrightarrow \mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}{ }^{+}+\mathrm{H}^{+} \quad \mathrm{pK}_{\mathrm{a} 1}=6.85$
+
+$\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}{ }^{+} \leftrightarrow \mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}+\mathrm{H}^{+}$
+
+$\mathrm{pK}_{\mathrm{a} 2}=9.93$
+
+Fully deprotonated ethylenediamine chelates $\mathrm{Cu}^{2+}$ with the following stepwise association constants:
+
+$\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}+\mathrm{Cu}^{2+} \leftrightarrow \mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)^{2+} \quad \mathrm{K}_{1}=4.6 \times 10^{10} \mathrm{M}^{-1}$
+
+$\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}+\mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)^{2+} \leftrightarrow$
+
+$$
+\mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)_{2}{ }^{2+} \quad \mathrm{K}_{2}=2.1 \times 10^{9} \mathrm{M}^{-1}
+$$
+
+$10^{-5} \mathrm{M} \mathrm{Cu}^{2+}$ is mixed with $0.01 \mathrm{M}$ ethylenediamine at $\mathrm{pH} 5.0$. Calculate the fractions of $\mathrm{Cu}^{2+}$ with 0,1 and 2 bound ethylenediamine ligands under these conditions. You may assume that the ethylenediamine is in large excess relative to $\mathrm{Cu}^{2+}$.
+\subsubsection{Answer}
+We can sort by defining the 2 acid dissociation equations
+\begin{equation}
+\begin{aligned}
+K_{a 1} &=\frac{\left[\mathrm{H}^{+}\right]\left[\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}^{+}\right]}{\left[+\mathrm{H}_{3} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}^{+}\right]}
+\end{aligned}
+\end{equation}
+and 
+\begin{equation}
+\begin{aligned}
+K_{a 2} &=\frac{\left[\mathrm{H}^{+}\right]\left[\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right]}{\left[\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{3}^{+}\right]}
+\end{aligned}
+\end{equation}
+We can then use the equilibrium constant for the chelation of the copper ions to the ethylenediamine ligands, which is given by
+\begin{equation}
+\begin{aligned}
+K_{1} &=\frac{\left[\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right]\left[\mathrm{Cu}^{2+}\right]}{\left[\mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)^{2+}\right]}
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+K_{2} &=\frac{\left[\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right]\left[\mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)^{2+}\right]}{\left[\mathrm{Cu}\left(\mathrm{H}_{2} \mathrm{NCH}_{2} \mathrm{CH}_{2} \mathrm{NH}_{2}\right)_{2}^{2+}\right]}
+\end{aligned}
+\end{equation}
+In order to compute the fractions, we want to see the concentrations of the species divided by the total copper concentration initially at $10^{-5} \mathrm{M}$. So
+\begin{equation}
+  n_1 = \frac{[\mathrm{Cu}(\mathrm{H}_2\mathrm{NCH}_2\mathrm{CH}_2\mathrm{NH}_2)^{2+}]}{10^{-5}}
+\end{equation}
+and
+\begin{equation}
+  n_2 = \frac{[\mathrm{Cu}(\mathrm{H}_2\mathrm{NCH}_2\mathrm{CH}_2\mathrm{NH}_2)_{2}^{2+}]}{10^{-5}}
+\end{equation}
+while $n_0 = 1 - n_1 - n_2$.
+
+
+\section{}
+Balance the following redox reaction (i.e., determine the values of the stoichiometric coefficients a, b, c, d, e, and f):
+
+$$
+\mathrm{aHIO}_{3}+\mathrm{bFeI}_{2}+\mathrm{cHCl} \rightarrow \mathrm{dFeCl}_{3}+\mathrm{eICl}+\mathrm{fH}_{2} \mathrm{O}
+$$
+
+Hint: the oxidation states of iodine in $\mathrm{HIO}_{3}, \mathrm{FeI}_{2}$, and $\mathrm{ICl}$ are $+5, -1$, and $+1$, respectively, while the oxidation states of $\mathrm{O}, \mathrm{Cl}$, and $\mathrm{H}$ in this reaction may be taken as $-2, -1$, and $+1$, respectively, and are unchanged in this reaction.
+\subsubsection{Answer}
+We identify the oxidation and reduction half-reactions as follows:
+\begin{equation}
+\begin{aligned}
+\text { Oxidation: } & \quad \mathrm{HIO}_{3} \rightarrow \mathrm{ICl} \\
+\text { Reduction: } & \quad \mathrm{FeI}_{2} \rightarrow \mathrm{FeCl}_{3}
+\end{aligned}
+\end{equation}
+The first thing that we do is to add some electrons to the left side of the oxidation reaction
+\begin{equation}
+\begin{aligned}
+HIO_{3}+4e^{-} \rightarrow ICl
+\end{aligned}
+\end{equation}
+Then, we balance the number of elements other than oxygen and hydrogens
+\begin{equation}
+\begin{aligned}
+HIO_{3}+Cl^{-} + 4e^{-} \rightarrow ICl
+\end{aligned}
+\end{equation}
+Then, we balance the number of oxygens by adding 3 waters to the right side
+\begin{equation}
+\begin{aligned}
+HIO_{3}+Cl^{-} + 4e^{-} \rightarrow ICl + 3H_{2}O
+\end{aligned}
+\end{equation}
+Then, we balance the number of hydrogens by adding 5 protons to the left
+\begin{equation}
+\begin{aligned}
+HIO_{3}+Cl^{-} + 4e^{-} + 5H^{+} \rightarrow ICl + 3H_{2}O
+\end{aligned}
+\end{equation}
+Next, we turn to the reduction half-reaction. We start by adding 1 electron to the right side
+\begin{equation}
+\begin{aligned}
+FeI_{2} \rightarrow FeCl_{3} + e^{-}
+\end{aligned}
+\end{equation}
+Then, we balance the number of elements other than oxygen and hydrogens by adding 3 chloride ions to the left side and 2 iodides to the right side
+\begin{equation}
+\begin{aligned}
+FeI_{2} + 3Cl^{-} \rightarrow FeCl_{3} + e^{-} + 2I^{-}
+\end{aligned}
+\end{equation}
+At this point, normally one would multiply one of the half-reactions by some factor and add it to the other one, but I am not sure how to proceed here with the extra factor of $2I^{-}$ on the right side of the reduction half-reaction.
+
+
+
+
+\section{}
+Oxidation-reduction reactions are typically described in terms of an acidic standard state (ie, $\mathrm{pH} 0$ where the $\mathrm{H}^{+}$activity $=1 \mathrm{M}$ ). This choice is arbitrary and we could equally as well have used an alkaline standard state where the $\mathrm{OH}^{-}$activity $=1 \mathrm{M}$ (ie, $\mathrm{pH}$ 14). Under these conditions, the hydrogen electrode reduction potential may be written as
+
+Eq A
+
+$$
+\mathrm{H}_{2} \mathrm{O}+\mathrm{e}^{-} \leftrightarrow 1 / 2 \mathrm{H}_{2}+\mathrm{OH}^{-}
+$$
+
+From the definitions of $\mathrm{Kw}\left(=10^{-14}\right)$ and the standard hydrogen electrode at $\mathrm{pH} 0$ :
+
+$$
+\mathrm{H}^{+}+\mathrm{e}^{-} \leftrightarrow 1 / 2 \mathrm{H}_{2} \quad \mathrm{E}^{\circ}=0.000 \mathrm{~V}
+$$
+
+calculate $\mathrm{E}^{\circ}$ in Volts for the Eq $\mathrm{A}$ half cell reaction.
+\subsubsection{Answer}
+We can achieve equation A by adding to it the ionization of water
+\begin{equation}
+\begin{aligned}
+H_{2} O \rightarrow H^{+}+OH^{-}
+\end{aligned}
+\end{equation}
+which we know has the $K_{w}$ value of $10^{-14}$. We can therefore find the free energy change using the relation
+\begin{equation}
+\begin{aligned}
+\Delta G^{\circ}=-RT \ln K_{w}
+\end{aligned}
+\end{equation}
+We can use the change in flee energy to find the associated potential using the relation
+\begin{equation}
+\Delta E ^{\circ} = \frac{\Delta G^{\circ}}{nF}
+\end{equation}
+where $n$ is the number of electrons transferred in the reaction, which is 1 in this case. The last step will be to find out how this potential change relates to the standard hydrogen electrode potential at $\mathrm{pH} 0$.
+\begin{equation}
+  E_{A}^{\circ} = E_{\text{standard hydrogen electrode}}^{\circ} - \Delta E^{\circ}
+\end{equation}
+This gives $E_{A}^{\circ} = -0.828$ Volts.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import numpy as np
+import sympy as sp
+
+# Constants
+R = 8.314  # J/(mol K)
+T = 298    # Kelvin
+F = # C/mol
+Kw = 10**-14
+
+# Calculate change in Gibbs free energy for ionization of water
+delta_G = -R * T * np.log(Kw)
+
+# Convert delta G to delta E
+delta_E = delta_G / F
+
+# Calculate the new E for the Eq A half-cell reaction
+E_standard_acid = 0.000  # V for the standard hydrogen electrode
+E_standard_alkaline = E_standard_acid - delta_E  # Subtracting because we are moving from acid to alkaline
+
+E_standard_alkaline
+
+\end{lstlisting}
+
+\section{}
+Given the following half-cell reaction:
+
+$$
+\mathrm{Fe}^{3+}+\mathrm{e}^{-} \leftrightarrow \mathrm{Fe}^{2+} \quad \mathrm{E}^{\circ}=+0.771 \mathrm{~V}
+$$
+
+and that the formation constants $\beta$ for the binding of full deprotonated EDTA (abbreviated as $\mathrm{Y}^{4-}$ ) to $\mathrm{Fe}^{2+}$ and $\mathrm{Fe}^{3+}$ to yield $\mathrm{FeY}^{2-}$ and $\mathrm{FeY}$ - are $2.1 \times 10^{14}$ and $1.3 \mathrm{x}$ $10^{25}$, respectively, calculate the standard reduction potential $E^{\circ}$ in Volts for the following half cell:
+
+$$
+\mathrm{FeY}^{-}+\mathrm{e}^{-} \leftrightarrow \mathrm{FeY}^{2-}
+$$
+\subsubsection{Answer}
+We can make use of the formation constants. We have the reactions
+\begin{equation}
+  \mathrm{Fe}^{2+}+\mathrm{Y}^{4-} \leftrightarrow \mathrm{FeY}^{2-}
+\end{equation}
+and
+\begin{equation}
+  \mathrm{Fe}^{3+}+\mathrm{Y}^{4-} \leftrightarrow \mathrm{FeY}^{-}
+\end{equation}
+By adding the first one to the initial half-cell reaction and then the reverse of the second one to this, we get the desired half-cell reaction. Now, we are left with the task to convert the formation constants into reduction potentials. We can relate the Gibbs free energy to the formation constant by
+\begin{equation}
+  \Delta G^{\circ} = -RT \ln \beta 
+\end{equation}
+We can then use the relation
+\begin{equation}
+  \Delta E^{\circ} = \frac{\Delta G^{\circ}}{nF}
+\end{equation}
+to find the reduction potential. We can then use the relation
+\begin{equation}
+  E^{\circ}_{\mathrm{desired}} = E^{\circ}_{\mathrm{given}} - \Delta E^{\circ}_1 + \Delta E^{\circ}_2
+\end{equation}
+where we have defined $\Delta E^{\circ}_1$ and $\Delta E^{\circ}_2$ as the changes in free energy for the first and second reactions, respectively.
+This gives $E^{\circ}_{\mathrm{desired}} = 0.133$ Volts.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import numpy as np
+import sympy as sp
+
+# Constants
+R = 8.314  # J/(mol K)
+T = 298    # Kelvin
+F = 96485  # C/mol
+
+# Given data
+E0_Fe3_to_Fe2 = 0.771  # V, standard potential for Fe3+ to Fe2+
+beta_Fe2_EDTA = 2.1e14  # formation constant for Fe2+ with EDTA
+beta_Fe3_EDTA = 1.3e25  # formation constant for Fe3+ with EDTA
+
+# Calculate delta G for both formation reactions using the formation constants
+delta_G1 = -R * T * np.log(beta_Fe2_EDTA)  # For FeY^2-
+delta_G2 = -R * T * np.log(beta_Fe3_EDTA)  # For FeY^-
+
+# Convert delta G to delta E
+delta_E1 = delta_G1 / F  # Corresponds to Fe2+ + Y4- -> FeY2-
+delta_E2 = delta_G2 / F  # Corresponds to Fe3+ + Y4- -> FeY^-
+
+# Calculate the desired E0 for the reaction FeY^- + e^- -> FeY^2-
+E0_desired = E0_Fe3_to_Fe2 - delta_E1 + delta_E2
+
+E0_desired
+
+\end{lstlisting}
+\section{}
+The solutions of two $\mathrm{Cu}^{+2} / \mathrm{Cu}$ half-cells are connected through a salt bridge, while the two copper electrodes are connected with a voltmeter. One of the solutions contains $0.1 \mathrm{M} \mathrm{CuSO}_{4}$, while the other contains $1.0 \mathrm{M} \mathrm{CuSO}_{4}$. What is the potential difference (if any), in Volts, generated by this system, and which half-cell has the positive electrode (i.e. is the positive $\mathrm{Cu}$ electrode in the $0.1 \mathrm{M}$ or $1.0 \mathrm{M}$ solution?)?
+\subsubsection{Answer}
+As given in the May 21st lecture, there will be indeed a potential difference caused by this difference in concentrations. The concentration of the copper sulfate would give rise to an oxidation to $\mathrm{Cu}^{2+}$. The cell will seek to achieve a configuration where the concentration of $\mathrm{Cu}^{2+}$ is the same in both solutions, so the electrons will move from the lower to the higher concentration to achieve this, and thus the half-cell with the higher concentration will have the positive electrode. To make this more rigorous, we know that in a negatively charged cell, the relevant redox reaction is
+\begin{equation}
+  \mathrm{Cu}^{2+}+2e^{-} \rightarrow \mathrm{Cu}
+\end{equation}
+where $[B_{\text{ox}}] = 1.0 \mathrm{M}$ and $[B_{\text{red}}] = 0.1 \mathrm{M}$. For the other cell, we have the same thing happening with $[A_{\text{ox}}] = 1 \mathrm{M}$ and $[A_{\text{red}}] = 1.0 \mathrm{M}$. The potential difference is given by
+\begin{equation}
+  \Delta E= \Delta E ^{\circ} - \frac{RT}{nF} \ln \left(\frac{[A_{\text{red}}][B_{\text{ox}}]}{[A_{\text{ox}}][B_{\text{red}}]}\right) = 0 - \frac{RT}{2F} \ln \left(\frac{1.0 \times 0.1}{1.0 \times 1.0}\right)
+\end{equation}
+This gives $\Delta E = 0.0296$ Volts.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import math
+
+# Constants
+R = 8.314  # Gas constant, J/(mol K)
+T = 298    # Temperature in Kelvin
+F = 96485  # Faraday constant, C/mol
+n = 2      # Number of electrons transferred in the reaction
+
+# Concentrations
+C_high = 1.0  # Molarity of CuSO4 in the high concentration half-cell
+C_low = 0.1   # Molarity of CuSO4 in the low concentration half-cell
+
+# Nernst Equation to calculate the potential difference
+delta_E = -(R * T / (n * F)) * math.log(C_low / C_high)
+
+delta_E
+
+
+\end{lstlisting}
+
+
+\section{}
+A one meter column has 500 theoretical plates. The elution volumes of two solutes are 100 and $105 \mathrm{mls}$, respectively. All things being equal (flow rate, crosssectional area, etc.), the elution volumes and the number of theoretical plates will both be proportional to the column length. How long (in meters) would the column need to be to separate these two solutes by $R=1$ ?
+\subsubsection{Answer}
+We know that the resolution is given by
+\begin{equation}
+  R = \frac{2(t_{2}-t_{1})}{w_{1}+w_{2}}
+\end{equation}
+where $t_{1}$ and $t_{2}$ are the elution volumes of the two solutes, and $w_{1}$ and $w_{2}$ are the widths of the two peaks. Since the peak is given by a Gaussian distribution, we know that the width can be approximated As
+\begin{equation}
+  w = \frac{4\sigma }{\sqrt{N}}
+\end{equation}
+But then, in the lecture, we found the form for the effective number of plates As
+\begin{equation}
+  N=(\frac{V_{E}}{\sigma })^{2} \rightarrow \sigma = \frac{V_{E}}{\sqrt{N}}
+\end{equation}
+where $V_{E}$ is the elution volume.
+So we can plug in to solve for N since we no the ventilation is 1, and then we can use the relationship between the number of plates and the length of the column as 500 plates for 1 meter to solve for the length of the column.
+\begin{equation}
+  N = 500L
+\end{equation}
+This gives $L = 0.164$ meters.
+% Inline Python code in the document
+\begin{lstlisting}[language=Python]
+import sympy as sp
+
+# Define symbols
+L = sp.symbols('L', real=True, positive=True)  # Column length
+R = 1  # Target resolution
+
+# Given values
+V1 = 100  # Elution volume of solute 1 in mL
+V2 = 105  # Elution volume of solute 2 in mL
+plates_per_meter = 500  # Number of theoretical plates per meter
+
+# Calculate the effective number of plates N based on length L
+N = 500 * L
+
+# Compute the standard deviation sigma for each solute
+sigma1 = V1 / sp.sqrt(N)
+sigma2 = V2 / sp.sqrt(N)
+
+# Compute the widths of the peaks
+w1 = 4 * sigma1 / sp.sqrt(N)
+w2 = 4 * sigma2 / sp.sqrt(N)
+
+# Set up the resolution equation
+resolution_eq = sp.Eq(2 * (V2 - V1) / (w1 + w2), R)
+
+# Solve for L
+length_solution = sp.solve(resolution_eq, L)
+
+length_solution[0].evalf()
+
+\end{lstlisting}
+
+
+\section{}
+\subsection{}
+What is the nearest $\mathrm{pH}$ of a $10^{-1} \mathrm{M} \mathrm{HCl}$ solution?
+
+i. $\quad-1$
+
+ii. 0
+
+iii. $\quad+1$
+\subsubsection{Answer}
+We know that the $\mathrm{pH}$ is given by
+\begin{equation}
+  \mathrm{pH} = -\log_{10}[\mathrm{H}^{+}]
+\end{equation}
+So we can plug in the concentration of $\mathrm{H}^{+}$ to find that the $\mathrm{pH}$ is 1.
+\subsection{}
+
+What is the nearest $\mathrm{pH}$ of a $10^{-9} \mathrm{M} \mathrm{HCl}$ solution?
+
+i. 5
+
+ii. $\quad 7$
+
+iii. 9
+\subsubsection{Answer}
+At neutral pH in water, the concentration of protons is $10^{-7}$, so the addition of $10^{-9}$ moles of protons will not change the $\mathrm{pH}$ significantly. Therefore, the $\mathrm{pH}$ will be 7.
+
+\section{}
+\subsection{}
+What was the most memorable Ch14 field trip that you participated in this term? Explain briefly.
+\subsubsection{Answer}
+
+I enjoyed visiting Scott Virgil's lab and specifically seeing the robots being put to use. Also, I thought the machine from Japan which got all of the little beads into the vials was pretty neat.
+\subsection{}
+
+What campus facilities would you have liked to have visited? Explain briefly.
+\subsubsection{Answer}
+
+This is not really relevant to the class, but it would be nice to see the high-performance computing center on campus, to speak a bit with the staff and for them to talk about what resources they provide.
+
+
+\end{document}

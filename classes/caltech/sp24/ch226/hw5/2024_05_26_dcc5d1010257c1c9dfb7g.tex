@@ -4,6 +4,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{physics}
+
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
 \usepackage{graphicx}
@@ -65,7 +67,7 @@ What is the expression of $\mathrm{k}_{\text {sig }}$ and $\omega_{\text {sig }}
 \caption{Table of the expressions for $\mathrm{k}_{\text {sig }}$ and $\omega_{\text {sig }}$ for each of the four diagrams.}
 \label{fig:table}
 \end{figure}
-As can be seen in figure \ref{fig:table}, the sign of the angular frequency $\omega$ is always the same as that of the wave vector $k$. This is because they are connected to the energy and momentum, respectively, of the same beam. When light interacts with the ket side, we always get a positive sign for a transition from the ground to excited state, and vice versa. Because we defined the bra state as the complex conjugate of the ket state, a ground to excited state transition will correspond to a negative sign and vice versa.
+As can be seen in figure \ref{fig:table}, the sign of the angular frequency $\omega$ is always the same as that of the wave vector $k$. This is because they are connected to the energy and momentum, respectively, of the same beam. When light interacts with the ket side, we always get a positive sign for a transition from the ground to excited state, and vice versa. Because we defined the bra state as the complex conjugate of the ket state, a ground to excited state transition will correspond to a negative sign and vice versa. Application of the rules just described for the different diagrams gives the expressions in the table.
 \section{}
 In the diagram below, a feature in a two-dimensional nonlinear vibronic spectrum is displayed, along with the linear absorption features present in the spectrum. As quantitatively as possible, describe why the extent of inhomogeneous broadening is measured 'along the diagonal' in the $\omega_{\text {probe }} / \omega_{\text {pump }}$ plot, while dephasing is measured along the orthogonal direction.
 \subsubsection{Answer}
@@ -76,11 +78,19 @@ For the inhomogeneous broadening, we are merely measuring the distribution of th
 \includegraphics[max width=\textwidth, center]{2024_05_26_dcc5d1010257c1c9dfb7g-2}\\
 \section{}
 $2 \mathrm{D}$ electronic spectroscopy (2DES) uses pulse sequences in the visible spectral range to excite and probe electronic states.
+\subsection{}
 
+Draw a three-level energy diagram (that is, a ground state and two excited electronic states) and sketch the resulting 2DES plot that you'd expect to observe.
 
-a. Draw a three-level energy diagram (that is, a ground state and two excited electronic states) and sketch the resulting 2DES plot that you'd expect to observe.
-
-b. Label and describe any relevant features, including inhomogeneous/homogeneous broadening, excited state absorption, and from which electronic transition/coupling features arise.
+Label and describe any relevant features, including inhomogeneous/homogeneous broadening, excited state absorption, and from which electronic transition/coupling features arise.
+\begin{figure}
+  \centering
+  \includegraphics[max width=\textwidth]{CamScanner 05-28-2024 22.17.jpg}
+  \caption{Three-level energy diagram and the resulting 2DES plot}
+  \label{fig:my_label}
+\end{figure}
+\subsubsection{Answer}
+The features that can be observed from the diagonal correspond to the $\ket{0}$ to $\ket{1}$ ($\omega _{1}$) and $\ket{2}$ ($\omega _{2}$) transitions. The inhomogeneous broadening is observed as the diagonal spread of a certain feature, and is marked by its magnitude $\Delta $. The homogeneous broadening for a certain feature is measured by the width of the feature orthogonal to the diagonal and is marked by its magnitude $\Gamma $. Since we have two different excited states, we observe two excited state absorption features at two different frequencies $\omega _{1}$ and $\omega _{2}$ along the diagonal. The coupling features can arise, marked by the ellipses off the diagonal, when a certain pump frequency is met by a different probe frequency; This can be interpreted that $\omega _{pump}$ near the frequency where it excites from the ground state to the first excited state could also correspond to an excitation from the first to the second excited state, marked by a jagged arrow on the diagram, that could be probed as well.
 
 
 \end{document}

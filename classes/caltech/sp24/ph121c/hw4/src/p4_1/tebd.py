@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from hw4.src.fns import open_dense_hamiltonian, create_trotter_gates, apply_trotter_gates, enforce_bond_dimension, compute_contraction
+from hw4.src.fns import open_dense_hamiltonian, create_trotter_gates, apply_trotter_gates, enforce_bond_dimension, compute_contraction, apply_local_hamiltonian
 from hw3.src.p4_1.fns import make_product_state
 
 def create_initial_mps(l):
@@ -24,7 +24,7 @@ def create_initial_mps(l):
             ferro_mps.append(up_reshape)
             neel_mps.append(up_reshape if i % 2 == 0 else down_physical.reshape(1, 2, 1))
     
-    return {'ferro': ferro_mps, 'neel': neel_mps}
+    return {'neel': neel_mps}
 
 def compute_ground_state(L, chi, total_time, time_steps):
     ground_state_energies = {}
@@ -33,29 +33,35 @@ def compute_ground_state(L, chi, total_time, time_steps):
     for l in L:
         H = open_dense_hamiltonian(l)
         eigenvalues, _ = np.linalg.eigh(H)
+        # multiply every element of the Hamiltonian actually divide it by numeral hundred
+        # H = H/100
+
         initial_ferro = make_product_state(np.array([1, 0]), l)
         initial_energy = initial_ferro.T @ H @ initial_ferro
         print(f"Initial energy for L={l} is {initial_energy}")
 
         initial_mps = create_initial_mps(l)
-        ground_state = {}
+        ground_states[l] = {}  # Initialize the dictionary for each system size
         for key, mps_list in initial_mps.items():
-            current_mps = mps_list
             
-            for i in time_steps:
-                times = np.linspace(0, total_time, int(total_time / i))
+            for time_step in time_steps:
+                times = np.arange(0, total_time, time_step)
                 energies = {}
                 
+                current_mps = mps_list
                 for time in times:
-                    gate_field, gate_odd, gate_even = create_trotter_gates(i)
+                    gate_field, gate_odd, gate_even = create_trotter_gates(time*1j)
+
                     trotterized = apply_trotter_gates(current_mps, gate_field, gate_odd, gate_even)
                     mps_enforced = enforce_bond_dimension(trotterized, chi)
-                    bra_mps = [np.conj(mps) for mps in mps_list]
-                    energy = compute_contraction(mps_enforced, bra_mps)
+                    top = apply_local_hamiltonian(mps_enforced)
+                    normalization = compute_contraction(mps_enforced, mps_enforced)
+                    energy = top/normalization
                     print(energy)
                     
                     if time > 0:
-                        if (np.abs(energy - energies[time - i]) / np.abs(energy)) < 1e-6:
+                        prev_time = time - time_step
+                        if prev_time in energies and (np.abs(energy - energies[prev_time]) / np.abs(energy)) < 1e-4:
                             if key == 'ferro':
                                 ground_state_energies[l] = energy
                             ground_states[l][key] = mps_enforced
@@ -130,8 +136,8 @@ def plot_correlations_fns(mps):
     
 def main():
     L = [10]
-    total_time = 1
-    time_steps = [0.1, 0.01]
+    total_time = 100
+    time_steps = [0.5]
     chi = 8
     
     gs, gs_es = compute_ground_state(L, chi, total_time, time_steps)

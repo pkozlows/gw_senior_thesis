@@ -1,7 +1,7 @@
 {\itshape Number}\hfill {\itshape Page}\par 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of the exact analytic $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus that of PySCF.\relax }}{15}{table.caption.20}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals compared to PySCF.\relax }}{14}{table.caption.20}%
 \contentsline {table}{\numberline {6.2}{\ignorespaces Galitskii-Migdal correlation energies as defined in \ref {eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.\relax }}{16}{table.caption.22}%
 \contentsline {table}{\numberline {6.3}{\ignorespaces Differences in total energy, correlation energy, and discrepancy between the former supposed correlation contributions between the Klein functionals of equations \ref {eq:klein1} $-$ \ref {eq:klein2}.\relax }}{16}{table.caption.23}%
-\contentsline {table}{\numberline {B.1}{\ignorespaces Summary of Poles and their Residues\relax }}{27}{table.caption.30}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Summary of Poles and their Residues\relax }}{29}{table.caption.31}%
-\contentsline {table}{\numberline {B.3}{\ignorespaces Summary of Poles and their Residues\relax }}{31}{table.caption.32}%
+\contentsline {table}{\numberline {B.1}{\ignorespaces Summary of Poles and their Residues\relax }}{29}{table.caption.30}%
+\contentsline {table}{\numberline {B.2}{\ignorespaces Summary of Poles and their Residues\relax }}{31}{table.caption.31}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces Summary of Poles and their Residues\relax }}{33}{table.caption.32}%

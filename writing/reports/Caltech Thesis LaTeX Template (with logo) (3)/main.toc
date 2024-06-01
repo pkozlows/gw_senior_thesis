@@ -26,13 +26,15 @@
 \contentsline {subsection}{Implementation}{13}{section*.16}%
 \contentsline {chapter}{\chapternumberline {6}Results}{14}{chapter.6}%
 \contentsline {subsection}{Graphical vs. Iterative}{14}{section*.17}%
-\contentsline {subsection}{Testing of equation \ref {eq: Iterative equation}}{15}{section*.19}%
+\contentsline {subsection}{Testing of equation \ref {eq: Iterative equation}}{14}{section*.19}%
 \contentsline {subsection}{Total energy functionals}{15}{section*.21}%
 \contentsline {subsection}{Plotting natural occupations}{16}{section*.24}%
-\contentsline {chapter}{Bibliography}{19}{section*.28}%
+\contentsline {chapter}{\chapternumberline {7}Conclusion}{19}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {8}Outlook}{20}{chapter.8}%
+\contentsline {chapter}{Bibliography}{21}{section*.28}%
 \renewcommand {\chaptername }{Appendix} 
-\contentsline {appendix}{\chapternumberline {A}Symmetric formulation of the dRPA}{21}{appendix.A}%
-\contentsline {appendix}{\chapternumberline {B}Derivation of the linearized $G_0W_0$ density matrix}{23}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Fully occupied block}{25}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Fully Virtual Block}{28}{section.B.2}%
-\contentsline {section}{\numberline {B.3}Mixed Block}{30}{section.B.3}%
+\contentsline {appendix}{\chapternumberline {A}Symmetric formulation of the dRPA}{23}{appendix.A}%
+\contentsline {appendix}{\chapternumberline {B}Derivation of the linearized $G_0W_0$ density matrix}{25}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Fully occupied block}{27}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Fully Virtual Block}{30}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Mixed Block}{32}{section.B.3}%

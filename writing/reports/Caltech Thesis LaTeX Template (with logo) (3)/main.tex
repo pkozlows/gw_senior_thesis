@@ -428,46 +428,46 @@ Equation \ref{eq: Iterative equation} can be solved iteratively, but also graphi
 \begin{equation}
     \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}.
 \end{equation}
-As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 eV$.
+As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 \, \mathrm{eV}$.
  This is a useful check to see if the self-energy, which we defined in section \ref{sec:correlation_self_energy}, has been computed correctly.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
-\caption{Graphical solution of the correlation self-energy for the HOMO of $H_2O$}
+\caption{Graphical solution of the correlation self-energy for the HOMO of $H_2O$ at a HF starting point with the cc-pVDZ basis}
 \label{fig:graphic}
 \end{figure}
 Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value. 
 \subsection{Testing of equation \ref{eq: Iterative equation}}
-Additional tests for a range of molecules and MOs with my implementation are reported in table \ref{tab:tests}.
+The correctness of my implementation has been verified for a range of molecules and molecular orbitals by comparing the results with the data from PySCF in Table \ref{tab:energies}.
 \begin{table}[h]
 \centering
-\caption{Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of the exact analytic $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals versus that of PySCF.}
+\caption{Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals compared to PySCF.}
 \label{tab:energies}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-\multirow{2}{*}{Orbital} & \multicolumn{2}{c|}{$H_2O$} & \multicolumn{2}{c|}{$HCl$} & \multicolumn{2}{c|}{$NH_3$} & \multicolumn{2}{c|}{$LiH$} & \multicolumn{2}{c|}{$CO$} \\
-\cline{2-11}
-                         & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA \\
+\multirow{2}{*}{Orbital} & \multicolumn{2}{c|}{$H_2O$} & \multicolumn{2}{c|}{$NH_3$} & \multicolumn{2}{c|}{$LiH$} & \multicolumn{2}{c|}{$CO$} \\
+\cline{2-9}
+                         & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA & dTDA & dRPA \\
 \hline
-HOMO - 2 & 1.78e-15 & 5.33e-15 & 1.42e-14 & 2.13e-12 & 5.33e-15 & 1.42e-14 & 4.21e-10 & 3.55e-14 & 1.73e-10 & 0.00477 \\
+HOMO - 2 & 1.78e-15 & 5.33e-15 & 5.33e-15 & 1.42e-14 & 4.21e-10 & 3.55e-14 & 1.73e-10 & 0.00477 \\
 \hline
-HOMO - 1 & 2.31e-14 & 1.07e-13 & 1.30e-12 & 5.24e-13& 3.55e-15 & 2.33e-10 & 4.55e-12 & 2.84e-14 & 1.73e-10 & 0.00476 \\
+HOMO - 1 & 2.31e-14 & 1.07e-13 & 3.55e-15 & 2.33e-10 & 4.55e-12 & 2.84e-14 & 1.73e-10 & 0.00476 \\
 \hline
-HOMO     & 4.44e-15 & 2.84e-13 & 1.48e-12 & 5.71e-13 & 1.67e-11 & 1.30e-12 & 1.33e-15 & 1.96e-10 & 1.06e-12 & 2.84e-13 \\
+HOMO     & 4.44e-15 & 2.84e-13 & 1.67e-11 & 1.30e-12 & 1.33e-15 & 1.96e-10 & 1.06e-12 & 2.84e-13 \\
 \hline
-LUMO     & 3.43e-14 & 2.65e-14 & 4.44e-16 & 1.24e-12 & 8.60e-14 & 8.78e-14 & 1.11e-15 & 2.66e-15 & 2.22e-15 & 0.00679 \\
+LUMO     & 3.43e-14 & 2.65e-14 & 8.60e-14 & 8.78e-14 & 1.11e-15 & 2.66e-15 & 2.22e-15 & 0.00679 \\
 \hline
-LUMO + 1 & 2.14e-13 & 2.71e-14 & 2.22e-13 & 1.04e-10 & 4.40e-13 & 8.78e-14 & 1.12e-12 & 2.43e-14 & 3.11e-15 & 0.00678 \\
+LUMO + 1 & 2.14e-13 & 2.71e-14 & 4.40e-13 & 8.78e-14 & 1.12e-12 & 2.43e-14 & 3.11e-15 & 0.00678 \\
 \hline
-LUMO + 2 & 4.07e-11 & 6.92e-10 & 7.11e-15 & 1.18e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.99e-14 & 3.99e-14 \\
+LUMO + 2 & 4.07e-11 & 6.92e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.99e-14 & 3.99e-14 \\
 \hline
 \end{tabular}
 }
-\label{tab:tests}
 \end{table}
 
-The cc-pVDZ basis set was used for all calculations. As can be seen, my deviations from PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
+
+The cc-pVDZ basis set was used for all calculations. As can be seen, deviations in the QP energies of my $G_0W_0$ implementation with respect to the corresponding in PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
 \subsection{Total energy functionals}
 One can also get energies of the system with the linearized $G_0W_0$ density matrix. First, let us two variance of a total and energy functional that can be obtained, called the Klein energy functionals. They are defined as
 \begin{equation}
@@ -531,20 +531,23 @@ As can be seen in table \ref{tab:galitskii}, my implementation of this correlati
 
 
 \subsection{Plotting natural occupations}
-The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: restricted Hartree-Fock, which contains no correlation for the single particles, and Full Configuration Interaction (FCI), which contains the exact correlation. As can be seen in Figure \ref{fig:h2_dissociation}, our implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
+The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: restricted Hartree-Fock, which contains no correlation for the single particles, and Full Configuration Interaction (FCI), which gives the exact occupation numbers. As can be seen in Figure \ref{fig:h2_dissociation}, my implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_occupations.png}
 \caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $H_2$ along the dissociation coordinate}
 \label{fig:h2_dissociation}
 \end{figure}
-When $H_2$ is at the though bond distance near equate bum, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all, while FCI, containing the exact correlation, gives the expected result of the HOMO and LUMO both having occupations of 1 electron. The dRPA and dTDA fall somewhere in between these two extremes.
+When \(H_2\) is at the equilibrium bond distance near equilibrium, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all, while the exact reference of FCI gives the expected result of the HOMO and LUMO both having occupations of 1 electron. The dRPA and dTDA are clearly capable of capturing some of the correct physics, but fall short of the FCI reference.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_mo.png}
-\caption{MO diagram of $H_2$ at the equilibrium bond distance. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
+\caption{MO diagram of \(H_2\) at the equilibrium bond distance. Note that this diagram is assuming a minimal bases set. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
 \label{fig:h2_mo_diagram}
 \end{figure}
+\chapter{Conclusion}
+To start with, we considered the foundational mean-field theories via which we are able to carry out many-body perturbation theory. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We gave an explanation as to the technicalities one has to take into consideration when implementing $G_0W_0$, including RPA calculation necessary for forming the self-energy. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including access to energy functionals and improved natural occupations throughout a bond dissociation process.
+\chapter{Outlook}
 
 \printbibliography[heading=bibintoc]
 

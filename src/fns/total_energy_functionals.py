@@ -1,6 +1,7 @@
 import numpy as np
 import pyscf
 from pyscf import tddft
+import pyscf.cc
 import pyscf.gw.rpa
 
 # Custom imports for setting up and calculating molecular properties
@@ -30,8 +31,8 @@ class Correlation:
         return e_corr
 
     def klein_interacting(self):
-        omega_tda = my_dtda(self.interacting)[0]
-        omega_rpa = my_drpa(self.interacting)[0]
+        omega_tda = my_dtda(self.noninteracting)[0]
+        omega_rpa = my_drpa(self.noninteracting)[0]
         return 0.5 * np.sum(omega_rpa - omega_tda)
     
     def klein_noninteracting(self):
@@ -67,7 +68,7 @@ def total_energy(noninteracting, interacting, correlation_name, mf=False):
 # Define the input variables that we will iterate over
 species = ['water', 'nh3', 'lih']
 methods = ['hf']
-correlation_funcs = ['klein_interacting', 'klein_noninteracting']
+correlation_funcs = ['gm']
 
 for molecule_name in species:
     for method in methods:
@@ -91,13 +92,20 @@ for molecule_name in species:
             gw_energy_dict[correlation_name] = gw_total_energy
             print(f'hf energy for {molecule_name} with {correlation_name}: {mf_energy}')
             print(f'GW energy for {molecule_name} with {correlation_name}: {gw_total_energy}')
-            print(f'GW correlation energy for {molecule_name} with {correlation_name}: {gw_correlation_energy}')
+            # print(f'GW correlation energy for {molecule_name} with {correlation_name}: {gw_correlation_energy}')
             # define the total and correlation energy from the pyscf rpa function
-            rpa = pyscf.gw.rpa.RPA(noninteracting_mf)
-            rpa.kernel()
-            tot_e = rpa.e_tot
-            cor_e = rpa.e_corr
-            print(f'Pyscf RPA total energy for {molecule_name} with {method}: {tot_e}')
-            print(f'Pyscf RPA correlation energy for {molecule_name} with {method}: {cor_e}')
+            # rpa = pyscf.gw.rpa.RPA(noninteracting_mf)
+            # rpa.kernel()
+            # tot_e = rpa.e_tot
+            # cor_e = rpa.e_corr
+            # print(f'Pyscf RPA total energy for {molecule_name} with {method}: {tot_e}')
+            # print(f'Pyscf RPA correlation energy for {molecule_name} with {method}: {cor_e}')
+            # get the ccsd(t) energy as a reference
+            noninteracting_as_hf = noninteracting_mf.to_rhf()
+            mycc = pyscf.cc.CCSD(noninteracting_as_hf).run(verbose=0)
+            et = mycc.ccsd_t()
+            ccsd_t_energy = mycc.e_tot + et
+            print(f'CCSD(T) total energy for {molecule_name} with {method}: {ccsd_t_energy}')
+            
         
 

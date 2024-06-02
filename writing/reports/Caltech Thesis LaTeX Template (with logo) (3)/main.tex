@@ -426,21 +426,21 @@ Equation \ref{eq: Iterative equation} can be solved iteratively, but also graphi
 \begin{equation}
     \epsilon _{p}^{HF} + \Sigma_{pp}^{corr}(\omega) = \omega  \rightarrow \Sigma_{pp}^{corr}(\omega) = \omega  - \epsilon _{p}^{HF}.
 \end{equation}
-As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at the $\omega = -12.18 \, \mathrm{eV}$.
+As can be seen in figure \ref{fig:graphic}, the line at $\omega - \epsilon_{p}^{HF}$ intersects with $\Sigma _{c}$ at the same $\varepsilon_{p}^{QP}$ that we get from our iterative procedure, namely at $\omega = -12.18 \, \mathrm{eV}$.
  This is a useful check to see if the self-energy, which we defined in section \ref{sec:correlation_self_energy}, has been computed correctly.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{correlation_energies.png}
-\caption{Graphical solution of the correlation self-energy for the HOMO of $\mathrm{H_2O}$ at a HF starting point with the cc-pVDZ basis}
+\caption{Graphical solution of the correlation self-energy for the HOMO of $\mathrm{H_2O}$ employing a HF starting point with the cc-pVDZ basis}
 \label{fig:graphic}
 \end{figure}
-Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value. 
+Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would pose problems for the convergence of my iterative procedure Equation \ref{eq: Iterative equation} if the $\varepsilon_{p}^{QP}$ that I was looking for was close to this $\omega $ value. \autocite{veril2018unphysical}
 \newpage
 \subsection{Testing of equation \ref{eq: Iterative equation}}
-The correctness of my implementation has been verified for a range of molecules and molecular orbitals by comparing the results with the data from PySCF in Table \ref{tab:energies}.
+The correctness of my implementation has been verified for some molecules and molecular orbitals by comparing the results with the data from PySCF in Table \ref{tab:energies}.
 \begin{table}[h]
 \centering
-\caption{Tests of my dRPA and dTDA implementations of $G_0W_0$. Energy deviations (in eV) for my implementation of $G_0W_0$ with dTDA and dRPA for different molecules across a range of orbitals compared to PySCF.}
+\caption{Deviation in quasi-particle energies for four molecules using the $G_0W_0$ self-energy either evaluated within the dTDA or dRPA relative to PySCF}
 \label{tab:energies}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -466,21 +466,23 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.9
 \end{table}
 
 
-The cc-pVDZ basis set was used for all calculations. As can be seen, deviations in the QP energies of my $G_0W_0$ implementation with respect to the corresponding in PySCF are near floating point error with the exception of my dRPA calculation for $CO$.
+The cc-pVDZ basis set was used for all calculations. As can be seen, deviations in the QP energies of my $G_0W_0$ implementation with respect to the corresponding in PySCF are near floating point error with the exception of my dRPA calculation for $\mathrm{CO}$, which has an electronic structure that is known to be difficult to describe because of unusual polarization with the dipole moment pointing towards the carbon, instead of the oxygen, as would be expected from electronegativity arguments. \autocite{frenking2007electronic}
 \subsection{Total energy functionals}
 \label{chap:total_energy}
-One can also get energies of the system with the linearized $G_0W_0$ density matrix. We first tested our implementation against that of \textcite{bruneval_improved_2021} and specifically the correlation energies predicted by the Galitskii-Migdal functional at the noninteracting HF reference system, which are given by the convolution of the correlation self-energy with the (here noninteracting) Green's function, as 
+The linearized $G_0W_0$ density matrix also gives access to energies through energy functionals that can be defined using it. We first tested our implementation against that of \textcite{bruneval_improved_2021} and specifically the correlation energies predicted by the Galitskii-Migdal functional of the noninteracting system with a Hartree-Fock starting point, which are given by the convolution of the correlation self-energy with the (here noninteracting) Green's function, as
 \begin{equation}
-E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) \mathcal{D}\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right).
+E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) \mathcal{D}\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right),
 \end{equation}
+where $\Sigma_{\mathrm{c}}$ is the correlation self-energy, $\mathcal{D}$ is the Green's function, $\omega$ is the frequency, and $\eta$ is a small positive number. A Fourier transform has been taken to change the time dependence of the Green's function and self-energy to a frequency dependence. The integration variables $\boldsymbol{x}_1$ and $\boldsymbol{x}_3$ are the combined spatial and spin coordinates.
 This can be simplified to
 \begin{equation}
-E_{\mathrm{corr}}^{\mathrm{GM}}=-2\sum_{\mu}^{\mathrm{RPA}} \sum_{i a} \frac{(V_{ia}^{\mu})^2}{\epsilon_a-\epsilon_i+\Omega_m}
+E_{\mathrm{corr}}^{\mathrm{GM}}=-2\sum_{\mu}^{\mathrm{RPA}} \sum_{i a} \frac{(V_{ia}^{\mu})^2}{\epsilon_a-\epsilon_i+\Omega_m}.
 \label{eq:GM}
 \end{equation}
-There was a good agreement between my implementation of equation \ref{eq:GM} and that from MOLGW and FHI-AIMS, as shown by the small deviations in Table \ref{tab:galitskii}.\\\\
+There was a good agreement between my implementation of equation \ref{eq:GM} and that from the quantum chemistry codes MOLGW and FHI-AIMS \autocite{bruneval_improved_2021}, as shown by the small deviations in Table \ref{tab:galitskii}.\\\\
 \begin{table}[h!]
     \centering
+    \caption{Galitskii-Migdal correlation energies as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
     \begin{tabular}{lcccc}
         \toprule
         & \textbf{MOLGW} & \textbf{FHI-AIMS} & \textbf{Mine from eqn. \ref{eq:GM}} & \textbf{Deviation} \\
@@ -489,12 +491,17 @@ There was a good agreement between my implementation of equation \ref{eq:GM} and
         \textbf{Ne} & -0.120554 & -0.120551 & -0.120553 & -0.000002 \\
         \bottomrule
     \end{tabular}
-    \caption{Galitskii-Migdal correlation energies as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
     \label{tab:galitskii}
 \end{table}
-Now, let us consider two variants of a Klein total energy functional that can be obtained. They are defined as
+\newpage
+\textcite{bruneval_improved_2021} proposed a new total energy functional using the linearized $G_0W_0$ density matrix, which uses the Galitskii-Migdal correlation functional
 \begin{equation}
-    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+    E_{\text{tot}}^{\gamma ^{\mathrm{GW}}} = T_s [\gamma ^{\mathrm{GW}}] + V_H [\gamma ^{\mathrm{GW}} ] + V_x [\gamma ^{\mathrm{GW}} ] + V_{\text{nuc, elec}} [\gamma ^{\mathrm{GW}} ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma_0],
+\end{equation}
+where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{GM}}$ is the correlation energy, as defined in equation \ref{eq:GM}. $\gamma ^{\mathrm{GW}}$ is the correlated linearized $G_0W_0$ density matrix. Values obtained using this functional are given in Table \ref{tab:total_energy_gm}.
+Now, let us consider two variants of a Klein total energy functional that can be obtained. They are defined by \textcite{bruneval_improved_2021} as
+\begin{equation}
+    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma _{0} ]
 \label{eq:klein1}
 \end{equation}
 and
@@ -502,7 +509,7 @@ and
     E_{\text{tot}}^{\mathrm{2}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0],
 \label{eq:klein2}
 \end{equation}
-Where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. Note that the only difference between these two definitions is that we are alternating between using the noninteracting electron density within the correlation and kinetic functionals. $E_{\text{corr}} ^{\text{Klein}}$ is defined as
+where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. Note that the only difference between these two definitions is that we are alternating between using the $\gamma _0$ within the correlation and kinetic functionals. $E_{\text{corr}} ^{\text{Klein}}$ is defined as \autocite{PhysRev.121.950}
 \begin{equation}
     E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
     = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (\Omega ^{\text{TDA}}),
@@ -533,22 +540,22 @@ As table \ref{tab:klein} shows, the difference in total energy between these fun
 
 
 \subsection{Plotting natural occupations}
-The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012} Here we considered the one-electron density matrix from multiple methods: restricted Hartree-Fock, which contains no correlation for the single particles, and Full Configuration Interaction (FCI), which gives the exact occupation numbers. As can be seen in Figure \ref{fig:h2_dissociation}, my implementation of the Linearized $G_0W_0$ Density Matrix in the direct Random Phase Approximation (dRPA) and direct Tamm-Dancoff Approximation (dTDA) gives a portion of this correlation.
+The natural occupations are found by diagonalizing the density matrix. They are interpreted as being the number of electrons in a given orbital.\autocite{szabo_modern_2012}
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_occupations.png}
-\caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $H_2$ along the dissociation coordinate}
+\caption{Natural occupations of the HOMO (State 1) and LUMO (State 2) of $\mathrm{H_2}$ along the dissociation coordinate computed at the Hartree-Fock starting point and the cc-pVDZ basis}
 \label{fig:h2_dissociation}
 \end{figure}
-When \(H_2\) is at the equilibrium bond distance near equilibrium, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all and so it predicts that the hydrogen molecule will become two ions, while the exact reference of FCI gives the expected result of the HOMO and LUMO both having occupations of 1 electron characteristic of the hydrogen atom. The dRPA and dTDA are clearly capable of capturing some of the correct physics by changing the occupations along the dissociation coordinate, but fall short of the FCI reference.
+When $\mathrm{H_2}$ is at the equilibrium bond distance near equilibrium, we see in Figure \ref{fig:h2_dissociation} that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. This situation is represented by the simple MO diagram in Figure \ref{fig:h2_mo_diagram}. As the molecule dissociates, the orbital occupations for the restricted Hartree-Fock method do not change at all and so it predicts that the hydrogen molecule will become two ions, while the exact reference of FCI gives the expected result of the HOMO and LUMO natural orbitals both having occupations of 1 electron, characteristic of the hydrogen atom, as described by \textcite{bruneval_improved_2021}. The dRPA and dTDA are clearly capable of capturing some of the correct physics by changing the occupations along the dissociation coordinate towards that of two seperate hydrogen atoms, but fall short of the FCI reference.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{h2_mo.png}
-\caption{MO diagram of \(H_2\) at the equilibrium bond distance. Note that this diagram is assuming a minimal basis set. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
+\caption{MO diagram of $\mathrm{H_2}$ at the equilibrium bond distance. Note that this diagram is assuming a minimal basis set. Notice that the HOMO is fully occupied with 2 electrons, while the LUMO is unoccupied. Diagram taken from the web \autocite{noauthor_molecular_nodate}}
 \label{fig:h2_mo_diagram}
 \end{figure}
 \chapter{Conclusion}
-To start with, we considered the foundational mean-field theories via which we are able to carry out many-body perturbation theory. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We gave an explanation as to the technicalities one has to take into consideration when implementing $G_0W_0$, including RPA calculations necessary for forming the self-energy. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including access to energy functionals and improved natural occupations throughout a bond dissociation process.
+    To start with, we considered the foundational mean-field theories, like Hartree-Fock or DFT, from which we are able to carry out many-body perturbation theory calculations. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We explained how to implement the $G_0W_0$ iterative procedure, including details for the construction of the self-energy from a RPA calculation. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix\autocite{bruneval_assessment_2019}. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including how one can use it to access total energy functionals and improve natural occupations throughout a bond dissociation process, done for the first time using the direct Tamm-Dancoff approximation (dTDA).
 \chapter{Outlook}
 The linearized $G_0W_0$ density matrix has only recently been proposed, and there are multiple avenues for using it in further work. One could imagine a scheme where
 \begin{enumerate}
@@ -558,7 +565,7 @@ The linearized $G_0W_0$ density matrix has only recently been proposed, and ther
     \item generate new QPs from the updated density matrix, and
     \item iterate 1-4 until self-consistency in the total energy.
 \end{enumerate}
- An alternative formulation of Hedin's equations that gives rise to different forms for the self-energy, as described by the T-matrix, has been introduced by \textcite{Orlando_2023}. It would be interesting to derive a density matrix similar to the linearized $G_0W_0$ density matrix we have studied, but for this T-matrix self-energy. As described in the review by \textcite{marie_gw_2024}, a large percentage of RPA excitations must be taken into account to construct accurate QPs from the $G_0W_0$ procedure. As one moves from a smaller to larger amount of RPA excitations included, the convergence of the QP energies is, in general, non-monotonic. Since the diagonalization of the RPA matrix is the bottleneck of the $GW$ calculation, it would be interesting to see how matrix product state ideas could be applied to this problem, potentially taking advantage of knowledge of the local structure of the RPA operator. 
+ An alternative formulation of Hedin's equations that gives rise to different forms for the self-energy, as described by the T-matrix, has been introduced by \textcite{Orlando_2023}. It would be interesting to derive a density matrix similar to the linearized $G_0W_0$ density matrix we have studied, but for this T-matrix self-energy.
 
 \printbibliography[heading=bibintoc]
 

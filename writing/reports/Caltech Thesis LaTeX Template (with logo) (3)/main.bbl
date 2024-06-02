@@ -992,6 +992,99 @@
       \verb https://doi.org/10.1063/1.1353585
       \endverb
     \endentry
+    \entry{veril2018unphysical}{article}{}
+      \name{author}{4}{}{%
+        {{hash=c722a38e669fe831a4b400065acdb22c}{%
+           family={Véril},
+           familyi={V\bibinitperiod},
+           given={Mickaël},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e9ee4e72e309512be4a780b8918b814e}{%
+           family={Romaniello},
+           familyi={R\bibinitperiod},
+           given={Pina},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dc5058b94c575760109b4b01ffa765e9}{%
+           family={Berger},
+           familyi={B\bibinitperiod},
+           given={JA},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e2dca88ff2e7638a4c11707b2750f92d}{%
+           family={Loos},
+           familyi={L\bibinitperiod},
+           given={Pierre-François},
+           giveni={P\bibinithyphendelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{bf2d177e4658dbd83995948bac3ef027}
+      \strng{fullhash}{acb817d6d0595bbbf5630bd61ce0d782}
+      \strng{bibnamehash}{acb817d6d0595bbbf5630bd61ce0d782}
+      \strng{authorbibnamehash}{acb817d6d0595bbbf5630bd61ce0d782}
+      \strng{authornamehash}{bf2d177e4658dbd83995948bac3ef027}
+      \strng{authorfullhash}{acb817d6d0595bbbf5630bd61ce0d782}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{number}{10}
+      \field{title}{Unphysical discontinuities in GW methods}
+      \field{volume}{14}
+      \field{year}{2018}
+      \field{pages}{5220\bibrangedash 5228}
+      \range{pages}{9}
+    \endentry
+    \entry{frenking2007electronic}{article}{}
+      \name{author}{5}{}{%
+        {{hash=64015f8212685a339b14f1f62681c3bb}{%
+           family={Frenking},
+           familyi={F\bibinitperiod},
+           given={Gernot},
+           giveni={G\bibinitperiod}}}%
+        {{hash=31103b66554555ea58f5ecf920920eba}{%
+           family={Loschen},
+           familyi={L\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d01727fa82618bc529f3e8f28fbc46c7}{%
+           family={Krapp},
+           familyi={K\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=daca89a6e3a5df59eb8f1ad2290d08d0}{%
+           family={Fau},
+           familyi={F\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2a54c29a71cc178835bf72360840bc3f}{%
+           family={Strauss},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima H},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{ec5852aa6d7351bf443ee9a7c80b6a68}
+      \strng{fullhash}{420553e1e4d1e40dace419b0eb194524}
+      \strng{bibnamehash}{420553e1e4d1e40dace419b0eb194524}
+      \strng{authorbibnamehash}{420553e1e4d1e40dace419b0eb194524}
+      \strng{authornamehash}{ec5852aa6d7351bf443ee9a7c80b6a68}
+      \strng{authorfullhash}{420553e1e4d1e40dace419b0eb194524}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Computational Chemistry}
+      \field{number}{1}
+      \field{title}{Electronic structure of CO—An exercise in modern chemical bonding theory}
+      \field{volume}{28}
+      \field{year}{2007}
+      \field{pages}{117\bibrangedash 126}
+      \range{pages}{10}
+    \endentry
     \entry{bruneval_improved_2021}{article}{}
       \name{author}{4}{}{%
         {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
@@ -1054,12 +1147,51 @@
       \verb https://doi.org/10.1021/acs.jctc.0c01264
       \endverb
     \endentry
+    \entry{PhysRev.121.950}{article}{}
+      \name{author}{1}{}{%
+        {{hash=dc00d632e62a274fec18f45fb7f7aa09}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={Abraham},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{fullhash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{bibnamehash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{authorbibnamehash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{authornamehash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{authorfullhash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{4}
+      \field{journaltitle}{Phys. Rev.}
+      \field{month}{2}
+      \field{title}{Perturbation Theory for an Infinite Medium of Fermions. II}
+      \field{volume}{121}
+      \field{year}{1961}
+      \field{pages}{950\bibrangedash 956}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1103/PhysRev.121.950
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.121.950
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.121.950
+      \endverb
+    \endentry
     \entry{noauthor_molecular_nodate}{misc}{}
       \list{language}{1}{%
         {en}%
       }
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Answer to: In molecular orbital theory, the 1s orbital in the H2 molecule is? By signing up, you\&\#039;ll get thousands of step-by-step solutions to...}
       \field{journaltitle}{homework.study.com}
@@ -1105,8 +1237,8 @@
       \strng{authorbibnamehash}{412eb13977a3afe2db47cc07f61aa78e}
       \strng{authornamehash}{c39370d08b61dd70596d245e9290ed79}
       \strng{authorfullhash}{412eb13977a3afe2db47cc07f61aa78e}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{1089-7690}
@@ -1125,62 +1257,6 @@
       \verb{url}
       \verb http://dx.doi.org/10.1063/5.0176898
       \endverb
-    \endentry
-    \entry{marie_gw_2024}{misc}{}
-      \name{author}{3}{}{%
-        {{hash=bcadc0d9e7180ea8f9c2a7de5557bb97}{%
-           family={Marie},
-           familyi={M\bibinitperiod},
-           given={Antoine},
-           giveni={A\bibinitperiod}}}%
-        {{hash=d07fe577f60cc68e1462ccb6eb612ede}{%
-           family={Ammar},
-           familyi={A\bibinitperiod},
-           given={Abdallah},
-           giveni={A\bibinitperiod}}}%
-        {{hash=e2dca88ff2e7638a4c11707b2750f92d}{%
-           family={Loos},
-           familyi={L\bibinitperiod},
-           given={Pierre-François},
-           giveni={P\bibinithyphendelim F\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {arXiv}%
-      }
-      \strng{namehash}{3e09177f5b8ea4fe0348d189afca6da6}
-      \strng{fullhash}{f38e6adc9067dff2a3c5aba5e5d07e31}
-      \strng{bibnamehash}{f38e6adc9067dff2a3c5aba5e5d07e31}
-      \strng{authorbibnamehash}{f38e6adc9067dff2a3c5aba5e5d07e31}
-      \strng{authornamehash}{3e09177f5b8ea4fe0348d189afca6da6}
-      \strng{authorfullhash}{f38e6adc9067dff2a3c5aba5e5d07e31}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{abstract}{We provide an in-depth examination of the \$GW\$ approximation of Green's function many-body perturbation theory by detailing both its theoretical and practical aspects in the realm of quantum chemistry. First, the quasiparticle context is introduced before delving into the derivation of Hedin's equations. From these, we explain how to derive the well-known \$GW\$ approximation of the self-energy. In a second time, we meticulously explain each step involved in a \$GW\$ calculation and what type of physical quantities can be computed. To illustrate its versatility, we consider two contrasting systems: the water molecule, a weakly correlated system, and the carbon dimer, a strongly correlated system. Each stage of the process is thoroughly detailed and explained alongside numerical results and illustrative plots. We hope that the contribution will facilitate the dissemination and democratization of Green's function-based formalisms within the computational and theoretical quantum chemistry community.}
-      \field{annotation}{Comment: 14 pages, 7 figures (supporting information available)}
-      \field{month}{3}
-      \field{note}{arXiv:2311.05351 [cond-mat, physics:math-ph, physics:nucl-th, physics:physics]}
-      \field{shorttitle}{The \${GW}\$ {Approximation}}
-      \field{title}{The \${GW}\$ {Approximation}: {A} {Quantum} {Chemistry} {Perspective}}
-      \field{urlday}{16}
-      \field{urlmonth}{5}
-      \field{urlyear}{2024}
-      \field{year}{2024}
-      \field{urldateera}{ce}
-      \verb{doi}
-      \verb 10.48550/arXiv.2311.05351
-      \endverb
-      \verb{file}
-      \verb arXiv Fulltext PDF:/Users/patrykkozlowski/Zotero/storage/TYDCCQJM/Marie et al. - 2024 - The \$GW\$ Approximation A Quantum Chemistry Perspe.pdf:application/pdf;arXiv.org Snapshot:/Users/patrykkozlowski/Zotero/storage/I7C8XBLP/2311.html:text/html
-      \endverb
-      \verb{urlraw}
-      \verb http://arxiv.org/abs/2311.05351
-      \endverb
-      \verb{url}
-      \verb http://arxiv.org/abs/2311.05351
-      \endverb
-      \keyw{Condensed Matter - Materials Science,Condensed Matter - Strongly Correlated Electrons,Mathematical Physics,Nuclear Theory,Physics - Chemical Physics}
     \endentry
   \enddatalist
 \endrefsection

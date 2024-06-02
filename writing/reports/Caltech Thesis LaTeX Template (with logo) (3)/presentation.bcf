@@ -2347,75 +2347,8 @@
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
     <bcf:datasource type="file" datatype="bibtex" glob="false">examples.bib</bcf:datasource>
-    <bcf:datasource type="file" datatype="bibtex" glob="false">ownpubs.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="6">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="7">amusia_density_2003</bcf:citekey>
-    <bcf:citekey order="8">schimka_accurate_2010</bcf:citekey>
-    <bcf:citekey order="9">kozlowski_elucidating_2021</bcf:citekey>
-    <bcf:citekey order="10">mcclain_gaussian-based_2017</bcf:citekey>
-    <bcf:citekey order="11">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="12">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="13">Hohenberg1964</bcf:citekey>
-    <bcf:citekey order="14">milman_jacobs_2021</bcf:citekey>
-    <bcf:citekey order="15">PhysRev.140.A1133</bcf:citekey>
-    <bcf:citekey order="16">bruneval_gw_2021</bcf:citekey>
-    <bcf:citekey order="17">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="18">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="19">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="20">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="21">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="22">Hedin1965</bcf:citekey>
-    <bcf:citekey order="23">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="24">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="25">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="26">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="27">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="28">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="29">dreuw_single-reference_2005</bcf:citekey>
-    <bcf:citekey order="30">furche_density_2001</bcf:citekey>
-    <bcf:citekey order="31">furche_density_2001</bcf:citekey>
-    <bcf:citekey order="32">veril2018unphysical</bcf:citekey>
-    <bcf:citekey order="33">frenking2007electronic</bcf:citekey>
-    <bcf:citekey order="34">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="35">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="36">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="37">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="38">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="39">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="40">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="41">PhysRev.121.950</bcf:citekey>
-    <bcf:citekey order="42">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="43">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="44">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="45">noauthor_molecular_nodate</bcf:citekey>
-    <bcf:citekey order="46">noauthor_molecular_nodate</bcf:citekey>
-    <bcf:citekey order="47">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="48">Orlando_2023</bcf:citekey>
-    <bcf:citekey order="49">Orlando_2023</bcf:citekey>
-    <bcf:citekey order="50">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="51">amusia_density_2003</bcf:citekey>
-    <bcf:citekey order="52">schimka_accurate_2010</bcf:citekey>
-    <bcf:citekey order="53">kozlowski_elucidating_2021</bcf:citekey>
-    <bcf:citekey order="54">mcclain_gaussian-based_2017</bcf:citekey>
-    <bcf:citekey order="55">noauthor_frontiers_nodate</bcf:citekey>
-    <bcf:citekey order="56">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="57">Hohenberg1964</bcf:citekey>
-    <bcf:citekey order="58">milman_jacobs_2021</bcf:citekey>
-    <bcf:citekey order="59">PhysRev.140.A1133</bcf:citekey>
-    <bcf:citekey order="60">bruneval_gw_2021</bcf:citekey>
-    <bcf:citekey order="61">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="62">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="63">Hedin1965</bcf:citekey>
-    <bcf:citekey order="64">dreuw_single-reference_2005</bcf:citekey>
-    <bcf:citekey order="65">furche_density_2001</bcf:citekey>
-    <bcf:citekey order="66">veril2018unphysical</bcf:citekey>
-    <bcf:citekey order="67">frenking2007electronic</bcf:citekey>
-    <bcf:citekey order="68">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="69">PhysRev.121.950</bcf:citekey>
-    <bcf:citekey order="70">noauthor_molecular_nodate</bcf:citekey>
-    <bcf:citekey order="71">Orlando_2023</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
@@ -2424,13 +2357,4 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="none/global//global/global"
-                type="entry"
-                sortingtemplatename="none"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
 </bcf:controlfile>

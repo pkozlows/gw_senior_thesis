@@ -1,85 +1,97 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from hw4.src.fns import open_dense_hamiltonian, create_trotter_gates, apply_trotter_gates, enforce_bond_dimension, compute_contraction, apply_local_hamiltonian
-from hw3.src.p4_1.fns import make_product_state
+from hw4.src.fns import create_trotter_gates, apply_trotter_gates, enforce_bond_dimension, compute_contraction, apply_local_hamiltonian, open_dense_hamiltonian*
 
-def create_initial_mps(l):
+def create_initial_mps(l, name):
     up_physical = np.array([1, 0])
     down_physical = np.array([0, 1])
-    
-    ferro_mps = []
-    neel_mps = []
+    mps = []
     for i in range(l):
         if i == 0:
             up_reshape = up_physical.reshape(2, 1)
-            ferro_mps.append(up_reshape)
-            neel_mps.append(up_reshape)
+            if name == 'ferro' or name == 'neel':
+                mps.append(up_reshape)
         elif i == l-1:
             up_reshape = up_physical.reshape(1, 2)
-            ferro_mps.append(up_reshape)
-            neel_mps.append(up_reshape if i % 2 == 0 else down_physical.reshape(1, 2))
+            down_reshape = down_physical.reshape(1, 2)
+            if name == 'ferro':
+                mps.append(up_reshape)
+            elif name == 'neel':
+                mps.append(up_reshape if i % 2 == 0 else down_reshape)
         else:
             up_reshape = up_physical.reshape(1, 2, 1)
-            ferro_mps.append(up_reshape)
-            neel_mps.append(up_reshape if i % 2 == 0 else down_physical.reshape(1, 2, 1))
+            down_reshape = down_physical.reshape(1, 2, 1)
+            if name == 'ferro':
+                mps.append(up_reshape)
+            elif name == 'neel':
+                mps.append(up_reshape if i % 2 == 0 else down_reshape)
     
-    return {'neel': neel_mps}
+    return mps
 
-def compute_ground_state(L, chi, total_time, time_steps):
-    ground_state_energies = {}
-    ground_states = {}
+def compute_ground_state(L, chi, total_time, time_step, name):
     
-    for l in L:
-        H = open_dense_hamiltonian(l)
-        eigenvalues, _ = np.linalg.eigh(H)
-        # multiply every element of the Hamiltonian actually divide it by numeral hundred
-        # H = H/100
-
-        initial_ferro = make_product_state(np.array([1, 0]), l)
-        initial_energy = initial_ferro.T @ H @ initial_ferro
-        print(f"Initial energy for L={l} is {initial_energy}")
-
-        initial_mps = create_initial_mps(l)
-        ground_states[l] = {}  # Initialize the dictionary for each system size
-        for key, mps_list in initial_mps.items():
+    H = open_dense_hamiltonian(L)
+    # front the lowest eigenvalue of the Hamiltonian
+    eigenvalues, eigenvectors = np.linalg.eigh(H)
+    print(f'Lowest eigenvalue of the Hamiltonian is {eigenvalues[0]}')
+    if name == 'ferro':
+        initial_mps = create_initial_mps(L, name)
+        # initial_ferro = make_product_state(np.array([1, 0]), L)
+        # initial_energy = initial_ferro.T @ H @ initial_ferro
+        # print(f"Initial energy ferro for L={L} is {initial_energy}")
+    elif name == 'neel':
+        initial_mps = create_initial_mps(L, name)
+        # make the initial nil state by alternating the up and down spins in a loop over the length of the system
+        up_physical = np.array([1, 0])
+        down_physical = np.array([0, 1])
+        initial_neel = up_physical
+        for i in range(1, L):
+            if i % 2 == 0:
+                initial_neel = np.kron(initial_neel, up_physical)
+            else:
+                initial_neel = np.kron(initial_neel, down_physical)
+        # initial_energy = initial_neel.T @ H @ initial_neel
+        # print(f"Initial energy for neel L={L} is {initial_energy}")
             
-            for time_step in time_steps:
-                times = np.arange(0, total_time, time_step)
-                energies = {}
-                
-                current_mps = mps_list
-                for time in times:
-                    gate_field, gate_odd, gate_even = create_trotter_gates(time*1j)
+            
+    times = np.arange(0, total_time, time_step)
+    energies = {}
+    ground_states = {}
+    current_mps = initial_mps
+    # create the charter gate for the Kevin time stop
+    gate_field, gate_odd, gate_even = create_trotter_gates(time_step*1j)
+    for time in times:
+        trotterized = apply_trotter_gates(current_mps, gate_field, gate_odd, gate_even)
+        mps_enforced = enforce_bond_dimension(trotterized, chi)
+        top = apply_local_hamiltonian(mps_enforced)
+        normalization = compute_contraction(mps_enforced, mps_enforced)
+        print(f'At time {time}, the top is {top} and the normalization is {normalization}')
+        energy = top/normalization
+        print(f'Energy at time {time} is {energy}')
+            
 
-                    trotterized = apply_trotter_gates(current_mps, gate_field, gate_odd, gate_even)
-                    mps_enforced = enforce_bond_dimension(trotterized, chi)
-                    top = apply_local_hamiltonian(mps_enforced)
-                    normalization = compute_contraction(mps_enforced, mps_enforced)
-                    energy = top/normalization
-                    print(energy)
-                    
-                    if time > 0:
-                        prev_time = time - time_step
-                        if prev_time in energies and (np.abs(energy - energies[prev_time]) / np.abs(energy)) < 1e-4:
-                            if key == 'ferro':
-                                ground_state_energies[l] = energy
-                            ground_states[l][key] = mps_enforced
-                            break
+        if time > 0:
+            prev_time = time - time_step
+            if prev_time in energies and (np.abs(energy - energies[prev_time]) / np.abs(energy)) < 1e-5:
+                fino_energy = energy
+                final_gs = mps_enforced
+                break
+        energies[time] = energy
+        current_mps = mps_enforced
 
-                    energies[time] = energy
-                    current_mps = mps_enforced
-
-        plt.figure()
-        plt.title(f"Energy as a function of time for different imaginary time steps for L={l}")
-        plt.xlabel("Time")
-        plt.ylabel("Energy")
-        plt.plot(energies.keys(), energies.values(), label="Energy")
-        plt.axhline(y=eigenvalues[0], color='r', linestyle='--', label="ED Solution")
-        plt.legend()
-        plt.savefig(f"hw4/docs/images/p4_1_energy_L_{l}.png")
+    # plt.figure()
+    # plt.title(f"Energy vs. imaginary time for L={L}, time step={time_step}, name={name}")
+    # plt.xlabel("Imaginary time")
+    # plt.ylabel("Energy")
+    # # I need these pas to be done with the same vertical scale: converged_energy -1 -> converged_energy + 5
+    # plt.ylim(eigenvalues[0] - 1, eigenvalues[0] + 5)
+    # plt.plot(energies.keys(), energies.values(), label="Energy")
+    # plt.axhline(y=eigenvalues[0], color='r', linestyle='--', label="ED ground state")
+    # plt.legend()
+    # plt.savefig(f"hw4/docs/images/p4_1_energy_L_{L}time_step_{time_step}name_{name}.png")
     
-    return ground_state, ground_state_energies
+    return final_gs, fino_energy
 
 def plot_ground_state_density(ground_state_energies):
     plt.figure()
@@ -88,16 +100,21 @@ def plot_ground_state_density(ground_state_energies):
     plt.ylabel(r"Ground State Density $\frac{E(L+x) - E(L)}{x}$")
     
     ground_state_densities = []
-    L = sorted(ground_state_energies.keys())
+    system_sizes = sorted(ground_state_energies.keys())
     
-    for i in range(1, len(L)):
-        delta_E = ground_state_energies[L[i]] - ground_state_energies[L[i - 1]]
-        ground_state_densities.append(delta_E / (L[i] - L[i - 1]))
+    for i in range(1, len(system_sizes)):
+        if i == 0:
+            continue
+        for time_step in ground_state_energies[system_sizes[i]]:
+            for name in ground_state_energies[system_sizes[i]][time_step]:
+                ground_state_density = (ground_state_energies[system_sizes[i]][time_step][name] - ground_state_energies[system_sizes[i-1]][time_step][name])/1
+                ground_state_densities.append(ground_state_density)
     
-    plt.plot(L[1:], ground_state_densities, 'o-')
-    plt.savefig("hw4/docs/images/ground_state_density.png")
+    plt.plot(system_sizes[1:], ground_state_densities, 'o-')
+    plt.savefig("hw4/docs/images/ground_state_density_tst.png")
+    return
 
-def plot_correlations_fns(mps):
+def get_correlations(mps):
     L = len(mps)
     correlations = {}
     # define the three different pauli matrices
@@ -106,43 +123,69 @@ def plot_correlations_fns(mps):
     sigma_z = np.array([[1, 0], [0, -1]])
     sigmas = [sigma_x, sigma_y, sigma_z]
     # now loop over them to determine the separate correlations
-    for sigma in sigmas:
-        correlations[sigma] = {}
+    for s in range(len(sigmas)):
+        correlations[s] = {}
         # first tensor
         first_tensor = mps[0]
         # contact the first tensor with the sigma_z matrix
-        first_sigma_contraction = np.einsum('bc,bd,de->ce', first_tensor, sigma, first_tensor.conj())
+        first_sigma_contraction = np.einsum('bc,bd,de->ce', first_tensor.conj(), sigmas[s], first_tensor)
         # dope offer the remaining once
         for i in range(1, L):
             second_tensor = mps[i]
             # compute constructions of the second dancer with the one directly to its left until we reach the first site to get a scaler
-            second_sigma_contraction = np.einsum('abc,bd,jdc->aj', second_tensor, sigma, second_tensor.conj())
+            if i == L-1:
+                second_sigma_contraction = np.einsum('ab,bd,cd->ac', second_tensor.conj(), sigmas[s], second_tensor)
+            else:
+                second_sigma_contraction = np.einsum('abc,bd,jdc->aj', second_tensor.conj(), sigmas[s], second_tensor)
             # contract the remaining tensors to the left of the second tensor until we reach the first site
             for j in range(i-1, 0, -1):
-                contracted_tensor_new = np.einsum('akc,jkl,cl->aj', mps[j], mps[j].conj(), second_sigma_contraction)
+                contracted_tensor_new = np.einsum('akc,jkl,cl->aj', mps[j].conj(), mps[j], second_sigma_contraction)
                 second_sigma_contraction = contracted_tensor_new
             # the last case will give a scaler
-            correlations[sigma][i] = np.einsum('ab,ab->', first_sigma_contraction, second_sigma_contraction)
-            # now plot the correlations as a function of distance
-            plt.figure()
-            plt.title(f"Correlation function for {sigma} as a function of distance")
-            plt.xlabel("Distance")
-            plt.ylabel(rf"Correlation $\langle  {sigma}^1 \cdot {sigma}^{i+1} \rangle$")
-            plt.plot(correlations[sigma].keys(), correlations[sigma].values(), 'o-')
-            plt.savefig(f"hw4/docs/images/correlation_{sigma}.png")
+            correlations[s][i] = np.einsum('ab,ab->', first_sigma_contraction, second_sigma_contraction)
+    return correlations
+
         
 
     
     
 def main():
-    L = [10]
-    total_time = 100
-    time_steps = [0.5]
-    chi = 8
-    
-    gs, gs_es = compute_ground_state(L, chi, total_time, time_steps)
-    plot_ground_state_density(gs_es)
-    plot_correlations_fns(gs['ferro'])
+    L = [6,8]
+    total_time = 10
+    time_steps = [0.1]
+    chi = 16
+    # initialize the ground state
+    gs = {}
+    gs_es = {}
+    for l in L:
+        gs[l] = {}
+        gs_es[l] = {}
+        for time_step in time_steps:
+            gs[l][time_step] = {}
+            gs_es[l][time_step] = {}
+            for name in ['ferro']:
+                ground_state, energy = compute_ground_state(l, chi, total_time, time_step, name)
+                gs[l][time_step][name] = ground_state
+                gs_es[l][time_step][name] = energy
+    # now plot the ground state density using the energies just obtained
+    # plot_ground_state_density(gs_es)
+    for l in L:
+        for time_step in time_steps:
+            for name in ['ferro']:
+                correlations = get_correlations(gs[l][time_step][name])
+                for s in range(len(correlations)):
+                    if s == 0:
+                        sigma_name = 'x'
+                    elif s == 1:
+                        sigma_name = 'y'
+                    else:
+                        sigma_name = 'z'
+                    plt.figure()
+                    plt.title(f"Correlation function for {sigma_name} as a function of distance")
+                    plt.xlabel("Distance")
+                    plt.ylabel(rf"Correlation $\langle  {sigma_name}^1 \cdot {sigma_name} \rangle$")
+                    plt.plot(correlations[s].keys(), correlations[s].values(), 'o-')
+                    plt.savefig(f"hw4/docs/images/correlation_{sigma_name}.png")
     # plot_correlations_fns(gs['neel'])
 
 if __name__ == "__main__":

@@ -1,0 +1,209 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{casida_progress_2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cc9552431d77048c5c3119bfed9eccb9}{%
+           family={Casida},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=895fdb18df0733d26c04e87e4f7c917a}{%
+           family={Huix-Rotllant},
+           familyi={H\bibinithyphendelim R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{fullhash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{bibnamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authorbibnamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authornamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authorfullhash}{89ab0170f39a4891ddf474ff3a728f22}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The classic density-functional theory (DFT) formalism introduced by Hohenberg, Kohn, and Sham in the mid-1960s is based on the idea that the complicated N-electron wave function can be replaced with the mathematically simpler 1-electron charge density in electronic structure calculations of the ground stationary state. As such, ordinary DFT cannot treat time-dependent (TD) problems nor describe excited electronic states. In 1984, Runge and Gross proved a theorem making TD-DFT formally exact. Information about electronic excited states may be obtained from this theory through the linear response (LR) theory formalism. Beginning in the mid-1990s, LR-TD-DFT became increasingly popular for calculating absorption and other spectra of medium- and large-sized molecules. Its ease of use and relatively good accuracy has now brought LR-TD-DFT to the forefront for this type of application. As the number and the diversity of applications of TD-DFT have grown, so too has our understanding of the strengths and weaknesses of the approximate functionals commonly used for TD-DFT. The objective of this article is to continue where a previous review of TD-DFT in Volume 55 of the Annual Review of Physical Chemistry left off and highlight some of the problems and solutions from the point of view of applied physical chemistry. Because doubly-excited states have a particularly important role to play in bond dissociation and formation in both thermal and photochemistry, particular emphasis is placed on the problem of going beyond or around the TD-DFT adiabatic approximation, which limits TD-DFT calculations to nominally singly-excited states.}
+      \field{issn}{0066-426X, 1545-1593}
+      \field{journaltitle}{Annual Review of Physical Chemistry}
+      \field{month}{5}
+      \field{note}{Publisher: Annual Reviews}
+      \field{number}{Volume 63, 2012}
+      \field{title}{Progress in {Time}-{Dependent} {Density}-{Functional} {Theory}}
+      \field{urlday}{3}
+      \field{urlmonth}{6}
+      \field{urlyear}{2024}
+      \field{volume}{63}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \field{pages}{287\bibrangedash 323}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1146/annurev-physchem-032511-143803
+      \endverb
+      \verb{urlraw}
+      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-physchem-032511-143803
+      \endverb
+      \verb{url}
+      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-physchem-032511-143803
+      \endverb
+    \endentry
+    \entry{dyson_s_1949}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cbf0c80c8c2547def0a07474727876a0}{%
+           family={Dyson},
+           familyi={D\bibinitperiod},
+           given={F.\bibnamedelimi J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{fullhash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{bibnamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authorbibnamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authornamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authorfullhash}{cbf0c80c8c2547def0a07474727876a0}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{month}{6}
+      \field{note}{Publisher: American Physical Society}
+      \field{number}{11}
+      \field{title}{The \${S}\$ {Matrix} in {Quantum} {Electrodynamics}}
+      \field{volume}{75}
+      \field{year}{1949}
+      \field{pages}{1736\bibrangedash 1755}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1103/PhysRev.75.1736
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.75.1736
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.75.1736
+      \endverb
+    \endentry
+    \entry{mattuck_guide_1992}{book}{}
+      \name{author}{1}{}{%
+        {{hash=606a0c8de09a6adc0505eb9a67ebbfc5}{%
+           family={Mattuck},
+           familyi={M\bibinitperiod},
+           given={R.D.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{fullhash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{bibnamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authorbibnamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authornamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authorfullhash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-486-67047-8}
+      \field{series}{Dover {Books} on {Physics} {Series}}
+      \field{title}{A {Guide} to {Feynman} {Diagrams} in the {Many}-body {Problem}}
+      \field{year}{1992}
+      \verb{urlraw}
+      \verb https://books.google.com/books?id=pe-v8zfxE68C
+      \endverb
+      \verb{url}
+      \verb https://books.google.com/books?id=pe-v8zfxE68C
+      \endverb
+    \endentry
+    \entry{hedin_new_1965}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9134706f2e736350257c0e1b72a6e624}{%
+           family={Hedin},
+           familyi={H\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{fullhash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{bibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorbibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authornamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorfullhash}{9134706f2e736350257c0e1b72a6e624}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A set of successively more accurate self-consistent equations for the one-electron Green's function have been derived. They correspond to an expansion in a screened potential rather than the bare Coulomb potential. The first equation is adequate for many purposes. Each equation follows from the demand that a corresponding expression for the total energy be stationary with respect to variations in the Green's function. The main information to be obtained, besides the total energy, is one-particle-like excitation spectra, i.e., spectra characterized by the quantum numbers of a single particle. This includes the low-excitation spectra in metals as well as configurations in atoms, molecules, and solids with one electron outside or one electron missing from a closed-shell structure. In the latter cases we obtain an approximate description by a modified Hartree-Fock equation involving a "Coulomb hole" and a static screened potential in the exchange term. As an example, spectra of some atoms are discussed. To investigate the convergence of successive approximations for the Green's function, extensive calculations have been made for the electron gas at a range of metallic densities. The results are expressed in terms of quasiparticle energies 𝐸⁡(k) and quasiparticle interactions 𝑓⁡(k, k′). The very first approximation gives a good value for the magnitude of 𝐸⁡(k). To estimate the derivative of 𝐸⁡(k) we need both the first- and the second-order terms. The derivative, and thus the specific heat, is found to differ from the free-particle value by only a few percent. Our correction to the specific heat keeps the same sign down to the lowest alkali-metal densities, and is smaller than those obtained recently by Silverstein and by Rice. Our results for the paramagnetic susceptibility are unreliable in the alkali-metal-density region owing to poor convergence of the expansion for 𝑓. Besides the proof of a modified Luttinger-Ward-Klein variational principle and a related self-consistency idea, there is not much new in principle in this paper. The emphasis is on the development of a numerically manageable approximation scheme.}
+      \field{journaltitle}{Physical Review}
+      \field{month}{8}
+      \field{note}{Publisher: American Physical Society}
+      \field{number}{3A}
+      \field{title}{New {Method} for {Calculating} the {One}-{Particle} {Green}'s {Function} with {Application} to the {Electron}-{Gas} {Problem}}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{volume}{139}
+      \field{year}{1965}
+      \field{urldateera}{ce}
+      \field{pages}{A796\bibrangedash A823}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRev.139.A796
+      \endverb
+      \verb{file}
+      \verb APS Snapshot:/Users/patrykkozlowski/Zotero/storage/H7EKBRR7/PhysRev.139.html:text/html;Full Text PDF:/Users/patrykkozlowski/Zotero/storage/W6NEESR8/Hedin - 1965 - New Method for Calculating the One-Particle Green'.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.139.A796
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.139.A796
+      \endverb
+    \endentry
+    \entry{noauthor_frontiers_nodate}{misc}{}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labeltitlesource}{title}
+      \field{title}{Frontiers {|} {The} {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Frontiers | The GW Compendium\: A Practical Guide to Theoretical Photoemission Spectroscopy:/Users/patrykkozlowski/Zotero/storage/GSVKDXVW/full.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

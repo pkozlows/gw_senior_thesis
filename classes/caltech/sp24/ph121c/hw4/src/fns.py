@@ -58,12 +58,10 @@ def create_trotter_gates(t, h_x=-1.05, h_z=0.5, J=1):
 
     # Single site Hamiltonian term
     omega = np.array([[-h_z, -h_x], [-h_x, h_z]])
-    omega /= 10
     assert np.allclose(omega, omega.conj().T), "Omega is not Hermitian"
     
     # Interaction term
     interaction = -J * np.kron(sigma_z, sigma_z)
-    np.divide(interaction, 10)
     assert np.allclose(interaction, interaction.conj().T), "Interaction is not Hermitian"
     
     # Create the Trotter gates
@@ -82,7 +80,7 @@ def trotter_gate_field(mps, gate, site):
     if site == 0:
         mps_new[site] = np.einsum('ik,ij->jk', mps[site], gate)
     elif site == len(mps) - 1:
-        mps_new[site] = np.einsum('ij,aj->ai', gate, mps[site])
+        mps_new[site] = np.einsum('ij,ai->aj', gate, mps[site])
     else:
         mps_new[site] = np.einsum('ij,ajk->aik', gate, mps[site])
     return mps_new
@@ -155,72 +153,72 @@ def check_right_canonical(tensor):
     return right_canonical
             
 def enforce_bond_dimension(mps, chi):
-    """Enforce left canonical form on the MPS without truncating."""
+    """Enforce left and right canonical forms on the MPS without truncating."""
     L = len(mps)
     
+    # Print the maximum value before this operation
+    max_value = np.max([np.max(np.abs(tensor)) for tensor in mps])
+    print(f"Maximum value of the MPS tensors before any sweeps is {max_value}")
+    
+    # Left-to-right sweep
     for i in range(L-1):
-        # Contract the i and i+1 tensors to prepare for SVD
         if i == 0:
             contraction = np.einsum('ij,jab->iab', mps[i], mps[i+1])
             w = contraction.reshape(mps[i].shape[0], mps[i+1].shape[1]*mps[i+1].shape[2])
-            # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
-            # Update the MPS tensors
-            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1])
+            mps[i] = U.reshape(mps[i].shape[0], -1)
             assert check_left_canonical(mps[i])
-            mps[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1], mps[i+1].shape[2])
+            mps[i+1] = (np.diag(S) @ V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2])
         elif i == L-2:
             contraction = np.einsum('ijk,kl->ijl', mps[i], mps[i+1])
-            0
             w = contraction.reshape(mps[i].shape[0]*mps[i].shape[1], mps[i+1].shape[1])
-            # Compute the SVD
             U, S, V = np.linalg.svd(w, full_matrices=False)
-            # Update the MPS tensors
-            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], mps[i].shape[2])
+            s = S/np.sqrt(np.sum(np.diag(S) ** 2))
+            print(f'After normalization, we have {s}')
+            mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
             assert check_left_canonical(mps[i])
-            mps[i+1] = (np.diag(S)@V).reshape(mps[i+1].shape[0], mps[i+1].shape[1])
+            mps[i+1] = (np.diag(s) @ V).reshape(-1, mps[i+1].shape[1])
             assert not check_left_canonical(mps[i+1])
         else:
             contraction = np.einsum('ijk,klm->ijlm', mps[i], mps[i+1])
-            w = contraction.reshape(mps[i].shape[0] * mps[i].shape[1], mps[i+1].shape[1] * mps[i+1].shape[2])
-            # Compute the SVD
+            w = contraction.reshape(mps[i].shape[0]*mps[i].shape[1], mps[i+1].shape[1]*mps[i+1].shape[2])
             U, S, V = np.linalg.svd(w, full_matrices=False)
-            # Update the MPS tensors
             mps[i] = U.reshape(mps[i].shape[0], mps[i].shape[1], -1)
             assert check_left_canonical(mps[i])
-            mps[i+1] = (np.diag(S)@V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2]) 
+            mps[i+1] = (np.diag(S) @ V).reshape(-1, mps[i+1].shape[1], mps[i+1].shape[2])
 
-        
-    # now throw it in reverse while enforcing the bond dimension
+    # Print the maximum value of the MPS tensors during enforcing bond dimension
+    max_value = np.max([np.max(np.abs(tensor)) for tensor in mps])
+    print(f"Maximum value of the MPS tensors after left to right sweep is {max_value}")
+    
+    # Right-to-left sweep
     for i in range(L-1, 0, -1):
         if i == L-1:
             contraction = np.einsum('ijk,kl->ijl', mps[i-1], mps[i])
             w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1])
-            # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
-            # Update the MPS tensors
-            mps[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], mps[i-1].shape[2])
-            mps[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1])
+            mps[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
+            mps[i] = vt.reshape(-1, mps[i].shape[1])
             assert check_right_canonical(mps[i])
         elif i == 1:
             contraction = np.einsum('ai,ijk->ajk', mps[i-1], mps[i])
             w = contraction.reshape(mps[i-1].shape[0], mps[i].shape[1]*mps[i].shape[2])
-            # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
-            # Update the MPS tensors
             mps[i-1] = (u @ s_diag).reshape(-1, mps[i].shape[0])
             mps[i] = vt.reshape(mps[i].shape[0], mps[i].shape[1], -1)
             assert check_right_canonical(mps[i])
         else:
             contraction = np.einsum('ijk,klm->ijlm', mps[i-1], mps[i])
             w = contraction.reshape(mps[i-1].shape[0]*mps[i-1].shape[1], mps[i].shape[1]*mps[i].shape[2])
-            # Compute the SVD
             u, s_diag, vt = truncate_svd(w, chi)
-            # Update the MPS tensors
             mps[i-1] = (u @ s_diag).reshape(mps[i-1].shape[0], mps[i-1].shape[1], -1)
             mps[i] = vt.reshape(-1, mps[i].shape[1], mps[i].shape[2])
             assert check_right_canonical(mps[i])
-
+    
+    # Print the maximum value after enforcing bond dimension
+    max_value = np.max([np.max(np.abs(tensor)) for tensor in mps])
+    print(f"Maximum value of the MPS tensors after enforcing bond dimension is {max_value}")
+    
     return mps
 
 def compute_contraction(mod_ket, bra):

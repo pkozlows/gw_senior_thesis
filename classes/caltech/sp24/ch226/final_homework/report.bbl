@@ -1,0 +1,582 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{bowler_calculations_2010}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b1247adf5c35ba300c6baca4d452d237}{%
+           family={Bowler},
+           familyi={B\bibinitperiod},
+           given={D\bibnamedelima R},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=34958c5965f13cd3fed6353c804bf25e}{%
+           family={Miyazaki},
+           familyi={M\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \strng{fullhash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \strng{bibnamehash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \strng{authorbibnamehash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \strng{authornamehash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \strng{authorfullhash}{f45ce68522c95ee1f2a05ed7ab37b5c7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0953-8984, 1361-648X}
+      \field{journaltitle}{Journal of Physics: Condensed Matter}
+      \field{month}{2}
+      \field{number}{7}
+      \field{shorttitle}{Calculations for millions of atoms with density functional theory}
+      \field{title}{Calculations for millions of atoms with density functional theory: linear scaling shows its potential}
+      \field{urlday}{23}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{volume}{22}
+      \field{year}{2010}
+      \field{urldateera}{ce}
+      \field{pages}{074207}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/0953-8984/22/7/074207
+      \endverb
+      \verb{file}
+      \verb Submitted Version:/Users/patrykkozlowski/Zotero/storage/PD78NDYV/Bowler and Miyazaki - 2010 - Calculations for millions of atoms with density fu.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://iopscience.iop.org/article/10.1088/0953-8984/22/7/074207
+      \endverb
+      \verb{url}
+      \verb https://iopscience.iop.org/article/10.1088/0953-8984/22/7/074207
+      \endverb
+    \endentry
+    \entry{milman_jacobs_2021}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=698600862cf64c093bce445fd66a02a7}{%
+           family={Milman},
+           familyi={M\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{698600862cf64c093bce445fd66a02a7}
+      \strng{fullhash}{698600862cf64c093bce445fd66a02a7}
+      \strng{bibnamehash}{698600862cf64c093bce445fd66a02a7}
+      \strng{authorbibnamehash}{698600862cf64c093bce445fd66a02a7}
+      \strng{authornamehash}{698600862cf64c093bce445fd66a02a7}
+      \strng{authorfullhash}{698600862cf64c093bce445fd66a02a7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The latest meta-GGA functional Density functional theory is at the heart of atomistic modelling of materials. There is a huge variety of software packages}
+      \field{journaltitle}{Dassault Systèmes blog}
+      \field{month}{8}
+      \field{note}{Section: science}
+      \field{title}{Jacob’s {Ladder} of {DFT}}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/Users/patrykkozlowski/Zotero/storage/W9WHF9IN/dft.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://blog.3ds.com/brands/biovia/dft/
+      \endverb
+      \verb{url}
+      \verb https://blog.3ds.com/brands/biovia/dft/
+      \endverb
+    \endentry
+    \entry{casida_progress_2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cc9552431d77048c5c3119bfed9eccb9}{%
+           family={Casida},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=895fdb18df0733d26c04e87e4f7c917a}{%
+           family={Huix-Rotllant},
+           familyi={H\bibinithyphendelim R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{fullhash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{bibnamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authorbibnamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authornamehash}{89ab0170f39a4891ddf474ff3a728f22}
+      \strng{authorfullhash}{89ab0170f39a4891ddf474ff3a728f22}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The classic density-functional theory (DFT) formalism introduced by Hohenberg, Kohn, and Sham in the mid-1960s is based on the idea that the complicated N-electron wave function can be replaced with the mathematically simpler 1-electron charge density in electronic structure calculations of the ground stationary state. As such, ordinary DFT cannot treat time-dependent (TD) problems nor describe excited electronic states. In 1984, Runge and Gross proved a theorem making TD-DFT formally exact. Information about electronic excited states may be obtained from this theory through the linear response (LR) theory formalism. Beginning in the mid-1990s, LR-TD-DFT became increasingly popular for calculating absorption and other spectra of medium- and large-sized molecules. Its ease of use and relatively good accuracy has now brought LR-TD-DFT to the forefront for this type of application. As the number and the diversity of applications of TD-DFT have grown, so too has our understanding of the strengths and weaknesses of the approximate functionals commonly used for TD-DFT. The objective of this article is to continue where a previous review of TD-DFT in Volume 55 of the Annual Review of Physical Chemistry left off and highlight some of the problems and solutions from the point of view of applied physical chemistry. Because doubly-excited states have a particularly important role to play in bond dissociation and formation in both thermal and photochemistry, particular emphasis is placed on the problem of going beyond or around the TD-DFT adiabatic approximation, which limits TD-DFT calculations to nominally singly-excited states.}
+      \field{issn}{0066-426X, 1545-1593}
+      \field{journaltitle}{Annual Review of Physical Chemistry}
+      \field{month}{5}
+      \field{note}{Publisher: Annual Reviews}
+      \field{number}{Volume 63, 2012}
+      \field{title}{Progress in {Time}-{Dependent} {Density}-{Functional} {Theory}}
+      \field{urlday}{3}
+      \field{urlmonth}{6}
+      \field{urlyear}{2024}
+      \field{volume}{63}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \field{pages}{287\bibrangedash 323}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1146/annurev-physchem-032511-143803
+      \endverb
+      \verb{urlraw}
+      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-physchem-032511-143803
+      \endverb
+      \verb{url}
+      \verb https://www.annualreviews.org/content/journals/10.1146/annurev-physchem-032511-143803
+      \endverb
+    \endentry
+    \entry{dreuw_single-reference_2005}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0291875bdd7a3c8ffd7502d4aa02d77d}{%
+           family={Dreuw},
+           familyi={D\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d536486f7542afd841ea9dae3c1b0dd5}{%
+           family={Head-Gordon},
+           familyi={H\bibinithyphendelim G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \strng{fullhash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \strng{bibnamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \strng{authorbibnamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \strng{authornamehash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \strng{authorfullhash}{eb01af9fc1f5f5ddd045ca8ddab12fc1}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0009-2665}
+      \field{journaltitle}{Chemical Reviews}
+      \field{month}{11}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{11}
+      \field{title}{Single-{Reference} ab {Initio} {Methods} for the {Calculation} of {Excited} {States} of {Large} {Molecules}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{105}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \field{pages}{4009\bibrangedash 4037}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1021/cr0505627
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/56L9MRHN/Dreuw and Head-Gordon - 2005 - Single-Reference ab Initio Methods for the Calcula.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/cr0505627
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/cr0505627
+      \endverb
+    \endentry
+    \entry{reining_10_nodate}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ba06cb6a4295fe66b18c585b46fc80f7}{%
+           family={Reining},
+           familyi={R\bibinitperiod},
+           given={Lucia},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \strng{fullhash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \strng{bibnamehash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \strng{authorbibnamehash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \strng{authornamehash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \strng{authorfullhash}{ba06cb6a4295fe66b18c585b46fc80f7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{journaltitle}{Quantum Materials: Experiments and Theory}
+      \field{shorttitle}{10 {Linear} {Response} and {More}}
+      \field{title}{10 {Linear} {Response} and {More}: the {Bethe}-{Salpeter} {Equation}}
+      \field{urlday}{3}
+      \field{urlmonth}{6}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Available Version (via Google Scholar):/Users/patrykkozlowski/Zotero/storage/SKC93K7E/Reining - 10 Linear Response and More the Bethe-Salpeter Eq.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://core.ac.uk/download/pdf/79486059.pdf#page=281
+      \endverb
+      \verb{url}
+      \verb https://core.ac.uk/download/pdf/79486059.pdf#page=281
+      \endverb
+    \endentry
+    \entry{dyson_s_1949}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cbf0c80c8c2547def0a07474727876a0}{%
+           family={Dyson},
+           familyi={D\bibinitperiod},
+           given={F.\bibnamedelimi J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{fullhash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{bibnamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authorbibnamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authornamehash}{cbf0c80c8c2547def0a07474727876a0}
+      \strng{authorfullhash}{cbf0c80c8c2547def0a07474727876a0}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{month}{6}
+      \field{note}{Publisher: American Physical Society}
+      \field{number}{11}
+      \field{title}{The \${S}\$ {Matrix} in {Quantum} {Electrodynamics}}
+      \field{volume}{75}
+      \field{year}{1949}
+      \field{pages}{1736\bibrangedash 1755}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1103/PhysRev.75.1736
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.75.1736
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.75.1736
+      \endverb
+    \endentry
+    \entry{mattuck_guide_1992}{book}{}
+      \name{author}{1}{}{%
+        {{hash=606a0c8de09a6adc0505eb9a67ebbfc5}{%
+           family={Mattuck},
+           familyi={M\bibinitperiod},
+           given={R.D.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{fullhash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{bibnamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authorbibnamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authornamehash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \strng{authorfullhash}{606a0c8de09a6adc0505eb9a67ebbfc5}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-486-67047-8}
+      \field{series}{Dover {Books} on {Physics} {Series}}
+      \field{title}{A {Guide} to {Feynman} {Diagrams} in the {Many}-body {Problem}}
+      \field{year}{1992}
+      \verb{urlraw}
+      \verb https://books.google.com/books?id=pe-v8zfxE68C
+      \endverb
+      \verb{url}
+      \verb https://books.google.com/books?id=pe-v8zfxE68C
+      \endverb
+    \endentry
+    \entry{hedin_new_1965}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9134706f2e736350257c0e1b72a6e624}{%
+           family={Hedin},
+           familyi={H\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{fullhash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{bibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorbibnamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authornamehash}{9134706f2e736350257c0e1b72a6e624}
+      \strng{authorfullhash}{9134706f2e736350257c0e1b72a6e624}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A set of successively more accurate self-consistent equations for the one-electron Green's function have been derived. They correspond to an expansion in a screened potential rather than the bare Coulomb potential. The first equation is adequate for many purposes. Each equation follows from the demand that a corresponding expression for the total energy be stationary with respect to variations in the Green's function. The main information to be obtained, besides the total energy, is one-particle-like excitation spectra, i.e., spectra characterized by the quantum numbers of a single particle. This includes the low-excitation spectra in metals as well as configurations in atoms, molecules, and solids with one electron outside or one electron missing from a closed-shell structure. In the latter cases we obtain an approximate description by a modified Hartree-Fock equation involving a "Coulomb hole" and a static screened potential in the exchange term. As an example, spectra of some atoms are discussed. To investigate the convergence of successive approximations for the Green's function, extensive calculations have been made for the electron gas at a range of metallic densities. The results are expressed in terms of quasiparticle energies 𝐸⁡(k) and quasiparticle interactions 𝑓⁡(k, k′). The very first approximation gives a good value for the magnitude of 𝐸⁡(k). To estimate the derivative of 𝐸⁡(k) we need both the first- and the second-order terms. The derivative, and thus the specific heat, is found to differ from the free-particle value by only a few percent. Our correction to the specific heat keeps the same sign down to the lowest alkali-metal densities, and is smaller than those obtained recently by Silverstein and by Rice. Our results for the paramagnetic susceptibility are unreliable in the alkali-metal-density region owing to poor convergence of the expansion for 𝑓. Besides the proof of a modified Luttinger-Ward-Klein variational principle and a related self-consistency idea, there is not much new in principle in this paper. The emphasis is on the development of a numerically manageable approximation scheme.}
+      \field{journaltitle}{Physical Review}
+      \field{month}{8}
+      \field{note}{Publisher: American Physical Society}
+      \field{number}{3A}
+      \field{title}{New {Method} for {Calculating} the {One}-{Particle} {Green}'s {Function} with {Application} to the {Electron}-{Gas} {Problem}}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2024}
+      \field{volume}{139}
+      \field{year}{1965}
+      \field{urldateera}{ce}
+      \field{pages}{A796\bibrangedash A823}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1103/PhysRev.139.A796
+      \endverb
+      \verb{file}
+      \verb APS Snapshot:/Users/patrykkozlowski/Zotero/storage/H7EKBRR7/PhysRev.139.html:text/html;Full Text PDF:/Users/patrykkozlowski/Zotero/storage/W6NEESR8/Hedin - 1965 - New Method for Calculating the One-Particle Green'.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.139.A796
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRev.139.A796
+      \endverb
+    \endentry
+    \entry{noauthor_frontiers_nodate}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Frontiers {|} {The} {GW} {Compendium}: {A} {Practical} {Guide} to {Theoretical} {Photoemission} {Spectroscopy}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Frontiers | The GW Compendium\: A Practical Guide to Theoretical Photoemission Spectroscopy:/Users/patrykkozlowski/Zotero/storage/GSVKDXVW/full.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/articles/10.3389/fchem.2019.00377/full
+      \endverb
+    \endentry
+    \entry{bruneval_assessment_2019}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
+           family={Bruneval},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{fullhash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{bibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authorbibnamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authornamehash}{9c4151f99b76b3b5730a3773eb38f284}
+      \strng{authorfullhash}{9c4151f99b76b3b5730a3773eb38f284}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The GW approximation is well-known for the calculation of high-quality ionization potentials and electron affinities in solids and molecules. Recently, it has been identified that the density matrix that is obtained from the contraction of the GW Green’s function allows one to include Feynman diagrams that are significant for the ionization potentials. However, the Green’s function contains much more information than the mere quasi-particle energies. Here, we test and assess the quality of this so-called linearized GW density matrix for several molecular properties. First of all, we extend the original formulation to perform the linearization starting from any self-consistent mean-field approximation, and not only from Hartree–Fock. We then demonstrate the reliability and the stability of the linearized GW density matrix to evaluate the total energy out of a non-self-consistent GW calculation. Based on a comprehensive benchmark of 34 molecules, we compare the quality of the electronic density, Hartree energy, exchange energy, and the Fock operator expectation values against other well-established techniques. In particular, we show that the obtained linearized GW densities markedly differ from those calculated within the widespread quasi-particle self-consistent GW approximation.}
+      \field{issn}{1549-9618}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{month}{7}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{7}
+      \field{title}{Assessment of the {Linearized} {GW} {Density} {Matrix} for {Molecules}}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{15}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{4069\bibrangedash 4078}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1021/acs.jctc.9b00333
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/SD7MJHGK/Bruneval - 2019 - Assessment of the Linearized GW Density Matrix for.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/acs.jctc.9b00333
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/acs.jctc.9b00333
+      \endverb
+    \endentry
+    \entry{bruneval_improved_2021}{article}{}
+      \name{author}{4}{}{%
+        {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
+           family={Bruneval},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+        {{hash=8961b310a557d735576da0eea7761819}{%
+           family={Rodriguez-Mayorga},
+           familyi={R\bibinithyphendelim M\bibinitperiod},
+           given={Mauricio},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3b83a879f9a12f61da41a1ac03302d58}{%
+           family={Rinke},
+           familyi={R\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=19591a161e45a84afbeb1a97a0b3a6ca}{%
+           family={Dvorak},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{edf6ef4ca1e6bc09c47953329825c274}
+      \strng{fullhash}{ba735ee5905aa7f6f30256c82168d7ea}
+      \strng{bibnamehash}{ba735ee5905aa7f6f30256c82168d7ea}
+      \strng{authorbibnamehash}{ba735ee5905aa7f6f30256c82168d7ea}
+      \strng{authornamehash}{edf6ef4ca1e6bc09c47953329825c274}
+      \strng{authorfullhash}{ba735ee5905aa7f6f30256c82168d7ea}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The linearized GW density matrix (γGW) is an efficient method to improve the static portion of the self-energy compared to that of ordinary perturbative GW while keeping the single-shot simplicity of the calculation. Previous work has shown that γGW gives an improved Fock operator and total energy components that approach the self-consistent GW quality. Here, we test γGW for dimer dissociation for the first time by studying N2, LiH, and Be2. We also calculate a set of self-consistent GW results in identical basis sets for a direct and consistent comparison. γGW approaches self-consistent GW total energies for a starting point based on a high amount of exact exchange. We also compare the accuracy of different total energy functionals, which differ when evaluated with a non-self-consistent density or density matrix. While the errors in total energies among different functionals and starting points are small, the individual energy components show noticeable errors when compared to reference data. The energy component errors of γGW are smaller than functionals of the density and we suggest that the linearized GW density matrix is a route to improving total energy evaluations in the adiabatic connection framework.}
+      \field{issn}{1549-9618}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{month}{4}
+      \field{note}{Publisher: American Chemical Society}
+      \field{number}{4}
+      \field{title}{Improved {One}-{Shot} {Total} {Energies} from the {Linearized} {GW} {Density} {Matrix}}
+      \field{urlday}{22}
+      \field{urlmonth}{3}
+      \field{urlyear}{2024}
+      \field{volume}{17}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{2126\bibrangedash 2136}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1021/acs.jctc.0c01264
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/Users/patrykkozlowski/Zotero/storage/2NVDIB79/Bruneval et al. - 2021 - Improved One-Shot Total Energies from the Lineariz.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1021/acs.jctc.0c01264
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1021/acs.jctc.0c01264
+      \endverb
+    \endentry
+    \entry{denawi_gw_2023}{article}{}
+      \name{author}{4}{}{%
+        {{hash=836cd68c38676bbd12df79dc5c9374d1}{%
+           family={Denawi},
+           familyi={D\bibinitperiod},
+           given={Adam\bibnamedelima Hassan},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=9c4151f99b76b3b5730a3773eb38f284}{%
+           family={Bruneval},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+        {{hash=04ddb997868744e9ddde54bc69711c6f}{%
+           family={Torrent},
+           familyi={T\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=507fea770adb17726797cc8fa209147f}{%
+           family={Rodríguez-Mayorga},
+           familyi={R\bibinithyphendelim M\bibinitperiod},
+           given={Mauricio},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7a3f0b67808d573b9efb72488b64bd15}
+      \strng{fullhash}{c34fd0ea3935bcc100242d266f96e667}
+      \strng{bibnamehash}{c34fd0ea3935bcc100242d266f96e667}
+      \strng{authorbibnamehash}{c34fd0ea3935bcc100242d266f96e667}
+      \strng{authornamehash}{7a3f0b67808d573b9efb72488b64bd15}
+      \strng{authorfullhash}{c34fd0ea3935bcc100242d266f96e667}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{month}{9}
+      \field{note}{Publisher: American Physical Society}
+      \field{number}{12}
+      \field{title}{\${GW}\$ density matrix for estimation of self-consistent \${GW}\$ total energies in solids}
+      \field{volume}{108}
+      \field{year}{2023}
+      \field{pages}{125107}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevB.108.125107
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.108.125107
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevB.108.125107
+      \endverb
+    \endentry
+    \entry{schollwock_density-matrix_2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=47c87e3553597a3c6f21f2ae72571491}{%
+           family={Schollwöck},
+           familyi={S\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{47c87e3553597a3c6f21f2ae72571491}
+      \strng{fullhash}{47c87e3553597a3c6f21f2ae72571491}
+      \strng{bibnamehash}{47c87e3553597a3c6f21f2ae72571491}
+      \strng{authorbibnamehash}{47c87e3553597a3c6f21f2ae72571491}
+      \strng{authornamehash}{47c87e3553597a3c6f21f2ae72571491}
+      \strng{authorfullhash}{47c87e3553597a3c6f21f2ae72571491}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The density-matrix renormalization group method (DMRG) has established itself over the last decade as the leading method for the simulation of the statics and dynamics of one-dimensional strongly correlated quantum lattice systems. In the further development of the method, the realization that DMRG operates on a highly interesting class of quantum states, so-called matrix product states (MPS), has allowed a much deeper understanding of the inner structure of the DMRG method, its further potential and its limitations. In this paper, I want to give a detailed exposition of current DMRG thinking in the MPS language in order to make the advisable implementation of the family of DMRG algorithms in exclusively MPS terms transparent. I then move on to discuss some directions of potentially fruitful further algorithmic development: while DMRG is a very mature method by now, I still see potential for further improvements, as exemplified by a number of recently introduced algorithms.}
+      \field{issn}{0003-4916}
+      \field{journaltitle}{January 2011 Special Issue}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{The density-matrix renormalization group in the age of matrix product states}
+      \field{volume}{326}
+      \field{year}{2011}
+      \field{pages}{96\bibrangedash 192}
+      \range{pages}{97}
+      \verb{doi}
+      \verb 10.1016/j.aop.2010.09.012
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0003491610001752
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0003491610001752
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1147,44 +1147,122 @@
       \verb https://doi.org/10.1021/acs.jctc.0c01264
       \endverb
     \endentry
-    \entry{PhysRev.121.950}{article}{}
-      \name{author}{1}{}{%
-        {{hash=dc00d632e62a274fec18f45fb7f7aa09}{%
-           family={Klein},
+    \entry{dykstra2011theory}{book}{}
+      \name{author}{4}{}{%
+        {{hash=052ea452535fe9375582c0a3df0463f6}{%
+           family={Dykstra},
+           familyi={D\bibinitperiod},
+           given={Clifford},
+           giveni={C\bibinitperiod}}}%
+        {{hash=64015f8212685a339b14f1f62681c3bb}{%
+           family={Frenking},
+           familyi={F\bibinitperiod},
+           given={Gernot},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0391917d5ef6f2831047f8de05704989}{%
+           family={Kim},
            familyi={K\bibinitperiod},
-           given={Abraham},
-           giveni={A\bibinitperiod}}}%
+           given={Kwang},
+           giveni={K\bibinitperiod}}}%
+        {{hash=2315c752846415e86873ecd3a066c9e2}{%
+           family={Scuseria},
+           familyi={S\bibinitperiod},
+           given={Gustavo},
+           giveni={G\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {American Physical Society}%
+        {Elsevier}%
       }
-      \strng{namehash}{dc00d632e62a274fec18f45fb7f7aa09}
-      \strng{fullhash}{dc00d632e62a274fec18f45fb7f7aa09}
-      \strng{bibnamehash}{dc00d632e62a274fec18f45fb7f7aa09}
-      \strng{authorbibnamehash}{dc00d632e62a274fec18f45fb7f7aa09}
-      \strng{authornamehash}{dc00d632e62a274fec18f45fb7f7aa09}
-      \strng{authorfullhash}{dc00d632e62a274fec18f45fb7f7aa09}
+      \strng{namehash}{e93ad005a99adf49b5e811f2757dca58}
+      \strng{fullhash}{eb023760d9842c4896c43062d7d29746}
+      \strng{bibnamehash}{eb023760d9842c4896c43062d7d29746}
+      \strng{authorbibnamehash}{eb023760d9842c4896c43062d7d29746}
+      \strng{authornamehash}{e93ad005a99adf49b5e811f2757dca58}
+      \strng{authorfullhash}{eb023760d9842c4896c43062d7d29746}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issue}{4}
-      \field{journaltitle}{Phys. Rev.}
-      \field{month}{2}
-      \field{title}{Perturbation Theory for an Infinite Medium of Fermions. II}
-      \field{volume}{121}
-      \field{year}{1961}
-      \field{pages}{950\bibrangedash 956}
-      \range{pages}{7}
-      \verb{doi}
-      \verb 10.1103/PhysRev.121.950
-      \endverb
-      \verb{urlraw}
-      \verb https://link.aps.org/doi/10.1103/PhysRev.121.950
-      \endverb
-      \verb{url}
-      \verb https://link.aps.org/doi/10.1103/PhysRev.121.950
-      \endverb
+      \field{title}{Theory and applications of computational chemistry: the first forty years}
+      \field{year}{2011}
+    \endentry
+    \entry{forster2020low}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f7da4c4e1b8d0a462603a9ffb5eec917}{%
+           family={Förster},
+           familyi={F\bibinitperiod},
+           given={Arno},
+           giveni={A\bibinitperiod}}}%
+        {{hash=83705bfa4b1fc17c437f8ad59291be4c}{%
+           family={Visscher},
+           familyi={V\bibinitperiod},
+           given={Lucas},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \strng{fullhash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \strng{bibnamehash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \strng{authorbibnamehash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \strng{authornamehash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \strng{authorfullhash}{5d0b96dbeb2c34fb84ce7b6d0ef28a09}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of chemical theory and computation}
+      \field{number}{12}
+      \field{title}{Low-order scaling g 0 w 0 by pair atomic density fitting}
+      \field{volume}{16}
+      \field{year}{2020}
+      \field{pages}{7381\bibrangedash 7399}
+      \range{pages}{19}
+    \endentry
+    \entry{szabo2023linear}{article}{}
+      \name{author}{4}{}{%
+        {{hash=f5ef48946dccdcc1d55479aa0aee9a71}{%
+           family={Szabó},
+           familyi={S\bibinitperiod},
+           given={P\bibnamedelima Bernát},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=be2611d6d685bc1348f18b3b744e671b}{%
+           family={Csóka},
+           familyi={C\bibinitperiod},
+           given={József},
+           giveni={J\bibinitperiod}}}%
+        {{hash=876380eb79e00f8443619f464bcf13f5}{%
+           family={Kállay},
+           familyi={K\bibinitperiod},
+           given={Mihály},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cb0a64089d87e224182018242b1b986e}{%
+           family={Nagy},
+           familyi={N\bibinitperiod},
+           given={Péter\bibnamedelima R},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{508206fc9ed66c5076c1957518e32b68}
+      \strng{fullhash}{8c641a6f9057300627d7016a8075b1a5}
+      \strng{bibnamehash}{8c641a6f9057300627d7016a8075b1a5}
+      \strng{authorbibnamehash}{8c641a6f9057300627d7016a8075b1a5}
+      \strng{authornamehash}{508206fc9ed66c5076c1957518e32b68}
+      \strng{authorfullhash}{8c641a6f9057300627d7016a8075b1a5}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{number}{22}
+      \field{title}{Linear-Scaling Local Natural Orbital CCSD (T) Approach for Open-Shell Systems: Algorithms, Benchmarks, and Large-Scale Applications}
+      \field{volume}{19}
+      \field{year}{2023}
+      \field{pages}{8166\bibrangedash 8188}
+      \range{pages}{23}
     \endentry
     \entry{noauthor_molecular_nodate}{misc}{}
       \list{language}{1}{%
@@ -1256,6 +1334,39 @@
       \endverb
       \verb{url}
       \verb http://dx.doi.org/10.1063/5.0176898
+      \endverb
+    \endentry
+    \entry{JordanLemma}{book}{}
+      \name{author}{1}{}{%
+        {{hash=366a83877538cc2ba490d3cd8795d5e9}{%
+           family={Jordan},
+           familyi={J\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Gauthier-Villars}%
+      }
+      \strng{namehash}{366a83877538cc2ba490d3cd8795d5e9}
+      \strng{fullhash}{366a83877538cc2ba490d3cd8795d5e9}
+      \strng{bibnamehash}{366a83877538cc2ba490d3cd8795d5e9}
+      \strng{authorbibnamehash}{366a83877538cc2ba490d3cd8795d5e9}
+      \strng{authornamehash}{366a83877538cc2ba490d3cd8795d5e9}
+      \strng{authorfullhash}{366a83877538cc2ba490d3cd8795d5e9}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Cours d'analyse}
+      \field{title}{Jordan lemma}
+      \field{year}{1894}
+      \field{pages}{285\bibrangedash 286}
+      \range{pages}{2}
+      \verb{urlraw}
+      \verb http://encyclopediaofmath.org/index.php?title=Jordan_lemma&oldid=47469
+      \endverb
+      \verb{url}
+      \verb http://encyclopediaofmath.org/index.php?title=Jordan_lemma&oldid=47469
       \endverb
     \endentry
   \enddatalist

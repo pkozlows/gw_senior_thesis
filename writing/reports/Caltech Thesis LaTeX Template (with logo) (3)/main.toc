@@ -27,7 +27,7 @@
 \contentsline {subsection}{Graphical vs. Iterative}{14}{section*.16}%
 \contentsline {subsection}{Testing of equation \ref {eq: Iterative equation}}{15}{section*.18}%
 \contentsline {subsection}{Total energy functionals}{16}{section*.20}%
-\contentsline {subsection}{Plotting natural occupations}{18}{section*.23}%
+\contentsline {subsection}{Plotting natural occupations}{17}{section*.23}%
 \contentsline {chapter}{\chapternumberline {7}Conclusion}{20}{chapter.7}%
 \contentsline {chapter}{\chapternumberline {8}Outlook}{21}{chapter.8}%
 \contentsline {chapter}{Bibliography}{22}{section*.27}%

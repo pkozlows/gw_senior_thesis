@@ -92,7 +92,7 @@
 \address{Pasadena, California}                     % Institution address
 \unilogo{caltech.png}                                 % Institution logo
 \copyyear{2024}  % Year (of graduation) on diploma
-\defenddate{[Exact Date]}          % Date of defense
+\defenddate{June 7th, 2024}          % Date of defense
 
 \orcid{0009-0000-6402-4261}
 
@@ -106,7 +106,8 @@
 %\maketitle
 
 \begin{acknowledgements} 	 
-%    I am indebted to all the medical professionals who have made my return to academics possible. I could not have done this without the help of dictation software Talon with it related Slack community and, particularly, the guys at Cursorless, who have taught me to code by voice. I would like to thank my advisor, Professor Garnet Chan, for offering me a path to return to academics after my medical leave. Many thanks to Doctor Johannes Tolle, who has struck the balance of being a patient, yet demanding, mentor and has pushed me to become an improved electronic structural theorist. Last, but not least, I would like to thank my family and, particularly, my mom for being my biggest supporters in my rehabilitation and academic journey.
+
+   I am indebted to all the medical professionals who have made my return to academics possible. I could not have done this without the help of dictation software Talon with its related Slack community and, particularly, the guys at Cursorless, who have taught me to code by voice "at the speed of thought". I would like to thank my advisor, Professor Garnet Chan, for offering me a path to return to academics after my medical leave. Many thanks to Doctor Johannes Tolle, who has struck the balance of being a patient, yet demanding, mentor and has pushed me to become an improved electronic structural theorist. Last, but not least, I would like to thank my family and, particularly, my mom for being my biggest supporters in my rehabilitation and academic journey.
 \end{acknowledgements}
 
 
@@ -218,7 +219,7 @@ We have used the notation for the spin integrals as given in Chapter \ref{chap:n
 \end{equation}
 Notice that the Coulomb term will obtain a factor of 2 after the spin integration, whereas the exchange term will only survive if the spins for $i$ and $j$ are the same. So Hartree-Fock fails to correlate electrons of opposite spin. In this work, we will work in the spin restricted Hartree-Fock formalism, which considers a single electronic orbital to be doubly occupied, with the two electrons having the same spatial part, but different spin parts.
 \subsection{Density Functional Theory (DFT)}
-The central quantity in DFT is the electron density $\rho_\textbf{r} $. The motivation for DFT can be seen by considering that the wave function depends on the whereabouts of $N$ electrons, each defined by their own orbital in the Hartree-Fock theory, which in turn has 3 directions within its spatial coordinate $\textbf{r}$. The electron density, on the other hand, is a function of just 3 variables, $x$, $y$, and $z$. Hohenberg and Kohn were able to take advantage of this fact when they proved that the ground state energy of a system is a unique functional of the electron density \autocite{Hohenberg1964}
+The central quantity in DFT is the electron density $\rho_\textbf{r} $. The motivation for DFT can be seen by considering that the wave function depends on the whereabouts of $N$ electrons, each defined by their own orbital in the Hartree-Fock theory, which in turn each have 3 directions within spatial coordinate $\textbf{r}$. The electron density, on the other hand, is a function of just 3 variables, $x$, $y$, and $z$. Hohenberg and Kohn were able to take advantage of this fact when they proved that the ground state energy of a system is a unique functional of the electron density \autocite{Hohenberg1964}
 \begin{equation}
     E[\rho_\textbf{r} ] = T[\rho_\textbf{r} ] + V_{ne}[\rho_\textbf{r} ] + V_H[\rho_\textbf{r} ] + V_{xc}[\rho_\textbf{r} ] + V_{nn},
 \end{equation}
@@ -231,7 +232,7 @@ One can define the single-particle Green's function $\mathcal{D}$ as
 \begin{equation}
 \mathcal{D}\left(\mathbf{r}_1, t_1 ; \mathbf{r}_2, t_2\right)=-i\left\langle N\left|\hat{T}\left[\hat{\psi }\left(\mathbf{r}_1, t_1\right) \hat{\psi }^{\dagger}\left(\mathbf{r}_2, t_2\right)\right]\right|  N\right\rangle,
 \end{equation}
-where $\hat{\psi }^{\dagger}$ ($\hat{\psi }$) are the field operators for creating or destroying a particle at spacetime coordinates $\mathbf{r}_{i}$ and $t_{i}$, respectively. $\hat{T}$ is the time-ordering operator that ensures that the field operator at the earlier time is acting on the ket before the field operator at the later time, and $N$ is the $N$-electron ground state of the system. Now, we make a distinction between the noninteracting and interacting Green's functions, denoted as $G_0$ and $G$, respectively. The noninteracting case signifies that the particles in the system are not interacting with each other, with a Green's function given as
+where $\hat{\psi }^{\dagger}$ ($\hat{\psi }$) are the field operators for creating (destroying) a particle at spacetime coordinates $\mathbf{r}_{i}$ and $t_{i}$, respectively. $\hat{T}$ is the time-ordering operator that ensures that the field operator at the earlier time is acting on the ket before the field operator at the later time, and $N$ is the $N$-electron ground state of the system. Now, we make a distinction between the noninteracting and interacting Green's functions, denoted as $G_0$ and $G$, respectively. The noninteracting case signifies that the particles in the system are not interacting with each other, with a Green's function given as
 \begin{equation}
 G_0\left(\mathbf{r}_1, t_1 ; \mathbf{r}_2, t_2\right)=-i\left\langle\Phi_0\left|\hat{T}\left[\hat{\psi }\left(\mathbf{r}_1, t_1\right) \hat{\psi }^{\dagger}\left(\mathbf{r}_2, t_2\right)\right]\right| \Phi_0\right\rangle,
 \end{equation}
@@ -262,7 +263,7 @@ where $\Sigma$ is the self-energy. The self-energy is a quantity that accounts f
 \caption{Electron gas propagation taken from \textcite{mattuck_guide_1992}}
 \label{fig:propagates}
 \end{figure}
-As it propagates through this medium, it will have an electrostatic repulsion with the electrons in the gas, so it will create holes (depicted in white) as it moves along (pictured in Figure \ref{fig:clothing}). Therefore, it no longer makes sense to think of the bare electron, but rather the quasi-electron along with its "clothing" of holes. To make this more rigorous, we have the equation
+As the electron propagates through this medium, it will have an electrostatic repulsion with the electrons in the gas, so it will create holes (depicted in white) as it moves along (pictured in Figure \ref{fig:clothing}). Therefore, it no longer makes sense to think of the bare electron, but rather the quasi-electron along with its "clothing" of holes. To make this more rigorous, we have the equation
 \begin{equation}
     \epsilon_{\text{quasi}} - \epsilon_{\text{bare}} = \epsilon_{\text{self}},
 \end{equation}
@@ -294,7 +295,7 @@ where we have made use of the shorthand notation $1=(\mathbf{r}_1, t_1)$ and $V$
 \end{figure}
 The figure \ref{fig:hedin} shows the self-consistency between these equations, with the polarization $P$ represented by $\tilde{\chi}$. Full self-consistency, including the vertex function $\Gamma$, is shown in the left panel, whereas the $GW$ approximation, which neglects the vertex function, is shown in the right panel. The $G_0W_0$ method, which is studied in this work, only performs one loop of the $GW$ approximation cycle. This is why it is often termed a "one-shot" procedure.
 \subsection{Application in MBPT}
-Now that we have the recipe to solve for the interacting single-particle Green's function $G$, we can use it to obtain a perturbative correction to a variety of properties.  In this work, we use it to obtain quasiparticle orbitals $\chi^{QP}$, as an update to the mean-field orbitals $\chi^{MF}$. We also use it to update the electron density via the linearized $G_0W_0$ density matrix derived in chapter \ref{chap:linearized_gw}. Finally, we use it to determine the total energy of the molecule with different total energy functionals in chapter \ref{chap:total_energy}. It can also be used, among other things, to compute the spectral function, which gives access to ionization potentials and electron affinities. \autocite{noauthor_frontiers_nodate}
+Now that we have the recipe to solve for the interacting single-particle Green's function $G$, we can use it to obtain a perturbative correction to a variety of properties.  In this work, we use it to obtain quasiparticle orbitals $\chi^{QP}$, as an update to the mean-field orbitals $\chi^{MF}$. We also use it to incorporate correlation affects into the electron density via the linearized $G_0W_0$ density matrix derived in chapter \ref{chap:linearized_gw}. Finally, we use it to determine the total energy of the molecule with different total energy functionals in chapter \ref{chap:total_energy}. It can also be used, among other things, to compute the spectral function, which gives access to ionization potentials and electron affinities. \autocite{noauthor_frontiers_nodate}
 
 
 
@@ -321,7 +322,7 @@ The right side of the equality gives the updated $\varepsilon_{p}^{\mathrm{QP}}$
 \begin{equation}
     \Sigma_{pp}^{\text{corr}}(\omega) = \sum_{\mu }^{\text{RPA}}\left(\sum_{i}^{\text{occupied}} \frac{V_{pi}^{\mu }V_{ip}^{\mu }}{\omega -(\epsilon _{i}-\Omega  _{\mu })}+ \sum_{a}^{\text{virtual}} \frac{V_{pa}^{\mu }V_{ap}^{\mu }}{\omega -(\epsilon _{a}+\Omega  _{\mu })}\right)
 \end{equation}
-This is the working equation for the correlation self-energy for a given MO $p$. First, we have a sum running over all of the excitations $\mu$ obtained from the previous RPA calculation, which will be introduced shortly. Then, we have two terms: one sum running over all of the occupied orbitals and the other sum running over all virtual orbitals. The $\Omega _{\mu }$ are the excitation energies, and the $V_{pq}^{\mu }$ defined the coupling between my excitation vectors and electron repulsion integrals, as defined within section \ref{subsection:coupling}. The $\epsilon _{i}$ and $\epsilon _{a}$ are the orbital energies of the occupied and virtual orbitals, respectively. The $\omega$ is the frequency at which we are evaluating the self-energy, which is the quasiparticle energy $\varepsilon_{p}^{\text{QP}}$ in the iterative equation \ref{eq: Iterative equation}.
+This is the working equation for the correlation self-energy for a given molecular orbital (MO) $p$. First, we have a sum running over all of the excitations $\mu$ obtained from the previous RPA calculation, which will be introduced shortly. Then, we have two terms: one sum running over all of the occupied orbitals and the other sum running over all virtual orbitals. The $\Omega _{\mu }$ are the excitation energies, and the $V_{pq}^{\mu }$ defined the coupling between the excitation vectors and electron repulsion integrals, as defined within section \ref{subsection:coupling}. The $\epsilon _{i}$ and $\epsilon _{a}$ are the orbital energies of the occupied and virtual orbitals, respectively. The $\omega$ is the frequency at which we are evaluating the self-energy, which is the quasiparticle energy $\varepsilon_{p}^{\text{QP}}$ in the iterative equation \ref{eq: Iterative equation}.
 
 
 
@@ -380,7 +381,7 @@ And then we form the coupled excitation vectors from
 \end{equation}
 
 \subsection{Tamm-Dancoff Approximation}
-In this method, we neglect the $\textbf{B}$ matrix of the RPA equation. So the eigenvalue equation becomes
+In this method, we neglect the $\textbf{B}$ matrix of the RPA equation, so we are not considering the de-excitations of full RPA. So the eigenvalue equation becomes
 \begin{equation}
     \textbf{A}\textbf{X} = \textbf{X} \boldsymbol{\Omega }
 \end{equation}
@@ -392,7 +393,7 @@ where we still have:
 And then we follow the same procedure as in the RPA to get the residues $V_{pq}^{\mu}$, where now we have ${Z}_{\nu, \mu} = {X}_{\nu, \mu}$.
 
 \chapter{Linearized $G_0W_0$ Density Matrix}
-As noted earlier, we can get a new density matrix out of the interacting Green's function. Then this allows us to obtain new MO coefficients through a rotation of those from the noninteracting Green's function. The form of this density matrix is shown below, and the derivation of it is given in Appendix \ref{applinearized_gw}.
+As noted earlier, we can get a new density matrix out of the interacting Green's function. Then this allows us to obtain new MOs through a rotation of those from the noninteracting Green's function. The form of this density matrix is shown below, and the derivation of it is given in Appendix \ref{applinearized_gw}.
 \label{chap:linearized_gw}
 \subsection{Implementation}
 First, we consider the fully occupied block
@@ -416,7 +417,7 @@ This all contributes to the form of the density matrix as
         \gamma _{bi}^{G W } & \gamma _{a b}^{G W}
     \end{pmatrix},
 \end{equation*}
-where $\gamma _{bi}^{G W }$ is simply the transpose of $\gamma _{ib}^{\text{GW}}$, since all elements of this matrix are real. Therefore, this density matrix is Hermitian.
+where $\gamma _{bi}^{G W }$ is simply the transpose of $\gamma _{ib}^{\text{GW}}$, since all elements of this matrix are real. Therefore, this density matrix is Hermitian. The factor of 2 comes from the spin integration of the restricted formalism.
 
 
 
@@ -440,7 +441,7 @@ Also, at around $\omega$ = -40 eV, one can observe a pole structure. This would 
 The correctness of my implementation has been verified for some molecules and molecular orbitals by comparing the results with the data from PySCF in Table \ref{tab:energies}.
 \begin{table}[h]
 \centering
-\caption{Deviation in quasi-particle energies for four molecules using the $G_0W_0$ self-energy either evaluated within the dTDA or dRPA relative to PySCF}
+\caption{Deviation in quasi-particle energies for four molecules using the $G_0W_0$ self-energy either evaluated within the dTDA or dRPA relative to PySCF (all values converted to $\mathrm{eV}$)}
 \label{tab:energies}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -469,7 +470,7 @@ LUMO + 2 & 4.07e-11 & 6.92e-10 & 3.15e-14 & 4.97e-14 & 1.12e-12 & 3.09e-14 & 3.9
 The cc-pVDZ basis set was used for all calculations. As can be seen, deviations in the QP energies of my $G_0W_0$ implementation with respect to the corresponding in PySCF are near floating point error with the exception of my dRPA calculation for $\mathrm{CO}$, which has an electronic structure that is known to be difficult to describe because of unusual polarization with the dipole moment pointing towards the carbon, instead of the oxygen, as would be expected from electronegativity arguments. \autocite{frenking2007electronic}
 \subsection{Total energy functionals}
 \label{chap:total_energy}
-The linearized $G_0W_0$ density matrix also gives access to energies through energy functionals that can be defined using it. We first tested our implementation against that of \textcite{bruneval_improved_2021} and specifically the correlation energies predicted by the Galitskii-Migdal functional of the noninteracting system with a Hartree-Fock starting point, which are given by the convolution of the correlation self-energy with the (here noninteracting) Green's function, as
+The linearized $G_0W_0$ density matrix also gives access to energies through energy functionals that can be defined using it. We first tested our implementation against that of \textcite{bruneval_improved_2021} and specifically the correlation energies predicted by the Galitskii-Migdal functional of the noninteracting system with a Hartree-Fock starting point, which are given by the convolution of the correlation self-energy with the Green's function, as
 \begin{equation}
 E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) \mathcal{D}\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right),
 \end{equation}
@@ -482,7 +483,7 @@ E_{\mathrm{corr}}^{\mathrm{GM}}=-2\sum_{\mu}^{\mathrm{RPA}} \sum_{i a} \frac{(V_
 There was a good agreement between my implementation of equation \ref{eq:GM} and that from the quantum chemistry codes MOLGW and FHI-AIMS \autocite{bruneval_improved_2021}, as shown by the small deviations in Table \ref{tab:galitskii}.\\\\
 \begin{table}[h!]
     \centering
-    \caption{Galitskii-Migdal correlation energies as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
+    \caption{Galitskii-Migdal correlation energies (as defined in \ref{eq:GM}; deviations are calculated with the difference between my implementation and the average of those from MOLGW and FHI-AIMS.}
     \begin{tabular}{lcccc}
         \toprule
         & \textbf{MOLGW} & \textbf{FHI-AIMS} & \textbf{Mine from eqn. \ref{eq:GM}} & \textbf{Deviation} \\
@@ -497,42 +498,25 @@ There was a good agreement between my implementation of equation \ref{eq:GM} and
 \textcite{bruneval_improved_2021} proposed a new total energy functional using the linearized $G_0W_0$ density matrix, which uses the Galitskii-Migdal correlation functional
 \begin{equation}
     E_{\text{tot}}^{\gamma ^{\mathrm{GW}}} = T_s [\gamma ^{\mathrm{GW}}] + V_H [\gamma ^{\mathrm{GW}} ] + V_x [\gamma ^{\mathrm{GW}} ] + V_{\text{nuc, elec}} [\gamma ^{\mathrm{GW}} ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma_0],
+\label{eq:GM_total_energy}
 \end{equation}
-where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{GM}}$ is the correlation energy, as defined in equation \ref{eq:GM}. $\gamma ^{\mathrm{GW}}$ is the correlated linearized $G_0W_0$ density matrix. Values obtained using this functional are given in Table \ref{tab:total_energy_gm}.
-Now, let us consider two variants of a Klein total energy functional that can be obtained. They are defined by \textcite{bruneval_improved_2021} as
-\begin{equation}
-    E_{\text{tot}}^{\mathrm{1}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma _{0} ]
-\label{eq:klein1}
-\end{equation}
-and
-\begin{equation}
-    E_{\text{tot}}^{\mathrm{2}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0],
-\label{eq:klein2}
-\end{equation}
-where $T_s$ is the kinetic energy, $V_H$ is the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{Klein}}$ is the correlation energy. Note that the only difference between these two definitions is that we are alternating between using the $\gamma _0$ within the correlation and kinetic functionals. $E_{\text{corr}} ^{\text{Klein}}$ is defined as \autocite{PhysRev.121.950}
-\begin{equation}
-    E_{\text{corr}}^{\text{Klein}} = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} - A^{\text{TDA}})
-    = \frac{1}{2} \text{Tr} (\Omega ^{\text{RPA}} ) - \frac{1}{2} \text{Tr} (\Omega ^{\text{TDA}}),
-\end{equation}
-where we have used the invariance of the trace to unitary transformations and cyclic permutations to derive this.
-As table \ref{tab:klein} shows, the difference in total energy between these functionals is captured in large part by their difference in correlation energy which suggests that the $E_{\text{corr}} ^{\text{Klein}}$ is more capable at describing the electronic correlation of the interacting system than $T_s$.
+where $T_s$ is the kinetic energy, $V_H$ the Hartree potential energy, $V_x$ is the exchange potential energy, $V_{\text{nuc, elec}}$ is the nuclear-electron potential energy, $V_{\text{nuc, nuc}}$ is the nuclear-nuclear potential energy, and $E_{\text{corr}} ^{\text{GM}}$ is the correlation energy, as defined in equation \ref{eq:GM}. Note that the linearized $G_0W_0$ density matrix $\gamma ^{\mathrm{GW}}$ is a correlated density matrix, meaning that it has fractional occupations and, therefore, we must evaluate the $E_{\text{corr}} ^{\text{GM}}$ with $\gamma_0$, as the RPA calculation needed to formulate equation \ref{eq:GM} is nonsensical with fractional excitations. Values obtained using this functional are given in Table \ref{tab:total_energy_gm}. As can be seen, the $\gamma ^{GW}$ results come very close to the CCSD(T) gold standard of the field \autocite{dykstra2011theory}, albeit at a much lower computational scaling (other implementations of $G_0W_0$ has been reduced to lower than $O(N^4)$ \autocite{forster2020low}) as opposed to the $O(N^7)$ scaling of CCSD(T). \autocite{szabo2023linear}
 \begin{table}[h!]
-\centering
-\begin{tabular}{lccc}
+    \centering
+    \caption{Total energies (in Hartrees) from a non interacting Hartree-Fock system, the linearized $G_0W_0$ density matrix, with the energy functional defined in equation \ref{eq:GM_total_energy}, and the CCSD(T) reference.}
+\begin{tabular}{lrrr}
 \toprule
-& \textbf{Total Energy Diff.} & \textbf{Correlation Energy Diff.} & \textbf{Correlation not from $E_{\mathrm{corr}}^{\mathrm{Klein}}$} \\
+& \textbf{HF} & \textbf{$\gamma ^{\mathrm{GW}}$} & \textbf{CCSD(T)} \\
 \midrule
-\textbf{H$_2$O} & -0.085109 & -0.085097 & 0.000012 \\
-\textbf{NH$_3$} & -0.074617 & -0.074652 & 0.000035 \\
-\textbf{LiH} & -0.055925 & -0.055952 & 0.000027 \\
+\textbf{H$_2$O}& -75.973547 & -76.165785 & -76.191362 \\
+\textbf{NH$_3$}& -56.172182 & -56.357917 & -56.377910 \\
+\textbf{LiH}& -7.983642 & -8.016075 & -8.014747 \\
 \bottomrule
 \end{tabular}
-\caption{Differences in total energy, correlation energy, and the correlation energy outside of $E_{\mathrm{corr}}^{\mathrm{Klein}}$ between the Klein functionals of equations \ref{eq:klein1} $-$ \ref{eq:klein2}.}
-\label{tab:klein}
+
+\label{tab:total_energy_gm}
 \end{table}
-
-
-
+\\
 
 
 
@@ -555,7 +539,7 @@ When $\mathrm{H_2}$ is at the equilibrium bond distance near equilibrium, we see
 \label{fig:h2_mo_diagram}
 \end{figure}
 \chapter{Conclusion}
-    To start with, we considered the foundational mean-field theories, like Hartree-Fock or DFT, from which we are able to carry out many-body perturbation theory calculations. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We explained how to implement the $G_0W_0$ iterative procedure, including details for the construction of the self-energy from a RPA calculation. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix\autocite{bruneval_assessment_2019}. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including how one can use it to access total energy functionals and improve natural occupations throughout a bond dissociation process, done for the first time using the direct Tamm-Dancoff approximation (dTDA).
+    To start with, we considered the foundational mean-field theories, like Hartree-Fock or DFT, from which we are able to carry out many-body perturbation theory calculations. Next, we introduced the formalism of Green's functions within the framework of MBPT, the concept of the self-energy, the $GW$ approximation, and the one-shot $G_0W_0$ method. We explained how to implement the $G_0W_0$ iterative procedure, including details for the construction of the self-energy from a RPA calculation. Then, we investigated properties of the recently proposed linearized $G_0W_0$ density matrix\autocite{bruneval_assessment_2019}. We then provided a verification of my implementation and some illuminating results of the linearized $G_0W_0$ density matrix, including how one can use it to access total energy functionals and improve natural occupations throughout a bond dissociation process, done for the first time here using the direct Tamm-Dancoff approximation (dTDA).
 \chapter{Outlook}
 The linearized $G_0W_0$ density matrix has only recently been proposed, and there are multiple avenues for using it in further work. One could imagine a scheme where
 \begin{enumerate}
@@ -750,7 +734,7 @@ I_2 = \int_{-\infty }^{\infty }\mathrm{d} \omega \mathrm{e}^{\mathrm{i \omega \e
 \label{eqnexpanded_integral}
 \end{aligned}
 \end{equation}
-At this point, we note the following relation between integrals $\oint_{D_{\pm}} f(z) = \int_{-R}^R f(z) + \int_{{C_R}_{\pm}} f(z)$. $D_{\pm}$ is a semicircular domain in either half of the complex plane, ${C_R}_{\pm}$ is the semicircle in the upper or lower part of the complex plane, and $R$ is the radius of the semicircle. We are able to take $R\rightarrow \infty$ and since $f(z)=e^{i\omega \eta}g(z)$, where $g(z)$ is analytic on $D$ except for a finite number of poles, the integral over the semicircle will vanish by Jordan's lemma, leaving us with $\int_{-R=-\infty}^{R=\infty} f(z)= \oint_{D_{\pm}} f(z)$. 
+At this point, we note the following relation between integrals $\oint_{D_{\pm}} f(z) = \int_{-R}^R f(z) + \int_{{C_R}_{\pm}} f(z)$. $D_{\pm}$ is a semicircular domain in either half of the complex plane, ${C_R}_{\pm}$ is the semicircle in the upper or lower part of the complex plane, and $R$ is the radius of the semicircle. We are able to take $R\rightarrow \infty$ and since $f(z)=e^{i\omega \eta}g(z)$, where $g(z)$ is analytic on $D$ except for a finite number of poles, the integral over the semicircle will vanish by Jordan's lemma\autocite{JordanLemma}, leaving us with $\int_{-R=-\infty}^{R=\infty} f(z)= \oint_{D_{\pm}} f(z)$. 
 
 \begin{figure}
     \centering

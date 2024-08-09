@@ -90,16 +90,22 @@ where $X_{ia}^u$ are the excitation vectors. After the spin integration, this si
 \end{equation}
 We want to test 3 different total energy functionals:
 \begin{equation}
-    E_{\text{tot}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma ]
+    E_{\text{tot}} = T_s [\gamma _{0}] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0 ]
 \label{eq:klein1}
-\end{equation}
-\begin{equation}
-    E_{\text{tot}}^{GM} = T_s [\gamma _{0} ] + V_H [\gamma _{0} ] + V_x [\gamma _{0} ] + V_{\text{nuc, elec}} [\gamma _{0} ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma _{0}]
 \end{equation}
 \begin{equation}
     E_{\text{tot}} = T_s [\gamma ] + V_H [\gamma ] + V_x [\gamma ] + V_{\text{nuc, elec}} [\gamma ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{Klein}}[\gamma_0]
 \label{eq:klein2}
 \end{equation}
+\begin{equation}
+    E_{\text{tot}}^{GM} = T_s [\gamma _{0} ] + V_H [\gamma _{0} ] + V_x [\gamma _{0} ] + V_{\text{nuc, elec}} [\gamma _{0} ] + V_{\text{nuc, nuc}} + E_{\text{corr}} ^{\text{GM}}[\gamma _{0}]
+\end{equation}
+
+I have been struggling a little bit with how to get The
+\begin{equation}
+    T_s[\gamma _0] + V_{\text{nuc, elec}} [\gamma]
+\end{equation}
+In my first line of code, I am generating the kinetic integrals in the AO basis: $\mathrm{T}_{\mu \nu}$. Then, I rotate them into the MO basis using the noninteracting coefficients $T_{pq}=\sum_{\mu \nu} C_{\mu p} T_{\mu \nu} C_{\nu q}$. Finally, I get $T_{\mu \nu}$ back from a rotation via $\gamma ^{GW}\rightarrow S_{\mu p}$ like $T_{\mu \nu} = \sum_{pq} S_{\mu p} T_{pq} S_{\nu q}$. But I am getting answers that are far off, so is this the right way to do it?\\\\
 Specifically, we will want to see the difference between \ref{eq:klein1} and \ref{eq:klein2}. 
 We are interested in formulating a table, which will corroborate vitals putin MOLGW, FHI-AIMS, and my implementation for the Galitskii-Migdal correlation energies. Then, I want to show how my energy for the Galitskii-Migdal deviates from that reported in the paper using HF, since mine uses the $G_0W_0$ density matrix that we investigated and the paper just uses the HF density matrix.
 Then I want to make a separate table, which compares the results of my Klein implemtation, for both of the interacting and noninteracting cases, with the responding result from PySCF. I will comment about how the discrepancy originates from the fact that the PySCF implementation uses and axillary bases, wail I didn't. Lastly, I want to make a table which documents the deviations between my Klein folly interacting and noninteracting cases cover for the total energies and the correlation energies. For the first table, I will just consider the two atoms Ne and He. For the second two tables, I will consider the water molecule, mating, and licl, to show more versatility.

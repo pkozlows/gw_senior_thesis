@@ -13,6 +13,8 @@
 \usepackage{xcolor} % Required for custom colors
 \usepackage{hyperref}
 \usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, calc}
 \addbibresource{examples.bib}
 
 % Define custom colors
@@ -58,27 +60,42 @@ where
 
 \end{frame}
 
+
+
 \begin{frame}
     \frametitle{\textcolor{caltechorange}{Common electronic structure tools}}
-\begin{itemize}
-    \item Mean-field theories
-    \begin{itemize}
-        \item \textbf{Hartree-Fock}: Assumes only average electron-electron interactions
-        \item \textbf{Density Functional Theory}: Lack of systematic improvability due to the approximate exchange-correlation functional
-    \end{itemize}
-\pause
-    \item Wavefunction-based methods
-    \begin{itemize}
-        \item \textbf{Coupled cluster theories like CCSD(T)}: Highly accurate, but computationally intractable for large systems
-        \end{itemize}
-\pause
-    \item Green function methods
-    \begin{itemize}
-        \item \textbf{GW approximation}: The gap-filling method; decent accuracy for cheap computational cost
-        \item variation of this ($G_0W_0$) studied here
-    \end{itemize}
-\end{itemize}
+
+    % Titles for the methods categories
+    \noindent
+    \begin{flushleft}
+        \textbf{Mean-field} \hspace{1.5cm} \textbf{Green function} \hspace{0.5cm} \textbf{Wavefunction-based}
+    \end{flushleft}
+
+
+
+     \begin{tikzpicture}
+        % Define colors for the Venn diagram
+        \definecolor{lowcolor}{RGB}{173,216,230}
+        \definecolor{highcolor}{RGB}{255,182,193}
+
+        % Draw the two overlapping circles
+        \draw[fill=lowcolor, fill opacity=0.5] (-2, 0) circle (3cm) node [text width=4cm, align=left] {\small \textbf{DFT}\\ \textbf{Hartree-Fock}};
+        
+        \draw[fill=highcolor, fill opacity=0.5] (2, 0) circle (3cm) node [text width=4cm, align=right] {\small \textbf{Coupled Cluster}\\ \textbf{i.e. CCSD(T)}};
+        
+        % Place the GW Approximation text without a circle
+        \node at (0, 0) [text width=4cm, align=center] {\small \textbf{GW Approximation}};
+
+        % Draw bold and larger arrows
+        \draw[ultra thick, ->, >=latex, line width=1mm] (-5, -4) -- (5, -4) node[right, above] {Accuracy};
+        \draw[ultra thick, <-, >=latex, line width=1mm] (-5, -4.5) -- (5, -4.5) node[pos=0, above] {Cost};
+
+    \end{tikzpicture}
+
+
 \end{frame}
+
+
 
 
 
@@ -120,31 +137,10 @@ where
         \item add self-energy, evaluated at $\varepsilon_p^{\mathrm{QP}}$ from the previous iteration
         \item iterate until self-consistency in $\varepsilon_p^{\mathrm{QP}}$ is reached
     \end{enumerate}
-\pause
-    \begin{table}[h]
-    \centering
-    \caption{Deviation in $\varepsilon_p^{\mathrm{QP}}$ (in eV) for $G_0W_0$ between my implementation and PySCF\autocite{sun_recent_2020}}
-    \begin{tabular}{|c|c|c|c|c|}
-    \hline
-    \multirow{1}{*}{Orbital} & \multicolumn{1}{c|}{$H_2O$} & \multicolumn{1}{c|}{$NH_3$} & \multicolumn{1}{c|}{$LiH$} & \multicolumn{1}{c|}{$CO$} \\
-    \hline
-    HOMO - 2 & 5.33e-15 & 1.42e-14 & 3.55e-14 & 0.00477 \\
-    \hline
-    HOMO - 1 & 1.07e-13 & 2.33e-10 & 2.84e-14 & 0.00476 \\
-    \hline
-    HOMO     & 2.84e-13 & 1.30e-12 & 1.96e-10 & 2.84e-13 \\
-    \hline
-    LUMO     & 2.65e-14 & 8.78e-14 & 2.66e-15 & 0.00679 \\
-    \hline
-    LUMO + 1 & 2.71e-14 & 8.78e-14 & 2.43e-14 & 0.00678 \\
-    \hline
-    LUMO + 2 & 6.92e-10 & 4.97e-14 & 3.09e-14 & 3.99e-14 \\
-    \hline
-    \end{tabular}
-    \end{table}
+
 \end{frame}
 \begin{frame}
-    \frametitle{\textcolor{caltechorange}{Linearized $G_0W_0$ density matrix\autocite{bruneval_improved_2021}: Part 1}}
+    \frametitle{\textcolor{caltechorange}{Linearized $G_0W_0$ density matrix\autocite{bruneval_assessment_2019}:}}
 \textbf{Natural occupations}:  number of electrons in a given orbital.\autocite{szabo_modern_2012}
 \begin{figure}[h]
     \includegraphics[width=0.9\textwidth]{h2_occupations.png}
@@ -152,48 +148,10 @@ where
 
 \end{figure}
 \end{frame}
-\begin{frame}
-\frametitle{\textcolor{caltechorange}{Reference}}
-    \begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{h2_mo.png}
-\caption{MO diagram of $\mathrm{H_2}$ at the equilibrium bond distance \autocite{noauthor_molecular_nodate}}
-\label{fig:h2_mo_diagram}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{\textcolor{caltechorange}{Total energies from the linearized $G_0W_0$ density matrix}}
-{Galitskii-Migdal $E^{\mathrm{corr}}$}: convolution of the correlation self-energy $\Sigma _c$ with the Green's function $\mathcal{D}$
-\begin{equation}
-    \highlight{E_{\mathrm{corr}}^{\mathrm{GM}}=-\frac{\mathrm{i}}{2} \int_{-\infty}^{\infty} \frac{\mathrm{d} \omega}{2 \pi} \int \mathrm{d} \boldsymbol{x}_1 \boldsymbol{x}_3 e^{\mathrm{i} \omega \eta} \Sigma_{\mathrm{c}}\left(\boldsymbol{x}_1 \boldsymbol{x}_3 ; \omega\right) \mathcal{D}\left(\boldsymbol{x}_3 \boldsymbol{x}_1 ; \omega\right)}
-\label{eq:GM_total_energy}
-\end{equation}
-\begin{table}[h!]
-    \centering
-    \caption{Deviation in total energies (in eV) {from the CCSD(T) reference} for Hartree-Fock and $\gamma ^{\mathrm{GW}}$ of the linearized $G_0W_0$ density matrix (using $E^{\mathrm{corr}}$ from equation \ref{eq:GM_total_energy}).}
-    \begin{tabular}{|l|c|c|}
-        \hline
-        \textbf{Molecule} & \textbf{HF $\Delta $CCSD(T)} & \textbf{$\gamma ^{\mathrm{GW}}$ $\Delta $CCSD(T)} \\
-        \hline
-        \textbf{H$_2$O} & 5.93 & 0.696 \\
-        \hline
-        \textbf{NH$_3$} & 5.60 & 0.544 \\
-        \hline
-        \textbf{LiH} & 0.846 & 0.0361 \\
-        \hline
-    \end{tabular}
-    \label{tab:total_energy_gm_ev}
-    \vspace{-10pt}
-\end{table}
 
 
 
-\end{frame}
-\begin{frame}
-    \frametitle{\textcolor{caltechorange}{Acknowledgements}}
-    I would like to thank the medical professionals who are the reason that I can be here, the guys at Cursorless who helped me learn to voice code, my adviser, Professor Garnet Chan, and mentor, Dr. Johannes Tolle, for guiding me in my research, and my family, and particularly my mom, for being the biggest supporters in my rehabilitation and academic journey.
-\end{frame}
+
 
 
 

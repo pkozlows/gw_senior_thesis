@@ -2353,22 +2353,12 @@
     <bcf:citekey order="2">mattuck_guide_1992</bcf:citekey>
     <bcf:citekey order="3">mattuck_guide_1992</bcf:citekey>
     <bcf:citekey order="4">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="5">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="6">sun_recent_2020</bcf:citekey>
+    <bcf:citekey order="5">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="6">szabo_modern_2012</bcf:citekey>
     <bcf:citekey order="7">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="8">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="9">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="10">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="11">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="12">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="13">noauthor_molecular_nodate</bcf:citekey>
-    <bcf:citekey order="14">noauthor_molecular_nodate</bcf:citekey>
-    <bcf:citekey order="15">mattuck_guide_1992</bcf:citekey>
-    <bcf:citekey order="16">sun_recent_2020</bcf:citekey>
-    <bcf:citekey order="17">bruneval_assessment_2019</bcf:citekey>
-    <bcf:citekey order="18">szabo_modern_2012</bcf:citekey>
-    <bcf:citekey order="19">bruneval_improved_2021</bcf:citekey>
-    <bcf:citekey order="20">noauthor_molecular_nodate</bcf:citekey>
+    <bcf:citekey order="8">mattuck_guide_1992</bcf:citekey>
+    <bcf:citekey order="9">bruneval_assessment_2019</bcf:citekey>
+    <bcf:citekey order="10">szabo_modern_2012</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

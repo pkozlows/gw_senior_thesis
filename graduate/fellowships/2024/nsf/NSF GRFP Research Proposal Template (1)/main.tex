@@ -1,0 +1,181 @@
+\documentclass[11pt]{article} % 11pt font
+
+% Conform to NSF formatting requirements
+% see: https://www.nsf.gov/pubs/2020/nsf20587/nsf20587.pdf
+% --------------------------------------
+% 1in margins
+\usepackage[margin=1in]{geometry}
+% use times new roman for main text
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+% use cambria for math
+\usepackage{unicode-math}
+\setmathfont{[Cambria-Math.ttf]}
+% single line spacing
+\usepackage{setspace}
+\singlespacing
+
+% To fit more into the proposal, 
+% let's make the section titles tiny and compact
+\usepackage[tiny,compact]{titlesec}
+\titleformat{\section}[runin]{\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[runin]{\bfseries}{\thesubsection}{1em}{}
+
+% % and let's compress the references too
+% \usepackage[numbers]{natbib}
+% \bibliographystyle{unsrtnat}
+% \renewcommand{\refname}{References \vspace{-0.6\baselineskip}} % no extra vert. space after title
+% \setlength{\bibsep}{0pt} % no extra vert. space between bib items
+
+
+% Other packagesf
+% --------------
+% math packages
+\usepackage{amsmath}
+% microtype
+\usepackage[final]{microtype}
+% text colors
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+
+% my custom commands
+% ------------------
+% note command
+\newcommand{\note}[1]{\textsf{\textcolor{red}{#1}}}
+% multi-line comment command
+\newcommand{\comment}[1]{}
+
+
+% -------------------------
+% BEGINNING OF THE DOCUMENT
+% -------------------------
+\begin{document}
+
+\begin{center}
+\large{\bf Title of the project}
+\end{center}
+
+\section*{Outline}
+The green energy transition underscores the need for the discovery of materials. The once will sustain applications often have strongly correlated electrons. Density Functional Theory (DFT) has long served as a computational workhorse for materials science by using the electron density as the fundamental quantity. HDFT scales computationally as \( O(N^3) \), where \( N \) is the number of electrons in the system. however, It treats the repulsive interactions between electrons using an exchange-correlation functional, which is often approximated, leading two un very verbal result. A potential solution is the application of Green's functions in many-body perturbation theory (MBPT). Central to this is the Dyson equation:
+
+\begin{equation}
+    G = G_0 + G_0 \Sigma G = G_0 + G_0 \Sigma G_0 + G_0 \Sigma G_0 \Sigma G_0 + \ldots
+\end{equation}
+
+In this equation, the Green's function for the fully interacting system \( G \) is related to the noninteracting Green's function \( G_0 \) through the self-energy \( \Sigma \). In the common \( GW \) approximation, it is assumed that the self-energy \( \Sigma \) takes the form \( iGW \), where \( W \) is the screened Coulomb interaction. Therefore, a question 1 represents a series expansion in the interaction strength $W$, which is used to make $\Sigma $. This means that the \( GW \) approximation is accurate for systems where it is reasonable to expand the Dyson equation in a small Coulomb interaction. However, for strongly correlated systems, this is not reasonable an so the$GW$ approximation often fails.  there is the Mori-Zwanzig theory, that has been long known in statistical physics, but only recently has been applied two green's functions. which can be used to vite the equation of motion for a greens function as
+\begin{equation}
+\frac{d}{d t} G(t)=\Omega G(t)+\int_0^t \hat{\Sigma}(s) G(t-s) d s,
+\end{equation}
+recently, a diagrammatic theory analogs to the femen diagrams of many body perturbation theory has been introduced, in the form of tree diagrams. This theory remedies the issue for strongly correlated systems in many body perturbation theory by instead providing an expansion in terms of the evolution time $t$.  One can view \( \hat{\Sigma}(z) \) as the "self-energy" in the Mori-Zwanzig framework.
+The difference is that the Feynman
+diagram is a bookkeeping device for tracking the series expansion of Dyson’s equation with respect to the
+interaction strength v, while the tree diagram is for tracking the series expansion of the MZE with respect
+to the evolution time t. 
+From this perspective, CMZE resembles the combinatorial Dyson-Schwinger equation (DSE)
+for quantum electrodynamics (QED) [38, 37] and the skeleton expansions for quantum many-body systems
+[36] since the latter two are also formally exact for quantum fields with arbitrarily large interaction strength.
+In fact, the resemblance between functional equations (95), (103) and (91), as well as the similarities between
+tree diagram and Feynman diagrams clearly illustrates such connections.
+On the other hand, the difference is also worth noticing. First, as we already pointed out, CMZE is
+a temporal-domain renormalized perturbation theory, while the combinatorial DSE for QED [37] and the
+skeleton expansions are perturbation theory renormalized with respect to parameters such as the interaction
+strength. Eventually, this is due to the fact that MBPT is built upon the Dyson series expansion in the
+interaction picture, while the CMZE is built on the Taylor series expansion in the Heisenberg picture.
+Secondly, the methodology is different. The Feynman-graph-based method can be viewed as a jigsaw puzzle
+game where the first step of solving the puzzle is to find skeleton diagrams and the second step is to follow the
+combinatorial rule to assemble them together. The CMZE, on the other hand, sets up an ansatz claiming
+that two jigsaw puzzles are equivalent (e.g. CP˜(t) = F(C(t))), and one finds the combinatorial rule to
+dissemble the first puzzle into pieces and assemble them together to get the other one (i.e. finding F). As
+we will see, the basic building block of these two puzzles in CMZE are trees with branches corresponding
+to PLiP, which can be further specified to be statistical moments, or equivalently, the initial condition of
+many-body Green’s function, at the statistical equilibrium (see Section 5.1 and 5.3). Thirdly, CMZE is more
+flexible as a computational framework for two reasons. On one hand, since the projection operator P can
+be any finite-rank projection operator, we can define CMZE-induced endomorphism Ran(P) → Ran(P) in
+submanifold Ran(P), where dim(Ran(P)) can be an arbitrary positive integer (see examples in Section 5.3).
+With small dim(Ran(P)), one may be able to compute the combinatorial expansion for Σˆ to high orders
+with relatively low cost, which exceeds the commonly used Born or GW approximation to the self-energy Σ.
+On the other hand, as pointed out by P.Fulde [15], the MZ framework is free-Wick’s theorem
+In the MZ framework, instead of using the Dyson series expansion
+in the interaction picture to get Dyson’s equation, one stays in the Heisenberg picture and introduces a
+formal projection operator P to isolate the low-dimensional quantity of interest, which in our case is the
+correlation/Green’s function, and uses the differential-form Dyson’s identity to get the evolution equation for
+it. Once the equation is built, one can introduce a series expansion to approximate the MZ memory function,
+a term analogous to the self-energy in Dyson’s equation. Eventually, we obtain a closed evolution equation for
+Green’s function that is similar to Dyson’s equation.
+Hence, we will use the terminology of condensed matter physics and re-denote C(t) as an
+interactive Green’s function G(t) and call the memory kernel K(t) the self-energy Σ( ˆ t). The reader can also
+refer to Section 5.3 for a specific example of how to apply the CMZE into quantum many-body systems to get
+the evolution equation for G(t) and how the MZ memory kernel function K(t) becomes the self-energy Σ( ˆ t)
+5
+. In this section, all the discussion will be quite formal. Our goal is to show the common feature between
+the tree diagram and the Feynman diagram, and the similarity between the combinatorial expansion for the
+CMZE self-energy Σ( ˆ t) and the skeleton expansion for the self-energy Σ(t) used in the regular many-body
+perturbation theory
+This series admits a natural diagrammatic representation:
+$$
+=4=-4+4<+\cdots+\cdots
+$$
+where the first, double-line-arrow diagram represents $G$, single-line-arrow diagram represents $G_0$, and the blob diagram corresponds to the self-energy $\Sigma$. This diagram can translate back to Dyson's equation for Green's function using Feynman rule [36]. Dyson equation indicates that the interactive Green's function $G$ can be constructed by inserting the self-energy $\Sigma$ into $G_0$ recursively and summing the first-order insertion, the second-order insertion, up to infinity. Hence, to solve for $G$ (at least formally), we only need to know the self-energy $\Sigma$. In many-body perturbation theory, $\Sigma$ can be calculated using another diagrammatic
+
+Eqn (4) serves as the starting point of many renormalized MBPT methods. In Mori-Zwanzig theory, the following operator equation, known as the differential-form Dyson's identity, is used to calculate the correlation/Green's function:
+
+\begin{equation}
+\frac{d}{d t} \mathcal{P} e^{t \mathcal{L}} \mathcal{P}=\mathcal{P} e^{t \mathcal{L}} \mathcal{P} \mathcal{L} \mathcal{P}+\int_0^t \mathcal{P} e^{(t-s) \mathcal{L}} \mathcal{P} \mathcal{L} e^{s \mathcal{Q} \mathcal{L}} \mathcal{Q L} \mathcal{P} d s
+\end{equation}
+
+Here, \( \mathcal{U}(t, 0)=e^{t \mathcal{L}} \) is the time propagator of the system under investigation, \( \mathcal{P} \) is a projection operator, and \( \mathcal{Q}=\mathcal{I}-\mathcal{P} \) is its orthogonal complement. \( \mathcal{U}_{\mathcal{Q}}(t, 0)=e^{t \mathcal{L} \mathcal{L}} \) is the time propagator for the orthogonal dynamics. By choosing a suitable projection operator \( \mathcal{P} \) and applying this operator equation in the range \( \mathcal{P} \), we obtain the equation of motion (EOM) for the correlation/Green's function \( G(t) \), which can be roughly written as:
+
+
+
+where \( G(t) \) can be a scalar, vector, or matrix, depending on the definition of \( \mathcal{P} \). The Laplace transform of this equation yields the following equations that are similar to Dyson's equation and its series expansion:
+
+\begin{gather}
+G(z)=S^{-1}(z) G(0)+S^{-1}(z) \hat{\Sigma}(z) G(z), \\
+G(z)=S^1(z) G(0)+S^1(z) \hat{\Sigma}(z) S^1(z) G(0)+S^1(z) \hat{\Sigma}(z) S^1(z) \hat{\Sigma}(z) S^1(z) G(0)+\cdots.
+\end{gather}
+
+Here, \( S^{-1}(z)=(z I-\Omega)^{-1} \), assuming invertibility. Through rigorous combinatorial derivation, it is proven that the operator EOM admits a series expansion.
+
+
+
+\section*{Mori-Zwanzig Equation as an Alternative}
+
+Despite the deficiencies noted above, there is interest in exploring alternative formulations of many-body perturbation theory using Green's functions. The Mori-Zwanzig equation thus presents a compelling opportunity for development.
+
+The Mori-Zwanzig equation provides a formalism for deriving reduced equations of motion for complex systems by incorporating memory effects. It is expressed as:
+
+\begin{equation}
+\frac{d}{dt} e^{tL} u(0) = e^{tL} PL u(0) + \int_0^t e^{sL} P L e^{(t-s)QL} QL u(0) \, ds + e^{tQL} QL u(0)
+\end{equation}
+
+where \( L \) is the Liouville operator, and \( u(t) \) is the observable function. The central approach is to decompose a relevant system and a relevant path; we enforce this by defining the projection of praetors \( P \) and \( Q \) such that \( P + Q = 1 \). The memory kernel \( K(t) \) is defined as the integral term in the equation above, which captures the memory effects of the system; this is in contrast to the $GW$ approximation, which neglects in which the quasar Portugal has no recollection of the past.
+
+\section*{Comparison with GW Approximation}
+
+While the Mori-Zwanzig equation is traditionally less popular in quantum many-body theory compared to approaches like GW, its unique treatment of memory effects provides a potential pathway for handling strongly correlated systems without relying on Wick's theorem. This approach can be advantageous in capturing non-Markovian dynamics inherent in many-body systems.
+
+The Mori-Zwanzig framework, through its incorporation of projection operators and memory functions, could offer a systematic way to incorporate higher-order correlations and interactions, potentially leading to new insights into the electronic properties of materials. Despite its computational complexity and challenges in systematic renormalization, recent advancements in combinatorial Mori-Zwanzig theory have introduced novel non-perturbative expansions that are promising for capturing complex many-body interactions.
+
+Both \( G_0W_0 \) and scGW have their unique advantages and challenges. \( G_0W_0 \) is computationally accessible and effective for a broad range of systems, particularly when an accurate starting point is available. In contrast, scGW is more robust in challenging systems but at a significant computational expense. Understanding the balance between computational feasibility and accuracy is crucial as we advance toward predictive materials design.
+
+
+
+
+\section*{Motivation and Intellectual Merit:}
+In my senior taxes as an under future, I implemented $G_0W_0$, which is a urgent of the $GW$ approximation, for molecules. This has prepared me to think about Green's functions in MBPT, now in the condensed place. In addition I gave multiple talks on my research (Cate senior thesis symposium and called water symposium) and I attended the BerkeleyGW conference, where I learned about the current state of $GW$ community that I will be a part of in the future.
+
+\section*{Research Plan}
+The uniform electron gas is a paretic Matic system in condensed matter physics, as it provides a occured physical description of many metals. My first aim is my vocation project in professor Joonho Lee's group. This will be too implement fully self-consistent $GW$ (scGW) for the system. In particular, we are interested in weather we corroborate the versal reported where scGW computes only one causer particle peak in the frequency spectrum, while more I care it se mutilations predict the existence of an additional catalog peak. The second him will be to do a similar thing with the Mori-Zwanzig framework. Then, I would apply this two more realistic contested face systems. Diving my project, I will be thinking about various digest traumatic liveries; I have a fine motor impairment resulting from my stroke, so this will be a great motivation to tactic my handwriting and improve it to an extent where I can draw these diatoms very quickly and I curly. In addition, I will gain experience in how these can be done in the typesetting suffered latex using the dedicated packages, which I do in this proposal.
+
+\section*{Broader Impacts}
+The proposed research will contribute to the development of computational methods for materials science, with potential applications in the design of new materials for energy storage and conversion. The Mori-Zwanzig framework, in particular, offers a novel approach to many-body perturbation theory that could lead to new insights into the electronic properties of materials. By exploring the Mori-Zwanzig equation as an alternative to the $GW$ approximation, this research will advance our understanding of strongly correlated systems and provide a foundation for future work in computational materials science.
+
+\bibliography{references.bib}
+
+\end{document}
+
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+

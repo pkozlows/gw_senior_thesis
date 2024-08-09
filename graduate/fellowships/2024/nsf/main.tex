@@ -1,0 +1,290 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tikz-feynman}
+\usepackage{hyperref}
+\usepackage{forest}
+\author{Patryk Kozlowski}
+\title{Proposal}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{Outline}
+
+The green energy transition underscores the need for the discovery of materials. These materials often have strongly correlated electrons, which are important for sustainability applications. Density Functional Theory (DFT) has long served as a computational workhorse for materials science by using the electron density as the fundamental quantity. DFT scales computationally as \( O(N^3) \), where \( N \) is the number of electrons in the system. However, it treats the repulsive interactions between electrons using an exchange-correlation functional, which is often approximated, leading to variable results. A potential solution is the application of Green's functions in many-body perturbation theory (MBPT). Central to this is the Dyson equation:
+
+\begin{equation}
+    G = G_0 + G_0 \Sigma G = G_0 + G_0 \Sigma G_0 + G_0 \Sigma G_0 \Sigma G_0 + \ldots
+    \label{eq:simple_dyson}
+\end{equation}
+
+In equation \ref{eq:simple_dyson}, the Green's function for the fully interacting system \( G \) is related to the noninteracting Green's function \( G_0 \) through the self-energy \( \Sigma \). In terms of Feynman diagrams, we can think of this as
+\begin{equation}
+    \feynmandiagram [horizontal=a to b] {
+   a -- [fermion] b,
+};
++
+\feynmandiagram [horizontal=a to b] {
+   a -- [fermion] c [blob] -- [fermion] b,
+};
++
+\feynmandiagram [horizontal=a to b] {
+   a -- [fermion] c [blob] [fermion] -- [fermion] d [blob] -- [fermion] b,
+};
++ \ldots
+\label{eq:dyson}
+\end{equation}
+where \( G_0 \) is represented by a single line and \( \Sigma \) by a blob. In the common \( GW \) approximation, it is assumed that the self-energy \( \Sigma \) takes the form \( iGW \), where \( W \) is the screened Coulomb interaction. Therefore, the expansion in equation \ref{eq:dyson} represents a series expansion in the interaction strength \( W \), since it is used to make \( \Sigma \). This means that the \( GW \) approximation is accurate for systems where it is reasonable to perturbatively expand the Dyson equation in the Coulomb interaction. However, for strongly correlated systems, where the interaction is large, this is not reasonable, and so the \( GW \) approximation often fails.
+
+There is also the Mori-Zwanzig (MZ) theory, which has been long known in statistical physics but has only recently been applied to Green's functions. It can be used to write the equation of motion for a Green's function as
+
+\begin{equation}
+\frac{d}{d t} G(t) = \Omega G(t) + \int_0^t \hat{\Sigma}(s) G(t-s) \, ds
+\end{equation}
+
+Recently, a diagrammatic theory analogous to the Feynman diagrams of MBPT has been introduced for the MZ frame work, in the form of tree diagrams. Is can be seen pome MZ remedies the issue for strongly correlated systems in MBPT by providing an expansion for a self-energy $\hat{\Sigma}$ in terms of the evolution time $t$.
+
+\begin{equation}\label{bare_expansion_CMZE_sigma}
+\begin{aligned}
+\hat\Sigma
+&=\hat\Sigma^0[G(0),t]+\hat\Sigma^1[G(0),t]+\hat\Sigma^2[G(0),t]+\cdots \\
+&=
+-{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[[]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+for tree={grow=90, l=1mm}
+[[][]]
+\path[fill=black]  (!.parent anchor) circle[radius=2pt];
+\path[fill=black] (!1.child anchor) circle[radius=2pt]
+                 (!2.child anchor) circle[radius=2pt];
+\end{forest}
+}
+\quad\bigr\}\Rightarrow O(1)\\
+&\ \
++t\biggl[
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[[[]]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                    (!11.child anchor) circle[radius=2pt]
+                  (!111.child anchor) circle[radius=2pt];
+\end{forest}
+}
+-
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[[]][]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!2.child anchor) circle[radius=2pt];
+\end{forest}
+}
+-
+{\small
+\begin{forest}
+ for tree={parent anchor=east, child anchor=east, grow=90, l=1mm}
+[[[][]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!12.child anchor) circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[][][]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!2.child anchor) circle[radius=2pt]
+                  (!3.child anchor) circle[radius=2pt];
+\end{forest}
+}
+\biggr]
+\quad\Biggr\}\Rightarrow O(t)
+\\
+&\ \ \ \ \ \ \ \ \ 
++\frac{t^2}{2}
+\Biggl[
+-
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+ [[[[[]]]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!111.child anchor) circle[radius=2pt]
+                  (!1111.child anchor)  circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+for tree={grow=90, l=1mm}
+ [[[[][]]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!111.child anchor) circle[radius=2pt]
+                  (!112.child anchor)  circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[[[]][]]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!111.child anchor) circle[radius=2pt]
+                  (!12.child anchor) circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+[[[[]]][]]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!111.child anchor) circle[radius=2pt]
+                  (!2.child anchor) circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+ [ [[][]] []]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!12.child anchor) circle[radius=2pt]
+                  (!2.child anchor)  circle[radius=2pt];
+\end{forest}
+}
+-
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+ [[[]] [] [] ]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!2.child anchor) circle[radius=2pt]
+                  (!3.child anchor)  circle[radius=2pt];
+\end{forest}
+}
+-
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+ [ [[][][]] ]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!11.child anchor) circle[radius=2pt]
+                  (!12.child anchor) circle[radius=2pt]
+                  (!13.child anchor)  circle[radius=2pt];
+\end{forest}
+}
++
+{\small
+\begin{forest}
+ for tree={grow=90, l=1mm}
+ [ [][][] []]
+ \path[fill=black]  (!.parent anchor) circle[radius=2pt];
+ \path[fill=black] (!1.child anchor) circle[radius=2pt]
+                  (!2.child anchor) circle[radius=2pt]
+                  (!3.child anchor) circle[radius=2pt]
+                  (!4.child anchor)  circle[radius=2pt];
+\end{forest}
+}
+\Biggr]
+\quad\Biggr\}\Rightarrow O(t^2)
+\\
+&\quad \cdots.
+\end{aligned}
+\end{equation}
+
+
+
+
+
+
+
+Thirdly, CMZE is more flexible as a computational framework for two reasons. On one hand, since the projection operator \( P \) can be any finite-rank projection operator, we can define CMZE-induced endomorphism \( \text{Ran}(P) \rightarrow \text{Ran}(P) \) in submanifold \( \text{Ran}(P) \), where \( \text{dim}(\text{Ran}(P)) \) can be an arbitrary positive integer. With small \( \text{dim}(\text{Ran}(P)) \), one may be able to compute the combinatorial expansion for \( \Sigma \) to high orders with relatively low cost, which exceeds the commonly used Born or GW approximation to the self-energy \( \Sigma \).
+
+On the other hand, as pointed out by P. Fulde, the Mori-Zwanzig framework is free of Wick’s theorem. In the Mori-Zwanzig framework, instead of using the Dyson series expansion in the interaction picture to get Dyson’s equation, one stays in the Heisenberg picture and introduces a formal projection operator \( P \) to isolate the low-dimensional quantity of interest, which in our case is the correlation/Green’s function, and uses the differential-form Dyson’s identity to get the evolution equation for it. Once the equation is built, one can introduce a series expansion to approximate the Mori-Zwanzig memory function, a term analogous to the self-energy in Dyson’s equation. Eventually, we obtain a closed evolution equation for Green’s function that is similar to Dyson’s equation.
+
+Hence, we will use the terminology of condensed matter physics and re-denote \( C(t) \) as the interacting Green’s function \( G(t) \) and call the memory kernel \( K(t) \) the self-energy \( \Sigma(t) \).
+
+
+Eqn (4) serves as the starting point of many renormalized MBPT methods. In Mori-Zwanzig theory, the following operator equation, known as the differential-form Dyson's identity, is used to calculate the correlation/Green's function:
+
+\begin{equation}
+\frac{d}{d t} \mathcal{P} e^{t \mathcal{L}} \mathcal{P}=\mathcal{P} e^{t \mathcal{L}} \mathcal{P} \mathcal{L} \mathcal{P}+\int_0^t \mathcal{P} e^{(t-s) \mathcal{L}} \mathcal{P} \mathcal{L} e^{s \mathcal{Q} \mathcal{L}} \mathcal{Q L} \mathcal{P} \, ds
+\end{equation}
+
+Here, \( \mathcal{U}(t, 0)=e^{t \mathcal{L}} \) is the time propagator of the system under investigation, \( \mathcal{P} \) is a projection operator, and \( \mathcal{Q}=\mathcal{I}-\mathcal{P} \) is its orthogonal complement. \( \mathcal{U}_{\mathcal{Q}}(t, 0)=e^{t \mathcal{L} \mathcal{L}} \) is the time propagator for the orthogonal dynamics. By choosing a suitable projection operator \( \mathcal{P} \) and applying this operator equation in the range \( \mathcal{P} \), we obtain the equation of motion (EOM) for the correlation/Green's function \( G(t) \), which can be roughly written as:
+
+\begin{equation}
+\frac{d}{d t} G(t)=\Omega G(t)+\int_0^t \hat{\Sigma}(s) G(t-s) \, ds
+\end{equation}
+
+where \( G(t) \) can be a scalar, vector, or matrix, depending on the definition of \( \mathcal{P} \). The Laplace transform of this equation yields the following equations that are similar to Dyson's equation and its series expansion:
+
+\begin{gather}
+G(z)=S^{-1}(z) G(0)+S^{-1}(z) \hat{\Sigma}(z) G(z), \\
+G(z)=S^1(z) G(0)+S^1(z) \hat{\Sigma}(z) S^1(z) G(0)+S^1(z) \hat{\Sigma}(z) S^1(z) \hat{\Sigma}(z) S^1(z) G(0)+\cdots.
+\end{gather}
+
+Here, \( S^{-1}(z)=(z I-\Omega)^{-1} \), assuming invertibility. Through rigorous combinatorial derivation, it is proven that the operator EOM admits a series expansion.
+
+
+
+
+\section*{Mori-Zwanzig Equation as an Alternative}
+
+Despite the deficiencies noted above, there is interest in exploring alternative formulations of many-body perturbation theory using Green's functions. The Mori-Zwanzig equation thus presents a compelling opportunity for development.
+
+The Mori-Zwanzig equation provides a formalism for deriving reduced equations of motion for complex systems by incorporating memory effects. It is expressed as:
+
+\begin{equation}
+\frac{d}{dt} e^{tL} u(0) = e^{tL} PL u(0) + \int_0^t e^{sL} P L e^{(t-s)QL} QL u(0) \, ds + e^{tQL} QL u(0)
+\end{equation}
+
+where \( L \) is the Liouville operator, and \( u(t) \) is the observable function. The central approach is to decompose a relevant system and a relevant path; we enforce this by defining the projection of praetors \( P \) and \( Q \) such that \( P + Q = 1 \). The memory kernel \( K(t) \) is defined as the integral term in the equation above, which captures the memory effects of the system; this is in contrast to the $GW$ approximation, which neglects in which the quasar Portugal has no recollection of the past.
+
+
+
+
+
+
+\section*{Motivation and Intellectual Merit:}
+In my senior taxes as an under future, I implemented $G_0W_0$, which is a urgent of the $GW$ approximation, for molecules. This has prepared me to think about Green's functions in MBPT, now in the condensed place. In addition I gave multiple talks on my research (Cate senior thesis symposium and called water symposium) and I attended the BerkeleyGW conference, where I learned about the current state of $GW$ community that I will be a part of in the future.
+
+\section*{Research Plan}
+The uniform electron gas is a paretic Matic system in condensed matter physics, as it provides a occured physical description of many metals. My first aim is my vocation project in professor Joonho Lee's group. This will be too implement fully self-consistent $GW$ (scGW) for the system. In particular, we are interested in weather we corroborate the versal reported where scGW computes only one causer particle peak in the frequency spectrum, while more I care it se mutilations predict the existence of an additional catalog peak. The second him will be to do a similar thing with the Mori-Zwanzig framework. Then, I would apply this two more realistic contested face systems. Diving my project, I will be thinking about various digest traumatic liveries; I have a fine motor impairment resulting from my stroke, so this will be a great motivation to tactic my handwriting and improve it to an extent where I can draw these diatoms very quickly and I curly. In addition, I will gain experience in how these can be done in the typesetting suffered latex using the dedicated packages, which I do in this proposal.
+
+\section*{Broader Impacts}
+The proposed research develops a theoretical framework will serve as an alternative to the $GW$ approximation, thereby advancing understanding of strongly copulated systems. It will lead to the development of new computational meta dosages for the study of materials science, with potential applications in the design of new materials for energy storage and conversion. 
+
+\end{document}

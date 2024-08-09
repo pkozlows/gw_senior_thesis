@@ -1,0 +1,39 @@
+
+The coming green energy transition underscores the need for the discovery of materials with sustainability applications. Density functional theory (DFT) has long served as a computational workhorse for materials science feeding the electron density as the fundamental quantity. Ad for pads resole versus AA cheap transpiration al scaling of $O(N^3)$, where $N$ is the number of electrons in the system, DFT treats the repulsive interactions between elections with an exchange corporation functional which is often approximated; this functional may work for certain classes of systems, but not others. A potential solution is the application of green's functions in many body perturbation gave. Central to this is the Dyson equation
+\begin{equation}
+    G = G_0 + G_0 \Sigma G
+\label{eq:dyson}
+\end{equation}
+an which the queen's function for the fully interacting system $G$ is related to the noninteracting queen's function $G_0$ through the self-energy $\Sigma$. In the comment $GW$ pronation, it is assumed that the self energy $\Sigma$ takes the form $iGW$, where $W$ is the screened Coulomb interaction. Therefore, the self energy is a functional of the interacting greens function (i.e. $\Sigma = \Sigma[G]$.) and the dasen equation must be solved self consistently. An exact closed set of equations known as the Hedin equations, which are represented schematically in figure 1, is used to solve equation \ref{eq:dyson} in practice, with the gut of proximate ignoring the vertex corrections $\Gamma $, which described the interaction between elections and halls.
+
+The most basic approximation is \( G_0W_0 \), which makes the assumption that $\Sigma \approx i G_0 W_0$, resulting in a computational scaling of \( O(N^4) \). However, \( G_0W_0 \) exhibits an undesirable strong starting point dependence on the noninteracting queens function meaning the accuracy of your $GW$ catenation is at the mercy of the quality of $G_0$, which is usually taken as a trigger DFT calculation. On the other hand, the fully self-consistent GW (scGW) approach aluminate the dependence on the starting point. However, this comes with a higher $O(N^6)$ cost and often does not offer much improvement over \( G_0W_0 \) for systems with strongly copulated electrons.
+
+It is thought that the reason for this inaccuracy is the neglect of vortex corrections in the $GW$ approximation, but by inclusion of these computations can become prohibitively expensive. The inadequacy of the $GW$ approximation can be attributed to the fact that it relies expansion of the Dyson equation in terms of the strength of the perturbation:
+\begin{equation}
+    G = G_0 + G_0 \Sigma G_0 + G_0 \Sigma G_0 \Sigma G_0 + \ldots.
+\label{eq:dyson_expansion}
+\end{equation}
+Each additional term carves with it an additional power of the interaction strength, as described by $W$. This means that the $GW$ approximation is accurate for systems with weekly calculated elections, were it is reasonable to expand the Dyson equation in a small Coulomb interaction . However, for strongly correlated systems this is not a reasonable thing to do.
+
+\section*{Mori-Zwanzig Equation as an Alternative}
+
+Despite the deficiencies noted above, there is interest in exploring alternative formulations of many-body perturbation theory using Green's functions. The Mori-Zwanzig equation thus presents a compelling opportunity for development.
+
+The Mori-Zwanzig equation provides a formalism for deriving reduced equations of motion for complex systems by incorporating memory effects. It is expressed as:
+
+\begin{equation}
+\frac{d}{dt} e^{tL} u(0) = e^{tL} PL u(0) + \int_0^t e^{sL} P L e^{(t-s)QL} QL u(0) \, ds + e^{tQL} QL u(0)
+\end{equation}
+
+where \( L \) is the Liouville operator, and \( u(t) \) is the observable function.
+
+\section*{Comparison with GW Approximation}
+
+While the Mori-Zwanzig equation is traditionally less popular in quantum many-body theory compared to approaches like GW, its unique treatment of memory effects provides a potential pathway for handling strongly correlated systems without relying on Wick's theorem. This approach can be advantageous in capturing non-Markovian dynamics inherent in many-body systems.
+
+The Mori-Zwanzig framework, through its incorporation of projection operators and memory functions, could offer a systematic way to incorporate higher-order correlations and interactions, potentially leading to new insights into the electronic properties of materials. Despite its computational complexity and challenges in systematic renormalization, recent advancements in combinatorial Mori-Zwanzig theory have introduced novel non-perturbative expansions that are promising for capturing complex many-body interactions.
+
+Both \( G_0W_0 \) and scGW have their unique advantages and challenges. \( G_0W_0 \) is computationally accessible and effective for a broad range of systems, particularly when an accurate starting point is available. In contrast, scGW is more robust in challenging systems but at a significant computational expense. Understanding the balance between computational feasibility and accuracy is crucial as we advance toward predictive materials design.
+
+In summary, the GW approximation, with its variants and enhancements through vertex corrections, plays a pivotal role in advancing theoretical spectroscopy and electronic structure calculations, providing critical insights into the properties of materials and guiding the development of novel applications. The Mori-Zwanzig equation, with its potential to address non-Markovian effects, presents an exciting avenue for future exploration as an alternative or complementary approach to the GW method.
+

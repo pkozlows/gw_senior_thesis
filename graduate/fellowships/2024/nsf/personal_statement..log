@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  9 AUG 2024 13:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  17 AUG 2024 15:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/patrykkozlowski/caltech/graduate/fellowships/2024/nsf/NSF GRFP Research Proposal Template (1)/main"
-(/Users/patrykkozlowski/caltech/graduate/fellowships/2024/nsf/NSF GRFP Research Proposal Template (1)/main.tex
+**/Users/patrykkozlowski/caltech/graduate/fellowships/2024/nsf/personal_statement.
+(/Users/patrykkozlowski/caltech/graduate/fellowships/2024/nsf/personal_statement..tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -87,11 +87,11 @@ l.45 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
 
  
 Here is how much of TeX's memory you used:
- 1085 strings out of 478268
- 19821 string characters out of 5846347
- 312809 words of memory out of 5000000
+ 1087 strings out of 478268
+ 19778 string characters out of 5846347
+ 312839 words of memory out of 5000000
  19355 multiletter control sequences out of 15000+600000
  469559 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,0n,77p,342b,44s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 68i,0n,77p,315b,44s stack positions out of 10000i,1000n,20000p,200000b,200000s
 /usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.sty:45:  ==> Fatal error occurred, no output PDF file produced!

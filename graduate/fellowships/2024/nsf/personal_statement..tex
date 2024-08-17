@@ -1,0 +1,74 @@
+\documentclass[11pt]{article} % 11pt font
+
+% Conform to NSF formatting requirements
+% see: https://www.nsf.gov/pubs/2020/nsf20587/nsf20587.pdf
+% --------------------------------------
+% 1in margins
+\usepackage[margin=1in]{geometry}
+% use times new roman for main text
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+% single line spacing
+\usepackage{bookmark}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tikz-feynman}
+\usepackage{hyperref}
+\usepackage{forest}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\singlespacing
+
+% To fit more into the proposal, 
+% let's make the section titles tiny and compact
+\usepackage[tiny,compact]{titlesec}
+\titleformat{\section}[runin]{\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[runin]{\bfseries}{\thesubsection}{1em}{}
+
+
+
+% -------------------------
+% BEGINNING OF THE DOCUMENT
+% -------------------------
+\begin{document}
+
+\begin{center}
+\large{\bf Mori-Zwanzig: A New Closure To Hedin's Equations For Strongly Correlated Systems}
+\end{center}
+
+The Personal, Relevant Background and Future Goals Statement must address NSFqqs merit review criteria of Intellectual Merit and Broader Impacts. Applicants must include headings for Intellectual Merit and Broader Impacts in their statements.
+
+The maximum length of the Personal, Relevant Background and Future Goals Statement is three (3) pages.
+\section{Personal}
+When word got out about the Goldwater Scholarship, most people would jump out of their seats, but I couldn't move up or down in my hospital bed. It was the middle of my junior year, and I was diagnosed with leukemia and subsequently had a stroke, which left me with motor deficits. I was initially bed-bound and could not communicate. As the weeks started to pass by and the reality of a long recovery settled in, I was faced with deep questions as to what extent I wanted to continue rehabilitating. My choice to not give up was motivated by the realization that I had a bright future ahead of me. When the psychologist at the hospital would see me, I would tell her about my dreams of attending graduate school with barely understandable speech from my wheelchair. Indeed, it is magical that I am applying to the NSF GRFP at Harvard.
+
+When I first entered acute rehab, I was informed that therapy ran from Monday to Saturday, with a break only on Sunday. I soon learned that there are no breaks if one wants to succeed in something, be it neurological rehabilitation or scientific research.
+
+After four months in the hospital, I returned home. Immediately, I was met with a particularly insidious combination of my motor impairment and chemotherapy treatment. Taking high-dose steroids for the first time, which caused sleep issues with an increased appetite, I would stare at the ceiling throughout the night in bed and then sit up to eat every 3 hours. But my hands were so shaky that I could barely handle a spoon. I could not go to the bathroom myself; my parents set up a call button for me to be able to ring them 2-3 times a night for a good month. Complaining that a class is giving too much homework just doesn't feel right anymore.
+
+After 3 years of intense rehabilitation, I use an assistive device to walk. Typing and handwriting are time-consuming due to my impaired fine motor function, and I have weakness in my articulators, a slower rate of speech, and difficulty changing pitch. To many, this would seem like the end of an academic career, but with the advent of AI, I saw an opportunity. First of all, I took the initiative to learn AI-powered dictation to code by voice. To do so, I joined the Talon Slack channel, where the community for my free dictation software meets. There are meetups three times a week over Discord, where users can ask questions of the more experienced while doing a screen share of their personal dictation setup. Often, people stay around afterward to chat about how to improve the hands-free coding experience. When ChatGPT went viral, I had the idea of interfacing with it to do my bidding, which in this case means correcting my dictated text. Because of my speech impairment, the computer doesn't register everything perfectly, but ChatGPT solves this. For example, the computer might hear "The quick front dogs jumps over the late dog," whereas ChatGPT might change it to what it thinks I had meant to say: "The quick brown fox jumps over the lazy dog." This integration of LLMs with dictation led others to think about other uses. For example, one user thought of translating a piece of English text into Japanese. Instead of going to Google Translate and pasting the text in, you can make a selection and say, "Model, please translate this text to Japanese," and get back a state-of-the-art translation immediately in your text editor, courtesy of ChatGPT, which is fluent in all languages. For most people, this means a few seconds savings, but for those with difficulty using the mouse, it is priceless. All of this was to help me get back into the quantum chemistry that I grew to love.
+\section{Intellectual Merit}
+I first got interested in the field in 2019, when I worked with Prof. Hadt in a physical inorganic chemistry laboratory at Caltech. I was developing a computational model for characterizing spin-phonon coupling in Co(III) complexes, a fundamental study relevant to photocatalysis and quantum information science. Amidst running DFT calculations to determine vibrational modes of optimized structures and then cracking energetics with multi-reference CASSCF, I became fascinated by this intersection with computation. I wanted to know what was going on behind the hood of these quantum chemistry methods. Whenever my calculations were running, I would pester my graduate student mentor to recommend reading materials. I started learning electronic structure theory that summer via “Modern Quantum Chemistry” by Szabo and Ostlund.
+
+The following year, I worked with Prof. Chan in a quantum chemistry group at Caltech. I computed surface energies of a platinum (111) surface, which is used as a heterogeneous catalyst to sustainably produce fertilizers. First, I used DFT to corroborate literature about the method's overestimation of surface stability. I became familiar with the slabs and k-point meshes that enable one to perform periodic calculations, along with the electron smearing and density fitting that are used to improve convergence. Then, I ran calculations using a newly developed periodic CCSD method to investigate its performance. With limited computational resources, I was not able to use the expensive post-Hartree Fock methods of MP2 and CCSD to overcome the limitations of DFT. Thus, I learned about the motivation for research in quantum chemistry: achieving accuracy in complex systems at a reasonable cost. I continued my reading of Szabo, focusing on the standard models of quantum chemistry, perturbative approaches, and Green function methods.
+
+In Fall 2020, I worked as a TA for an introductory quantum mechanics course for chemists. Along with the other TAs, I met with Prof. Okumura weekly to discuss what aspects of the lecture students were struggling with and how we could design our recitations to address this. Throughout this quarter, I also wrote a publication describing the findings from my research of the previous summer in the Caltech Undergraduate Research Journal. I thoroughly enjoyed the challenge of scientific communication, which involves explaining complex concepts to the unfamiliar.
+
+As a pet project while on medical leave, I implemented and optimized Full Configuration Interaction (FCI) for a simple H6 chain still with Prof. Chan. This project introduced me to dealing with large, sparse matrices in quantum chemistry. I implemented the algorithm that Ernest Davidson came up with when faced with this problem: compute just the few desired eigenvalues of the FCI matrix. I also learned how to circumvent generating the FCI matrix altogether, with the one-particle matrix as proposed by Handy and Knowles in 1984.
+
+Last year, I embarked on a senior thesis project, implementing $G_0W_0$ for molecules within the $GW$ approximation of many-body perturbation theory. I then investigated properties of the newly proposed linearized $G_0W_0$ density matrix, which can be used to compute total energies using the formula proposed by Gallitski and Migdal, which improved upon the mean field description for the natural occupations of the dissociation process in a diatomic molecule.
+\section{Future goals}
+Last summer, I started my PhD in the department of chemistry and chemical biology at Harvard in a rotation with Professor Joonho Lee. I have implemented Hartree-Fock in C++ for the uniform electron gas in a plane wave basis, moved on to scGW, and now am thinking about an implementation with the Mori-Zwanzig theory, as detailed in my research proposal. 
+
+\section{Broader impacts}
+I am also excited about Harvard because it has the top school in public policy, the Kennedy School, where influential people from Washington come regularly to give talks. My work applying Green's functions to solid-state systems will make the development of more efficient solar cells possible. I want to then help figure out how to bring these solar panels to the consumer. With the busy early years of my PhD program, I will attend these policy talks as my schedule permits.
+
+My background in rehabilitation prepares me to be part of the sustainability movement. Climate change is going to get a whole lot worse before it gets better; there is continued resistance to climate solutions even as disasters become more common. Not long ago, I was unable to go to the toilet by myself, but now I am living across the country from home in Southern California independently. You learn that persistence in the darkest moments pays off in the long run.
+
+I am inspired by the story of Caltech Professor Frances Arnold, who suffered both the suicide of her husband and the death of her son in an accident. She was recently awarded the Nobel Prize for her work on protein evolution, but also oversees many corporate sustainability ventures and is the president of the Biden Sustainability Council. One day, I too hope to turn hardship into impact.
+
+
+ 
+\end{document}
